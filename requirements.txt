@@ -1,0 +1,12 @@
+anthropic
+python-dotenv
+pydantic
+pdfplumber
+sentence-transformers
+torch
+psycopg[binary]
+pgvector
+rank_bm25
+fastapi
+uvicorn
+streamlit
