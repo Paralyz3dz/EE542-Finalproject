@@ -31,6 +31,26 @@ It does not file returns or give final tax advice. Only public data and fictiona
 6. Summarize
 7. Preparer reviews and approves
 
+## Quick start
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1            # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+copy .env.example .env                 # then fill in your own keys (never commit .env)
+
+python src/rag/chunk_pub17.py          # Pub 17 -> data/processed/pub17_2025_chunks.json + _tables.json
+python tests/test_tables.py            # table tests, should print 11/11 passed
+python src/rag/tables.py --pages 9 101 # inspect the tables on single pages
+```
+
+## Status
+| Part | State |
+|---|---|
+| Pub 17 parsing + chunking (`src/rag/chunk_pub17.py`) | done: 821 chunks, 14 chapters, TIP/CAUTION, citations |
+| Table extraction (`src/rag/tables.py`) | done: 20 tables, IF/AND/THEN rows as sentences, raw rows saved for code |
+| BM25 retrieval + Recall@5 evaluation | next |
+| Playbooks, workflow engine, Claude, UI | planned |
+
 ## Rules
 - Never use real client data (IRC 7216). Fictional cases only.
 - All numbers come from code or IRS documents, never from the model.
