@@ -11,6 +11,7 @@ import argparse
 import json
 
 import numpy as np
+import psycopg
 
 from src.db.connection import get_conn
 
@@ -41,9 +42,16 @@ def main():
         with conn.cursor() as cur:
             cur.executemany("UPDATE chunks SET embedding = %s, embedding_model = %s WHERE id = %s",
                             [r for r in rows if r[2] in known])
-        # build the vector index once vectors exist (cosine distance, same as queries.vector_search)
-        conn.execute("CREATE INDEX IF NOT EXISTS chunks_embedding_hnsw "
-                     "ON chunks USING hnsw (embedding vector_cosine_ops)")
+        # vector index (cosine distance, same as queries.vector_search). Only the table owner
+        # (taxagent_admin) may create it; teammates with the "rag" role just skip this step.
+        has_index = conn.execute("SELECT 1 FROM pg_indexes WHERE indexname = 'chunks_embedding_hnsw'").fetchone()
+        if not has_index:
+            try:
+                with conn.transaction():          # savepoint: a refusal here keeps the UPDATEs above
+                    conn.execute("CREATE INDEX chunks_embedding_hnsw "
+                                 "ON chunks USING hnsw (embedding vector_cosine_ops)")
+            except psycopg.errors.InsufficientPrivilege:
+                print("note: no permission to create the vector index; ask the admin to create it")
         missing = conn.execute("SELECT count(*) FROM chunks WHERE embedding IS NULL").fetchone()[0]
 
     print(f"updated {len(rows) - len(unknown)} vectors; chunks still without embedding: {missing}")
