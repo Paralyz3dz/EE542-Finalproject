@@ -1,4 +1,6 @@
 anthropic
+langchain
+langchain-openai
 python-dotenv
 pydantic
 pdfplumber

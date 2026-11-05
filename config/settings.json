@@ -1,7 +1,8 @@
 {
   "tax_year": 2025,
   "chunk_size_chars": 1500,
-  "retrieve_top_k": 50,
+  "retrieve_top_k": 5,
+  "rrf_constant": 60,
   "rerank_top_k": 5,
   "claude_model_extract": "claude-haiku-4-5",
   "claude_model_dialogue": "claude-sonnet-4-6",
