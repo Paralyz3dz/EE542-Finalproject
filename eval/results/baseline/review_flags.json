@@ -1,0 +1,102 @@
+[
+  {
+    "id": "pub17_2025_eval_042",
+    "metric": "correctness",
+    "status": "needs_review",
+    "original_score": 0.0,
+    "reason": "The answer gives both amounts in the reference correctly; the incorrect verdict is self-contradictory and demands an unnecessary explicit half comparison.",
+    "question": "What capital-loss deduction limit applies to married filing separately, compared with a joint return?",
+    "reference": "The limit is $1,500 for married filing separately, compared with $3,000 on a joint return.",
+    "response": "For the tax year 2025, the capital loss deduction limits differ based on the filing status:\n\n1. **Married Filing Jointly**: The capital loss deduction limit is **$3,000**.\n2. **Married Filing Separately**: The capital loss deduction limit is **$1,500**.\n\nThis means that if you and your spouse file separately, you can only deduct up to $1,500 of capital losses against your income, whereas filing jointly allows for a higher limit of $3,000. \n\nThis information is sourced from IRS Publication 17 for the year 2025, which outlines specific rules and limits related to various tax deductions."
+  },
+  {
+    "id": "pub17_2025_eval_082",
+    "metric": "correctness",
+    "status": "needs_review",
+    "original_score": 0.5,
+    "reason": "The judge introduces a prior-year no-liability prerequisite that the question and reference answer do not require for increasing wage withholding; review the partial verdict.",
+    "question": "How can an employee generally avoid separate estimated tax payments for 2026 by changing wage withholding?",
+    "reference": "Give the employer a new Form W-4 requesting more tax withheld from wages.",
+    "response": "To generally avoid separate estimated tax payments for the year 2026, an employee can adjust their wage withholding by submitting a new Form W-4 to their employer. Here are some key points to consider:\n\n1. **Change in Circumstances**: If there are changes in your marital status, deductions, or credits that could affect your tax situation, you should provide your employer with a new Form W-4. This should be done within 10 days after the change occurs.\n\n2. **Future Adjustments**: If you anticipate changes in 2026 that will affect your withholding, you should submit the new Form W-4 by December 1, 2026. If the change occurs in December, you must submit the new form within 10 days of that change.\n\n3. **Avoiding Estimated Payments**: By ensuring that adequate amounts are withheld from your paycheck, you can potentially avoid the need for separate estimated tax payments. The goal is to have enough withholding to cover your tax liability for the year.\n\nThese guidelines are based on IRS Publication 17 (2025), which discusses tax withholding and estimated tax requirements. \n\nFor more specific advice, you would need to consult a tax professional who can consider your individual circumstances."
+  },
+  {
+    "id": "pub17_2025_eval_105",
+    "metric": "correctness",
+    "status": "needs_review",
+    "original_score": 0.5,
+    "reason": "The answer identifies the requested specified-private-activity-bond amount as box 13, matching the reference; the judge appears to conflate this with total exempt-interest dividends.",
+    "question": "Can exempt-interest dividends on specified private activity bonds affect the alternative minimum tax, and where is that information reported?",
+    "reference": "Yes. They may be subject to AMT; the relevant amount should be shown in Form 1099-DIV, box 13.",
+    "response": "Exempt-interest dividends from specified private activity bonds can indeed affect the alternative minimum tax (AMT). Specifically, while these dividends are not included in your taxable income, they may be subject to the AMT. Any exempt-interest dividends that are subject to the AMT should be reported on **Form 1099-DIV**, specifically in **box 13**. \n\nHere's a summary of the relevant information:\n\n1. **Exempt-Interest Dividends**: These are received from mutual funds or regulated investment companies (RICs) and are not included in your taxable income. However, they must still be reported on your tax return if you file.\n   \n2. **AMT Implications**: Exempt-interest dividends from specified private activity bonds may trigger AMT, and the amounts subject to AMT will be indicated on **Form 1099-DIV**, box 13.\n\n3. **Reporting**: You should report the total exempt-interest dividends on your Form 1040 or 1040-SR, line 2a, and include the amounts from box 13 of Form 1099-DIV when calculating your AMT on **Form 6251** (Alternative Minimum Tax—Individuals) (IRS Pub 17, 2025).\n\nFor more detailed information, you can refer to IRS Publication 17, Chapter 6 and Chapter 13."
+  },
+  {
+    "id": "pub17_2025_eval_115",
+    "metric": "correctness",
+    "status": "needs_review",
+    "original_score": 0.0,
+    "reason": "The answer says exactly 1500 does not trigger the more-than-1500 rule, matching the reference; the incorrect verdict reverses the boundary condition.",
+    "question": "A taxpayer receives exactly $1,500 of taxable interest in 2025 and has no other Schedule B trigger. Does the interest amount alone require Schedule B, Part I?",
+    "reference": "No. The amount-based requirement applies when taxable interest is more than $1,500; other listed situations can independently require Schedule B.",
+    "response": "According to IRS guidelines for the 2025 tax year, a taxpayer must complete Schedule B, Part I if their taxable interest income exceeds $1,500. Since the taxpayer in your scenario has exactly $1,500 of taxable interest and no other Schedule B triggers, they do **not** need to complete Schedule B, Part I. \n\nThe relevant citation states:\n\n\"You must complete Schedule B (Form 1040), Part I, if you file Form 1040 or 1040-SR and any of the following apply: 1. Your taxable interest income is more than $1,500.\" (IRS Pub 17, 2025, Chapter 6, p. 61) \n\nThus, with interest income at exactly $1,500, the requirement to file Schedule B is not triggered."
+  },
+  {
+    "id": "pub17_2025_eval_159",
+    "metric": "correctness",
+    "status": "needs_review",
+    "original_score": 0.0,
+    "reason": "The answer explicitly gives a full deduction at exactly 79000, matching the reference; the judge incorrectly treats this as a contradiction.",
+    "question": "A single taxpayer covered by an employer retirement plan has exactly $79,000 modified AGI in 2025. Is the traditional IRA deduction full, partial, or unavailable, assuming an otherwise allowable contribution?",
+    "reference": "Full. The full-deduction band includes modified AGI of $79,000 or less.",
+    "response": "For the tax year 2025, a single taxpayer covered by an employer retirement plan will have their traditional IRA deduction phased out if their modified adjusted gross income (AGI) is between $79,000 and $89,000. Specifically:\n\n- The deduction is **reduced** if modified AGI is more than $79,000 but less than $89,000.\n- If modified AGI is **$89,000 or more**, the deduction is **not available**.\n\nSince the taxpayer has a modified AGI of exactly $79,000, they are entitled to the **full deduction** for their traditional IRA contributions. \n\nThis information is sourced from IRS Publication 17 for 2025, which states: \"your deduction for contributions to a traditional IRA is reduced (phased out) if your modified AGI is... more than $79,000 but less than $89,000 for a single individual.\" (IRS Pub 17 (2025), Chapter 9)."
+  },
+  {
+    "id": "pub17_2025_eval_064",
+    "metric": "faithfulness",
+    "status": "needs_review",
+    "original_score": 1.0,
+    "reason": "The generated conclusion reverses the exactly-half versus more-than-half boundary while the faithfulness judge assigns full support.",
+    "question": "A child provides exactly half of their own support in 2025. Does that alone fail the qualifying-child support test?",
+    "reference": "No. The test fails only if the child provides more than half of their own support, so exactly half does not fail it.",
+    "response": "According to IRS guidelines for the year 2025, to qualify as a \"qualifying child,\" one of the tests is the support test. Specifically, a child cannot provide more than half of their own support for the year. If a child provides exactly half of their own support, this would mean they have met the threshold of providing their own support, thus failing the support test for qualifying child status.\n\nThe relevant citation states: \"To meet this test, the child can’t have provided more than half of the child’s own support for the year\" (IRS Pub 17, 2025, Chapter 3 Dependents, \"Support Test (To Be a Qualifying Child)\"). Therefore, if the child provides exactly half of their own support, they would not qualify as a qualifying child."
+  },
+  {
+    "id": "pub17_2025_eval_070",
+    "metric": "faithfulness",
+    "status": "needs_review",
+    "original_score": 1.0,
+    "reason": "The answer states a 4400 threshold while the reference states 5200; the faithfulness score is 1 and needs checking against the actual passages.",
+    "question": "A potential qualifying relative has exactly $5,200 in gross income for 2025 and no sheltered-workshop exception. Do they pass the gross-income test?",
+    "reference": "No. Gross income must be less than $5,200; equality fails the test.",
+    "response": "For the year 2025, a potential qualifying relative must pass the gross income test, which states that their gross income must be less than $4,400 (as per IRS guidelines). Since the individual in question has a gross income of $5,200, they do not pass the gross income test.\n\nHere are the relevant details from IRS Publication 17 for 2025:\n\n- A person cannot be considered a qualifying relative if their gross income is $4,400 or more (IRS Pub 17, Chapter 3 Dependents, 'Gross Income Test').\n\nTherefore, based on the provided income of $5,200, this individual would not qualify as a dependent under the gross income test."
+  },
+  {
+    "id": "pub17_2025_eval_122",
+    "metric": "faithfulness",
+    "status": "needs_review",
+    "original_score": 1.0,
+    "reason": "The response starts by assigning child benefits to the parent despite the reference assigning them to the child; full support needs review.",
+    "question": "A child's Social Security benefit check is payable to a parent on the child's behalf. Whose taxability calculation includes the child's benefits?",
+    "reference": "The child's. Taxability follows the person legally entitled to the benefits, not the person named as payee on the check.",
+    "response": "The taxability of a child's Social Security benefits, when payable to a parent on the child's behalf, is included in the calculation of the parent's taxable income. According to IRS guidelines, the benefits are considered taxable income for the individual who has the legal right to receive them. If the check is made out to the parent, then the parent must include only their portion of the benefits in their taxable income, while the child's portion must be added to the child's other income to determine if any of those benefits are taxable to the child.\n\nSpecifically, the IRS states:\n\n- \"Benefits are included in the taxable income (to the extent they are taxable) of the person who has the legal right to receive the benefits.\" (IRS Pub 17, 2025, Chapter 7)\n\nFor further details, refer to IRS Publication 17, Chapter 7, which discusses Social Security and Equivalent Railroad Retirement Benefits."
+  },
+  {
+    "id": "pub17_2025_eval_180",
+    "metric": "faithfulness",
+    "status": "needs_review",
+    "original_score": 1.0,
+    "reason": "The response substitutes standard deduction and older SALT-cap claims for the requested limits; correctness is 0 but faithfulness is 1.",
+    "question": "What are the 2025 SALT deduction ceilings and the modified-AGI thresholds above which the ceilings are reduced?",
+    "reference": "The ceiling is $40,000, or $20,000 for married filing separately. It is reduced above modified AGI of $500,000, or $250,000 for married filing separately, but not below $10,000 or $5,000 respectively.",
+    "response": "For the tax year 2025, the following information pertains to the SALT (State and Local Tax) deduction ceilings and the modified AGI (Adjusted Gross Income) thresholds:\n\n### SALT Deduction Ceilings\nThe standard deduction amounts for 2025 are as follows:\n- **Single or Married filing separately**: $15,750\n- **Married filing jointly or Qualifying surviving spouse**: $31,500\n- **Head of household**: $23,625\n\nThese amounts represent the maximum that can be deducted if a taxpayer opts for the standard deduction instead of itemizing deductions, which includes SALT deductions.\n\n### Modified AGI Thresholds for SALT Deduction Reduction\nThe modified AGI thresholds relevant to traditional IRA contributions indicate where deductions begin to phase out, but specific thresholds for SALT deductions were not retrieved. Generally, the SALT deduction is capped at $10,000 for individual filers and married couples filing jointly, regardless of income. However, if you are looking for specific phase-out thresholds for SALT deductions, it's important to note that the SALT deduction itself does not have a phase-out based on modified AGI, unlike some other deductions and credits.\n\nFor more detailed information on SALT deductions and any potential changes for future years, please consult IRS publications or a tax professional.\n\nIf you have any more specific questions or need further details, feel free to ask!"
+  },
+  {
+    "id": "pub17_2025_eval_189",
+    "metric": "faithfulness",
+    "status": "needs_review",
+    "original_score": 1.0,
+    "reason": "The response concludes a 600 deduction despite the reference calculation of 400 under per-person limits; faithfulness is 1.",
+    "question": "Two eligible educators file jointly for 2025. One paid $500 of qualified expenses and the other paid $100. May they claim the full $600 joint maximum?",
+    "reference": "No. Neither spouse can deduct more than $300 of their own qualified expenses. Under these facts the maximum total is $400.",
+    "response": "Yes, if both educators are eligible and filing jointly for 2025, they can claim the full $600 maximum deduction. According to IRS guidelines for 2025, the maximum deduction for a married couple filing jointly, where both spouses are eligible educators, is $600. However, each spouse can only deduct up to $300 of their qualified expenses. Since one paid $500 and the other paid $100, they can still combine their deductions to reach the maximum of $600.\n\nFor reference, see IRS Pub 17 (2025), Chapter 12, which states: \"If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses.\" (IRS Pub 17, 2025, Chapter 12, p. 101)"
+  }
+]

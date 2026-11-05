@@ -1,0 +1,24 @@
+{
+  "cases": 200,
+  "responses": 200,
+  "judgments": 400,
+  "unique_ids": 200,
+  "tool_calls": 236,
+  "tool_call_distribution": {
+    "1": 167,
+    "2": 30,
+    "3": 3
+  },
+  "checks": [
+    "dataset_fingerprint",
+    "question_only_generation_input",
+    "tool_result_trace_alignment",
+    "recall_mrr_independent_recalculation",
+    "faithfulness_arithmetic",
+    "macro_aggregates",
+    "score_ranges"
+  ],
+  "passed": true,
+  "database_access": "read_only",
+  "generation_judge_scores": "provisional_auto_judgments_with_review_flags"
+}
