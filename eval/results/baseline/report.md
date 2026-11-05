@@ -1,47 +1,47 @@
 # Agentic RAG baseline
 
-已完成 200/200 题，执行错误为 0。回答模型和评审模型均为 `gpt-4o-mini`，并发为 2。
+Completed 200/200 cases with 0 execution errors. Both the answering model and the judge were `gpt-4o-mini`, with concurrency set to 2.
 
-## 检索指标
+## Retrieval metrics
 
-按每题首次实际工具调用计算，K=5；以评估集标注的 Chunk ID 判定相关性。
+Metrics use each question's first actual retrieval tool call, with K=5. Relevance is determined by the chunk IDs annotated in the evaluation dataset.
 
-| 检索方式 | Recall@5 | MRR@5 |
+| Retrieval method | Recall@5 | MRR@5 |
 |---|---:|---:|
 | HNSW | 85.50% | 0.7254 |
 | BM25 | 84.75% | 0.6790 |
 | RRF | 87.00% | 0.7506 |
 
-## 回答与耗时
+## Answer quality and latency
 
-| 指标 | 结果 |
+| Metric | Result |
 |---|---:|
-| 答案正确性自动评分均分（0/0.5/1） | 0.9500 |
-| Faithfulness 自动评分均分 | 0.9848 |
-| 平均端到端耗时 | 7.36 秒 |
-| 耗时中位数 | 6.82 秒 |
-| 耗时 P95 | 9.90 秒 |
+| Mean automatic answer correctness score (0/0.5/1) | 0.9500 |
+| Mean automatic faithfulness score | 0.9848 |
+| Mean end-to-end latency | 7.36 seconds |
+| Median latency | 6.82 seconds |
+| P95 latency | 9.90 seconds |
 
-正确性和 Faithfulness 均覆盖 200 题。耗时包含实际检索和回答生成，不包含评审调用；并发为 2，不能直接当作单请求空载延迟。
+Correctness and faithfulness were scored for all 200 cases. Latency includes actual retrieval and answer generation, excluding judge calls. Measurements use concurrency 2 and do not represent single-request latency under idle conditions.
 
-自动正确性判定为 correct=188、partial=4、incorrect=8，这不是人工核实的正确题数。
+Automatic correctness verdicts were correct=188, partial=4, and incorrect=8. These counts have not been verified by human reviewers.
 
-实际调用检索工具 236 次：167 题调用 1 次，30 题调用 2 次，3 题调用 3 次。每题独立会话，未向回答模型传入标准答案或标注证据。
+The retrieval tool was called 236 times: 167 cases used 1 call, 30 used 2 calls, and 3 used 3 calls. Each case started an independent conversation. Reference answers and annotated evidence were not passed to the answering model.
 
-## 结果解释与待复核事项
+## Interpretation and review requirements
 
-- 本轮融合检索的 Recall@5 比 HNSW 高 1.5 个百分点，比 BM25 高 2.25 个百分点；这里只描述本次评估结果，不代表统计显著性。
-- 评估集 193 题只有一个标注相关 Chunk，可能遗漏其他有效证据，因此 ID 命中指标受标注完整性影响。
-- 正确性和 Faithfulness 使用自定义 LLM 评审，不是 RAGAS 库输出，也不是人工评分。已经发现明显误判：042、115、159 的回答与标准答案一致，却被判错误。
-- Faithfulness 也存在高估：064 的边界条件结论错误、180 的回答偏离所问规则、189 的金额结论与标准答案冲突，却获得 1 分。生成评分应视为待校准初评，不能直接宣称模型有 95% 正确率或 98.48% 真实忠实度。
-- 原始自动评分没有被覆盖。`review_flags.json` 列出了 10 个评分或证据需要复核的样例，供后续校准评审器。
-- 问题适用年为 2025 的有 190 题、2026 的有 10 题；后者可由 2025 版文档中明确讨论后续年份的内容支持。各组结果见 `summary.json`。
-- 检索原文语料哈希在本轮保持一致，数据库未被写入。
+- Fusion Recall@5 exceeded HNSW by 1.5 percentage points and BM25 by 2.25 percentage points in this run. These observations do not establish statistical significance.
+- Of the 200 questions, 193 have only one annotated relevant chunk. Other valid evidence may be missing from the labels, so ID-based metrics depend on annotation completeness.
+- Correctness and faithfulness use custom LLM judges, not the RAGAS library or human grading. Clear judging errors were found: answers 042, 115, and 159 match their references but were marked incorrect.
+- Faithfulness is also overestimated in some cases: 064 reverses a boundary condition, 180 deviates from the requested rules, and 189 gives an amount that conflicts with the reference, yet all received a score of 1. Generation scores are provisional and require calibration; they do not establish 95% accuracy or 98.48% actual faithfulness.
+- Original automatic scores were preserved. `review_flags.json` lists 10 cases requiring review of judgments or evidence for subsequent judge calibration.
+- There are 190 questions about tax year 2025 and 10 about 2026. The latter can be supported by passages in the 2025 publication that explicitly discuss later years. Group results are in `summary.json`.
+- The retrieved source corpus hash remained consistent throughout the run. No database writes were performed.
 
-## 文件
+## Files
 
-- `metrics.csv`：逐题指标，可用表格软件查看。
-- `results.jsonl`：逐题回答、参考答案、实际检索结果、指标和评分理由。
-- `summary.json`：总体、题型和问题适用年份的指标汇总。
-- `review_flags.json`：自动评分待复核样例。
-- `manifest.json`：数据集和代码指纹、模型、评分规则与配置。
+- `metrics.csv`: Per-question metrics for spreadsheet inspection.
+- `results.jsonl`: Per-question answers, references, actual retrieval results, metrics, and judging reasons.
+- `summary.json`: Overall metrics and breakdowns by question type and applicable tax year.
+- `review_flags.json`: Cases requiring review of automatic judgments.
+- `manifest.json`: Dataset and code fingerprints, models, judging rules, and configuration.
