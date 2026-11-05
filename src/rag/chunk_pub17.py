@@ -229,10 +229,13 @@ def join_text(a, b, new_para=False):
     """Append line b to text a, fixing hyphenation across line breaks."""
     if not a:
         return b
-    if new_para:
-        return a + "\n" + b
+    # hyphenation first: a word split across lines is joined even when the next
+    # line is indented (continuation lines of bullet items are indented)
     if re.search(r"[A-Za-z]-$", a) and re.match(r"[a-z]", b):
         return a[:-1] + b               # "af-" + "fecting" -> "affecting"
+    # a new paragraph never starts with a lowercase word; such a line continues the sentence
+    if new_para and not b[:1].islower():
+        return a + "\n" + b
     return a + " " + b
 
 
@@ -253,24 +256,13 @@ def place_tables(cols, page_tables):
 
 
 def build_units(pdf, pages, tax_year):
-    """Walk the pages in reading order and cut the text into units.
 
-    A new unit starts at every heading, every bold run-in heading, every TIP /
-    CAUTION box and every table. `state` remembers the current heading path, so
-    each unit knows which chapter / section / subsection it belongs to.
-
-    Two passes:
-      pass 1  read each page once, take the tables out, learn the column grid
-              of the whole document (more reliable than guessing page by page)
-      pass 2  walk columns and lines, update `state`, fill the units
-    """
     state = {"part": None, "chapter": None, "chapter_no": None,
              "section": None, "subsection": None, "minor": None}
     units, cur = [], None
     skipped = []
 
     def start(kind_type, runin=None):
-        """Close the current unit (if it has text) and open a new one."""
         nonlocal cur
         if cur and cur["text"].strip():
             units.append(cur)
@@ -278,15 +270,12 @@ def build_units(pdf, pages, tax_year):
                "pdf_pages": [], "printed_pages": []}
 
     def touch(pdf_page, printed):
-        """Record that the current unit has text on this page (for citations)."""
         if pdf_page not in cur["pdf_pages"]:
             cur["pdf_pages"].append(pdf_page)
             if printed is not None:
                 cur["printed_pages"].append(printed)
 
     def emit_table(t, pdf_page, printed):
-        """[tables] Close the current text unit, add the table as its own unit,
-        then continue with a fresh text unit under the same headings."""
         start("rule")
         # a table without its own caption is named after the heading it sits under
         caption = t["caption"] or state["minor"] or state["subsection"] or state["section"] or "Table"
@@ -392,19 +381,15 @@ def build_units(pdf, pages, tax_year):
 # 5. Units -> chunks
 # ============================================================================
 def n_words(t):
-    """Word count, used for all size limits."""
     return len(t.split())
 
 
 def same_place(a, b):
-    """True if two units sit under the same headings and have the same type,
-    so merging them does not mix different topics."""
     keys = ("chapter", "section", "subsection", "minor")
     return all(a[k] == b[k] for k in keys) and a["type"] == b["type"]
 
 
 def merge_units(a, b):
-    """Join two units: text, run-in labels and page lists."""
     out = dict(a)
     out["text"] = a["text"] + "\n" + b["text"]
     out["runin"] = "; ".join(x for x in (a["runin"], b["runin"]) if x) or None
@@ -414,8 +399,6 @@ def merge_units(a, b):
 
 
 def split_big(u):
-    """Cut a unit longer than MAX_WORDS at sentence ends into ~300-word pieces.
-    Long chunks dilute the embedding; cutting mid-sentence would break the rule."""
     if n_words(u["text"]) <= MAX_WORDS:
         return [u]
     sentences = re.split(r"(?<=[.;:])\s+(?=[A-Z(•])", u["text"])
@@ -436,20 +419,15 @@ def split_big(u):
 
 
 def make_chunks(units, tax_year, source, prefix, keep_numeric=False):
-    """Units -> final chunks.
-
-    1. drop "numeric" units (unbordered table debris)
-    2. merge small neighbours under the same headings (target 150-400 words);
-       a short section intro joins its first subsection
-    3. split anything over MAX_WORDS
-    4. add id, citation and embed_text (= heading path + text; only this is embedded)
-    Returns (chunks, table_records); table_records keep the raw rows for code."""
     units = [u for u in units if keep_numeric or u["type"] != "numeric"]
     # merge small neighbours that sit under the same headings
     merged = []
     for u in units:
         prev = merged[-1] if merged else None
+        # only a heading's own short intro (no run-in label of its own) joins the next unit;
+        # otherwise the next unit's label would overwrite the previous one's
         intro = (prev and prev["type"] == u["type"] == "rule" and n_words(prev["text"]) < 60
+                 and prev["runin"] is None
                  and prev["chapter"] == u["chapter"] and prev["section"] == u["section"])
         if intro:   # short section intro joins its first subsection
             merged[-1] = {**merge_units(prev, u), **{k: u[k] for k in ("subsection", "minor", "runin")}}
