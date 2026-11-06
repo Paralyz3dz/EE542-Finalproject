@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tax Agent Chat</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f7fa; color: #1c2938; font: 16px/1.6 system-ui, sans-serif; }
+    main { max-width: 820px; height: 100dvh; margin: auto; display: flex; flex-direction: column; padding: 20px; gap: 16px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    h1 { font-size: 24px; margin: 0; }
+    .subtitle { margin: 4px 0 0; font-size: 13px; color: #596579; }
+    button, textarea { font: inherit; }
+    button { border: 0; border-radius: 8px; padding: 10px 16px; cursor: pointer; background: #2458c6; color: white; }
+    button:disabled { opacity: .55; cursor: wait; }
+    #new-chat { background: white; color: #2458c6; border: 1px solid #d5deed; white-space: nowrap; }
+    #messages { flex: 1; overflow-y: auto; border: 1px solid #dce2eb; border-radius: 12px; padding: 20px; background: white; }
+    .empty { color: #596579; text-align: center; padding: 40px 0; }
+    .message { margin-bottom: 20px; }
+    .message strong { display: block; font-size: 13px; margin-bottom: 4px; color: #596579; }
+    .message p { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+    .user { background: #eef3ff; border-radius: 8px; padding: 12px; }
+    #status { min-height: 24px; margin: 0; font-size: 14px; color: #596579; }
+    #status.error { color: #a32121; }
+    form { display: flex; align-items: flex-end; gap: 10px; }
+    textarea { flex: 1; width: 100%; min-height: 72px; max-height: 180px; resize: vertical; border: 1px solid #bcc8d9; border-radius: 8px; padding: 12px; }
+    textarea:focus-visible, button:focus-visible { outline: 2px solid #2458c6; outline-offset: 3px; }
+    @media (max-width: 520px) { main { padding: 12px; gap: 12px; } h1 { font-size: 20px; } #messages { padding: 14px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Tax Agent Chat</h1>
+        <p class="subtitle">IRS document assistant · Fictional cases only · Not final tax advice</p>
+      </div>
+      <button id="new-chat" type="button">New chat</button>
+    </header>
+    <section id="messages" role="log" aria-label="Conversation" aria-live="polite">
+      <p class="empty">Ask a tax question to start a conversation.</p>
+    </section>
+    <p id="status" role="status" aria-live="polite"></p>
+    <form id="chat-form">
+      <textarea id="message" aria-label="Your message" placeholder="Type your question…" maxlength="10000" required></textarea>
+      <button id="send" type="submit">Send</button>
+    </form>
+  </main>
+  <script>
+    const form = document.querySelector('#chat-form');
+    const input = document.querySelector('#message');
+    const messages = document.querySelector('#messages');
+    const status = document.querySelector('#status');
+    const send = document.querySelector('#send');
+    const newChat = document.querySelector('#new-chat');
+    let sessionId = null;
+    let busy = false;
+
+    function appendMessage(role, text) {
+      messages.querySelector('.empty')?.remove();
+      const entry = document.createElement('article');
+      entry.className = `message ${role}`;
+      const label = document.createElement('strong');
+      label.textContent = role === 'user' ? 'You' : 'Tax Agent';
+      const body = document.createElement('p');
+      body.textContent = text;
+      entry.append(label, body);
+      messages.append(entry);
+      messages.scrollTop = messages.scrollHeight;
+      return entry;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const message = input.value.trim();
+      if (busy || !message) return;
+      busy = true;
+      send.disabled = true;
+      newChat.disabled = true;
+      input.disabled = true;
+      status.className = '';
+      status.textContent = 'Waiting for the agent…';
+      const entry = appendMessage('user', message);
+      input.value = '';
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: sessionId, message })
+        });
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('Session expired. Select New chat to continue.');
+          }
+          throw new Error('Unable to get an answer. Please try again.');
+        }
+        const result = await response.json();
+        sessionId = result.session_id;
+        appendMessage('assistant', result.answer);
+        status.textContent = '';
+      } catch (error) {
+        entry.remove();
+        input.value = message;
+        status.className = 'error';
+        status.textContent = error.message || 'Request failed. Please try again.';
+      } finally {
+        busy = false;
+        send.disabled = false;
+        newChat.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+        event.preventDefault();
+        if (!busy) form.requestSubmit();
+      }
+    });
+
+    newChat.addEventListener('click', () => {
+      if (busy) return;
+      sessionId = null;
+      messages.replaceChildren();
+      const empty = document.createElement('p');
+      empty.className = 'empty';
+      empty.textContent = 'Ask a tax question to start a conversation.';
+      messages.append(empty);
+      status.textContent = '';
+      status.className = '';
+      input.value = '';
+      input.focus();
+    });
+  </script>
+</body>
+</html>
