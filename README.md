@@ -114,7 +114,7 @@ the returned sources and say when the passages do not support an answer.
 |---|---|
 | Pub 17 parsing + chunking (`src/rag/chunk_pub17.py`) | done: 821 chunks, 14 chapters, TIP/CAUTION, citations |
 | Table extraction (`src/rag/tables.py`) | done: 20 tables, IF/AND/THEN rows as sentences, raw rows saved for code |
-| HNSW + BM25 hybrid retrieval | implemented: RRF fusion, final top-k 5; Recall@5 evaluation pending |
+| HNSW + BM25 hybrid retrieval | implemented: RRF fusion, final top-k 5; 200-case baseline completed, RRF Recall@5 87.00% (annotated chunk IDs) |
 | Playbooks, workflow engine, Claude, UI | planned |
 
 ## Rules
