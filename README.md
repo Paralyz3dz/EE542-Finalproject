@@ -17,7 +17,7 @@ It does not file returns or give final tax advice. Only public data and fictiona
 | `src/ingest/` | PDF parsing and chunking |
 | `src/rag/` | Embedding, vector search, reranking |
 | `src/workflow/` | Interview workflow engine |
-| `src/app/` | FastAPI backend + Streamlit UI |
+| `src/app/` | FastAPI backend + HTML chat UI |
 | `eval/` | Test cases, TurboTax comparison, metrics |
 | `models/` | Fine-tuned embedding model (not committed) |
 | `logs/` | Run logs (not committed) |
@@ -109,13 +109,41 @@ Results include each chunk's ID, stored citation, text, and RRF fusion `score`.
 These scores are not confidence probabilities. The agent is instructed to cite
 the returned sources and say when the passages do not support an answer.
 
+## Web chat
+
+With the same `.env`, PostgreSQL embeddings, and running Ollama instance used by
+the CLI agent, start the backend from the repository root:
+
+```powershell
+python -m uvicorn src.app.api:app --host 127.0.0.1 --port 8000
+```
+
+Open http://127.0.0.1:8000 to chat. Enter sends a message; Shift+Enter adds a
+newline. New chat starts a separate conversation. Answers are displayed as plain
+text, including the agent's citations. The page and API share the same origin.
+
+`POST /api/chat` accepts `{"message": "Your question", "session_id": null}` and
+returns `{"session_id": "...", "answer": "..."}`. Send the returned session ID
+with subsequent messages to preserve conversation context, including tool results.
+
+This local demo stores conversations in server memory. Use one worker; restarting
+the server clears all sessions. Refreshing the page starts a new conversation.
+An expired session returns HTTP 404; select New chat to continue.
+
+Run the API tests without calling OpenAI, Ollama, or PostgreSQL:
+
+```powershell
+python -m unittest discover -s tests -p test_chat_api.py
+```
+
 ## Status
 | Part | State |
 |---|---|
 | Pub 17 parsing + chunking (`src/rag/chunk_pub17.py`) | done: 821 chunks, 14 chapters, TIP/CAUTION, citations |
 | Table extraction (`src/rag/tables.py`) | done: 20 tables, IF/AND/THEN rows as sentences, raw rows saved for code |
 | HNSW + BM25 hybrid retrieval | implemented: RRF fusion, final top-k 5; 200-case baseline completed, RRF Recall@5 87.00% (annotated chunk IDs) |
-| Playbooks, workflow engine, Claude, UI | planned |
+| Web chat UI + FastAPI | implemented: local, in-memory conversations |
+| Playbooks, workflow engine, Claude | planned |
 
 ## Rules
 - Never use real client data (IRC 7216). Fictional cases only.
