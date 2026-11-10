@@ -1,0 +1,138 @@
+[
+  {
+    "id": "q_filing_status",
+    "fact": "filing_status",
+    "question": "Were you married at the end of last year, and does anyone live with you that you support?",
+    "why_ask": "Filing status sets the standard deduction, tax rates and filing threshold.",
+    "required_docs": [],
+    "retrieval_query": "how to choose filing status single head of household",
+    "source": "IRS Pub 17, Chapter 2",
+    "status": "draft"
+  },
+  {
+    "id": "q_age_65_or_older",
+    "fact": "age_65_or_older",
+    "question": "Were you (or your spouse, if filing jointly) born before January 2, 1961?",
+    "why_ask": "Taxpayers 65 or older get a larger standard deduction federally and a senior exemption credit in California.",
+    "required_docs": [],
+    "retrieval_query": "standard deduction age 65 or older additional amount",
+    "source": "IRS Pub 17, Chapter 10; FTB 540 Booklet",
+    "status": "draft"
+  },
+  {
+    "id": "q_ca_resident_full_year",
+    "fact": "ca_resident_full_year",
+    "question": "Did you live in California for all of last year?",
+    "why_ask": "Full-year residents file Form 540; part-year residents and nonresidents file Form 540NR.",
+    "required_docs": [],
+    "retrieval_query": "California resident part-year resident nonresident",
+    "source": "FTB Pub 1031",
+    "status": "draft"
+  },
+  {
+    "id": "q_receives_social_security",
+    "fact": "receives_social_security",
+    "question": "Did you receive Social Security benefits last year?",
+    "why_ask": "Up to 85% of benefits can be taxable federally; California does not tax Social Security at all.",
+    "required_docs": [
+      "SSA-1099"
+    ],
+    "retrieval_query": "social security benefits taxable portion",
+    "source": "IRS Pub 915; FTB Schedule CA (540) instructions",
+    "status": "draft"
+  },
+  {
+    "id": "q_social_security_benefits",
+    "fact": "social_security_benefits",
+    "question": "What is the net benefit amount in Box 5 of your SSA-1099?",
+    "why_ask": "The taxable part depends on benefits plus other income (provisional income).",
+    "required_docs": [
+      "SSA-1099"
+    ],
+    "retrieval_query": "how much of social security benefits is taxable worksheet",
+    "source": "IRS Pub 915",
+    "status": "draft"
+  },
+  {
+    "id": "q_has_retirement_distribution",
+    "fact": "has_retirement_distribution",
+    "question": "Did you take money out of a pension, 401(k), IRA or annuity last year?",
+    "why_ask": "Retirement distributions are reported on Form 1099-R and are often taxable.",
+    "required_docs": [
+      "1099-R"
+    ],
+    "retrieval_query": "pensions and annuities IRA distributions taxable",
+    "source": "IRS Pub 575; IRS Pub 590-B",
+    "status": "draft"
+  },
+  {
+    "id": "q_retirement_distributions",
+    "fact": "retirement_distributions",
+    "question": "What is the total gross distribution in Box 1 of your 1099-R forms?",
+    "why_ask": "The gross amount and the taxable amount (Box 2a) can differ; both go on the return.",
+    "required_docs": [
+      "1099-R"
+    ],
+    "retrieval_query": "Form 1099-R gross distribution taxable amount",
+    "source": "IRS Pub 575",
+    "status": "draft"
+  },
+  {
+    "id": "q_under_59_half_at_distribution",
+    "fact": "under_59_half_at_distribution",
+    "question": "Were you younger than 59 and a half when you took any of that money?",
+    "why_ask": "Early distributions may owe an additional tax unless an exception applies.",
+    "required_docs": [
+      "1099-R box 7 code"
+    ],
+    "retrieval_query": "additional tax on early distributions 59 1/2 exceptions",
+    "source": "IRS Pub 590-B; FTB 3805P",
+    "status": "draft"
+  },
+  {
+    "id": "q_did_rollover",
+    "fact": "did_rollover",
+    "question": "Did you move any of that money into another retirement account?",
+    "why_ask": "A properly completed rollover is not taxable.",
+    "required_docs": [
+      "rollover confirmation from the receiving account"
+    ],
+    "retrieval_query": "rollover 60 day rule IRA",
+    "source": "IRS Pub 590-A",
+    "status": "draft"
+  },
+  {
+    "id": "q_still_working",
+    "fact": "still_working",
+    "question": "Did you work for pay last year?",
+    "why_ask": "Wages add to income and can make more of the Social Security benefit taxable.",
+    "required_docs": [],
+    "retrieval_query": "earned income retirees social security taxable",
+    "source": "IRS Pub 915",
+    "status": "draft"
+  },
+  {
+    "id": "q_wages",
+    "fact": "wages",
+    "question": "What is the total in Box 1 of your W-2 forms?",
+    "why_ask": "Wages count toward provisional income and the regular tax.",
+    "required_docs": [
+      "W-2"
+    ],
+    "retrieval_query": "wages salaries Form W-2 box 1",
+    "source": "IRS Pub 17, Chapter 5",
+    "status": "draft"
+  },
+  {
+    "id": "q_made_estimated_payments",
+    "fact": "made_estimated_payments",
+    "question": "Did you send any estimated tax payments to the IRS or the FTB last year?",
+    "why_ask": "Retirees without enough withholding often pay estimated tax; payments are credited on the return.",
+    "required_docs": [
+      "payment confirmations (IRS and FTB)"
+    ],
+    "retrieval_query": "estimated tax payments who must pay",
+    "source": "IRS Pub 505; FTB Form 540-ES",
+    "status": "draft"
+  }
+]

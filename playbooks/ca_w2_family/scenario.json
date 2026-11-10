@@ -1,0 +1,140 @@
+{
+  "id": "ca_w2_family",
+  "title": "California W-2 employee with possible children, student loans, HSA and rent",
+  "status": "draft - simulated, confirm with preparer interview",
+  "facts": [
+    {
+      "name": "filing_status",
+      "type": "enum",
+      "options": [
+        "single",
+        "married_joint",
+        "married_separate",
+        "head_of_household",
+        "qualifying_surviving_spouse"
+      ],
+      "required": true
+    },
+    {
+      "name": "age_65_or_older",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "ca_resident_full_year",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "worked_in_other_state",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "w2_wages",
+      "type": "money",
+      "required": true
+    },
+    {
+      "name": "multiple_employers",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "has_dependents",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "has_child_under_17",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_dependents",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_child_under_6",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_child_under_17",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "paid_childcare",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_dependents",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "paid_student_loan_interest",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "student_loan_interest",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "paid_student_loan_interest",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_hsa",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "pays_rent_in_ca",
+      "type": "bool",
+      "required": true
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "part_year_ca",
+      "when": [
+        {
+          "fact": "ca_resident_full_year",
+          "equals": false
+        }
+      ],
+      "reason": "Part-year California residency (540NR) needs the preparer."
+    },
+    {
+      "id": "other_state_income",
+      "when": [
+        {
+          "fact": "worked_in_other_state",
+          "equals": true
+        }
+      ],
+      "reason": "Income from another state may need a nonresident return there and the CA other-state tax credit."
+    },
+    {
+      "id": "mfs_community_property",
+      "when": [
+        {
+          "fact": "filing_status",
+          "equals": "married_separate"
+        }
+      ],
+      "reason": "Married filing separately in a community-property state requires splitting income (Pub 555)."
+    }
+  ]
+}

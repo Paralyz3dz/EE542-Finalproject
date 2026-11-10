@@ -1,0 +1,31 @@
+{
+  "id": "ca_w2_side_gig",
+  "title": "Los Angeles client with W-2 wages and 1099-NEC side income",
+  "status": "draft - confirm with preparer interview",
+  "facts": [
+    {"name": "filing_status",      "type": "enum",  "options": ["single", "married_joint", "married_separate", "head_of_household", "qualifying_surviving_spouse"], "required": true},
+    {"name": "age_65_or_older",    "type": "bool",  "required": true},
+    {"name": "ca_resident_full_year", "type": "bool", "required": true},
+    {"name": "w2_wages",           "type": "money", "required": true},
+    {"name": "has_side_income",    "type": "bool",  "required": true},
+    {"name": "side_income",        "type": "money", "required": true,  "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "side_income_forms",  "type": "list",  "required": true,  "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "side_expenses",      "type": "money", "required": true,  "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "uses_home_office",   "type": "bool",  "required": false, "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "uses_car_for_work",  "type": "bool",  "required": false, "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "has_employees",      "type": "bool",  "required": true,  "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "estimated_tax_paid", "type": "money", "required": true,  "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "considering_llc",    "type": "bool",  "required": false, "ask_when": [{"fact": "has_side_income", "equals": true}]},
+    {"name": "received_tips",      "type": "bool",  "required": false}
+  ],
+  "escalation_rules": [
+    {"id": "has_employees",   "when": [{"fact": "has_employees", "equals": true}],
+     "reason": "Payroll and employment-tax obligations need the preparer."},
+    {"id": "part_year_ca",    "when": [{"fact": "ca_resident_full_year", "equals": false}],
+     "reason": "Part-year California residency (540NR) needs the preparer."},
+    {"id": "llc_question",    "when": [{"fact": "considering_llc", "equals": true}],
+     "reason": "Entity choice and California's $800 minimum LLC tax are planning questions for the preparer."},
+    {"id": "car_depreciation", "when": [{"fact": "uses_car_for_work", "equals": true}],
+     "reason": "Vehicle expense method and depreciation choices need the preparer."}
+  ]
+}
