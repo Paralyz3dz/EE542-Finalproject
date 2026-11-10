@@ -1,0 +1,130 @@
+[
+  {
+    "id": "q_filing_status",
+    "fact": "filing_status",
+    "question": "Were you married at the end of last year, and does anyone live with you that you support?",
+    "why_ask": "Filing status sets the standard deduction, tax rates and filing threshold.",
+    "required_docs": [],
+    "retrieval_query": "how to choose filing status single head of household",
+    "source": "IRS Pub 17, Chapter 2",
+    "status": "draft"
+  },
+  {
+    "id": "q_ca_resident_full_year",
+    "fact": "ca_resident_full_year",
+    "question": "Did you live in California for all of last year?",
+    "why_ask": "Full-year residents file Form 540; part-year residents and nonresidents file Form 540NR.",
+    "required_docs": [],
+    "retrieval_query": "California resident part-year resident nonresident",
+    "source": "FTB Pub 1031",
+    "status": "draft"
+  },
+  {
+    "id": "q_w2_wages",
+    "fact": "w2_wages",
+    "question": "What is the total in Box 1 of all your W-2 forms?",
+    "why_ask": "Income level decides how much rental loss can be deducted against wages.",
+    "required_docs": [
+      "W-2"
+    ],
+    "retrieval_query": "wages salaries Form W-2 box 1",
+    "source": "IRS Pub 17, Chapter 5",
+    "status": "draft"
+  },
+  {
+    "id": "q_owns_rental",
+    "fact": "owns_rental",
+    "question": "Do you own a house, condo or room that you rented out last year?",
+    "why_ask": "Rental income and expenses are reported on Schedule E.",
+    "required_docs": [],
+    "retrieval_query": "rental income and expenses Schedule E",
+    "source": "IRS Pub 527",
+    "status": "draft"
+  },
+  {
+    "id": "q_rental_in_ca",
+    "fact": "rental_in_ca",
+    "question": "Is the rental property in California?",
+    "why_ask": "Property in another state is taxed by that state too.",
+    "required_docs": [
+      "property address"
+    ],
+    "retrieval_query": "nonresident rental income other state California credit",
+    "source": "FTB Schedule S instructions",
+    "status": "draft"
+  },
+  {
+    "id": "q_rental_income",
+    "fact": "rental_income",
+    "question": "How much rent did you receive in total?",
+    "why_ask": "All rent received, including advance rent, is income in the year received.",
+    "required_docs": [
+      "rent ledger",
+      "1099-MISC or 1099-K if any"
+    ],
+    "retrieval_query": "rental income advance rent security deposit",
+    "source": "IRS Pub 527",
+    "status": "draft"
+  },
+  {
+    "id": "q_rental_expenses",
+    "fact": "rental_expenses",
+    "question": "About how much did you spend on the rental (mortgage interest, property tax, insurance, repairs, management)?",
+    "why_ask": "Ordinary rental expenses reduce rental income; repairs and improvements are treated differently.",
+    "required_docs": [
+      "1098 mortgage interest",
+      "property tax bill",
+      "insurance and repair receipts"
+    ],
+    "retrieval_query": "rental expenses repairs improvements",
+    "source": "IRS Pub 527",
+    "status": "draft"
+  },
+  {
+    "id": "q_placed_in_service_this_year",
+    "fact": "placed_in_service_this_year",
+    "question": "Did you start renting this property for the first time last year?",
+    "why_ask": "Depreciation starts when the property is placed in service; the purchase records set the basis.",
+    "required_docs": [
+      "closing statement"
+    ],
+    "retrieval_query": "depreciation of rental property placed in service 27.5 years",
+    "source": "IRS Pub 527; IRS Pub 946",
+    "status": "draft"
+  },
+  {
+    "id": "q_personal_use_over_limit",
+    "fact": "personal_use_over_limit",
+    "question": "Did you or your family stay there yourselves for more than 14 days, or more than 10% of the days it was rented?",
+    "why_ask": "Personal use above that limit makes it a vacation home and limits deductions.",
+    "required_docs": [],
+    "retrieval_query": "personal use of dwelling unit 14 days 10 percent",
+    "source": "IRS Pub 527",
+    "status": "draft"
+  },
+  {
+    "id": "q_short_term_rental",
+    "fact": "short_term_rental",
+    "question": "Were most guests' stays a week or shorter, for example through Airbnb?",
+    "why_ask": "Very short average stays change how the activity is treated.",
+    "required_docs": [
+      "platform annual summary"
+    ],
+    "retrieval_query": "short term rental average period of customer use 7 days passive",
+    "source": "IRS Pub 925",
+    "status": "draft"
+  },
+  {
+    "id": "q_sold_property",
+    "fact": "sold_property",
+    "question": "Did you sell the property last year?",
+    "why_ask": "A sale must report gain or loss and recapture depreciation taken.",
+    "required_docs": [
+      "closing statement",
+      "1099-S"
+    ],
+    "retrieval_query": "sale of rental property depreciation recapture",
+    "source": "IRS Pub 544",
+    "status": "draft"
+  }
+]

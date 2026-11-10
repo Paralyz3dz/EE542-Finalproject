@@ -1,0 +1,158 @@
+[
+  {
+    "id": "q_filing_status",
+    "fact": "filing_status",
+    "question": "Were you married at the end of last year, and does anyone live with you that you support?",
+    "why_ask": "Filing status sets the standard deduction, tax rates and filing threshold.",
+    "required_docs": [],
+    "retrieval_query": "how to choose filing status single head of household",
+    "source": "IRS Pub 17, Chapter 2",
+    "status": "draft"
+  },
+  {
+    "id": "q_age_65_or_older",
+    "fact": "age_65_or_older",
+    "question": "Were you (or your spouse, if filing jointly) born before January 2, 1961?",
+    "why_ask": "Taxpayers 65 or older get a larger standard deduction federally and a senior exemption credit in California.",
+    "required_docs": [],
+    "retrieval_query": "standard deduction age 65 or older additional amount",
+    "source": "IRS Pub 17, Chapter 10; FTB 540 Booklet",
+    "status": "draft"
+  },
+  {
+    "id": "q_ca_resident_full_year",
+    "fact": "ca_resident_full_year",
+    "question": "Did you live in California for all of last year?",
+    "why_ask": "Full-year residents file Form 540; part-year residents and nonresidents file Form 540NR.",
+    "required_docs": [],
+    "retrieval_query": "California resident part-year resident nonresident",
+    "source": "FTB Pub 1031",
+    "status": "draft"
+  },
+  {
+    "id": "q_worked_in_other_state",
+    "fact": "worked_in_other_state",
+    "question": "Did you work or earn any income in a state other than California last year?",
+    "why_ask": "Income earned in another state can create a filing requirement there.",
+    "required_docs": [],
+    "retrieval_query": "California other state tax credit nonresident income",
+    "source": "FTB Schedule S instructions",
+    "status": "draft"
+  },
+  {
+    "id": "q_w2_wages",
+    "fact": "w2_wages",
+    "question": "What is the total in Box 1 of all your W-2 forms?",
+    "why_ask": "Wages are the main income line; withholding on the W-2 is credited against the tax.",
+    "required_docs": [
+      "W-2"
+    ],
+    "retrieval_query": "wages salaries Form W-2 box 1",
+    "source": "IRS Pub 17, Chapter 5",
+    "status": "draft"
+  },
+  {
+    "id": "q_multiple_employers",
+    "fact": "multiple_employers",
+    "question": "Did you have more than one employer during the year?",
+    "why_ask": "With two or more employers, too much Social Security tax may have been withheld and can be claimed back.",
+    "required_docs": [
+      "W-2 (each employer)"
+    ],
+    "retrieval_query": "excess social security tax withheld more than one employer",
+    "source": "IRS Pub 17, Chapter 13",
+    "status": "draft"
+  },
+  {
+    "id": "q_has_dependents",
+    "fact": "has_dependents",
+    "question": "Is there anyone, such as a child or a relative, whom you supported and who lived with you?",
+    "why_ask": "Dependents can change filing status and qualify for several credits.",
+    "required_docs": [],
+    "retrieval_query": "who qualifies as a dependent qualifying child qualifying relative",
+    "source": "IRS Pub 17, Chapter 3",
+    "status": "draft"
+  },
+  {
+    "id": "q_has_child_under_17",
+    "fact": "has_child_under_17",
+    "question": "Is any of those children under 17 at the end of the year?",
+    "why_ask": "A qualifying child under 17 may qualify for the Child Tax Credit.",
+    "required_docs": [
+      "child's Social Security number"
+    ],
+    "retrieval_query": "child tax credit qualifying child under age 17",
+    "source": "IRS Pub 17, Chapter 14",
+    "status": "draft"
+  },
+  {
+    "id": "q_has_child_under_6",
+    "fact": "has_child_under_6",
+    "question": "Is any child under 6 at the end of the year?",
+    "why_ask": "California's Young Child Tax Credit applies to a child under 6 when the family qualifies for CalEITC.",
+    "required_docs": [],
+    "retrieval_query": "California young child tax credit",
+    "source": "FTB 540 Booklet; FTB 3514 instructions",
+    "status": "draft"
+  },
+  {
+    "id": "q_paid_childcare",
+    "fact": "paid_childcare",
+    "question": "Did you pay for daycare or babysitting so that you could work?",
+    "why_ask": "Work-related care costs may qualify for the Child and Dependent Care Credit.",
+    "required_docs": [
+      "childcare provider name, address and tax ID"
+    ],
+    "retrieval_query": "child and dependent care credit work-related expenses",
+    "source": "IRS Pub 503",
+    "status": "draft"
+  },
+  {
+    "id": "q_paid_student_loan_interest",
+    "fact": "paid_student_loan_interest",
+    "question": "Did you pay interest on a student loan last year?",
+    "why_ask": "Student loan interest may be deductible even without itemizing.",
+    "required_docs": [],
+    "retrieval_query": "student loan interest deduction",
+    "source": "IRS Pub 970",
+    "status": "draft"
+  },
+  {
+    "id": "q_student_loan_interest",
+    "fact": "student_loan_interest",
+    "question": "How much student loan interest did you pay (Form 1098-E, Box 1)?",
+    "why_ask": "The deduction is limited and phases out at higher incomes.",
+    "required_docs": [
+      "1098-E"
+    ],
+    "retrieval_query": "student loan interest deduction limit 2500",
+    "source": "IRS Pub 970",
+    "status": "draft"
+  },
+  {
+    "id": "q_has_hsa",
+    "fact": "has_hsa",
+    "question": "Did you or your employer put money into a Health Savings Account (HSA)?",
+    "why_ask": "HSA contributions are deductible federally, but California does not follow this, so they are added back on Schedule CA.",
+    "required_docs": [
+      "W-2 box 12 code W",
+      "5498-SA",
+      "1099-SA"
+    ],
+    "retrieval_query": "health savings account California adjustment Schedule CA",
+    "source": "IRS Pub 969; FTB Schedule CA (540) instructions",
+    "status": "draft"
+  },
+  {
+    "id": "q_pays_rent_in_ca",
+    "fact": "pays_rent_in_ca",
+    "question": "Did you rent the home you lived in, in California, for at least half the year?",
+    "why_ask": "California renters below an income limit may claim the nonrefundable renter's credit.",
+    "required_docs": [
+      "landlord name and address"
+    ],
+    "retrieval_query": "California nonrefundable renter's credit",
+    "source": "FTB 540 Booklet",
+    "status": "draft"
+  }
+]

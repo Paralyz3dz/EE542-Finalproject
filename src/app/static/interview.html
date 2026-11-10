@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tax Agent Interview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f7fa; color: #1c2938; font: 15px/1.55 system-ui, sans-serif; }
+    .page { max-width: 1180px; height: 100dvh; margin: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    h1 { font-size: 22px; margin: 0; }
+    .subtitle { margin: 2px 0 0; font-size: 13px; color: #596579; }
+    .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; min-width: 0; max-width: 100%; }
+    #scenario { min-width: 0; max-width: 100%; }
+    select, input, textarea, button { font: inherit; }
+    select, input[type=text], textarea { border: 1px solid #bcc8d9; border-radius: 8px; padding: 8px 10px; background: white; }
+    button { border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; background: #2458c6; color: white; }
+    button.secondary { background: white; color: #2458c6; border: 1px solid #d5deed; }
+    button.danger { background: #a32121; }
+    button:disabled { opacity: .55; cursor: wait; }
+    a { color: #2458c6; }
+    .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 12px; }
+    .panel { background: white; border: 1px solid #dce2eb; border-radius: 12px; }
+    .chat { display: flex; flex-direction: column; min-height: 0; }
+    #log { flex: 1; overflow-y: auto; padding: 18px; }
+    .empty { color: #596579; text-align: center; padding: 40px 0; }
+    .bubble { max-width: 88%; margin-bottom: 14px; padding: 12px 14px; border-radius: 10px; overflow-wrap: anywhere; }
+    .bot { background: #f2f5fa; }
+    .me { background: #e4ecff; margin-left: auto; white-space: pre-wrap; }
+    .err { background: #fdecec; color: #8a1c1c; }
+    .qnum { font-size: 12px; color: #596579; text-transform: uppercase; letter-spacing: .04em; }
+    .qtext { font-weight: 600; margin: 4px 0 8px; font-size: 16px; }
+    .meta { font-size: 13px; color: #3d4a5c; margin: 4px 0; }
+    details { margin-top: 6px; font-size: 13px; }
+    details p { margin: 6px 0; padding-left: 10px; border-left: 3px solid #d5deed; white-space: pre-wrap; }
+    .note { font-size: 12px; color: #8a6d1c; }
+    .refs { list-style: none; margin: 2px 0 0; padding: 0; font-size: 13px; }
+    .refs li { padding: 1px 0; }
+    .ok { color: #1d6b3a; }
+    .gap { color: #8a6d1c; }
+    .inputbar { border-top: 1px solid #e3e8ef; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips button { padding: 6px 12px; }
+    .row { display: flex; gap: 8px; }
+    .row textarea { flex: 1; min-height: 44px; max-height: 140px; resize: vertical; }
+    #status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
+    #status.error { color: #a32121; }
+    aside { padding: 14px; overflow-y: auto; }
+    aside h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #596579; margin: 14px 0 6px; }
+    aside h2:first-child { margin-top: 0; }
+    aside ul { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+    aside li { padding: 3px 0; border-bottom: 1px dashed #edf0f5; overflow-wrap: anywhere; }
+    .flag { color: #a32121; }
+    .muted { color: #8794a6; font-size: 13px; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 6px 0; }
+    td { border-bottom: 1px solid #e3e8ef; padding: 4px 6px; vertical-align: top; }
+    .decision { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    @media (max-width: 820px) {
+      .page { height: auto; min-height: 100dvh; }
+      .layout { grid-template-columns: 1fr; }
+      .controls, #scenario { width: 100%; }
+      #log { max-height: 60vh; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>Guided client interview</h1>
+      <p class="subtitle">For the preparer's assistant · Fictional cases only · Not final tax advice · <a href="/">Ask a tax question (chat)</a></p>
+    </div>
+    <div class="controls">
+      <select id="scenario" aria-label="Client scenario"></select>
+      <button id="start" type="button">Start interview</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <section class="panel chat">
+      <div id="log" role="log" aria-live="polite">
+        <p class="empty">Choose a client scenario and select Start interview.</p>
+      </div>
+      <div class="inputbar">
+        <div id="chips" class="chips"></div>
+        <form id="answer-form" class="row">
+          <textarea id="answer" aria-label="Client's answer" placeholder="Type the client's answer, or a short note…" disabled></textarea>
+          <button id="send" type="submit" disabled>Submit</button>
+        </form>
+        <p id="status" role="status"></p>
+      </div>
+    </section>
+
+    <aside class="panel" aria-label="Interview progress">
+      <h2>Status</h2>
+      <p id="side-status" class="muted">Not started</p>
+      <h2>Escalations</h2>
+      <ul id="side-flags"><li class="muted">None</li></ul>
+      <h2>Documents to collect</h2>
+      <ul id="side-docs"><li class="muted">None yet</li></ul>
+      <h2>Facts collected</h2>
+      <ul id="side-facts"><li class="muted">None yet</li></ul>
+    </aside>
+  </div>
+</div>
+
+<script>
+  const $ = (sel) => document.querySelector(sel);
+  const log = $('#log'), chips = $('#chips'), answer = $('#answer'), send = $('#send');
+  const statusLine = $('#status'), scenarioSelect = $('#scenario'), startBtn = $('#start');
+  let interviewId = null;
+  let busy = false;
+
+  function el(tag, cls, text) {
+    const node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined && text !== null) node.textContent = text;
+    return node;
+  }
+  function addBubble(node) {
+    log.querySelector('.empty')?.remove();
+    log.append(node);
+    log.scrollTop = log.scrollHeight;
+  }
+  function setStatus(text, isError = false) {
+    statusLine.textContent = text || '';
+    statusLine.className = isError ? 'error' : '';
+  }
+  function setInputEnabled(on) {
+    answer.disabled = !on; send.disabled = !on;
+    chips.querySelectorAll('button').forEach(b => b.disabled = !on);
+  }
+  function fmt(v) { return Array.isArray(v) ? (v.join(', ') || 'none') : (v === true ? 'yes' : v === false ? 'no' : String(v)); }
+
+  async function api(path, body) {
+    const res = await fetch(path, body === undefined ? {} : {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.detail ? (typeof data.detail === 'string' ? data.detail : 'Invalid input') : `Request failed (${res.status})`);
+    return data;
+  }
+
+  function renderQuestion(q) {
+    const b = el('article', 'bubble bot');
+    b.append(el('div', 'qnum', `Question ${q.step_number}`));
+    b.append(el('div', 'qtext', q.question));
+    b.append(el('div', 'meta', 'Why ask: ' + q.why_ask));
+    if (q.required_docs.length) b.append(el('div', 'meta', 'Ask for: ' + q.required_docs.join(', ')));
+    b.append(refList(q.references));
+    if (q.citations.length) {
+      const d = el('details');
+      d.append(el('summary', null, `Retrieved official text (${q.citations.length})`));
+      q.citations.forEach(c => {
+        const p = el('p');
+        p.append(el('strong', null, (c.citation || 'Source') + '\n'), document.createTextNode(c.text));
+        d.append(p);
+      });
+      b.append(d);
+    } else if (q.retrieval_error) {
+      b.append(el('div', 'note', 'Source passages unavailable: ' + q.retrieval_error));
+    }
+    addBubble(b);
+    renderChips(q);
+  }
+
+  function refList(refs) {
+    const wrap = el('div', 'meta');
+    wrap.append(el('span', null, 'Reference (to verify):'));
+    const ul = el('ul', 'refs');
+    refs.forEach(r => {
+      const mark = r.retrieved === true ? ['ok', ' ✓ found in knowledge base']
+                 : r.retrieved === false ? ['gap', ' ⚠ not in knowledge base yet']
+                 : ['muted', ''];
+      const li = el('li', null, r.reference);
+      if (mark[1]) li.append(el('span', mark[0], mark[1]));
+      ul.append(li);
+    });
+    wrap.append(ul);
+    return wrap;
+  }
+
+  function renderChips(q) {
+    chips.replaceChildren();
+    const quick = q.input_type === 'bool' ? ['Yes', 'No'] : q.input_type === 'enum' ? q.options : [];
+    quick.forEach(opt => {
+      const btn = el('button', 'secondary', opt.replaceAll('_', ' '));
+      btn.type = 'button';
+      btn.addEventListener('click', () => submit(opt));
+      chips.append(btn);
+    });
+    answer.placeholder = {
+      money: 'Amount, e.g. 12000 — or a note like "about 12k"',
+      list: 'Comma-separated, e.g. 1099-NEC, 1099-K — or "none"',
+      bool: 'Or type a note, e.g. "she said she didn\'t"',
+      enum: 'Or type a note describing the situation'
+    }[q.input_type] || 'Type the client\'s answer…';
+  }
+
+  function renderSummary(s) {
+    chips.replaceChildren();
+    const b = el('article', 'bubble bot');
+    b.append(el('div', 'qnum', 'Interview complete'));
+    b.append(el('div', 'qtext', 'Summary for the preparer'));
+    const t = el('table');
+    Object.entries(s.facts).forEach(([k, v]) => {
+      const tr = el('tr'); tr.append(el('td', null, k.replaceAll('_', ' ')), el('td', null, fmt(v))); t.append(tr);
+    });
+    b.append(t);
+    if (s.flags.length) b.append(el('div', 'meta flag', 'Needs the preparer: ' + s.flags.map(f => f.reason).join(' · ')));
+    if (s.missing_docs.length) b.append(el('div', 'meta', 'Documents to collect: ' + s.missing_docs.join(', ')));
+    if (s.not_yet_covered.length) b.append(el('div', 'note', 'Not covered by this playbook yet: ' + s.not_yet_covered.join(', ')));
+    if (s.citations_retrieved.length) {
+      const d = el('details');
+      d.append(el('summary', null, `Citations retrieved (${s.citations_retrieved.length}) — verified passages shown during the interview`));
+      s.citations_retrieved.forEach(c => d.append(el('p', null, c)));
+      b.append(d);
+    } else {
+      b.append(el('div', 'note', 'No passages were retrieved during this interview.'));
+    }
+    if (s.references_to_verify.length) b.append(el('div', 'meta', 'Playbook references (to verify): ' + s.references_to_verify.join('; ')));
+    if (s.references_not_in_kb.length) b.append(el('div', 'note', 'Not found in the knowledge base yet: ' + s.references_not_in_kb.join('; ')));
+    if (s.references_unchecked.length) b.append(el('div', 'note', 'Not checked (retrieval was offline): ' + s.references_unchecked.join('; ')));
+
+    const box = el('div', 'decision');
+    const note = el('textarea'); note.placeholder = 'Preparer note (optional)'; note.setAttribute('aria-label', 'Preparer note');
+    const row = el('div', 'row');
+    const ok = el('button', null, 'Approve'); ok.type = 'button';
+    const back = el('button', 'danger', 'Return to assistant'); back.type = 'button';
+    row.append(ok, back);
+    box.append(note, row);
+    b.append(box);
+    addBubble(b);
+
+    const decide = async (approve) => {
+      ok.disabled = back.disabled = true;
+      try {
+        const data = await api(`/api/interviews/${interviewId}/decision`, { approve, note: note.value.trim() });
+        renderSidebar(data.state);
+        addBubble(el('article', 'bubble me', approve ? 'Preparer approved.' : 'Preparer returned it: ' + (note.value.trim() || '(no note)')));
+      } catch (e) { setStatus(e.message, true); ok.disabled = back.disabled = false; }
+    };
+    ok.addEventListener('click', () => decide(true));
+    back.addEventListener('click', () => decide(false));
+  }
+
+  function render(out) {
+    if (out.type === 'question') { renderQuestion(out); setInputEnabled(true); answer.focus(); }
+    else if (out.type === 'error') {
+      addBubble(el('article', 'bubble err', out.message));
+      renderChips(out.guide); setInputEnabled(true); answer.focus();
+    }
+    else if (out.type === 'summary') { renderSummary(out); setInputEnabled(false); }
+  }
+
+  function list(target, items, empty, cls) {
+    target.replaceChildren();
+    if (!items.length) { target.append(el('li', 'muted', empty)); return; }
+    items.forEach(text => target.append(el('li', cls, text)));
+  }
+  function renderSidebar(st) {
+    const parsed = st.last_parsed_by === 'model' ? ' · last answer read by the model' : '';
+    $('#side-status').textContent = `${st.status.replaceAll('_', ' ')} · ${st.answered} answered${parsed}`;
+    list($('#side-flags'), st.flags.map(f => f.reason), 'None', 'flag');
+    list($('#side-docs'), st.missing_docs, 'None yet');
+    list($('#side-facts'), Object.entries(st.facts).map(([k, v]) => `${k.replaceAll('_', ' ')}: ${fmt(v)}`), 'None yet');
+  }
+
+  async function startInterview() {
+    if (busy) return;
+    busy = true; startBtn.disabled = true; setStatus('Starting…');
+    try {
+      const data = await api('/api/interviews', { scenario: scenarioSelect.value });
+      interviewId = data.state.interview_id;
+      log.replaceChildren();
+      renderSidebar(data.state);
+      render(data.output);
+      setStatus('');
+    } catch (e) { setStatus(e.message, true); }
+    finally { busy = false; startBtn.disabled = false; }
+  }
+
+  async function submit(text) {
+    text = (text || '').trim();
+    if (busy || !text || !interviewId) return;
+    busy = true; setInputEnabled(false); setStatus('Checking the answer…');
+    addBubble(el('article', 'bubble me', text));
+    answer.value = '';
+    try {
+      const data = await api(`/api/interviews/${interviewId}/answer`, { answer: text });
+      renderSidebar(data.state);
+      render(data.output);
+      setStatus('');
+    } catch (e) {
+      setStatus(e.message, true); setInputEnabled(true); answer.value = text;
+    } finally { busy = false; }
+  }
+
+  $('#answer-form').addEventListener('submit', (e) => { e.preventDefault(); submit(answer.value); });
+  answer.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); submit(answer.value); }
+  });
+  startBtn.addEventListener('click', startInterview);
+
+  api('/api/playbooks').then(data => {
+    data.playbooks.forEach(p => {
+      const o = el('option', null, p.title); o.value = p.id; scenarioSelect.append(o);
+    });
+  }).catch(e => setStatus('Could not load scenarios: ' + e.message, true));
+</script>
+</body>
+</html>

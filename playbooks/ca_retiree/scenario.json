@@ -1,0 +1,136 @@
+{
+  "id": "ca_retiree",
+  "title": "California retiree with Social Security, pension or IRA distributions",
+  "status": "draft - simulated, confirm with preparer interview",
+  "facts": [
+    {
+      "name": "filing_status",
+      "type": "enum",
+      "options": [
+        "single",
+        "married_joint",
+        "married_separate",
+        "head_of_household",
+        "qualifying_surviving_spouse"
+      ],
+      "required": true
+    },
+    {
+      "name": "age_65_or_older",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "ca_resident_full_year",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "receives_social_security",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "social_security_benefits",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "receives_social_security",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_retirement_distribution",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "retirement_distributions",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "under_59_half_at_distribution",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "did_rollover",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "still_working",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "wages",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "still_working",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "made_estimated_payments",
+      "type": "bool",
+      "required": true
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "part_year_ca",
+      "when": [
+        {
+          "fact": "ca_resident_full_year",
+          "equals": false
+        }
+      ],
+      "reason": "Part-year residency (540NR); pension sourcing rules need the preparer."
+    },
+    {
+      "id": "early_distribution",
+      "when": [
+        {
+          "fact": "under_59_half_at_distribution",
+          "equals": true
+        }
+      ],
+      "reason": "Early distributions may owe the 10% federal additional tax and California's 2.5% additional tax unless an exception applies."
+    },
+    {
+      "id": "rollover",
+      "when": [
+        {
+          "fact": "did_rollover",
+          "equals": true
+        }
+      ],
+      "reason": "Rollovers must be checked (60-day rule, direct vs indirect) so they are not taxed by mistake."
+    }
+  ]
+}

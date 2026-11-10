@@ -1,0 +1,32 @@
+[
+  {
+    "id": "q_filing_status",
+    "fact": "filing_status",
+    "question": "Were you married at the end of last year, and does anyone live with you that you support?",
+    "why_ask": "Filing status sets the standard deduction, tax rates and filing threshold.",
+    "required_docs": [],
+    "retrieval_query": "how to choose filing status single head of household",
+    "source": "IRS Pub 17, Chapter 2",
+    "status": "draft"
+  },
+  {
+    "id": "q_has_side_income",
+    "fact": "has_side_income",
+    "question": "Besides your regular job, did you earn money from anything else last year, for example ride-share, delivery, freelance or selling services?",
+    "why_ask": "Self-employment income is reported on Schedule C and may owe self-employment tax.",
+    "required_docs": ["1099-NEC", "1099-K"],
+    "retrieval_query": "self-employment income who must file Schedule C",
+    "source": "Form 13614-C income section; Schedule C instructions",
+    "status": "draft"
+  },
+  {
+    "id": "q_side_income",
+    "fact": "side_income",
+    "question": "About how much did you earn from that side work in total?",
+    "why_ask": "Net self-employment earnings of $400 or more owe self-employment tax.",
+    "required_docs": ["1099-NEC", "1099-K", "income records"],
+    "retrieval_query": "self-employment tax $400 net earnings",
+    "source": "Schedule SE instructions",
+    "status": "draft"
+  }
+]

@@ -1,0 +1,163 @@
+{
+  "id": "ca_rental",
+  "title": "California W-2 employee who owns a rental property",
+  "status": "draft - simulated, confirm with preparer interview",
+  "facts": [
+    {
+      "name": "filing_status",
+      "type": "enum",
+      "options": [
+        "single",
+        "married_joint",
+        "married_separate",
+        "head_of_household",
+        "qualifying_surviving_spouse"
+      ],
+      "required": true
+    },
+    {
+      "name": "ca_resident_full_year",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "w2_wages",
+      "type": "money",
+      "required": true
+    },
+    {
+      "name": "owns_rental",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "rental_in_ca",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "rental_income",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "rental_expenses",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "placed_in_service_this_year",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "personal_use_over_limit",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "short_term_rental",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "sold_property",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ]
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "part_year_ca",
+      "when": [
+        {
+          "fact": "ca_resident_full_year",
+          "equals": false
+        }
+      ],
+      "reason": "Part-year residency (540NR) needs the preparer."
+    },
+    {
+      "id": "out_of_state_rental",
+      "when": [
+        {
+          "fact": "rental_in_ca",
+          "equals": false
+        }
+      ],
+      "reason": "A rental in another state usually needs a nonresident return in that state."
+    },
+    {
+      "id": "personal_use",
+      "when": [
+        {
+          "fact": "personal_use_over_limit",
+          "equals": true
+        }
+      ],
+      "reason": "Heavy personal use triggers the vacation-home rules that limit deductions."
+    },
+    {
+      "id": "short_term_rental",
+      "when": [
+        {
+          "fact": "short_term_rental",
+          "equals": true
+        }
+      ],
+      "reason": "Short stays (average 7 days or less) change the passive-activity treatment; may belong on Schedule C."
+    },
+    {
+      "id": "sold_property",
+      "when": [
+        {
+          "fact": "sold_property",
+          "equals": true
+        }
+      ],
+      "reason": "A sale needs gain calculation and depreciation recapture."
+    }
+  ]
+}
