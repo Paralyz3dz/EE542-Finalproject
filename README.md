@@ -43,6 +43,37 @@ decides the next question in code, and calls retrieval and the LLM only at fixed
 7. The preparer approves it or returns it with a note
 
 ## Quick start
+
+### Tax form draft prefill
+
+After finishing an interview at `/interview`, open **Tax form drafts**. The system
+suggests configured templates based on collected facts and shows the reason. Select
+a form, supply any supplemental details, and confirm the form and tax year before
+previewing/downloading. Suggestions do not determine filing obligations. Unmatched
+templates remain selectable, and existing preparer approval remains available.
+
+Templates are discovered from `assets/forms/**/*.mapping.json`, each beside its PDF.
+Each configuration supplies its unique ID, year, recommendation conditions, fields,
+validation and review notes. The page renders supplemental inputs from this metadata;
+API routes and PDF generation are shared across forms and years. Form 1040 (2025)
+is the initial example. See [the configuration guide](assets/forms/README.md) to add forms.
+
+Unknown values remain blank. Calculations, schedules and filing submissions are outside
+this prefill feature. Supplemental details and PDFs are processed in memory per request,
+not added to interview history or saved on the server; responses disable caching.
+PDFs carry a partial-draft notice. Current templates must have AcroForm fields.
+
+`GET /api/interviews/{id}/forms` lists available templates, recommendations and inputs.
+`POST /api/interviews/{id}/forms/{form_id}/preview` returns filled fields, missing inputs
+and review notes; the same path without `/preview` returns the PDF. POST bodies contain
+`tax_year`, `confirmed_tax_year: true` and a `values` object for supplemental inputs.
+All endpoints require a completed interview. These operations do not call LLM or RAG;
+they reuse the facts collected by the existing interview flow.
+
+Run focused checks with `python -m pytest tests/test_forms.py tests/test_interview_api.py`.
+
+### Setup
+
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1            # macOS/Linux: source .venv/bin/activate

@@ -56,6 +56,10 @@
     table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 6px 0; }
     td { border-bottom: 1px solid #e3e8ef; padding: 4px 6px; vertical-align: top; }
     .decision { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    .tax-form { display: grid; gap: 10px; margin-top: 14px; }
+    .tax-form label { display: grid; gap: 3px; }
+    .tax-form input { min-width: 0; width: 100%; }
+    .tax-form iframe { width: 100%; height: 520px; border: 1px solid #dce2eb; }
     @media (max-width: 820px) {
       .page { height: auto; min-height: 100dvh; }
       .layout { grid-template-columns: 1fr; }
@@ -111,6 +115,7 @@
   const statusLine = $('#status'), scenarioSelect = $('#scenario'), startBtn = $('#start');
   let interviewId = null;
   let busy = false;
+  let draftUrl = null;
 
   function el(tag, cls, text) {
     const node = document.createElement(tag);
@@ -231,6 +236,7 @@
     row.append(ok, back);
     box.append(note, row);
     b.append(box);
+    renderForms(b);
     addBubble(b);
 
     const decide = async (approve) => {
@@ -243,6 +249,108 @@
     };
     ok.addEventListener('click', () => decide(true));
     back.addEventListener('click', () => decide(false));
+  }
+
+  async function renderForms(parent) {
+    const details = el('details');
+    details.append(el('summary', null, 'Tax form drafts'));
+    const panel = el('div', 'tax-form');
+    panel.append(el('p', 'note', 'Suggestions depend on interview answers and configured rules. Confirm which forms you need; suggestions do not determine filing obligations.'));
+    details.append(panel); parent.append(details);
+    const id = interviewId;
+    try {
+      const data = await api(`/api/interviews/${id}/forms`);
+      if (id !== interviewId) return;
+      const forms = data.forms.sort((a, b) => Number(b.recommended) - Number(a.recommended));
+      const recommended = forms.filter(item => item.recommended);
+      recommended.forEach(item => panel.append(el('p', 'meta', `Suggested: ${item.title} (${item.tax_year}). ${item.reason}`)));
+      if (!recommended.length) panel.append(el('p', 'note', 'No configured recommendation matches these answers. You can select an available template below.'));
+      if (!forms.length) { panel.append(el('p', 'note', 'No tax form templates are configured yet.')); return; }
+      const label = el('label', null, 'Confirm a tax form to prepare');
+      const select = el('select');
+      const placeholder = el('option', null, 'Choose a tax form'); placeholder.value = '';
+      select.append(placeholder);
+      forms.forEach(item => {
+        const option = el('option', null, `${item.title} (${item.tax_year})${item.recommended ? ' ? suggested' : ''}`);
+        option.value = item.id; select.append(option);
+      });
+      label.append(select); panel.append(label);
+      const holder = el('div'); panel.append(holder);
+      select.addEventListener('change', () => {
+        holder.replaceChildren();
+        if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
+        const template = forms.find(item => item.id === select.value);
+        if (template) renderTaxForm(holder, template, id, select);
+      });
+    } catch (error) { panel.append(el('p', 'flag', error.message)); }
+  }
+
+  function renderTaxForm(parent, template, id, select) {
+    const form = el('form', 'tax-form');
+    form.autocomplete = 'off';
+    form.append(el('p', 'note', 'Partial prefill only. Leave unknown details blank. Supplemental details are used for this request only. Text fields support English letters, numbers and punctuation.'));
+    const inputs = {}, labels = {};
+    template.inputs.forEach(field => {
+      const label = el('label', null, field.label);
+      const options = field.choices ? Object.keys(field.choices) : field.type === 'checkbox' ? ['yes', 'no'] : null;
+      const input = el(options ? 'select' : 'input');
+      if (options) {
+        const unknown = el('option', null, 'Unknown'); unknown.value = ''; input.append(unknown);
+        options.forEach(value => { const option = el('option', null, value); option.value = value; input.append(option); });
+      } else {
+        input.type = field.type === 'ssn' ? 'password' : field.type === 'money' ? 'number' : 'text';
+        if (field.type === 'money') { input.min = '0'; input.step = '0.01'; input.max = '999999999.99'; }
+        else input.maxLength = field.max_length || 100;
+        input.placeholder = 'Leave blank if unknown';
+      }
+      input.name = field.key;
+      label.append(input); form.append(label); inputs[field.key] = input; labels[field.key] = field.label;
+    });
+    const confirmLabel = el('label');
+    const confirm = el('input'); confirm.type = 'checkbox'; confirm.required = true;
+    confirmLabel.append(confirm, document.createTextNode(`I need ${template.title} and confirm these answers and details are for tax year ${template.tax_year}.`));
+    const generate = el('button', null, 'Preview and download draft'); generate.type = 'submit';
+    const result = el('div'); result.setAttribute('aria-live', 'polite');
+    form.append(confirmLabel, generate, result); parent.append(form);
+    function clearDraft() {
+      result.replaceChildren();
+      if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
+    }
+    form.addEventListener('input', clearDraft);
+    form.addEventListener('submit', async event => {
+      event.preventDefault(); clearDraft();
+      generate.disabled = select.disabled = true;
+      const payload = { tax_year: template.tax_year, confirmed_tax_year: confirm.checked, values: {} };
+      template.inputs.forEach(field => {
+        const value = inputs[field.key].value.trim();
+        if (value) payload.values[field.key] = field.type === 'checkbox' ? value === 'yes' : value;
+      });
+      form.querySelectorAll('input, select').forEach(input => input.disabled = true);
+      const path = `/api/interviews/${id}/forms/${encodeURIComponent(template.id)}`;
+      try {
+        const data = await api(path + '/preview', payload);
+        if (data.missing.length) result.append(el('p', 'note', 'Missing: ' + data.missing.map(key => labels[key] || key.replaceAll('_', ' ')).join(', ')));
+        data.review.forEach(text => result.append(el('p', 'note', text)));
+        const response = await fetch(path, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+        });
+        if (!response.ok) {
+          const error = await response.json().catch(() => ({}));
+          throw new Error(typeof error.detail === 'string' ? error.detail : 'Unable to generate PDF. Please try again.');
+        }
+        const blob = await response.blob();
+        if (id !== interviewId) return;
+        draftUrl = URL.createObjectURL(blob);
+        const download = el('a', null, `Download ${template.title} (${template.tax_year}) draft`);
+        download.href = draftUrl; download.download = `${template.id}-draft.pdf`;
+        const preview = el('iframe'); preview.title = `${template.title} draft preview`; preview.src = draftUrl;
+        result.append(download, preview);
+      } catch (error) { result.append(el('p', 'flag', error.message)); }
+      finally {
+        generate.disabled = select.disabled = false;
+        form.querySelectorAll('input, select').forEach(input => input.disabled = false);
+      }
+    });
   }
 
   function render(out) {
@@ -273,6 +381,7 @@
     try {
       const data = await api('/api/interviews', { scenario: scenarioSelect.value });
       interviewId = data.state.interview_id;
+      if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
       log.replaceChildren();
       renderSidebar(data.state);
       render(data.output);
