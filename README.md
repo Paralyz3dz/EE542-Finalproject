@@ -1,9 +1,13 @@
 # Tax Agent MVP
 
 A digital clone of a tax preparer, used by an assistant: it guides the client interview
-(what to ask next and why), explains options in plain language with IRS citations,
-flags cases that need the preparer, and writes a summary for the preparer to approve.
+(what to ask next and why), explains options in plain language with IRS / California FTB
+citations, flags cases that need the preparer, and writes a summary for the preparer to approve.
 It does not file returns or give final tax advice. Only public data and fictional cases.
+
+Scope: California residents (federal base layer + California differences). The preparer's
+know-how is written as **playbooks** (JSON); a hand-written **workflow engine** runs them,
+decides the next question in code, and calls retrieval and the LLM only at fixed steps.
 
 ## Folders
 | Folder | What goes here |
@@ -13,23 +17,30 @@ It does not file returns or give final tax advice. Only public data and fictiona
 | `data/raw/ats/` | IRS MeF ATS test scenarios (fictional taxpayers) |
 | `data/processed/` | Parsed text chunks, embeddings exports |
 | `data/synthetic/` | Fictional client profiles we write |
-| `playbooks/` | Interview playbooks (JSON): questions, follow-ups, escalation rules |
+| `playbooks/<scenario>/` | Interview playbooks: `scenario.json` (facts, ask_when, escalation rules) + `questions.json` |
 | `src/ingest/` | PDF parsing and chunking |
 | `src/rag/` | Embedding, vector search, reranking |
-| `src/workflow/` | Interview workflow engine |
-| `src/app/` | FastAPI backend + HTML chat UI |
+| `src/workflow/` | Interview workflow engine: `engine.py`, `state.py`, `conditions.py` |
+| `src/llm/` | LLM adapter (`client.py`, the only provider call) and note reader (`normalize.py`) |
+| `src/app/` | FastAPI backend (`api.py`), interview service (`interviews.py`), chat page and interview page (`static/`) |
 | `eval/` | Test cases, TurboTax comparison, metrics |
 | `models/` | Fine-tuned embedding model (not committed) |
 | `logs/` | Run logs (not committed) |
 
 ## Workflow
-1. Read client documents and extract fields
-2. Match scenario playbooks
-3. Guide the interview: next question + why
-4. Explain options with IRS citations (RAG)
-5. Flag cases for the preparer
-6. Summarize
-7. Preparer reviews and approves
+1. The assistant picks a client scenario (playbook) and starts the interview
+2. The engine chooses the next question in code: the first required, unknown fact whose
+   `ask_when` conditions hold (follow-ups appear only after the answer that unlocks them)
+3. The guide shows the question, why to ask it, documents to request, and passages
+   retrieved from IRS / FTB documents (RAG)
+4. The assistant records the answer: quick buttons, an exact value, or a free-text note.
+   Rules parse it first; only if that fails does the LLM propose a value, which the same
+   rules validate before it is saved
+5. After every answer: escalation rules raise flags for the preparer; required documents
+   are collected
+6. When nothing is left to ask: a summary for the preparer (facts, flags, documents,
+   citations actually retrieved, references still to verify)
+7. The preparer approves it or returns it with a note
 
 ## Quick start
 ```powershell
@@ -136,16 +147,86 @@ Run the API tests without calling OpenAI, Ollama, or PostgreSQL:
 python -m unittest discover -s tests -p test_chat_api.py
 ```
 
+## Guided interview
+
+Start the server as above (`python -m uvicorn src.app.api:app --reload`) and open
+http://127.0.0.1:8000/interview. Choose a scenario and select Start interview.
+
+- Left: the conversation. Each question shows why to ask it, documents to request,
+  playbook references (✓ found in the knowledge base / ⚠ not in the knowledge base yet),
+  and the retrieved official text. Quick-answer buttons match the fact type
+  (Yes/No, options); free-text notes are read by the LLM and validated by code.
+- Right: status, escalation flags, documents to collect, facts collected.
+- End: summary for the preparer with Approve / Return to assistant.
+
+Scenarios (`playbooks/`, all **draft**, not yet confirmed by a preparer):
+
+| Scenario | Questions | Notes |
+|---|---|---|
+| `ca_w2_side_gig` | 3 | W-2 + side income; being expanded from the practitioner interview |
+| `ca_w2_family` | 14 | dependents, childcare, student loans, HSA (CA add-back), renter's credit |
+| `ca_retiree` | 12 | Social Security (not taxed by CA), pension / IRA, early distribution |
+| `ca_rental` | 11 | rental income, personal use, short-term rental, out-of-state property |
+
+Add a scenario by adding a folder with `scenario.json` and `questions.json`; the engine
+does not change. `tests/test_workflow.py` checks every playbook's structure and runs a
+full interview with each one.
+
+Settings in `.env` (see `.env.example`):
+
+```dotenv
+OPENAI_API_KEY=            # LLM note reader and the chat agent
+TAX_AGENT_RETRIEVAL=on     # off = no DB / Ollama needed; guides show no official text
+TAX_AGENT_LLM=on           # off = exact answers only, never call the model
+```
+
+If the chat agent cannot start (e.g. no `OPENAI_API_KEY`), only `/api/chat` returns 503;
+the interview still works. If retrieval fails, the interview continues without passages.
+
+Interview API (state is kept in server memory; restarting clears interviews):
+
+| Method | Path | Body | Returns |
+|---|---|---|---|
+| GET | `/api/playbooks` | | available scenarios |
+| POST | `/api/interviews` | `{"scenario": "ca_retiree"}` | first question + sidebar snapshot |
+| POST | `/api/interviews/{id}/answer` | `{"answer": "yes"}` | next question, an error (same question again), or the summary |
+| GET | `/api/interviews/{id}` | | snapshot + full history |
+| POST | `/api/interviews/{id}/decision` | `{"approve": true, "note": ""}` | preparer decision |
+
+Run the workflow tests (no OpenAI, Ollama, or PostgreSQL needed; retrieval and the
+model are stubbed):
+
+```powershell
+python -m pytest tests/test_workflow.py tests/test_interview_service.py tests/test_interview_api.py -q
+```
+
 ## Status
 | Part | State |
 |---|---|
-| Pub 17 parsing + chunking (`src/rag/chunk_pub17.py`) | done: 821 chunks, 14 chapters, TIP/CAUTION, citations |
+| Pub 17 parsing + chunking (`src/rag/chunk_pub17.py`) | done: 820 chunks, 14 chapters, TIP/CAUTION, citations |
 | Table extraction (`src/rag/tables.py`) | done: 20 tables, IF/AND/THEN rows as sentences, raw rows saved for code |
 | HNSW + BM25 hybrid retrieval | implemented: RRF fusion, final top-k 5; 200-case baseline completed, RRF Recall@5 87.00% (annotated chunk IDs) |
 | Web chat UI + FastAPI | implemented: local, in-memory conversations |
-| Playbooks, workflow engine, Claude | planned |
+| Workflow engine (`src/workflow/`) | implemented: code-chosen questions, ask_when follow-ups, escalation flags, required documents, summary, preparer approval |
+| LLM note reader (`src/llm/`) | implemented: OpenAI via one adapter; model proposes, rules validate |
+| Citations vs references | implemented: summary lists only retrieved citations; playbook references marked found / not in KB / unchecked |
+| Guided interview page (`/interview`) | implemented: 4 draft scenarios, end-to-end with RDS + Ollama + OpenAI |
+| Practitioner input | written feedback + interview with a Big Four tax advisor (business tax) done; USC VITA interview planned |
+| California FTB documents in the knowledge base | next |
+
+## Next (target: system ready Nov 23)
+- Knowledge base: Schedule C / SE instructions, Pub 334, Pub 463, Pub 505, FTB 540 Booklet,
+  Schedule CA (540) instructions, FTB Pub 1001; citation names match playbook `source` names
+- Playbooks: expand `ca_w2_side_gig` from the interview (income split, expenses, records,
+  hobby vs business); update all references; add record-keeping reminders
+- Interview page: collapsible explanations, "send to preparer" button
+- Evaluation: questions for the new documents; fictional end-to-end client cases
 
 ## Rules
 - Never use real client data (IRC 7216). Fictional cases only.
-- All numbers come from code or IRS documents, never from the model.
-- Keys live in `.env`, which is never committed.
+- All numbers come from code or IRS / FTB documents, never from the model.
+- The next question is decided by code from the playbook; the model may only propose values
+  that code validates.
+- Only cite passages that retrieval actually returned; playbook references are "to verify".
+- Keys live in `.env`, which is never committed. Interview recordings and transcripts are
+  never committed.
