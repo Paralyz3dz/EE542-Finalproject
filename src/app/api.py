@@ -15,12 +15,13 @@ from threading import Lock
 from uuid import UUID, uuid4
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse, Response
 from pydantic import BaseModel, Field, field_validator
 
 from src.agent import create_tax_agent
 from src.app.interviews import (InterviewClosed, InterviewNotFound, InterviewService,
                                 list_playbooks)
+from src.app.forms import FormRequest, fill_form, form_catalog, load_forms, prepare_form
 
 
 logger = logging.getLogger(__name__)
@@ -200,4 +201,50 @@ def decide(interview_id: str, payload: DecisionRequest, request: Request):
         raise HTTPException(404, "Interview not found.") from None
     except InterviewClosed as exc:
         raise HTTPException(409, str(exc)) from None
+
+
+def completed_interview(interview_id: str, request: Request):
+    try:
+        state = request.app.state.interviews.get(interview_id)["state"]
+    except InterviewNotFound:
+        raise HTTPException(404, "Interview not found.") from None
+    if state["status"] not in {"waiting_for_preparer", "approved", "returned"}:
+        raise HTTPException(409, "Finish the interview before generating a draft.")
+    return state
+
+
+def form_data(interview_id: str, form_id: str, payload: FormRequest, request: Request):
+    state = completed_interview(interview_id, request)
+    form = load_forms().get(form_id)
+    if form is None:
+        raise HTTPException(404, "Tax form template not found.")
+    try:
+        return form, prepare_form(form, state["facts"], payload)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from None
+
+
+@app.get("/api/interviews/{interview_id}/forms")
+def interview_forms(interview_id: str, request: Request):
+    state = completed_interview(interview_id, request)
+    return JSONResponse({"forms": form_catalog(state["facts"])}, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/api/interviews/{interview_id}/forms/{form_id}/preview")
+def preview_form(interview_id: str, form_id: str, payload: FormRequest, request: Request):
+    _, data = form_data(interview_id, form_id, payload, request)
+    return JSONResponse(data, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/api/interviews/{interview_id}/forms/{form_id}")
+def download_form(interview_id: str, form_id: str, payload: FormRequest, request: Request):
+    form, data = form_data(interview_id, form_id, payload, request)
+    try:
+        content = fill_form(form, data["fields"])
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from None
+    return Response(content, media_type="application/pdf", headers={
+        "Cache-Control": "no-store",
+        "Content-Disposition": f'inline; filename="{form_id}-draft.pdf"',
+    })
 
