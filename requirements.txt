@@ -5,6 +5,7 @@ openai
 python-dotenv
 pydantic
 pdfplumber
+pypdf>=6.1,<8
 sentence-transformers
 torch
 psycopg[binary]
