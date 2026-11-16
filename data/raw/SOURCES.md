@@ -1,9 +1,37 @@
 # Raw data sources
 
-All files here are public IRS documents. Record every new file in this table.
+All files here are public IRS documents. Record every new file in this table. The `Downloaded` date is the local file's last-modified date.
 
 | File | Source URL | Tax year | Version / date on file | Downloaded |
 |---|---|---|---|---|
-| `irs/p17--2025.pdf` | https://www.irs.gov/pub/irs-pdf/p17.pdf | 2025 | Publication 17 (2025), Cat. No. 10311G, Jan 13, 2026 | 2026-11-04 |
+| `irs/p17--2025.pdf` | https://www.irs.gov/pub/irs-prior/p17--2025.pdf | 2025 | Publication 17 (2025), Cat. No. 10311G, Jan 13, 2026 | 2026-11-04 |
+| `irs/forms/2025 Form 1040.pdf` | https://www.irs.gov/pub/irs-prior/f1040--2025.pdf | 2025 | 2025 Form 1040 | 2026-11-15 |
+| `irs/forms/2025 Form 2441.pdf` | https://www.irs.gov/pub/irs-prior/f2441--2025.pdf | 2025 | 2025 Form 2441 | 2026-11-15 |
+| `irs/forms/2025 Form 8863.pdf` | https://www.irs.gov/pub/irs-prior/f8863--2025.pdf | 2025 | 2025 Form 8863 | 2026-11-15 |
+| `irs/forms/2025 Form 8962.pdf` | https://www.irs.gov/pub/irs-prior/f8962--2025.pdf | 2025 | 2025 Form 8962 | 2026-11-15 |
+| `irs/forms/2025 Schedule 1 (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040s1--2025.pdf | 2025 | 2025 Schedule 1 (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule 1-A (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040s1a--2025.pdf | 2025 | 2025 Schedule 1-A (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule 2 (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040s2--2025.pdf | 2025 | 2025 Schedule 2 (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule 3 (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040s3--2025.pdf | 2025 | 2025 Schedule 3 (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule 8812 (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040s8--2025.pdf | 2025 | 2025 Schedule 8812 (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule A (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040sa--2025.pdf | 2025 | 2025 Schedule A (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule B (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040sb--2025.pdf | 2025 | 2025 Schedule B (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule D (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040sd--2025.pdf | 2025 | 2025 Schedule D (Form 1040) | 2026-11-15 |
+| `irs/forms/2025 Schedule EIC (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040sei--2025.pdf | 2025 | 2025 Schedule EIC (Form 1040) | 2026-11-15 |
+| `irs/instructions/2025 Instruction 1040.pdf` | https://www.irs.gov/pub/irs-prior/i1040gi--2025.pdf | 2025 | 2025 Instructions for Form 1040 | 2026-11-15 |
+| `irs/instructions/2025 Instructions for Form 2441.pdf` | https://www.irs.gov/pub/irs-prior/i2441--2025.pdf | 2025 | 2025 Instructions for Form 2441 | 2026-11-15 |
+| `irs/instructions/2025 Instructions for Form 8863.pdf` | https://www.irs.gov/pub/irs-prior/i8863--2025.pdf | 2025 | 2025 Instructions for Form 8863 | 2026-11-15 |
+| `irs/instructions/2025 Instructions for Form 8962.pdf` | https://www.irs.gov/pub/irs-prior/i8962--2025.pdf | 2025 | 2025 Instructions for Form 8962 | 2026-11-15 |
+| `irs/instructions/2025 Instructions for Schedule 8812 (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/i1040s8--2025.pdf | 2025 | 2025 Instructions for Schedule 8812 (Form 1040) | 2026-11-15 |
+| `irs/instructions/2025 Instructions for Schedule A (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/i1040sca--2025.pdf | 2025 | 2025 Instructions for Schedule A (Form 1040) | 2026-11-15 |
+| `irs/instructions/2025 Instructions for Schedule B (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/i1040sb--2025.pdf | 2025 | 2025 Instructions for Schedule B (Form 1040) | 2026-11-15 |
+| `irs/instructions/2025 Instructions for Schedule D (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/i1040sd--2025.pdf | 2025 | 2025 Instructions for Schedule D (Form 1040) | 2026-11-15 |
+| `irs/publications/2025 Publication 17.pdf` | https://www.irs.gov/pub/irs-prior/p17--2025.pdf | 2025 | Publication 17 (2025) | 2026-11-16 |
+| `irs/publications/2025 Publication 501.pdf` | https://www.irs.gov/pub/irs-prior/p501--2025.pdf | 2025 | Publication 501 (2025) | 2026-11-16 |
+| `irs/publications/2025 Publication 503.pdf` | https://www.irs.gov/pub/irs-prior/p503--2025.pdf | 2025 | Publication 503 (2025) | 2026-11-16 |
+| `irs/publications/2025 Publication 550.pdf` | https://www.irs.gov/pub/irs-prior/p550--2025.pdf | 2025 | Publication 550 (2025) | 2026-11-16 |
+| `irs/publications/2025 Publication 596.pdf` | https://www.irs.gov/pub/irs-prior/p596--2025.pdf | 2025 | Publication 596 (2025) | 2026-11-16 |
+| `irs/publications/2025 Publication 970.pdf` | https://www.irs.gov/pub/irs-prior/p970--2025.pdf | 2025 | Publication 970 (2025) | 2026-11-16 |
+| `irs/publications/2025 Publication 974.pdf` | https://www.irs.gov/pub/irs-prior/p974--2025.pdf | 2025 | Publication 974 (2025) | 2026-11-16 |
 
-To do: Form 13614-C, Pub 5101, Pub 4491 (VITA volunteer guide), ATS scenarios.
+No ATS scenarios or VITA training materials are currently present under `data/raw`; add them here if they are downloaded later.
