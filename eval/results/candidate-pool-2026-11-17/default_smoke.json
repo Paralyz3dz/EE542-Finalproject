@@ -1,0 +1,16 @@
+[
+  {
+    "id": "q_ca_resident_full_year",
+    "vector_requested_k": 10,
+    "bm25_requested_k": 10,
+    "returned_count": 5,
+    "matches_controlled_k10": true
+  },
+  {
+    "id": "q_has_self_employment",
+    "vector_requested_k": 10,
+    "bm25_requested_k": 10,
+    "returned_count": 5,
+    "matches_controlled_k10": true
+  }
+]

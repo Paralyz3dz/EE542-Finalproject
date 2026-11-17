@@ -1,3 +1,6 @@
+For controlled 104-question intake candidate-pool comparisons, see
+[candidate_experiment.md](candidate_experiment.md).
+
 Run the current Agentic RAG baseline against the evaluation dataset:
 
 ```powershell

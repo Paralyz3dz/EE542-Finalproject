@@ -65,12 +65,16 @@ def embed_texts(texts: list[str], options: dict | None = None) -> np.ndarray:
     return vectors
 
 
-def retrieve(query: str) -> dict:
+def retrieve(query: str, *, candidate_k: int | None = None) -> dict:
     if not query.strip():
         raise ValueError("The retrieval query must not be empty.")
     settings = json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
     tax_year = settings["tax_year"]
     top_k = settings["retrieve_top_k"]
+    if candidate_k is None:
+        candidate_k = settings.get("retrieve_candidate_k", top_k)
+    if type(candidate_k) is not int or candidate_k < top_k:
+        raise ValueError("candidate_k must be an integer at least retrieve_top_k.")
     rrf_constant = settings["rrf_constant"]
     model = os.getenv("EMBEDDING_MODEL", "Qwen/Qwen3-Embedding-0.6B")
 
@@ -108,13 +112,13 @@ def retrieve(query: str) -> dict:
         query_vector = embed_query(query)
         chunks = fetch_chunks(conn, tax_year)
         conn.execute("SET LOCAL enable_seqscan = off")
-        rows = vector_search(conn, query_vector, model, tax_year, k=top_k)
+        rows = vector_search(conn, query_vector, model, tax_year, k=candidate_k)
 
     vector_matches = [
         {"chunk_id": row[0], "citation": row[1], "text": row[2], "score": row[3]}
         for row in rows
     ]
-    keyword_matches = bm25_search(query, chunks, k=top_k)
+    keyword_matches = bm25_search(query, chunks, k=candidate_k)
     return {
         "tax_year": tax_year,
         "embedding_model": model,
