@@ -1,0 +1,103 @@
+section,screen,situation,handling,playbook_item,note
+CdccSubSubcategory,worksheet-a-ko,Child care credit: worksheet A (prior-year expenses),document review,paid_childcare,Preparer works the credit from the provider records
+CdccSubSubcategory,taxable-benefits-distribution-ko,Dependent care benefits partly taxable,escalate,family: employer_dependent_care_benefits,Asked; preparer computes Form 2441 Part III
+CreditsSubcategory,dep-tp-ko,Premium tax credit: dependent taxpayer needs allocation,escalate,esc_has_marketplace_insurance,
+CreditsSubcategory,qsehra-ko,Premium tax credit with a QSEHRA,escalate,esc_has_marketplace_insurance,
+CreditsSubcategory,dependents-filing-req-ko,Premium tax credit: dependents required to file,escalate,esc_has_marketplace_insurance,
+CreditsSubcategory,multiple-forms-ko,Several Forms 1095-A,escalate,esc_has_marketplace_insurance,
+CreditsSubcategory,allocations-ko,Premium tax credit allocation between returns,escalate,esc_has_marketplace_insurance,
+CreditsSubcategory,immigration-status-ko,Premium tax credit: immigration status,escalate,esc_has_marketplace_insurance; esc_is_us_citizen,
+CreditsSubcategory,employer-plan-ko,Marketplace plan while offered an employer plan,escalate,esc_has_marketplace_insurance,
+CreditsSubcategory,alt-calc-ko,Premium tax credit alternative calculation (marriage year),escalate,esc_has_marketplace_insurance,
+DeductionsSubcategory,net-investment-mfs-ko,Net investment income tax (high income),document review,has_interest_dividends; sold_investments,Income level is seen on the documents; investment sales are escalated
+DeductionsSubcategory,net-investment-mfj-qss-ko,Net investment income tax (high income),document review,has_interest_dividends; sold_investments,
+DeductionsSubcategory,net-investment-single-hoh-ko,Net investment income tax (high income),document review,has_interest_dividends; sold_investments,
+SaversCreditSubSubcategory,savers-self-reported-distributions-ko,Saver's credit with recent retirement distributions,asked (in scope),contributed_to_retirement; has_retirement_distribution,Both are asked; the preparer computes the credit
+SaversCreditSubSubcategory,savers-current-year-distributions-ko,Saver's credit with current-year distributions,asked (in scope),contributed_to_retirement; has_retirement_distribution,
+SaversCreditSubSubcategory,savers-self-reported-contributions-ko,Saver's credit from self-reported contributions,asked (in scope),retirement_contribution_type,Contribution type added today
+SpecialIncomeRuleKnockoutFlow,earned-income-rule-ko-${suffix},Dependent care: spouse student or disabled (earned income rule),asked (in scope),family: dependent_is_student_or_disabled,
+DependentCareBenefitsSubcategory,household-employee-ko-${suffix},Household employee (Schedule H),escalate,esc_household_employee,
+HsaSubcategory,hsa-distributions-box2-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-distributions-box3-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-ko-fmv,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-ko-unqualified-distributions,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-contributions-additional-summary-none-allowed-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-coverage-married-not-mfj-line-6-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-coverage-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-contributions-summary-none-allowed-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-coverage-line-6-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-ko-qualified-hsa-funding-distribution,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-contributions-summary-excess-KO,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-ko-excess-contributions,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-ko-8853-needed,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+HsaSubcategory,hsa-testing-period-income-ko,"HSA situation (excess contributions, distributions, coverage changes, Archer MSA)",asked (in scope),has_hsa,In VITA scope with advanced certification; Pub 4012 lists exceptions; preparer reviews 1099-SA / 5498-SA
+IncomeSourcesSubcategory,income-sources-supported-knockout,Income types outside the supported list,escalate,esc_has_other_income; modules side_gig / rental / retiree,Unusual income is asked under 'any other money' and escalated
+IncomeSourcesSubcategory,foreign-accounts-trusts-knockout,Foreign accounts or foreign trusts,escalate,esc_has_foreign_accounts,Added today
+IncomeSourcesSubcategory,digital-assets-knockout,Digital assets,escalate,esc_has_digital_assets,
+IncomeSourcesSubcategory,ira-contributions-ko,IRA contributions,asked (in scope),contributed_to_retirement; retirement_contribution_type,Type added today; self-employed plans and 'not sure' escalate
+InterestIncomeSubcategory,data-import-int-ko,Direct File data import failure,not applicable,,Direct File product feature
+InterestIncomeSubcategory,1099-int-facta-knockout,1099-INT: FATCA filing requirement,document review,has_interest_dividends; esc_has_foreign_accounts,
+InterestIncomeSubcategory,1099-int-box-2-knockout,1099-INT box 2: early withdrawal penalty,document review,has_interest_dividends,In VITA scope; preparer enters from the form
+InterestIncomeSubcategory,1099-int-box-6-knockout,1099-INT box 6: foreign tax paid,document review,has_interest_dividends; esc_has_foreign_accounts,
+InterestIncomeSubcategory,1099-int-box-8-ko,1099-INT box 8: tax-exempt interest,document review,has_interest_dividends,In VITA scope
+InterestIncomeSubcategory,1099-int-boxes-9-13-knockout,1099-INT boxes 9-13: bond interest details,document review,has_interest_dividends,
+InterestIncomeSubcategory,1099-int-box-17-ko,1099-INT box 17: state withholding,document review,has_interest_dividends,
+InterestIncomeSubcategory,1099-int-other-state-knockout,Interest with withholding for another state,document review,esc_lived_in_multiple_states,
+JobIncomeSubcategory,jobs-data-import-ko,Direct File data import failure,not applicable,,Direct File product feature
+JobIncomeSubcategory,social-security-wages-limit-ko,Wages above the Social Security wage base,document review,has_wages,Seen on the W-2s
+JobIncomeSubcategory,medicare-wages-ko,Additional Medicare tax,document review,has_wages,Seen on the W-2s; out of VITA scope (Schedule 2 line 17b)
+JobIncomeSubcategory,medicare-wages-ko-credit,Additional Medicare tax credit,document review,has_wages,
+JobIncomeSubcategory,w2-allocated-tips-ko,Allocated or unreported tips,asked (in scope),received_tips,Advanced certification topic
+JobIncomeSubcategory,w2-nonqualified-plan-ko,W-2 nonqualified plan,document review,has_wages,
+JobIncomeSubcategory,w2-box-12-ko,W-2 box 12 codes,document review,has_wages,"Pub 4012 lists out-of-scope codes (Q, R, T, W, Z)"
+JobIncomeSubcategory,w2-box-12-dependent-ko,W-2 box 12 for a dependent,document review,has_wages,
+JobIncomeSubcategory,w2-box-13-statutory-ko,Statutory employee,document review,has_wages,
+JobIncomeSubcategory,w2-box-13-sick-pay-ko,Third-party sick pay,document review,has_wages,
+JobIncomeSubcategory,rrta-codes-ko,Railroad retirement (RRTA) wages,document review,has_wages,
+JobIncomeSubcategory,w2-box-14-rrta-ny-ko,"Railroad retirement (RRTA) wages, New York",not applicable,,New York only
+JobIncomeSubcategory,w2-part-year-yonkers-ko,Yonkers part-year resident,not applicable,,New York only
+JobIncomeSubcategory,w2-other-state-ko,Wages from another state,escalate,esc_lived_in_multiple_states,
+RetirementIncomeSubcategory,1099-r-box-2b-ko-1,1099-R: taxable amount not determined,document review,has_retirement_distribution,Pub 4012: advanced certification
+RetirementIncomeSubcategory,1099-r-box-2b-ko-2,1099-R: taxable amount blank,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-2b-ko-3,1099-R: total distribution,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-3-ko,1099-R box 3: capital gain,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-6-ko,1099-R box 6: net unrealized appreciation,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-7-checkbox-knockout,1099-R: IRA/SEP/SIMPLE box,document review,retiree: distribution_account_type,
+RetirementIncomeSubcategory,1099-r-box-7-code-knockout,1099-R box 7 distribution codes,document review,has_retirement_distribution,Pub 4012 lists out-of-scope codes
+RetirementIncomeSubcategory,1099-r-box-7-pretax-to-posttax-knockout,Rollover from pre-tax to Roth,escalate,esc_did_rollover,
+RetirementIncomeSubcategory,1099-r-box-7-early-distribution-knockout,Early distribution exception,escalate,esc_under_59_half_at_distribution,
+RetirementIncomeSubcategory,1099-r-box-7-indirect-rollover-knockout,Indirect rollover,escalate,esc_did_rollover,
+RetirementIncomeSubcategory,1099-r-disaster-knockout,Qualified disaster distribution,escalate,esc_had_disaster_loss; esc_did_rollover,
+RetirementIncomeSubcategory,1099-r-pso-knockout,Public safety officer insurance premiums,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-8-value-knockout,1099-R box 8: other,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-8-percentage-knockout,1099-R box 8 percentage,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-9a-percentage-knockout,1099-R box 9a: partial distribution,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-10-knockout,1099-R box 10: in-plan Roth rollover,escalate,esc_did_rollover,
+RetirementIncomeSubcategory,1099-r-box-12-knockout,1099-R box 12: FATCA,document review,esc_has_foreign_accounts,
+RetirementIncomeSubcategory,1099-r-box-13-ko,1099-R box 13: death benefit date,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-box-15-ko,1099-R box 15: state distribution,document review,has_retirement_distribution,
+RetirementIncomeSubcategory,1099-r-state-local-tax-error,Data entry check (withholding over distribution),not applicable,,Direct File input validation
+RetirementIncomeSubcategory,1099-r-add-form-ko,1099-R feature not enabled,not applicable,,Direct File product feature
+SocialSecurityIncomeSubcategory,social-security-summary-negative-ko-in-flow,"Social Security repayments over $3,000",document review,receives_social_security,Seen on the SSA-1099
+SocialSecurityIncomeSubcategory,social-security-summary-negative-ko,"Social Security repayments over $3,000",document review,receives_social_security,
+UnemploymentIncomeSubcategory,1099-g-repay-knockout,Unemployment repaid over the limit,document review,has_unemployment,
+UnemploymentIncomeSubcategory,1099-g-other-state-ko,Unemployment from another state,escalate,esc_lived_in_multiple_states,
+UnemploymentIncomeSubcategory,no-1099-g-repay-knockout,Unemployment repaid without a 1099-G,document review,has_unemployment,
+AboutYouSubcategory,age-ko,Filer under 16,asked (in scope),can_be_claimed_as_dependent,Preparer checks age on documents
+AboutYouSubcategory,about-you-citizen-resident-ko,Citizenship or residency status,escalate,esc_is_us_citizen,
+AboutYouSubcategory,about-you-state-income-scope-ko,Lived or earned income in other states,escalate,esc_lived_in_multiple_states; esc_ca_resident_full_year,
+FamilyAndHHSubcategory,add-person-special-rule-applies-non-custodial,Noncustodial parent claims the child,escalate,esc_shared_custody,
+FamilyAndHHSubcategory,add-person-special-rule-conflicting-information,Conflicting information about which parent claims,escalate,esc_shared_custody; esc_someone_else_could_claim,
+FamilyAndHHSubcategory,add-personhoh-qp-no-tin,Head of household with a qualifying person without a TIN,document review,family: bring_ssn_cards reminder,Preparer checks IDs
+FamilyAndHHSubcategory,add-person-born-died-no-tin,Child born and died in the year without a TIN,document review,has_dependents,
+FamilyAndHHSubcategory,add-personhoh-qp-no-tin-end,Head of household with a qualifying person without a TIN,document review,family: bring_ssn_cards reminder,
+FilingStatusSubcategory,community-property-ko-go-back,Married filing separately in a community property state (California),document review,marital_status,Preparer decides filing status; California is a community property state
+FilingStatusSubcategory,hoh-qp-no-tin,Head of household with a qualifying person without a TIN,document review,family: bring_ssn_cards reminder,
+SpouseSubcategory,registered-domestic-partner-ko,Registered domestic partnership,escalate,esc_registered_domestic_partner,Added today
+SpouseSubcategory,community-property-ko-go-back,Married filing separately in a community property state (California),document review,marital_status,Preparer decides filing status; California is a community property state
+SpouseSubcategory,spouse-state-income-scope-ko,Spouse lived or earned income in other states,escalate,esc_lived_in_multiple_states,
+SpouseSubcategory,spouse-age-ko,Spouse under 16,not applicable,,Edge case; preparer checks documents
+SpouseSubcategory,mfs-spouse-itemizing-ko,"Married filing separately, spouse itemizes",document review,marital_status,Preparer decides filing status
+EstimatedTaxesSubcategory,no-payments-hsa-distributions-ko,No payments but HSA distributions,asked (in scope),has_hsa,
+EstimatedTaxesSubcategory,no-payments-ko,No need to file (no payments or credits),not applicable,,Filing requirement is the preparer's decision
+EstimatedTaxesSubcategory,est-tax-payments-name-change-ko,Estimated payments under another name,asked (in scope),made_estimated_payments,

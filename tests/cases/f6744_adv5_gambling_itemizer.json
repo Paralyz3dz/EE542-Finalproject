@@ -1,0 +1,34 @@
+{
+  "name": "Single employee with gambling winnings who wants to itemize",
+  "source": "Form 6744 (Rev. 10-2026) Advanced Scenario 5, interview notes (structure only).",
+  "official_outcome": "Gambling winnings are reported as other income; itemized deductions need advanced certification.",
+  "priority": [],
+  "background": "",
+  "answers": {
+    "marital_status": "never_married",
+    "registered_domestic_partner": "no",
+    "has_wages": "yes",
+    "w2_job_count": "1",
+    "has_gambling_winnings": "yes",
+    "large_medical_expenses": "yes",
+    "made_donations": "yes",
+    "paid_mortgage_interest": "yes",
+    "paid_property_tax": "yes",
+    "has_hsa": "yes",
+    "had_state_refund": "no"
+  },
+  "expect": {
+    "flags": [
+      "esc_has_gambling_winnings"
+    ],
+    "modules_asked": [
+      "base_intake"
+    ],
+    "modules_not_asked": [
+      "side_gig",
+      "family",
+      "retiree",
+      "rental"
+    ]
+  }
+}

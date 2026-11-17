@@ -66,6 +66,18 @@
       ]
     },
     {
+      "name": "registered_domestic_partner",
+      "type": "bool",
+      "required": true,
+      "part": "household",
+      "ask_when": [
+        {
+          "fact": "marital_status",
+          "equals": "never_married"
+        }
+      ]
+    },
+    {
       "name": "lived_apart_last_6_months",
       "type": "bool",
       "required": true,
@@ -143,6 +155,12 @@
       "part": "income"
     },
     {
+      "name": "has_farm_income",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
       "name": "has_retirement_income",
       "type": "bool",
       "required": true,
@@ -168,6 +186,12 @@
     },
     {
       "name": "has_interest_dividends",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "has_foreign_accounts",
       "type": "bool",
       "required": true,
       "part": "income"
@@ -231,6 +255,25 @@
       "type": "bool",
       "required": true,
       "part": "expenses"
+    },
+    {
+      "name": "retirement_contribution_type",
+      "type": "enum",
+      "required": true,
+      "part": "expenses",
+      "options": [
+        "employer_plan_401k_403b",
+        "traditional_ira",
+        "roth_ira",
+        "self_employed_plan",
+        "not_sure"
+      ],
+      "ask_when": [
+        {
+          "fact": "contributed_to_retirement",
+          "equals": true
+        }
+      ]
     },
     {
       "name": "is_educator_with_expenses",
@@ -451,6 +494,56 @@
         }
       ],
       "reason": "An IRS letter or bill needs the preparer."
+    },
+    {
+      "id": "esc_registered_domestic_partner",
+      "when": [
+        {
+          "fact": "registered_domestic_partner",
+          "equals": true
+        }
+      ],
+      "reason": "California registered domestic partners file differently for federal and state returns; the preparer handles it."
+    },
+    {
+      "id": "esc_has_farm_income",
+      "when": [
+        {
+          "fact": "has_farm_income",
+          "equals": true
+        }
+      ],
+      "reason": "Farm or fishing income (Schedule F) is outside the volunteer scope; the preparer reviews it."
+    },
+    {
+      "id": "esc_has_foreign_accounts",
+      "when": [
+        {
+          "fact": "has_foreign_accounts",
+          "equals": true
+        }
+      ],
+      "reason": "Foreign accounts or foreign income may need FinCEN 114, Form 8938 or a foreign tax credit; the preparer reviews it."
+    },
+    {
+      "id": "esc_retirement_contribution_self_employed_plan",
+      "when": [
+        {
+          "fact": "retirement_contribution_type",
+          "equals": "self_employed_plan"
+        }
+      ],
+      "reason": "SEP, SIMPLE or solo 401(k) contributions are outside the volunteer scope; the preparer reviews them."
+    },
+    {
+      "id": "esc_retirement_contribution_not_sure",
+      "when": [
+        {
+          "fact": "retirement_contribution_type",
+          "equals": "not_sure"
+        }
+      ],
+      "reason": "The type of retirement contribution is unknown; the preparer checks Form 5498 or the W-2 before deciding on a deduction."
     }
   ],
   "reminders": [

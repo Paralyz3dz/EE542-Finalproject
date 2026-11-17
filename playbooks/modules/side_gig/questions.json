@@ -269,5 +269,18 @@
     "source": "FTB 540 Booklet",
     "origin": "earlier playbook draft",
     "status": "derived_official"
+  },
+  {
+    "id": "q_paid_own_health_insurance",
+    "fact": "paid_own_health_insurance",
+    "question": "Did you pay for your own health insurance, not through an employer's plan?",
+    "why_ask": "Self-employed people may deduct health insurance premiums (Form 7206); marketplace coverage is handled separately.",
+    "required_docs": [
+      "health insurance premium statements"
+    ],
+    "retrieval_query": "self-employed health insurance deduction",
+    "source": "IRS Schedule C Instructions",
+    "origin": "IRS MeF ATS Test Scenario 12 (TY2025), Form 7206; Pub 4012 (Rev. 10-2026) Scope of Service, Schedule 1 line 17 (structure only)",
+    "status": "derived_official"
   }
 ]

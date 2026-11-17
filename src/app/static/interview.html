@@ -12,7 +12,6 @@
     h1 { font-size: 22px; margin: 0; }
     .subtitle { margin: 2px 0 0; font-size: 13px; color: #596579; }
     .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; min-width: 0; max-width: 100%; }
-    #scenario { min-width: 0; max-width: 100%; }
     select, input, textarea, button { font: inherit; }
     select, input[type=text], textarea { border: 1px solid #bcc8d9; border-radius: 8px; padding: 8px 10px; background: white; }
     button { border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; background: #2458c6; color: white; }
@@ -67,7 +66,7 @@
     @media (max-width: 820px) {
       .page { height: auto; min-height: 100dvh; }
       .layout { grid-template-columns: 1fr; }
-      .controls, #scenario { width: 100%; }
+      .controls { width: 100%; }
       #log { max-height: 60vh; }
     }
   </style>
@@ -80,7 +79,6 @@
       <p class="subtitle">For the preparer's assistant · Fictional cases only · Not final tax advice · <a href="/">Ask a tax question (chat)</a></p>
     </div>
     <div class="controls">
-      <select id="scenario" aria-label="Client scenario"></select>
       <button id="start" type="button">Start interview</button>
     </div>
   </header>
@@ -96,7 +94,7 @@
   <div class="layout">
     <section class="panel chat">
       <div id="log" role="log" aria-live="polite">
-        <p class="empty">Choose a client scenario and select Start interview.</p>
+        <p class="empty">Optionally pick the topics you are unsure about and enter the client's background, then select Start interview.</p>
       </div>
       <div class="inputbar">
         <div id="chips" class="chips"></div>
@@ -124,7 +122,7 @@
 <script>
   const $ = (sel) => document.querySelector(sel);
   const log = $('#log'), chips = $('#chips'), answer = $('#answer'), send = $('#send');
-  const statusLine = $('#status'), scenarioSelect = $('#scenario'), startBtn = $('#start');
+  const statusLine = $('#status'), startBtn = $('#start');
   let interviewId = null;
   let busy = false;
 
@@ -291,7 +289,7 @@
     if (busy) return;
     busy = true; startBtn.disabled = true; setStatus('Starting…');
     try {
-      const data = await api('/api/interviews', { scenario: scenarioSelect.value, priority: chosen,
+      const data = await api('/api/interviews', { scenario: SCENARIO, priority: chosen,
                                                   background: $('#background').value.trim() });
       interviewId = data.state.interview_id;
       log.replaceChildren();
@@ -324,14 +322,17 @@
   });
   startBtn.addEventListener('click', startInterview);
 
-  let playbooks = [], chosen = [];
+  // Every client gets the same intake (Form 13614-C base + topic modules opened by the answers),
+  // so there is no scenario to choose; the assistant only sets priority topics and a background note.
+  const SCENARIO = 'intake';
+  let intake = null, chosen = [];
   function label(id) {
-    const p = playbooks.find(x => x.id === scenarioSelect.value);
+    const p = intake;
     const s = p && p.sections.find(x => x.id === id);
     return s ? s.label : id;
   }
   function renderPriority() {
-    const p = playbooks.find(x => x.id === scenarioSelect.value);
+    const p = intake;
     const box = $('#priority'), wrap = $('#priority-chips');
     wrap.replaceChildren();
     box.hidden = !(p && p.sections.length);
@@ -349,15 +350,11 @@
       wrap.append(btn);
     });
   }
-  scenarioSelect.addEventListener('change', () => { chosen = []; renderPriority(); });
-
   api('/api/playbooks').then(data => {
-    playbooks = data.playbooks;
-    data.playbooks.forEach(p => {
-      const o = el('option', null, p.title); o.value = p.id; scenarioSelect.append(o);
-    });
+    intake = data.playbooks.find(p => p.id === SCENARIO) || null;
+    if (!intake) { setStatus('The intake playbook (playbooks/modules/) was not found.', true); startBtn.disabled = true; return; }
     renderPriority();
-  }).catch(e => setStatus('Could not load scenarios: ' + e.message, true));
+  }).catch(e => setStatus('Could not load the intake playbook: ' + e.message, true));
 </script>
 </body>
 </html>

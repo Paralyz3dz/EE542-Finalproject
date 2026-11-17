@@ -100,6 +100,17 @@
       ]
     },
     {
+      "name": "care_provider_is_family",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "paid_childcare",
+          "equals": true
+        }
+      ]
+    },
+    {
       "name": "employer_dependent_care_benefits",
       "type": "bool",
       "required": true,
@@ -152,6 +163,16 @@
         }
       ],
       "reason": "Household employee (nanny tax) needs the preparer."
+    },
+    {
+      "id": "esc_care_provider_is_family",
+      "when": [
+        {
+          "fact": "care_provider_is_family",
+          "equals": true
+        }
+      ],
+      "reason": "Care paid to the client's own child under 19, spouse or dependent may not count for the credit; the preparer decides."
     }
   ],
   "reminders": [
