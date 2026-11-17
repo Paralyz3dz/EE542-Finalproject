@@ -1,0 +1,200 @@
+{
+  "id": "family",
+  "title": "Dependents and childcare",
+  "status": "draft",
+  "activate_when": [
+    {
+      "fact": "has_dependents",
+      "equals": true
+    }
+  ],
+  "keywords": [
+    "kid",
+    "kids",
+    "child",
+    "children",
+    "daughter",
+    "son",
+    "daycare",
+    "babysitter",
+    "nanny"
+  ],
+  "triggers": [],
+  "facts": [
+    {
+      "name": "dependent_count",
+      "type": "enum",
+      "required": true,
+      "options": [
+        "1",
+        "2",
+        "3_or_more"
+      ]
+    },
+    {
+      "name": "dependent_lived_with_you_half_year",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "has_child_under_17",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "has_child_under_6",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_child_under_17",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "supports_other_relative",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "dependent_is_student_or_disabled",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "shared_custody",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "someone_else_could_claim",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "paid_childcare",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "paid_after_school_or_camp",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "paid_childcare",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_provider_details",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "paid_childcare",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "care_provider_is_family",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "paid_childcare",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "employer_dependent_care_benefits",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "paid_childcare",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "household_employee",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "paid_childcare",
+          "equals": true
+        }
+      ]
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "esc_shared_custody",
+      "when": [
+        {
+          "fact": "shared_custody",
+          "equals": true
+        }
+      ],
+      "reason": "Shared custody: the preparer decides who may claim the child (Form 8332 rules)."
+    },
+    {
+      "id": "esc_someone_else_could_claim",
+      "when": [
+        {
+          "fact": "someone_else_could_claim",
+          "equals": true
+        }
+      ],
+      "reason": "More than one person could claim the dependent: tie-breaker rules need the preparer."
+    },
+    {
+      "id": "esc_household_employee",
+      "when": [
+        {
+          "fact": "household_employee",
+          "equals": true
+        }
+      ],
+      "reason": "Household employee (nanny tax) needs the preparer."
+    },
+    {
+      "id": "esc_care_provider_is_family",
+      "when": [
+        {
+          "fact": "care_provider_is_family",
+          "equals": true
+        }
+      ],
+      "reason": "Care paid to the client's own child under 19, spouse or dependent may not count for the credit; the preparer decides."
+    }
+  ],
+  "reminders": [
+    {
+      "id": "keep_provider_info",
+      "when": [
+        {
+          "fact": "paid_childcare",
+          "equals": true
+        }
+      ],
+      "text": "Keep each care provider's name, address, tax ID and receipts of what was paid."
+    },
+    {
+      "id": "bring_ssn_cards",
+      "when": [
+        {
+          "fact": "has_dependents",
+          "equals": true
+        }
+      ],
+      "text": "Bring Social Security cards (or ITIN letters) for every dependent."
+    }
+  ]
+}

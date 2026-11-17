@@ -1,0 +1,44 @@
+{
+  "name": "Married couple: teacher with classroom expenses, spouse's pension, cancelled credit card debt, a prize, a college student",
+  "source": "Form 6744 (Rev. 10-2026) Advanced Scenario 7, interview notes (structure only).",
+  "official_outcome": "Educator expenses, pension (simplified method), Form 1099-C insolvency check, prize as other income, education credit limits.",
+  "priority": [],
+  "background": "",
+  "answers": {
+    "marital_status": "married",
+    "lived_apart_last_6_months": "no",
+    "has_wages": "yes",
+    "w2_job_count": "1",
+    "is_educator_with_expenses": "yes",
+    "has_retirement_income": "yes",
+    "receives_social_security": "no",
+    "has_retirement_distribution": "yes",
+    "distribution_account_type": "pension_or_annuity",
+    "retirement_distributions": "18000",
+    "under_59_half_at_distribution": "no",
+    "did_rollover": "no",
+    "had_debt_forgiven": "yes",
+    "has_other_income": "yes",
+    "has_dependents": "yes",
+    "dependent_count": "1",
+    "dependent_lived_with_you_half_year": "yes",
+    "has_child_under_17": "no",
+    "dependent_is_student_or_disabled": "yes",
+    "took_education_classes": "yes"
+  },
+  "expect": {
+    "flags": [
+      "esc_had_debt_forgiven",
+      "esc_has_other_income"
+    ],
+    "modules_asked": [
+      "base_intake",
+      "retiree",
+      "family"
+    ],
+    "modules_not_asked": [
+      "side_gig",
+      "rental"
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "q_receives_social_security",
+    "fact": "receives_social_security",
+    "question": "Did you receive Social Security benefits last year?",
+    "why_ask": "Up to 85% of benefits can be taxable federally; California does not tax Social Security.",
+    "required_docs": [
+      "SSA-1099"
+    ],
+    "retrieval_query": "social security benefits taxable portion",
+    "source": "IRS Pub 915",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_social_security_benefits",
+    "fact": "social_security_benefits",
+    "question": "What is the net benefit amount in box 5 of the SSA-1099?",
+    "why_ask": "The taxable part depends on benefits plus other income.",
+    "required_docs": [
+      "SSA-1099"
+    ],
+    "retrieval_query": "how much social security is taxable worksheet",
+    "source": "IRS Pub 915",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_retirement_distribution",
+    "fact": "has_retirement_distribution",
+    "question": "Did you take money out of a pension, 401(k), IRA or annuity last year?",
+    "why_ask": "Distributions are reported on Form 1099-R and are often taxable.",
+    "required_docs": [
+      "1099-R"
+    ],
+    "retrieval_query": "pensions annuities IRA distributions taxable",
+    "source": "IRS Pub 575",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_distribution_account_type",
+    "fact": "distribution_account_type",
+    "question": "What kind of account did the money come from?",
+    "why_ask": "IRAs, employer plans and pensions follow different rules.",
+    "required_docs": [
+      "1099-R box 7"
+    ],
+    "retrieval_query": "Form 1099-R distribution code box 7",
+    "source": "IRS Pub 575",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_retirement_distributions",
+    "fact": "retirement_distributions",
+    "question": "What is the total gross distribution in box 1 of your 1099-R forms?",
+    "why_ask": "The gross amount and the taxable amount (box 2a) can differ.",
+    "required_docs": [
+      "1099-R"
+    ],
+    "retrieval_query": "1099-R gross distribution taxable amount",
+    "source": "IRS Pub 575",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_under_59_half_at_distribution",
+    "fact": "under_59_half_at_distribution",
+    "question": "Were you younger than 59 and a half when you took the money?",
+    "why_ask": "Early distributions may owe the 10% federal additional tax and California's 2.5% additional tax unless an exception applies.",
+    "required_docs": [],
+    "retrieval_query": "additional tax on early distributions exceptions",
+    "source": "IRS Pub 590-B",
+    "origin": "IRS Direct File flow (TY2024), adapted; FTB 3805P",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_did_rollover",
+    "fact": "did_rollover",
+    "question": "Did you move any of that money into another retirement account?",
+    "why_ask": "A completed rollover is not taxable, but the 60-day rule must be checked.",
+    "required_docs": [
+      "rollover confirmation"
+    ],
+    "retrieval_query": "rollover 60 day rule IRA",
+    "source": "IRS Pub 590-A",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_disability_benefits",
+    "fact": "has_disability_benefits",
+    "question": "Did you receive disability payments, such as from insurance or a disability pension?",
+    "why_ask": "Some disability payments are taxable and some are not.",
+    "required_docs": [
+      "1099-R or W-2"
+    ],
+    "retrieval_query": "disability pension taxable before minimum retirement age",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  }
+]

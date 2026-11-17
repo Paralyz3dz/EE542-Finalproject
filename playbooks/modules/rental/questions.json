@@ -1,0 +1,117 @@
+[
+  {
+    "id": "q_rented_fewer_than_15_days",
+    "fact": "rented_fewer_than_15_days",
+    "question": "Was it your own home, rented out for fewer than 15 days in the year?",
+    "why_ask": "A home you live in that is rented for fewer than 15 days is generally not reported as rental income.",
+    "required_docs": [],
+    "retrieval_query": "rented fewer than 15 days personal residence",
+    "source": "IRS Pub 527",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_rental_in_ca",
+    "fact": "rental_in_ca",
+    "question": "Is the rental property in California?",
+    "why_ask": "Property in another state is taxed by that state too.",
+    "required_docs": [
+      "property address"
+    ],
+    "retrieval_query": "rental income other state California",
+    "source": "FTB Schedule S Instructions",
+    "origin": "earlier playbook (ca_rental)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_rental_income",
+    "fact": "rental_income",
+    "question": "How much rent did you receive in total?",
+    "why_ask": "All rent received, including advance rent, is income.",
+    "required_docs": [
+      "rent ledger",
+      "1099-MISC or 1099-K"
+    ],
+    "retrieval_query": "rental income advance rent security deposit",
+    "source": "IRS Pub 527",
+    "origin": "earlier playbook (ca_rental)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_rental_expenses",
+    "fact": "rental_expenses",
+    "question": "About how much did you spend on the rental (mortgage interest, property tax, insurance, repairs, management)?",
+    "why_ask": "Ordinary rental expenses reduce rental income; repairs and improvements are treated differently.",
+    "required_docs": [
+      "1098 mortgage interest",
+      "property tax bill",
+      "insurance and repair receipts"
+    ],
+    "retrieval_query": "rental expenses repairs improvements",
+    "source": "IRS Pub 527",
+    "origin": "earlier playbook (ca_rental)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_placed_in_service_this_year",
+    "fact": "placed_in_service_this_year",
+    "question": "Did you start renting this property for the first time last year?",
+    "why_ask": "Depreciation starts when the property is placed in service.",
+    "required_docs": [
+      "closing statement"
+    ],
+    "retrieval_query": "depreciation rental property placed in service",
+    "source": "IRS Pub 527",
+    "origin": "earlier playbook (ca_rental)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_personal_use_over_limit",
+    "fact": "personal_use_over_limit",
+    "question": "Did you or your family stay there yourselves for more than 14 days, or more than 10% of the days it was rented?",
+    "why_ask": "Heavy personal use makes it a vacation home and limits deductions.",
+    "required_docs": [],
+    "retrieval_query": "personal use of dwelling unit 14 days 10 percent",
+    "source": "IRS Pub 527",
+    "origin": "earlier playbook (ca_rental)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_short_term_rental",
+    "fact": "short_term_rental",
+    "question": "Were most guests' stays a week or shorter, for example through Airbnb?",
+    "why_ask": "Very short average stays change how the activity is treated.",
+    "required_docs": [
+      "platform yearly summary"
+    ],
+    "retrieval_query": "short term rental average period 7 days",
+    "source": "IRS Pub 925",
+    "origin": "earlier playbook (ca_rental)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_sold_rental_property",
+    "fact": "sold_rental_property",
+    "question": "Did you sell the rental property last year?",
+    "why_ask": "A sale must report gain or loss and recapture depreciation.",
+    "required_docs": [
+      "closing statement",
+      "1099-S"
+    ],
+    "retrieval_query": "sale of rental property depreciation recapture",
+    "source": "IRS Pub 544",
+    "origin": "earlier playbook (ca_rental)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_rents_personal_property",
+    "fact": "rents_personal_property",
+    "question": "Did you also rent out personal property, such as a car or equipment?",
+    "why_ask": "Renting personal property is reported differently from real estate.",
+    "required_docs": [],
+    "retrieval_query": "income from renting personal property",
+    "source": "IRS Pub 527",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  }
+]

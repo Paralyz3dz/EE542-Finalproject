@@ -1,0 +1,162 @@
+[
+  {
+    "id": "q_dependent_count",
+    "fact": "dependent_count",
+    "question": "How many people did you support or have living with you, not counting your spouse?",
+    "why_ask": "Each possible dependent is checked separately.",
+    "required_docs": [],
+    "retrieval_query": "dependents qualifying child qualifying relative tests",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part II",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_dependent_lived_with_you_half_year",
+    "fact": "dependent_lived_with_you_half_year",
+    "question": "Did they live with you for more than half of last year?",
+    "why_ask": "A qualifying child must live with you more than half the year (with some exceptions).",
+    "required_docs": [],
+    "retrieval_query": "residency test qualifying child more than half the year",
+    "source": "IRS Pub 17",
+    "origin": "IRS Direct File flow (TY2024), adapted; Form 13614-C (Rev. 10-2025) Part II",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_child_under_17",
+    "fact": "has_child_under_17",
+    "question": "Is any of them your child (or stepchild, foster child, sibling, or their descendant) under 17 at the end of the year?",
+    "why_ask": "A qualifying child under 17 may qualify for the Child Tax Credit.",
+    "required_docs": [
+      "child's Social Security card"
+    ],
+    "retrieval_query": "child tax credit qualifying child under age 17",
+    "source": "IRS Pub 17",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_child_under_6",
+    "fact": "has_child_under_6",
+    "question": "Is any child under 6 at the end of the year?",
+    "why_ask": "California's Young Child Tax Credit applies to a child under 6 when the family qualifies for CalEITC.",
+    "required_docs": [],
+    "retrieval_query": "California young child tax credit CalEITC",
+    "source": "FTB 3514 Instructions",
+    "origin": "California layer (FTB 3514)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_supports_other_relative",
+    "fact": "supports_other_relative",
+    "question": "Do you support anyone else, such as a parent or other relative, who is not your child?",
+    "why_ask": "A qualifying relative may be claimed if you pay more than half of their support.",
+    "required_docs": [],
+    "retrieval_query": "qualifying relative support test gross income test",
+    "source": "IRS Pub 17",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_dependent_is_student_or_disabled",
+    "fact": "dependent_is_student_or_disabled",
+    "question": "Is any of them a full-time student aged 19 to 23, or permanently disabled?",
+    "why_ask": "Students under 24 and disabled people of any age can still be qualifying children.",
+    "required_docs": [],
+    "retrieval_query": "qualifying child age test student permanently disabled",
+    "source": "IRS Pub 17",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_shared_custody",
+    "fact": "shared_custody",
+    "question": "Do you share custody of a child with a parent who does not live with you?",
+    "why_ask": "Children of divorced or separated parents have special rules on who may claim them.",
+    "required_docs": [],
+    "retrieval_query": "children of divorced or separated parents custodial parent Form 8332",
+    "source": "IRS Pub 17",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_someone_else_could_claim",
+    "fact": "someone_else_could_claim",
+    "question": "Could anyone else, such as the other parent or a grandparent, also claim any of these people?",
+    "why_ask": "When more than one person could claim a child, tie-breaker rules decide.",
+    "required_docs": [],
+    "retrieval_query": "tiebreaker rules qualifying child of more than one person",
+    "source": "IRS Pub 17",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_childcare",
+    "fact": "paid_childcare",
+    "question": "Did you pay someone to care for a child under 13 or a dependent who can't care for themselves so you could work or look for work?",
+    "why_ask": "Work-related care costs may qualify for the Child and Dependent Care Credit.",
+    "required_docs": [],
+    "retrieval_query": "child and dependent care credit work-related expenses",
+    "source": "IRS Pub 503",
+    "origin": "IRS Direct File flow (TY2024), adapted; Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_after_school_or_camp",
+    "fact": "paid_after_school_or_camp",
+    "question": "Did any of that care include after-school programs or summer day camps?",
+    "why_ask": "After-school care and day camps can count as care; overnight camps do not.",
+    "required_docs": [],
+    "retrieval_query": "day camp overnight camp child care credit",
+    "source": "IRS Pub 503",
+    "origin": "advisor interview 2026-11-11",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_has_provider_details",
+    "fact": "has_provider_details",
+    "question": "Do you have each care provider's name, address and tax ID (or Social Security number)?",
+    "why_ask": "The credit requires the provider's identifying information.",
+    "required_docs": [
+      "provider name, address and tax ID"
+    ],
+    "retrieval_query": "care provider identification test Form 2441",
+    "source": "IRS Pub 503",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_employer_dependent_care_benefits",
+    "fact": "employer_dependent_care_benefits",
+    "question": "Did your employer give you dependent care benefits (shown in box 10 of your W-2)?",
+    "why_ask": "Employer dependent care benefits reduce the expenses that count for the credit.",
+    "required_docs": [
+      "W-2 box 10"
+    ],
+    "retrieval_query": "dependent care benefits W-2 box 10 Form 2441",
+    "source": "IRS Pub 503",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_household_employee",
+    "fact": "household_employee",
+    "question": "Did a nanny or other caregiver work in your home, paid by you?",
+    "why_ask": "Paying a household employee can create employment tax duties.",
+    "required_docs": [],
+    "retrieval_query": "household employee nanny tax",
+    "source": "IRS Pub 503",
+    "origin": "IRS Direct File flow (TY2024), adapted",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_care_provider_is_family",
+    "fact": "care_provider_is_family",
+    "question": "Was any of the care given by a family member, such as your own child, your spouse, or someone you claim as a dependent?",
+    "why_ask": "Payments to your child under 19, your spouse or your dependent generally do not count for the child and dependent care credit.",
+    "required_docs": [],
+    "retrieval_query": "child and dependent care payments to relatives",
+    "source": "IRS Pub 503",
+    "origin": "Form 6744 (Rev. 10-2026) Advanced Scenario 2 (structure only); IRS Pub 503",
+    "status": "derived_official"
+  }
+]

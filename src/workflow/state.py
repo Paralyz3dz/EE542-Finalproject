@@ -28,6 +28,10 @@ class State:
                       plus preparer decisions {"decision", "note"}
         evidence      question id -> {"citations": [retrieved citation strings],
                                       "references": [{"reference", "retrieved"}]}
+        priority      section ids asked first: the assistant's choice, plus modules whose keywords
+                      appeared in the background note (e.g. ["side_gig"])
+        boosted       facts moved to the front because a trigger word was heard:
+                      {"fact", "trigger", "keyword"}, in the order they were triggered
         status        "in_progress" -> "waiting_for_preparer" -> "approved" | "returned"
     """
     scenario: str
@@ -38,6 +42,8 @@ class State:
     missing_docs: list = field(default_factory=list)
     history: list = field(default_factory=list)
     evidence: dict = field(default_factory=dict)
+    priority: list = field(default_factory=list)
+    boosted: list = field(default_factory=list)
     status: str = "in_progress"
 
     def to_dict(self) -> dict:

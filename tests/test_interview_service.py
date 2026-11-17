@@ -108,3 +108,16 @@ def test_no_api_key_means_no_normalizer(monkeypatch):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     monkeypatch.setattr("src.llm.normalize.is_configured", lambda: False)
     assert make_normalizer() is None
+
+
+def test_intake_with_priority_from_the_service():
+    """The service lists the intake with its sections and starts it with a priority."""
+    intake = [p for p in list_playbooks() if p["id"] == "intake"][0]
+    assert any(s["id"] == "side_gig" for s in intake["sections"])
+    svc = InterviewService(search=no_search)
+    r = svc.start("intake", ["side_gig"])
+    assert r["output"]["fact"] == "has_self_employment"
+    assert r["state"]["priority"] == ["side_gig"]
+    with pytest.raises(ValueError):
+        svc.start("intake", ["bogus"])
+

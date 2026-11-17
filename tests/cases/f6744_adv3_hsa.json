@@ -1,0 +1,29 @@
+{
+  "name": "Single W-2 employee with an HSA, contributions from her and a relative, and distributions",
+  "source": "Form 6744 (Rev. 10-2026) Advanced Scenario 3, interview notes (structure only).",
+  "official_outcome": "HSA reporting (Form 8889) is in the Pub 4012 scope with advanced certification; the preparer works the 5498-SA and 1099-SA.",
+  "priority": [],
+  "background": "",
+  "answers": {
+    "marital_status": "never_married",
+    "registered_domestic_partner": "no",
+    "has_wages": "yes",
+    "w2_job_count": "1",
+    "has_hsa": "yes"
+  },
+  "expect": {
+    "flags": [],
+    "modules_asked": [
+      "base_intake"
+    ],
+    "modules_not_asked": [
+      "side_gig",
+      "family",
+      "retiree",
+      "rental"
+    ],
+    "documents_contain": [
+      "5498-SA"
+    ]
+  }
+}

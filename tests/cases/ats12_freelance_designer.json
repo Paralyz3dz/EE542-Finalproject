@@ -1,0 +1,33 @@
+{
+  "name": "W-2 employee with a freelance design business (cash method, no car, no home office)",
+  "source": "IRS MeF ATS Test Scenario 12 (TY2025): Form 1040, Schedules 1, 2, C, SE, Form 7206, W-2. Moved to California; names and IDs dropped.",
+  "official_outcome": "Schedule C with $35,235 receipts and $10,907 expenses, self-employed health insurance on Form 7206. Within the Pub 4012 Schedule C limits (cash method, no inventory, no employees, no vehicle or home expenses, expenses under $50,000).",
+  "priority": [],
+  "background": "W-2 job plus freelance graphic design clients",
+  "answers": {
+    "has_wages": "yes",
+    "w2_job_count": "1",
+    "marital_status": "never_married",
+    "registered_domestic_partner": "no",
+    "has_self_employment": "yes",
+    "does_freelance_contract": "yes",
+    "main_income_source": "regular_job",
+    "side_gross_income": "35235",
+    "side_expenses": "10907",
+    "paid_own_health_insurance": "yes",
+    "record_keeping": "receipts_and_statements",
+    "made_estimated_payments": "yes"
+  },
+  "expect": {
+    "flags": [],
+    "modules_asked": [
+      "base_intake",
+      "side_gig"
+    ],
+    "modules_not_asked": [
+      "family",
+      "retiree",
+      "rental"
+    ]
+  }
+}
