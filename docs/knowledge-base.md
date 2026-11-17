@@ -167,3 +167,8 @@ search(query: str) -> {"matches": [{"citation": str, "text": str, "chunk_id": st
 | End to end | run one intake interview; the summary field `references_not_in_kb` | empty after batch 2 |
 
 When a playbook question gains a new `source`, add the document to section 2 and embed it.
+
+The later [corpus hygiene experiment](corpus-hygiene.md) preserves all 6,004 stored
+chunks while excluding 440 reviewed index/reference blocks from the eligible
+retrieval view. Its source metrics and tradeoffs are recorded separately from
+the original import acceptance run.

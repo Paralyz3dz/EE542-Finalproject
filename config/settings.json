@@ -8,5 +8,6 @@
   "claude_model_dialogue": "claude-sonnet-4-6",
   "temperature_extract": 0,
   "temperature_dialogue": 0.5,
-  "retrieve_candidate_k": 10
+  "retrieve_candidate_k": 10,
+  "exclude_reference_chunks": true
 }

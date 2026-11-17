@@ -1,0 +1,68 @@
+{
+  "questions_sha256": "b34fcf5ba35175012fa4a7757466282b1b585e9ea7893b705880fbf4d75f4221",
+  "settings": {
+    "tax_year": 2025,
+    "chunk_size_chars": 1500,
+    "retrieve_top_k": 5,
+    "rrf_constant": 60,
+    "rerank_top_k": 5,
+    "claude_model_extract": "claude-haiku-4-5",
+    "claude_model_dialogue": "claude-sonnet-4-6",
+    "temperature_extract": 0,
+    "temperature_dialogue": 0.5,
+    "retrieve_candidate_k": 10,
+    "exclude_reference_chunks": false
+  },
+  "corpus": {
+    "chunks": 6004,
+    "documents": 21,
+    "sha256": "baa352db9fad6e6a9b672baf329b8006ec85da49290443b95687215ae2271bbf",
+    "indexes": [
+      [
+        "chunks_embedding_hnsw",
+        "CREATE INDEX chunks_embedding_hnsw ON public.chunks USING hnsw (embedding vector_cosine_ops)"
+      ],
+      [
+        "chunks_pkey",
+        "CREATE UNIQUE INDEX chunks_pkey ON public.chunks USING btree (id)"
+      ],
+      [
+        "chunks_year_type",
+        "CREATE INDEX chunks_year_type ON public.chunks USING btree (tax_year, type)"
+      ]
+    ],
+    "hnsw_ef_search": "40"
+  },
+  "model": {
+    "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+    "ollama_model": "qwen3-embedding:0.6b",
+    "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d"
+  },
+  "query_vectors_sha256": "40054af7c4c6333b952135a1a4f5cb6bebb0fe12c590438d5b6b81e85d0742d5",
+  "exclusions": 440,
+  "order": [
+    [
+      false,
+      true
+    ],
+    [
+      true,
+      false
+    ],
+    [
+      false,
+      true
+    ]
+  ],
+  "code_sha256": {
+    "src/rag/retriever.py": "3c04575b41d9ce7e778048d74119b6d75eddd2e89699323b8ec3c3c3dd109e3b",
+    "src/rag/hybrid.py": "2f58ebecbb9c549154fb03f5a1f18096db53bbdd2d88dbc2703b4c417f1b543c",
+    "src/rag/corpus_hygiene.py": "eeee000bb0b58d9adeda3794b93c775a572ea504bcf7d46b3cd0412b3e651b57",
+    "src/db/queries.py": "a86c5f00ab7d6e4365614594c2bc0a7227290744f9a2edb2ca865a76333a374b",
+    "eval/run_candidate_experiment.py": "82c03042f21d605bfdd946a0624082fe281b97ac9f0ad5c550907bbc1a639392",
+    "eval/run_hygiene_experiment.py": "97612e855656818ebee2febfe184ceba01ff092823375fc8ac20aa0883be6073",
+    "config/retrieval_exclusions.json": "5676ff9210393c238df14a7103e235e576e01ff375c71c1f73a01831c3c48144"
+  },
+  "change": "Only the reviewed index/reference-block eligibility policy. K=10, output=5, display=3, embeddings and RRF=60 stay fixed.",
+  "timing": "Full production retrieval excluding query embedding, answer generation and judging."
+}

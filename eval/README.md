@@ -1,3 +1,6 @@
+For the paired 104-query index/reference-block cleanup experiment, see
+[corpus-hygiene.md](../docs/corpus-hygiene.md).
+
 For controlled 104-question intake candidate-pool comparisons, see
 [candidate_experiment.md](candidate_experiment.md).
 

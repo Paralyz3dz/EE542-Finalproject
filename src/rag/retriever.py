@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 from urllib.error import URLError
 from urllib.request import Request, urlopen
@@ -12,6 +13,7 @@ from pgvector.psycopg import register_vector
 from src.db.connection import ROOT, get_conn
 from src.db.queries import fetch_chunks, vector_search
 from src.rag.hybrid import bm25_search, fuse_rankings
+from src.rag.corpus_hygiene import filter_chunks
 
 
 QUERY_INSTRUCTION = (
@@ -65,7 +67,7 @@ def embed_texts(texts: list[str], options: dict | None = None) -> np.ndarray:
     return vectors
 
 
-def retrieve(query: str, *, candidate_k: int | None = None) -> dict:
+def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None) -> dict:
     if not query.strip():
         raise ValueError("The retrieval query must not be empty.")
     settings = json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
@@ -75,6 +77,10 @@ def retrieve(query: str, *, candidate_k: int | None = None) -> dict:
         candidate_k = settings.get("retrieve_candidate_k", top_k)
     if type(candidate_k) is not int or candidate_k < top_k:
         raise ValueError("candidate_k must be an integer at least retrieve_top_k.")
+    if exclude_reference_chunks is None:
+        exclude_reference_chunks = settings.get("exclude_reference_chunks", False)
+    if type(exclude_reference_chunks) is not bool:
+        raise ValueError("exclude_reference_chunks must be a boolean.")
     rrf_constant = settings["rrf_constant"]
     model = os.getenv("EMBEDDING_MODEL", "Qwen/Qwen3-Embedding-0.6B")
 
@@ -111,8 +117,14 @@ def retrieve(query: str, *, candidate_k: int | None = None) -> dict:
 
         query_vector = embed_query(query)
         chunks = fetch_chunks(conn, tax_year)
+        excluded_ids = []
+        if exclude_reference_chunks:
+            chunks, excluded_ids, stale = filter_chunks(chunks)
+            if stale:
+                logging.getLogger(__name__).warning("Retained %d chunks with stale exclusion fingerprints", len(stale))
         conn.execute("SET LOCAL enable_seqscan = off")
-        rows = vector_search(conn, query_vector, model, tax_year, k=candidate_k)
+        options = {"excluded_ids": excluded_ids} if excluded_ids else {}
+        rows = vector_search(conn, query_vector, model, tax_year, k=candidate_k, **options)
 
     vector_matches = [
         {"chunk_id": row[0], "citation": row[1], "text": row[2], "score": row[3]}

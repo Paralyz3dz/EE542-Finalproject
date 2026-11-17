@@ -1,0 +1,16 @@
+{
+  "physical_chunks": 6004,
+  "eligible_chunks": 5564,
+  "eligible_sources": 21,
+  "excluded": {
+    "index": 370,
+    "reference_list": 62,
+    "reference_directory": 8
+  },
+  "all_policy_fingerprints_match": true,
+  "protected_ids_excluded": [],
+  "new_document_raw_chunks": 5184,
+  "new_document_eligible_chunks": 4756,
+  "new_document_raw_tables": 800,
+  "new_document_eligible_tables": 605
+}
