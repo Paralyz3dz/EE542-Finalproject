@@ -166,7 +166,7 @@
     "why_ask": "Tips are taxable; qualified tips may also qualify for the new deduction on Schedule 1-A.",
     "required_docs": [],
     "retrieval_query": "tips income deduction for qualified tips Schedule 1-A",
-    "source": "IRS Schedule 1-A Instructions",
+    "source": "IRS Form 1040 Instructions",
     "origin": "Form 13614-C (Rev. 10-2025) Part III",
     "status": "derived_official"
   },
@@ -177,7 +177,7 @@
     "why_ask": "Qualified overtime pay may qualify for the new deduction on Schedule 1-A.",
     "required_docs": [],
     "retrieval_query": "qualified overtime compensation deduction Schedule 1-A",
-    "source": "IRS Schedule 1-A Instructions",
+    "source": "IRS Form 1040 Instructions",
     "origin": "Form 13614-C (Rev. 10-2026) Part III (2025 deduction)",
     "status": "derived_official"
   },
@@ -460,7 +460,7 @@
       "loan interest statement"
     ],
     "retrieval_query": "car loan interest deduction qualified passenger vehicle Schedule 1-A",
-    "source": "IRS Schedule 1-A Instructions",
+    "source": "IRS Form 1040 Instructions",
     "origin": "Form 13614-C (Rev. 10-2025) Part V (listed under Other)",
     "status": "derived_official"
   },
@@ -550,6 +550,56 @@
     "retrieval_query": "estimated tax payments credit",
     "source": "IRS Pub 505",
     "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_registered_domestic_partner",
+    "fact": "registered_domestic_partner",
+    "question": "Are you in a registered domestic partnership in California?",
+    "why_ask": "California treats registered domestic partners like spouses, but the federal return does not; both returns are affected.",
+    "required_docs": [
+      "domestic partnership registration"
+    ],
+    "retrieval_query": "registered domestic partners California filing status",
+    "source": "FTB 540 Booklet",
+    "origin": "Direct File knockout registered-domestic-partner-ko (IRS-Public/direct-file e365f9f); Pub 4012 (Rev. 10-2026) Scope of Service chart (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_farm_income",
+    "fact": "has_farm_income",
+    "question": "Did you earn money from farming, ranching or commercial fishing?",
+    "why_ask": "Farm income goes on Schedule F, which volunteers do not prepare.",
+    "required_docs": [],
+    "retrieval_query": "farm income Schedule F",
+    "source": "IRS Pub 17",
+    "origin": "Pub 4012 (Rev. 10-2026) Scope of Service chart, Schedule 1 line 6 (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_foreign_accounts",
+    "fact": "has_foreign_accounts",
+    "question": "Did you have a bank or investment account outside the U.S., or receive income from another country?",
+    "why_ask": "Foreign accounts and income can require extra forms (FinCEN 114, Form 8938, foreign tax credit).",
+    "required_docs": [
+      "foreign account statements"
+    ],
+    "retrieval_query": "foreign financial accounts FBAR foreign income",
+    "source": "IRS Pub 17",
+    "origin": "Direct File knockout foreign-accounts-trusts-knockout (IRS-Public/direct-file e365f9f); Pub 4012 (Rev. 10-2026) Scope of Service chart (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_retirement_contribution_type",
+    "fact": "retirement_contribution_type",
+    "question": "What kind of retirement account did you put money into: a 401(k) or 403(b) at work, a traditional IRA, a Roth IRA, or a plan for the self-employed (SEP, SIMPLE, solo 401(k))?",
+    "why_ask": "Workplace plan contributions are already on the W-2; traditional IRA contributions may be deductible; self-employed plans are outside the volunteer scope.",
+    "required_docs": [
+      "5498"
+    ],
+    "retrieval_query": "traditional IRA contribution deduction SEP SIMPLE",
+    "source": "IRS Pub 590-A",
+    "origin": "Direct File knockout ira-contributions-ko (IRS-Public/direct-file e365f9f); Pub 4012 (Rev. 10-2026) Scope of Service chart (structure only)",
     "status": "derived_official"
   }
 ]

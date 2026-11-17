@@ -147,5 +147,16 @@
     "source": "IRS Pub 503",
     "origin": "IRS Direct File flow (TY2024), adapted",
     "status": "derived_official"
+  },
+  {
+    "id": "q_care_provider_is_family",
+    "fact": "care_provider_is_family",
+    "question": "Was any of the care given by a family member, such as your own child, your spouse, or someone you claim as a dependent?",
+    "why_ask": "Payments to your child under 19, your spouse or your dependent generally do not count for the child and dependent care credit.",
+    "required_docs": [],
+    "retrieval_query": "child and dependent care payments to relatives",
+    "source": "IRS Pub 503",
+    "origin": "Form 6744 (Rev. 10-2026) Advanced Scenario 2 (structure only); IRS Pub 503",
+    "status": "derived_official"
   }
 ]

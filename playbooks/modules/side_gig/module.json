@@ -247,6 +247,12 @@
       "part": "expenses"
     },
     {
+      "name": "paid_own_health_insurance",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
       "name": "record_keeping",
       "type": "enum",
       "required": true,

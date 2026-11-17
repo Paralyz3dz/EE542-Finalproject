@@ -1,0 +1,56 @@
+{
+  "name": "Demo client: W-2 job, rideshare driving, crafts sold online, two children, mixed business and personal travel",
+  "source": "Fictional. Advisor interview 2026-11-11 (income split first; trigger words car / kids / travel).",
+  "official_outcome": "Mixed travel must be split by the preparer.",
+  "priority": [
+    "side_gig"
+  ],
+  "background": "W-2 job, drives Uber on weekends, two kids, travels to craft fairs",
+  "answers": {
+    "has_self_employment": "yes",
+    "uses_car_for_business": "yes",
+    "car_expense_method": "business_miles",
+    "has_mileage_log": "no",
+    "has_dependents": "yes",
+    "has_child_under_17": "yes",
+    "paid_childcare": "yes",
+    "paid_after_school_or_camp": "no",
+    "has_provider_details": "yes",
+    "care_provider_is_family": "no",
+    "business_travel": "yes",
+    "travel_purpose": "mixed",
+    "sells_online": "yes",
+    "selling_type": "handmade",
+    "selling_for_profit": "yes",
+    "does_rideshare_delivery": "yes",
+    "side_gross_income": "18000",
+    "side_expenses": "3500",
+    "record_keeping": "receipts_and_statements",
+    "dependent_count": "2",
+    "dependent_lived_with_you_half_year": "yes",
+    "has_wages": "yes",
+    "marital_status": "married",
+    "made_estimated_payments": "yes"
+  },
+  "expect": {
+    "first_questions": [
+      "has_self_employment",
+      "uses_car_for_business",
+      "car_expense_method",
+      "has_mileage_log",
+      "has_dependents"
+    ],
+    "flags": [
+      "esc_travel_purpose_mixed"
+    ],
+    "modules_asked": [
+      "base_intake",
+      "side_gig",
+      "family"
+    ],
+    "modules_not_asked": [
+      "retiree",
+      "rental"
+    ]
+  }
+}
