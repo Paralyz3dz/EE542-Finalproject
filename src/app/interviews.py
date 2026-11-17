@@ -18,7 +18,7 @@ import logging
 import os
 from threading import Lock
 
-from src.workflow.engine import PLAYBOOKS, start_interview, step
+from src.workflow.engine import INTAKE, MODULES, PLAYBOOKS, load_scenario, sections, start_interview, step
 from src.workflow.state import State
 
 logger = logging.getLogger(__name__)
@@ -33,13 +33,21 @@ class InterviewClosed(RuntimeError):
 
 
 def list_playbooks() -> list[dict]:
-    """Return {"id", "title", "status"} for every playbooks/<folder>/scenario.json."""
+    """Return {"id", "title", "status", "sections"} for each playbook.
+
+    The modular intake (playbooks/modules/) comes first and lists the sections an assistant can
+    put first; then every single-scenario playbook (playbooks/<folder>/scenario.json).
+    """
     items = []
+    if MODULES.exists():
+        definition, _ = load_scenario(INTAKE)
+        items.append({"id": INTAKE, "title": definition["title"], "status": "draft",
+                      "sections": sections(definition)})
     for folder in sorted(PLAYBOOKS.iterdir()):
         path = folder / "scenario.json"
         if path.exists():
             d = json.loads(path.read_text(encoding="utf-8"))
-            items.append({"id": d["id"], "title": d["title"], "status": d.get("status", "")})
+            items.append({"id": d["id"], "title": d["title"], "status": d.get("status", ""), "sections": []})
     return items
 
 
@@ -58,6 +66,8 @@ def snapshot(state: State) -> dict:
         "flags": state.flags,
         "missing_docs": state.missing_docs,
         "answered": len(state.history),
+        "priority": list(state.priority),
+        "triggers": sorted({b["keyword"] for b in state.boosted}),
         "last_parsed_by": state.history[-1].get("parsed_by") if state.history else None,
     }
 
@@ -120,15 +130,17 @@ class InterviewService:
             raise InterviewNotFound(interview_id)
         return state
 
-    def start(self, scenario: str) -> dict:
+    def start(self, scenario: str, priority: list[str] | None = None, background: str = "") -> dict:
         """Start an interview for a playbook id and return its first question.
 
-        Raises ValueError for an unknown scenario.
+        priority: sections the assistant is unsure about and wants asked first (intake only).
+        background: optional short client description; its trigger words reorder the interview.
+        Raises ValueError for an unknown scenario or priority section.
         Returns {"output": first question guide, "state": snapshot}.
         """
         if scenario not in {p["id"] for p in list_playbooks()}:
             raise ValueError(f"Unknown scenario {scenario!r}")
-        state = start_interview(scenario)
+        state = start_interview(scenario, priority, background)
         state, out = step(state, search=self._cached_search, normalizer=self.normalizer)
         with self._lock:
             self._store[state.interview_id] = state

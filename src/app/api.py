@@ -126,8 +126,10 @@ def chat(payload: ChatRequest, request: Request):
 
 
 class StartRequest(BaseModel):
-    """Body of POST /api/interviews: {"scenario": playbook id}."""
+    """Body of POST /api/interviews: {"scenario", "priority": [section ids asked first], "background": client note}."""
     scenario: str = Field(min_length=1, max_length=100)
+    priority: list[str] = Field(default_factory=list, max_length=20)
+    background: str = Field(default="", max_length=2000)
 
 
 class AnswerRequest(BaseModel):
@@ -164,11 +166,11 @@ def playbooks():
 
 @app.post("/api/interviews")
 def start(payload: StartRequest, request: Request):
-    """Start an interview; returns the first question and a sidebar snapshot (404: unknown scenario)."""
+    """Start an interview; returns the first question and a sidebar snapshot (404 unknown scenario, 422 bad priority)."""
     try:
-        return request.app.state.interviews.start(payload.scenario)
+        return request.app.state.interviews.start(payload.scenario, payload.priority, payload.background)
     except ValueError as exc:
-        raise HTTPException(404, str(exc)) from None
+        raise HTTPException(404 if "scenario" in str(exc) else 422, str(exc)) from None
 
 
 @app.post("/api/interviews/{interview_id}/answer")

@@ -1,0 +1,551 @@
+{
+  "id": "base_intake",
+  "title": "Base intake: everyone (Form 13614-C structure)",
+  "status": "draft",
+  "keywords": [],
+  "facts": [
+    {
+      "name": "ca_resident_full_year",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "lived_in_multiple_states",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "age_65_or_older",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "can_be_claimed_as_dependent",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "is_us_citizen",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "is_full_time_student",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "blind_or_disabled",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "has_digital_assets",
+      "type": "bool",
+      "required": true,
+      "part": "about_you"
+    },
+    {
+      "name": "marital_status",
+      "type": "enum",
+      "required": true,
+      "part": "household",
+      "options": [
+        "never_married",
+        "married",
+        "divorced",
+        "legally_separated",
+        "widowed"
+      ]
+    },
+    {
+      "name": "lived_apart_last_6_months",
+      "type": "bool",
+      "required": true,
+      "part": "household",
+      "ask_when": [
+        {
+          "fact": "marital_status",
+          "equals": "married"
+        }
+      ]
+    },
+    {
+      "name": "marital_status_changed",
+      "type": "bool",
+      "required": true,
+      "part": "household"
+    },
+    {
+      "name": "has_dependents",
+      "type": "bool",
+      "required": true,
+      "part": "household"
+    },
+    {
+      "name": "has_wages",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "w2_job_count",
+      "type": "enum",
+      "required": true,
+      "part": "income",
+      "options": [
+        "1",
+        "2",
+        "3_or_more"
+      ],
+      "ask_when": [
+        {
+          "fact": "has_wages",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "received_tips",
+      "type": "bool",
+      "required": true,
+      "part": "income",
+      "ask_when": [
+        {
+          "fact": "has_wages",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_qualified_overtime",
+      "type": "bool",
+      "required": true,
+      "part": "income",
+      "ask_when": [
+        {
+          "fact": "has_wages",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_self_employment",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "has_retirement_income",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "owns_rental",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "has_unemployment",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "had_state_refund",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "has_interest_dividends",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "sold_investments",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "received_alimony",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "has_gambling_winnings",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "has_other_income",
+      "type": "bool",
+      "required": true,
+      "part": "income"
+    },
+    {
+      "name": "paid_mortgage_interest",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "paid_property_tax",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "large_medical_expenses",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "made_donations",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "paid_student_loan_interest",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "contributed_to_retirement",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "is_educator_with_expenses",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "paid_alimony",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "took_education_classes",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "has_hsa",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "has_marketplace_insurance",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "bought_new_vehicle",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "installed_energy_efficient_items",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "sold_home",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "had_debt_forgiven",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "had_disaster_loss",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "had_credit_disallowed",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "received_irs_letter",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    },
+    {
+      "name": "made_estimated_payments",
+      "type": "bool",
+      "required": true,
+      "part": "events"
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "esc_ca_resident_full_year",
+      "when": [
+        {
+          "fact": "ca_resident_full_year",
+          "equals": false
+        }
+      ],
+      "reason": "Part-year California residency (Form 540NR) needs the preparer."
+    },
+    {
+      "id": "esc_lived_in_multiple_states",
+      "when": [
+        {
+          "fact": "lived_in_multiple_states",
+          "equals": true
+        }
+      ],
+      "reason": "Multi-state income needs the preparer."
+    },
+    {
+      "id": "esc_is_us_citizen",
+      "when": [
+        {
+          "fact": "is_us_citizen",
+          "equals": false
+        }
+      ],
+      "reason": "Non-citizen: resident or nonresident alien status must be decided by the preparer."
+    },
+    {
+      "id": "esc_has_digital_assets",
+      "when": [
+        {
+          "fact": "has_digital_assets",
+          "equals": true
+        }
+      ],
+      "reason": "Digital-asset transactions need the preparer."
+    },
+    {
+      "id": "esc_sold_investments",
+      "when": [
+        {
+          "fact": "sold_investments",
+          "equals": true
+        }
+      ],
+      "reason": "Investment or real-estate sales need the preparer."
+    },
+    {
+      "id": "esc_has_gambling_winnings",
+      "when": [
+        {
+          "fact": "has_gambling_winnings",
+          "equals": true
+        }
+      ],
+      "reason": "Gambling winnings and losses need the preparer."
+    },
+    {
+      "id": "esc_has_other_income",
+      "when": [
+        {
+          "fact": "has_other_income",
+          "equals": true
+        }
+      ],
+      "reason": "Other income types need the preparer to decide how to report them."
+    },
+    {
+      "id": "esc_has_marketplace_insurance",
+      "when": [
+        {
+          "fact": "has_marketplace_insurance",
+          "equals": true
+        }
+      ],
+      "reason": "Premium tax credit reconciliation (Form 8962) needs the preparer."
+    },
+    {
+      "id": "esc_installed_energy_efficient_items",
+      "when": [
+        {
+          "fact": "installed_energy_efficient_items",
+          "equals": true
+        }
+      ],
+      "reason": "Energy credit (Form 5695) needs the preparer."
+    },
+    {
+      "id": "esc_sold_home",
+      "when": [
+        {
+          "fact": "sold_home",
+          "equals": true
+        }
+      ],
+      "reason": "Home sale needs the preparer."
+    },
+    {
+      "id": "esc_had_debt_forgiven",
+      "when": [
+        {
+          "fact": "had_debt_forgiven",
+          "equals": true
+        }
+      ],
+      "reason": "Cancelled debt needs the preparer."
+    },
+    {
+      "id": "esc_had_disaster_loss",
+      "when": [
+        {
+          "fact": "had_disaster_loss",
+          "equals": true
+        }
+      ],
+      "reason": "Disaster losses need the preparer."
+    },
+    {
+      "id": "esc_had_credit_disallowed",
+      "when": [
+        {
+          "fact": "had_credit_disallowed",
+          "equals": true
+        }
+      ],
+      "reason": "A previously disallowed credit needs the preparer."
+    },
+    {
+      "id": "esc_received_irs_letter",
+      "when": [
+        {
+          "fact": "received_irs_letter",
+          "equals": true
+        }
+      ],
+      "reason": "An IRS letter or bill needs the preparer."
+    }
+  ],
+  "reminders": [
+    {
+      "id": "keep_donation_receipts",
+      "when": [
+        {
+          "fact": "made_donations",
+          "equals": true
+        }
+      ],
+      "text": "Remind the client to keep receipts or bank records for every donation."
+    }
+  ],
+  "triggers": [
+    {
+      "id": "kids",
+      "keywords": [
+        "kid",
+        "kids",
+        "child",
+        "children",
+        "son",
+        "daughter",
+        "baby",
+        "daycare",
+        "babysitter",
+        "after-school",
+        "summer camp"
+      ],
+      "ask_first": [
+        "has_dependents",
+        "has_child_under_17",
+        "paid_childcare",
+        "paid_after_school_or_camp"
+      ]
+    },
+    {
+      "id": "donation",
+      "keywords": [
+        "donate",
+        "donated",
+        "donation",
+        "donations",
+        "charity",
+        "church"
+      ],
+      "ask_first": [
+        "made_donations"
+      ]
+    },
+    {
+      "id": "school",
+      "keywords": [
+        "tuition",
+        "college",
+        "student loan",
+        "classes"
+      ],
+      "ask_first": [
+        "took_education_classes",
+        "paid_student_loan_interest"
+      ]
+    },
+    {
+      "id": "retirement",
+      "keywords": [
+        "retired",
+        "retirement",
+        "pension",
+        "social security",
+        "ira",
+        "401k"
+      ],
+      "ask_first": [
+        "has_retirement_income",
+        "receives_social_security",
+        "has_retirement_distribution"
+      ]
+    },
+    {
+      "id": "rental",
+      "keywords": [
+        "rent out",
+        "tenant",
+        "tenants",
+        "landlord",
+        "airbnb",
+        "vrbo"
+      ],
+      "ask_first": [
+        "owns_rental",
+        "short_term_rental",
+        "rental_in_ca"
+      ]
+    }
+  ]
+}

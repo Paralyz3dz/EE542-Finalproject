@@ -1,0 +1,52 @@
+part,item,irs_level,form_version,suggested_module,suggested_fact,suggested_handling,confirmed,notes
+Part I About you,Can anyone else claim you or your spouse on their tax return,B,both,base_intake,can_be_claimed_as_dependent,ask,Y,
+Part I About you,Did you live or work in two or more states,B,both,base_intake,lived_in_multiple_states,ask + escalate,Y,2025 wording: live or work; 2026: live
+Part I About you,U.S. citizen / on a visa,B,both,base_intake,is_us_citizen,ask + escalate if visa,Y,nonresident alien out of scope
+Part I About you,Full-time student,B,both,base_intake,is_full_time_student,ask,Y,
+Part I About you,Legally blind / totally and permanently disabled,B,both,base_intake,blind_or_disabled,ask,Y,
+Part I About you,Issued an identity protection PIN,B,both,base_intake,has_ip_pin,document,Y,needed at filing only
+Part I About you,Owners or holders of any digital assets,A,both,base_intake,has_digital_assets,ask + escalate,Y,
+Part I About you,Refund / balance due preferences,B,both,-,-,out_of_scope,Y,filing step not interview
+Part II Household,Marital status as of December 31,B,both,base_intake,marital_status,ask,Y,
+Part II Household,Married on the last day of the year / lived apart last 6 months,B,both,base_intake,lived_apart_last_6_months,ask,Y,affects HOH
+Part II Household,Divorced or legally separated (decree date),B,both,base_intake,divorce_or_separation_this_year,ask,Y,
+Part II Household,Everyone who lived with you or you supported,B,both,base_intake,has_dependents,ask,Y,"gate: asked in base_intake, opens family"
+Part II Household,Each person: relationship / months lived with you / student / disabled,B,both,family,dependent_details,ask,Y,Direct File FamilyAndHH
+Part III Income,Wages (how many jobs),B,both,base_intake,has_wages; w2_job_count,ask + document,Y,W-2
+Part III Income,Qualified overtime,B,2026 only,base_intake,has_qualified_overtime,ask,Y,"not on 2025 form; overtime deduction applies to 2025 (Schedule 1-A) - keep, origin 2026 form"
+Part III Income,Tips,B/A,both,base_intake,received_tips,ask,Y,new 2025 deduction (Schedule 1-A)
+Part III Income,Retirement account pension or annuity proceeds,B/A,both,retiree,has_retirement_income,ask,Y,gate has_retirement_income asked in base_intake; details in retiree
+Part III Income,Disability benefits,B,both,retiree,has_disability_benefits,ask,Y,
+Part III Income,Social Security or Railroad Retirement Benefits,B,both,retiree,receives_social_security,ask,Y,gate has_retirement_income asked in base_intake; CA does not tax Social Security
+Part III Income,Unemployment benefits,B,both,base_intake,has_unemployment,ask + document,Y,1099-G
+Part III Income,Refund of state or local income tax,B,both,base_intake,had_state_refund,ask,Y,
+Part III Income,Interest or dividends,B,both,base_intake,has_interest_dividends,ask + document,Y,1099-INT / 1099-DIV
+Part III Income,Sale of stocks bonds or real estate,A,both,base_intake,sold_investments,ask + escalate,Y,capital gains out of scope for now
+Part III Income,Alimony received,B,both,base_intake,received_alimony,ask,Y,
+Part III Income,Income from renting out your house or a room,A/M,both,base_intake,owns_rental,ask,Y,"gate: asked in base_intake, opens rental"
+Part III Income,Income from renting personal property such as a vehicle,-,both,rental,rents_personal_property,ask + escalate,Y,
+Part III Income,Gambling winnings,B,both,base_intake,has_gambling_winnings,ask + escalate,Y,
+Part III Income,Payments for contract or self-employment work,A,both,base_intake,has_self_employment,ask,Y,"gate: asked in base_intake, opens side_gig"
+Part III Income,GIG income (rideshare food or grocery delivery),A,2026 only,base_intake,has_self_employment,ask,Y,merged into has_self_employment question (gig wording from 2026 form)
+Part III Income,Any other money received (cash jury duty awards digital assets royalties),B/A,both,base_intake,has_other_income,ask + escalate,Y,
+Part IV Expenses,Mortgage interest,A,both,base_intake,paid_mortgage_interest,ask,Y,itemize?
+Part IV Expenses,State local real estate sales taxes,A,both,base_intake,paid_property_tax,ask,Y,itemize?
+Part IV Expenses,Medical dental prescription expenses,A,both,base_intake,large_medical_expenses,ask,Y,itemize?
+Part IV Expenses,Charitable contributions,A,both,base_intake,made_donations,ask,Y,advisor keyword: donation
+Part IV Expenses,Student loan interest,B,both,base_intake,paid_student_loan_interest,ask,Y,moved to base_intake (not family-specific)
+Part IV Expenses,Child and dependent care,B,both,family,paid_childcare,ask,Y,advisor keyword: kids
+Part IV Expenses,Contributions to a retirement account,B/A,both,base_intake,contributed_to_retirement,ask,Y,
+Part IV Expenses,School supplies by an educator,B,both,base_intake,is_educator_with_expenses,ask,Y,
+Part IV Expenses,Alimony paid,B,both,base_intake,paid_alimony,ask,Y,
+Part V Events,Educational classes (1098-T),B,both,base_intake,took_education_classes,ask,Y,moved to base_intake (not family-specific)
+Part V Events,Sell a home,A,both,base_intake,sold_home,ask + escalate,Y,
+Part V Events,Health savings account (HSA),A,both,base_intake,has_hsa,ask,Y,CA adds back HSA; moved to base_intake (not family-specific)
+Part V Events,Health insurance through the Marketplace (1095-A),A,both,base_intake,has_marketplace_insurance,ask,Y,
+Part V Events,Purchased a new vehicle (1098-VLI),A,2026 only,base_intake,bought_new_vehicle,ask,Y,2025 form lists it under (A) Other; car loan interest deduction applies to 2025 (Schedule 1-A)
+Part V Events,Debt cancelled or forgiven (1099-C),A,both,base_intake,had_debt_forgiven,ask + escalate,Y,
+Part V Events,Loss in a declared Federal disaster area,A,both,base_intake,had_disaster_loss,ask + escalate,Y,
+Part V Events,A tax credit disallowed in a previous year,B,both,base_intake,had_credit_disallowed,ask + escalate,Y,
+Part V Events,Received any letter or bill from the IRS,-,both,base_intake,received_irs_letter,ask + escalate,Y,
+Part V Events,Estimated tax payments or applied last year's refund,B,both,side_gig,estimated_tax_paid,ask,Y,also asked in base for everyone
+Part V Events,Brought last year's return,-,both,base_intake,has_prior_year_return,document,Y,
+Part V Events,Purchase and install energy-efficient home items (windows furnace insulation),A,2025 only,base_intake,installed_energy_efficient_items,ask + escalate,Y,2025 only (credit ended after 2025); Form 5695
