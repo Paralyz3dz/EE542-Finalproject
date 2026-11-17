@@ -1,0 +1,336 @@
+{
+  "id": "federal-2025-1040",
+  "title": "Form 1040",
+  "tax_year": 2025,
+  "recommend_when": [
+    {
+      "fact": "filing_status",
+      "in": [
+        "single",
+        "married_joint",
+        "married_separate",
+        "head_of_household",
+        "qualifying_surviving_spouse"
+      ]
+    }
+  ],
+  "recommend_reason": "Your interview includes an individual filing status. Review this federal individual return template; this suggestion does not determine whether filing is required.",
+  "fields": [
+    {
+      "key": "first_name",
+      "label": "First name and middle initial",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_14[0]",
+      "required": true,
+      "max_length": 35
+    },
+    {
+      "key": "last_name",
+      "label": "Last name",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_15[0]",
+      "required": true,
+      "max_length": 35
+    },
+    {
+      "key": "ssn",
+      "label": "SSN",
+      "source": "input",
+      "type": "ssn",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_16[0]",
+      "required": true,
+      "pattern": "[0-9]{3}-?[0-9]{2}-?[0-9]{4}",
+      "max_length": 11,
+      "strip_hyphens": true
+    },
+    {
+      "key": "street",
+      "label": "US street address",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].Address_ReadOrder[0].f1_20[0]",
+      "required": true,
+      "max_length": 70
+    },
+    {
+      "key": "apartment",
+      "label": "Apartment (optional)",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].Address_ReadOrder[0].f1_21[0]",
+      "max_length": 8
+    },
+    {
+      "key": "city",
+      "label": "City",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].Address_ReadOrder[0].f1_22[0]",
+      "required": true,
+      "max_length": 35
+    },
+    {
+      "key": "state",
+      "label": "State (two-letter code)",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].Address_ReadOrder[0].f1_23[0]",
+      "required": true,
+      "max_length": 2,
+      "uppercase": true,
+      "pattern": "(AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)"
+    },
+    {
+      "key": "zip_code",
+      "label": "ZIP code",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].Address_ReadOrder[0].f1_24[0]",
+      "required": true,
+      "max_length": 10,
+      "pattern": "[0-9]{5}(-[0-9]{4})?"
+    },
+    {
+      "key": "spouse_first_name",
+      "label": "Spouse first name and middle initial",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_17[0]",
+      "required": true,
+      "when": [
+        {
+          "fact": "filing_status",
+          "in": [
+            "married_joint",
+            "married_separate"
+          ]
+        }
+      ],
+      "pdf_when": [
+        {
+          "fact": "filing_status",
+          "equals": "married_joint"
+        }
+      ],
+      "max_length": 35
+    },
+    {
+      "key": "spouse_last_name",
+      "label": "Spouse last name",
+      "source": "input",
+      "type": "text",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_18[0]",
+      "required": true,
+      "when": [
+        {
+          "fact": "filing_status",
+          "in": [
+            "married_joint",
+            "married_separate"
+          ]
+        }
+      ],
+      "pdf_when": [
+        {
+          "fact": "filing_status",
+          "equals": "married_joint"
+        }
+      ],
+      "max_length": 35
+    },
+    {
+      "key": "spouse_ssn",
+      "label": "Spouse SSN",
+      "source": "input",
+      "type": "ssn",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_19[0]",
+      "required": true,
+      "when": [
+        {
+          "fact": "filing_status",
+          "in": [
+            "married_joint",
+            "married_separate"
+          ]
+        }
+      ],
+      "pattern": "[0-9]{3}-?[0-9]{2}-?[0-9]{4}",
+      "max_length": 11,
+      "strip_hyphens": true
+    },
+    {
+      "key": "w2_federal_withholding",
+      "label": "Total federal withholding from W-2 box 2",
+      "source": "input",
+      "type": "money",
+      "pdf_field": "topmostSubform[0].Page2[0].f2_17[0]",
+      "required": true
+    },
+    {
+      "key": "w2_wages",
+      "label": "W-2 wages (box 1)",
+      "source": "fact",
+      "type": "money",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_47[0]"
+    },
+    {
+      "key": "social_security_benefits",
+      "label": "Gross Social Security benefits",
+      "source": "fact",
+      "type": "money",
+      "pdf_field": "topmostSubform[0].Page1[0].f1_68[0]"
+    },
+    {
+      "key": "spouse_full_name",
+      "label": "Spouse full name",
+      "join": [
+        "spouse_first_name",
+        "spouse_last_name"
+      ],
+      "when": [
+        {
+          "fact": "filing_status",
+          "equals": "married_separate"
+        }
+      ],
+      "pdf_field": "topmostSubform[0].Page1[0].Checkbox_ReadOrder[0].f1_28[0]"
+    },
+    {
+      "key": "filing_status",
+      "label": "Filing status",
+      "source": "fact",
+      "required": true,
+      "choices": {
+        "single": [
+          "topmostSubform[0].Page1[0].Checkbox_ReadOrder[0].c1_8[0]",
+          "/1"
+        ],
+        "married_joint": [
+          "topmostSubform[0].Page1[0].Checkbox_ReadOrder[0].c1_8[1]",
+          "/2"
+        ],
+        "married_separate": [
+          "topmostSubform[0].Page1[0].Checkbox_ReadOrder[0].c1_8[2]",
+          "/3"
+        ],
+        "head_of_household": [
+          "topmostSubform[0].Page1[0].c1_8[0]",
+          "/4"
+        ],
+        "qualifying_surviving_spouse": [
+          "topmostSubform[0].Page1[0].c1_8[1]",
+          "/5"
+        ]
+      }
+    }
+  ],
+  "distinct": [
+    [
+      "ssn",
+      "spouse_ssn"
+    ]
+  ],
+  "review": [
+    {
+      "message": "Confirm digital assets, dependent status, age/blindness and other unanswered checkboxes."
+    },
+    {
+      "message": "Deductions, taxable income, tax, credits, payments totals and refund/balance require preparation."
+    },
+    {
+      "when": [
+        {
+          "fact": "has_dependents",
+          "equals": true
+        }
+      ],
+      "message": "Dependent details and related credits require completion."
+    },
+    {
+      "when": [
+        {
+          "fact": "has_side_income",
+          "equals": true
+        }
+      ],
+      "message": "Business income requires schedules before transfer to Form 1040."
+    },
+    {
+      "when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ],
+      "message": "Rental income requires schedules before transfer to Form 1040."
+    },
+    {
+      "when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ],
+      "message": "Separate IRA and pension distributions and verify taxable amounts."
+    },
+    {
+      "when": [
+        {
+          "fact": "made_estimated_payments",
+          "equals": true
+        }
+      ],
+      "message": "Verify federal estimated payments and prior-year credit before completing line 26."
+    },
+    {
+      "when": [
+        {
+          "fact": "has_hsa",
+          "equals": true
+        }
+      ],
+      "message": "HSA items require applicable schedules and eligibility checks."
+    },
+    {
+      "when": [
+        {
+          "fact": "paid_student_loan_interest",
+          "equals": true
+        }
+      ],
+      "message": "Student loan interest requires applicable schedules and eligibility checks."
+    },
+    {
+      "when": [
+        {
+          "fact": "estimated_tax_paid",
+          "known": true
+        }
+      ],
+      "message": "Verify federal estimated payments and prior-year credit before completing line 26."
+    },
+    {
+      "when": [
+        {
+          "fact": "wages",
+          "known": true
+        }
+      ],
+      "message": "Retiree wages require confirmation against W-2 box 1 before filling line 1a."
+    },
+    {
+      "when": [
+        {
+          "fact": "filing_status",
+          "in": [
+            "head_of_household",
+            "qualifying_surviving_spouse"
+          ]
+        }
+      ],
+      "message": "Confirm the qualifying person and any required child name for this filing status."
+    }
+  ]
+}
