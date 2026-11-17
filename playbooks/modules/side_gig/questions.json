@@ -1,0 +1,286 @@
+[
+  {
+    "id": "q_does_rideshare_delivery",
+    "fact": "does_rideshare_delivery",
+    "question": "Did you drive for a rideshare or delivery app, such as Uber, Lyft, DoorDash or Instacart?",
+    "why_ask": "Rideshare and delivery income is self-employment income; the apps usually send a 1099-K or a yearly tax summary.",
+    "required_docs": [
+      "1099-K",
+      "app yearly tax summary"
+    ],
+    "retrieval_query": "rideshare delivery driver income Form 1099-K Schedule C",
+    "source": "IRS Schedule C Instructions",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_sells_online",
+    "fact": "sells_online",
+    "question": "Did you sell things online or at markets, for example on Etsy, eBay or at craft fairs?",
+    "why_ask": "Selling can be a business, a hobby, or the sale of personal items, and each is reported differently.",
+    "required_docs": [
+      "1099-K"
+    ],
+    "retrieval_query": "selling goods online business or hobby Form 1099-K",
+    "source": "IRS Pub 334",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_does_freelance_contract",
+    "fact": "does_freelance_contract",
+    "question": "Did you do freelance or contract work and get paid as a non-employee?",
+    "why_ask": "Non-employee pay is reported on Form 1099-NEC and goes on Schedule C.",
+    "required_docs": [
+      "1099-NEC"
+    ],
+    "retrieval_query": "nonemployee compensation Form 1099-NEC Schedule C",
+    "source": "IRS Schedule C Instructions",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_main_income_source",
+    "fact": "main_income_source",
+    "question": "Which brought in more money last year: your regular job or your side work?",
+    "why_ask": "Knowing which income is the main one tells the preparer where to focus.",
+    "required_docs": [],
+    "retrieval_query": "self-employed and employee income both",
+    "source": "IRS Schedule C Instructions",
+    "origin": "advisor interview 2026-11-11",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_side_gross_income",
+    "fact": "side_gross_income",
+    "question": "About how much did you receive in total from the side work, counting app payments, cash and checks?",
+    "why_ask": "All business income must be reported, including cash and payments without a 1099.",
+    "required_docs": [
+      "1099-NEC",
+      "1099-K",
+      "bank or app statements"
+    ],
+    "retrieval_query": "gross receipts self-employment all income including cash",
+    "source": "IRS Schedule C Instructions",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_received_income_without_form",
+    "fact": "received_income_without_form",
+    "question": "Did you get any payments for the side work that did not come with a 1099, such as cash or Venmo payments?",
+    "why_ask": "Income without a form is still taxable and must be added to the Schedule C income.",
+    "required_docs": [],
+    "retrieval_query": "cash income without Form 1099 must be reported",
+    "source": "IRS Schedule C Instructions",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_in_crypto",
+    "fact": "paid_in_crypto",
+    "question": "Were you paid in cryptocurrency or other digital assets for any of this work?",
+    "why_ask": "Digital assets received for work are income at their fair market value when received.",
+    "required_docs": [],
+    "retrieval_query": "digital assets received as payment for services income",
+    "source": "IRS Pub 525",
+    "origin": "advisor interview 2026-11-11",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_selling_type",
+    "fact": "selling_type",
+    "question": "What were you selling: things you made yourself, goods you bought to resell, or your own used personal items?",
+    "why_ask": "Handmade and resale sales are business income with costs to track; personal items are usually not a business.",
+    "required_docs": [],
+    "retrieval_query": "selling personal items Form 1099-K gain loss",
+    "source": "IRS Pub 334",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_selling_for_profit",
+    "fact": "selling_for_profit",
+    "question": "Do you sell regularly to make money, rather than as a hobby?",
+    "why_ask": "A hobby is not a business: its income is taxable but its expenses are not deductible.",
+    "required_docs": [],
+    "retrieval_query": "hobby or business not engaged in for profit",
+    "source": "IRS Pub 525",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_has_inventory",
+    "fact": "has_inventory",
+    "question": "Do you buy materials or goods and keep stock on hand to sell?",
+    "why_ask": "Inventory and cost of goods sold change how profit is figured.",
+    "required_docs": [],
+    "retrieval_query": "inventory cost of goods sold small business",
+    "source": "IRS Pub 334",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_uses_car_for_business",
+    "fact": "uses_car_for_business",
+    "question": "Did you use your own car for the side work (driving customers, deliveries, buying supplies)?",
+    "why_ask": "Business driving can be deducted; commuting and personal driving cannot.",
+    "required_docs": [],
+    "retrieval_query": "car expenses business use commuting miles",
+    "source": "IRS Pub 463",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_car_expense_method",
+    "fact": "car_expense_method",
+    "question": "How would you like to count car costs: by business miles, or by actual costs like gas, repairs and depreciation?",
+    "why_ask": "The standard mileage rate already covers gas, maintenance, insurance and depreciation; actual costs need full records.",
+    "required_docs": [],
+    "retrieval_query": "standard mileage rate or actual car expenses",
+    "source": "IRS Pub 463",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_has_mileage_log",
+    "fact": "has_mileage_log",
+    "question": "Do you have a written record of your business miles, such as a log or the app's mileage report?",
+    "why_ask": "Business miles must be backed by a written record.",
+    "required_docs": [
+      "mileage log or app mileage report"
+    ],
+    "retrieval_query": "mileage log records car expenses",
+    "source": "IRS Pub 463",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_pays_platform_fees",
+    "fact": "pays_platform_fees",
+    "question": "Did the app take commissions or service fees out of your pay?",
+    "why_ask": "Platform commissions and fees are business expenses.",
+    "required_docs": [
+      "app yearly tax summary"
+    ],
+    "retrieval_query": "platform fees commissions deductible business expense",
+    "source": "IRS Schedule C Instructions",
+    "origin": "advisor interview 2026-11-11",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_side_expenses",
+    "fact": "side_expenses",
+    "question": "About how much did you spend on the side work, not counting your car (supplies, phone, parking, tolls, fees)?",
+    "why_ask": "Ordinary and necessary business expenses reduce the income that is taxed.",
+    "required_docs": [
+      "receipts",
+      "bank statements"
+    ],
+    "retrieval_query": "ordinary and necessary business expenses Schedule C",
+    "source": "IRS Schedule C Instructions",
+    "origin": "advisor interview 2026-11-11; Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_record_keeping",
+    "fact": "record_keeping",
+    "question": "How do you keep track of the side work's money?",
+    "why_ask": "Good records decide which expenses can be claimed and protect the client if the IRS asks for proof.",
+    "required_docs": [],
+    "retrieval_query": "recordkeeping small business what records to keep",
+    "source": "IRS Pub 334",
+    "origin": "advisor interview 2026-11-11",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_business_travel",
+    "fact": "business_travel",
+    "question": "Did you travel away from home overnight for the side work?",
+    "why_ask": "Travel can be deducted only when it is for the business, not for personal leisure.",
+    "required_docs": [],
+    "retrieval_query": "business travel expenses away from home",
+    "source": "IRS Pub 463",
+    "origin": "advisor interview 2026-11-11",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_travel_purpose",
+    "fact": "travel_purpose",
+    "question": "Was that travel only for the business, partly personal, or mostly personal?",
+    "why_ask": "Only the business part of a trip can be deducted.",
+    "required_docs": [],
+    "retrieval_query": "travel partly business partly personal",
+    "source": "IRS Pub 463",
+    "origin": "advisor interview 2026-11-11",
+    "status": "advisor_input"
+  },
+  {
+    "id": "q_uses_home_for_business",
+    "fact": "uses_home_for_business",
+    "question": "Do you use part of your home only for the side work?",
+    "why_ask": "Business use of the home has its own rules and form.",
+    "required_docs": [],
+    "retrieval_query": "business use of home deduction",
+    "source": "IRS Pub 334",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_workers",
+    "fact": "has_workers",
+    "question": "Did you pay anyone to help, as an employee or a contractor?",
+    "why_ask": "Paying workers brings payroll or 1099 filing duties.",
+    "required_docs": [],
+    "retrieval_query": "paying employees or contractors self-employed",
+    "source": "IRS Pub 334",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_bought_big_equipment",
+    "fact": "bought_big_equipment",
+    "question": "Did you buy equipment or tools for the business costing more than $2,500 each?",
+    "why_ask": "Large purchases may need to be depreciated.",
+    "required_docs": [],
+    "retrieval_query": "depreciation section 179 business equipment",
+    "source": "IRS Pub 334",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_side_work_lost_money",
+    "fact": "side_work_lost_money",
+    "question": "Did the side work lose money overall, with costs higher than income?",
+    "why_ask": "A business loss has extra rules.",
+    "required_docs": [],
+    "retrieval_query": "net loss Schedule C at-risk",
+    "source": "IRS Schedule C Instructions",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab D, Schedule C pages (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_considering_llc",
+    "fact": "considering_llc",
+    "question": "Are you thinking about forming an LLC or company for the side work?",
+    "why_ask": "Entity choice is a planning question; California charges an annual LLC tax.",
+    "required_docs": [],
+    "retrieval_query": "California LLC annual tax",
+    "source": "FTB 540 Booklet",
+    "origin": "earlier playbook draft",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_own_health_insurance",
+    "fact": "paid_own_health_insurance",
+    "question": "Did you pay for your own health insurance, not through an employer's plan?",
+    "why_ask": "Self-employed people may deduct health insurance premiums (Form 7206); marketplace coverage is handled separately.",
+    "required_docs": [
+      "health insurance premium statements"
+    ],
+    "retrieval_query": "self-employed health insurance deduction",
+    "source": "IRS Schedule C Instructions",
+    "origin": "IRS MeF ATS Test Scenario 12 (TY2025), Form 7206; Pub 4012 (Rev. 10-2026) Scope of Service, Schedule 1 line 17 (structure only)",
+    "status": "derived_official"
+  }
+]

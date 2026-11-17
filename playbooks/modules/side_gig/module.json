@@ -1,0 +1,484 @@
+{
+  "id": "side_gig",
+  "title": "Self-employment and gig income",
+  "status": "draft",
+  "activate_when": [
+    {
+      "fact": "has_self_employment",
+      "equals": true
+    }
+  ],
+  "keywords": [
+    "uber",
+    "lyft",
+    "doordash",
+    "instacart",
+    "etsy",
+    "ebay",
+    "freelance",
+    "contractor",
+    "1099-nec",
+    "1099-k",
+    "side business",
+    "side gig"
+  ],
+  "triggers": [
+    {
+      "id": "travel",
+      "keywords": [
+        "travel",
+        "travels",
+        "traveled",
+        "travelled",
+        "traveling",
+        "travelling",
+        "trip",
+        "trips",
+        "flight",
+        "flights",
+        "hotel"
+      ],
+      "ask_first": [
+        "has_self_employment",
+        "business_travel",
+        "travel_purpose"
+      ]
+    },
+    {
+      "id": "car",
+      "keywords": [
+        "car",
+        "cars",
+        "mileage",
+        "miles",
+        "gas",
+        "repair",
+        "repairs",
+        "maintenance",
+        "drive",
+        "drives",
+        "driving"
+      ],
+      "ask_first": [
+        "has_self_employment",
+        "uses_car_for_business",
+        "car_expense_method",
+        "has_mileage_log"
+      ]
+    },
+    {
+      "id": "crypto",
+      "keywords": [
+        "crypto",
+        "cryptocurrency",
+        "bitcoin",
+        "ethereum",
+        "digital asset",
+        "digital assets"
+      ],
+      "ask_first": [
+        "has_digital_assets",
+        "has_self_employment",
+        "paid_in_crypto"
+      ]
+    },
+    {
+      "id": "online_selling",
+      "keywords": [
+        "etsy",
+        "ebay",
+        "poshmark",
+        "resell",
+        "resells",
+        "reselling",
+        "handmade",
+        "craft",
+        "crafts"
+      ],
+      "ask_first": [
+        "has_self_employment",
+        "sells_online",
+        "selling_type",
+        "selling_for_profit"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "name": "does_rideshare_delivery",
+      "type": "bool",
+      "required": true,
+      "part": "income_split"
+    },
+    {
+      "name": "sells_online",
+      "type": "bool",
+      "required": true,
+      "part": "income_split"
+    },
+    {
+      "name": "does_freelance_contract",
+      "type": "bool",
+      "required": true,
+      "part": "income_split"
+    },
+    {
+      "name": "main_income_source",
+      "type": "enum",
+      "required": true,
+      "part": "income_split",
+      "options": [
+        "regular_job",
+        "side_work",
+        "about_equal"
+      ]
+    },
+    {
+      "name": "side_gross_income",
+      "type": "money",
+      "required": true,
+      "part": "income_split"
+    },
+    {
+      "name": "received_income_without_form",
+      "type": "bool",
+      "required": true,
+      "part": "income_split"
+    },
+    {
+      "name": "paid_in_crypto",
+      "type": "bool",
+      "required": true,
+      "part": "income_split"
+    },
+    {
+      "name": "selling_type",
+      "type": "enum",
+      "required": true,
+      "part": "online_selling",
+      "options": [
+        "handmade",
+        "resale",
+        "both",
+        "personal_items"
+      ],
+      "ask_when": [
+        {
+          "fact": "sells_online",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "selling_for_profit",
+      "type": "bool",
+      "required": true,
+      "part": "online_selling",
+      "ask_when": [
+        {
+          "fact": "sells_online",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_inventory",
+      "type": "bool",
+      "required": true,
+      "part": "online_selling",
+      "ask_when": [
+        {
+          "fact": "sells_online",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "uses_car_for_business",
+      "type": "bool",
+      "required": true,
+      "part": "car"
+    },
+    {
+      "name": "car_expense_method",
+      "type": "enum",
+      "required": true,
+      "part": "car",
+      "options": [
+        "business_miles",
+        "actual_costs",
+        "not_sure"
+      ],
+      "ask_when": [
+        {
+          "fact": "uses_car_for_business",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_mileage_log",
+      "type": "bool",
+      "required": true,
+      "part": "car",
+      "ask_when": [
+        {
+          "fact": "uses_car_for_business",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "pays_platform_fees",
+      "type": "bool",
+      "required": true,
+      "part": "car",
+      "ask_when": [
+        {
+          "fact": "does_rideshare_delivery",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "side_expenses",
+      "type": "money",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "paid_own_health_insurance",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "record_keeping",
+      "type": "enum",
+      "required": true,
+      "part": "expenses",
+      "options": [
+        "income_statement",
+        "receipts_and_statements",
+        "no_records"
+      ]
+    },
+    {
+      "name": "business_travel",
+      "type": "bool",
+      "required": true,
+      "part": "expenses"
+    },
+    {
+      "name": "travel_purpose",
+      "type": "enum",
+      "required": true,
+      "part": "expenses",
+      "options": [
+        "business_only",
+        "mixed",
+        "mostly_personal"
+      ],
+      "ask_when": [
+        {
+          "fact": "business_travel",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "uses_home_for_business",
+      "type": "bool",
+      "required": true,
+      "part": "scope"
+    },
+    {
+      "name": "has_workers",
+      "type": "bool",
+      "required": true,
+      "part": "scope"
+    },
+    {
+      "name": "bought_big_equipment",
+      "type": "bool",
+      "required": true,
+      "part": "scope"
+    },
+    {
+      "name": "side_work_lost_money",
+      "type": "bool",
+      "required": true,
+      "part": "scope"
+    },
+    {
+      "name": "considering_llc",
+      "type": "bool",
+      "required": true,
+      "part": "scope"
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "esc_paid_in_crypto",
+      "when": [
+        {
+          "fact": "paid_in_crypto",
+          "equals": true
+        }
+      ],
+      "reason": "Payment in cryptocurrency needs the preparer (valuation and later sale)."
+    },
+    {
+      "id": "esc_selling_personal_items",
+      "when": [
+        {
+          "fact": "selling_type",
+          "equals": "personal_items"
+        }
+      ],
+      "reason": "Sales of personal items: gains go on Schedule D and losses are not deductible; preparer decides how to report the 1099-K."
+    },
+    {
+      "id": "esc_selling_for_profit",
+      "when": [
+        {
+          "fact": "selling_for_profit",
+          "equals": false
+        }
+      ],
+      "reason": "Hobby or business must be decided by the preparer."
+    },
+    {
+      "id": "esc_has_inventory",
+      "when": [
+        {
+          "fact": "has_inventory",
+          "equals": true
+        }
+      ],
+      "reason": "Inventory / cost of goods sold needs the preparer (outside the simple Schedule C)."
+    },
+    {
+      "id": "esc_car_expense_method_actual_costs",
+      "when": [
+        {
+          "fact": "car_expense_method",
+          "equals": "actual_costs"
+        }
+      ],
+      "reason": "Actual car expenses and depreciation need the preparer."
+    },
+    {
+      "id": "esc_travel_purpose_mixed",
+      "when": [
+        {
+          "fact": "travel_purpose",
+          "equals": "mixed"
+        }
+      ],
+      "reason": "Mixed business and personal travel needs the preparer to split the costs."
+    },
+    {
+      "id": "esc_uses_home_for_business",
+      "when": [
+        {
+          "fact": "uses_home_for_business",
+          "equals": true
+        }
+      ],
+      "reason": "Business use of home needs the preparer."
+    },
+    {
+      "id": "esc_has_workers",
+      "when": [
+        {
+          "fact": "has_workers",
+          "equals": true
+        }
+      ],
+      "reason": "Employees or contract labor need the preparer."
+    },
+    {
+      "id": "esc_bought_big_equipment",
+      "when": [
+        {
+          "fact": "bought_big_equipment",
+          "equals": true
+        }
+      ],
+      "reason": "Depreciation / large asset purchases need the preparer."
+    },
+    {
+      "id": "esc_side_work_lost_money",
+      "when": [
+        {
+          "fact": "side_work_lost_money",
+          "equals": true
+        }
+      ],
+      "reason": "A business loss needs the preparer."
+    },
+    {
+      "id": "esc_considering_llc",
+      "when": [
+        {
+          "fact": "considering_llc",
+          "equals": true
+        }
+      ],
+      "reason": "Entity choice and California's minimum LLC tax are planning questions for the preparer."
+    }
+  ],
+  "reminders": [
+    {
+      "id": "report_all_income",
+      "when": [
+        {
+          "fact": "received_income_without_form",
+          "equals": true
+        }
+      ],
+      "text": "All side income must be reported, including cash and payments without a 1099."
+    },
+    {
+      "id": "keep_mileage_log",
+      "when": [
+        {
+          "fact": "uses_car_for_business",
+          "equals": true
+        }
+      ],
+      "text": "Keep a mileage log (date, purpose, miles) and receipts for parking and tolls; the client must be able to prove business driving."
+    },
+    {
+      "id": "start_records",
+      "when": [
+        {
+          "fact": "record_keeping",
+          "equals": "no_records"
+        }
+      ],
+      "text": "Explain what to keep from now on: income by month, receipts for expenses, and a simple income statement."
+    },
+    {
+      "id": "keep_travel_receipts",
+      "when": [
+        {
+          "fact": "business_travel",
+          "equals": true
+        }
+      ],
+      "text": "Keep receipts and a note of the business purpose for each trip."
+    },
+    {
+      "id": "consider_estimated_tax",
+      "when": [
+        {
+          "fact": "made_estimated_payments",
+          "equals": false
+        }
+      ],
+      "text": "Side income has no withholding: the preparer may suggest estimated tax payments for next year (IRS and FTB)."
+    }
+  ]
+}

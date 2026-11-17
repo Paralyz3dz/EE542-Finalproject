@@ -1,0 +1,36 @@
+{
+  "name": "Married couple, two children, paid their 17-year-old son for after-school care of his sister",
+  "source": "Form 6744 (Rev. 10-2026) Advanced Scenario 2, interview notes (structure only; tax year 2025 rules apply).",
+  "official_outcome": "Care paid to the couple's own child under 19 does not qualify for the child and dependent care credit.",
+  "priority": [],
+  "background": "married, two kids, paid our son to watch his sister after school",
+  "answers": {
+    "marital_status": "married",
+    "lived_apart_last_6_months": "no",
+    "has_wages": "yes",
+    "w2_job_count": "1",
+    "has_dependents": "yes",
+    "dependent_count": "2",
+    "dependent_lived_with_you_half_year": "yes",
+    "has_child_under_17": "yes",
+    "has_child_under_6": "no",
+    "paid_childcare": "yes",
+    "paid_after_school_or_camp": "yes",
+    "has_provider_details": "yes",
+    "care_provider_is_family": "yes"
+  },
+  "expect": {
+    "flags": [
+      "esc_care_provider_is_family"
+    ],
+    "modules_asked": [
+      "base_intake",
+      "family"
+    ],
+    "modules_not_asked": [
+      "side_gig",
+      "retiree",
+      "rental"
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "id": "retiree",
+  "title": "Retirement income and Social Security",
+  "status": "draft",
+  "activate_when": [
+    {
+      "fact": "has_retirement_income",
+      "equals": true
+    }
+  ],
+  "keywords": [
+    "retired",
+    "retirement",
+    "pension",
+    "social security",
+    "ira",
+    "401k",
+    "401(k)",
+    "annuity"
+  ],
+  "triggers": [],
+  "facts": [
+    {
+      "name": "receives_social_security",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "social_security_benefits",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "receives_social_security",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_retirement_distribution",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "distribution_account_type",
+      "type": "enum",
+      "required": true,
+      "options": [
+        "pension_or_annuity",
+        "employer_plan_401k_403b",
+        "traditional_ira",
+        "roth_ira",
+        "not_sure"
+      ],
+      "ask_when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "retirement_distributions",
+      "type": "money",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "under_59_half_at_distribution",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "did_rollover",
+      "type": "bool",
+      "required": true,
+      "ask_when": [
+        {
+          "fact": "has_retirement_distribution",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_disability_benefits",
+      "type": "bool",
+      "required": true
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "esc_under_59_half_at_distribution",
+      "when": [
+        {
+          "fact": "under_59_half_at_distribution",
+          "equals": true
+        }
+      ],
+      "reason": "Early distribution: exceptions and the federal 10% / California 2.5% additional taxes need the preparer."
+    },
+    {
+      "id": "esc_did_rollover",
+      "when": [
+        {
+          "fact": "did_rollover",
+          "equals": true
+        }
+      ],
+      "reason": "Rollover needs the preparer to confirm it was completed correctly."
+    }
+  ],
+  "reminders": [
+    {
+      "id": "bring_retirement_forms",
+      "when": [
+        {
+          "fact": "has_retirement_income",
+          "equals": true
+        }
+      ],
+      "text": "Bring the SSA-1099 and every 1099-R; box 7 codes on the 1099-R decide how a distribution is taxed."
+    }
+  ]
+}

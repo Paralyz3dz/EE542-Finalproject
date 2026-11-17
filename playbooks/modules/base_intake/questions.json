@@ -1,0 +1,605 @@
+[
+  {
+    "id": "q_ca_resident_full_year",
+    "fact": "ca_resident_full_year",
+    "question": "Did you live in California for all of last year?",
+    "why_ask": "Full-year residents file Form 540; part-year residents and nonresidents file Form 540NR.",
+    "required_docs": [],
+    "retrieval_query": "California resident part-year resident nonresident",
+    "source": "FTB Pub 1031",
+    "origin": "California layer (FTB Pub 1031)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_lived_in_multiple_states",
+    "fact": "lived_in_multiple_states",
+    "question": "Did you live or work in more than one state last year?",
+    "why_ask": "Income earned in another state can create a filing requirement there and a California credit.",
+    "required_docs": [],
+    "retrieval_query": "income from another state California other state tax credit",
+    "source": "FTB Schedule S Instructions",
+    "origin": "Form 13614-C (Rev. 10-2025) Part I",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_age_65_or_older",
+    "fact": "age_65_or_older",
+    "question": "Were you (or your spouse, if married) born before January 2, 1961?",
+    "why_ask": "People 65 or older get a larger standard deduction and the new senior deduction on Schedule 1-A; California gives a senior exemption credit.",
+    "required_docs": [
+      "photo ID"
+    ],
+    "retrieval_query": "standard deduction age 65 or older additional amount",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part I (date of birth)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_can_be_claimed_as_dependent",
+    "fact": "can_be_claimed_as_dependent",
+    "question": "Could anyone else, such as a parent, claim you as a dependent on their tax return?",
+    "why_ask": "A taxpayer who can be claimed by someone else has a smaller standard deduction and cannot claim dependents.",
+    "required_docs": [],
+    "retrieval_query": "can someone claim you as a dependent standard deduction dependent",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part I",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_is_us_citizen",
+    "fact": "is_us_citizen",
+    "question": "Were you a U.S. citizen for all of last year?",
+    "why_ask": "Non-citizens may be resident or nonresident aliens for tax purposes, which changes the return.",
+    "required_docs": [],
+    "retrieval_query": "resident alien nonresident alien who must file",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part I",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_is_full_time_student",
+    "fact": "is_full_time_student",
+    "question": "Were you a full-time student at any time during last year?",
+    "why_ask": "Student status affects education credits and whether someone can claim you.",
+    "required_docs": [],
+    "retrieval_query": "full-time student definition education credits",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part I",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_blind_or_disabled",
+    "fact": "blind_or_disabled",
+    "question": "Are you legally blind or totally and permanently disabled?",
+    "why_ask": "Blindness increases the standard deduction; disability can affect credits and retirement income.",
+    "required_docs": [],
+    "retrieval_query": "additional standard deduction blind",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part I",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_digital_assets",
+    "fact": "has_digital_assets",
+    "question": "Did you own, receive, sell or trade any digital assets, such as cryptocurrency, last year?",
+    "why_ask": "Digital-asset transactions must be reported and may create gains or income.",
+    "required_docs": [],
+    "retrieval_query": "digital assets question Form 1040",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part I",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_marital_status",
+    "fact": "marital_status",
+    "question": "What was your marital status on December 31 last year?",
+    "why_ask": "Marital status on the last day of the year decides which filing statuses are possible.",
+    "required_docs": [],
+    "retrieval_query": "marital status filing status last day of the year",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part II",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_lived_apart_last_6_months",
+    "fact": "lived_apart_last_6_months",
+    "question": "Did you and your spouse live apart for all of the last six months of the year?",
+    "why_ask": "Married people who lived apart may qualify as head of household.",
+    "required_docs": [],
+    "retrieval_query": "considered unmarried head of household lived apart last 6 months",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part II",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_marital_status_changed",
+    "fact": "marital_status_changed",
+    "question": "Did you get married, divorced or legally separated during last year?",
+    "why_ask": "A change in marital status during the year changes the filing status options.",
+    "required_docs": [],
+    "retrieval_query": "divorced or separated filing status",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part II",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_dependents",
+    "fact": "has_dependents",
+    "question": "Did anyone live with you, or did you support anyone, such as a child or a relative?",
+    "why_ask": "Dependents affect filing status and several credits. A yes opens the family questions.",
+    "required_docs": [],
+    "retrieval_query": "who qualifies as a dependent qualifying child qualifying relative",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part II",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_wages",
+    "fact": "has_wages",
+    "question": "Did you work as an employee and receive a W-2?",
+    "why_ask": "Wages are reported from Form W-2.",
+    "required_docs": [
+      "W-2"
+    ],
+    "retrieval_query": "wages salaries Form W-2",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_w2_job_count",
+    "fact": "w2_job_count",
+    "question": "How many jobs did you have last year?",
+    "why_ask": "With two or more employers, too much Social Security tax may have been withheld.",
+    "required_docs": [
+      "W-2 (each employer)"
+    ],
+    "retrieval_query": "excess social security tax withheld more than one employer",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_received_tips",
+    "fact": "received_tips",
+    "question": "Did you receive tips at work?",
+    "why_ask": "Tips are taxable; qualified tips may also qualify for the new deduction on Schedule 1-A.",
+    "required_docs": [],
+    "retrieval_query": "tips income deduction for qualified tips Schedule 1-A",
+    "source": "IRS Form 1040 Instructions",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_qualified_overtime",
+    "fact": "has_qualified_overtime",
+    "question": "Were you paid overtime last year?",
+    "why_ask": "Qualified overtime pay may qualify for the new deduction on Schedule 1-A.",
+    "required_docs": [],
+    "retrieval_query": "qualified overtime compensation deduction Schedule 1-A",
+    "source": "IRS Form 1040 Instructions",
+    "origin": "Form 13614-C (Rev. 10-2026) Part III (2025 deduction)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_self_employment",
+    "fact": "has_self_employment",
+    "question": "Did you earn money on your own, for example contract or freelance work, driving for Uber or DoorDash, or selling things online?",
+    "why_ask": "Self-employment and gig income go on Schedule C and may owe self-employment tax. A yes opens the side-business questions.",
+    "required_docs": [
+      "1099-NEC",
+      "1099-K"
+    ],
+    "retrieval_query": "self-employment income gig economy Schedule C who must file",
+    "source": "IRS Schedule C Instructions",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III; gig wording from Form 13614-C (Rev. 10-2026)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_retirement_income",
+    "fact": "has_retirement_income",
+    "question": "Did you receive Social Security, a pension, an annuity, or money from a retirement account?",
+    "why_ask": "Retirement income is reported from SSA-1099 and 1099-R. A yes opens the retirement questions.",
+    "required_docs": [
+      "SSA-1099",
+      "1099-R"
+    ],
+    "retrieval_query": "social security benefits pensions annuities taxable",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_owns_rental",
+    "fact": "owns_rental",
+    "question": "Did you rent out a house, an apartment or a room?",
+    "why_ask": "Rental income and expenses go on Schedule E. A yes opens the rental questions.",
+    "required_docs": [],
+    "retrieval_query": "rental income and expenses Schedule E",
+    "source": "IRS Pub 527",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_unemployment",
+    "fact": "has_unemployment",
+    "question": "Did you receive unemployment benefits?",
+    "why_ask": "Unemployment compensation is taxable federally; California does not tax it.",
+    "required_docs": [
+      "1099-G"
+    ],
+    "retrieval_query": "unemployment compensation taxable",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_had_state_refund",
+    "fact": "had_state_refund",
+    "question": "Did you receive a refund of state or local income tax last year?",
+    "why_ask": "A state refund can be taxable if you itemized deductions the year before.",
+    "required_docs": [
+      "1099-G"
+    ],
+    "retrieval_query": "state income tax refund taxable itemized",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_interest_dividends",
+    "fact": "has_interest_dividends",
+    "question": "Did you receive interest or dividends, for example from a bank account or bonds?",
+    "why_ask": "Interest and dividends are reported from 1099-INT and 1099-DIV.",
+    "required_docs": [
+      "1099-INT",
+      "1099-DIV"
+    ],
+    "retrieval_query": "interest income dividends taxable",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_sold_investments",
+    "fact": "sold_investments",
+    "question": "Did you sell any stocks, bonds or real estate?",
+    "why_ask": "Sales must be reported with gains or losses.",
+    "required_docs": [
+      "1099-B",
+      "brokerage statement"
+    ],
+    "retrieval_query": "capital gains and losses sale of stock",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_received_alimony",
+    "fact": "received_alimony",
+    "question": "Did you receive alimony?",
+    "why_ask": "Alimony from agreements made before 2019 is taxable.",
+    "required_docs": [],
+    "retrieval_query": "alimony received taxable divorce agreement before 2019",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_gambling_winnings",
+    "fact": "has_gambling_winnings",
+    "question": "Did you have any gambling or lottery winnings?",
+    "why_ask": "Gambling winnings are taxable.",
+    "required_docs": [
+      "W-2G"
+    ],
+    "retrieval_query": "gambling winnings taxable",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_other_income",
+    "fact": "has_other_income",
+    "question": "Did you receive any other money, such as cash payments, jury duty pay, awards or royalties?",
+    "why_ask": "Other income may be taxable and is outside the common cases.",
+    "required_docs": [
+      "1099-MISC"
+    ],
+    "retrieval_query": "other income taxable jury duty awards",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part III",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_mortgage_interest",
+    "fact": "paid_mortgage_interest",
+    "question": "Did you pay mortgage interest on your home?",
+    "why_ask": "Mortgage interest is deductible if you itemize.",
+    "required_docs": [
+      "1098"
+    ],
+    "retrieval_query": "home mortgage interest deduction itemized",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_property_tax",
+    "fact": "paid_property_tax",
+    "question": "Did you pay real estate (property) taxes?",
+    "why_ask": "State and local taxes, including property tax, are deductible if you itemize.",
+    "required_docs": [
+      "property tax bill"
+    ],
+    "retrieval_query": "state and local taxes deduction real estate taxes",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_large_medical_expenses",
+    "fact": "large_medical_expenses",
+    "question": "Did you pay large medical, dental or prescription costs yourself?",
+    "why_ask": "Medical expenses above a share of income are deductible if you itemize.",
+    "required_docs": [],
+    "retrieval_query": "medical and dental expenses deduction threshold",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_made_donations",
+    "fact": "made_donations",
+    "question": "Did you give money or goods to charity?",
+    "why_ask": "Charitable contributions may be deductible; keep receipts.",
+    "required_docs": [
+      "donation receipts"
+    ],
+    "retrieval_query": "charitable contributions deduction records",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_student_loan_interest",
+    "fact": "paid_student_loan_interest",
+    "question": "Did you pay interest on a student loan?",
+    "why_ask": "Student loan interest may be deductible without itemizing.",
+    "required_docs": [
+      "1098-E"
+    ],
+    "retrieval_query": "student loan interest deduction",
+    "source": "IRS Pub 970",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_contributed_to_retirement",
+    "fact": "contributed_to_retirement",
+    "question": "Did you put money into a retirement account, such as an IRA or 401(k)?",
+    "why_ask": "Some contributions are deductible and may qualify for the saver's credit.",
+    "required_docs": [
+      "5498",
+      "W-2 box 12"
+    ],
+    "retrieval_query": "IRA contributions deduction saver's credit",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_is_educator_with_expenses",
+    "fact": "is_educator_with_expenses",
+    "question": "Are you a K-12 teacher or aide who paid for classroom supplies yourself?",
+    "why_ask": "Eligible educators can deduct some classroom expenses.",
+    "required_docs": [],
+    "retrieval_query": "educator expenses deduction",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_alimony",
+    "fact": "paid_alimony",
+    "question": "Did you pay alimony (not child support)?",
+    "why_ask": "Alimony paid under agreements made before 2019 is deductible.",
+    "required_docs": [],
+    "retrieval_query": "alimony paid deduction",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part IV",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_took_education_classes",
+    "fact": "took_education_classes",
+    "question": "Did you or anyone in your family take college, technical or job-related classes?",
+    "why_ask": "Tuition may qualify for an education credit.",
+    "required_docs": [
+      "1098-T"
+    ],
+    "retrieval_query": "education credits American opportunity lifetime learning",
+    "source": "IRS Pub 970",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_hsa",
+    "fact": "has_hsa",
+    "question": "Did you or your employer put money into a Health Savings Account (HSA), or did you take money out of one?",
+    "why_ask": "HSA contributions are deductible federally but not in California, so they are added back on Schedule CA.",
+    "required_docs": [
+      "W-2 box 12 code W",
+      "5498-SA",
+      "1099-SA"
+    ],
+    "retrieval_query": "health savings account California adjustment Schedule CA",
+    "source": "FTB Schedule CA (540) Instructions",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_marketplace_insurance",
+    "fact": "has_marketplace_insurance",
+    "question": "Did you buy health insurance through Covered California or the Marketplace?",
+    "why_ask": "Marketplace coverage requires Form 1095-A to reconcile the premium tax credit.",
+    "required_docs": [
+      "1095-A"
+    ],
+    "retrieval_query": "premium tax credit Form 1095-A marketplace",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_bought_new_vehicle",
+    "fact": "bought_new_vehicle",
+    "question": "Did you buy a new vehicle with a loan last year?",
+    "why_ask": "Interest on a qualifying new-vehicle loan may be deductible on Schedule 1-A.",
+    "required_docs": [
+      "loan interest statement"
+    ],
+    "retrieval_query": "car loan interest deduction qualified passenger vehicle Schedule 1-A",
+    "source": "IRS Form 1040 Instructions",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V (listed under Other)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_installed_energy_efficient_items",
+    "fact": "installed_energy_efficient_items",
+    "question": "Did you buy and install energy-saving home items, such as windows, a furnace or insulation?",
+    "why_ask": "Some home energy improvements qualified for a credit in 2025 (Form 5695).",
+    "required_docs": [
+      "receipts"
+    ],
+    "retrieval_query": "energy efficient home improvement credit Form 5695",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V (2025 only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_sold_home",
+    "fact": "sold_home",
+    "question": "Did you sell a home?",
+    "why_ask": "A home sale may be partly or fully excluded from income.",
+    "required_docs": [
+      "1099-S",
+      "closing statement"
+    ],
+    "retrieval_query": "sale of main home exclusion",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_had_debt_forgiven",
+    "fact": "had_debt_forgiven",
+    "question": "Was any credit card, mortgage or other debt cancelled or forgiven?",
+    "why_ask": "Cancelled debt is usually taxable unless an exception applies.",
+    "required_docs": [
+      "1099-C"
+    ],
+    "retrieval_query": "cancellation of debt income exceptions",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_had_disaster_loss",
+    "fact": "had_disaster_loss",
+    "question": "Did you have a loss from a federally declared disaster?",
+    "why_ask": "Disaster losses have special rules.",
+    "required_docs": [],
+    "retrieval_query": "casualty loss federally declared disaster",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_had_credit_disallowed",
+    "fact": "had_credit_disallowed",
+    "question": "Did the IRS ever deny a credit you claimed, such as the earned income credit or child tax credit?",
+    "why_ask": "A prior disallowance can require an extra form to claim the credit again.",
+    "required_docs": [],
+    "retrieval_query": "credit disallowed Form 8862 earned income credit",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_received_irs_letter",
+    "fact": "received_irs_letter",
+    "question": "Did you receive any letter or bill from the IRS?",
+    "why_ask": "An open IRS notice must be handled before or with the return.",
+    "required_docs": [
+      "IRS letter"
+    ],
+    "retrieval_query": "IRS notice letter respond",
+    "source": "IRS Pub 17",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_made_estimated_payments",
+    "fact": "made_estimated_payments",
+    "question": "Did you make estimated tax payments to the IRS or the FTB, or apply last year's refund to this year?",
+    "why_ask": "Estimated payments are credited against this year's tax.",
+    "required_docs": [
+      "payment confirmations (IRS and FTB)"
+    ],
+    "retrieval_query": "estimated tax payments credit",
+    "source": "IRS Pub 505",
+    "origin": "Form 13614-C (Rev. 10-2025) Part V",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_registered_domestic_partner",
+    "fact": "registered_domestic_partner",
+    "question": "Are you in a registered domestic partnership in California?",
+    "why_ask": "California treats registered domestic partners like spouses, but the federal return does not; both returns are affected.",
+    "required_docs": [
+      "domestic partnership registration"
+    ],
+    "retrieval_query": "registered domestic partners California filing status",
+    "source": "FTB 540 Booklet",
+    "origin": "Direct File knockout registered-domestic-partner-ko (IRS-Public/direct-file e365f9f); Pub 4012 (Rev. 10-2026) Scope of Service chart (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_farm_income",
+    "fact": "has_farm_income",
+    "question": "Did you earn money from farming, ranching or commercial fishing?",
+    "why_ask": "Farm income goes on Schedule F, which volunteers do not prepare.",
+    "required_docs": [],
+    "retrieval_query": "farm income Schedule F",
+    "source": "IRS Pub 17",
+    "origin": "Pub 4012 (Rev. 10-2026) Scope of Service chart, Schedule 1 line 6 (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_foreign_accounts",
+    "fact": "has_foreign_accounts",
+    "question": "Did you have a bank or investment account outside the U.S., or receive income from another country?",
+    "why_ask": "Foreign accounts and income can require extra forms (FinCEN 114, Form 8938, foreign tax credit).",
+    "required_docs": [
+      "foreign account statements"
+    ],
+    "retrieval_query": "foreign financial accounts FBAR foreign income",
+    "source": "IRS Pub 17",
+    "origin": "Direct File knockout foreign-accounts-trusts-knockout (IRS-Public/direct-file e365f9f); Pub 4012 (Rev. 10-2026) Scope of Service chart (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_retirement_contribution_type",
+    "fact": "retirement_contribution_type",
+    "question": "What kind of retirement account did you put money into: a 401(k) or 403(b) at work, a traditional IRA, a Roth IRA, or a plan for the self-employed (SEP, SIMPLE, solo 401(k))?",
+    "why_ask": "Workplace plan contributions are already on the W-2; traditional IRA contributions may be deductible; self-employed plans are outside the volunteer scope.",
+    "required_docs": [
+      "5498"
+    ],
+    "retrieval_query": "traditional IRA contribution deduction SEP SIMPLE",
+    "source": "IRS Pub 590-A",
+    "origin": "Direct File knockout ira-contributions-ko (IRS-Public/direct-file e365f9f); Pub 4012 (Rev. 10-2026) Scope of Service chart (structure only)",
+    "status": "derived_official"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "name": "Full-time student with wages who took two early IRA distributions",
+  "source": "Form 6744 (Rev. 10-2026) Advanced Scenario 6, interview notes (structure only).",
+  "official_outcome": "The 10% additional tax and its education exception (Form 5329) must be worked out; one distribution qualifies, one does not.",
+  "priority": [],
+  "background": "student, took money out of his IRA for tuition and a car repair",
+  "answers": {
+    "marital_status": "never_married",
+    "registered_domestic_partner": "no",
+    "has_wages": "yes",
+    "w2_job_count": "1",
+    "is_full_time_student": "yes",
+    "took_education_classes": "yes",
+    "has_retirement_income": "yes",
+    "receives_social_security": "no",
+    "has_retirement_distribution": "yes",
+    "distribution_account_type": "traditional_ira",
+    "retirement_distributions": "2750",
+    "under_59_half_at_distribution": "yes",
+    "did_rollover": "no"
+  },
+  "expect": {
+    "flags": [
+      "esc_under_59_half_at_distribution"
+    ],
+    "modules_asked": [
+      "base_intake",
+      "retiree"
+    ],
+    "modules_not_asked": [
+      "side_gig",
+      "family",
+      "rental"
+    ]
+  }
+}

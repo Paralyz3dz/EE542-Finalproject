@@ -33,6 +33,11 @@ from src.workflow.state import State
 
 ROOT = Path(__file__).resolve().parents[2]
 PLAYBOOKS = ROOT / "playbooks"
+MODULES = PLAYBOOKS / "modules"
+INTAKE = "intake"
+BASE_MODULE = "base_intake"
+BASE_PARTS = {"about_you": "About you", "household": "Household", "income": "Income",
+              "expenses": "Expenses", "events": "Life events"}
 logger = logging.getLogger(__name__)
 
 YES = {"yes", "y", "true", "1", "是", "有", "对"}
@@ -41,32 +46,172 @@ NONE_WORDS = {"none", "no", "n/a", "无", "没有"}
 
 
 def load_scenario(scenario: str) -> tuple[dict, list[dict]]:
-    """Read playbooks/<scenario>/scenario.json and questions.json.
+    """Read a playbook. Returns (definition, questions).
 
-    Returns (definition, questions): definition is the scenario dict
-    (id, title, facts, escalation_rules); questions is the list of question dicts.
+    scenario == "intake": the modular playbook in playbooks/modules/ (see compose_modules).
+    Any other name: the single-scenario playbook playbooks/<scenario>/scenario.json + questions.json.
+    definition has id, title, facts, escalation_rules (and reminders, modules for intake).
     """
+    if scenario == INTAKE:
+        return compose_modules()
     folder = PLAYBOOKS / scenario
     definition = json.loads((folder / "scenario.json").read_text(encoding="utf-8"))
     questions = json.loads((folder / "questions.json").read_text(encoding="utf-8"))
     return definition, questions
 
 
-def start_interview(scenario: str) -> State:
+def compose_modules() -> tuple[dict, list[dict]]:
+    """Merge playbooks/modules/*/ into one playbook: base_intake first, then the topic modules.
+
+    Every client gets base_intake. A topic module (side_gig, family, ...) is switched on by its
+    "activate_when" conditions, usually a yes to a base_intake question such as has_self_employment.
+    Module "triggers" (trigger words -> facts to ask first) are collected for apply_triggers.
+    That switch is applied by putting activate_when in front of each of the module's ask_when
+    conditions, so next_question needs no special case: a module fact is askable only after its
+    module is on. Facts, questions, escalation rules and reminders are tagged with their module id.
+    """
+    folders = sorted(p for p in MODULES.iterdir() if (p / "module.json").exists())
+    folders.sort(key=lambda p: p.name != BASE_MODULE)
+    facts, questions, rules, reminders, modules, triggers = [], [], [], [], [], []
+    for folder in folders:
+        m = json.loads((folder / "module.json").read_text(encoding="utf-8"))
+        gate = m.get("activate_when") or []
+        modules.append({"id": m["id"], "title": m["title"], "activate_when": gate,
+                        "keywords": m.get("keywords", [])})
+        for f in m.get("facts", []):
+            f = dict(f, module=m["id"])
+            if gate:
+                f["ask_when"] = gate + (f.get("ask_when") or [])
+            facts.append(f)
+        rules += [dict(r, module=m["id"]) for r in m.get("escalation_rules", [])]
+        reminders += [dict(r, module=m["id"]) for r in m.get("reminders", [])]
+        triggers += [dict(t, module=m["id"]) for t in m.get("triggers", [])]
+        qs = json.loads((folder / "questions.json").read_text(encoding="utf-8"))
+        questions += [dict(q, module=m["id"]) for q in qs]
+    definition = {"id": INTAKE, "title": "Client intake (Form 13614-C) with topic modules",
+                  "facts": facts, "escalation_rules": rules, "reminders": reminders, "modules": modules,
+                  "triggers": triggers}
+    return definition, questions
+
+
+def sections(definition: dict) -> list[dict]:
+    """The topics an assistant can put first: base_intake parts and topic modules, as {id, label}."""
+    out = [{"id": k, "label": v} for k, v in BASE_PARTS.items()
+           if any(f.get("part") == k for f in definition["facts"])]
+    out += [{"id": m["id"], "label": m["title"]} for m in definition.get("modules", []) if m["id"] != BASE_MODULE]
+    return out
+
+
+def section_of(fact: dict) -> str | None:
+    """A fact's section: its topic module, or its base_intake part (about_you, income, ...)."""
+    module = fact.get("module")
+    if module and module != BASE_MODULE:
+        return module
+    return fact.get("part")
+
+
+def _position(text: str, keyword: str) -> int | None:
+    """Where keyword first appears in text as a whole word or phrase (case ignored), or None."""
+    m = re.search(r"(?<![a-z0-9_])" + re.escape(keyword.lower()) + r"(?![a-z0-9_])", text.lower())
+    return m.start() if m else None
+
+
+def _mentions(text: str, keyword: str) -> bool:
+    """True if keyword appears in text as a whole word or phrase."""
+    return _position(text, keyword) is not None
+
+
+def apply_triggers(state: State, definition: dict, text: str) -> list[str]:
+    """Listen for trigger words in the assistant's note and move follow-ups to the front.
+
+    The practitioner described the method: the assistant works through a routine list, and a
+    keyword the client says ("kids", "travel", "crypto") opens a set of deeper questions at once.
+      - a trigger's keyword -> its "ask_first" facts go to state.boosted (asked next, in the order
+        the client mentioned them, each only when its own conditions allow; answered facts skipped);
+      - a topic module's "keywords" -> the module is added to state.priority.
+    Returns the ids of triggers and modules that fired, for the history record.
+    """
+    if not text:
+        return []
+    fired = []
+    names = {f["name"] for f in definition["facts"]}
+    done = {b["trigger"] for b in state.boosted}
+    hits = []
+    for t in definition.get("triggers", []):
+        if t["id"] in done:
+            continue
+        found = [(_position(text, k), k) for k in t["keywords"]]
+        found = [x for x in found if x[0] is not None]
+        if found:
+            hits.append((min(found), t))
+    for (_, hit), t in sorted(hits, key=lambda x: x[0][0]):
+        fired.append(t["id"])
+        for fact in t["ask_first"]:
+            if fact in names and state.facts.get(fact) is None:
+                state.boosted.append({"fact": fact, "trigger": t["id"], "keyword": hit})
+    for m in definition.get("modules", []):
+        if m["id"] != BASE_MODULE and m["id"] not in state.priority and any(_mentions(text, k) for k in m["keywords"]):
+            state.priority.append(m["id"])
+            fired.append(m["id"])
+    return fired
+
+
+def ordered_facts(definition: dict, priority: list[str], boosted: list[dict] | None = None) -> list[dict]:
+    """Facts in asking order: triggered facts first, then the priority sections, then the playbook order.
+
+    For a prioritized topic module, the base question that switches it on (its activate_when
+    fact, e.g. has_self_employment for side_gig) is moved up too, just before the module, so
+    choosing "Self-employment" starts the interview with "Did you earn money on your own...".
+    """
+    boost = {}
+    for b in boosted or []:
+        boost.setdefault(b["fact"], len(boost))
+    if not priority and not boost:
+        return definition["facts"]
+    rank = {sec: i for i, sec in enumerate(priority)}
+    for m in definition.get("modules", []):
+        if m["id"] in rank:
+            for cond in m["activate_when"]:
+                rank.setdefault("gate:" + cond["fact"], rank[m["id"]] - 0.5)
+    last = len(priority)
+
+    def key(item):
+        i, f = item
+        if f["name"] in boost:
+            return (-1, boost[f["name"]], i)
+        r = rank.get("gate:" + f["name"], rank.get(section_of(f), last))
+        return (r, 0, i)
+
+    return [f for _, f in sorted(enumerate(definition["facts"]), key=key)]
+
+
+def start_interview(scenario: str, priority: list[str] | None = None, background: str = "") -> State:
     """Create a new State for this scenario with every fact set to None (unknown).
 
-    Reads: the "facts" list of scenario.json (only each fact's "name").
+    priority: section ids the assistant wants asked first (see sections()), e.g. ["side_gig"]
+    when the assistant is unsure about self-employment. Order matters; unknown ids raise ValueError.
+    background: optional short description of the client ("W-2 job, drives Uber, two kids");
+    its trigger words and module keywords reorder the interview before the first question.
     """
     definition, _ = load_scenario(scenario)
+    priority = list(priority or [])
+    allowed = {s["id"] for s in sections(definition)}
+    unknown = [p for p in priority if p not in allowed]
+    if unknown:
+        raise ValueError(f"Unknown priority section(s): {', '.join(unknown)}")
     facts = {f["name"]: None for f in definition["facts"]}
-    return State(scenario=scenario, facts=facts)
+    state = State(scenario=scenario, facts=facts, priority=priority)
+    if background:
+        fired = apply_triggers(state, definition, background)
+        state.history.append({"background": background, "triggers": fired})
+    return state
 
 
 def next_question(state: State) -> dict | None:
     """Decide the next question. Pure code, no model.
 
-    Walks scenario.json facts in order and returns the question (from questions.json)
-    for the first fact that is
+    Walks the facts in asking order (ordered_facts: the assistant's priority sections first,
+    then the playbook order) and returns the question for the first fact that is
         1. required,
         2. still unknown (None) in state.facts,
         3. allowed now: its ask_when conditions hold (conditions.check),
@@ -75,7 +220,7 @@ def next_question(state: State) -> dict | None:
     """
     definition, questions = load_scenario(state.scenario)
     by_fact = {q["fact"]: q for q in questions}
-    for f in definition["facts"]:
+    for f in ordered_facts(definition, state.priority, state.boosted):
         name = f["name"]
         if not f.get("required"):
             continue
@@ -245,6 +390,15 @@ def check_references(source: str, citations: list[dict], retrieval_ok: bool) -> 
     return refs
 
 
+def _section_label(definition: dict, fact: dict) -> str | None:
+    """Human label of a fact's section ("Income", "Self-employment and gig income", ...)."""
+    sec = section_of(fact)
+    for s in sections(definition):
+        if s["id"] == sec:
+            return s["label"]
+    return None
+
+
 def build_guide(state: State, question: dict, search=None, top_n: int = 3) -> dict:
     """Build what the assistant sees for one question.
 
@@ -259,7 +413,7 @@ def build_guide(state: State, question: dict, search=None, top_n: int = 3) -> di
                     check_references() as found / not found / unchecked
     Both are stored in state.evidence[question id] for summarize().
 
-    Returns {"type": "question", question_id, fact, input_type, options, step_number,
+    Returns {"type": "question", question_id, fact, input_type, options, step_number, section, triggered_by,
              question, why_ask, required_docs, references, citations, retrieval_error, flags}.
     input_type / options tell the page which buttons to show (Yes/No, option chips, text).
     """
@@ -286,6 +440,8 @@ def build_guide(state: State, question: dict, search=None, top_n: int = 3) -> di
         "input_type": fact["type"],
         "options": fact.get("options", []),
         "step_number": len(state.asked),
+        "section": _section_label(definition, fact),
+        "triggered_by": next((b["keyword"] for b in state.boosted if b["fact"] == question["fact"]), None),
         "question": question["question"],
         "why_ask": question["why_ask"],
         "required_docs": question["required_docs"],
@@ -309,6 +465,8 @@ def summarize(state: State) -> dict:
         references_to_verify   all playbook references of the answered questions
         references_not_in_kb   references retrieval never returned (knowledge-base gaps)
         references_unchecked   references not checked because retrieval was down
+        reminders              record-keeping reminders whose conditions hold (modular playbook)
+        priority               sections the assistant chose to ask first
         turns, status
     """
     definition, questions = load_scenario(state.scenario)
@@ -330,6 +488,8 @@ def summarize(state: State) -> dict:
             elif r["retrieved"] is None:
                 unchecked.add(r["reference"])
 
+    reminders = [r["text"] for r in definition.get("reminders", []) if check(r.get("when"), state.facts)]
+
     state.status = "waiting_for_preparer"
     return {
         "type": "summary",
@@ -344,6 +504,8 @@ def summarize(state: State) -> dict:
         "references_to_verify": sorted(verify),
         "references_not_in_kb": sorted(missing),
         "references_unchecked": sorted(unchecked),
+        "reminders": reminders,
+        "priority": list(state.priority),
         "turns": len(state.history),
         "status": state.status,
     }
@@ -370,8 +532,9 @@ def step(state: State, answer_text: str | None = None, search=None,
     """Run one turn of the interview. Returns (state, output).
 
     step(state)          -> the first question (no answer yet)
-    step(state, answer)  -> the answer is for the last question in state.asked:
-                            extract_facts -> update facts and history -> review ->
+    step(state, answer)  -> the answer is for the last question in state.asked: extract_facts;
+                            if it was a free-text note (not a button or exact value), its trigger
+                            words reorder what comes next (apply_triggers) -> update facts and history -> review ->
                             next_question -> build_guide, or summarize when done
 
     output["type"] is one of
@@ -390,16 +553,19 @@ def step(state: State, answer_text: str | None = None, search=None,
         return (state, summarize(state)) if question is None else (state, _show(state, question, search))
 
     current = _question_by_id(state, state.asked[-1])
+    definition, _ = load_scenario(state.scenario)
     try:
         extracted = extract_facts(state, current, answer_text, normalizer=normalizer)
     except ValueError as exc:
+        apply_triggers(state, definition, answer_text)
         guide = build_guide(state, current, search=search)
         return state, {"type": "error", "message": str(exc), "guide": guide}
 
+    fired = apply_triggers(state, definition, answer_text) if extracted["parsed_by"] != "rules" else []
     new_facts = extracted["facts"]
     state.facts.update(new_facts)
     state.history.append({"question_id": current["id"], "answer_text": answer_text,
-                          "facts": new_facts, "parsed_by": extracted["parsed_by"]})
+                          "facts": new_facts, "parsed_by": extracted["parsed_by"], "triggers": fired})
     review(state)
 
     question = next_question(state)

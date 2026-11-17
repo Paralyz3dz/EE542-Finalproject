@@ -1,0 +1,44 @@
+form_or_line,out_of_scope_situation,handling,playbook_item
+F 1040 digital asset question,"Any digital asset transaction other than purchase with real currency, holding, own-wallet transfer, gift or inheritance",escalate,esc_has_digital_assets
+F 1040 line 1,Unreported tip income (advanced certification),asked (in scope),received_tips
+F 1040 lines 4-5 / F 1099-R,Foreign retirement arrangements; rollovers that are not tax-free; General Rule; listed box 7 codes,escalate,esc_did_rollover; esc_has_foreign_accounts; document review of 1099-R
+F 1040 line 6,Foreign social security treated as U.S. benefits,escalate,esc_has_foreign_accounts
+F 1040 line 7 / Schedule D,"Assets other than stocks, funds, ETFs or a home; options and futures; basis issues; like-kind exchanges",escalate,esc_sold_investments; esc_has_digital_assets
+F 1040 line 13b,QBI deduction above the income limit; publicly traded partnerships,escalate,has_self_employment escalations; esc_has_other_income
+F 1040-NR,Nonresident returns except certain F/J/M/Q visa holders,escalate,esc_is_us_citizen
+F W-2,"Box 12 codes Q, R, T, W, Z; FF with premium tax credit; ministers and clergy",document review,has_wages (W-2 requested)
+Schedule 1 line 1 / F 1099-G,State refund for a year other than the previous year,document review,had_state_refund
+Schedule 1 line 2 / line 19,Alimony under pre-1985 divorces,document review,received_alimony; paid_alimony
+Schedule 1 line 3 / Schedule C,Hobby income,escalate,esc_selling_for_profit
+Schedule C,Digital asset transactions,escalate,esc_paid_in_crypto; esc_has_digital_assets
+Schedule C,Cost of goods sold (inventory),escalate,esc_has_inventory
+Schedule C,Vehicle expenses as actual expenses,escalate,esc_car_expense_method_actual_costs
+Schedule C,Contract labor; employees; payments that require Forms 1099,escalate,esc_has_workers
+Schedule C,Depreciation or Form 4562,escalate,esc_bought_big_equipment
+Schedule C,Business use of home,escalate,esc_uses_home_for_business
+Schedule C,Net losses; carryover losses,escalate,esc_side_work_lost_money
+Schedule C,"Total expenses over $50,000",document review,side_gig: side_expenses (amount asked)
+Schedule C,Bartering; accounting other than cash; returns and allowances; no material participation; leased vehicle,not asked (gap noted),Not asked; preparer reviews the business records
+Schedule 1 line 5 / Schedule E,Rental income and expenses for nonmilitary taxpayers,escalate,esc_rental_property
+Schedule E,Rent below fair rental value; actual expense method; Form 4562; Form 8582,escalate,esc_rental_property; esc_personal_use_over_limit
+Schedule 1 line 6,Farm income or loss,escalate,esc_has_farm_income (added today)
+Schedule 1 line 8,Cancellation of debt other than nonbusiness credit card debt; not-for-profit income,escalate,esc_had_debt_forgiven; esc_has_other_income
+Schedule 1 line 13 / F 8889,HSA excess contributions not withdrawn; qualified HSA funding distribution; death of holder,document review,has_hsa (5498-SA / 1099-SA requested)
+Schedule 1 line 16,"Self-employed SEP, SIMPLE and qualified plans",escalate,esc_retirement_contribution_self_employed_plan (added today)
+Schedule 1 line 20 / F 5498,Nondeductible traditional IRA contributions; SEP or SIMPLE contributions,escalate,retirement_contribution_type (added today): self-employed plan and 'not sure' escalate
+Schedule 2,Alternative minimum tax; household employment taxes; additional Medicare tax; net investment income tax,escalate,esc_household_employee; document review of W-2 and 1099s
+Schedule 3 line 5 / F 5695,Residential energy credits,escalate,esc_installed_energy_efficient_items
+Schedule 3 line 3,Recapture of a prior-year education credit,document review,took_education_classes
+Schedule A,Casualty or theft losses; noncash gifts over limits; vehicle donations; charitable carryovers,escalate,esc_had_disaster_loss; made_donations (document review)
+Schedule B / F 1099-INT / F 1099-DIV,"FinCEN Form 114, Form 3520 or Form 8938 required; FATCA box checked",escalate,esc_has_foreign_accounts (added today)
+Schedule H,Household employment taxes,escalate,esc_household_employee
+F 1099-C,Discharge of qualified principal residence debt; other cancelled debt,escalate,esc_had_debt_forgiven
+F 1099-DA,Digital asset proceeds,escalate,esc_has_digital_assets
+F 1099-K,1099-K for anything other than self-employment income,escalate,esc_selling_personal_items
+F 1099-S,Home used as a rental; business property; installment sales,escalate,esc_sold_home; esc_sold_rental_property
+F 2441,Help deciding whether employment taxes are owed for the care provider,escalate,esc_household_employee
+F 4562 / F 4797 / F 8829 / F 8582,Depreciation; sale of business property; home office; passive losses,escalate,esc_bought_big_equipment; esc_sold_rental_property; esc_uses_home_for_business; esc_rental_property
+F 5329,Parts II-IX; excess IRA contributions; missed required minimum distributions,escalate,esc_under_59_half_at_distribution; retiree escalations
+F 8839,Adoption expenses,not asked (gap noted),Not asked; 13614-C has no adoption question
+F 8962 / F 1095-A,"Premium tax credit limitations (allocations, alternative calculation)",escalate,esc_has_marketplace_insurance
+Registered domestic partners (California),Not a Pub 4012 line; Direct File knockout,escalate,esc_registered_domestic_partner (added today)

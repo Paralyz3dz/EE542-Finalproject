@@ -1,0 +1,142 @@
+{
+  "id": "rental",
+  "title": "Rental property",
+  "status": "draft",
+  "activate_when": [
+    {
+      "fact": "owns_rental",
+      "equals": true
+    }
+  ],
+  "keywords": [
+    "rent out",
+    "rental",
+    "tenant",
+    "tenants",
+    "landlord",
+    "airbnb",
+    "vrbo"
+  ],
+  "triggers": [],
+  "facts": [
+    {
+      "name": "rented_fewer_than_15_days",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "rental_in_ca",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "rental_income",
+      "type": "money",
+      "required": true
+    },
+    {
+      "name": "rental_expenses",
+      "type": "money",
+      "required": true
+    },
+    {
+      "name": "placed_in_service_this_year",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "personal_use_over_limit",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "short_term_rental",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "sold_rental_property",
+      "type": "bool",
+      "required": true
+    },
+    {
+      "name": "rents_personal_property",
+      "type": "bool",
+      "required": true
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "esc_rental_property",
+      "when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ],
+      "reason": "Rental income (Schedule E) is outside the simple scope; the preparer reviews it."
+    },
+    {
+      "id": "esc_rental_in_ca",
+      "when": [
+        {
+          "fact": "rental_in_ca",
+          "equals": false
+        }
+      ],
+      "reason": "Out-of-state rental usually needs a nonresident return in that state."
+    },
+    {
+      "id": "esc_personal_use_over_limit",
+      "when": [
+        {
+          "fact": "personal_use_over_limit",
+          "equals": true
+        }
+      ],
+      "reason": "Vacation-home rules (personal use) need the preparer."
+    },
+    {
+      "id": "esc_short_term_rental",
+      "when": [
+        {
+          "fact": "short_term_rental",
+          "equals": true
+        }
+      ],
+      "reason": "Short-term rental treatment needs the preparer."
+    },
+    {
+      "id": "esc_sold_rental_property",
+      "when": [
+        {
+          "fact": "sold_rental_property",
+          "equals": true
+        }
+      ],
+      "reason": "Sale of rental property needs the preparer."
+    },
+    {
+      "id": "esc_rents_personal_property",
+      "when": [
+        {
+          "fact": "rents_personal_property",
+          "equals": true
+        }
+      ],
+      "reason": "Personal-property rental needs the preparer."
+    }
+  ],
+  "reminders": [
+    {
+      "id": "keep_rental_records",
+      "when": [
+        {
+          "fact": "owns_rental",
+          "equals": true
+        }
+      ],
+      "text": "Keep a rent ledger, receipts for every expense, and the purchase closing statement."
+    }
+  ]
+}

@@ -1,10 +1,21 @@
 # Raw data sources
 
-All files here are public IRS documents. Record every new file in this table. The `Downloaded` date is the local file's last-modified date.
+All files here are public IRS and California FTB documents. Record every new file in this table.
+
+The documents for the retrieval knowledge base, their names and the chunk format are listed in
+`docs/knowledge-base.md`.
+`Downloaded` is the local file's last-modified date.
 
 | File | Source URL | Tax year | Version / date on file | Downloaded |
 |---|---|---|---|---|
 | `irs/p17--2025.pdf` | https://www.irs.gov/pub/irs-prior/p17--2025.pdf | 2025 | Publication 17 (2025), Cat. No. 10311G, Jan 13, 2026 | 2026-11-04 |
+| `irs/f13614c_2025.pdf` | https://www.irs.gov/pub/irs-prior/f13614c--102025.pdf | 2025 | Form 13614-C (Rev. 10-2025) | 2026-11-16 |
+| `irs/f13614c_2026.pdf` | https://www.irs.gov/pub/irs-pdf/f13614c.pdf | 2026 (reference) | Form 13614-C (Rev. 10-2026) | 2026-11-16 |
+| `irs/p4012_2026.pdf` | https://www.irs.gov/pub/irs-pdf/p4012.pdf | 2026 (reference) | Publication 4012 (Rev. 10-2026); 2025 edition not in the prior-year archive. Not committed (61 MB) | 2026-11-16 |
+| `irs/f6744_2026.pdf` | https://www.irs.gov/pub/irs-pdf/f6744.pdf | 2026 (reference) | Form 6744 (Rev. 10-2026); 2025 edition not in the prior-year archive | 2026-11-16 |
+| `irs/p5101_2026.pdf` | https://www.irs.gov/pub/irs-pdf/p5101.pdf | 2026 (reference) | Publication 5101 (Rev. 10-2026) | 2026-11-16 |
+| `ats/ats12.pdf` | https://www.irs.gov/pub/irs-efile/ty25-1040-mef-ats-scenario-12.pdf | 2025 | ATS Test Scenario 12, Sam Gardenia (Schedule C, SE) | 2026-11-16 |
+| `ats/ats3.pdf` | https://www.eitc.irs.gov/pub/irs-efile/1040_mef_ats_scenario_3_09152025.pdf | 2025 | ATS Test Scenario 3, Lynette Heather (1099-R, Schedules D/E/F) | 2026-11-16 |
 | `irs/forms/2025 Form 1040.pdf` | https://www.irs.gov/pub/irs-prior/f1040--2025.pdf | 2025 | 2025 Form 1040 | 2026-11-15 |
 | `irs/forms/2025 Form 2441.pdf` | https://www.irs.gov/pub/irs-prior/f2441--2025.pdf | 2025 | 2025 Form 2441 | 2026-11-15 |
 | `irs/forms/2025 Form 8863.pdf` | https://www.irs.gov/pub/irs-prior/f8863--2025.pdf | 2025 | 2025 Form 8863 | 2026-11-15 |
@@ -34,4 +45,5 @@ All files here are public IRS documents. Record every new file in this table. Th
 | `irs/publications/2025 Publication 970.pdf` | https://www.irs.gov/pub/irs-prior/p970--2025.pdf | 2025 | Publication 970 (2025) | 2026-11-16 |
 | `irs/publications/2025 Publication 974.pdf` | https://www.irs.gov/pub/irs-prior/p974--2025.pdf | 2025 | Publication 974 (2025) | 2026-11-16 |
 
-No ATS scenarios or VITA training materials are currently present under `data/raw`; add them here if they are downloaded later.
+Tax-year policy: rules, citations and test expectations use tax year 2025. Files marked "2026 (reference)" are used only
+for interview structure and wording (which question to ask, how to phrase it), never as the source of a rule or amount.

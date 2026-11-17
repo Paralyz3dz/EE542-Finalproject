@@ -1,0 +1,25 @@
+{
+  "name": "Single W-2 employee with nothing else",
+  "source": "Fictional baseline: the simplest return.",
+  "official_outcome": "Form 1040 and CA Form 540 only; nothing to escalate.",
+  "priority": [],
+  "background": "",
+  "answers": {
+    "has_wages": "yes",
+    "marital_status": "never_married",
+    "registered_domestic_partner": "no",
+    "made_estimated_payments": "no"
+  },
+  "expect": {
+    "flags": [],
+    "modules_asked": [
+      "base_intake"
+    ],
+    "modules_not_asked": [
+      "side_gig",
+      "family",
+      "retiree",
+      "rental"
+    ]
+  }
+}
