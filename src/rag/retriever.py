@@ -27,7 +27,7 @@ def embed_query(query: str) -> np.ndarray:
     return embed_texts([f"Instruct: {QUERY_INSTRUCTION}\nQuery: {query.strip()}"])[0]
 
 
-def embed_texts(texts: list[str]) -> np.ndarray:
+def embed_texts(texts: list[str], options: dict | None = None) -> np.ndarray:
     if not texts or any(not text.strip() for text in texts):
         raise ValueError("Embedding inputs must not be empty.")
 
@@ -36,6 +36,7 @@ def embed_texts(texts: list[str]) -> np.ndarray:
         "model": os.getenv("OLLAMA_EMBEDDING_MODEL", "qwen3-embedding:0.6b"),
         "input": texts,
         "truncate": False,
+        **({"options": options} if options else {}),
     }).encode("utf-8")
     request = Request(
         f"{base_url}/api/embed", data=payload,

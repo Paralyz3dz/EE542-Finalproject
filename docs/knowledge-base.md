@@ -1,12 +1,14 @@
 # Knowledge base for the guided interview
 
-As of 2026-11-16. Tax year 2025, federal (IRS) and California (FTB).
+As of 2026-11-17. Tax year 2025, federal (IRS) and California (FTB).
 
 This file defines what goes into the retrieval knowledge base and in what format. The document
 list is derived from the interview playbook: every question in `playbooks/modules/*/questions.json`
 names the official document its rule comes from (field `source`). The knowledge base holds those
 documents, so that each question can show the passage behind it and the summary can tell the
 preparer which references were actually found.
+
+All 21 listed documents are now stored in the remote knowledge base (6,004 chunks with vectors). The 2026-11-17 import added 5,184 chunks and 800 table records. Retrieval acceptance is not yet passed: source hit@3 is 68/104 (65.4%), below the 80% target. See [the import and validation report](knowledge-base-import.md) for results and limitations.
 
 ## 1. What the knowledge base does, and does not do
 
@@ -29,11 +31,11 @@ citing the document. Files follow the existing naming (`data/raw/irs/p17--2025.p
 | KB name | Questions | Modules | File | Source URL | Status |
 |---|---|---|---|---|---|
 | IRS Pub 17 | 44 | base_intake, family, retiree | `irs/p17--2025.pdf` | https://www.irs.gov/pub/irs-prior/p17--2025.pdf | in repo, embedded |
-| IRS Schedule C Instructions | 10 | base_intake, side_gig | `irs/i1040sc--2025.pdf` | https://www.irs.gov/pub/irs-prior/i1040sc--2025.pdf | to download |
-| IRS Pub 527 | 7 | base_intake, rental | `irs/p527--2025.pdf` | https://www.irs.gov/pub/irs-prior/p527--2025.pdf | to download |
-| IRS Pub 334 | 7 | side_gig | `irs/p334--2025.pdf` | https://www.irs.gov/pub/irs-prior/p334--2025.pdf | to download |
-| IRS Pub 503 | 6 | family | `irs/p503--2025.pdf` | https://www.irs.gov/pub/irs-prior/p503--2025.pdf | to download |
-| IRS Pub 463 | 5 | side_gig | `irs/p463--2025.pdf` | https://www.irs.gov/pub/irs-prior/p463--2025.pdf | to download |
+| IRS Schedule C Instructions | 10 | base_intake, side_gig | `irs/i1040sc--2025.pdf` | https://www.irs.gov/pub/irs-prior/i1040sc--2025.pdf | in repo, embedded |
+| IRS Pub 527 | 7 | base_intake, rental | `irs/p527--2025.pdf` | https://www.irs.gov/pub/irs-prior/p527--2025.pdf | in repo, embedded |
+| IRS Pub 334 | 7 | side_gig | `irs/p334--2025.pdf` | https://www.irs.gov/pub/irs-prior/p334--2025.pdf | in repo, embedded |
+| IRS Pub 503 | 6 | family | `irs/p503--2025.pdf` | https://www.irs.gov/pub/irs-prior/p503--2025.pdf | in repo, embedded |
+| IRS Pub 463 | 5 | side_gig | `irs/p463--2025.pdf` | https://www.irs.gov/pub/irs-prior/p463--2025.pdf | in repo, embedded |
 
 ### Batch 2: IRS (10 documents)
 

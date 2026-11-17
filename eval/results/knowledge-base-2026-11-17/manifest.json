@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-17",
+  "tax_year": 2025,
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "ollama_model": "qwen3-embedding:0.6b",
+  "embedding_dimensions": 1024,
+  "documents": 21,
+  "chunks": 6004,
+  "new_chunks": 5184,
+  "new_table_records": 800,
+  "questions": 104,
+  "metric": "At least one of the top three citations matches a question source document; this does not judge passage relevance or answer correctness.",
+  "production_retrieval": "HNSW top 5 + BM25 top 5, RRF constant 60, inspect top 3",
+  "import_status": "complete",
+  "retrieval_acceptance": "below 80% target",
+  "diagnostic_changes": "Read-only experiments; no retrieval ranking optimization applied."
+}

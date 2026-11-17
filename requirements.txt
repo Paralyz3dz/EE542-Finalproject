@@ -5,6 +5,9 @@ openai
 python-dotenv
 pydantic
 pdfplumber
+beautifulsoup4
+reportlab
+requests
 pypdf>=6.1,<8
 sentence-transformers
 torch

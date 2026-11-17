@@ -12,7 +12,7 @@ from src.db.connection import ROOT
 from src.rag.retriever import EMBEDDING_DIM, embed_texts
 
 
-def generate(input_path: Path, output_path: Path, batch_size: int = 8) -> None:
+def generate(input_path: Path, output_path: Path, batch_size: int = 8, options: dict | None = None) -> None:
     if batch_size < 1:
         raise ValueError("batch_size must be positive.")
     if output_path.exists():
@@ -53,7 +53,8 @@ def generate(input_path: Path, output_path: Path, batch_size: int = 8) -> None:
     with partial.open("a", encoding="utf-8") as output:
         for start in range(completed, len(chunks), batch_size):
             batch = chunks[start:start + batch_size]
-            vectors = embed_texts([chunk["embed_text"] for chunk in batch])
+            texts = [chunk["embed_text"] for chunk in batch]
+            vectors = embed_texts(texts, options=options) if options else embed_texts(texts)
             for chunk, vector in zip(batch, vectors):
                 output.write(json.dumps({
                     "id": chunk["id"],
@@ -73,8 +74,13 @@ def main() -> None:
     parser.add_argument("input", type=Path, help="Local JSON list containing id and embed_text")
     parser.add_argument("--out", type=Path, default=ROOT / "data/processed/embeddings_qwen3-0.6b.jsonl")
     parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--num-ctx", type=int)
+    parser.add_argument("--num-thread", type=int)
     args = parser.parse_args()
-    generate(args.input, args.out, args.batch_size)
+    options = {key: value for key, value in {"num_ctx": args.num_ctx, "num_thread": args.num_thread}.items() if value is not None}
+    if any(value < 1 for value in options.values()):
+        parser.error("Context size and thread count must be positive")
+    generate(args.input, args.out, args.batch_size, options=options)
 
 
 if __name__ == "__main__":

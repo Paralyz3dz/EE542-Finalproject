@@ -47,3 +47,30 @@ The documents for the retrieval knowledge base, their names and the chunk format
 
 Tax-year policy: rules, citations and test expectations use tax year 2025. Files marked "2026 (reference)" are used only
 for interview structure and wording (which question to ask, how to phrase it), never as the source of a rule or amount.
+
+## Knowledge-base additions (2026-11-17)
+
+| File | Source URL | Tax year | Version / date on file | Downloaded |
+|---|---|---|---|---|
+| `irs/i1040sc--2025.pdf` | https://www.irs.gov/pub/irs-prior/i1040sc--2025.pdf | 2025 | IRS Schedule C Instructions (2025) | 2026-11-17 |
+| `irs/p527--2025.pdf` | https://www.irs.gov/pub/irs-prior/p527--2025.pdf | 2025 | IRS Pub 527 (2025) | 2026-11-17 |
+| `irs/p334--2025.pdf` | https://www.irs.gov/pub/irs-prior/p334--2025.pdf | 2025 | IRS Pub 334 (2025) | 2026-11-17 |
+| `irs/p503--2025.pdf` | https://www.irs.gov/pub/irs-prior/p503--2025.pdf | 2025 | IRS Pub 503 (2025) | 2026-11-17 |
+| `irs/p463--2025.pdf` | https://www.irs.gov/pub/irs-prior/p463--2025.pdf | 2025 | IRS Pub 463 (2025) | 2026-11-17 |
+| `irs/i1040gi--2025.pdf` | https://www.irs.gov/pub/irs-prior/i1040gi--2025.pdf | 2025 | IRS Form 1040 Instructions (2025) | 2026-11-17 |
+| `irs/p575--2025.pdf` | https://www.irs.gov/pub/irs-prior/p575--2025.pdf | 2025 | IRS Pub 575 (2025) | 2026-11-17 |
+| `irs/p970--2025.pdf` | https://www.irs.gov/pub/irs-prior/p970--2025.pdf | 2025 | IRS Pub 970 (2025) | 2026-11-17 |
+| `irs/p915--2025.pdf` | https://www.irs.gov/pub/irs-prior/p915--2025.pdf | 2025 | IRS Pub 915 (2025) | 2026-11-17 |
+| `irs/p525--2025.pdf` | https://www.irs.gov/pub/irs-prior/p525--2025.pdf | 2025 | IRS Pub 525 (2025) | 2026-11-17 |
+| `irs/p505--2025.pdf` | https://www.irs.gov/pub/irs-prior/p505--2025.pdf | 2025 | IRS Pub 505 (2025) | 2026-11-17 |
+| `irs/p925--2025.pdf` | https://www.irs.gov/pub/irs-prior/p925--2025.pdf | 2025 | IRS Pub 925 (2025) | 2026-11-17 |
+| `irs/p544--2025.pdf` | https://www.irs.gov/pub/irs-prior/p544--2025.pdf | 2025 | IRS Pub 544 (2025) | 2026-11-17 |
+| `irs/p590a--2025.pdf` | https://www.irs.gov/pub/irs-prior/p590a--2025.pdf | 2025 | IRS Pub 590-A (2025) | 2026-11-17 |
+| `irs/p590b--2025.pdf` | https://www.irs.gov/pub/irs-prior/p590b--2025.pdf | 2025 | IRS Pub 590-B (2025) | 2026-11-17 |
+| `ftb/2025-540-s-instructions.html` | https://www.ftb.ca.gov/forms/2025/2025-540-s-instructions.html | 2025 | FTB Schedule S Instructions (2025) | 2026-11-17 |
+| `ftb/2025-1031-publication.pdf` | https://www.ftb.ca.gov/forms/2025/2025-1031-publication.pdf | 2025 | FTB Pub 1031 (2025) | 2026-11-17 |
+| `ftb/2025-540-ca-instructions.html` | https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html | 2025 | FTB Schedule CA (540) Instructions (2025) | 2026-11-17 |
+| `ftb/2025-3514-booklet.pdf` | https://www.ftb.ca.gov/forms/2025/2025-3514-booklet.pdf | 2025 | FTB 3514 Instructions (2025) | 2026-11-17 |
+| `ftb/2025-540-booklet.pdf` | https://www.ftb.ca.gov/forms/2025/2025-540-booklet.pdf | 2025 | FTB 540 Booklet (2025) | 2026-11-17 |
+
+FTB instruction webpages are retained as HTML and converted to PDFs alongside the HTML originals.

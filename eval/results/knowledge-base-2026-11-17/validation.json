@@ -1,0 +1,1183 @@
+{
+  "inventory": [
+    [
+      "FTB 3514 Instructions (2025)",
+      151,
+      151
+    ],
+    [
+      "FTB 540 Booklet (2025)",
+      314,
+      314
+    ],
+    [
+      "FTB Pub 1031 (2025)",
+      87,
+      87
+    ],
+    [
+      "FTB Schedule CA (540) Instructions (2025)",
+      79,
+      79
+    ],
+    [
+      "FTB Schedule S Instructions (2025)",
+      14,
+      14
+    ],
+    [
+      "IRS Form 1040 Instructions (2025)",
+      951,
+      951
+    ],
+    [
+      "IRS Pub 17 (2025)",
+      820,
+      820
+    ],
+    [
+      "IRS Pub 334 (2025)",
+      334,
+      334
+    ],
+    [
+      "IRS Pub 463 (2025)",
+      300,
+      300
+    ],
+    [
+      "IRS Pub 503 (2025)",
+      102,
+      102
+    ],
+    [
+      "IRS Pub 505 (2025)",
+      282,
+      282
+    ],
+    [
+      "IRS Pub 525 (2025)",
+      331,
+      331
+    ],
+    [
+      "IRS Pub 527 (2025)",
+      192,
+      192
+    ],
+    [
+      "IRS Pub 544 (2025)",
+      308,
+      308
+    ],
+    [
+      "IRS Pub 575 (2025)",
+      258,
+      258
+    ],
+    [
+      "IRS Pub 590-A (2025)",
+      314,
+      314
+    ],
+    [
+      "IRS Pub 590-B (2025)",
+      317,
+      317
+    ],
+    [
+      "IRS Pub 915 (2025)",
+      143,
+      143
+    ],
+    [
+      "IRS Pub 925 (2025)",
+      129,
+      129
+    ],
+    [
+      "IRS Pub 970 (2025)",
+      442,
+      442
+    ],
+    [
+      "IRS Schedule C Instructions (2025)",
+      136,
+      136
+    ]
+  ],
+  "documents": 21,
+  "chunks": 6004,
+  "vectors": 6004,
+  "citation_names_valid": true,
+  "short_chunks_preserved_at_heading_boundaries": 2367,
+  "maximum_words": 399,
+  "types": {
+    "table": 1362,
+    "rule": 3469,
+    "whats_new": 33,
+    "caution": 190,
+    "tip": 130
+  },
+  "queries": 104,
+  "hit_at_3": 0.6538461538461539,
+  "batches": {
+    "batch_1": {
+      "questions": 79,
+      "hits": 51,
+      "hit_at_3": 0.6455696202531646
+    },
+    "batch_2": {
+      "questions": 25,
+      "hits": 17,
+      "hit_at_3": 0.68
+    }
+  },
+  "baseline_summary_references_not_in_kb": [
+    "IRS Pub 17",
+    "IRS Pub 505",
+    "IRS Schedule C Instructions"
+  ],
+  "results": [
+    {
+      "id": "q_ca_resident_full_year",
+      "source": "FTB Pub 1031",
+      "hit_at_3": true,
+      "citations": [
+        "FTB Pub 1031 (2025), 'E Who Are Residents and Nonresidents', p. 4",
+        "FTB Pub 1031 (2025), 'Residents; Nonresidents; Part-year residents', p. 6",
+        "FTB Pub 1031 (2025), 'Partnership, S Corporation, Limited Liability Company (LLC), and Trust Income (Loss)', p. 8"
+      ]
+    },
+    {
+      "id": "q_lived_in_multiple_states",
+      "source": "FTB Schedule S Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "FTB Pub 1031 (2025), 'O Double-Taxed Income', p. 14",
+        "FTB Schedule S Instructions (2025), 'A. Purpose', web instruction PDF p. 1",
+        "FTB Schedule S Instructions (2025), '2025 Instructions for Schedule S Other State Tax Credit General Information', web instruction PDF p. 1"
+      ]
+    },
+    {
+      "id": "q_age_65_or_older",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 10 Standard Deduction, 'Death of a taxpayer', pp. 92-93",
+        "IRS Pub 17 (2025), Chapter 10 Standard Deduction, 'Death of a spouse', p. 93",
+        "IRS Pub 17 (2025), Chapter 10 Standard Deduction, 'Decedent's final return', p. 92"
+      ]
+    },
+    {
+      "id": "q_can_be_claimed_as_dependent",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 10 Standard Deduction, 'Standard Deduction for Dependents', p. 93",
+        "FTB Schedule CA (540) Instructions (2025), 'Line 29 – California Itemized Deductions', web instruction PDF p. 32",
+        "IRS Form 1040 Instructions (2025), 'Standard Deduction', p. 34"
+      ]
+    },
+    {
+      "id": "q_is_us_citizen",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Resident alien; Nonresident alien; Dual-status taxpayer', p. 8",
+        "IRS Form 1040 Instructions (2025), '!', p. 8",
+        "IRS Form 1040 Instructions (2025), 'Resident aliens; Nonresident aliens and dual-status aliens', p. 8"
+      ]
+    },
+    {
+      "id": "q_is_full_time_student",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 970 (2025), 'Support; Full-time student', p. 21",
+        "IRS Pub 970 (2025), 'Enrolled at least half-time', p. 17",
+        "IRS Pub 970 (2025), 'student American opportunity credit; tion', pp. 75-76"
+      ]
+    },
+    {
+      "id": "q_blind_or_disabled",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 10 Standard Deduction, 'Not totally blind', p. 93",
+        "IRS Form 1040 Instructions (2025), 'Exception 2—Spouse itemizes on a separate return. Line 12b; Exception 3—Dual-status alien Line 12c; Exception 4—Born before January 2, 1961, or blind. Line 12d; Exception 5—Increased standard deduction for net qualified disaster loss', p. 34",
+        "IRS Pub 17 (2025), Chapter 10 Standard Deduction, 'Examples', p. 93"
+      ]
+    },
+    {
+      "id": "q_has_digital_assets",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Digital Assets', pp. 15-16",
+        "IRS Pub 544 (2025), 'Digital Assets', p. 39",
+        "IRS Pub 544 (2025), 'Digital Assets', p. 39"
+      ]
+    },
+    {
+      "id": "q_marital_status",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Filing Status', p. 13",
+        "IRS Pub 17 (2025), Chapter 2 Filing Status, 'Unmarried persons', p. 21",
+        "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Filing status', p. 7"
+      ]
+    },
+    {
+      "id": "q_lived_apart_last_6_months",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Head of Household', p. 14",
+        "IRS Pub 17 (2025), Chapter 2 Filing Status, 'Considered Unmarried', p. 24",
+        "IRS Form 1040 Instructions (2025), 'Married Filing Separately', p. 14"
+      ]
+    },
+    {
+      "id": "q_marital_status_changed",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Qualifying Child of More Than One Person', pp. 32-33",
+        "IRS Pub 17 (2025), Chapter 2 Filing Status, 'Spouse died; Divorced persons', p. 22",
+        "IRS Form 1040 Instructions (2025), 'Single', p. 13"
+      ]
+    },
+    {
+      "id": "q_has_dependents",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 503 (2025), 'Dependent defined; Physically or mentally not able to care for oneself; Person qualifying for part of year', p. 3",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Not a Qualifying Child Test', p. 33",
+        "IRS Form 1040 Instructions (2025), 'A qualifying; AND; AND; AND; Yes; Yes', p. 19"
+      ]
+    },
+    {
+      "id": "q_has_wages",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Form W-2', p. 48",
+        "IRS Pub 505 (2025), 'Determining Amount of Tax Withheld Using Form W-4', p. 3",
+        "IRS Pub 590-A (2025), 'Wages, salaries, etc', p. 6"
+      ]
+    },
+    {
+      "id": "q_w2_job_count",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Excess Social Security and Tier 1 RRTA Tax Withheld', p. 117",
+        "IRS Pub 17 (2025), Chapter 4 Tax Withholding and Estimated Tax, 'Two or more employers', p. 44",
+        "IRS Pub 505 (2025), 'Withholding—line 13', p. 23"
+      ]
+    },
+    {
+      "id": "q_received_tips",
+      "source": "IRS Form 1040 Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Qualified Tips', p. 105",
+        "IRS Form 1040 Instructions (2025), 'Maximum amount of deduction', p. 101",
+        "IRS Form 1040 Instructions (2025), '—; Line 10', p. 105"
+      ]
+    },
+    {
+      "id": "q_has_qualified_overtime",
+      "source": "IRS Form 1040 Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Line 14b; —; Line 18', p. 108",
+        "IRS Form 1040 Instructions (2025), 'Maximum amount of deduction', p. 106",
+        "IRS Form 1040 Instructions (2025), 'Qualified overtime compensation', p. 106"
+      ]
+    },
+    {
+      "id": "q_has_self_employment",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+        "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+        "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90"
+      ]
+    },
+    {
+      "id": "q_has_retirement_income",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+        "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+        "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65"
+      ]
+    },
+    {
+      "id": "q_owns_rental",
+      "source": "IRS Pub 527",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 527 (2025), 'Schedule E (Form 1040)', pp. 17-18",
+        "IRS Pub 527 (2025), '3. Reporting Rental Income, Expenses, and Losses', p. 17",
+        "IRS Pub 527 (2025), 'Legal and other professional fees; Local benefit taxes', p. 5"
+      ]
+    },
+    {
+      "id": "q_has_unemployment",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 525 (2025), 'Unemployment compensation', p. 28",
+        "FTB Schedule CA (540) Instructions (2025), 'Line 7 – Unemployment Compensation', web instruction PDF p. 19",
+        "IRS Pub 17 (2025), Chapter 8 Other Income, 'Unemployment compensation', p. 72"
+      ]
+    },
+    {
+      "id": "q_had_state_refund",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 525 (2025), 'Total recovery included in income', p. 25",
+        "IRS Pub 525 (2025), 'Itemized Deduction Recoveries', pp. 24-25",
+        "IRS Pub 525 (2025), 'State tax refund', p. 24"
+      ]
+    },
+    {
+      "id": "q_has_interest_dividends",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 6 Interest Income, 'Dividends that are actually interest; Money market funds', p. 56",
+        "IRS Pub 17 (2025), Chapter 6 Interest Income, 'Exempt-interest dividends; Note', p. 56",
+        "IRS Pub 17 (2025), Chapter 6 Interest Income, 'Interest on Department of Veterans Affairs (VA) dividends; Individual retirement arrangements (IRAs)', p. 56"
+      ]
+    },
+    {
+      "id": "q_sold_investments",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 544 (2025), 'Capital gains and losses Franchise; G', p. 61",
+        "IRS Pub 544 (2025), 'Capital gain or loss', p. 30",
+        "IRS Pub 525 (2025), 'Cafeteria plans Campaign contributions Campus lodging Cancellation of debt Cancellation of sales contracts Capital gains; Capital gains or losses; Car; Carpools Cash or deferred arrangements (CODAs) Cash rebates Casualty insurance', p. 40"
+      ]
+    },
+    {
+      "id": "q_received_alimony",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 8 Other Income, 'Other Income', p. 74",
+        "IRS Form 1040 Instructions (2025), 'Line 19a; Line 19c', p. 95",
+        "IRS Form 1040 Instructions (2025), 'Line 2a; Line 2b', p. 89"
+      ]
+    },
+    {
+      "id": "q_has_gambling_winnings",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 505 (2025), 'Backup withholding on gambling winnings', p. 10",
+        "IRS Pub 505 (2025), 'Gambling Winnings', p. 10",
+        "IRS Pub 17 (2025), Chapter 4 Tax Withholding and Estimated Tax, 'Form W-2G', p. 40"
+      ]
+    },
+    {
+      "id": "q_has_other_income",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Line 8h Jury duty pay; Line 8i Prizes and awards; Line 8j Activity not engaged in for profit income; Line 8k Stock options; Line 8l Income from the rental of personal property if you engaged in the rental for profit but were not in the business of renting such property; Line 8m Olympic and Paralympic medals and USOC prize money', p. 91",
+        "IRS Pub 17 (2025), Chapter 8 Other Income, 'Job interview expenses; Jury duty; Kickbacks', p. 76",
+        "IRS Form 1040 Instructions (2025), 'Line 24a Jury duty pay; Line 24b; Line 24c; Line 24d; Line 24e; Line 24f; Line 24g', pp. 99-100"
+      ]
+    },
+    {
+      "id": "q_paid_mortgage_interest",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "FTB Schedule CA (540) Instructions (2025), 'Line 8 – Home Mortgage Interest', web instruction PDF p. 28",
+        "IRS Pub 527 (2025), 'Caution; Line 2a; Step 1; Step 2', pp. 29-30",
+        "IRS Pub 527 (2025), 'Line 4b; Line 4c', p. 31"
+      ]
+    },
+    {
+      "id": "q_paid_property_tax",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 11 Taxes, 'Table 11-1. Which Taxes Can You Deduct?', p. 99",
+        "IRS Pub 17 (2025), Chapter 11 Taxes, 'State and Local Real Estate Tax Deduction—Taxes on New Home', p. 98",
+        "IRS Pub 17 (2025), Chapter 11 Taxes, 'State and Local Real Estate Tax Deduction—Taxes on Old Home', p. 98"
+      ]
+    },
+    {
+      "id": "q_large_medical_expenses",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "FTB Schedule CA (540) Instructions (2025), 'Line 1 through Line 4', web instruction PDF p. 27",
+        "FTB 540 Booklet (2025), 'Line 1 through Line 4 Employees and independent contractors; HSA distributions', p. 66",
+        "IRS Pub 503 (2025), 'Expenses reimbursed; Medical expenses; Caution', p. 10"
+      ]
+    },
+    {
+      "id": "q_made_donations",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "FTB 540 Booklet (2025), 'Line 12 – Other Than By Cash or Check Qualified charitable contributions; Charitable conservation easement contributions; Charitable contribution deduction disallowance', pp. 66-67",
+        "IRS Pub 590-B (2025), 'Appendix D. Qualified Charitable Adjustment Worksheet', p. 70",
+        "FTB 540 Booklet (2025), 'College Access Tax Credit; Charitable contribution deduction disallowance', p. 66"
+      ]
+    },
+    {
+      "id": "q_paid_student_loan_interest",
+      "source": "IRS Pub 970",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 970 (2025), 'Introduction', p. 30",
+        "IRS Pub 970 (2025), '14. Student loan interest deduction', p. 35",
+        "IRS Form 1040 Instructions (2025), 'Exception; Qualified student loan; Student Loan Interest Deduction Worksheet—Schedule', pp. 98-99"
+      ]
+    },
+    {
+      "id": "q_contributed_to_retirement",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Line 20 IRA Deduction', p. 95",
+        "IRS Form 1040 Instructions (2025), 'Retirement Savings Contributions Credit (Saver’s Credit)', pp. 115-116",
+        "IRS Pub 590-A (2025), 'Modified AGI limit for retirement savings contributions credit increased', p. 46"
+      ]
+    },
+    {
+      "id": "q_is_educator_with_expenses",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 12 Other Itemized Deductions, 'Educator Expenses', p. 101",
+        "IRS Form 1040 Instructions (2025), 'Line 11 Educator Expenses', p. 93",
+        "IRS Pub 17 (2025), Chapter 12 Other Itemized Deductions, 'Educator Expenses', p. 101"
+      ]
+    },
+    {
+      "id": "q_paid_alimony",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Line 19a; Line 19c', p. 95",
+        "FTB 540 Booklet (2025), 'Line 19a Alimony Paid', p. 65",
+        "FTB Schedule CA (540) Instructions (2025), 'Section C – Adjustments to Income Line 11 through Line 25', web instruction PDF p. 25"
+      ]
+    },
+    {
+      "id": "q_took_education_classes",
+      "source": "IRS Pub 970",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 970 (2025), 'Differences between the American opportunity and lifetime learning credits; Overview of the lifetime learning credit for 2025', p. 22",
+        "IRS Pub 970 (2025), 'Differences between the American opportunity and lifetime learning credits', p. 9",
+        "IRS Pub 970 (2025), 'No Double Benefit Allowed', p. 24"
+      ]
+    },
+    {
+      "id": "q_has_hsa",
+      "source": "FTB Schedule CA (540) Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "FTB 540 Booklet (2025), 'Line 12 Certain Business Expenses of Reservists, Performing Artists, and Fee-Basis Government Officials; Line 13 Health Savings Account Deduction; Line 14 Moving Expenses', p. 65",
+        "FTB Schedule CA (540) Instructions (2025), 'Column A – Federal Amounts Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a', web instruction PDF p. 7",
+        "FTB 540 Booklet (2025), 'Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a; Section B, Line 2a and Line 2b', p. 58"
+      ]
+    },
+    {
+      "id": "q_has_marketplace_insurance",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Form 1095-A; Form 8962', p. 5",
+        "IRS Form 1040 Instructions (2025), 'Form 8962; 1095-C', p. 5",
+        "IRS Form 1040 Instructions (2025), 'Net Premium Tax Credit', pp. 116-117"
+      ]
+    },
+    {
+      "id": "q_bought_new_vehicle",
+      "source": "IRS Form 1040 Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 334 (2025), 'Personal loans; Interest on car loans', pp. 38-39",
+        "IRS Pub 463 (2025), 'Interest', p. 21",
+        "IRS Form 1040 Instructions (2025), 'Qualified passenger vehicle loan interest', p. 109"
+      ]
+    },
+    {
+      "id": "q_installed_energy_efficient_items",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Residential Energy Credits Line 5a—residential clean energy credit; Line 5b—energy efficient home improvement credit; Negative Form 8978 Adjustment Worksheet—Schedule Note', p. 116",
+        "IRS Pub 334 (2025), 'Distilled spirits credit (Form 8906); Employer credit for paid family and medical leave (Form 8994); Empowerment zone employment credit (Form 8844); Energy efficient home credit (Form 8908); Investment credit (Form 3468)', p. 20",
+        "IRS Pub 334 (2025), 'Low sulfur diesel fuel production credit (Form 8896); Low-income housing credit (Form 8586); New markets credit (Form 8874); Orphan drug credit (Form 8820); Clean vehicle credits (Form 8936); Qualified railroad track maintenance credit (Form 8900)', p. 20"
+      ]
+    },
+    {
+      "id": "q_sold_home",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 527 (2025), 'Sale or exchange of rental property', p. 2",
+        "IRS Pub 527 (2025), 'Decreases to basis', p. 12",
+        "IRS Pub 544 (2025), 'Gain', p. 6"
+      ]
+    },
+    {
+      "id": "q_had_debt_forgiven",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 8 Other Income, 'Deductible debt; Price reduced after purchase; Excluded debt', p. 69",
+        "IRS Pub 525 (2025), 'Student loans; Exclusion for student loan cancellation due to meeting certain work requirements', p. 21",
+        "IRS Pub 334 (2025), 'Exclusions', pp. 23-24"
+      ]
+    },
+    {
+      "id": "q_had_disaster_loss",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "FTB Schedule CA (540) Instructions (2025), 'Line 15 – Casualty or Theft Loss(es)', web instruction PDF p. 30",
+        "FTB 540 Booklet (2025), 'Line 15 – Casualty or Theft Loss(es); Line 16 – Other Itemized Deductions Unreimbursed impairment-related work expenses', p. 67",
+        "IRS Pub 527 (2025), 'Step 1; Step 2', p. 30"
+      ]
+    },
+    {
+      "id": "q_had_credit_disallowed",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+        "IRS Form 1040 Instructions (2025), '8', p. 48",
+        "IRS Form 1040 Instructions (2025), 'earned income credit; 11', p. 48"
+      ]
+    },
+    {
+      "id": "q_received_irs_letter",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 505 (2025), 'Understanding an IRS notice or letter you’ve received; Responding to an IRS notice or letter; Note', p. 42",
+        "IRS Pub 925 (2025), 'Understanding an IRS notice or letter you’ve received; IRS Document Upload Tool; Schedule LEP', p. 26",
+        "IRS Pub 334 (2025), 'Understanding an IRS notice or letter you’ve received; IRS Document Upload Tool; Schedule LEP', p. 52"
+      ]
+    },
+    {
+      "id": "q_made_estimated_payments",
+      "source": "IRS Pub 505",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 4 Tax Withholding and Estimated Tax, 'Name changed', p. 44",
+        "IRS Pub 17 (2025), Chapter 4 Tax Withholding and Estimated Tax, 'Credit an Overpayment', p. 43",
+        "IRS Pub 17 (2025), Chapter 4 Tax Withholding and Estimated Tax, 'Separate Returns', p. 44"
+      ]
+    },
+    {
+      "id": "q_registered_domestic_partner",
+      "source": "FTB 540 Booklet",
+      "hit_at_3": true,
+      "citations": [
+        "FTB 540 Booklet (2025), 'Registered Domestic Partners (RDPs)', p. 9",
+        "FTB 540 Booklet (2025), '11. Are all domestic partners required to file joint or separate tax returns?', p. 32",
+        "FTB Pub 1031 (2025), 'Registered Domestic Partners (RDP)', p. 3"
+      ]
+    },
+    {
+      "id": "q_has_farm_income",
+      "source": "IRS Pub 17",
+      "hit_at_3": false,
+      "citations": [
+        "FTB 540 Booklet (2025), 'Line 6 – Farm Income or (Loss)', p. 62",
+        "FTB Schedule CA (540) Instructions (2025), 'Line 6 – Farm Income or (Loss)', web instruction PDF p. 18",
+        "IRS Form 1040 Instructions (2025), p. 3"
+      ]
+    },
+    {
+      "id": "q_has_foreign_accounts",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Foreign retirement plans; Foreign accounts and trusts; Foreign financial assets', p. 23",
+        "IRS Pub 17 (2025), 'Foreign-source income; Foreign financial assets', p. 3",
+        "IRS Form 1040 Instructions (2025), 'Excess deferrals Excess social security and tier 1 RRTA tax withheld Extension of time to file; F Filing requirements Filing status, which box to check Foreign accounts and trusts Foreign tax credit Foreign-source income Form W-2 G Gambling General business credit Gifts Golden parachute payments H Head of household Health insurance deduction, self-employed Health insurance premiums, credit for Health savings accounts; Household employment taxes How to comment on forms I Identity Protection PIN Identity theft Income Income tax withholding (federal); Individual retirement arrangements (IRAs); Individual taxpayer identification numbers Injured spouse Innocent spouse relief Installment payments Interest income', p. 123"
+      ]
+    },
+    {
+      "id": "q_retirement_contribution_type",
+      "source": "IRS Pub 590-A",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 9 Individual Retirement Arrangements (IRAs), 'Types of IRAs', p. 78",
+        "IRS Pub 590-A (2025), 'Simplified Employee Pension (SEP) Arrangements and SIMPLE IRAs', p. 8",
+        "IRS Pub 590-A (2025), 'Introduction', p. 6"
+      ]
+    },
+    {
+      "id": "q_dependent_count",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Not a Qualifying Child Test', p. 33",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Age; Kidnapped child', p. 33",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Qualifying Child', p. 28"
+      ]
+    },
+    {
+      "id": "q_dependent_lived_with_you_half_year",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Adopted or foster child; Kidnapped child', pp. 28-29",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Not a Qualifying Child Test', p. 33",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Temporary absences; Death or birth of child', p. 28"
+      ]
+    },
+    {
+      "id": "q_has_child_under_17",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Qualifying Child for the CTC', p. 109",
+        "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Qualifying Child for the CTC', p. 109",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Housekeepers, maids, or servants; Child tax credit; Credit for other dependents', p. 26"
+      ]
+    },
+    {
+      "id": "q_has_child_under_6",
+      "source": "FTB 3514 Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "FTB 3514 Instructions (2025), 'Young Child Tax Credit', p. 3",
+        "FTB 540 Booklet (2025), 'Federal Earned Income Credit (EIC); assistant California Earned Income Tax Credit (EITC); ftb.ca.gov; Young Child Tax Credit (YCTC)', p. 3",
+        "FTB 3514 Instructions (2025), 'b; Caution; Note; Do not', p. 9"
+      ]
+    },
+    {
+      "id": "q_supports_other_relative",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Not a Qualifying Child Test', p. 33",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Support Test (To Be a Qualifying Child)', p. 30",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'How to determine if support test is met; Person's own funds not used for support', pp. 34-35"
+      ]
+    },
+    {
+      "id": "q_dependent_is_student_or_disabled",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Child must be younger than you or spouse', p. 28",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Student defined; Permanently and totally disabled', p. 28",
+        "IRS Form 1040 Instructions (2025), 'A qualifying child', p. 41"
+      ]
+    },
+    {
+      "id": "q_shared_custody",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Children of divorced or separated parents (or parents who live apart)', pp. 29-30",
+        "IRS Form 1040 Instructions (2025), 'Children of divorced or separated parents', p. 20",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Children of divorced or separated parents (or parents who live apart)', pp. 29-30"
+      ]
+    },
+    {
+      "id": "q_someone_else_could_claim",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Tiebreaker rules', p. 30",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Qualifying Child of More Than One Person', p. 32",
+        "IRS Pub 17 (2025), Chapter 3 Dependents, 'Applying the tiebreaker rules to divorced or separated parents (or parents who live apart)', p. 33"
+      ]
+    },
+    {
+      "id": "q_paid_childcare",
+      "source": "IRS Pub 503",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 503 (2025), 'Care outside your home', p. 7",
+        "IRS Form 1040 Instructions (2025), 'Credit for Child and Dependent Care Expenses', p. 115",
+        "IRS Pub 503 (2025), 'Expenses reimbursed; Medical expenses; Caution', p. 10"
+      ]
+    },
+    {
+      "id": "q_paid_after_school_or_camp",
+      "source": "IRS Pub 503",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 503 (2025), 'Care outside your home', p. 7",
+        "IRS Pub 503 (2025), 'Calculation of credit Camp; Care; Care Provider Identification Test; Children; Church employee Claiming of credit', p. 19",
+        "FTB 540 Booklet (2025), 'Line 40 – Nonrefundable Child and Dependent Care Expenses Credit — Code 232', p. 15"
+      ]
+    },
+    {
+      "id": "q_has_provider_details",
+      "source": "IRS Pub 503",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 503 (2025), 'Information needed', p. 9",
+        "IRS Pub 503 (2025), 'Calculation of credit Camp; Care; Care Provider Identification Test; Children; Church employee Claiming of credit', p. 19",
+        "IRS Pub 503 (2025), 'Getting the information; Due diligence; U.S. citizens and resident aliens living abroad', p. 9"
+      ]
+    },
+    {
+      "id": "q_employer_dependent_care_benefits",
+      "source": "IRS Pub 503",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Line 1e Taxable Dependent Care Benefits From Form 2441, Line 26', p. 24",
+        "IRS Pub 503 (2025), 'Dependent care benefits', p. 10",
+        "IRS Pub 525 (2025), 'Dependent Care Benefits', p. 5"
+      ]
+    },
+    {
+      "id": "q_household_employee",
+      "source": "IRS Pub 503",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 503 (2025), 'Do You Have Household Employees?', p. 14",
+        "IRS Form 1040 Instructions (2025), 'Household Employment Taxes', p. 113",
+        "IRS Pub 505 (2025), 'Household workers; Farmworkers; Differential wage payments', p. 3"
+      ]
+    },
+    {
+      "id": "q_care_provider_is_family",
+      "source": "IRS Pub 503",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 503 (2025), 'Payments to Relatives or Dependents', p. 8",
+        "IRS Form 1040 Instructions (2025), 'Credit for Child and Dependent Care Expenses', p. 115",
+        "IRS Pub 503 (2025), 'Tests you must meet to claim a credit for child and dependent care expenses', pp. 2-3"
+      ]
+    },
+    {
+      "id": "q_rented_fewer_than_15_days",
+      "source": "IRS Pub 527",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 527 (2025), 'Examples', pp. 27-28",
+        "IRS Pub 527 (2025), 'What is a day of personal use?', pp. 26-27",
+        "IRS Pub 527 (2025), 'Examples', pp. 27-28"
+      ]
+    },
+    {
+      "id": "q_rental_in_ca",
+      "source": "FTB Schedule S Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "FTB Pub 1031 (2025), 'Example 3', p. 12",
+        "FTB Pub 1031 (2025), '5', p. 12",
+        "FTB 540 Booklet (2025), 'Line 5 – Rental Real Estate, Royalties, Partnerships, S Corporations, Trusts, etc', pp. 61-62"
+      ]
+    },
+    {
+      "id": "q_rental_income",
+      "source": "IRS Pub 527",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 527 (2025), 'Property or services; Security deposits', p. 4",
+        "IRS Pub 527 (2025), 'Advance rent; Canceling a lease; Expenses paid by tenant', pp. 3-4",
+        "IRS Pub 527 (2025), 'expenses; income; losses', p. 37"
+      ]
+    },
+    {
+      "id": "q_rental_expenses",
+      "source": "IRS Pub 527",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 527 (2025), 'Improvements', p. 7",
+        "IRS Pub 527 (2025), 'expenses; income; losses', p. 37",
+        "IRS Pub 527 (2025), 'Example—Property Changed to Rental Use', p. 24"
+      ]
+    },
+    {
+      "id": "q_placed_in_service_this_year",
+      "source": "IRS Pub 527",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 527 (2025), 'Rental property placed in service before 2025; Use of real property changed', p. 10",
+        "IRS Pub 527 (2025), 'Placed in Service', p. 9",
+        "IRS Pub 527 (2025), 'Electing ADS', p. 13"
+      ]
+    },
+    {
+      "id": "q_personal_use_over_limit",
+      "source": "IRS Pub 527",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 527 (2025), 'Dwelling Unit Used as a Home', p. 26",
+        "IRS Pub 527 (2025), '5. Personal Use of Dwelling Unit (Including Vacation Home)', p. 25",
+        "IRS Pub 527 (2025), 'Examples', pp. 27-28"
+      ]
+    },
+    {
+      "id": "q_short_term_rental",
+      "source": "IRS Pub 925",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 925 (2025), 'Exceptions', p. 5",
+        "IRS Pub 334 (2025), 'Is My Capital Gain or Loss Short Term or Long Term?', p. 19",
+        "IRS Pub 527 (2025), 'Examples', pp. 27-28"
+      ]
+    },
+    {
+      "id": "q_sold_rental_property",
+      "source": "IRS Pub 544",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 544 (2025), 'Nonresidential real property; Residential rental property', p. 45",
+        "IRS Pub 334 (2025), 'Recapture of depreciation', p. 25",
+        "IRS Pub 527 (2025), 'Section 179 deduction', p. 8"
+      ]
+    },
+    {
+      "id": "q_rents_personal_property",
+      "source": "IRS Pub 527",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 334 (2025), 'Personal Property Rents', p. 23",
+        "IRS Pub 525 (2025), 'Reporting business income and expenses; Reporting nonbusiness income; Reporting nonbusiness expenses', p. 16",
+        "IRS Pub 17 (2025), Chapter 8 Other Income, 'Reporting business income and expenses; Reporting nonbusiness income; Reporting nonbusiness expenses', p. 71"
+      ]
+    },
+    {
+      "id": "q_receives_social_security",
+      "source": "IRS Pub 915",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+        "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; base amount; amount', p. 63",
+        "IRS Form 1040 Instructions (2025), 'Exception', p. 31"
+      ]
+    },
+    {
+      "id": "q_social_security_benefits",
+      "source": "IRS Pub 915",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Social Security Benefits Worksheet—Lines', p. 32",
+        "IRS Pub 590-A (2025), 'Table I-1. Using This Publication', p. 4",
+        "IRS Pub 505 (2025), 'Worksheet 2-2. 2025 Estimated Tax Worksheet—Line Estimated Taxable Social Benefits', p. 32"
+      ]
+    },
+    {
+      "id": "q_has_retirement_distribution",
+      "source": "IRS Pub 575",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 4 Tax Withholding and Estimated Tax, 'More information', p. 40",
+        "IRS Pub 505 (2025), 'Nontaxable part', p. 9",
+        "IRS Pub 590-B (2025), 'Caution; Withholding', pp. 21-22"
+      ]
+    },
+    {
+      "id": "q_distribution_account_type",
+      "source": "IRS Pub 575",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+        "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+        "IRS Pub 525 (2025), 'Excess deferrals', p. 10"
+      ]
+    },
+    {
+      "id": "q_retirement_distributions",
+      "source": "IRS Pub 575",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+        "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+        "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30"
+      ]
+    },
+    {
+      "id": "q_under_59_half_at_distribution",
+      "source": "IRS Pub 590-B",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 590-B (2025), 'Other early distributions; Exceptions; Tip', p. 35",
+        "IRS Pub 590-B (2025), 'Caution', p. 29",
+        "IRS Pub 17 (2025), Chapter 9 Individual Retirement Arrangements (IRAs), 'Note; Additional 10% tax; Nondeductible contributions; More information', p. 87"
+      ]
+    },
+    {
+      "id": "q_did_rollover",
+      "source": "IRS Pub 590-A",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 590-A (2025), 'Note; Amount; Extension of rollover period', p. 24",
+        "IRS Pub 590-A (2025), 'Ways to get a waiver of the 60-day rollover requirement', pp. 23-24",
+        "IRS Pub 590-A (2025), 'Rollovers completed after the 60-day period', pp. 22-23"
+      ]
+    },
+    {
+      "id": "q_has_disability_benefits",
+      "source": "IRS Pub 17",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 575 (2025), 'Disability Pensions', p. 6",
+        "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Disability Pensions', p. 53",
+        "IRS Pub 525 (2025), 'Tip; Terrorist attacks or military action', pp. 17-18"
+      ]
+    },
+    {
+      "id": "q_does_rideshare_delivery",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Qualified Tips', p. 104",
+        "IRS Form 1040 Instructions (2025), 'Determining the amount of qualified tips received by a non-employee for 2025; Qualified Tips From More Than One Employer', pp. 103-104",
+        "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28"
+      ]
+    },
+    {
+      "id": "q_sells_online",
+      "source": "IRS Pub 334",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), '1 Adjustments to Income', p. 88",
+        "IRS Form 1040 Instructions (2025), 'Form(s) 1099-K', p. 88",
+        "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90"
+      ]
+    },
+    {
+      "id": "q_does_freelance_contract",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 334 (2025), 'Form 1099-NEC', p. 12",
+        "IRS Pub 334 (2025), 'Nonemployee compensation; Name, Image, Likeness (NIL); Payment card and third-party network transactions; Business income deduction', p. 21",
+        "IRS Form 1040 Instructions (2025), 'Line 14b; —; Line 18', p. 108"
+      ]
+    },
+    {
+      "id": "q_main_income_source",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Childcare providers; Self-employment tax', p. 47",
+        "IRS Pub 463 (2025), 'Both self-employed and an employee; Caution; Employees', p. 41",
+        "IRS Pub 525 (2025), 'Childcare providers', p. 3"
+      ]
+    },
+    {
+      "id": "q_side_gross_income",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Part II No Tax on Tips', p. 101",
+        "IRS Pub 334 (2025), '!', p. 10",
+        "IRS Pub 334 (2025), 'Gross receipts; Sales tax collected; Inventory at beginning of year', p. 31"
+      ]
+    },
+    {
+      "id": "q_received_income_without_form",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 334 (2025), 'Kinds of Income', p. 21",
+        "IRS Form 1040 Instructions (2025), 'Line 1c Tip Income Not Reported on Line 1a', p. 24",
+        "IRS Form 1040 Instructions (2025), 'Part II No Tax on Tips', p. 101"
+      ]
+    },
+    {
+      "id": "q_paid_in_crypto",
+      "source": "IRS Pub 525",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Digital Assets', pp. 15-16",
+        "IRS Pub 544 (2025), 'Digital Assets', p. 39",
+        "IRS Pub 544 (2025), 'Digital Assets', p. 39"
+      ]
+    },
+    {
+      "id": "q_selling_type",
+      "source": "IRS Pub 334",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Form(s) 1099-K', p. 88",
+        "IRS Form 1040 Instructions (2025), '1 Adjustments to Income', p. 88",
+        "IRS Form 1040 Instructions (2025), '1 Adjustments to Income', p. 88"
+      ]
+    },
+    {
+      "id": "q_selling_for_profit",
+      "source": "IRS Pub 525",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 334 (2025), 'Activities Not Engaged in for Profit', p. 43",
+        "IRS Schedule C Instructions (2025), 'General Instructions', p. 2",
+        "IRS Pub 17 (2025), Chapter 8 Other Income, 'Gifts and inheritances; Hobby losses', p. 76"
+      ]
+    },
+    {
+      "id": "q_has_inventory",
+      "source": "IRS Pub 334",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Schedule C Instructions (2025), 'Exception for small business taxpayers', p. 15",
+        "IRS Pub 334 (2025), 'Exception for small business taxpayers', p. 16",
+        "IRS Pub 334 (2025), 'Line 42—Cost of Goods Sold', p. 30"
+      ]
+    },
+    {
+      "id": "q_uses_car_for_business",
+      "source": "IRS Pub 463",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 334 (2025), 'More information', pp. 35-36",
+        "IRS Pub 463 (2025), 'Business and personal use', p. 21",
+        "IRS Pub 463 (2025), 'Commuting expenses', p. 19"
+      ]
+    },
+    {
+      "id": "q_car_expense_method",
+      "source": "IRS Pub 463",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 334 (2025), 'Actual expenses', p. 35",
+        "IRS Pub 463 (2025), 'Caution; Choosing the standard mileage rate', p. 20",
+        "IRS Pub 334 (2025), 'Standard mileage rate', p. 35"
+      ]
+    },
+    {
+      "id": "q_has_mileage_log",
+      "source": "IRS Pub 463",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 463 (2025), 'Daily business mileage and expense log (Table 5-2) Depreciation of car; Depreciation of Car; Disabled employees; Documentary evidence', p. 60",
+        "IRS Pub 463 (2025), 'Recordkeeping requirements; Regular federal method', p. 61",
+        "IRS Pub 463 (2025), 'Canceled checks; Car expenses', p. 60"
+      ]
+    },
+    {
+      "id": "q_pays_platform_fees",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 463 (2025), 'Officials Paid on a Fee Basis', p. 51",
+        "IRS Schedule C Instructions (2025), 'Sales of property; Note', p. 7",
+        "IRS Pub 590-A (2025), 'Community property laws; Brokers' commissions; Trustees' fees', p. 9"
+      ]
+    },
+    {
+      "id": "q_side_expenses",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 334 (2025), '8. Business Expenses Introduction', p. 32",
+        "IRS Pub 334 (2025), 'Legal and Professional Fees', p. 39",
+        "IRS Schedule C Instructions (2025), 'Amortization', p. 16"
+      ]
+    },
+    {
+      "id": "q_record_keeping",
+      "source": "IRS Pub 334",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Pub 17 (2025), Chapter 1 Filing Information, 'What Records Should I Keep?', pp. 16-17",
+        "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Electronic records', p. 17",
+        "IRS Schedule C Instructions (2025), 'Line 47', p. 16"
+      ]
+    },
+    {
+      "id": "q_business_travel",
+      "source": "IRS Pub 463",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 334 (2025), 'Travel expenses', pp. 40-41",
+        "IRS Pub 463 (2025), 'Travel expenses defined', p. 3",
+        "IRS Schedule C Instructions (2025), 'Line 24a', p. 9"
+      ]
+    },
+    {
+      "id": "q_travel_purpose",
+      "source": "IRS Pub 463",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 334 (2025), 'Publication 463; 946', p. 32",
+        "IRS Pub 463 (2025), 'Travel considered entirely for business', pp. 9-10",
+        "IRS Pub 544 (2025), 'Home used partly for business or rental', p. 6"
+      ]
+    },
+    {
+      "id": "q_uses_home_for_business",
+      "source": "IRS Pub 334",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Schedule C Instructions (2025), 'Business use of your home', p. 10",
+        "IRS Pub 334 (2025), 'Deduction limit', p. 42",
+        "IRS Schedule C Instructions (2025), 'Depreciation of home', p. 13"
+      ]
+    },
+    {
+      "id": "q_has_workers",
+      "source": "IRS Pub 334",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Pub 334 (2025), 'Independent contractor', p. 3",
+        "FTB 3514 Instructions (2025), 'Employees and independent contractors', p. 7",
+        "FTB 540 Booklet (2025), 'Line 1 through Line 4 Employees and independent contractors; HSA distributions', p. 66"
+      ]
+    },
+    {
+      "id": "q_bought_big_equipment",
+      "source": "IRS Pub 334",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Schedule C Instructions (2025), '!', p. 13",
+        "IRS Pub 463 (2025), 'Reduction for personal use; Section 179 deduction', pp. 29-30",
+        "IRS Schedule C Instructions (2025), 'Depreciation and section 179 expense deduction', p. 7"
+      ]
+    },
+    {
+      "id": "q_side_work_lost_money",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": true,
+      "citations": [
+        "IRS Schedule C Instructions (2025), 'Figuring your loss; Note; All investment is at risk; Some investment is not at risk', p. 15",
+        "IRS Pub 527 (2025), 'Form 6198', p. 19",
+        "IRS Pub 527 (2025), 'Excess business loss limitation', pp. 18-19"
+      ]
+    },
+    {
+      "id": "q_considering_llc",
+      "source": "FTB 540 Booklet",
+      "hit_at_3": true,
+      "citations": [
+        "FTB 540 Booklet (2025), 'Single Member Limited Liability Company (SMLLC)', p. 58",
+        "FTB Pub 1031 (2025), 'Partnership, S Corporation, Limited Liability Company (LLC), and Trust Income (Loss)', p. 8",
+        "FTB Schedule CA (540) Instructions (2025), 'General Information', web instruction PDF p. 2"
+      ]
+    },
+    {
+      "id": "q_paid_own_health_insurance",
+      "source": "IRS Schedule C Instructions",
+      "hit_at_3": false,
+      "citations": [
+        "IRS Form 1040 Instructions (2025), 'Self-Employed Health Insurance Deduction', pp. 93-94",
+        "IRS Form 1040 Instructions (2025), 'Line 17 Self-Employed Health Insurance Deduction', p. 94",
+        "IRS Form 1040 Instructions (2025), 'Exceptions', pp. 94-95"
+      ]
+    }
+  ]
+}
