@@ -1,0 +1,3632 @@
+{
+ "/flowKnockoutHouseholdEmployee": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer should be knocked out because they have a household employee"
+ },
+ "/cdccCareProvidersIsDone": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The TP is done adding care providers"
+ },
+ "/writableCdccHasQualifyingExpenses": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer has any qualifying expenses for the Child and Dependent Care Credit. This is for the credit section, which means that they cannot include excluded benefits."
+ },
+ "/cdccCombatPayElection": {
+  "module": "cdcc",
+  "type": "Enum",
+  "options_path": "/combatPayOptions",
+  "description": "Whether the taxpayer elects to include their nontaxable combat pay for Child and Dependent Care Credit. They may choose to elect their own combat pay, their spouse's combat pay separately, or both of their combat pay should they each have combat pay."
+ },
+ "/cdccCombatPayElectionForBenefits": {
+  "module": "cdcc",
+  "type": "Enum",
+  "options_path": "/combatPayOptions",
+  "description": "Whether the taxpayer elects to include their nontaxable combat pay for Child and Dependent Care Credit. They may choose to elect their own combat pay, their spouse's combat pay separately, or both of their combat pay should they each have combat pay."
+ },
+ "/cdccCareProviders": {
+  "module": "cdcc",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Care providers for the services for which the filer paid qualifying expenses Form 2441, Line 1"
+ },
+ "/cdccCareProviders/*/writableIsOrganization": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the care provider is an organization or business (as opposed to an individual)"
+ },
+ "/cdccCareProviders/*/writableOrganizationName": {
+  "module": "cdcc",
+  "type": "String",
+  "options_path": null,
+  "description": "The name of the organization providing the service."
+ },
+ "/cdccCareProviders/*/writableFirstName": {
+  "module": "cdcc",
+  "type": "String",
+  "options_path": null,
+  "description": "The first name of the provider. Must match the name as known to the Social Security Administration."
+ },
+ "/cdccCareProviders/*/writableLastName": {
+  "module": "cdcc",
+  "type": "String",
+  "options_path": null,
+  "description": "The last name of the provider. Must match the name as known to the Social Security Administration."
+ },
+ "/cdccCareProviders/*/writableAddress": {
+  "module": "cdcc",
+  "type": "Address",
+  "options_path": null,
+  "description": "The care provider's address"
+ },
+ "/cdccCareProviders/*/isEmployerFurnished": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether employer furnished care and therefore should see w2 for care provider's address"
+ },
+ "/cdccCareProviders/*/writableEmployerWhoFurnishedCare": {
+  "module": "cdcc",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "W2 of employer who furnished care provider"
+ },
+ "/cdccCareProviders/*/hasW2Employer": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "This care provider was furnished by an employer for whom we have a form W2 listed"
+ },
+ "/cdccCareProviders/*/writableTin": {
+  "module": "cdcc",
+  "type": "TIN",
+  "options_path": null,
+  "description": "The care provider's TIN"
+ },
+ "/cdccCareProviders/*/writableEin": {
+  "module": "cdcc",
+  "type": "EIN",
+  "options_path": null,
+  "description": "The care provider's EIN"
+ },
+ "/cdccCareProviders/*/hasTinOrEin": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the care provider has either a TIN or EIN"
+ },
+ "/cdccCareProviders/*/writableIsTaxExempt": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the care provider is tax exempt"
+ },
+ "/cdccCareProviders/*/writableDueDiligence": {
+  "module": "cdcc",
+  "type": "MultiEnum",
+  "options_path": "/cdccDueDiligenceOptions",
+  "description": "Due Diligence explanation for why the filer did not provider the provider's TIN"
+ },
+ "/cdccCareProviders/*/writableAmountPaidForCare": {
+  "module": "cdcc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount paid for care"
+ },
+ "/cdccHasCreditForPriorYearExpenses": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/cdccClaimedCreditForPriorYearExpenses": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/cdccClaimedMaxCreditForPriorTaxYear": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/hasCdccCarryoverAmountFromPriorTaxYear": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/writableCdccCarryoverAmountFromPriorTaxYear": {
+  "module": "cdcc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount carried over from the prior tax year and used during the grace period of the current year. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations. Form 2441, Line 13"
+ },
+ "/writableHasCdccForfeitedCredits": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/writableCdccTotalQualifiedDependentCareExpenses": {
+  "module": "cdcc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Total qualified dependent care expenses incurred, including those that were covered by employer. This is not the same as Line 2 of the form, which excludes the employer covered expenses. This is also the writable version. The value that goes in the form needs to be 0 if there are no qualifying expenses."
+ },
+ "/writableCdccForfeitedCredits": {
+  "module": "cdcc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Amount of CDCC forfeited or carried over to the next tax year This is the writable optional fact. Please use the derived fact in downstream calculations. Form 2441, Line 14"
+ },
+ "/writablePrimaryFilerDependentCarePlanMaximum": {
+  "module": "cdcc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The maximum amount the primary filer's employer's dependent care exclusion benefits plan allows"
+ },
+ "/writableSecondaryFilerDependentCarePlanMaximum": {
+  "module": "cdcc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The maximum amount the secondary filer's employer's dependent care exclusion benefits plan allows"
+ },
+ "/hasMfjSpouseEarnedIncome": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Taxpayer has the MFS Spouse's earned income"
+ },
+ "/primaryFilerMadeLessThanDisabledOrStudentMonthlyIncome": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP made less than the allocated income amount in any months they were a student or unable to care for themself"
+ },
+ "/secondaryFilerMadeLessThanDisabledOrStudentMonthlyIncome": {
+  "module": "cdcc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the spouse made less than the allocated income amount in any months they were a student or unable to care for themself"
+ },
+ "/bankAccount": {
+  "module": "paymentMethod",
+  "type": "BankAccount",
+  "options_path": null,
+  "description": "Information for the bank account you want to deposit into"
+ },
+ "/refundViaAch": {
+  "module": "paymentMethod",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP wants to receive a direct deposit. Otherwise, they will receive a mailed check."
+ },
+ "/payViaAch": {
+  "module": "paymentMethod",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP wants to make an immediate ACH payment through direct file. Otherwise, they will be have to make their payment at a different time and/or through a different method."
+ },
+ "/achPaymentDate": {
+  "module": "paymentMethod",
+  "type": "Day",
+  "options_path": null,
+  "description": "When the user would like their payment to be processed"
+ },
+ "/interestReports": {
+  "module": "interest",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Interest income, with or without a Form 1099-INT."
+ },
+ "/interestReportsIsDone": {
+  "module": "interest",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has clicked \"Done\" for their interestReportsIsIsDone"
+ },
+ "/interestReports/*/hasSeenLastAvailableScreen": {
+  "module": "interest",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has gone through the entire flow of interest screens"
+ },
+ "/interestReports/*/has1099": {
+  "module": "interest",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether there is a Form 1099-INT for this interest income."
+ },
+ "/interestReports/*/factaFilingRequired": {
+  "module": "interest",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether there is a Form 1099-INT with the FACTA filing requirement box checked"
+ },
+ "/interestReports/*/filer": {
+  "module": "interest",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "The taxpayer who received the interest income."
+ },
+ "/interestReports/*/payer": {
+  "module": "interest",
+  "type": "String",
+  "options_path": null,
+  "description": "The entity that paid the interest income, used on Form 1040 Schedule B, Part 1, Line 1"
+ },
+ "/interestReports/*/writablePayerNameLine2": {
+  "module": "interest",
+  "type": "String",
+  "options_path": null,
+  "description": "The entity that paid the interest income, used on Form 1040 Schedule B, Part 1, Line 2"
+ },
+ "/interestReports/*/payer/tin": {
+  "module": "interest",
+  "type": "EIN",
+  "options_path": null,
+  "description": "The taxpayer identification number of the payer on the interest report."
+ },
+ "/interestReports/*/writable1099Amount": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 1 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableEarlyWithdrawlPenaltyAmount": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 2 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableSpecifiedPrivateActivityBondInterest": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 9 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableMarketDiscount": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 10 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableBondPremium": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 11 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableBondPremiumOnTreasuryObligations": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableBondPremiumOnTaxExemptBond": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 13 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableTaxExemptAndTaxCreditBondCusipNo": {
+  "module": "interest",
+  "type": "String",
+  "options_path": null,
+  "description": "Box 14 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableInterestOnGovernmentBonds": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 3 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableTaxWithheld": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 4 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableForeignTaxPaid": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 6 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableTaxExemptInterest": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 8 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableState": {
+  "module": "interest",
+  "type": "Enum",
+  "options_path": "/incomeFormStateOptions",
+  "description": "Box 15 on the 1099-INT."
+ },
+ "/interestReports/*/writableStateIdNumber": {
+  "module": "interest",
+  "type": "String",
+  "options_path": null,
+  "description": "Box 16 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/writableStateTaxWithheld": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 17 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/no1099Amount": {
+  "module": "interest",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Amount of taxable interest (no Form 1099-INT present)."
+ },
+ "/importedPrimaryFilerFirstName": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": "The first name of the filer"
+ },
+ "/importedPrimaryFilerMiddleInitial": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": "The middle initial of the filer"
+ },
+ "/importedPrimaryFilerLastName": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": "The last name of the filer imported from the Data Imported Service"
+ },
+ "/importedPrimaryFilerDateOfBirth": {
+  "module": "imported",
+  "type": "Day",
+  "options_path": null,
+  "description": "The date of birth of the filer imported from the Data Imported Service"
+ },
+ "/importedPrimaryFilerAddress": {
+  "module": "imported",
+  "type": "Address",
+  "options_path": null,
+  "description": "The address of the filer imported from the Data Imported Service"
+ },
+ "/importedPrimaryFilerPhone": {
+  "module": "imported",
+  "type": "PhoneNumber",
+  "options_path": null,
+  "description": "The phone number of the taxpayer(s) imported from the Data Imported Service."
+ },
+ "/aboutYouDataWasSaved": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/formW2s/*/importedEmployerName": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": ""
+ },
+ "/formW2s/*/importedWritableEmployerNameLine2": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": "The employer's name as appears in line 2 box c of Form W-2. This is the writable optional fact. Can be left incomplete.Please use the derived fact in downstream calculations"
+ },
+ "/formW2s/*/importedWritableWages": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 1 of Form W-2, wages, tips, and other compensation. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedEin": {
+  "module": "imported",
+  "type": "EIN",
+  "options_path": null,
+  "description": "Box b of Form W-2, employer identification number (EIN)."
+ },
+ "/formW2s/*/importedAddressMatchesReturn": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether Box f of Form W-2 contains the same address as the tax return."
+ },
+ "/formW2s/*/importedEmployeeAddress": {
+  "module": "imported",
+  "type": "Address",
+  "options_path": null,
+  "description": "The employee's address as appears in box f of Form W-2."
+ },
+ "/formW2s/*/importedEmployerAddress": {
+  "module": "imported",
+  "type": "Address",
+  "options_path": null,
+  "description": "The employer's address as appears in box c of Form W-2."
+ },
+ "/formW2s/*/importedWritableFederalWithholding": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 2 of Form W-2, Federal income tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableOasdiWages": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 3 of Form W-2, social security wages. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableOasdiWithholding": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 4 of Form W-2, social security tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableMedicareWages": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 5 of Form W-2, Medicare wages and tips. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableMedicareWithholding": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 6 of Form W-2, Medicare tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableOasdiTips": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 7 of Form W-2, social security tips. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableAllocatedTips": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 8 of Form W-2, allocated tips. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableDependentCareBenefits": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 10 of Form W-2, dependent care benefits. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableNonQualifiedPlans": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 11 of Form W-2, non-qualified plans. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/importedWritableHasBox12Codes": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether this W2 has any codes or amounts in box 12"
+ },
+ "/formW2s/*/importedWritableBox12Code": {
+  "module": "imported",
+  "type": "Enum",
+  "options_path": "/w2Box12CodeOptions",
+  "description": "The Box 12 code currently selected in the UI."
+ },
+ "/formW2s/*/importedStatutoryEmployee": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether statutory employee is checked in box 13."
+ },
+ "/formW2s/*/importedRetirementPlan": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether retirement plan is checked in box 13."
+ },
+ "/formW2s/*/importedThirdPartySickPay": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether third-party sick pay is checked in box 13."
+ },
+ "/formW2s/*/importedNonstandardOrCorrectedChoice": {
+  "module": "imported",
+  "type": "Enum",
+  "options_path": "/w2NonstandardCorrectedOptions",
+  "description": "Whether the form W2 is nonstandard, corrected, both, or neither"
+ },
+ "/formW2s/*/isImported": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/offeredFormW2s": {
+  "module": "imported",
+  "type": "Collection",
+  "options_path": null,
+  "description": ""
+ },
+ "/offeredFormW2s/*/offeredAt": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": ""
+ },
+ "/offeredFormW2s/*/ein": {
+  "module": "imported",
+  "type": "EIN",
+  "options_path": null,
+  "description": ""
+ },
+ "/formW2s/*/importedAt": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": ""
+ },
+ "/interestReports/*/isImported": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/interestReports/*/importedHas1099": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": ""
+ },
+ "/interestReports/*/importedPayer": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": "The entity that paid the interest income, used on Form 1040 Schedule B, Part 1, Line 1"
+ },
+ "/interestReports/*/importedPayerTin": {
+  "module": "imported",
+  "type": "EIN",
+  "options_path": null,
+  "description": "The taxpayer identification number of the payer on the interest report."
+ },
+ "/interestReports/*/importedFactaFilingRequired": {
+  "module": "imported",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether there is a Form 1099-INT with the FACTA filing requirement box checked"
+ },
+ "/interestReports/*/importedBox1": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": ""
+ },
+ "/interestReports/*/importedBox2": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": ""
+ },
+ "/interestReports/*/importedBox3": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 3 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox4": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 4 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox6": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 6 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox8": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 8 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox9": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 9 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox10": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 10 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox11": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 11 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox12": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox13": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 13 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/interestReports/*/importedBox14": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": "Box 14 on the 1099-INT. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/offeredInterestReports": {
+  "module": "imported",
+  "type": "Collection",
+  "options_path": null,
+  "description": ""
+ },
+ "/offeredInterestReports/*/offeredAt": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": ""
+ },
+ "/offeredInterestReports/*/tin": {
+  "module": "imported",
+  "type": "TIN",
+  "options_path": null,
+  "description": ""
+ },
+ "/offeredInterestReports/*/incomeValue": {
+  "module": "imported",
+  "type": "Dollar",
+  "options_path": null,
+  "description": ""
+ },
+ "/interestReports/*/importedAt": {
+  "module": "imported",
+  "type": "String",
+  "options_path": null,
+  "description": ""
+ },
+ "/filers/*/writablePrimaryFilerHasMadeContributionsToHsa": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Writable: Whether the primary tp has made contributions to an HSA"
+ },
+ "/filers/*/writableSecondaryFilerHasMadeContributionsToHsa": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Writable: Whether the secondary tp has made contributions to an HSA"
+ },
+ "/hasHsaMedicalSavingsAccountType": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the user has a medical savings account"
+ },
+ "/writableHasHsaExcessContributionsPreviousYear": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Writable: Whether the tp has excess HSA Contributions from the previous year"
+ },
+ "/writableHasHsaWithdrawnExcessContributionsYesNo": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Writable: Whether the tp has withdrawn excess HSA contributions before the tax day"
+ },
+ "/someFilerHadNonW2HsaActivity": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether some filer had non-W2 HSA activity"
+ },
+ "/hsaDistributions/*/writableDistributionsRolloverBool": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether any of the distributions from box 1 are a rollover to another HSA"
+ },
+ "/hsaDistributions/*/writableDistributionsRolloverAmount": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The total amount of distributions that were a rollover to another HSA"
+ },
+ "/filers/*/writableMfsLine6Check": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Writable: whether a Health Savings Account (HSA) had contributions for the tax year"
+ },
+ "/writablePrimaryFilerHadNonW2HsaActivity": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether primary filer had non-W2 HSA activity"
+ },
+ "/writableSecondaryFilerHadNonW2HsaActivity": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether secondary filer had non-W2 HSA activity"
+ },
+ "/filers/*/hsaHdhpCoverageStatus": {
+  "module": "hsa",
+  "type": "Enum",
+  "options_path": "/hsaHdhpCoverageStatusOptions",
+  "description": "Whether the filer had a HDHP for all, part, or none of the year"
+ },
+ "/hsaDistributions/*/hsaDistributionCode": {
+  "module": "hsa",
+  "type": "Enum",
+  "options_path": "/hsaDistributionCodeOptions",
+  "description": "Box 3 of form 1099-SA: Distribution code"
+ },
+ "/hsaDistributions": {
+  "module": "hsa",
+  "type": "Collection",
+  "options_path": null,
+  "description": "The distributions associated with an HSA"
+ },
+ "/hsaDistributions/*/filer": {
+  "module": "hsa",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "The filer who the HSA distributions belong to."
+ },
+ "/hsaDistributions/*/writableGrossDistribution": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 1 of form 1099-SA: Gross Distribution"
+ },
+ "/hsaDistributions/*/writableTrusteeName": {
+  "module": "hsa",
+  "type": "String",
+  "options_path": null,
+  "description": "The entity that paid the hsa distribution"
+ },
+ "/hsaDistributions/*/hasWithdrawnExcessContributions": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether part of the total distributions withdrawn were excess contributions"
+ },
+ "/hsaDistributions/*/writableWithdrawnExcessContributionsAmount": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Amount of excess contributions and earnings on them withdrawn before the end of the tax year."
+ },
+ "/hsaDistributions/*/writableEarningsOnExcessContributions": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 2 of form 1099-SA: Earnings on excess contributions"
+ },
+ "/hsaDistributions/*/writableFmvOnDateOfDeath": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 4 of form 1099-SA: fair market value on date of death"
+ },
+ "/hsaDistributions/*/writableQualifiedMedExpenses": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Total amount of qualified medical expenses paid for in tax year using distributions from this HSA account. Informs form 8889, line 15"
+ },
+ "/hsaDistributions/*/hasSeenLastAvailableScreen": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer has completed the HSA distributions"
+ },
+ "/hsaDistributionsIsDone": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP is done adding the HSA distributions"
+ },
+ "/filers/*/hadOtherCoverageIneligibleForHSA": {
+  "module": "hsa",
+  "type": "Enum",
+  "options_path": "/hadOtherCoverageIneligibleForHSAOptions",
+  "description": "Duration that filer had other health coverage that would make them ineligible for HSA contributions"
+ },
+ "/filers/*/writableChangeInMaritalStatusDuringTaxYear": {
+  "module": "hsa",
+  "type": "Enum",
+  "options_path": "/changeInMaritalStatusDuringTaxYearOptions",
+  "description": "(Writable) Whether the taxpayer declared they experienced a change in marital status during this tax year."
+ },
+ "/filers/*/writableMaritalChangeAffectContributionLimitBool": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether any of the distributions from box 6 are a rollover to another HSA"
+ },
+ "/filers/*/hasMadeQualifiedHsaFundingDistribution": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer has made qualified HSA funding distributions"
+ },
+ "/someFilersMadeTestingPeriodContribution": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether TP made HSA contribution during testing period of TP - 1"
+ },
+ "/someFilersHaveTestingPeriodAdditionalIncome": {
+  "module": "hsa",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether TP have additional income due to use of last month rule during testing period of TP - 1"
+ },
+ "/filers/*/enrolledInMedicare": {
+  "module": "hsa",
+  "type": "Enum",
+  "options_path": "/enrolledInMedicareOptions",
+  "description": "Whether filer was enrolled in Medicare all, part, or none of the year"
+ },
+ "/filers/*/typeOfHdhp": {
+  "module": "hsa",
+  "type": "Enum",
+  "options_path": "/typeOfHdhpOptions",
+  "description": "Filer's type of HDHP coverage"
+ },
+ "/filers/*/writableHsaNonemployerContributionsTaxYear": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Filer's nonemployer HSA contributions this tax year"
+ },
+ "/filers/*/writableHsaNonemployerContributionsTaxYearPlusOne": {
+  "module": "hsa",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Filer's nonemployer HSA contributions tax year plus one"
+ },
+ "/hasDistributionsInLastThreeYears": {
+  "module": "saversCredits",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did primary or secondary have any distributions in the last 3 years"
+ },
+ "/hasCurrentYearDistributions": {
+  "module": "saversCredits",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Will the primary or secondary have any distributions prior to the extension deadline?"
+ },
+ "/hasSelfReportedContributions": {
+  "module": "saversCredits",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did primary or secondary have any self-reported contributions"
+ },
+ "/filingStatus": {
+  "module": "filingStatus",
+  "type": "Enum",
+  "options_path": "/filingStatusOptions",
+  "description": "The filing status selected by the taxpayer."
+ },
+ "/filingStatusChoice": {
+  "module": "filingStatus",
+  "type": "Enum",
+  "options_path": "/filingStatusInitialOptions",
+  "description": "Whether the taxpayer wants to file jointly, file separately with their spouse, or wait to see if they qualify for head of household status"
+ },
+ "/wantsThirdPartyDesignee": {
+  "module": "refundPrefs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Do you want to allow another person to discuss this return with the IRS?"
+ },
+ "/thirdPartyDesigneeFullName": {
+  "module": "refundPrefs",
+  "type": "String",
+  "options_path": null,
+  "description": "The designee's full name"
+ },
+ "/thirdPartyDesigneePhone": {
+  "module": "refundPrefs",
+  "type": "PhoneNumber",
+  "options_path": null,
+  "description": "The designee's phone number"
+ },
+ "/thirdPartyDesigneePin": {
+  "module": "refundPrefs",
+  "type": "PIN",
+  "options_path": null,
+  "description": "The designee's PIN"
+ },
+ "/wantsCustomLanguage": {
+  "module": "refundPrefs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Would you like to change the language you receive written communications from the IRS in?"
+ },
+ "/languagePreference": {
+  "module": "refundPrefs",
+  "type": "Enum",
+  "options_path": "/languageOptions",
+  "description": "The filer's language preference"
+ },
+ "/wantsCommsFormat": {
+  "module": "refundPrefs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Would you like to change the format you receive written communications in?"
+ },
+ "/commsFormat": {
+  "module": "refundPrefs",
+  "type": "Enum",
+  "options_path": "/communicationFormatOptions",
+  "description": "The format the filer would like to be communicated in"
+ },
+ "/presidentalCampaignDesignation": {
+  "module": "refundPrefs",
+  "type": "Enum",
+  "options_path": "/presidentalCampaignOptions",
+  "description": "Does the filer or spouse (or both) want to give $3 to the Presidential Election Campaign Fund"
+ },
+ "/directFileLanguagePreference": {
+  "module": "signing",
+  "type": "String",
+  "options_path": null,
+  "description": "The language the filer wants to received communications from Direct File in"
+ },
+ "/todayOverride": {
+  "module": "signing",
+  "type": "Day",
+  "options_path": null,
+  "description": "USED FOR TESTING. Manually set a fact for what \"Today\" is since mocking Dates in the fact graph is tricky in typescript"
+ },
+ "/hasSeenReviewScreen": {
+  "module": "signing",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has seen the review screen"
+ },
+ "/lastYearAgiFromOLA": {
+  "module": "signing",
+  "type": "Int",
+  "options_path": null,
+  "description": "The user's last year's AGI as loaded from their OLA account. This should probably be a dollar amount, but was a bug from TY2023."
+ },
+ "/filedLastYear": {
+  "module": "signing",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Has the taxpayer filed last year"
+ },
+ "/spouseFiledLastYear": {
+  "module": "signing",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Has the taxpayer's spouse filed last year"
+ },
+ "/signReturnIdentity": {
+  "module": "signing",
+  "type": "Enum",
+  "options_path": "/signReturnIdentityOptions",
+  "description": "Using self-select PIN, last year's AGI and date of birth, or they cannot find either of these."
+ },
+ "/signReturnIdentitySpouse": {
+  "module": "signing",
+  "type": "Enum",
+  "options_path": "/signReturnIdentitySpouseOptions",
+  "description": "Using self-select PIN, last year's AGI and date of birth, or they cannot find either of these."
+ },
+ "/isEssarFeatureFlag": {
+  "module": "signing",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the electronic signing flow (and use of ESSAR) enabled through a build flag"
+ },
+ "/hasFailedMaxElectronicSigningAttempts": {
+  "module": "signing",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Note: this fact has been deprecated and is no longer used. It should be removed after filing season. True when the maximum configured number of attempts to electronically sign a return has been reached"
+ },
+ "/lastYearAgi": {
+  "module": "signing",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Taxpayer's AGI from the last year"
+ },
+ "/spouseLastYearAgi": {
+  "module": "signing",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Taxpayer's spouse's AGI from the last year"
+ },
+ "/selfSelectPin": {
+  "module": "signing",
+  "type": "PIN",
+  "options_path": null,
+  "description": "The self-select pin number of the taxpayer(s)."
+ },
+ "/selfSelectPinLastYear": {
+  "module": "signing",
+  "type": "PIN",
+  "options_path": null,
+  "description": "The self-select pin number of the taxpayer(s) for the last tax year."
+ },
+ "/spouseSelfSelectPin": {
+  "module": "signing",
+  "type": "PIN",
+  "options_path": null,
+  "description": "The self-select pin number of the taxpayer's spouse."
+ },
+ "/spouseSelfSelectPinLastYear": {
+  "module": "signing",
+  "type": "PIN",
+  "options_path": null,
+  "description": "The self-select pin number of the taxpayer's spouse for the last tax year."
+ },
+ "/familyAndHousehold/*/relationshipCategory": {
+  "module": "dependentsRelationship",
+  "type": "Enum",
+  "options_path": "/relationshipCategoryOptions",
+  "description": ""
+ },
+ "/familyAndHousehold/*/childRelationship": {
+  "module": "dependentsRelationship",
+  "type": "Enum",
+  "options_path": "/childRelationshipOptions",
+  "description": "The type of child relationship."
+ },
+ "/familyAndHousehold/*/siblingRelationship": {
+  "module": "dependentsRelationship",
+  "type": "Enum",
+  "options_path": "/siblingRelationshipOptions",
+  "description": "The type of sibling relationship"
+ },
+ "/familyAndHousehold/*/parentalRelationship": {
+  "module": "dependentsRelationship",
+  "type": "Enum",
+  "options_path": "/parentalRelationshipOptions",
+  "description": "The type of parental relationship"
+ },
+ "/familyAndHousehold/*/inlawRelationship": {
+  "module": "dependentsRelationship",
+  "type": "Enum",
+  "options_path": "/inlawRelationshipOptions",
+  "description": "The type of inlaw relationship"
+ },
+ "/combatPayElection": {
+  "module": "eitc",
+  "type": "Enum",
+  "options_path": "/combatPayOptions",
+  "description": "Whether the taxpayer elects to include their nontaxable combat pay for EITC. They may choose to elect their own combat pay, their spouse's combat pay separately, or both of their combat pay should they each have combat pay."
+ },
+ "/eitcQcOfAnother": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP or their spouse, if applicable, could be someone else's QC for EITC"
+ },
+ "/eitcQcOfAnotherRequiredToFile": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the person who can claim TP or SP as a QC for EITC is required tofile"
+ },
+ "/eitcQcOfAnotherIsFiling": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the person who can claim TP or SP as a QC for EITC is filing"
+ },
+ "/eitcQcOfAnotherIsFilingRefundOnly": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the person who can claim TP or SP as a QC for EITC is filing for a refund only"
+ },
+ "/eitcHadImproperClaims": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP (or their spouse, if applicable) has had their EITC reduced or disallowed for any reason other than a math error."
+ },
+ "/eitcImproperClaimsDueToQc": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the EITC was reduced or disallowed due to a child not being qualifying"
+ },
+ "/eitcImproperClaimTakenSinceDisallowal": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP (or their spouse, if applicable) has taken the EITC again since they were disallowed"
+ },
+ "/eitcReceivedImproperClaimsNotice": {
+  "module": "eitc",
+  "type": "Enum",
+  "options_path": "/improperClaimsNoticeOptions",
+  "description": "Whether the TP received a letter from the IRS telling them they're not allowed to take EITC for a number of years"
+ },
+ "/eitcImproperClaimsNoticeExpired": {
+  "module": "eitc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the improper claims notice that the TP previously received is far enough in the past to be expired. E.g. They could not file for 2 years, and it has been at least 2 years"
+ },
+ "/hadStudentLoanInterestPayments": {
+  "module": "studentLoanAdjustment",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP or spouse had student loan interest payments"
+ },
+ "/studentLoansQualify": {
+  "module": "studentLoanAdjustment",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP affirms that their loans qualify for the deduction"
+ },
+ "/studentLoanInterestAmount": {
+  "module": "studentLoanAdjustment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount of interest that the TP affirms that they or their spouse paid on qualify student loans"
+ },
+ "/familyAndHousehold/*/hasOtherBiologicalOrAdoptiveParent": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Does the dependent have another legal parent apart from the taxpayer and spouse?"
+ },
+ "/familyAndHousehold/*/nonParentalSomeParentNotClaiming": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Has any of the dependent's parents signed a written declaration not to claim them?"
+ },
+ "/familyAndHousehold/*/whichParentNotClaiming": {
+  "module": "dependentsBenefitSplit",
+  "type": "Enum",
+  "options_path": "/writtenDeclarationOptions",
+  "description": "Is one of the parents not claiming the child?"
+ },
+ "/familyAndHousehold/*/inParentsCustody": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "As of July 2, was the dependent still in the legal custody of their biological or adoptive parents?"
+ },
+ "/familyAndHousehold/*/livedWithTpOrOtherBiologicalOrAdoptiveParentMoreThanSixMonths": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did the dependent live with the taxpayer and/or the other legal parent for more than six months?"
+ },
+ "/familyAndHousehold/*/biologicalOrAdoptiveParentsLiving": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Are the dependent's biological or adoptive parents living?"
+ },
+ "/familyAndHousehold/*/nightsWithTpVsOtherParent": {
+  "module": "dependentsBenefitSplit",
+  "type": "Enum",
+  "options_path": "/moreLessEqualOptions",
+  "description": "Did the dependent spend more, less, or same number of nights with taxpayer vs. other parent?"
+ },
+ "/familyAndHousehold/*/tpAgiHigherThanOtherParent": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the taxpayer's AGI higher than the dependent's other legal parent?"
+ },
+ "/familyAndHousehold/*/parentsMeetReqsRuleForChildrenOfDivorcedParents": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The person's parents meet the requirements of the rule for children of divorced or separated parents or parents who lived apart."
+ },
+ "/familyAndHousehold/*/specialRuleChildUsedByCustodialParentAsQP": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "In a situation where the taxpayer is not a parent, and the person has an alive custodial parent, that custodial parent intends to claim this person as a QP for Hoh, EITC, DCC, or another credit and this person will thus not be an eligible to be the taxpayer's QP."
+ },
+ "/familyAndHousehold/*/specialRuleAgiTest": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "In a situation where the TP is not a parent, and the person has an alive custodial parent, that custodial parent is not claiming the person as a qualifying person, the taxpayer has a higher AGI than the custodial parent, which will allow the TP to claim the person for certain tax benefits."
+ },
+ "/familyAndHousehold/*/parentalSituation": {
+  "module": "dependentsBenefitSplit",
+  "type": "Enum",
+  "options_path": "/parentalSituationOptions",
+  "description": "The taxpayer's marital or living situation with the dependent's other legal parent, as it applies to benefit split."
+ },
+ "/familyAndHousehold/*/parentalSupport": {
+  "module": "dependentsBenefitSplit",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did the taxpayer and/or other parent pay more than half the dependent's support?"
+ },
+ "/filers/*/arePaymentsTaxDisabilityIncome": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Were any payments on W2 disability income from accident or health plan or pension plan paid by an employer"
+ },
+ "/filers/*/isRetOnPermOrTotalDisability": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is TP retired or permanent and total disability by the end of TY"
+ },
+ "/filers/*/employerHasMandatoryRetirementAge": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the employer has a mandatory retirement age"
+ },
+ "/filers/*/hasMetEmployerMandatoryRetirementAge": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the tp reached employer's mandatory retirement age by January 1"
+ },
+ "/filers/*/writableTotalTaxableDisabilityAmount": {
+  "module": "elderlyAndDisabled",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(Writable)The total amount of taxable disability income from accident or health plan or pension plan paid by an employer"
+ },
+ "/filers/*/hasPhysicianStatementBothDisabledAndWillNotImprove": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "In a previous year, has the TP, received a physician's statement certifying both permanent/total disability AND no reasonable probability to ever improve"
+ },
+ "/filers/*/hasPhysicianStatementBefore1983": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did the TP file a physicians statement for 1983 or earlier regarding permanent/total disability"
+ },
+ "/filers/*/hasSelfCertPhysStatmntOrVetDisbltyVerified": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did the TP self-certify that due to their disability, they are not able to engage in gainful activity"
+ },
+ "/writableEdcSelfReportedNonTaxablePaymentAmount": {
+  "module": "elderlyAndDisabled",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(Writable) Nontaxable veterans’ pensions and any other pension, annuity, or disability benefit that is excluded from income under any other provision of law, used for Schedule R Line 13b"
+ },
+ "/writableHasSelfReportedNonTaxablePayments": {
+  "module": "elderlyAndDisabled",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable) Did primary or secondary have any nontaxable payments that need to be reported"
+ },
+ "/incomeSourcesSupported": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Does Direct File support all of the income sources that you/you and your spouse have?"
+ },
+ "/receivedDigitalAssets": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "At any time during 2023, did you: (a) receive (as a reward, award, or payment for property or services) a digital asset (or a financial interest in a digital asset)?"
+ },
+ "/disposedDigitalAssets": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "At any time during 2023, did you sell, exchange, gift, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?"
+ },
+ "/hasForeignAccounts": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "At any time during 2023, did you have a financial interest in or signature authority over a financial account located in a foreign country?"
+ },
+ "/isForeignTrustsGrantor": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "At any time during 2023, did you own a foreign trust?"
+ },
+ "/hasForeignTrustsTransactions": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "At any time during 2023, did you have a transaction with a foreign trust?"
+ },
+ "/madeIraContributions": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP made contributions to an Individual Retirement Arrangement."
+ },
+ "/flowHasSeenTotalIncomeSummary": {
+  "module": "income",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer has seen the total income summary screen"
+ },
+ "/writableMfsSpouseEarnedIncome": {
+  "module": "income",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "MFS spouse's earned income as reported by the TP for the sake of determining whether they can exclude any dependent care benefits"
+ },
+ "/familyAndHousehold": {
+  "module": "familyAndHousehold",
+  "type": "Collection",
+  "options_path": null,
+  "description": "The people entered in the family and household section who may qualify as QPs or dependents"
+ },
+ "/familyAndHouseholdIsDone": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has clicked \"Done\" for the family and HH section"
+ },
+ "/familyAndHousehold/*/firstName": {
+  "module": "familyAndHousehold",
+  "type": "String",
+  "options_path": null,
+  "description": "The first name of the dependent. Must match the name as known to the Social Security Administration."
+ },
+ "/familyAndHousehold/*/writableMiddleInitial": {
+  "module": "familyAndHousehold",
+  "type": "String",
+  "options_path": null,
+  "description": "The middle initial of the dependent. Must match the name as known to the Social Security Administration. This is the optional writable fact. Please use derived fact in downstream calculations."
+ },
+ "/familyAndHousehold/*/lastName": {
+  "module": "familyAndHousehold",
+  "type": "String",
+  "options_path": null,
+  "description": "The last name of the dependent. Must match the name as known to the Social Security Administration."
+ },
+ "/familyAndHousehold/*/writableSuffix": {
+  "module": "familyAndHousehold",
+  "type": "Enum",
+  "options_path": "/suffixOptions",
+  "description": "The suffix of the dependent."
+ },
+ "/familyAndHousehold/*/hasIpPin": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the dependent has an IP Pin"
+ },
+ "/familyAndHousehold/*/flowIpPinReady": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP is ready to input the IP PIN"
+ },
+ "/familyAndHousehold/*/identityPin": {
+  "module": "familyAndHousehold",
+  "type": "IPPIN",
+  "options_path": null,
+  "description": "The Identity PIN of the Dependent"
+ },
+ "/familyAndHousehold/*/tinType": {
+  "module": "familyAndHousehold",
+  "type": "Enum",
+  "options_path": "/tinTypeOptions",
+  "description": "The type of the dependent's TIN."
+ },
+ "/familyAndHousehold/*/tin": {
+  "module": "familyAndHousehold",
+  "type": "TIN",
+  "options_path": null,
+  "description": "The taxpayer identification number of the family or household member. Collected only if the TP is claiming the dependent or claiming them as a qualifying person for a credit. Do *not* ever use `/tin/isSSN` the way we might for filers, because we haven't necessarily collected the tin at the times we need that test. Instead, check the tinType."
+ },
+ "/familyAndHousehold/*/dateOfBirth": {
+  "module": "familyAndHousehold",
+  "type": "Day",
+  "options_path": null,
+  "description": "The date of birth of the dependent."
+ },
+ "/familyAndHousehold/*/deceased": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the dependent died during the tax year"
+ },
+ "/familyAndHousehold/*/dateOfDeath": {
+  "module": "familyAndHousehold",
+  "type": "Day",
+  "options_path": null,
+  "description": "The date on which the person died"
+ },
+ "/familyAndHousehold/*/unableToCareForSelf": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The person was physically or mentally unable to care for themselves"
+ },
+ "/familyAndHousehold/*/writableCdccQualifyingExpenseAmount": {
+  "module": "familyAndHousehold",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Amount of qualifying expenses paid for this qualifying person. Only applies if the person is a CDCC QP"
+ },
+ "/familyAndHousehold/*/cdccHasDependentCareExpenses": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the QP has qualifying dependent care expenses"
+ },
+ "/familyAndHousehold/*/cdccHadExpensesPaidToQualifyingProvider": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the QP's expenses were paid to a qualified provider"
+ },
+ "/familyAndHousehold/*/fullTimeStudent": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the dependent a full-time student?"
+ },
+ "/familyAndHousehold/*/permanentTotalDisability": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the dependent permanently and totally disabled? We intentionally do not AND this with \"../disabilityStatusMayAffectBenefits\" in our MeF export, as that would mark people as \"not disabled\" when the app simply did not ask them about their disability status."
+ },
+ "/familyAndHousehold/*/residencyDuration": {
+  "module": "familyAndHousehold",
+  "type": "Enum",
+  "options_path": "/residencyDurationOptions",
+  "description": "What portion of the year did the dependent live with you?"
+ },
+ "/familyAndHousehold/*/married": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the dependent married?"
+ },
+ "/familyAndHousehold/*/writableJointReturn": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Are the dependent and their spouse filing a joint return?"
+ },
+ "/familyAndHousehold/*/writableRequiredToFile": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Are the dependent and their spouse required to file?"
+ },
+ "/familyAndHousehold/*/writableFilingOnlyForRefund": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Are the dependent and their spousefiling a return only to claim a refund of income tax withheld or estimated tax paid?"
+ },
+ "/familyAndHousehold/*/writableCouldBeQualifyingChildOfAnother": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable) Is the dependent the qualifying child of any other taxpayer?"
+ },
+ "/familyAndHousehold/*/writablePotentialClaimerMustFile": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the other taxpayer (for whom the dependent could be a qualifying child) required to file a return?"
+ },
+ "/familyAndHousehold/*/writablePotentialClaimerDidFile": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the other taxpayer (for whom the dependent could be a qualifying child) filing a return?"
+ },
+ "/familyAndHousehold/*/writablePotentialClaimerFiledOnlyForRefund": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is the other taxpayer (for whom the dependent is a qualifying child) filing solely for refund of income tax withheld or estimated tax paid?"
+ },
+ "/familyAndHousehold/*/tpClaims": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxpayer wants to claim the dependent."
+ },
+ "/familyAndHousehold/*/grossIncomeTest": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The dependent passes the gross income test for purposes of determining qualifying relative (their gross income was less than /grossIncomeLimit)."
+ },
+ "/familyAndHousehold/*/ownSupport": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did the dependent provide more than half their own support?"
+ },
+ "/familyAndHousehold/*/writableQrSupportTest": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The dependent passes the support test for purposes of determining qualifying relative (you provided more than half their support)."
+ },
+ "/familyAndHousehold/*/writableUsResident": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The dependent resides in the United States of America."
+ },
+ "/familyAndHousehold/*/writableUsNational": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The dependent is not a citizen, but is a U.S. national."
+ },
+ "/familyAndHousehold/*/writableCanadaMexicoResident": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The dependent resides in Canada or Mexico."
+ },
+ "/familyAndHousehold/*/isUsCitizenFullYear": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer was a U.S. citizen for part of the tax year"
+ },
+ "/familyAndHousehold/*/monthsLivedWithTPInUS": {
+  "module": "familyAndHousehold",
+  "type": "Enum",
+  "options_path": "/monthsLivedWithTPInUSOptions",
+  "description": "How many months did the person live with the TP in the US?"
+ },
+ "/familyAndHousehold/*/tpPaidMostOfHomeUpkeep": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did taxpayer pay more than half the cost of keeping up the home shared with the dependent?"
+ },
+ "/familyAndHousehold/*/tpPaidMostOfParentHomeUpkeep": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did taxpayer pay more than half the cost of keeping up their dependent parent's main home?"
+ },
+ "/familyAndHousehold/*/ssnEmploymentValidity": {
+  "module": "familyAndHousehold",
+  "type": "Enum",
+  "options_path": "/familyAndHouseholdSsnEmploymentValidityOptions",
+  "description": "Employment validity statements printed on dependent's Social Security card."
+ },
+ "/familyAndHousehold/*/ssnOnlyForFederallyFundedBenefit": {
+  "module": "familyAndHousehold",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The dependent received their social security number solely to apply for a federally funded benefit, like Medicaid."
+ },
+ "/hohQualifyingPerson": {
+  "module": "familyAndHousehold",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "If the TP is HoH, this is the person that they've chosen to allow them to claim HoH status."
+ },
+ "/filers": {
+  "module": "filers",
+  "type": "Collection",
+  "options_path": null,
+  "description": "The filers of the tax return. If a joint return, there are two filers; otherwise, there is only one."
+ },
+ "/filers/*/firstName": {
+  "module": "filers",
+  "type": "String",
+  "options_path": null,
+  "description": "The first name of the filer. Must match the name as known to the Social Security Administration."
+ },
+ "/filers/*/writableMiddleInitial": {
+  "module": "filers",
+  "type": "String",
+  "options_path": null,
+  "description": "The middle initial of the filer. Must match the name as known to the Social Security Administration. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/filers/*/lastName": {
+  "module": "filers",
+  "type": "String",
+  "options_path": null,
+  "description": "The last name of the filer. Must match the name as known to the Social Security Administration."
+ },
+ "/filers/*/writableSuffix": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/suffixOptions",
+  "description": "The suffix of the filer."
+ },
+ "/filers/*/tin": {
+  "module": "filers",
+  "type": "TIN",
+  "options_path": null,
+  "description": "The taxpayer identification number of the filer."
+ },
+ "/filers/*/dateOfBirth": {
+  "module": "filers",
+  "type": "Day",
+  "options_path": null,
+  "description": "The date of birth of the filer."
+ },
+ "/filers/*/isStudent": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer is a student."
+ },
+ "/filers/*/isDisabled": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer is disabled."
+ },
+ "/filers/*/cdccMonthsDisabledOrInSchool": {
+  "module": "filers",
+  "type": "Int",
+  "options_path": null,
+  "description": "The number of months the filer was either disabled or in school in the current tax year"
+ },
+ "/filers/*/occupation": {
+  "module": "filers",
+  "type": "String",
+  "options_path": null,
+  "description": "The occupation of the filer."
+ },
+ "/filers/*/identityPin": {
+  "module": "filers",
+  "type": "IPPIN",
+  "options_path": null,
+  "description": "The identity pin of the filer"
+ },
+ "/filers/*/isBlind": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer is considered blind for tax purposes."
+ },
+ "/filers/*/hasIpPin": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer has been assigned an IP pin from the IRS"
+ },
+ "/filers/*/flowIpPinReady": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer is ready to input their IP pin in the flow"
+ },
+ "/filers/*/flowSpouseIpPinReady": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer is ready to input their spouse's IP pin in the flow. Currently separated to be able to conjugate the pronoun in the question, but we can eliminate this variable if we improve our translation customization."
+ },
+ "/filers/*/canBeClaimed": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer can be claimed as a dependent by another taxpayer."
+ },
+ "/filers/*/potentialClaimerMustFile": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the person who could claim the filer as a dependent is required to file a tax return."
+ },
+ "/filers/*/potentialClaimerDidFile": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the person who could claim the filer as a dependent filed a tax return."
+ },
+ "/primaryFilerPotentialClaimerFiledOnlyForRefund": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the person who could claim the primary filer as a dependent filed a tax return solely for refund of withholding or estimated tax paid."
+ },
+ "/filers/*/willBeClaimed": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer expects to be claimed as a dependent by another taxpayer. Note that this fact should not be used directly, as it can be overwridden if we later learn no one else is allowed to claim the taxpayer; use /primaryFilerIsClaimedAsDependent or /secondaryFilerIsClaimedAsDependent instead."
+ },
+ "/MFJDependentsFilingForCredits": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the MFJ filer who can be someone's dependent is claiming a refund only and forgoing tax benefits like dependents and certain credits"
+ },
+ "/MFJRequiredToFile": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether an MFJ couple is required to file"
+ },
+ "/filers/*/isPrimaryFiler": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The primary filer is listed first on the tax return."
+ },
+ "/primaryFilerSsnEmploymentValidity": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/primaryFilerSsnEmploymentValidityOptions",
+  "description": "Employment validity statements printed on filer's Social Security card."
+ },
+ "/secondaryFilerSsnEmploymentValidity": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/ssnEmploymentValidityOptions",
+  "description": "Employment validity statements printed on filer's Social Security card."
+ },
+ "/filers/*/writableHasSSNOnlyForBenefits": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Does the filer only have a SSN to apply for federal benefits"
+ },
+ "/filers/*/isUsCitizenFullYear": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer was a U.S. Citizen for all of the tax year"
+ },
+ "/filers/*/writableCitizenAtEndOfTaxYear": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Whether the filer was a U.S. Citizen at the end of the tax year after starting the year as a U.S. resident"
+ },
+ "/filers/*/writableIsNoncitizenResidentFullYear": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Was the filer a resident for the whole tax year and not a citizen?"
+ },
+ "/filers/*/writableIsNational": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Whether the filer was a U.S. national"
+ },
+ "/filerResidenceAndIncomeState": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/scopedStateOptions",
+  "description": "Which state(s) the filer earned income in from our in-scope states"
+ },
+ "/primaryFilerW2And1099IntInScopedState": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/primaryFilerW2And1099IntStateOptions",
+  "description": "Did all of the primary filer's W-2 and 1099-INT forms come from the same in-scope state?"
+ },
+ "/receivedAlaskaPfd": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did the primary filer have an Alaska Permanent Fund Dividend?"
+ },
+ "/spouseReceivedAlaskaPfd": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Did the secondary filer have an Alaska Permanent Fund Dividend?"
+ },
+ "/spouseW2And1099IntInScopedState": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/spouseW2And1099IntStateOptions",
+  "description": "Did all of the spouse's W-2 and 1099-INT forms come from the same in-scope state?"
+ },
+ "/spouseItemizes": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "If your spouse itemizes deductions on their tax return when filing separately from you, it means you the filer cannot take the standard deduction on their own return."
+ },
+ "/secondaryFilerDateOfDeath": {
+  "module": "filers",
+  "type": "Day",
+  "options_path": null,
+  "description": "The date of death of the secondary filer."
+ },
+ "/MFSSpouseFilingReturn": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "If the spouse is filing a return or having a return filed for them."
+ },
+ "/MFSLivingSpouseFilingReturn": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Active voice: \"my MFS spouse will file a return\""
+ },
+ "/MFSDeceasedSpouseFilingReturn": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Passive voice: \"someone will file a return for my MFS spouse\""
+ },
+ "/MFSSpouseHasNRTIN": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "If the spouse has a Tax Identification Number"
+ },
+ "/MFSSpouseHasGrossIncome": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "If the spouse had any gross income in the tax year."
+ },
+ "/MFSSpouse65OrOlder": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "If the spouse had reached age 65 in the tax year."
+ },
+ "/spouseIncomeFormsInScopedState": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/primaryFilerW2And1099IntStateOptions",
+  "description": "Did all of the filer's W-2 and 1099-G forms come from the same state?"
+ },
+ "/spouseLivesInTPState": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/spouseScopedStateOptions",
+  "description": "Whether the filer's spouse lived in the same state as them all year, in mulitple states, or something else"
+ },
+ "/livedTogetherAllYearWithSpouse": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxpayer lived together with their spouse the entire Tax Year"
+ },
+ "/spouseLivedTogetherMonths": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/spouseLivedTogetherMonthsOptions",
+  "description": "Months lived apart from their spouse in the Tax Year"
+ },
+ "/writableLivedApartLastSixMonths": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxpayer lived apart from their spouse for the last six months of the year."
+ },
+ "/writableSeparationAgreement": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxpayer was living apart from their spouse and had a separation agreement on the last day of the year."
+ },
+ "/canFileJointlyYearOfSpouseDeath": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxpayer was qualified to file jointly for the year in which their spouse died."
+ },
+ "/maritalStatus": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/maritalStatusOptions",
+  "description": "The marital status the primary filer tells us."
+ },
+ "/inRegisteredDomesticPartnership": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer was in a registered domestic partnership in the tax year or not."
+ },
+ "/yearOfSpouseDeath": {
+  "module": "filers",
+  "type": "Enum",
+  "options_path": "/yearOfSpouseDeathOptions",
+  "description": "The relative year a widowed filer's spouse died."
+ },
+ "/address": {
+  "module": "filers",
+  "type": "Address",
+  "options_path": null,
+  "description": "The mailing address of the taxpayer(s)."
+ },
+ "/phone": {
+  "module": "filers",
+  "type": "PhoneNumber",
+  "options_path": null,
+  "description": "The phone number of the taxpayer(s)."
+ },
+ "/email": {
+  "module": "filers",
+  "type": "EmailAddress",
+  "options_path": null,
+  "description": "The email address of the taxpayer(s)."
+ },
+ "/filers/*/writableCdccQualifyingExpenseAmount": {
+  "module": "filers",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Amount of qualifying expenses paid for this qualifying person. Only applies if the person is a CDCC QP and a filer"
+ },
+ "/filers/*/cdccHasDependentCareExpenses": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the QP has qualifying dependent care expenses"
+ },
+ "/filers/*/cdccHadExpensesPaidToQualifyingProvider": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the QP's expenses were paid to a qualified provider"
+ },
+ "/has1095AInIRDAS": {
+  "module": "filers",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the filer has at least one Form 1095-A in IRDAS"
+ },
+ "/MFJDepedentsEnrolledMarketplacePlan": {
+  "module": "spouseSection",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the MFJ filer who is treated like a dependent was in enrolled in a marketplace plan for at least one month."
+ },
+ "/advancedPTCPaymentsMade": {
+  "module": "spouseSection",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether advance payments of the Premium Tax Credit (PTC) were made to help pay for the coverage primary, secondary or anyone they enrolled."
+ },
+ "/mfjdEnrollees": {
+  "module": "spouseSection",
+  "type": "MultiEnum",
+  "options_path": "/mfjdEnrolleesOptions",
+  "description": "MFJ Dependent Enrollees"
+ },
+ "/mfjdOtherTaxFamily": {
+  "module": "spouseSection",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "If the person enrolled by primary TP or spouse is part of some other family"
+ },
+ "/showMFJDChoiceBDynamic": {
+  "module": "spouseSection",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether to show the dynamic content. It's your choice because you are filing jointly with you spouse..."
+ },
+ "/form1099Miscs": {
+  "module": "form1099Misc",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Form 1099-MISC: Miscellaneous Information"
+ },
+ "/form1099Miscs/*/filer": {
+  "module": "form1099Misc",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "The recipient of the 1099-MISC."
+ },
+ "/form1099Miscs/*/writableOtherIncome": {
+  "module": "form1099Misc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 3 of Form 1099-MISC: Other income"
+ },
+ "/form1099Miscs/*/writableFederalWithholding": {
+  "module": "form1099Misc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 4 of Form 1099-MISC: Federal income tax withheld."
+ },
+ "/form1099Miscs/*/payer": {
+  "module": "form1099Misc",
+  "type": "String",
+  "options_path": null,
+  "description": "The payer of the 1099-MISC."
+ },
+ "/form1099Miscs/*/payer/tin": {
+  "module": "form1099Misc",
+  "type": "EIN",
+  "options_path": null,
+  "description": "The payer's TIN from the 1099-MISC."
+ },
+ "/form1099Miscs/*/hasSeenLastAvailableScreen": {
+  "module": "form1099Misc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the user has seen the last available screen for this 1099-MISC."
+ },
+ "/hasCompletedApfSection": {
+  "module": "form1099Misc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has clicked \"Done\" for the APF section."
+ },
+ "/paidEstimatedTaxesOrFromLastYear": {
+  "module": "estimatedPayments",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP paid estimated taxes last year, or chose to apply their previous year's refund to this year's taxes"
+ },
+ "/paidEstimatedTaxesOrFromLastYearUnderDifferentName": {
+  "module": "estimatedPayments",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP or their spouse paid estimated taxes under a different legal name"
+ },
+ "/paidEstimatedTaxesWithFormerSpouse": {
+  "module": "estimatedPayments",
+  "type": "Enum",
+  "options_path": "/paidEstimatedTaxesWithFormerSpouseOptions",
+  "description": "Whether the TP or their spouse paid estimated taxes with a former spouse"
+ },
+ "/primaryFilerDivorcedSpouseTaxID": {
+  "module": "estimatedPayments",
+  "type": "TIN",
+  "options_path": null,
+  "description": "The Tax ID of a former spouse with whom the primary filer has already paid estimated taxes."
+ },
+ "/secondaryFilerDivorcedSpouseTaxID": {
+  "module": "estimatedPayments",
+  "type": "TIN",
+  "options_path": null,
+  "description": "The Tax ID of a former spouse with whom the secondary filer has already paid estimated taxes."
+ },
+ "/estimatedTaxPaymentWritable": {
+  "module": "estimatedPayments",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount that the TP paid previously in estimated taxes"
+ },
+ "/wasK12Educators": {
+  "module": "educatorAdjustment",
+  "type": "Enum",
+  "options_path": "/k12EducatorOptions",
+  "description": "Whether the TP or secondary filer were k12 educators"
+ },
+ "/primaryEducatorExpensesWritable": {
+  "module": "educatorAdjustment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Expenses the TP spent as a k12 educator. May deduct up to the maxIndividualEducatorExpensesLimit."
+ },
+ "/secondaryEducatorExpensesWritable": {
+  "module": "educatorAdjustment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Expenses the TP spent as a k12 educator. May deduct up to the maxIndividualEducatorExpensesLimit."
+ },
+ "/form1099Gs": {
+  "module": "unemployment",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Reports of Unemployment Compensation income."
+ },
+ "/form1099GsIsDone": {
+  "module": "unemployment",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has clicked \"Done\" for their form1099Gs"
+ },
+ "/form1099Gs/*/hasSeenLastAvailableScreen": {
+  "module": "unemployment",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the user has navigated to the last available screen in the unemployment section"
+ },
+ "/form1099Gs/*/has1099": {
+  "module": "unemployment",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether this unemployment income report has an attached 1099-G"
+ },
+ "/form1099Gs/*/filer": {
+  "module": "unemployment",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "The filer who received income for this report."
+ },
+ "/form1099Gs/*/payer": {
+  "module": "unemployment",
+  "type": "String",
+  "options_path": null,
+  "description": "The entity that paid the unemployment compensation."
+ },
+ "/form1099Gs/*/payer/tin": {
+  "module": "unemployment",
+  "type": "EIN",
+  "options_path": null,
+  "description": "The taxpayer identification number of the payer on the 1099-G."
+ },
+ "/form1099Gs/*/amount": {
+  "module": "unemployment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount of unemployment compensation."
+ },
+ "/form1099Gs/*/repaid": {
+  "module": "unemployment",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxpayer repaid unemployment compensation received in the same year."
+ },
+ "/form1099Gs/*/writableAmountPaidBackForBenefitsInTaxYear": {
+  "module": "unemployment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount of money paid back in the tax year for the benefits received in the tax year. This is the writable fact."
+ },
+ "/form1099Gs/*/writableAmountPaidBackForBenefitsBeforeTaxYear": {
+  "module": "unemployment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount of money paid back in the tax year for the benefits received before the tax year. This is the writable fact."
+ },
+ "/form1099Gs/*/writableFederalTaxWithheld": {
+  "module": "unemployment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The federal income tax withheld from this unemployment compensation. Only collected when a TP has a 1099G."
+ },
+ "/form1099Gs/*/writableState": {
+  "module": "unemployment",
+  "type": "Enum",
+  "options_path": "/incomeFormStateOptions",
+  "description": "The state where this 1099G was received."
+ },
+ "/form1099Gs/*/writableStateIdNumber": {
+  "module": "unemployment",
+  "type": "String",
+  "options_path": null,
+  "description": "The state Id number of the payer. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/form1099Gs/*/writableStateTaxWithheld": {
+  "module": "unemployment",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount of state tax that has been withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/socialSecurityReports": {
+  "module": "socialSecurity",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Reports of Social Security income."
+ },
+ "/socialSecurityReportsIsDone": {
+  "module": "socialSecurity",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has clicked \"Done\" for their socialSecurityReports"
+ },
+ "/socialSecurityReports/*/hasSeenLastAvailableScreen": {
+  "module": "socialSecurity",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the user has reached the end of a social security flow"
+ },
+ "/socialSecurityReports/*/filer": {
+  "module": "socialSecurity",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "The filer who received Social Security income for this report."
+ },
+ "/socialSecurityReports/*/ssaNetBenefits": {
+  "module": "socialSecurity",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 5 of the SSA-1099"
+ },
+ "/socialSecurityReports/*/rrbNetBenefits": {
+  "module": "socialSecurity",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 5 of the RRB-1099"
+ },
+ "/socialSecurityReports/*/writableSsaFederalTaxWithheld": {
+  "module": "socialSecurity",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 6 of the SSA-1099. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/socialSecurityReports/*/writableRrbFederalTaxWithheld": {
+  "module": "socialSecurity",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 10 of the RRB-1099. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/BOX14_MD_STPICKUP": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code BOX14_MD_STPICKUP, used by Maryland"
+ },
+ "/formW2s/*/BOX14_NJ_FLI": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code BOX14_NJ_FLI, used by New Jersey"
+ },
+ "/formW2s/*/BOX14_NJ_UIHCWD": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code BOX14_NJ_UIHCWD, used by New Jersey"
+ },
+ "/formW2s/*/BOX14_NJ_UIWFSWF": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code BOX14_NJ_UIWFSWF, used by New Jersey"
+ },
+ "/formW2s": {
+  "module": "formW2s",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Form W-2: Wage and Tax Statement, used to report wage income and withholding."
+ },
+ "/formW2sIsDone": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has clicked \"Done\" for their formW2s"
+ },
+ "/formW2s/*/hasSeenLastAvailableScreen": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the user has seen the last available scren for this W2."
+ },
+ "/formW2s/*/filer": {
+  "module": "formW2s",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "The taxpayer who received the W-2."
+ },
+ "/formW2s/*/tin": {
+  "module": "formW2s",
+  "type": "TIN",
+  "options_path": null,
+  "description": "This is written to when the user has a non-SSN TIN which are not allowed on a W2. Previously we were always using this value instead of ../usedTin"
+ },
+ "/formW2s/*/ein": {
+  "module": "formW2s",
+  "type": "EIN",
+  "options_path": null,
+  "description": "Box b of Form W-2, employer identification number (EIN)."
+ },
+ "/formW2s/*/employerName": {
+  "module": "formW2s",
+  "type": "String",
+  "options_path": null,
+  "description": "The employer's name as appears in box c of Form W-2."
+ },
+ "/formW2s/*/writableEmployerNameLine2": {
+  "module": "formW2s",
+  "type": "String",
+  "options_path": null,
+  "description": "The employer's name as appears in line 2 box c of Form W-2. This is the writable optional fact. Can be left incomplete.Please use the derived fact in downstream calculations"
+ },
+ "/formW2s/*/employerAddress": {
+  "module": "formW2s",
+  "type": "Address",
+  "options_path": null,
+  "description": "The employer's address as appears in box c of Form W-2."
+ },
+ "/formW2s/*/suffix": {
+  "module": "formW2s",
+  "type": "String",
+  "options_path": null,
+  "description": "The employee's suffix as appears in box e of Form W-2. TODO: Enable placeholders to be written a normal derived facts"
+ },
+ "/formW2s/*/addressMatchesReturn": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether Box f of Form W-2 contains the same address as the tax return."
+ },
+ "/formW2s/*/addressOverride": {
+  "module": "formW2s",
+  "type": "Address",
+  "options_path": null,
+  "description": "Box f of Form W-2, employee's address and ZIP code override field, likely to be incomplete"
+ },
+ "/formW2s/*/writableWages": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 1 of Form W-2, wages, tips, and other compensation. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableFederalWithholding": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 2 of Form W-2, Federal income tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableOasdiWages": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 3 of Form W-2, social security wages. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableOasdiWithholding": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 4 of Form W-2, social security tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableMedicareWages": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 5 of Form W-2, Medicare wages and tips. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableMedicareWithholding": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 6 of Form W-2, Medicare tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableOasdiTips": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 7 of Form W-2, social security tips. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableAllocatedTips": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 8 of Form W-2, allocated tips. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableDependentCareBenefits": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 10 of Form W-2, dependent care benefits. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableNonQualifiedPlans": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 11 of Form W-2, non-qualified plans. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/457bIsGovernmentalPlan": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The 457(b) plan to which the filer contributed is a governmental 457(b)."
+ },
+ "/formW2s/*/writableHasBox12Codes": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether this W2 has any codes or amounts in box 12"
+ },
+ "/formW2s/*/writableBox12Code": {
+  "module": "formW2s",
+  "type": "Enum",
+  "options_path": "/w2Box12CodeOptions",
+  "description": "The Box 12 code currently selected in the UI."
+ },
+ "/formW2s/*/uncollectedOasdiTaxOnTips": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code A."
+ },
+ "/formW2s/*/uncollectedMedicareTaxOnTips": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code B."
+ },
+ "/formW2s/*/taxableLifeInsuranceOver50k": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code C."
+ },
+ "/formW2s/*/401kDeferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code D."
+ },
+ "/formW2s/*/403bDeferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code E."
+ },
+ "/formW2s/*/sarsepDeferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code F."
+ },
+ "/formW2s/*/457bDeferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code G."
+ },
+ "/formW2s/*/501c18Deferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code H. (Only 6% of employers who use this code actually contributed to a 501(c)(18) plan.)"
+ },
+ "/formW2s/*/nontaxableSickPay": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code J."
+ },
+ "/formW2s/*/goldenParachuteExciseTax": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code K."
+ },
+ "/formW2s/*/expenseReimbursements": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code L."
+ },
+ "/formW2s/*/uncollectedOasdiTaxOnLifeInsuranceOver50k": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code M."
+ },
+ "/formW2s/*/uncollectedMedicareTaxOnLifeInsuranceOver50k": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code N."
+ },
+ "/formW2s/*/armedForcesMovingExpenses": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code P."
+ },
+ "/formW2s/*/writableHasBox14Codes": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether this W2 has any codes or amounts in box 14"
+ },
+ "/formW2s/*/paidUnionDues": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether Box 14 has codes related to dues paid for union membership; currently only asked of MD residents"
+ },
+ "/formW2s/*/writableUnionDuesAmount": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The amount from Box 14 of codes related to dues paid for union membership; currently only asked of MD residents"
+ },
+ "/formW2s/*/writableBox14Code": {
+  "module": "formW2s",
+  "type": "Enum",
+  "options_path": "/box14NYCodeOptions",
+  "description": "An enum used to power a fact select for Box 14, used by NY filers"
+ },
+ "/formW2s/*/writableBox14CodeMd": {
+  "module": "formW2s",
+  "type": "Enum",
+  "options_path": "/box14MDCodeOptions",
+  "description": "An enum used to power a fact select for Box 14, used by MD filers"
+ },
+ "/formW2s/*/writableBox14CodeNj": {
+  "module": "formW2s",
+  "type": "Enum",
+  "options_path": "/box14NJCodeOptions",
+  "description": "An enum used to power a fact select for Box 14, used by NJ filers"
+ },
+ "/formW2s/*/hasOtherBox14Code": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the form W2 has an unsupported box 14 code"
+ },
+ "/formW2s/*/414_H": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code 414_H, used by New York State or City"
+ },
+ "/formW2s/*/414_H_CU": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code 414_H_CU, used by New York State or City"
+ },
+ "/formW2s/*/414H": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code 414H, used by New York State or City"
+ },
+ "/formW2s/*/414HCU": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code 414HCU, used by New York State or City"
+ },
+ "/formW2s/*/414HSUB": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code 414HSUB, used by New York State or City"
+ },
+ "/formW2s/*/ADDITIONAL_MEDICARE_TAX": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code ADDITIONAL_MEDICARE_TAX, used by New York State or City"
+ },
+ "/formW2s/*/ERS": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code ERS, used by New York State or City"
+ },
+ "/formW2s/*/ERSNYSRE": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code ERSNYSRE, used by New York State or City"
+ },
+ "/formW2s/*/ERSRETCO": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code ERSRETCO, used by New York State or City"
+ },
+ "/formW2s/*/IRC125S": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code IRC125S, used by New York State or City"
+ },
+ "/formW2s/*/MEDICARE_TAX": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code MEDICARE_TAX, used by New York State or City"
+ },
+ "/formW2s/*/NYRET": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code NYRET, used by New York State or City"
+ },
+ "/formW2s/*/NYSERS": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code NYSERS, used by New York State or City"
+ },
+ "/formW2s/*/NYSRETCO": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code NYSRETCO, used by New York State or City"
+ },
+ "/formW2s/*/PUBRET": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code PUBRET, used by New York State or City"
+ },
+ "/formW2s/*/RET": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code RET, used by New York State or City"
+ },
+ "/formW2s/*/RETDEF": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code RETDEF, used by New York State or City"
+ },
+ "/formW2s/*/RETMT": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code RETMT, used by New York State or City"
+ },
+ "/formW2s/*/RETSH": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code RETSH, used by New York State or City"
+ },
+ "/formW2s/*/RETSM": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code RETSM, used by New York State or City"
+ },
+ "/formW2s/*/RETSUM": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code RETSUM, used by New York State or City"
+ },
+ "/formW2s/*/RRTA_COMPENSATION": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code RRTA_COMPENSATION, used by New York State or City"
+ },
+ "/formW2s/*/TIER_1_TAX": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code TIER_1_TAX, used by New York State or City"
+ },
+ "/formW2s/*/TIER_2_TAX": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code TIER_2_TAX, used by New York State or City"
+ },
+ "/formW2s/*/TIER3RET": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code TIER3RET, used by New York State or City"
+ },
+ "/formW2s/*/TIER4": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code TIER4, used by New York State or City"
+ },
+ "/formW2s/*/TIER4RET": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 code TIER4RET, used by New York State or City"
+ },
+ "/formW2s/*/writableCombatPay": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "The user transcribes this value as seen on box 12, code Q of a W-2. Represents combat pay. If left empty, the W-2 XML that we send to MeF will not have a corresponding EmployersUseCd element. Derived calculations will treat an empty field as 0. Note 1/18/2024: this use to be used directly before the zero export change."
+ },
+ "/formW2s/*/archerMsaContributions": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code R."
+ },
+ "/formW2s/*/simpleContributions": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code S."
+ },
+ "/formW2s/*/adoptionBenefits": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code T."
+ },
+ "/formW2s/*/nsoIncome": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code V."
+ },
+ "/formW2s/*/employerHsaContributions": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code W."
+ },
+ "/formW2s/*/409aDeferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code Y."
+ },
+ "/formW2s/*/nqdcDeferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code Z."
+ },
+ "/formW2s/*/roth401kContributions": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code AA."
+ },
+ "/formW2s/*/roth403bContributions": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code BB."
+ },
+ "/formW2s/*/healthCoverageCost": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code DD."
+ },
+ "/formW2s/*/roth457bContributions": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code EE."
+ },
+ "/formW2s/*/qsehraBenefits": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code FF."
+ },
+ "/formW2s/*/83iIncome": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code GG."
+ },
+ "/formW2s/*/83iDeferrals": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 12, code HH."
+ },
+ "/formW2s/*/nonTaxableMedicaidWaiverPayments": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Nontaxable Medicaid waiver payments reported on Form(s) W-2. If you received nontaxable Medicaid waiver payments, those amounts should now be reported to you on Form(s) W-2 in box 12, Code II."
+ },
+ "/formW2s/*/statutoryEmployee": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether statutory employee is checked in box 13."
+ },
+ "/formW2s/*/retirementPlan": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether retirement plan is checked in box 13."
+ },
+ "/formW2s/*/thirdPartySickPay": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether third-party sick pay is checked in box 13."
+ },
+ "/formW2s/*/writableState": {
+  "module": "formW2s",
+  "type": "Enum",
+  "options_path": "/incomeFormStateOptions",
+  "description": "Part of form W-2 box 15: The state of residence."
+ },
+ "/formW2s/*/writableStateEmployerId": {
+  "module": "formW2s",
+  "type": "String",
+  "options_path": null,
+  "description": "Part of form W-2 box 15: The employer's state ID number. This is the writable optional fact. Can be left incomplete, and will likely be left incomplete by states that do not collect personal income tax."
+ },
+ "/formW2s/*/writableStateWages": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Form W-2 box 16: Wages, tips, and other compensation allocated to the state. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableStateWithholding": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Form W-2 box 17: State income tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableLocalWages": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Form W-2 box 18: Wages, tips, and other compensation allocated to the locality. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableLocalWithholding": {
+  "module": "formW2s",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Form W-2 box 19: Local income tax withheld. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/formW2s/*/writableLocality": {
+  "module": "formW2s",
+  "type": "String",
+  "options_path": null,
+  "description": "Form W-2 box 20: Locality name. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/partYearYonkersResident": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxpayer lived outside of Yonkers during the tax year, and is a part-year Yonkers resident."
+ },
+ "/formW2s/*/nonstandardOrCorrectedChoice": {
+  "module": "formW2s",
+  "type": "Enum",
+  "options_path": "/w2NonstandardCorrectedOptions",
+  "description": "Whether the form W2 is nonstandard, corrected, both, or neither"
+ },
+ "/formW2s/*/hasRRTACodes": {
+  "module": "formW2s",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Do any Railroad Retirement Tax Act (RRTA) codes show up in box 14 on this W2?"
+ },
+ "/receivedImproperClaims": {
+  "module": "ctcOdc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Since 2015 (TY -8?) the IRS has reduced or disallowed the TP or MFJ spouse's CTC, ACTC, or ODC for reasons other than a math error."
+ },
+ "/receivedImproperClaimsNotice": {
+  "module": "ctcOdc",
+  "type": "Enum",
+  "options_path": "/improperClaimsNoticeOptions",
+  "description": "Whether the TP received a letter from the IRS telling them they're not allowed to take CTC, ACTC, or ODC for a number of years"
+ },
+ "/improperClaimsNoticeExpired": {
+  "module": "ctcOdc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the improper claims notice that the TP previously received is far enough in the past to be expired. E.g. They could not file for 2 years, and it has been at least 2 years"
+ },
+ "/hasFiledCtcOdcSinceNoticeExpired": {
+  "module": "ctcOdc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP has filed for CTC or ODC again since the notice has expired. The first time a taxpayer files after their notice has expired, they need to fill out form 8862."
+ },
+ "/dependentTpSelfEnrolled": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the dependent TP self enrolled in a marketplace health plan"
+ },
+ "/dependentTpEnrolledSomeoneElse": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the dependent TP enrolled someone else in a marketplace health plan"
+ },
+ "/writableDependentTpOtherMembersArePartOfDifferentTaxFamily": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable)Whether the other person the dependent tax payer enrolled is part of a different tax family"
+ },
+ "/writableHasPtcQualifyingPlan": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Whether the TP is enrolled for a qualifying plan for at least one month"
+ },
+ "/writableDependentsRequiredToFile": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable)At least one dependent is required to file"
+ },
+ "/writableSelfReportedHasMultiple1095As": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable)TP has multiple 1095-As they need to report"
+ },
+ "/writableIsAdditionalPersonInEnrollmentFamily": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Whether an additional person outside of your tax family is part of the enrollment family"
+ },
+ "/writableIsAdditionalPersonPartofDifferentTaxFamily": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) is additional person also part of a different tax family"
+ },
+ "/writableIsEnrolledWithOtherFamily": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Is someone in your tax family, also enrolled with other family"
+ },
+ "/writableHasImmigrationStatusNotEligibleForMarketplace": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable)Whether someone in tax family has an immigration status that we don't support on DF"
+ },
+ "/writableHasAdvancedPtc": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Whether the TP has recieved advaned payments of the PTC"
+ },
+ "/writableHasEmployerSponsoredPlan": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) Whether the TP or anyone on the marketplace plan has an employer sponsored plan"
+ },
+ "/writableHasMfsException": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable) TP has MFS exception"
+ },
+ "/writableClaimingMfsExceptionForFourthStraightYear": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable) TP claiming MFS exception for the fourth straight year"
+ },
+ "/writableBelow100ThresholdAndNotEligibleForMedicaidBecauseOfImmigrationStatus": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable) Whether anyone on the Marketplace plan is not eligible for Medicaid becasue of their immigration status"
+ },
+ "/1095As": {
+  "module": "ptc",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Collection of 1095-As"
+ },
+ "/1095AsIsDone": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Is 1095-As collection done"
+ },
+ "/1095As/*/hasSeenLastAvailableScreen": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the user has seen the last available scren for this 1095."
+ },
+ "/1095As/*/marketplaceState": {
+  "module": "ptc",
+  "type": "Enum",
+  "options_path": "/statesAndDistrictsOptions",
+  "description": "The statethe marketplace plan is from"
+ },
+ "/1095As/*/coverageMonths": {
+  "module": "ptc",
+  "type": "MultiEnum",
+  "options_path": "/1095As/*/monthOptions",
+  "description": "List of applicable coverage months"
+ },
+ "/1095As/*/policyNumber": {
+  "module": "ptc",
+  "type": "String",
+  "options_path": null,
+  "description": "Policy number associated with the 1095"
+ },
+ "/1095As/*/writablePolicyStartDate": {
+  "module": "ptc",
+  "type": "Day",
+  "options_path": null,
+  "description": "(writable)Start date of policy"
+ },
+ "/1095As/*/writablePolicyEndDate": {
+  "module": "ptc",
+  "type": "Day",
+  "options_path": null,
+  "description": "(writable)End/termination date of policy"
+ },
+ "/1095As/*/writableSpecialPolicyModificationInStartingMonth": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether someone on the plan was born, adopted, or placed for adoption or foster care during the month when the policy started"
+ },
+ "/1095As/*/writableHasPolicyDateException": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(Writable) whether the TP has a policy date exception and count the starting month of their policy as a qualifying month"
+ },
+ "/1095As/*/hasCoverageMonths": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Has at least one coverage month"
+ },
+ "/1095As/*/writablePremiumsOrSlcspChange": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable)Whether the enrollment premiums or SLCSP change with the TY"
+ },
+ "/1095As/*/writablePtcAnnualPremium": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(Writable) annual PTC premiums"
+ },
+ "/1095As/*/writableSlcspAnnualPremium": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(Writable) annual SLCSP premium"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumJan": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Jan"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumFeb": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Feb"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumMar": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Mar"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumApr": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Apr"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumMay": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in May"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumJun": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Jun"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumJul": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Jul"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumAug": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Aug"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumSep": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Sep"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumOct": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Oct"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumNov": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Nov"
+ },
+ "/1095As/*/writablePtcMonthlyPremiumDec": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)Premium in Dec"
+ },
+ "/1095As/*/hasChangeInCircumstance": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP or anyone enrolled in Marketplace plan have a change in circumstance that wasn't already reported"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumJan": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Jan"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumFeb": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Feb"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumMar": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Mar"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumApr": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Apr"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumMay": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in May"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumJun": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Jun"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumJul": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Jul"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumAug": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Aug"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumSep": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Sep"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumOct": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Oct"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumNov": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Nov"
+ },
+ "/1095As/*/writablePtcMonthlySlcspPremiumDec": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)SLCSP Premium in Dec"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumJan": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Jan"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumFeb": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Feb"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumMar": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Mar"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumApr": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Apr"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumMay": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in May"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumJun": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Jun"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumJul": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Jul"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumAug": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Aug"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumSep": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Sep"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumOct": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Oct"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumNov": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Nov"
+ },
+ "/1095As/*/writablePtcMonthlyAptcPremiumDec": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(writable)APTC Premium in Dec"
+ },
+ "/1095As/*/writableAptcAnnualAmount": {
+  "module": "ptc",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "(Writable) annual APTC premium"
+ },
+ "/writableWantsToUseAltCalculations": {
+  "module": "ptc",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "(writable)Whether the TP wants to use the alt calculations for excess APTC"
+ },
+ "/form1099Rs": {
+  "module": "form1099Rs",
+  "type": "Collection",
+  "options_path": null,
+  "description": "Form 1099-R: Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc."
+ },
+ "/hasSome1099rFormsBeforeSectionEnabled": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the TP claimed to have 1099-R forms in the TY. Note that this is used when the 1099R feature flag is turned off"
+ },
+ "/is1099RFeatureFlagEnabled": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Fact for enabling the 1099-R feature flag. Controlled by build configuration."
+ },
+ "/form1099Rs/*/filer": {
+  "module": "form1099Rs",
+  "type": "CollectionItem",
+  "options_path": null,
+  "description": "The recipient of the 1099-R."
+ },
+ "/form1099Rs/*/recipientAddressChoice": {
+  "module": "form1099Rs",
+  "type": "Enum",
+  "options_path": "/recipientAddressChoiceOptions",
+  "description": "Same as return, is different, or none"
+ },
+ "/form1099Rs/*/addressOverride": {
+  "module": "form1099Rs",
+  "type": "Address",
+  "options_path": null,
+  "description": "Recipient's address, if it doesn't match the one on the return"
+ },
+ "/form1099Rs/*/payer": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "The payer of the 1099-R."
+ },
+ "/form1099Rs/*/writablePayerNameLine2": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "Line 2 of the payer's name on the 1099-R"
+ },
+ "/form1099Rs/*/payer/tin": {
+  "module": "form1099Rs",
+  "type": "EIN",
+  "options_path": null,
+  "description": "The payer's Tin from the 1099-R."
+ },
+ "/form1099Rs/*/writableGrossDistribution": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 1 of form 1099-R: Gross Distribution"
+ },
+ "/form1099Rs/*/payer/address": {
+  "module": "form1099Rs",
+  "type": "Address",
+  "options_path": null,
+  "description": "The payer's address from the 1099-R."
+ },
+ "/form1099Rs/*/payer/writablePhone": {
+  "module": "form1099Rs",
+  "type": "PhoneNumber",
+  "options_path": null,
+  "description": "The payer's phone from the 1099-R."
+ },
+ "/form1099Rs/*/writableTaxableAmount": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 2a of form 1099-R: Taxable Amount"
+ },
+ "/form1099Rs/*/writableTaxableAmountNotDetermined": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the taxable amount is not determined and 2b is checked."
+ },
+ "/form1099Rs/*/writableCapitalGain": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 3 of form 1099-R: Capital Gain"
+ },
+ "/form1099Rs/*/iraSepSimple": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the IRA/SEP/SIMPLE box is checked."
+ },
+ "/form1099Rs/*/writableTotalDistribution": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "If total distribution is checked, it's a total distribution that closed out the account."
+ },
+ "/form1099Rs/*/writableDistributionCode": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "Box 7 of form 1099-R: Distribution Code(s)"
+ },
+ "/form1099Rs/*/writableIsIndirectRollover": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "User response: is this form for an indirect rollover"
+ },
+ "/form1099Rs/*/writableIsDistributionFromMilitaryRetirementPlan": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "User response: is this distribution from a military retirement plan"
+ },
+ "/form1099Rs/*/writableOtherDollar": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 8 of form 1099-R: Other"
+ },
+ "/form1099Rs/*/writableOtherPercentage": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "Percentage"
+ },
+ "/form1099Rs/*/writablePercentageTotalDistribution": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "Percentage total distribution"
+ },
+ "/form1099Rs/*/writableTotalEmployeeContributions": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 9b of form 1099-R: Total employee contributions"
+ },
+ "/form1099Rs/*/writableAmountAllocableToIRR": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 10 of form 1099-R: Amount allocable to IRR within 5 years"
+ },
+ "/form1099Rs/*/writableFirstYearDesignatedRothContributions": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "Box 11 of form 1099-R: 1st year of designated Roth contributions"
+ },
+ "/form1099Rs/*/writableStateTaxWithheld": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 14 of form 1099-R: State tax withheld"
+ },
+ "/form1099Rs/*/writablePayerState": {
+  "module": "form1099Rs",
+  "type": "Enum",
+  "options_path": "/incomeFormStateOptions",
+  "description": "Box 15 of form 1099-R: payer's state"
+ },
+ "/form1099Rs/*/writablePayerStateNumber": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "Box 15 of form 1099-R: payer's state code"
+ },
+ "/form1099Rs/*/writableStateDistribution": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 16 of form 1099-R: State distribution"
+ },
+ "/form1099Rs/*/writableLocalTaxWithheld": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 17 of form 1099-R: Local tax withheld"
+ },
+ "/form1099Rs/*/writableLocality": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "Form 1099-R box 18: Locality name. This is the writable optional fact. Can be left incomplete. Please use the derived fact in downstream calculations."
+ },
+ "/form1099Rs/*/writableLocalDistribution": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 19 of form 1099-R: Local distribution"
+ },
+ "/form1099Rs/*/factaFilingRequirement": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Box 12: Whether the FACTA filing requirement box is checked."
+ },
+ "/form1099Rs/*/writeablePublicSafetyOfficer": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Box 7: Whether the filer/spouse is a public safety officer."
+ },
+ "/form1099Rs/*/writeablePublicSafetyOfficerPremiums": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Box 7: Whether the filer/spouse is a public safety officer using dist to pay premiums."
+ },
+ "/form1099Rs/*/nonstandardOrCorrectedChoice": {
+  "module": "form1099Rs",
+  "type": "Enum",
+  "options_path": "/form1099RsNonstandardCorrectedOptions",
+  "description": "Whether the form 1099-R is nonstandard, corrected, both, or neither"
+ },
+ "/form1099Rs/*/writableFederalWithholding": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 4 of form 1099-R: Federal income tax withheld."
+ },
+ "/form1099Rs/*/writableEmployeeOrRothOrInsuranceContributions": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 5 of form 1099-R: Employee contributions/Designated Roth contributions or insurance premiums."
+ },
+ "/form1099Rs/*/writableNetAppreciation": {
+  "module": "form1099Rs",
+  "type": "Dollar",
+  "options_path": null,
+  "description": "Box 6 of form 1099-R: net unrealized appreciation in employer’s securities"
+ },
+ "/form1099Rs/*/writableQualifiedDisasterDistribution": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Box 7: Qualified disaster is checked."
+ },
+ "/form1099Rs/*/writableQualifiedEarlyDistribution": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Box 7: Includes an early distribution"
+ },
+ "/form1099Rs/*/writableDateOfPayment": {
+  "module": "form1099Rs",
+  "type": "Day",
+  "options_path": null,
+  "description": "The date of payment on the 1099-R for reportable death benefits under section 6050Y."
+ },
+ "/form1099Rs/*/writableAccountNumber": {
+  "module": "form1099Rs",
+  "type": "String",
+  "options_path": null,
+  "description": "1099-R: account number"
+ },
+ "/form1099Rs/*/hasSeenLastAvailableScreen": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "Whether the user has seen the last available screen for this 1099-R."
+ },
+ "/hasCompleted1099RSection": {
+  "module": "form1099Rs",
+  "type": "Boolean",
+  "options_path": null,
+  "description": "The user has clicked \"Done\" for the APF section."
+ }
+}

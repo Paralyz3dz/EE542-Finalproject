@@ -53,3 +53,11 @@ class InterviewApiTests(unittest.TestCase):
             with TestClient(app) as client:
                 self.assertEqual(client.post("/api/chat", json={"message": "hi"}).status_code, 503)
                 self.assertEqual(client.get("/api/playbooks").status_code, 200)
+
+    def test_start_intake_with_priority(self):
+        """POST /api/interviews accepts a priority list; a bad section is a 422."""
+        r = self.client.post("/api/interviews", json={"scenario": "intake", "priority": ["side_gig"]})
+        self.assertEqual(r.json()["output"]["fact"], "has_self_employment")
+        bad = self.client.post("/api/interviews", json={"scenario": "intake", "priority": ["bogus"]})
+        self.assertEqual(bad.status_code, 422)
+

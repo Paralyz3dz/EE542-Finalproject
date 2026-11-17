@@ -131,6 +131,8 @@ from pathlib import Path as _Path
 
 PLAYBOOK_DIR = _Path(__file__).resolve().parents[1] / "playbooks"
 ALL_PLAYBOOKS = sorted(p.name for p in PLAYBOOK_DIR.iterdir() if (p / "scenario.json").exists())
+if (PLAYBOOK_DIR / "modules").exists():
+    ALL_PLAYBOOKS.append("intake")
 SAMPLE_ANSWER = {"bool": "yes", "money": "1000", "list": "1099-NEC"}
 
 
@@ -167,7 +169,7 @@ def _run_all_yes(name):
     stub = lambda q: {"matches": []}
     state = start_interview(name)
     state, out = step(state, search=stub)
-    for _ in range(60):
+    for _ in range(300):
         if out["type"] == "summary":
             return state, out
         f = kinds[out["fact"]]
@@ -252,3 +254,170 @@ def test_references_unchecked_when_retrieval_is_down():
         state, out = step(state, answer, search=down)
     assert out["citations_retrieved"] == [] and out["references_not_in_kb"] == []
     assert "IRS Pub 17, Chapter 2" in out["references_unchecked"]
+
+
+def test_intake_composes_modules_with_base_first():
+    """The modular intake starts with base_intake and lists base parts and topic modules as sections."""
+    from src.workflow.engine import load_scenario, sections
+    definition, questions = load_scenario("intake")
+    assert definition["facts"][0]["module"] == "base_intake"
+    ids = [s["id"] for s in sections(definition)]
+    assert ids[:5] == ["about_you", "household", "income", "expenses", "events"]
+    assert {"side_gig", "family", "retiree", "rental"} <= set(ids)
+    assert len(questions) >= len([f for f in definition["facts"] if f["module"] == "base_intake"])
+
+
+def test_no_priority_follows_playbook_order():
+    """Without a priority the first question is the first base_intake fact."""
+    from src.workflow.engine import load_scenario, next_question, start_interview
+    definition, _ = load_scenario("intake")
+    assert next_question(start_interview("intake"))["fact"] == definition["facts"][0]["name"]
+
+
+def test_priority_section_is_asked_first():
+    """A prioritized base part comes first; the rest keeps its order afterwards."""
+    from src.workflow.engine import next_question, start_interview, step
+    state = start_interview("intake", ["expenses"])
+    q = next_question(state)
+    assert q["fact"] == "paid_mortgage_interest"
+    stub = lambda q: {"matches": []}
+    state, out = step(state, search=stub)
+    assert out["section"] == "Expenses"
+
+
+def test_priority_module_starts_with_its_gate_question():
+    """Choosing a topic module asks the base question that switches it on first."""
+    from src.workflow.engine import next_question, start_interview
+    for module, gate in [("side_gig", "has_self_employment"), ("family", "has_dependents"),
+                         ("retiree", "has_retirement_income"), ("rental", "owns_rental")]:
+        assert next_question(start_interview("intake", [module]))["fact"] == gate
+
+
+def test_module_facts_wait_for_their_gate():
+    """A topic module's facts are not askable until its activate_when holds."""
+    from src.workflow.conditions import check
+    from src.workflow.engine import load_scenario
+    definition, _ = load_scenario("intake")
+    for f in definition["facts"]:
+        if f["module"] != "base_intake":
+            assert not check(f.get("ask_when"), {}), f["name"]
+
+
+def test_unknown_priority_is_rejected():
+    """Priority ids must be real sections."""
+    from src.workflow.engine import start_interview
+    try:
+        start_interview("intake", ["not_a_section"])
+        assert False
+    except ValueError:
+        pass
+
+
+def test_reminders_appear_in_summary():
+    """A reminder whose condition holds is listed in the summary."""
+    from src.workflow.engine import start_interview, summarize
+    state = start_interview("intake")
+    state.facts["made_donations"] = True
+    assert any("donation" in r for r in summarize(state)["reminders"])
+
+
+
+def test_modules_are_consistent():
+    """Every module fact has a question; every condition, trigger and reminder names a real fact."""
+    from src.workflow.engine import load_scenario
+    definition, questions = load_scenario("intake")
+    names = [f["name"] for f in definition["facts"]]
+    assert len(names) == len(set(names)), "a fact name is used twice across modules"
+    asked = {q["fact"] for q in questions}
+    for f in definition["facts"]:
+        assert f["name"] in asked, f"{f['module']}.{f['name']} has no question"
+        if f["type"] == "enum":
+            assert f.get("options"), f["name"]
+        for c in f.get("ask_when") or []:
+            assert c["fact"] in names, f"{f['name']}: unknown fact {c['fact']}"
+    for group in ("escalation_rules", "reminders"):
+        for r in definition[group]:
+            for c in r["when"]:
+                assert c["fact"] in names, f"{group} {r['id']}: unknown fact {c['fact']}"
+    for t in definition["triggers"]:
+        assert t["keywords"]
+        for fact in t["ask_first"]:
+            assert fact in names, f"trigger {t['id']}: unknown fact {fact}"
+    for q in questions:
+        for key in ("question", "why_ask", "source", "origin", "status"):
+            assert q.get(key), f"{q['id']} missing {key}"
+
+
+def test_side_gig_flow_with_priority():
+    """Assistant unsure about self-employment: gate first, then the side-gig questions."""
+    from src.workflow.engine import start_interview, step
+    stub = lambda q: {"matches": []}
+    state = start_interview("intake", ["side_gig"])
+    state, out = step(state, search=stub)
+    assert out["fact"] == "has_self_employment"
+    state, out = step(state, "yes", search=stub)
+    assert out["section"] == "Self-employment and gig income"
+    assert out["fact"] == "does_rideshare_delivery"
+
+
+def test_side_gig_escalations_and_reminders():
+    """Hobby selling, actual car costs and no records produce flags and reminders."""
+    from src.workflow.engine import review, start_interview, summarize
+    state = start_interview("intake")
+    state.facts.update({"has_self_employment": True, "sells_online": True, "selling_for_profit": False,
+                        "uses_car_for_business": True, "car_expense_method": "actual_costs",
+                        "record_keeping": "no_records", "made_estimated_payments": False})
+    review(state)
+    rules = {f["rule"] for f in state.flags}
+    assert {"esc_selling_for_profit", "esc_car_expense_method_actual_costs"} <= rules
+    reminders = " ".join(summarize(state)["reminders"])
+    assert "mileage log" in reminders and "estimated tax" in reminders and "keep from now on" in reminders
+
+
+def test_background_triggers_reorder_in_mention_order():
+    """Trigger words in the background note move their follow-ups up, in the order mentioned."""
+    from src.workflow.engine import start_interview, step
+    stub = lambda q: {"matches": []}
+    state = start_interview("intake", [], "two kids at home, and she travels for her Etsy shop")
+    assert "side_gig" in state.priority
+    state, out = step(state, search=stub)
+    assert out["fact"] == "has_dependents" and out["triggered_by"] == "kids"
+    state, out = step(state, "yes", search=stub)
+    assert out["fact"] == "has_child_under_17"
+
+
+def test_trigger_word_in_an_answer():
+    """A trigger word typed in an answer note asks its follow-up next."""
+    from src.workflow.engine import start_interview, step
+    stub = lambda q: {"matches": []}
+    from src.llm.normalize import make_normalizer
+    reader = make_normalizer(chat=lambda system, user: {"value": "yes", "reason": "said yes"})
+    state = start_interview("intake")
+    state, out = step(state, search=stub)
+    state, out = step(state, "yes, and he gave a lot to charity this year", search=stub, normalizer=reader)
+    assert out["fact"] == "made_donations" and out["triggered_by"] == "charity"
+
+
+def test_module_gates_open_their_modules():
+    """Yes to a base gate question opens that module; no keeps it closed."""
+    from src.workflow.engine import next_question, start_interview
+    for gate, module in [("has_dependents", "family"), ("has_retirement_income", "retiree"), ("owns_rental", "rental")]:
+        state = start_interview("intake", [module])
+        state.facts[gate] = True
+        assert next_question(state)["module"] == module
+        state.facts[gate] = False
+        assert next_question(state)["module"] == "base_intake"
+
+
+def test_button_answers_do_not_trigger():
+    """An exact answer such as the option 'business_miles' never fires the 'miles' trigger."""
+    from src.workflow.engine import start_interview, step
+    stub = lambda q: {"matches": []}
+    state = start_interview("intake", ["side_gig"])
+    state, out = step(state, search=stub)
+    for answer in ["yes", "no", "no", "no"]:
+        state, out = step(state, answer, search=stub)
+    while out.get("fact") != "car_expense_method":
+        state, out = step(state, "yes" if out.get("input_type") == "bool" else (out.get("options") or ["1000"])[0], search=stub)
+    state, out = step(state, "business_miles", search=stub)
+    assert state.boosted == []
