@@ -196,6 +196,18 @@ def interview_page(request: Request):
     return response
 
 
+@app.get("/interview/inter-variable.woff2", response_class=FileResponse, include_in_schema=False)
+def interview_font():
+    font = Path(__file__).parent / "static" / "fonts" / "InterVariable.woff2"
+    return FileResponse(font, media_type="font/woff2")
+
+
+@app.get("/interview/instrument-serif.ttf", response_class=FileResponse, include_in_schema=False)
+def interview_title_font():
+    font = Path(__file__).parent / "static" / "fonts" / "InstrumentSerif-Regular.ttf"
+    return FileResponse(font, media_type="font/ttf")
+
+
 @app.get("/api/playbooks")
 def playbooks():
     """List available scenarios for the page's dropdown."""
