@@ -1,0 +1,17 @@
+{
+  "rerank_rrf_weight": 0.0,
+  "rerank_enabled": true,
+  "retrieve_fusion_k": 10,
+  "policy": "Keep weight 0.5 only if primary-source hit@5 strictly improves; otherwise restore weight zero",
+  "reason": "Equal min-max score blending reduced primary-source hit@5 from 85/104 to 81/104; restored pure reranking",
+  "tested_rrf_weight": 0.5,
+  "baseline_hits_at_5": 85,
+  "tested_hits_at_5": 81,
+  "gained_questions": 1,
+  "lost_questions": 5,
+  "settings_changed_after_evaluation": [
+    "rerank_rrf_weight"
+  ],
+  "evaluation_manifest_preserved": true,
+  "additional_live_retrievals_after_evaluation": 0
+}

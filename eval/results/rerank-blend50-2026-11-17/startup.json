@@ -1,0 +1,5 @@
+{
+  "model_load_seconds": 10.826356200000191,
+  "excluded_from_per_question_timing": true,
+  "inference_warmups": 0
+}

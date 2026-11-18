@@ -1,0 +1,16 @@
+{
+  "retrieve_fusion_k": 10,
+  "rerank_enabled": true,
+  "policy": "Keep RRF fifteen only if primary-source hit@5 strictly improves; otherwise restore RRF ten",
+  "reason": "RRF fifteen tied primary-source hit@5 at 85/104 and increased mean retrieval latency; restored RRF ten",
+  "tested_fusion_k": 15,
+  "baseline_hits_at_5": 85,
+  "tested_hits_at_5": 85,
+  "gained_questions": 2,
+  "lost_questions": 2,
+  "settings_changed_after_evaluation": [
+    "retrieve_fusion_k"
+  ],
+  "evaluation_manifest_preserved": true,
+  "additional_live_retrievals_after_evaluation": 0
+}

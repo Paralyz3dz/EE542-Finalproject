@@ -14,6 +14,7 @@ from src.db.connection import ROOT, get_conn
 from src.db.queries import fetch_chunks, vector_search, corpus_table
 from src.rag.hybrid import bm25_search, fuse_rankings
 from src.rag.corpus_hygiene import filter_chunks
+from src.rag.reranker import rerank_matches, options as reranker_options
 
 
 QUERY_INSTRUCTION = (
@@ -67,7 +68,7 @@ def embed_texts(texts: list[str], options: dict | None = None) -> np.ndarray:
     return vectors
 
 
-def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None, corpus_version: str | None = None) -> dict:
+def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None, corpus_version: str | None = None, rerank_enabled: bool | None = None) -> dict:
     if not query.strip():
         raise ValueError("The retrieval query must not be empty.")
     settings = json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
@@ -85,6 +86,17 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
         exclude_reference_chunks = settings.get("exclude_reference_chunks", False)
     if type(exclude_reference_chunks) is not bool:
         raise ValueError("exclude_reference_chunks must be a boolean.")
+    if rerank_enabled is None:
+        rerank_enabled = settings.get("rerank_enabled", False)
+    if type(rerank_enabled) is not bool:
+        raise ValueError("rerank_enabled must be a boolean.")
+    fusion_k = settings.get("retrieve_fusion_k", top_k)
+    if type(fusion_k) is not int or not top_k <= fusion_k <= 2 * candidate_k:
+        raise ValueError("retrieve_fusion_k must cover the output and fit within the candidate union.")
+    if rerank_enabled:
+        if settings.get("rerank_top_k", top_k) != top_k:
+            raise ValueError("rerank_top_k must match retrieve_top_k.")
+        reranker_options(settings)
     rrf_constant = settings["rrf_constant"]
     model = os.getenv("EMBEDDING_MODEL", "Qwen/Qwen3-Embedding-0.6B")
 
@@ -135,7 +147,8 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
         for row in rows
     ]
     keyword_matches = bm25_search(query, chunks, k=candidate_k)
-    matches = fuse_rankings(vector_matches, keyword_matches, k=top_k, rrf_constant=rrf_constant)
+    fused = fuse_rankings(vector_matches, keyword_matches, k=fusion_k, rrf_constant=rrf_constant)
+    matches = rerank_matches(query, fused, {c["id"]: c["embed_text"] for c in chunks}, k=top_k, settings=settings) if rerank_enabled else fused[:top_k]
     provenance = {c["id"]: c.get("provenance", []) for c in chunks}
     for match in matches:
         aliases = [p["citation"] for p in provenance.get(match["chunk_id"], []) if p["citation"] != match["citation"]]
@@ -144,7 +157,7 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
     return {
         "tax_year": tax_year,
         "embedding_model": model,
-        "retrieval_method": "hnsw_bm25_rrf",
+        "retrieval_method": "hnsw_bm25_rrf_rerank" if rerank_enabled else "hnsw_bm25_rrf",
         "matches": matches,
     }
 

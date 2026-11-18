@@ -1,0 +1,15 @@
+{
+  "rerank_enabled": true,
+  "policy": "Enable the default only if primary-source hit@5 strictly improves over the paired RRF baseline",
+  "reason": "Primary-source hit@5 improved from 82/104 to 85/104 on the fixed paired evaluation",
+  "baseline_hits_at_5": 82,
+  "reranked_hits_at_5": 85,
+  "hits_at_5_percentage_point_change": 2.8846153846153846,
+  "gained_questions": 6,
+  "lost_questions": 3,
+  "settings_changed_after_evaluation": [
+    "rerank_enabled"
+  ],
+  "evaluation_manifest_preserved": true,
+  "additional_live_retrievals_after_evaluation": 0
+}

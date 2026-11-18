@@ -10,6 +10,12 @@ preparer which references were actually found.
 
 The repaired default now holds all 21 documents in independent remote tables: 8,752 vectors, 8,390 searchable chunks and 554 exact tables. A single 104-question round improved primary-source hit@3 from 72/104 (69.2%) to 76/104 (73.1%), still below the 80% target. See [the processing and retrieval report](../eval/results/materials-v2-2026-11-17/report.md). The original 6,004-chunk corpus is preserved; [the import report](knowledge-base-import.md) records its historical results. The interview now uses all five returned passages. Its source coverage in that saved round is hit@5 = 82/104 (78.8%); changing the evidence limit does not rerun retrieval or change its ranking.
 
+The current retrieval worktree adds a pinned local BGE cross-encoder: vector top 10 + BM25 top 10 -> RRF top 10 -> reranked top 5. One paired 104-question round improved primary-source hit@5 from 82/104 (78.85%) to 85/104 (81.73%), with mean retrieval time increasing from 2.896 to 7.012 seconds on local CPU, excluding query embedding and model startup. Reranking is enabled in this worktree. See the [reranking report](../eval/results/rerank-2026-11-17/report.md) for the hit@3 regression, setup and limitations. The corpus and stored vectors are unchanged.
+
+A follow-up single-round test enlarged the RRF pool from 10 to 15, keeping both retrieval routes at 10 and the final output at 5. Hit@5 stayed at 85/104 while mean retrieval latency increased to 8.489 seconds, so the default pool was restored to 10. See the [pool-size experiment](../eval/results/rerank-pool15-2026-11-17/report.md).
+
+A further single-round test combined independently min-max-normalized RRF and reranker scores with equal weights. Hit@5 declined from 85/104 to 81/104, so the RRF score weight was restored to zero and pure reranking remains the default. See the [score-blending experiment](../eval/results/rerank-blend50-2026-11-17/report.md).
+
 ## 1. What the knowledge base does, and does not do
 
 | Does | Does not |

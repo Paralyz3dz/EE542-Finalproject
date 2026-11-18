@@ -1,0 +1,3248 @@
+[
+  {
+    "id": "q_has_dependents",
+    "query": "who qualifies as a dependent qualifying child qualifying relative",
+    "source": "IRS Pub 17",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 8.54297620000034,
+    "retrieval_seconds": 2.382019200000286,
+    "rerank_seconds": 6.157061599999906,
+    "baseline": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 0.5
+    },
+    "reranked": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 1.0
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "i1040gi_2025_ch00_6c95374017502986",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Your Dependent? > A qualifying relative is your', PDF p. 19",
+        "score": 4.704118251800537,
+        "vector_score": 0.8180838389597486,
+        "bm25_score": null,
+        "vector_rank": 2,
+        "bm25_rank": null,
+        "rrf_score": 0.016129032258064516,
+        "rrf_rank": 5,
+        "rerank_score": 4.704118251800537,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p17_2025_ch03_2a3cd40635bd17fa",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Child in Canada or Mexico.', PDF p. 35, printed 33",
+        "score": 3.5119457244873047,
+        "vector_score": null,
+        "bm25_score": 30.46464957064199,
+        "vector_rank": null,
+        "bm25_rank": 4,
+        "rrf_score": 0.015625,
+        "rrf_rank": 8,
+        "rerank_score": 3.5119457244873047,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p17_2025_ch03_049dca6a73d9920e",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example.', PDF pp. 35-36, printed 33-34",
+        "score": 3.412010669708252,
+        "vector_score": 0.7890624185096047,
+        "bm25_score": null,
+        "vector_rank": 3,
+        "bm25_rank": null,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 7,
+        "rerank_score": 3.412010669708252,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p17_2025_ch02_91960c87dff97a1e_790858e321",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Head of Household > Qualifying Person > Who Is a Qualifying Person Qualifying You To File as Head of Household?1 > Caution. > Who Is a Qualifying Person Qualifying You To File as Head of Household?1', PDF p. 27, printed 25, table rows 1-10",
+        "score": 3.148362398147583,
+        "vector_score": null,
+        "bm25_score": 33.94741209045937,
+        "vector_rank": null,
+        "bm25_rank": 2,
+        "rrf_score": 0.016129032258064516,
+        "rrf_rank": 6,
+        "rerank_score": 3.148362398147583,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p503_2025_ch00_f62171fb63317eda",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Who Is a Qualifying Person? > Dependent defined.', PDF p. 3",
+        "score": 3.0095722675323486,
+        "vector_score": 0.7851989865305048,
+        "bm25_score": 34.21063833367489,
+        "vector_rank": 5,
+        "bm25_rank": 1,
+        "rrf_score": 0.03177805800756621,
+        "rrf_rank": 1,
+        "rerank_score": 3.0095722675323486,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "p17_2025_ch03_4cd47add4414483e",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Child of person not required to file a return.', PDF p. 35, printed 33",
+        "score": 4.8134355545043945,
+        "vector_score": 0.7652412269526219,
+        "bm25_score": null,
+        "vector_rank": 9,
+        "bm25_rank": null,
+        "rrf_score": 0.014492753623188406,
+        "rrf_rank": 15,
+        "rerank_score": 4.8134355545043945,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "i1040gi_2025_ch00_6c95374017502986",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Your Dependent? > A qualifying relative is your', PDF p. 19",
+        "score": 4.704118251800537,
+        "vector_score": 0.8180838389597486,
+        "bm25_score": null,
+        "vector_rank": 2,
+        "bm25_rank": null,
+        "rrf_score": 0.016129032258064516,
+        "rrf_rank": 5,
+        "rerank_score": 4.704118251800537,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p17_2025_ch03_2a3cd40635bd17fa",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Child in Canada or Mexico.', PDF p. 35, printed 33",
+        "score": 3.5119457244873047,
+        "vector_score": null,
+        "bm25_score": 30.46464957064199,
+        "vector_rank": null,
+        "bm25_rank": 4,
+        "rrf_score": 0.015625,
+        "rrf_rank": 8,
+        "rerank_score": 3.5119457244873047,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p17_2025_ch03_049dca6a73d9920e",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example.', PDF pp. 35-36, printed 33-34",
+        "score": 3.412010669708252,
+        "vector_score": 0.7890624185096047,
+        "bm25_score": null,
+        "vector_rank": 3,
+        "bm25_rank": null,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 7,
+        "rerank_score": 3.412010669708252,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p17_2025_ch02_91960c87dff97a1e_790858e321",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Head of Household > Qualifying Person > Who Is a Qualifying Person Qualifying You To File as Head of Household?1 > Caution. > Who Is a Qualifying Person Qualifying You To File as Head of Household?1', PDF p. 27, printed 25, table rows 1-10",
+        "score": 3.148362398147583,
+        "vector_score": null,
+        "bm25_score": 33.94741209045937,
+        "vector_rank": null,
+        "bm25_rank": 2,
+        "rrf_score": 0.016129032258064516,
+        "rrf_rank": 6,
+        "rerank_score": 3.148362398147583,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "p17_2025_ch03_5113064e98f072b3",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test', PDF p. 35, printed 33",
+          "score": 0.8471780833219702
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_6c95374017502986",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Your Dependent? > A qualifying relative is your', PDF p. 19",
+          "score": 0.8180838389597486
+        },
+        {
+          "chunk_id": "p17_2025_ch03_049dca6a73d9920e",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example.', PDF pp. 35-36, printed 33-34",
+          "score": 0.7890624185096047
+        },
+        {
+          "chunk_id": "p17_2025_ch03_a1dc0980f9dcfb92",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example 1.', PDF p. 35, printed 33",
+          "score": 0.7881162600933556
+        },
+        {
+          "chunk_id": "p503_2025_ch00_f62171fb63317eda",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Who Is a Qualifying Person? > Dependent defined.', PDF p. 3",
+          "score": 0.7851989865305048
+        },
+        {
+          "chunk_id": "p17_2025_ch03_c648659d765cccf6",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents', PDF p. 28, printed 26",
+          "score": 0.7819045208180485
+        },
+        {
+          "chunk_id": "p17_2025_ch03_9b9386dd0e56adb7",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example 2.', PDF p. 35, printed 33",
+          "score": 0.7801610869793754
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_3ce70e99165987c6",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Child? > A qualifying child is your', PDF p. 17",
+          "score": 0.7751570999997782
+        },
+        {
+          "chunk_id": "p17_2025_ch03_4cd47add4414483e",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Child of person not required to file a return.', PDF p. 35, printed 33",
+          "score": 0.7652412269526219
+        },
+        {
+          "chunk_id": "p17_2025_ch03_afa550fbc615e5f1",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example 3.', PDF p. 35, printed 33",
+          "score": 0.7638519331614735
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "p503_2025_ch00_f62171fb63317eda",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Who Is a Qualifying Person? > Dependent defined.', PDF p. 3",
+          "score": 34.21063833367489
+        },
+        {
+          "chunk_id": "p17_2025_ch02_91960c87dff97a1e_790858e321",
+          "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Head of Household > Qualifying Person > Who Is a Qualifying Person Qualifying You To File as Head of Household?1 > Caution. > Who Is a Qualifying Person Qualifying You To File as Head of Household?1', PDF p. 27, printed 25, table rows 1-10",
+          "score": 33.94741209045937
+        },
+        {
+          "chunk_id": "p17_2025_ch03_c648659d765cccf6",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents', PDF p. 28, printed 26",
+          "score": 31.599686299318854
+        },
+        {
+          "chunk_id": "p17_2025_ch03_2a3cd40635bd17fa",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Child in Canada or Mexico.', PDF p. 35, printed 33",
+          "score": 30.46464957064199
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_00f81703ab46fe2d",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Head of Household > Test 2.', PDF p. 14",
+          "score": 29.931796568571173
+        },
+        {
+          "chunk_id": "p17_2025_ch03_a1dc0980f9dcfb92",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example 1.', PDF p. 35, printed 33",
+          "score": 29.330243006551186
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_75b280c74e4e5932",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Definitions and Special Rules > Married person.', PDF p. 21",
+          "score": 29.101880170577697
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_2a16edb2e012618d",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Child? > AND', PDF p. 17",
+          "score": 28.929302022117007
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_25a4aa00eaa7dba4",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Head of Household > Qualifying child.', PDF p. 14",
+          "score": 28.85142498170477
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_679ad126fe4fa134",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Child? > AND', PDF p. 17",
+          "score": 28.708292990784102
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "p503_2025_ch00_f62171fb63317eda",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Who Is a Qualifying Person? > Dependent defined.', PDF p. 3",
+          "score": 0.03177805800756621,
+          "vector_score": 0.7851989865305048,
+          "bm25_score": 34.21063833367489,
+          "vector_rank": 5,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p17_2025_ch03_c648659d765cccf6",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents', PDF p. 28, printed 26",
+          "score": 0.031024531024531024,
+          "vector_score": 0.7819045208180485,
+          "bm25_score": 31.599686299318854,
+          "vector_rank": 6,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "p17_2025_ch03_a1dc0980f9dcfb92",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example 1.', PDF p. 35, printed 33",
+          "score": 0.030776515151515152,
+          "vector_score": 0.7881162600933556,
+          "bm25_score": 29.330243006551186,
+          "vector_rank": 4,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "p17_2025_ch03_5113064e98f072b3",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test', PDF p. 35, printed 33",
+          "score": 0.01639344262295082,
+          "vector_score": 0.8471780833219702,
+          "bm25_score": null,
+          "vector_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_6c95374017502986",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Your Dependent? > A qualifying relative is your', PDF p. 19",
+          "score": 0.016129032258064516,
+          "vector_score": 0.8180838389597486,
+          "bm25_score": null,
+          "vector_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch02_91960c87dff97a1e_790858e321",
+          "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Head of Household > Qualifying Person > Who Is a Qualifying Person Qualifying You To File as Head of Household?1 > Caution. > Who Is a Qualifying Person Qualifying You To File as Head of Household?1', PDF p. 27, printed 25, table rows 1-10",
+          "score": 0.016129032258064516,
+          "vector_score": null,
+          "bm25_score": 33.94741209045937,
+          "vector_rank": null,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "p17_2025_ch03_049dca6a73d9920e",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example.', PDF pp. 35-36, printed 33-34",
+          "score": 0.015873015873015872,
+          "vector_score": 0.7890624185096047,
+          "bm25_score": null,
+          "vector_rank": 3,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch03_2a3cd40635bd17fa",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Child in Canada or Mexico.', PDF p. 35, printed 33",
+          "score": 0.015625,
+          "vector_score": null,
+          "bm25_score": 30.46464957064199,
+          "vector_rank": null,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_00f81703ab46fe2d",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Head of Household > Test 2.', PDF p. 14",
+          "score": 0.015384615384615385,
+          "vector_score": null,
+          "bm25_score": 29.931796568571173,
+          "vector_rank": null,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_75b280c74e4e5932",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Definitions and Special Rules > Married person.', PDF p. 21",
+          "score": 0.014925373134328358,
+          "vector_score": null,
+          "bm25_score": 29.101880170577697,
+          "vector_rank": null,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "p17_2025_ch03_9b9386dd0e56adb7",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Example 2.', PDF p. 35, printed 33",
+          "score": 0.014925373134328358,
+          "vector_score": 0.7801610869793754,
+          "bm25_score": null,
+          "vector_rank": 7,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_2a16edb2e012618d",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Child? > AND', PDF p. 17",
+          "score": 0.014705882352941176,
+          "vector_score": null,
+          "bm25_score": 28.929302022117007,
+          "vector_rank": null,
+          "bm25_rank": 8
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_3ce70e99165987c6",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Child? > A qualifying child is your', PDF p. 17",
+          "score": 0.014705882352941176,
+          "vector_score": 0.7751570999997782,
+          "bm25_score": null,
+          "vector_rank": 8,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_25a4aa00eaa7dba4",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Head of Household > Qualifying child.', PDF p. 14",
+          "score": 0.014492753623188406,
+          "vector_score": null,
+          "bm25_score": 28.85142498170477,
+          "vector_rank": null,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "p17_2025_ch03_4cd47add4414483e",
+          "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Not a Qualifying Child Test > Child of person not required to file a return.', PDF p. 35, printed 33",
+          "score": 0.014492753623188406,
+          "vector_score": 0.7652412269526219,
+          "bm25_score": null,
+          "vector_rank": 9,
+          "bm25_rank": null
+        }
+      ],
+      "retrieval_seconds": 2.382019200000286,
+      "rerank_seconds": 6.157061599999906
+    },
+    "rrf_source_coverage_at_10": true,
+    "rrf_source_coverage_at_15": true
+  },
+  {
+    "id": "q_large_medical_expenses",
+    "query": "medical and dental expenses deduction threshold",
+    "source": "IRS Pub 17",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 8.214537900000323,
+    "retrieval_seconds": 3.06523339999967,
+    "rerank_seconds": 5.146074999999655,
+    "baseline": {
+      "hit_at_3": false,
+      "hit_at_5": false,
+      "mrr_at_5": 0.0
+    },
+    "reranked": {
+      "hit_at_3": false,
+      "hit_at_5": true,
+      "mrr_at_5": 0.25
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "ftb_540_ca_instructions_2025_ch00_91faec40a34790a6",
+        "citation": "FTB Schedule CA (540) Instructions (2025), '2025 Instructions for Schedule CA (540) California Adjustments – Residents Revised: 04/2026 > Specific Line Instructions > Part II Adjustments to Federal Itemized Deductions > Line 1 through Line 4 > Employees and independent contractors', web section",
+        "score": 3.755397319793701,
+        "vector_score": 0.552025246137322,
+        "bm25_score": 31.134550921694437,
+        "vector_rank": 3,
+        "bm25_rank": 1,
+        "rrf_score": 0.032266458495966696,
+        "rrf_rank": 1,
+        "rerank_score": 3.755397319793701,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "ftb_540_booklet_2025_ch00_cb1974268d4e0552",
+        "citation": "FTB 540 Booklet (2025), '2025 Instructions for Schedule CA (540) > Column B and Column C — Subtractions and Additions', PDF p. 66",
+        "score": 3.064281463623047,
+        "vector_score": 0.5339107432578222,
+        "bm25_score": 23.354461844979127,
+        "vector_rank": 8,
+        "bm25_rank": 2,
+        "rrf_score": 0.030834914611005692,
+        "rrf_rank": 3,
+        "rerank_score": 3.064281463623047,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p503_2025_ch00_76fb24a0a7455881",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Medical expenses.', PDF p. 10",
+        "score": -1.9049756526947021,
+        "vector_score": 0.5636667853097721,
+        "bm25_score": 22.41132011656868,
+        "vector_rank": 2,
+        "bm25_rank": 4,
+        "rrf_score": 0.031754032258064516,
+        "rrf_rank": 2,
+        "rerank_score": -1.9049756526947021,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p590a_2025_ch02_96ad7267dd198df5",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 2 Roth IRAs > Can You Contribute to a Roth IRA?', PDF p. 39",
+        "score": -2.308764934539795,
+        "vector_score": null,
+        "bm25_score": 20.322752874030655,
+        "vector_rank": null,
+        "bm25_rank": 5,
+        "rrf_score": 0.015384615384615385,
+        "rrf_rank": 8,
+        "rerank_score": -2.308764934539795,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p525_2025_ch00_456f083601f01986",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Itemized Deduction Recoveries > Example 34.', PDF p. 26",
+        "score": -2.324605941772461,
+        "vector_score": 0.5486664656003796,
+        "bm25_score": null,
+        "vector_rank": 4,
+        "bm25_rank": null,
+        "rrf_score": 0.015625,
+        "rrf_rank": 6,
+        "rerank_score": -2.324605941772461,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "ftb_540_ca_instructions_2025_ch00_91faec40a34790a6",
+        "citation": "FTB Schedule CA (540) Instructions (2025), '2025 Instructions for Schedule CA (540) California Adjustments – Residents Revised: 04/2026 > Specific Line Instructions > Part II Adjustments to Federal Itemized Deductions > Line 1 through Line 4 > Employees and independent contractors', web section",
+        "score": 3.755397319793701,
+        "vector_score": 0.552025246137322,
+        "bm25_score": 31.134550921694437,
+        "vector_rank": 3,
+        "bm25_rank": 1,
+        "rrf_score": 0.032266458495966696,
+        "rrf_rank": 1,
+        "rerank_score": 3.755397319793701,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "ftb_540_booklet_2025_ch00_cb1974268d4e0552",
+        "citation": "FTB 540 Booklet (2025), '2025 Instructions for Schedule CA (540) > Column B and Column C — Subtractions and Additions', PDF p. 66",
+        "score": 3.064281463623047,
+        "vector_score": 0.5339107432578222,
+        "bm25_score": 23.354461844979127,
+        "vector_rank": 8,
+        "bm25_rank": 2,
+        "rrf_score": 0.030834914611005692,
+        "rrf_rank": 3,
+        "rerank_score": 3.064281463623047,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p503_2025_ch00_76fb24a0a7455881",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Medical expenses.', PDF p. 10",
+        "score": -1.9049756526947021,
+        "vector_score": 0.5636667853097721,
+        "bm25_score": 22.41132011656868,
+        "vector_rank": 2,
+        "bm25_rank": 4,
+        "rrf_score": 0.031754032258064516,
+        "rrf_rank": 2,
+        "rerank_score": -1.9049756526947021,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p17_2025_ch10_81e6b07c7ad2812b",
+        "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Who Should Itemize > When to itemize.', PDF p. 96, printed 94",
+        "score": -1.9914956092834473,
+        "vector_score": null,
+        "bm25_score": 16.068273059286174,
+        "vector_rank": null,
+        "bm25_rank": 8,
+        "rrf_score": 0.014705882352941176,
+        "rrf_rank": 12,
+        "rerank_score": -1.9914956092834473,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p525_2025_ch00_13bfe9316ffc3368",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Other Income > Smallpox vaccine injuries.', PDF p. 36",
+        "score": -2.2753868103027344,
+        "vector_score": null,
+        "bm25_score": 15.999543482389356,
+        "vector_rank": null,
+        "bm25_rank": 9,
+        "rrf_score": 0.014492753623188406,
+        "rrf_rank": 14,
+        "rerank_score": -2.2753868103027344,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "p503_2025_ch00_7d0528af478c2a72",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Earned Income Limit > Example 1.', PDF p. 12",
+          "score": 0.6007586119298314
+        },
+        {
+          "chunk_id": "p503_2025_ch00_76fb24a0a7455881",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Medical expenses.', PDF p. 10",
+          "score": 0.5636667853097721
+        },
+        {
+          "chunk_id": "ftb_540_ca_instructions_2025_ch00_91faec40a34790a6",
+          "citation": "FTB Schedule CA (540) Instructions (2025), '2025 Instructions for Schedule CA (540) California Adjustments – Residents Revised: 04/2026 > Specific Line Instructions > Part II Adjustments to Federal Itemized Deductions > Line 1 through Line 4 > Employees and independent contractors', web section",
+          "score": 0.552025246137322
+        },
+        {
+          "chunk_id": "p525_2025_ch00_456f083601f01986",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Itemized Deduction Recoveries > Example 34.', PDF p. 26",
+          "score": 0.5486664656003796
+        },
+        {
+          "chunk_id": "p503_2025_ch00_4c7e5c0f16fd07b6_2a7d81b89f",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Dollar Limit > Reduced Dollar Limit > Example 2. > Reduced Dollar Limit', PDF p. 13, table rows 1-5",
+          "score": 0.5475122815341278
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_ea1194f7b99bc491",
+          "citation": "IRS Schedule C Instructions (2025), 'Part V. Other Expenses. Line 48 > Deduction for removing barriers to individuals with disabilities and the elderly.', PDF p. 16, printed C-16",
+          "score": 0.5463973173147876
+        },
+        {
+          "chunk_id": "p334_2025_ch08_8917c997049acda5",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Insurance > Self-employed health insurance deduction.', PDF p. 38",
+          "score": 0.5451044278963505
+        },
+        {
+          "chunk_id": "ftb_540_booklet_2025_ch00_cb1974268d4e0552",
+          "citation": "FTB 540 Booklet (2025), '2025 Instructions for Schedule CA (540) > Column B and Column C — Subtractions and Additions', PDF p. 66",
+          "score": 0.5339107432578222
+        },
+        {
+          "chunk_id": "p503_2025_ch00_ef6b4af975570ba5",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Caution:', PDF p. 10",
+          "score": 0.5250013910233674
+        },
+        {
+          "chunk_id": "p463_2025_ch01_d343f2135e0ca932",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Meals > Standard Meal Allowance > Note:', PDF p. 7",
+          "score": 0.5205966103610625
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "ftb_540_ca_instructions_2025_ch00_91faec40a34790a6",
+          "citation": "FTB Schedule CA (540) Instructions (2025), '2025 Instructions for Schedule CA (540) California Adjustments – Residents Revised: 04/2026 > Specific Line Instructions > Part II Adjustments to Federal Itemized Deductions > Line 1 through Line 4 > Employees and independent contractors', web section",
+          "score": 31.134550921694437
+        },
+        {
+          "chunk_id": "ftb_540_booklet_2025_ch00_cb1974268d4e0552",
+          "citation": "FTB 540 Booklet (2025), '2025 Instructions for Schedule CA (540) > Column B and Column C — Subtractions and Additions', PDF p. 66",
+          "score": 23.354461844979127
+        },
+        {
+          "chunk_id": "p334_2025_ch08_8917c997049acda5",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Insurance > Self-employed health insurance deduction.', PDF p. 38",
+          "score": 22.805347256065353
+        },
+        {
+          "chunk_id": "p503_2025_ch00_76fb24a0a7455881",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Medical expenses.', PDF p. 10",
+          "score": 22.41132011656868
+        },
+        {
+          "chunk_id": "p590a_2025_ch02_96ad7267dd198df5",
+          "citation": "IRS Pub 590-A (2025), 'Chapter 2 Roth IRAs > Can You Contribute to a Roth IRA?', PDF p. 39",
+          "score": 20.322752874030655
+        },
+        {
+          "chunk_id": "p17_2025_ch12_ac7a2f500b03d8f4",
+          "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Nondeductible Expenses > List of Nondeductible Expenses > Professional Accreditation Fees', PDF p. 106, printed 104",
+          "score": 18.209255149959287
+        },
+        {
+          "chunk_id": "p17_2025_ch05_971fc494eed75194",
+          "citation": "IRS Pub 17 (2025), 'Chapter 5 Wages, Salaries, and Other Earnings > Sickness and Injury Benefits > Cost paid by you.', PDF p. 55, printed 53",
+          "score": 17.23683764031856
+        },
+        {
+          "chunk_id": "p17_2025_ch10_81e6b07c7ad2812b",
+          "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Who Should Itemize > When to itemize.', PDF p. 96, printed 94",
+          "score": 16.068273059286174
+        },
+        {
+          "chunk_id": "p525_2025_ch00_13bfe9316ffc3368",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Other Income > Smallpox vaccine injuries.', PDF p. 36",
+          "score": 15.999543482389356
+        },
+        {
+          "chunk_id": "p525_2025_ch00_8294aaa644c77636",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Welfare and Other Public Assistance Benefits > Disaster relief grants.', PDF p. 29",
+          "score": 15.653158688501378
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "ftb_540_ca_instructions_2025_ch00_91faec40a34790a6",
+          "citation": "FTB Schedule CA (540) Instructions (2025), '2025 Instructions for Schedule CA (540) California Adjustments – Residents Revised: 04/2026 > Specific Line Instructions > Part II Adjustments to Federal Itemized Deductions > Line 1 through Line 4 > Employees and independent contractors', web section",
+          "score": 0.032266458495966696,
+          "vector_score": 0.552025246137322,
+          "bm25_score": 31.134550921694437,
+          "vector_rank": 3,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p503_2025_ch00_76fb24a0a7455881",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Medical expenses.', PDF p. 10",
+          "score": 0.031754032258064516,
+          "vector_score": 0.5636667853097721,
+          "bm25_score": 22.41132011656868,
+          "vector_rank": 2,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "ftb_540_booklet_2025_ch00_cb1974268d4e0552",
+          "citation": "FTB 540 Booklet (2025), '2025 Instructions for Schedule CA (540) > Column B and Column C — Subtractions and Additions', PDF p. 66",
+          "score": 0.030834914611005692,
+          "vector_score": 0.5339107432578222,
+          "bm25_score": 23.354461844979127,
+          "vector_rank": 8,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "p334_2025_ch08_8917c997049acda5",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Insurance > Self-employed health insurance deduction.', PDF p. 38",
+          "score": 0.030798389007344232,
+          "vector_score": 0.5451044278963505,
+          "bm25_score": 22.805347256065353,
+          "vector_rank": 7,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "p503_2025_ch00_7d0528af478c2a72",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Earned Income Limit > Example 1.', PDF p. 12",
+          "score": 0.01639344262295082,
+          "vector_score": 0.6007586119298314,
+          "bm25_score": null,
+          "vector_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p525_2025_ch00_456f083601f01986",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Itemized Deduction Recoveries > Example 34.', PDF p. 26",
+          "score": 0.015625,
+          "vector_score": 0.5486664656003796,
+          "bm25_score": null,
+          "vector_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p503_2025_ch00_4c7e5c0f16fd07b6_2a7d81b89f",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Dollar Limit > Reduced Dollar Limit > Example 2. > Reduced Dollar Limit', PDF p. 13, table rows 1-5",
+          "score": 0.015384615384615385,
+          "vector_score": 0.5475122815341278,
+          "bm25_score": null,
+          "vector_rank": 5,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p590a_2025_ch02_96ad7267dd198df5",
+          "citation": "IRS Pub 590-A (2025), 'Chapter 2 Roth IRAs > Can You Contribute to a Roth IRA?', PDF p. 39",
+          "score": 0.015384615384615385,
+          "vector_score": null,
+          "bm25_score": 20.322752874030655,
+          "vector_rank": null,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_ea1194f7b99bc491",
+          "citation": "IRS Schedule C Instructions (2025), 'Part V. Other Expenses. Line 48 > Deduction for removing barriers to individuals with disabilities and the elderly.', PDF p. 16, printed C-16",
+          "score": 0.015151515151515152,
+          "vector_score": 0.5463973173147876,
+          "bm25_score": null,
+          "vector_rank": 6,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch12_ac7a2f500b03d8f4",
+          "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Nondeductible Expenses > List of Nondeductible Expenses > Professional Accreditation Fees', PDF p. 106, printed 104",
+          "score": 0.015151515151515152,
+          "vector_score": null,
+          "bm25_score": 18.209255149959287,
+          "vector_rank": null,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "p17_2025_ch05_971fc494eed75194",
+          "citation": "IRS Pub 17 (2025), 'Chapter 5 Wages, Salaries, and Other Earnings > Sickness and Injury Benefits > Cost paid by you.', PDF p. 55, printed 53",
+          "score": 0.014925373134328358,
+          "vector_score": null,
+          "bm25_score": 17.23683764031856,
+          "vector_rank": null,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "p17_2025_ch10_81e6b07c7ad2812b",
+          "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Who Should Itemize > When to itemize.', PDF p. 96, printed 94",
+          "score": 0.014705882352941176,
+          "vector_score": null,
+          "bm25_score": 16.068273059286174,
+          "vector_rank": null,
+          "bm25_rank": 8
+        },
+        {
+          "chunk_id": "p503_2025_ch00_ef6b4af975570ba5",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Caution:', PDF p. 10",
+          "score": 0.014492753623188406,
+          "vector_score": 0.5250013910233674,
+          "bm25_score": null,
+          "vector_rank": 9,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p525_2025_ch00_13bfe9316ffc3368",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Other Income > Smallpox vaccine injuries.', PDF p. 36",
+          "score": 0.014492753623188406,
+          "vector_score": null,
+          "bm25_score": 15.999543482389356,
+          "vector_rank": null,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "p463_2025_ch01_d343f2135e0ca932",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Meals > Standard Meal Allowance > Note:', PDF p. 7",
+          "score": 0.014285714285714285,
+          "vector_score": 0.5205966103610625,
+          "bm25_score": null,
+          "vector_rank": 10,
+          "bm25_rank": null
+        }
+      ],
+      "retrieval_seconds": 3.06523339999967,
+      "rerank_seconds": 5.146074999999655
+    },
+    "rrf_source_coverage_at_10": true,
+    "rrf_source_coverage_at_15": true
+  },
+  {
+    "id": "q_installed_energy_efficient_items",
+    "query": "energy efficient home improvement credit Form 5695",
+    "source": "IRS Pub 17",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 6.784899600000244,
+    "retrieval_seconds": 2.8591442999995706,
+    "rerank_seconds": 3.9214961999996376,
+    "baseline": {
+      "hit_at_3": false,
+      "hit_at_5": false,
+      "mrr_at_5": 0.0
+    },
+    "reranked": {
+      "hit_at_3": false,
+      "hit_at_5": true,
+      "mrr_at_5": 0.25
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "i1040gi_2025_ch00_9a97900cb5d4b376",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > Line 5a—residential clean energy credit.', PDF p. 116",
+        "score": 4.9571638107299805,
+        "vector_score": 0.7544755104101579,
+        "bm25_score": 48.58330570717855,
+        "vector_rank": 1,
+        "bm25_rank": 1,
+        "rrf_score": 0.03278688524590164,
+        "rrf_rank": 1,
+        "rerank_score": 4.9571638107299805,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p334_2025_ch04_efa0e7857befa105",
+        "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Energy efficient home credit (Form 8908).', PDF p. 20",
+        "score": 2.0878548622131348,
+        "vector_score": 0.6760910128111587,
+        "bm25_score": 34.0290774041222,
+        "vector_rank": 3,
+        "bm25_rank": 2,
+        "rrf_score": 0.03200204813108039,
+        "rrf_rank": 2,
+        "rerank_score": 2.0878548622131348,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "i1040gi_2025_ch00_2d48cdb8a208006e",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > More details.', PDF p. 116",
+        "score": 1.4402375221252441,
+        "vector_score": 0.7379518208733669,
+        "bm25_score": 22.224490224578048,
+        "vector_rank": 2,
+        "bm25_rank": 5,
+        "rrf_score": 0.0315136476426799,
+        "rrf_rank": 3,
+        "rerank_score": 1.4402375221252441,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p527_2025_ch00_40f9220705d5e02b",
+        "citation": "IRS Pub 527 (2025), 'Residential Rental Property > Reminders > Deduction.', PDF p. 2",
+        "score": -2.6143338680267334,
+        "vector_score": null,
+        "bm25_score": 18.669248469942058,
+        "vector_rank": null,
+        "bm25_rank": 7,
+        "rrf_score": 0.014925373134328358,
+        "rrf_rank": 10,
+        "rerank_score": -2.6143338680267334,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "i1040sc_2025_ch00_8244994d7a4f283d",
+        "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 27a > Energy efficient commercial buildings deduction.', PDF p. 10, printed C-10",
+        "score": -2.7759954929351807,
+        "vector_score": 0.5250600769865424,
+        "bm25_score": 23.635891375575486,
+        "vector_rank": 6,
+        "bm25_rank": 3,
+        "rrf_score": 0.031024531024531024,
+        "rrf_rank": 4,
+        "rerank_score": -2.7759954929351807,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "i1040gi_2025_ch00_9a97900cb5d4b376",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > Line 5a—residential clean energy credit.', PDF p. 116",
+        "score": 4.9571638107299805,
+        "vector_score": 0.7544755104101579,
+        "bm25_score": 48.58330570717855,
+        "vector_rank": 1,
+        "bm25_rank": 1,
+        "rrf_score": 0.03278688524590164,
+        "rrf_rank": 1,
+        "rerank_score": 4.9571638107299805,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p334_2025_ch04_efa0e7857befa105",
+        "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Energy efficient home credit (Form 8908).', PDF p. 20",
+        "score": 2.0878548622131348,
+        "vector_score": 0.6760910128111587,
+        "bm25_score": 34.0290774041222,
+        "vector_rank": 3,
+        "bm25_rank": 2,
+        "rrf_score": 0.03200204813108039,
+        "rrf_rank": 2,
+        "rerank_score": 2.0878548622131348,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "i1040gi_2025_ch00_2d48cdb8a208006e",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > More details.', PDF p. 116",
+        "score": 1.4402375221252441,
+        "vector_score": 0.7379518208733669,
+        "bm25_score": 22.224490224578048,
+        "vector_rank": 2,
+        "bm25_rank": 5,
+        "rrf_score": 0.0315136476426799,
+        "rrf_rank": 3,
+        "rerank_score": 1.4402375221252441,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p17_2025_ch13_eef59d309aeadad6",
+        "citation": "IRS Pub 17 (2025), 'Chapter 13 How To Figure Your Tax > Figuring Your Tax > Credits.', PDF pp. 108-109, printed 106-107",
+        "score": 0.5833398699760437,
+        "vector_score": null,
+        "bm25_score": 14.443095653115893,
+        "vector_rank": null,
+        "bm25_rank": 8,
+        "rrf_score": 0.014705882352941176,
+        "rrf_rank": 12,
+        "rerank_score": 0.5833398699760437,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p527_2025_ch00_40f9220705d5e02b",
+        "citation": "IRS Pub 527 (2025), 'Residential Rental Property > Reminders > Deduction.', PDF p. 2",
+        "score": -2.614335060119629,
+        "vector_score": null,
+        "bm25_score": 18.669248469942058,
+        "vector_rank": null,
+        "bm25_rank": 7,
+        "rrf_score": 0.014925373134328358,
+        "rrf_rank": 10,
+        "rerank_score": -2.614335060119629,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "i1040gi_2025_ch00_9a97900cb5d4b376",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > Line 5a—residential clean energy credit.', PDF p. 116",
+          "score": 0.7544755104101579
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_2d48cdb8a208006e",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > More details.', PDF p. 116",
+          "score": 0.7379518208733669
+        },
+        {
+          "chunk_id": "p334_2025_ch04_efa0e7857befa105",
+          "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Energy efficient home credit (Form 8908).', PDF p. 20",
+          "score": 0.6760910128111587
+        },
+        {
+          "chunk_id": "p334_2025_ch04_c9e83e59dfe7acca",
+          "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Low-income housing credit (Form 8586).', PDF p. 20",
+          "score": 0.6033272326985851
+        },
+        {
+          "chunk_id": "p334_2025_ch04_c221f8b2998e4e0e",
+          "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Renewable electricity production credit (Form 8835).', PDF p. 20",
+          "score": 0.5557035008537525
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_8244994d7a4f283d",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 27a > Energy efficient commercial buildings deduction.', PDF p. 10, printed C-10",
+          "score": 0.5250600769865424
+        },
+        {
+          "chunk_id": "ftb_540_booklet_2025_ch00_6dbfc60e25b51579",
+          "citation": "FTB 540 Booklet (2025), 'Nonrefundable Renter’s Credit Qualification Record – Continued > 11. If you are:', PDF p. 26",
+          "score": 0.5224749859460557
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_1ddbc180d27ac1a4",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 23 > Lines 24a Through 24z > Line 24j', PDF p. 100",
+          "score": 0.5183974306113976
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_8afe037bbdbcabb7",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Simplified Method Worksheet > Daycare Facility Worksheet (for simplified method) > Using Form 8829.', PDF p. 13, printed C-13",
+          "score": 0.4996408224534896
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_c27942953ad768dc",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Lines 6a Through 6z > Other Nonrefundable Credits > Line 6j.', PDF p. 116",
+          "score": 0.49956850719109513
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "i1040gi_2025_ch00_9a97900cb5d4b376",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > Line 5a—residential clean energy credit.', PDF p. 116",
+          "score": 48.58330570717855
+        },
+        {
+          "chunk_id": "p334_2025_ch04_efa0e7857befa105",
+          "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Energy efficient home credit (Form 8908).', PDF p. 20",
+          "score": 34.0290774041222
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_8244994d7a4f283d",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 27a > Energy efficient commercial buildings deduction.', PDF p. 10, printed C-10",
+          "score": 23.635891375575486
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_6665ef41fdd25b04",
+          "citation": "IRS Schedule C Instructions (2025), 'Instructions for Schedule C (Form 1040) > What’s New > Energy efficient commercial buildings deduction.', PDF p. 1",
+          "score": 23.186249645988255
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_2d48cdb8a208006e",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > More details.', PDF p. 116",
+          "score": 22.224490224578048
+        },
+        {
+          "chunk_id": "p334_2025_ch00_bded13b228ff0669",
+          "citation": "IRS Pub 334 (2025), 'Tax Guide for Small Business > What’s New for 2025 > Deduction.', PDF p. 4",
+          "score": 19.07570947714487
+        },
+        {
+          "chunk_id": "p527_2025_ch00_40f9220705d5e02b",
+          "citation": "IRS Pub 527 (2025), 'Residential Rental Property > Reminders > Deduction.', PDF p. 2",
+          "score": 18.669248469942058
+        },
+        {
+          "chunk_id": "p17_2025_ch13_eef59d309aeadad6",
+          "citation": "IRS Pub 17 (2025), 'Chapter 13 How To Figure Your Tax > Figuring Your Tax > Credits.', PDF pp. 108-109, printed 106-107",
+          "score": 14.443095653115893
+        },
+        {
+          "chunk_id": "p527_2025_ch00_327bc315cabee28b",
+          "citation": "IRS Pub 527 (2025), 'Residential Rental Property > Reminders > Net Investment Income Tax (NIIT).', PDF pp. 1-2, printed 2",
+          "score": 14.125155837321794
+        },
+        {
+          "chunk_id": "p525_2025_ch00_ad8ca3fd64171679",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Welfare and Other Public Assistance Benefits > Home Affordable Modification Program > Payments to reduce cost of winter energy.', PDF p. 31",
+          "score": 13.918958677424008
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "i1040gi_2025_ch00_9a97900cb5d4b376",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > Line 5a—residential clean energy credit.', PDF p. 116",
+          "score": 0.03278688524590164,
+          "vector_score": 0.7544755104101579,
+          "bm25_score": 48.58330570717855,
+          "vector_rank": 1,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p334_2025_ch04_efa0e7857befa105",
+          "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Energy efficient home credit (Form 8908).', PDF p. 20",
+          "score": 0.03200204813108039,
+          "vector_score": 0.6760910128111587,
+          "bm25_score": 34.0290774041222,
+          "vector_rank": 3,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_2d48cdb8a208006e",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 5 > Residential Energy Credits > More details.', PDF p. 116",
+          "score": 0.0315136476426799,
+          "vector_score": 0.7379518208733669,
+          "bm25_score": 22.224490224578048,
+          "vector_rank": 2,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_8244994d7a4f283d",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 27a > Energy efficient commercial buildings deduction.', PDF p. 10, printed C-10",
+          "score": 0.031024531024531024,
+          "vector_score": 0.5250600769865424,
+          "bm25_score": 23.635891375575486,
+          "vector_rank": 6,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_6665ef41fdd25b04",
+          "citation": "IRS Schedule C Instructions (2025), 'Instructions for Schedule C (Form 1040) > What’s New > Energy efficient commercial buildings deduction.', PDF p. 1",
+          "score": 0.015625,
+          "vector_score": null,
+          "bm25_score": 23.186249645988255,
+          "vector_rank": null,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "p334_2025_ch04_c9e83e59dfe7acca",
+          "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Low-income housing credit (Form 8586).', PDF p. 20",
+          "score": 0.015625,
+          "vector_score": 0.6033272326985851,
+          "bm25_score": null,
+          "vector_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p334_2025_ch04_c221f8b2998e4e0e",
+          "citation": "IRS Pub 334 (2025), 'Chapter 4 General Business Credits > Business Credits > Employer credit for paid family and medical leave > Renewable electricity production credit (Form 8835).', PDF p. 20",
+          "score": 0.015384615384615385,
+          "vector_score": 0.5557035008537525,
+          "bm25_score": null,
+          "vector_rank": 5,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p334_2025_ch00_bded13b228ff0669",
+          "citation": "IRS Pub 334 (2025), 'Tax Guide for Small Business > What’s New for 2025 > Deduction.', PDF p. 4",
+          "score": 0.015151515151515152,
+          "vector_score": null,
+          "bm25_score": 19.07570947714487,
+          "vector_rank": null,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "ftb_540_booklet_2025_ch00_6dbfc60e25b51579",
+          "citation": "FTB 540 Booklet (2025), 'Nonrefundable Renter’s Credit Qualification Record – Continued > 11. If you are:', PDF p. 26",
+          "score": 0.014925373134328358,
+          "vector_score": 0.5224749859460557,
+          "bm25_score": null,
+          "vector_rank": 7,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p527_2025_ch00_40f9220705d5e02b",
+          "citation": "IRS Pub 527 (2025), 'Residential Rental Property > Reminders > Deduction.', PDF p. 2",
+          "score": 0.014925373134328358,
+          "vector_score": null,
+          "bm25_score": 18.669248469942058,
+          "vector_rank": null,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_1ddbc180d27ac1a4",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 23 > Lines 24a Through 24z > Line 24j', PDF p. 100",
+          "score": 0.014705882352941176,
+          "vector_score": 0.5183974306113976,
+          "bm25_score": null,
+          "vector_rank": 8,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch13_eef59d309aeadad6",
+          "citation": "IRS Pub 17 (2025), 'Chapter 13 How To Figure Your Tax > Figuring Your Tax > Credits.', PDF pp. 108-109, printed 106-107",
+          "score": 0.014705882352941176,
+          "vector_score": null,
+          "bm25_score": 14.443095653115893,
+          "vector_rank": null,
+          "bm25_rank": 8
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_8afe037bbdbcabb7",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Simplified Method Worksheet > Daycare Facility Worksheet (for simplified method) > Using Form 8829.', PDF p. 13, printed C-13",
+          "score": 0.014492753623188406,
+          "vector_score": 0.4996408224534896,
+          "bm25_score": null,
+          "vector_rank": 9,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p527_2025_ch00_327bc315cabee28b",
+          "citation": "IRS Pub 527 (2025), 'Residential Rental Property > Reminders > Net Investment Income Tax (NIIT).', PDF pp. 1-2, printed 2",
+          "score": 0.014492753623188406,
+          "vector_score": null,
+          "bm25_score": 14.125155837321794,
+          "vector_rank": null,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_c27942953ad768dc",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Lines 6a Through 6z > Other Nonrefundable Credits > Line 6j.', PDF p. 116",
+          "score": 0.014285714285714285,
+          "vector_score": 0.49956850719109513,
+          "bm25_score": null,
+          "vector_rank": 10,
+          "bm25_rank": null
+        }
+      ],
+      "retrieval_seconds": 2.8591442999995706,
+      "rerank_seconds": 3.9214961999996376
+    },
+    "rrf_source_coverage_at_10": false,
+    "rrf_source_coverage_at_15": true
+  },
+  {
+    "id": "q_receives_social_security",
+    "query": "social security benefits taxable portion",
+    "source": "IRS Pub 915",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 8.06497490000038,
+    "retrieval_seconds": 3.1904339000002437,
+    "rerank_seconds": 4.868770699999914,
+    "baseline": {
+      "hit_at_3": false,
+      "hit_at_5": true,
+      "mrr_at_5": 0.2
+    },
+    "reranked": {
+      "hit_at_3": false,
+      "hit_at_5": false,
+      "mrr_at_5": 0.0
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "p17_2025_ch07_44c02f328c53fd32",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > How To Report Your Benefits > How Much Is Taxable? > Maximum taxable part.', PDF pp. 65-66, printed 63-64",
+        "score": 3.9145820140838623,
+        "vector_score": 0.7118803262710773,
+        "bm25_score": null,
+        "vector_rank": 2,
+        "bm25_rank": null,
+        "rrf_score": 0.016129032258064516,
+        "rrf_rank": 3,
+        "rerank_score": 3.9145820140838623,
+        "rerank_rank": 1,
+        "additional_citations": [
+          "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable? > Maximum taxable part.', PDF p. 6"
+        ]
+      },
+      {
+        "chunk_id": "p17_2025_ch07_d26f874a5b2d2df5",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Examples > Figuring Your Taxable Benefits > 19. Taxable benefits.', PDF p. 66, printed 64",
+        "score": 3.779346227645874,
+        "vector_score": 0.7528598301744865,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 1,
+        "rerank_score": 3.779346227645874,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p17_2025_ch07_219a553f91332d15",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+        "score": 3.184776544570923,
+        "vector_score": 0.7105370524625216,
+        "bm25_score": null,
+        "vector_rank": 4,
+        "bm25_rank": null,
+        "rrf_score": 0.015625,
+        "rrf_rank": 7,
+        "rerank_score": 3.184776544570923,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p17_2025_ch07_5162533d2ff639a4",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+        "score": 3.18241810798645,
+        "vector_score": 0.7109713647433842,
+        "bm25_score": null,
+        "vector_rank": 3,
+        "bm25_rank": null,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 6,
+        "rerank_score": 3.18241810798645,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p915_2025_ch00_5dfb1e1e37285ae1",
+        "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Introduction > What isn’t covered in this publication.', PDF p. 2",
+        "score": 2.7805604934692383,
+        "vector_score": null,
+        "bm25_score": 19.927094118021746,
+        "vector_rank": null,
+        "bm25_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 2,
+        "rerank_score": 2.7805604934692383,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "p17_2025_ch07_44c02f328c53fd32",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > How To Report Your Benefits > How Much Is Taxable? > Maximum taxable part.', PDF pp. 65-66, printed 63-64",
+        "score": 3.9145820140838623,
+        "vector_score": 0.7118803262710773,
+        "bm25_score": null,
+        "vector_rank": 2,
+        "bm25_rank": null,
+        "rrf_score": 0.016129032258064516,
+        "rrf_rank": 3,
+        "rerank_score": 3.9145820140838623,
+        "rerank_rank": 1,
+        "additional_citations": [
+          "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable? > Maximum taxable part.', PDF p. 6"
+        ]
+      },
+      {
+        "chunk_id": "p17_2025_ch07_d26f874a5b2d2df5",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Examples > Figuring Your Taxable Benefits > 19. Taxable benefits.', PDF p. 66, printed 64",
+        "score": 3.779346227645874,
+        "vector_score": 0.7528598301744865,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 1,
+        "rerank_score": 3.779346227645874,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p17_2025_ch07_656e44979c59d661",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable?', PDF p. 64, printed 62",
+        "score": 3.5458312034606934,
+        "vector_score": null,
+        "bm25_score": 18.67828213999346,
+        "vector_rank": null,
+        "bm25_rank": 7,
+        "rrf_score": 0.014925373134328358,
+        "rrf_rank": 14,
+        "rerank_score": 3.5458312034606934,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p17_2025_ch07_219a553f91332d15",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+        "score": 3.184776544570923,
+        "vector_score": 0.7105370524625216,
+        "bm25_score": null,
+        "vector_rank": 4,
+        "bm25_rank": null,
+        "rrf_score": 0.015625,
+        "rrf_rank": 7,
+        "rerank_score": 3.184776544570923,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p17_2025_ch07_5162533d2ff639a4",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+        "score": 3.18241810798645,
+        "vector_score": 0.7109713647433842,
+        "bm25_score": null,
+        "vector_rank": 3,
+        "bm25_rank": null,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 6,
+        "rerank_score": 3.18241810798645,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "p17_2025_ch07_d26f874a5b2d2df5",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Examples > Figuring Your Taxable Benefits > 19. Taxable benefits.', PDF p. 66, printed 64",
+          "score": 0.7528598301744865
+        },
+        {
+          "chunk_id": "p17_2025_ch07_44c02f328c53fd32",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > How To Report Your Benefits > How Much Is Taxable? > Maximum taxable part.', PDF pp. 65-66, printed 63-64",
+          "score": 0.7118803262710773
+        },
+        {
+          "chunk_id": "p17_2025_ch07_5162533d2ff639a4",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+          "score": 0.7109713647433842
+        },
+        {
+          "chunk_id": "p17_2025_ch07_219a553f91332d15",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+          "score": 0.7105370524625216
+        },
+        {
+          "chunk_id": "p17_2025_ch07_087ae323b75845f2",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > How To Report Your Benefits > How Much Is Taxable?', PDF p. 65, printed 63",
+          "score": 0.7091122789778224
+        },
+        {
+          "chunk_id": "p915_2025_ch00_3782f881252f7e04",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable? > Examples > Examples > Example 1.', PDF p. 7",
+          "score": 0.7003620862961014
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_394d00250b463326",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Line 7a > Social Security Benefits Worksheet—Lines 6a and 6b > Before you begin:', PDF p. 32",
+          "score": 0.6986888438854119
+        },
+        {
+          "chunk_id": "p915_2025_ch00_d3599fe3023c3764",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable?', PDF p. 6",
+          "score": 0.6957494201809624
+        },
+        {
+          "chunk_id": "p17_2025_ch07_930548831c87982c",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Example.', PDF p. 65, printed 63",
+          "score": 0.6949542993253078
+        },
+        {
+          "chunk_id": "p915_2025_ch00_f9c71ee8091340a0_ff4fd76e67",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable? > Examples > Examples > Example 3. > Examples', PDF p. 9, table rows 1-12",
+          "score": 0.6947433220729001
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "p915_2025_ch00_5dfb1e1e37285ae1",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Introduction > What isn’t covered in this publication.', PDF p. 2",
+          "score": 19.927094118021746
+        },
+        {
+          "chunk_id": "p915_2025_ch00_d8799ac09bbf71ba",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Introduction > Note:', PDF p. 2",
+          "score": 19.51786655367937
+        },
+        {
+          "chunk_id": "p17_2025_ch07_4f68b0c39b3c881e",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Introduction > Note:', PDF p. 64, printed 62",
+          "score": 19.359173763135047
+        },
+        {
+          "chunk_id": "p915_2025_ch00_150b8de139b26f80",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Introduction', PDF p. 2",
+          "score": 19.053467052806248
+        },
+        {
+          "chunk_id": "p575_2025_ch00_4ec5d70ef0f8e7ec",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Introduction > Social security and equivalent tier 1 railroad retirement benefits.', PDF p. 3",
+          "score": 19.045374386067824
+        },
+        {
+          "chunk_id": "p17_2025_ch09_757d3901cd34659c",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > How Much Can You Deduct? > Limit if Covered by Employer Plan > Social security recipients.', PDF p. 82, printed 80",
+          "score": 18.708937202778028
+        },
+        {
+          "chunk_id": "p17_2025_ch07_656e44979c59d661",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable?', PDF p. 64, printed 62",
+          "score": 18.67828213999346
+        },
+        {
+          "chunk_id": "p915_2025_ch00_fb74b194b7044e7e",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Tip:', PDF p. 3",
+          "score": 18.623391198881865
+        },
+        {
+          "chunk_id": "p17_2025_ch07_6f24e8098418e6eb",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Introduction > What isn’t covered in this chapter.', PDF p. 64, printed 62",
+          "score": 18.57642317953383
+        },
+        {
+          "chunk_id": "p915_2025_ch00_ddbcf157a3e2cf4f",
+          "citation": "IRS Pub 915 (2025), 'SAMPLE > Box 4—Social Security Equivalent Benefit Portion of Tier 1 Repaid to RRB in 2025 > Example 3.', PDF p. 25",
+          "score": 18.163775578623213
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "p17_2025_ch07_d26f874a5b2d2df5",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Examples > Figuring Your Taxable Benefits > 19. Taxable benefits.', PDF p. 66, printed 64",
+          "score": 0.01639344262295082,
+          "vector_score": 0.7528598301744865,
+          "bm25_score": null,
+          "vector_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p915_2025_ch00_5dfb1e1e37285ae1",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Introduction > What isn’t covered in this publication.', PDF p. 2",
+          "score": 0.01639344262295082,
+          "vector_score": null,
+          "bm25_score": 19.927094118021746,
+          "vector_rank": null,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p17_2025_ch07_44c02f328c53fd32",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > How To Report Your Benefits > How Much Is Taxable? > Maximum taxable part.', PDF pp. 65-66, printed 63-64",
+          "score": 0.016129032258064516,
+          "vector_score": 0.7118803262710773,
+          "bm25_score": null,
+          "vector_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p915_2025_ch00_d8799ac09bbf71ba",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Introduction > Note:', PDF p. 2",
+          "score": 0.016129032258064516,
+          "vector_score": null,
+          "bm25_score": 19.51786655367937,
+          "vector_rank": null,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "p17_2025_ch07_4f68b0c39b3c881e",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Introduction > Note:', PDF p. 64, printed 62",
+          "score": 0.015873015873015872,
+          "vector_score": null,
+          "bm25_score": 19.359173763135047,
+          "vector_rank": null,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "p17_2025_ch07_5162533d2ff639a4",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+          "score": 0.015873015873015872,
+          "vector_score": 0.7109713647433842,
+          "bm25_score": null,
+          "vector_rank": 3,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch07_219a553f91332d15",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+          "score": 0.015625,
+          "vector_score": 0.7105370524625216,
+          "bm25_score": null,
+          "vector_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p915_2025_ch00_150b8de139b26f80",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > Introduction', PDF p. 2",
+          "score": 0.015625,
+          "vector_score": null,
+          "bm25_score": 19.053467052806248,
+          "vector_rank": null,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "p17_2025_ch07_087ae323b75845f2",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > How To Report Your Benefits > How Much Is Taxable?', PDF p. 65, printed 63",
+          "score": 0.015384615384615385,
+          "vector_score": 0.7091122789778224,
+          "bm25_score": null,
+          "vector_rank": 5,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p575_2025_ch00_4ec5d70ef0f8e7ec",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Introduction > Social security and equivalent tier 1 railroad retirement benefits.', PDF p. 3",
+          "score": 0.015384615384615385,
+          "vector_score": null,
+          "bm25_score": 19.045374386067824,
+          "vector_rank": null,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "p17_2025_ch09_757d3901cd34659c",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > How Much Can You Deduct? > Limit if Covered by Employer Plan > Social security recipients.', PDF p. 82, printed 80",
+          "score": 0.015151515151515152,
+          "vector_score": null,
+          "bm25_score": 18.708937202778028,
+          "vector_rank": null,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "p915_2025_ch00_3782f881252f7e04",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable? > Examples > Examples > Example 1.', PDF p. 7",
+          "score": 0.015151515151515152,
+          "vector_score": 0.7003620862961014,
+          "bm25_score": null,
+          "vector_rank": 6,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_394d00250b463326",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Line 7a > Social Security Benefits Worksheet—Lines 6a and 6b > Before you begin:', PDF p. 32",
+          "score": 0.014925373134328358,
+          "vector_score": 0.6986888438854119,
+          "bm25_score": null,
+          "vector_rank": 7,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch07_656e44979c59d661",
+          "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable?', PDF p. 64, printed 62",
+          "score": 0.014925373134328358,
+          "vector_score": null,
+          "bm25_score": 18.67828213999346,
+          "vector_rank": null,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "p915_2025_ch00_d3599fe3023c3764",
+          "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable?', PDF p. 6",
+          "score": 0.014705882352941176,
+          "vector_score": 0.6957494201809624,
+          "bm25_score": null,
+          "vector_rank": 8,
+          "bm25_rank": null
+        }
+      ],
+      "retrieval_seconds": 3.1904339000002437,
+      "rerank_seconds": 4.868770699999914
+    },
+    "rrf_source_coverage_at_10": true,
+    "rrf_source_coverage_at_15": true
+  },
+  {
+    "id": "q_retirement_distributions",
+    "query": "1099-R gross distribution taxable amount",
+    "source": "IRS Pub 575",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 10.729926899999555,
+    "retrieval_seconds": 2.8510121999997864,
+    "rerank_seconds": 7.873961100000088,
+    "baseline": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 0.3333333333333333
+    },
+    "reranked": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 0.5
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "i1040gi_2025_ch00_93d36ccc185c093b",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 8 > Additional Tax on IRAs, Other > Exception.', PDF p. 112",
+        "score": 3.8546934127807617,
+        "vector_score": 0.6883062573209863,
+        "bm25_score": 15.889157754799747,
+        "vector_rank": 3,
+        "bm25_rank": 6,
+        "rrf_score": 0.031024531024531024,
+        "rrf_rank": 3,
+        "rerank_score": 3.8546934127807617,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p525_2025_ch00_f88c5041f9c5fabd",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Employee Compensation > Retirement Plan Contributions > Elective Deferrals > Excess distributed to you.', PDF p. 10",
+        "score": 2.498716354370117,
+        "vector_score": null,
+        "bm25_score": 16.04837863154938,
+        "vector_rank": null,
+        "bm25_rank": 5,
+        "rrf_score": 0.015384615384615385,
+        "rrf_rank": 9,
+        "rerank_score": 2.498716354370117,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p575_2025_ch00_d0a490301e940518",
+        "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Rollovers > How to report.', PDF p. 24",
+        "score": 1.351744532585144,
+        "vector_score": null,
+        "bm25_score": 16.073134968820742,
+        "vector_rank": null,
+        "bm25_rank": 4,
+        "rrf_score": 0.015625,
+        "rrf_rank": 6,
+        "rerank_score": 1.351744532585144,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "i1040gi_2025_ch00_07e5cfd05f88e989",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Lines 4a, 4b, and 4c > Lines 4a and 4b IRA Distributions', PDF pp. 26-27",
+        "score": 1.133832573890686,
+        "vector_score": 0.6762423060881035,
+        "bm25_score": null,
+        "vector_rank": 5,
+        "bm25_rank": null,
+        "rrf_score": 0.015384615384615385,
+        "rrf_rank": 8,
+        "rerank_score": 1.133832573890686,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p575_2025_ch00_4d707a9dd03f0cbf",
+        "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Example Recapture Allocation Chart > Exceptions to tax.', PDF p. 27",
+        "score": 0.7987324595451355,
+        "vector_score": null,
+        "bm25_score": 16.36710923384953,
+        "vector_rank": null,
+        "bm25_rank": 3,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 5,
+        "rerank_score": 0.7987324595451355,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "i1040gi_2025_ch00_93d36ccc185c093b",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 8 > Additional Tax on IRAs, Other > Exception.', PDF p. 112",
+        "score": 3.8546934127807617,
+        "vector_score": 0.6883062573209863,
+        "bm25_score": 15.889157754799747,
+        "vector_rank": 3,
+        "bm25_rank": 6,
+        "rrf_score": 0.031024531024531024,
+        "rrf_rank": 3,
+        "rerank_score": 3.8546934127807617,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p575_2025_ch00_dcaa9aa1c63953f5",
+        "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Example Recapture Allocation Chart > Note:', PDF p. 27",
+        "score": 2.506425142288208,
+        "vector_score": null,
+        "bm25_score": 15.419594056737953,
+        "vector_rank": null,
+        "bm25_rank": 9,
+        "rrf_score": 0.014492753623188406,
+        "rrf_rank": 14,
+        "rerank_score": 2.506425142288208,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p525_2025_ch00_f88c5041f9c5fabd",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Employee Compensation > Retirement Plan Contributions > Elective Deferrals > Excess distributed to you.', PDF p. 10",
+        "score": 2.498716115951538,
+        "vector_score": null,
+        "bm25_score": 16.04837863154938,
+        "vector_rank": null,
+        "bm25_rank": 5,
+        "rrf_score": 0.015384615384615385,
+        "rrf_rank": 9,
+        "rerank_score": 2.498716115951538,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p590b_2025_ch02_5f7a337299f5669f",
+        "citation": "IRS Pub 590-B (2025), 'Chapter 2 Roth IRAs > Are Distributions Taxable? > Ordering Rules for Distributions > Illustrated Recapture Amount—Allocation Chart > Before you begin:', PDF pp. 36-37",
+        "score": 2.468641519546509,
+        "vector_score": 0.6426644133727453,
+        "bm25_score": null,
+        "vector_rank": 9,
+        "bm25_rank": null,
+        "rrf_score": 0.014492753623188406,
+        "rrf_rank": 15,
+        "rerank_score": 2.468641519546509,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p575_2025_ch00_cd280a6ebd06b1e2",
+        "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Tax on Early Distributions > Figuring your recapture amount.', PDF p. 26",
+        "score": 1.7007663249969482,
+        "vector_score": null,
+        "bm25_score": 15.489938066845903,
+        "vector_rank": null,
+        "bm25_rank": 8,
+        "rrf_score": 0.014705882352941176,
+        "rrf_rank": 12,
+        "rerank_score": 1.7007663249969482,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "p17_2025_ch09_9f896732774be458",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Are Distributions Taxable? > Distributions Fully or Partly Taxable > Distributions reported on Form 1099-R.', PDF p. 88, printed 86",
+          "score": 0.6997338295300211
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_1fc8f0f3b463d1a9",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Lines 5a, 5b, and 5c > Lines 5a and 5b Pensions and Annuities > Lump-Sum Distributions', PDF p. 30",
+          "score": 0.6969117829466625
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_93d36ccc185c093b",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 8 > Additional Tax on IRAs, Other > Exception.', PDF p. 112",
+          "score": 0.6883062573209863
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_91b6635901003f69",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts > Caution:', PDF p. 21",
+          "score": 0.6853378823601047
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_07e5cfd05f88e989",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Lines 4a, 4b, and 4c > Lines 4a and 4b IRA Distributions', PDF pp. 26-27",
+          "score": 0.6762423060881035
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_8e3d95d3dca89416",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts > Caution:', PDF p. 21",
+          "score": 0.6724506041231696
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_eed75ed9beab0f08",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts', PDF p. 21",
+          "score": 0.6680268843157968
+        },
+        {
+          "chunk_id": "p970_2025_ch07_9c4a6c9978441eb7",
+          "citation": "IRS Pub 970 (2025), 'Chapter 7 Qualified Tuition Program (QTP) > Are Distributions Taxable? > Figuring the Taxable Portion of a Distribution > Taxable earnings.', PDF p. 52",
+          "score": 0.6444048325291587
+        },
+        {
+          "chunk_id": "p590b_2025_ch02_5f7a337299f5669f",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 2 Roth IRAs > Are Distributions Taxable? > Ordering Rules for Distributions > Illustrated Recapture Amount—Allocation Chart > Before you begin:', PDF pp. 36-37",
+          "score": 0.6426644133727453
+        },
+        {
+          "chunk_id": "p575_2025_ch00_9f530d58bf692fb0",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > General Information > Railroad Retirement Benefits > Form RRB-1099-R.', PDF p. 7",
+          "score": 0.6371421650478644
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "p17_2025_ch09_9f896732774be458",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Are Distributions Taxable? > Distributions Fully or Partly Taxable > Distributions reported on Form 1099-R.', PDF p. 88, printed 86",
+          "score": 19.051774926714625
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_eed75ed9beab0f08",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts', PDF p. 21",
+          "score": 17.413947426532157
+        },
+        {
+          "chunk_id": "p575_2025_ch00_4d707a9dd03f0cbf",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Example Recapture Allocation Chart > Exceptions to tax.', PDF p. 27",
+          "score": 16.36710923384953
+        },
+        {
+          "chunk_id": "p575_2025_ch00_d0a490301e940518",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Rollovers > How to report.', PDF p. 24",
+          "score": 16.073134968820742
+        },
+        {
+          "chunk_id": "p525_2025_ch00_f88c5041f9c5fabd",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Employee Compensation > Retirement Plan Contributions > Elective Deferrals > Excess distributed to you.', PDF p. 10",
+          "score": 16.04837863154938
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_93d36ccc185c093b",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 8 > Additional Tax on IRAs, Other > Exception.', PDF p. 112",
+          "score": 15.889157754799747
+        },
+        {
+          "chunk_id": "p575_2025_ch00_64b640438f65184b",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Taxation of Nonperiodic Payments > Loans Treated as Distributions > Reporting by plan.', PDF p. 19",
+          "score": 15.541079092286951
+        },
+        {
+          "chunk_id": "p575_2025_ch00_cd280a6ebd06b1e2",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Tax on Early Distributions > Figuring your recapture amount.', PDF p. 26",
+          "score": 15.489938066845903
+        },
+        {
+          "chunk_id": "p575_2025_ch00_dcaa9aa1c63953f5",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Example Recapture Allocation Chart > Note:', PDF p. 27",
+          "score": 15.419594056737953
+        },
+        {
+          "chunk_id": "p590a_2025_ch01_80bd869f54180be6",
+          "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > What Acts Result in Penalties or Additional Taxes? > Excess Contributions > Excess Contributions Withdrawn by Due Date of Return > Form 1099-R.', PDF p. 35",
+          "score": 15.330702154403179
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "p17_2025_ch09_9f896732774be458",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Are Distributions Taxable? > Distributions Fully or Partly Taxable > Distributions reported on Form 1099-R.', PDF p. 88, printed 86",
+          "score": 0.03278688524590164,
+          "vector_score": 0.6997338295300211,
+          "bm25_score": 19.051774926714625,
+          "vector_rank": 1,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_eed75ed9beab0f08",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts', PDF p. 21",
+          "score": 0.031054405392392875,
+          "vector_score": 0.6680268843157968,
+          "bm25_score": 17.413947426532157,
+          "vector_rank": 7,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_93d36ccc185c093b",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 8 > Additional Tax on IRAs, Other > Exception.', PDF p. 112",
+          "score": 0.031024531024531024,
+          "vector_score": 0.6883062573209863,
+          "bm25_score": 15.889157754799747,
+          "vector_rank": 3,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_1fc8f0f3b463d1a9",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Lines 5a, 5b, and 5c > Lines 5a and 5b Pensions and Annuities > Lump-Sum Distributions', PDF p. 30",
+          "score": 0.016129032258064516,
+          "vector_score": 0.6969117829466625,
+          "bm25_score": null,
+          "vector_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p575_2025_ch00_4d707a9dd03f0cbf",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Example Recapture Allocation Chart > Exceptions to tax.', PDF p. 27",
+          "score": 0.015873015873015872,
+          "vector_score": null,
+          "bm25_score": 16.36710923384953,
+          "vector_rank": null,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "p575_2025_ch00_d0a490301e940518",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Rollovers > How to report.', PDF p. 24",
+          "score": 0.015625,
+          "vector_score": null,
+          "bm25_score": 16.073134968820742,
+          "vector_rank": null,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_91b6635901003f69",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts > Caution:', PDF p. 21",
+          "score": 0.015625,
+          "vector_score": 0.6853378823601047,
+          "bm25_score": null,
+          "vector_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_07e5cfd05f88e989",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Lines 4a, 4b, and 4c > Lines 4a and 4b IRA Distributions', PDF pp. 26-27",
+          "score": 0.015384615384615385,
+          "vector_score": 0.6762423060881035,
+          "bm25_score": null,
+          "vector_rank": 5,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p525_2025_ch00_f88c5041f9c5fabd",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Employee Compensation > Retirement Plan Contributions > Elective Deferrals > Excess distributed to you.', PDF p. 10",
+          "score": 0.015384615384615385,
+          "vector_score": null,
+          "bm25_score": 16.04837863154938,
+          "vector_rank": null,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_8e3d95d3dca89416",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts > Caution:', PDF p. 21",
+          "score": 0.015151515151515152,
+          "vector_score": 0.6724506041231696,
+          "bm25_score": null,
+          "vector_rank": 6,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p575_2025_ch00_64b640438f65184b",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Taxation of Nonperiodic Payments > Loans Treated as Distributions > Reporting by plan.', PDF p. 19",
+          "score": 0.014925373134328358,
+          "vector_score": null,
+          "bm25_score": 15.541079092286951,
+          "vector_rank": null,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "p575_2025_ch00_cd280a6ebd06b1e2",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Tax on Early Distributions > Figuring your recapture amount.', PDF p. 26",
+          "score": 0.014705882352941176,
+          "vector_score": null,
+          "bm25_score": 15.489938066845903,
+          "vector_rank": null,
+          "bm25_rank": 8
+        },
+        {
+          "chunk_id": "p970_2025_ch07_9c4a6c9978441eb7",
+          "citation": "IRS Pub 970 (2025), 'Chapter 7 Qualified Tuition Program (QTP) > Are Distributions Taxable? > Figuring the Taxable Portion of a Distribution > Taxable earnings.', PDF p. 52",
+          "score": 0.014705882352941176,
+          "vector_score": 0.6444048325291587,
+          "bm25_score": null,
+          "vector_rank": 8,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p575_2025_ch00_dcaa9aa1c63953f5",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Example Recapture Allocation Chart > Note:', PDF p. 27",
+          "score": 0.014492753623188406,
+          "vector_score": null,
+          "bm25_score": 15.419594056737953,
+          "vector_rank": null,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "p590b_2025_ch02_5f7a337299f5669f",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 2 Roth IRAs > Are Distributions Taxable? > Ordering Rules for Distributions > Illustrated Recapture Amount—Allocation Chart > Before you begin:', PDF pp. 36-37",
+          "score": 0.014492753623188406,
+          "vector_score": 0.6426644133727453,
+          "bm25_score": null,
+          "vector_rank": 9,
+          "bm25_rank": null
+        }
+      ],
+      "retrieval_seconds": 2.8510121999997864,
+      "rerank_seconds": 7.873961100000088
+    },
+    "rrf_source_coverage_at_10": true,
+    "rrf_source_coverage_at_15": true
+  },
+  {
+    "id": "q_received_income_without_form",
+    "query": "cash income without Form 1099 must be reported",
+    "source": "IRS Schedule C Instructions",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 7.533934700000827,
+    "retrieval_seconds": 2.3989872000001924,
+    "rerank_seconds": 5.130602299999737,
+    "baseline": {
+      "hit_at_3": false,
+      "hit_at_5": true,
+      "mrr_at_5": 0.2
+    },
+    "reranked": {
+      "hit_at_3": false,
+      "hit_at_5": false,
+      "mrr_at_5": 0.0
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "p334_2025_ch05_9a19fe348e6e46fe",
+        "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Kinds of Income', PDF p. 21",
+        "score": 2.773327350616455,
+        "vector_score": 0.6504224180168525,
+        "bm25_score": 14.687489255973677,
+        "vector_rank": 1,
+        "bm25_rank": 1,
+        "rrf_score": 0.03278688524590164,
+        "rrf_rank": 1,
+        "rerank_score": 2.773327350616455,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p334_2025_ch05_071853107b5b8225",
+        "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Introduction > Name, Image, Likeness (NIL).', PDF p. 21",
+        "score": 1.7707452774047852,
+        "vector_score": null,
+        "bm25_score": 13.310874155278308,
+        "vector_rank": null,
+        "bm25_rank": 5,
+        "rrf_score": 0.015384615384615385,
+        "rrf_rank": 8,
+        "rerank_score": 1.7707452774047852,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p17_2025_ch06_c9326026326da916",
+        "citation": "IRS Pub 17 (2025), 'Chapter 6 Interest Income > General Information > Interest not reported on Form 1099-INT.', PDF p. 58, printed 56",
+        "score": 1.2563129663467407,
+        "vector_score": 0.6080840463588307,
+        "bm25_score": 14.069759936271797,
+        "vector_rank": 3,
+        "bm25_rank": 2,
+        "rrf_score": 0.03200204813108039,
+        "rrf_rank": 2,
+        "rerank_score": 1.2563129663467407,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "i1040gi_2025_ch00_fa43aa198ba5ec2b",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips', PDF p. 101",
+        "score": 0.7249276638031006,
+        "vector_score": null,
+        "bm25_score": 13.867080847743138,
+        "vector_rank": null,
+        "bm25_rank": 3,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 5,
+        "rerank_score": 0.7249276638031006,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "i1040sc_2025_ch00_6aa1fd91aeb3e7da",
+        "citation": "IRS Schedule C Instructions (2025), 'Part I. Income > Line 1', PDF p. 5, printed C-5",
+        "score": -0.9566438794136047,
+        "vector_score": 0.5937856352095,
+        "bm25_score": 13.117939233640442,
+        "vector_rank": 5,
+        "bm25_rank": 7,
+        "rrf_score": 0.030309988518943745,
+        "rrf_rank": 3,
+        "rerank_score": -0.9566438794136047,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "p334_2025_ch05_9a19fe348e6e46fe",
+        "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Kinds of Income', PDF p. 21",
+        "score": 2.773327350616455,
+        "vector_score": 0.6504224180168525,
+        "bm25_score": 14.687489255973677,
+        "vector_rank": 1,
+        "bm25_rank": 1,
+        "rrf_score": 0.03278688524590164,
+        "rrf_rank": 1,
+        "rerank_score": 2.773327350616455,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p334_2025_ch05_071853107b5b8225",
+        "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Introduction > Name, Image, Likeness (NIL).', PDF p. 21",
+        "score": 1.7707452774047852,
+        "vector_score": null,
+        "bm25_score": 13.310874155278308,
+        "vector_rank": null,
+        "bm25_rank": 5,
+        "rrf_score": 0.015384615384615385,
+        "rrf_rank": 8,
+        "rerank_score": 1.7707452774047852,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p17_2025_ch06_c9326026326da916",
+        "citation": "IRS Pub 17 (2025), 'Chapter 6 Interest Income > General Information > Interest not reported on Form 1099-INT.', PDF p. 58, printed 56",
+        "score": 1.2563129663467407,
+        "vector_score": 0.6080840463588307,
+        "bm25_score": 14.069759936271797,
+        "vector_rank": 3,
+        "bm25_rank": 2,
+        "rrf_score": 0.03200204813108039,
+        "rrf_rank": 2,
+        "rerank_score": 1.2563129663467407,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "i1040gi_2025_ch00_fa43aa198ba5ec2b",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips', PDF p. 101",
+        "score": 0.7249276638031006,
+        "vector_score": null,
+        "bm25_score": 13.867080847743138,
+        "vector_rank": null,
+        "bm25_rank": 3,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 5,
+        "rerank_score": 0.7249276638031006,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "i1040gi_2025_ch00_690124bd01a71dd4",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before > Determining the amount of qualified tips received by a non-employee for 2025.', PDF p. 103",
+        "score": -0.050153784453868866,
+        "vector_score": null,
+        "bm25_score": 12.85458041193253,
+        "vector_rank": null,
+        "bm25_rank": 9,
+        "rrf_score": 0.014492753623188406,
+        "rrf_rank": 14,
+        "rerank_score": -0.050153784453868866,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "p334_2025_ch05_9a19fe348e6e46fe",
+          "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Kinds of Income', PDF p. 21",
+          "score": 0.6504224180168525
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_d22703ae94ae7bbc",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Line 1c > Tip Income Not Reported on Line 1a', PDF p. 24",
+          "score": 0.6147788027825789
+        },
+        {
+          "chunk_id": "p17_2025_ch06_c9326026326da916",
+          "citation": "IRS Pub 17 (2025), 'Chapter 6 Interest Income > General Information > Interest not reported on Form 1099-INT.', PDF p. 58, printed 56",
+          "score": 0.6080840463588307
+        },
+        {
+          "chunk_id": "p334_2025_ch02_bcdb1ddeeb800938",
+          "citation": "IRS Pub 334 (2025), 'Chapter 2 Accounting Periods and Methods > Accounting Methods > Cash Method > Income', PDF p. 14",
+          "score": 0.6031937665449514
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_6aa1fd91aeb3e7da",
+          "citation": "IRS Schedule C Instructions (2025), 'Part I. Income > Line 1', PDF p. 5, printed C-5",
+          "score": 0.5937856352095
+        },
+        {
+          "chunk_id": "p527_2025_ch01_aaeaecb04819f7fa",
+          "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Income > When To Report > Cash method.', PDF p. 3",
+          "score": 0.5927766076060066
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_65ff4bb4418127dd",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Additional Income > Lines 8a Through 8z > Other Income > No. STOP > 9. Taxable part of your refund.', PDF pp. 90-91",
+          "score": 0.5845522339264198
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_d1a0274891fd2f5a",
+          "citation": "IRS Schedule C Instructions (2025), 'Part I. Income', PDF p. 5, printed C-5",
+          "score": 0.5770681500434917
+        },
+        {
+          "chunk_id": "p503_2025_ch00_48ca5d991d8dabf5",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > You Must Have Earned Income > Form 4029.', PDF p. 4",
+          "score": 0.5751973227019301
+        },
+        {
+          "chunk_id": "p334_2025_ch05_14097d9a6f984612",
+          "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Items That Are Not Income > Medicaid waiver payments.', PDF p. 25",
+          "score": 0.5746834531615198
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "p334_2025_ch05_9a19fe348e6e46fe",
+          "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Kinds of Income', PDF p. 21",
+          "score": 14.687489255973677
+        },
+        {
+          "chunk_id": "p17_2025_ch06_c9326026326da916",
+          "citation": "IRS Pub 17 (2025), 'Chapter 6 Interest Income > General Information > Interest not reported on Form 1099-INT.', PDF p. 58, printed 56",
+          "score": 14.069759936271797
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_fa43aa198ba5ec2b",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips', PDF p. 101",
+          "score": 13.867080847743138
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_445641b9522e2afe",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K > Example–Multiple incorrect > Form(s) 1099-K.', PDF p. 88",
+          "score": 13.439727973710065
+        },
+        {
+          "chunk_id": "p334_2025_ch05_071853107b5b8225",
+          "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Introduction > Name, Image, Likeness (NIL).', PDF p. 21",
+          "score": 13.310874155278308
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_105b2c1ac7a2a2a0",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before', PDF p. 104",
+          "score": 13.1288859659536
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_6aa1fd91aeb3e7da",
+          "citation": "IRS Schedule C Instructions (2025), 'Part I. Income > Line 1', PDF p. 5, printed C-5",
+          "score": 13.117939233640442
+        },
+        {
+          "chunk_id": "p17_2025_ch06_eadb4f9512783f76",
+          "citation": "IRS Pub 17 (2025), 'Chapter 6 Interest Income > Taxable Interest—General > U.S. Savings Bonds > Form 1099-INT for U.S. savings bonds interest.', PDF p. 60, printed 58",
+          "score": 12.976331120175823
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_690124bd01a71dd4",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before > Determining the amount of qualified tips received by a non-employee for 2025.', PDF p. 103",
+          "score": 12.85458041193253
+        },
+        {
+          "chunk_id": "p575_2025_ch00_11811a8a439a432f",
+          "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Taxation of Nonperiodic Payments > Transfers of Annuity Contracts > Tax-free exchange reported on Form 1099-R.', PDF p. 20",
+          "score": 12.742507919593262
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "p334_2025_ch05_9a19fe348e6e46fe",
+          "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Kinds of Income', PDF p. 21",
+          "score": 0.03278688524590164,
+          "vector_score": 0.6504224180168525,
+          "bm25_score": 14.687489255973677,
+          "vector_rank": 1,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p17_2025_ch06_c9326026326da916",
+          "citation": "IRS Pub 17 (2025), 'Chapter 6 Interest Income > General Information > Interest not reported on Form 1099-INT.', PDF p. 58, printed 56",
+          "score": 0.03200204813108039,
+          "vector_score": 0.6080840463588307,
+          "bm25_score": 14.069759936271797,
+          "vector_rank": 3,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_6aa1fd91aeb3e7da",
+          "citation": "IRS Schedule C Instructions (2025), 'Part I. Income > Line 1', PDF p. 5, printed C-5",
+          "score": 0.030309988518943745,
+          "vector_score": 0.5937856352095,
+          "bm25_score": 13.117939233640442,
+          "vector_rank": 5,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_d22703ae94ae7bbc",
+          "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Line 1c > Tip Income Not Reported on Line 1a', PDF p. 24",
+          "score": 0.016129032258064516,
+          "vector_score": 0.6147788027825789,
+          "bm25_score": null,
+          "vector_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_fa43aa198ba5ec2b",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips', PDF p. 101",
+          "score": 0.015873015873015872,
+          "vector_score": null,
+          "bm25_score": 13.867080847743138,
+          "vector_rank": null,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_445641b9522e2afe",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K > Example–Multiple incorrect > Form(s) 1099-K.', PDF p. 88",
+          "score": 0.015625,
+          "vector_score": null,
+          "bm25_score": 13.439727973710065,
+          "vector_rank": null,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "p334_2025_ch02_bcdb1ddeeb800938",
+          "citation": "IRS Pub 334 (2025), 'Chapter 2 Accounting Periods and Methods > Accounting Methods > Cash Method > Income', PDF p. 14",
+          "score": 0.015625,
+          "vector_score": 0.6031937665449514,
+          "bm25_score": null,
+          "vector_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p334_2025_ch05_071853107b5b8225",
+          "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Introduction > Name, Image, Likeness (NIL).', PDF p. 21",
+          "score": 0.015384615384615385,
+          "vector_score": null,
+          "bm25_score": 13.310874155278308,
+          "vector_rank": null,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_105b2c1ac7a2a2a0",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before', PDF p. 104",
+          "score": 0.015151515151515152,
+          "vector_score": null,
+          "bm25_score": 13.1288859659536,
+          "vector_rank": null,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "p527_2025_ch01_aaeaecb04819f7fa",
+          "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Income > When To Report > Cash method.', PDF p. 3",
+          "score": 0.015151515151515152,
+          "vector_score": 0.5927766076060066,
+          "bm25_score": null,
+          "vector_rank": 6,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_65ff4bb4418127dd",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Additional Income > Lines 8a Through 8z > Other Income > No. STOP > 9. Taxable part of your refund.', PDF pp. 90-91",
+          "score": 0.014925373134328358,
+          "vector_score": 0.5845522339264198,
+          "bm25_score": null,
+          "vector_rank": 7,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_d1a0274891fd2f5a",
+          "citation": "IRS Schedule C Instructions (2025), 'Part I. Income', PDF p. 5, printed C-5",
+          "score": 0.014705882352941176,
+          "vector_score": 0.5770681500434917,
+          "bm25_score": null,
+          "vector_rank": 8,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch06_eadb4f9512783f76",
+          "citation": "IRS Pub 17 (2025), 'Chapter 6 Interest Income > Taxable Interest—General > U.S. Savings Bonds > Form 1099-INT for U.S. savings bonds interest.', PDF p. 60, printed 58",
+          "score": 0.014705882352941176,
+          "vector_score": null,
+          "bm25_score": 12.976331120175823,
+          "vector_rank": null,
+          "bm25_rank": 8
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_690124bd01a71dd4",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before > Determining the amount of qualified tips received by a non-employee for 2025.', PDF p. 103",
+          "score": 0.014492753623188406,
+          "vector_score": null,
+          "bm25_score": 12.85458041193253,
+          "vector_rank": null,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "p503_2025_ch00_48ca5d991d8dabf5",
+          "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > You Must Have Earned Income > Form 4029.', PDF p. 4",
+          "score": 0.014492753623188406,
+          "vector_score": 0.5751973227019301,
+          "bm25_score": null,
+          "vector_rank": 9,
+          "bm25_rank": null
+        }
+      ],
+      "retrieval_seconds": 2.3989872000001924,
+      "rerank_seconds": 5.130602299999737
+    },
+    "rrf_source_coverage_at_10": true,
+    "rrf_source_coverage_at_15": true
+  },
+  {
+    "id": "q_pays_platform_fees",
+    "query": "platform fees commissions deductible business expense",
+    "source": "IRS Schedule C Instructions",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 7.0930567000004885,
+    "retrieval_seconds": 2.495485800000097,
+    "rerank_seconds": 4.593078999999307,
+    "baseline": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 1.0
+    },
+    "reranked": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 0.3333333333333333
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "i1040sc_2025_ch00_de13dd7a136c4f11",
+        "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10', PDF p. 7, printed C-7",
+        "score": -2.6351399421691895,
+        "vector_score": 0.5501421853942743,
+        "bm25_score": 17.10403117977466,
+        "vector_rank": 2,
+        "bm25_rank": 1,
+        "rrf_score": 0.03252247488101534,
+        "rrf_rank": 1,
+        "rerank_score": -2.6351399421691895,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p334_2025_ch08_8987b4ab9a1aad34",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees', PDF p. 39",
+        "score": -2.8544912338256836,
+        "vector_score": 0.48635597323721536,
+        "bm25_score": 13.832918295546948,
+        "vector_rank": 9,
+        "bm25_rank": 7,
+        "rrf_score": 0.029418126757516764,
+        "rrf_rank": 3,
+        "rerank_score": -2.8544912338256836,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p463_2025_ch06_799231bb93dd9fd1",
+        "citation": "IRS Pub 463 (2025), 'Chapter 6 How To Report > Completing Form 2106 > Special Rules > Officials Paid on a Fee Basis', PDF p. 51",
+        "score": -3.8781113624572754,
+        "vector_score": 0.5566219816738431,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 4,
+        "rerank_score": -3.8781113624572754,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p590a_2025_ch01_33732839ba61d6a1",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > How Much Can You Deduct? > Brokers' commissions.', PDF p. 11",
+        "score": -4.305717468261719,
+        "vector_score": 0.4929055580013466,
+        "bm25_score": 15.61997997718233,
+        "vector_rank": 5,
+        "bm25_rank": 3,
+        "rrf_score": 0.03125763125763126,
+        "rrf_rank": 2,
+        "rerank_score": -4.305717468261719,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p17_2025_ch09_707d98c55173d923",
+        "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > How Much Can You Deduct? > Brokers' commissions.', PDF p. 81, printed 79",
+        "score": -4.775424003601074,
+        "vector_score": null,
+        "bm25_score": 15.376843622633007,
+        "vector_rank": null,
+        "bm25_rank": 4,
+        "rrf_score": 0.015625,
+        "rrf_rank": 7,
+        "rerank_score": -4.775424003601074,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "p17_2025_ch12_a9db17f2a416ea5b",
+        "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Nondeductible Expenses > List of Nondeductible Expenses', PDF pp. 104-105, printed 102-103",
+        "score": -1.9781174659729004,
+        "vector_score": null,
+        "bm25_score": 12.970464436658427,
+        "vector_rank": null,
+        "bm25_rank": 9,
+        "rrf_score": 0.014492753623188406,
+        "rrf_rank": 15,
+        "rerank_score": -1.9781174659729004,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p334_2025_ch08_483886e89fff35ad",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees > Tax preparation fees.', PDF p. 39",
+        "score": -2.4854071140289307,
+        "vector_score": null,
+        "bm25_score": 13.881495907239252,
+        "vector_rank": null,
+        "bm25_rank": 6,
+        "rrf_score": 0.015151515151515152,
+        "rrf_rank": 11,
+        "rerank_score": -2.4854071140289307,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "i1040sc_2025_ch00_de13dd7a136c4f11",
+        "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10', PDF p. 7, printed C-7",
+        "score": -2.6351399421691895,
+        "vector_score": 0.5501421853942743,
+        "bm25_score": 17.10403117977466,
+        "vector_rank": 2,
+        "bm25_rank": 1,
+        "rrf_score": 0.03252247488101534,
+        "rrf_rank": 1,
+        "rerank_score": -2.6351399421691895,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p334_2025_ch08_8987b4ab9a1aad34",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees', PDF p. 39",
+        "score": -2.8544912338256836,
+        "vector_score": 0.48635597323721536,
+        "bm25_score": 13.832918295546948,
+        "vector_rank": 9,
+        "bm25_rank": 7,
+        "rrf_score": 0.029418126757516764,
+        "rrf_rank": 3,
+        "rerank_score": -2.8544912338256836,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p463_2025_ch06_799231bb93dd9fd1",
+        "citation": "IRS Pub 463 (2025), 'Chapter 6 How To Report > Completing Form 2106 > Special Rules > Officials Paid on a Fee Basis', PDF p. 51",
+        "score": -3.8781113624572754,
+        "vector_score": 0.5566219816738431,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 4,
+        "rerank_score": -3.8781113624572754,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "p463_2025_ch06_799231bb93dd9fd1",
+          "citation": "IRS Pub 463 (2025), 'Chapter 6 How To Report > Completing Form 2106 > Special Rules > Officials Paid on a Fee Basis', PDF p. 51",
+          "score": 0.5566219816738431
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_de13dd7a136c4f11",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10', PDF p. 7, printed C-7",
+          "score": 0.5501421853942743
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_64fe8f2c542792c3",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 24b', PDF p. 9, printed C-9",
+          "score": 0.5118492522509325
+        },
+        {
+          "chunk_id": "p525_2025_ch00_61a61102302be75a",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Host', PDF p. 22",
+          "score": 0.4944661580763404
+        },
+        {
+          "chunk_id": "p590a_2025_ch01_33732839ba61d6a1",
+          "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > How Much Can You Deduct? > Brokers' commissions.', PDF p. 11",
+          "score": 0.4929055580013466
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_275937adda1e0e9a",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 17', PDF p. 8, printed C-8",
+          "score": 0.49285814336344513
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_13e40c708e2e66e7",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 23 > Lines 24a Through 24z > Line 24i', PDF p. 100",
+          "score": 0.4884040708999331
+        },
+        {
+          "chunk_id": "p463_2025_ch04_c784ee7ec9e5a1a6",
+          "citation": "IRS Pub 463 (2025), 'Chapter 4 Transportation > Parking fees.', PDF p. 19",
+          "score": 0.4879862411071392
+        },
+        {
+          "chunk_id": "p334_2025_ch08_8987b4ab9a1aad34",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees', PDF p. 39",
+          "score": 0.48635597323721536
+        },
+        {
+          "chunk_id": "p463_2025_ch02_8f445b4a2dde8bd6",
+          "citation": "IRS Pub 463 (2025), 'Chapter 2 Meals and Entertainment > 50% Limit > Exception to the 50% Limit for Meals > Exception 1—expenses treated as compensation.', PDF p. 16",
+          "score": 0.480960816144974
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "i1040sc_2025_ch00_de13dd7a136c4f11",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10', PDF p. 7, printed C-7",
+          "score": 17.10403117977466
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_8bec251ae3362a20",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10 > Sales of property.', PDF p. 7, printed C-7",
+          "score": 15.718940841351262
+        },
+        {
+          "chunk_id": "p590a_2025_ch01_33732839ba61d6a1",
+          "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > How Much Can You Deduct? > Brokers' commissions.', PDF p. 11",
+          "score": 15.61997997718233
+        },
+        {
+          "chunk_id": "p17_2025_ch09_707d98c55173d923",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > How Much Can You Deduct? > Brokers' commissions.', PDF p. 81, printed 79",
+          "score": 15.376843622633007
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_7a9dcf319278f83e",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10 > Note:', PDF p. 7, printed C-7",
+          "score": 14.101413074009344
+        },
+        {
+          "chunk_id": "p334_2025_ch08_483886e89fff35ad",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees > Tax preparation fees.', PDF p. 39",
+          "score": 13.881495907239252
+        },
+        {
+          "chunk_id": "p334_2025_ch08_8987b4ab9a1aad34",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees', PDF p. 39",
+          "score": 13.832918295546948
+        },
+        {
+          "chunk_id": "p463_2025_ch01_37aa1bbe47edf441",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Primarily for Personal Reasons', PDF p. 11",
+          "score": 13.474657780581587
+        },
+        {
+          "chunk_id": "p17_2025_ch12_a9db17f2a416ea5b",
+          "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Nondeductible Expenses > List of Nondeductible Expenses', PDF pp. 104-105, printed 102-103",
+          "score": 12.970464436658427
+        },
+        {
+          "chunk_id": "p527_2025_ch01_bb0c8fd00c7e08b6",
+          "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Expenses > Types of Expenses > Legal and other professional fees.', PDF p. 5",
+          "score": 12.45949444118742
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "i1040sc_2025_ch00_de13dd7a136c4f11",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10', PDF p. 7, printed C-7",
+          "score": 0.03252247488101534,
+          "vector_score": 0.5501421853942743,
+          "bm25_score": 17.10403117977466,
+          "vector_rank": 2,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p590a_2025_ch01_33732839ba61d6a1",
+          "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > How Much Can You Deduct? > Brokers' commissions.', PDF p. 11",
+          "score": 0.03125763125763126,
+          "vector_score": 0.4929055580013466,
+          "bm25_score": 15.61997997718233,
+          "vector_rank": 5,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "p334_2025_ch08_8987b4ab9a1aad34",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees', PDF p. 39",
+          "score": 0.029418126757516764,
+          "vector_score": 0.48635597323721536,
+          "bm25_score": 13.832918295546948,
+          "vector_rank": 9,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "p463_2025_ch06_799231bb93dd9fd1",
+          "citation": "IRS Pub 463 (2025), 'Chapter 6 How To Report > Completing Form 2106 > Special Rules > Officials Paid on a Fee Basis', PDF p. 51",
+          "score": 0.01639344262295082,
+          "vector_score": 0.5566219816738431,
+          "bm25_score": null,
+          "vector_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_8bec251ae3362a20",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10 > Sales of property.', PDF p. 7, printed C-7",
+          "score": 0.016129032258064516,
+          "vector_score": null,
+          "bm25_score": 15.718940841351262,
+          "vector_rank": null,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_64fe8f2c542792c3",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 24b', PDF p. 9, printed C-9",
+          "score": 0.015873015873015872,
+          "vector_score": 0.5118492522509325,
+          "bm25_score": null,
+          "vector_rank": 3,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch09_707d98c55173d923",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > How Much Can You Deduct? > Brokers' commissions.', PDF p. 81, printed 79",
+          "score": 0.015625,
+          "vector_score": null,
+          "bm25_score": 15.376843622633007,
+          "vector_rank": null,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "p525_2025_ch00_61a61102302be75a",
+          "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Host', PDF p. 22",
+          "score": 0.015625,
+          "vector_score": 0.4944661580763404,
+          "bm25_score": null,
+          "vector_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_7a9dcf319278f83e",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 10 > Note:', PDF p. 7, printed C-7",
+          "score": 0.015384615384615385,
+          "vector_score": null,
+          "bm25_score": 14.101413074009344,
+          "vector_rank": null,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "i1040sc_2025_ch00_275937adda1e0e9a",
+          "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 17', PDF p. 8, printed C-8",
+          "score": 0.015151515151515152,
+          "vector_score": 0.49285814336344513,
+          "bm25_score": null,
+          "vector_rank": 6,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p334_2025_ch08_483886e89fff35ad",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees > Tax preparation fees.', PDF p. 39",
+          "score": 0.015151515151515152,
+          "vector_score": null,
+          "bm25_score": 13.881495907239252,
+          "vector_rank": null,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "i1040gi_2025_ch00_13e40c708e2e66e7",
+          "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 23 > Lines 24a Through 24z > Line 24i', PDF p. 100",
+          "score": 0.014925373134328358,
+          "vector_score": 0.4884040708999331,
+          "bm25_score": null,
+          "vector_rank": 7,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p463_2025_ch01_37aa1bbe47edf441",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Primarily for Personal Reasons', PDF p. 11",
+          "score": 0.014705882352941176,
+          "vector_score": null,
+          "bm25_score": 13.474657780581587,
+          "vector_rank": null,
+          "bm25_rank": 8
+        },
+        {
+          "chunk_id": "p463_2025_ch04_c784ee7ec9e5a1a6",
+          "citation": "IRS Pub 463 (2025), 'Chapter 4 Transportation > Parking fees.', PDF p. 19",
+          "score": 0.014705882352941176,
+          "vector_score": 0.4879862411071392,
+          "bm25_score": null,
+          "vector_rank": 8,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch12_a9db17f2a416ea5b",
+          "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Nondeductible Expenses > List of Nondeductible Expenses', PDF pp. 104-105, printed 102-103",
+          "score": 0.014492753623188406,
+          "vector_score": null,
+          "bm25_score": 12.970464436658427,
+          "vector_rank": null,
+          "bm25_rank": 9
+        }
+      ],
+      "retrieval_seconds": 2.495485800000097,
+      "rerank_seconds": 4.593078999999307
+    },
+    "rrf_source_coverage_at_10": true,
+    "rrf_source_coverage_at_15": true
+  },
+  {
+    "id": "q_travel_purpose",
+    "query": "travel partly business partly personal",
+    "source": "IRS Pub 463",
+    "round": 1,
+    "candidate_k": 10,
+    "fusion_k": 15,
+    "actual_fusion_count": 15,
+    "output_k": 5,
+    "elapsed_seconds": 8.12931270000081,
+    "retrieval_seconds": 2.7321176000004925,
+    "rerank_seconds": 5.39271379999991,
+    "baseline": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 0.3333333333333333
+    },
+    "reranked": {
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "mrr_at_5": 0.5
+    },
+    "baseline_matches": [
+      {
+        "chunk_id": "p334_2025_ch08_39de4a23a678bde1",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Introduction', PDF p. 32",
+        "score": 1.3232768774032593,
+        "vector_score": null,
+        "bm25_score": 25.534362463464955,
+        "vector_rank": null,
+        "bm25_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 1,
+        "rerank_score": 1.3232768774032593,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p544_2025_ch01_de9b59dc0b07f20d",
+        "citation": "IRS Pub 544 (2025), 'Chapter 1 Gain or Loss > Sales and Exchanges > Gain or Loss From Sales and Exchanges > Property Used Partly for Business or Rental', PDF p. 6",
+        "score": -0.23224282264709473,
+        "vector_score": null,
+        "bm25_score": 20.13093500803497,
+        "vector_rank": null,
+        "bm25_rank": 3,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 6,
+        "rerank_score": -0.23224282264709473,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p463_2025_ch01_26ce0b2f53c79400",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 3—less than 25% of time on personal activities.', PDF p. 10",
+        "score": -0.5677409172058105,
+        "vector_score": 0.7020725556915351,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 2,
+        "rerank_score": -0.5677409172058105,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p463_2025_ch01_262b732434cf13ba",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 4—vacation not a major consideration.', PDF p. 10",
+        "score": -1.2544987201690674,
+        "vector_score": 0.6978352957474091,
+        "bm25_score": null,
+        "vector_rank": 3,
+        "bm25_rank": null,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 5,
+        "rerank_score": -1.2544987201690674,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p463_2025_ch04_f4a2eb4a9c6a0cef",
+        "citation": "IRS Pub 463 (2025), 'Chapter 4 Transportation > Car Expenses > Actual Car Expenses > Business and personal use.', PDF p. 21",
+        "score": -2.6863980293273926,
+        "vector_score": 0.6864453215735117,
+        "bm25_score": null,
+        "vector_rank": 4,
+        "bm25_rank": null,
+        "rrf_score": 0.015625,
+        "rrf_rank": 8,
+        "rerank_score": -2.6863980293273926,
+        "rerank_rank": 5
+      }
+    ],
+    "matches": [
+      {
+        "chunk_id": "p334_2025_ch08_39de4a23a678bde1",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Introduction', PDF p. 32",
+        "score": 1.3232768774032593,
+        "vector_score": null,
+        "bm25_score": 25.534362463464955,
+        "vector_rank": null,
+        "bm25_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 1,
+        "rerank_score": 1.3232768774032593,
+        "rerank_rank": 1
+      },
+      {
+        "chunk_id": "p463_2025_ch01_1058b640eb3f7e2c",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel in the United States > Trip Primarily for Personal Reasons', PDF p. 9",
+        "score": 0.33657804131507874,
+        "vector_score": 0.6773784823700376,
+        "bm25_score": null,
+        "vector_rank": 6,
+        "bm25_rank": null,
+        "rrf_score": 0.015151515151515152,
+        "rrf_rank": 12,
+        "rerank_score": 0.33657804131507874,
+        "rerank_rank": 2
+      },
+      {
+        "chunk_id": "p544_2025_ch01_de9b59dc0b07f20d",
+        "citation": "IRS Pub 544 (2025), 'Chapter 1 Gain or Loss > Sales and Exchanges > Gain or Loss From Sales and Exchanges > Property Used Partly for Business or Rental', PDF p. 6",
+        "score": -0.23224282264709473,
+        "vector_score": null,
+        "bm25_score": 20.13093500803497,
+        "vector_rank": null,
+        "bm25_rank": 3,
+        "rrf_score": 0.015873015873015872,
+        "rrf_rank": 6,
+        "rerank_score": -0.23224282264709473,
+        "rerank_rank": 3
+      },
+      {
+        "chunk_id": "p463_2025_ch01_26ce0b2f53c79400",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 3—less than 25% of time on personal activities.', PDF p. 10",
+        "score": -0.5677409172058105,
+        "vector_score": 0.7020725556915351,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null,
+        "rrf_score": 0.01639344262295082,
+        "rrf_rank": 2,
+        "rerank_score": -0.5677409172058105,
+        "rerank_rank": 4
+      },
+      {
+        "chunk_id": "p463_2025_ch01_6c962eefb23d02d5",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Example.', PDF p. 10",
+        "score": -0.7958710789680481,
+        "vector_score": 0.6728620762938339,
+        "bm25_score": null,
+        "vector_rank": 8,
+        "bm25_rank": null,
+        "rrf_score": 0.014705882352941176,
+        "rrf_rank": 15,
+        "rerank_score": -0.7958710789680481,
+        "rerank_rank": 5
+      }
+    ],
+    "routes": {
+      "vector": [
+        {
+          "chunk_id": "p463_2025_ch01_26ce0b2f53c79400",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 3—less than 25% of time on personal activities.', PDF p. 10",
+          "score": 0.7020725556915351
+        },
+        {
+          "chunk_id": "p463_2025_ch01_6a47c34de6744606",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Primarily for Business > Nonbusiness activity on the way to or from your business destination.', PDF pp. 10-11",
+          "score": 0.6987872655100751
+        },
+        {
+          "chunk_id": "p463_2025_ch01_262b732434cf13ba",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 4—vacation not a major consideration.', PDF p. 10",
+          "score": 0.6978352957474091
+        },
+        {
+          "chunk_id": "p463_2025_ch04_f4a2eb4a9c6a0cef",
+          "citation": "IRS Pub 463 (2025), 'Chapter 4 Transportation > Car Expenses > Actual Car Expenses > Business and personal use.', PDF p. 21",
+          "score": 0.6864453215735117
+        },
+        {
+          "chunk_id": "p463_2025_ch01_66e2ccb9b0515598",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Travel considered entirely for business.', PDF p. 9",
+          "score": 0.6855011020008194
+        },
+        {
+          "chunk_id": "p463_2025_ch01_1058b640eb3f7e2c",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel in the United States > Trip Primarily for Personal Reasons', PDF p. 9",
+          "score": 0.6773784823700376
+        },
+        {
+          "chunk_id": "p463_2025_ch01_6ecdcb793c6fbd08",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Primarily for Business > Nonbusiness activity at, near, or beyond business destination.', PDF p. 11",
+          "score": 0.6758939044287294
+        },
+        {
+          "chunk_id": "p463_2025_ch01_6c962eefb23d02d5",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Example.', PDF p. 10",
+          "score": 0.6728620762938339
+        },
+        {
+          "chunk_id": "p463_2025_ch01_8eca0df1b6c9c530",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel in the United States > Trip Primarily for Business', PDF p. 8",
+          "score": 0.6714157491842276
+        },
+        {
+          "chunk_id": "p970_2025_ch11_d0afe0b3c9bb0fd3",
+          "citation": "IRS Pub 970 (2025), 'Chapter 11 Business Deduction for Work-Related Education > What Expenses Can Be Deducted? > Travel Expenses > Mainly personal travel.', PDF p. 64",
+          "score": 0.6671237946375483
+        }
+      ],
+      "eligible_chunks": 8390,
+      "bm25": [
+        {
+          "chunk_id": "p334_2025_ch08_39de4a23a678bde1",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Introduction', PDF p. 32",
+          "score": 25.534362463464955
+        },
+        {
+          "chunk_id": "p544_2025_ch01_42d982dea9421d42",
+          "citation": "IRS Pub 544 (2025), 'Chapter 1 Gain or Loss > Sales and Exchanges > Gain or Loss From Sales and Exchanges > Property Used Partly for Business or Rental > Home used partly for business or rental.', PDF p. 6",
+          "score": 22.33519822861825
+        },
+        {
+          "chunk_id": "p544_2025_ch01_de9b59dc0b07f20d",
+          "citation": "IRS Pub 544 (2025), 'Chapter 1 Gain or Loss > Sales and Exchanges > Gain or Loss From Sales and Exchanges > Property Used Partly for Business or Rental', PDF p. 6",
+          "score": 20.13093500803497
+        },
+        {
+          "chunk_id": "p17_2025_ch09_8dbb94ae8df741a0",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Are Distributions Taxable? > Distributions Fully or Partly Taxable > Partly taxable.', PDF pp. 87-88, printed 85-86",
+          "score": 18.33069821326504
+        },
+        {
+          "chunk_id": "p334_2025_ch08_aab772b3b988a327",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Bad Debts > How To Claim a Business Bad Debt > Totally worthless debts.', PDF p. 34",
+          "score": 18.19973354571362
+        },
+        {
+          "chunk_id": "p334_2025_ch08_675556b03697c037",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Bad Debts > How To Claim a Business Bad Debt > Specific charge-off method.', PDF p. 33",
+          "score": 17.7919636844497
+        },
+        {
+          "chunk_id": "p17_2025_ch11_6680295e93ab780b",
+          "citation": "IRS Pub 17 (2025), 'Chapter 11 Taxes > Personal Property Taxes', PDF p. 102, printed 100",
+          "score": 17.416684413370994
+        },
+        {
+          "chunk_id": "p590b_2025_ch01_ecba99e9742c3681",
+          "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Distributions Fully or Partly Taxable', PDF p. 15",
+          "score": 17.32054941081027
+        },
+        {
+          "chunk_id": "p17_2025_ch09_7b9cf1bd8b8580f9",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Are Distributions Taxable? > Distributions Fully or Partly Taxable', PDF p. 87, printed 85",
+          "score": 17.04866481359527
+        },
+        {
+          "chunk_id": "p334_2025_ch08_eae9aac0e41243a4",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Bad Debts > How To Claim a Business Bad Debt > Partly worthless debts.', PDF pp. 33-34",
+          "score": 16.73682540405515
+        }
+      ],
+      "rrf": [
+        {
+          "chunk_id": "p334_2025_ch08_39de4a23a678bde1",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Introduction', PDF p. 32",
+          "score": 0.01639344262295082,
+          "vector_score": null,
+          "bm25_score": 25.534362463464955,
+          "vector_rank": null,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "p463_2025_ch01_26ce0b2f53c79400",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 3—less than 25% of time on personal activities.', PDF p. 10",
+          "score": 0.01639344262295082,
+          "vector_score": 0.7020725556915351,
+          "bm25_score": null,
+          "vector_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p463_2025_ch01_6a47c34de6744606",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Primarily for Business > Nonbusiness activity on the way to or from your business destination.', PDF pp. 10-11",
+          "score": 0.016129032258064516,
+          "vector_score": 0.6987872655100751,
+          "bm25_score": null,
+          "vector_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p544_2025_ch01_42d982dea9421d42",
+          "citation": "IRS Pub 544 (2025), 'Chapter 1 Gain or Loss > Sales and Exchanges > Gain or Loss From Sales and Exchanges > Property Used Partly for Business or Rental > Home used partly for business or rental.', PDF p. 6",
+          "score": 0.016129032258064516,
+          "vector_score": null,
+          "bm25_score": 22.33519822861825,
+          "vector_rank": null,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "p463_2025_ch01_262b732434cf13ba",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 4—vacation not a major consideration.', PDF p. 10",
+          "score": 0.015873015873015872,
+          "vector_score": 0.6978352957474091,
+          "bm25_score": null,
+          "vector_rank": 3,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p544_2025_ch01_de9b59dc0b07f20d",
+          "citation": "IRS Pub 544 (2025), 'Chapter 1 Gain or Loss > Sales and Exchanges > Gain or Loss From Sales and Exchanges > Property Used Partly for Business or Rental', PDF p. 6",
+          "score": 0.015873015873015872,
+          "vector_score": null,
+          "bm25_score": 20.13093500803497,
+          "vector_rank": null,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "p17_2025_ch09_8dbb94ae8df741a0",
+          "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Are Distributions Taxable? > Distributions Fully or Partly Taxable > Partly taxable.', PDF pp. 87-88, printed 85-86",
+          "score": 0.015625,
+          "vector_score": null,
+          "bm25_score": 18.33069821326504,
+          "vector_rank": null,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "p463_2025_ch04_f4a2eb4a9c6a0cef",
+          "citation": "IRS Pub 463 (2025), 'Chapter 4 Transportation > Car Expenses > Actual Car Expenses > Business and personal use.', PDF p. 21",
+          "score": 0.015625,
+          "vector_score": 0.6864453215735117,
+          "bm25_score": null,
+          "vector_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p334_2025_ch08_aab772b3b988a327",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Bad Debts > How To Claim a Business Bad Debt > Totally worthless debts.', PDF p. 34",
+          "score": 0.015384615384615385,
+          "vector_score": null,
+          "bm25_score": 18.19973354571362,
+          "vector_rank": null,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "p463_2025_ch01_66e2ccb9b0515598",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Travel considered entirely for business.', PDF p. 9",
+          "score": 0.015384615384615385,
+          "vector_score": 0.6855011020008194,
+          "bm25_score": null,
+          "vector_rank": 5,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p334_2025_ch08_675556b03697c037",
+          "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Bad Debts > How To Claim a Business Bad Debt > Specific charge-off method.', PDF p. 33",
+          "score": 0.015151515151515152,
+          "vector_score": null,
+          "bm25_score": 17.7919636844497,
+          "vector_rank": null,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "p463_2025_ch01_1058b640eb3f7e2c",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel in the United States > Trip Primarily for Personal Reasons', PDF p. 9",
+          "score": 0.015151515151515152,
+          "vector_score": 0.6773784823700376,
+          "bm25_score": null,
+          "vector_rank": 6,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p17_2025_ch11_6680295e93ab780b",
+          "citation": "IRS Pub 17 (2025), 'Chapter 11 Taxes > Personal Property Taxes', PDF p. 102, printed 100",
+          "score": 0.014925373134328358,
+          "vector_score": null,
+          "bm25_score": 17.416684413370994,
+          "vector_rank": null,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "p463_2025_ch01_6ecdcb793c6fbd08",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Primarily for Business > Nonbusiness activity at, near, or beyond business destination.', PDF p. 11",
+          "score": 0.014925373134328358,
+          "vector_score": 0.6758939044287294,
+          "bm25_score": null,
+          "vector_rank": 7,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "p463_2025_ch01_6c962eefb23d02d5",
+          "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Example.', PDF p. 10",
+          "score": 0.014705882352941176,
+          "vector_score": 0.6728620762938339,
+          "bm25_score": null,
+          "vector_rank": 8,
+          "bm25_rank": null
+        }
+      ],
+      "retrieval_seconds": 2.7321176000004925,
+      "rerank_seconds": 5.39271379999991
+    },
+    "rrf_source_coverage_at_10": true,
+    "rrf_source_coverage_at_15": true
+  }
+]

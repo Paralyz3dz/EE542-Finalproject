@@ -1,0 +1,5 @@
+{
+  "model_load_seconds": 10.552674999999908,
+  "timing": "Excluded from steady-state per-question retrieval timing",
+  "inference_warmups": 0
+}

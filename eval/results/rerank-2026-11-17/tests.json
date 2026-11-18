@@ -1,0 +1,9 @@
+{
+  "command": "python -m pytest -q --basetemp data/processed/pytest-rerank-applied-20261117",
+  "passed": 169,
+  "subtests_passed": 10,
+  "duration_seconds": 16.66,
+  "applied_rerank_enabled": true,
+  "live_retrievals": 0,
+  "database_writes": 0
+}

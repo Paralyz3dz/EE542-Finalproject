@@ -1,0 +1,109 @@
+{
+  "corpus": {
+    "version": "rag_materials_v2",
+    "chunks": 8752,
+    "sources": 21,
+    "sha256": "c85f4476b12cf999d462092c6b1e61eca6e2584e22a46d07393ca5fdd094b210",
+    "indexes": [
+      [
+        "rag_materials_v2_chunks_pkey",
+        "CREATE UNIQUE INDEX rag_materials_v2_chunks_pkey ON public.rag_materials_v2_chunks USING btree (id)"
+      ],
+      [
+        "rag_materials_v2_embedding_hnsw",
+        "CREATE INDEX rag_materials_v2_embedding_hnsw ON public.rag_materials_v2_chunks USING hnsw (embedding vector_cosine_ops) WHERE retrieval_eligible"
+      ],
+      [
+        "rag_materials_v2_year_type",
+        "CREATE INDEX rag_materials_v2_year_type ON public.rag_materials_v2_chunks USING btree (tax_year, type)"
+      ]
+    ],
+    "hnsw_ef_search": "40"
+  },
+  "questions_sha256": "b34fcf5ba35175012fa4a7757466282b1b585e9ea7893b705880fbf4d75f4221",
+  "query_vectors_sha256": "40054af7c4c6333b952135a1a4f5cb6bebb0fe12c590438d5b6b81e85d0742d5",
+  "embedding_model": {
+    "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+    "ollama_model": "qwen3-embedding:0.6b",
+    "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d"
+  },
+  "reranker": {
+    "model": "BAAI/bge-reranker-v2-m3",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "files_sha256": {
+      "config.json": "13dcd6c31d9fec9d1d8e158702072f62d7fa7d312a64b9fe057bec9a08cfe41a",
+      "model.safetensors": "d9e3e081faff1eefb84019509b2f5558fd74c1a05a2c7db22f74174fcedb5286",
+      "sentencepiece.bpe.model": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+      "special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+      "tokenizer.json": "69564b696052886ed0ac63fa393e928384e0f8caada38c1f4864a9bfbf379c15",
+      "tokenizer_config.json": "7e4c1cc848840aeccdd763458c18dd525eb0f795c992e00ebe9c28554e7db2d4"
+    },
+    "batch_size": 4,
+    "max_length": 8192,
+    "num_threads": 12,
+    "device": "cpu",
+    "dtype": "float32",
+    "truncation": false
+  },
+  "settings": {
+    "tax_year": 2025,
+    "chunk_size_chars": 1500,
+    "retrieve_top_k": 5,
+    "rrf_constant": 60,
+    "rerank_top_k": 5,
+    "claude_model_extract": "claude-haiku-4-5",
+    "claude_model_dialogue": "claude-sonnet-4-6",
+    "temperature_extract": 0,
+    "temperature_dialogue": 0.5,
+    "retrieve_candidate_k": 10,
+    "exclude_reference_chunks": false,
+    "corpus_version": "rag_materials_v2",
+    "retrieve_fusion_k": 10,
+    "rerank_enabled": false,
+    "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "rerank_batch_size": 4,
+    "rerank_max_length": 8192,
+    "rerank_num_threads": 12
+  },
+  "effective_settings": {
+    "tax_year": 2025,
+    "chunk_size_chars": 1500,
+    "retrieve_top_k": 5,
+    "rrf_constant": 60,
+    "rerank_top_k": 5,
+    "claude_model_extract": "claude-haiku-4-5",
+    "claude_model_dialogue": "claude-sonnet-4-6",
+    "temperature_extract": 0,
+    "temperature_dialogue": 0.5,
+    "retrieve_candidate_k": 10,
+    "exclude_reference_chunks": false,
+    "corpus_version": "rag_materials_v2",
+    "retrieve_fusion_k": 10,
+    "rerank_enabled": true,
+    "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "rerank_batch_size": 4,
+    "rerank_max_length": 8192,
+    "rerank_num_threads": 12
+  },
+  "code_sha256": {
+    "src/rag/retriever.py": "6a748fdfbfa62c3d009d675c653198ca2527addb67a4cf04b9b46eb540adff58",
+    "src/rag/hybrid.py": "2f58ebecbb9c549154fb03f5a1f18096db53bbdd2d88dbc2703b4c417f1b543c",
+    "src/rag/reranker.py": "f7c5624f078dd5001510c608f02f34f8482aa0813c8ae0149107176a629917b1",
+    "src/db/queries.py": "f78c29ec94f65926e179638b5e50a6b4ca972534c858bd590f769fe93c040bb2",
+    "eval/run_rerank_experiment.py": "d783ae73b5043ccbe5e9587442e11626e9e156b06dc7f8020be0974bf0899c42",
+    "config/settings.json": "9d0606beebecc3ea2da88101114633f450d102dd46a98928c70acd04e436d15a"
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "transformers": "5.22.1",
+    "huggingface-hub": "2.4.0",
+    "numpy": "2.5.4"
+  },
+  "rounds": 1,
+  "queries": 104,
+  "warmup_retrievals": 0,
+  "corpus_writes": 0,
+  "baseline": "The first five entries of the same RRF top ten; compared with the saved material baseline",
+  "reranker_input": "Original retrieval query and complete chunk.embed_text; no source labels or gold references",
+  "selection_policy": "Enable the default only if primary-source hit@5 strictly improves over the paired RRF baseline"
+}
