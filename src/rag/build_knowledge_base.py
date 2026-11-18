@@ -11,6 +11,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 
 from src.rag import chunk_pub17 as cutter
+from src.rag.corpus_hygiene import filter_chunks
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "data/processed/knowledge_base"
@@ -165,6 +166,19 @@ def process(document):
     return str(destination)
 
 
+def export_retrieval_snapshot(chunks, tables, destination):
+    destination = Path(destination)
+    destination.mkdir(parents=True, exist_ok=True)
+    eligible, excluded, stale = filter_chunks(chunks)
+    ids = {c["id"] for c in eligible}
+    eligible_tables = [t for t in tables if t["chunk_id"] in ids]
+    for filename, value in (("retrieval_chunks.json", eligible), ("retrieval_tables.json", eligible_tables),
+                            ("hygiene_report.json", {"raw_chunks": len(chunks), "eligible_chunks": len(eligible),
+                                                     "excluded_ids": excluded, "stale_ids_retained": stale})):
+        (destination / filename).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    return eligible, eligible_tables
+
+
 def main():
     documents = json.loads((OUT / "manifest.json").read_text(encoding="utf-8"))
     with ProcessPoolExecutor(max_workers=3) as pool:
@@ -177,6 +191,7 @@ def main():
         tables.extend(json.loads(path.with_name(path.name.replace("_chunks", "_tables")).read_text(encoding="utf-8")))
     (OUT / "chunks.json").write_text(json.dumps(chunks, ensure_ascii=False), encoding="utf-8")
     (OUT / "tables.json").write_text(json.dumps(tables, ensure_ascii=False), encoding="utf-8")
+    export_retrieval_snapshot(chunks, tables, OUT)
     print(f"TOTAL {len(chunks)} chunks, {len(tables)} tables", flush=True)
 
 

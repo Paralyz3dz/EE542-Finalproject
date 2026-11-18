@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 from urllib.error import URLError
 from urllib.request import Request, urlopen
@@ -10,8 +11,10 @@ import numpy as np
 from pgvector.psycopg import register_vector
 
 from src.db.connection import ROOT, get_conn
-from src.db.queries import fetch_chunks, vector_search
+from src.db.queries import fetch_chunks, vector_search, corpus_table
 from src.rag.hybrid import bm25_search, fuse_rankings
+from src.rag.corpus_hygiene import filter_chunks
+from src.rag.reranker import rerank_matches, options as reranker_options
 
 
 QUERY_INSTRUCTION = (
@@ -65,12 +68,35 @@ def embed_texts(texts: list[str], options: dict | None = None) -> np.ndarray:
     return vectors
 
 
-def retrieve(query: str) -> dict:
+def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None, corpus_version: str | None = None, rerank_enabled: bool | None = None) -> dict:
     if not query.strip():
         raise ValueError("The retrieval query must not be empty.")
     settings = json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
+    corpus = corpus_version if corpus_version is not None else settings.get("corpus_version", "original")
+    table = corpus_table(corpus)
+    corpus_options = {"corpus": corpus} if corpus != "original" else {}
+    eligibility = " AND retrieval_eligible" if corpus != "original" else ""
     tax_year = settings["tax_year"]
     top_k = settings["retrieve_top_k"]
+    if candidate_k is None:
+        candidate_k = settings.get("retrieve_candidate_k", top_k)
+    if type(candidate_k) is not int or candidate_k < top_k:
+        raise ValueError("candidate_k must be an integer at least retrieve_top_k.")
+    if exclude_reference_chunks is None:
+        exclude_reference_chunks = settings.get("exclude_reference_chunks", False)
+    if type(exclude_reference_chunks) is not bool:
+        raise ValueError("exclude_reference_chunks must be a boolean.")
+    if rerank_enabled is None:
+        rerank_enabled = settings.get("rerank_enabled", False)
+    if type(rerank_enabled) is not bool:
+        raise ValueError("rerank_enabled must be a boolean.")
+    fusion_k = settings.get("retrieve_fusion_k", top_k)
+    if type(fusion_k) is not int or not top_k <= fusion_k <= 2 * candidate_k:
+        raise ValueError("retrieve_fusion_k must cover the output and fit within the candidate union.")
+    if rerank_enabled:
+        if settings.get("rerank_top_k", top_k) != top_k:
+            raise ValueError("rerank_top_k must match retrieve_top_k.")
+        reranker_options(settings)
     rrf_constant = settings["rrf_constant"]
     model = os.getenv("EMBEDDING_MODEL", "Qwen/Qwen3-Embedding-0.6B")
 
@@ -78,8 +104,8 @@ def retrieve(query: str) -> dict:
         conn.execute("SET TRANSACTION READ ONLY")
         register_vector(conn)
         available = conn.execute(
-            "SELECT count(*) FROM public.chunks WHERE tax_year = %s "
-            "AND embedding_model = %s AND embedding IS NOT NULL",
+            f"SELECT count(*) FROM {table} WHERE tax_year = %s "
+            f"AND embedding_model = %s AND embedding IS NOT NULL{eligibility}",
             [tax_year, model],
         ).fetchone()[0]
         if not available:
@@ -87,13 +113,13 @@ def retrieve(query: str) -> dict:
                 f"No stored embeddings for tax year {tax_year} and model {model!r}. "
                 "Populate chunks.embedding and embedding_model before retrieval."
             )
-        has_hnsw = conn.execute("""
+        has_hnsw = conn.execute(f"""
             SELECT EXISTS (
                 SELECT 1 FROM pg_index i
                 JOIN pg_class idx ON idx.oid = i.indexrelid
                 JOIN pg_am am ON am.oid = idx.relam
                 JOIN pg_opclass ops ON ops.oid = i.indclass[0]
-                WHERE i.indrelid = 'public.chunks'::regclass
+                WHERE i.indrelid = '{table}'::regclass
                   AND i.indisvalid AND am.amname = 'hnsw'
                   AND ops.opcname = 'vector_cosine_ops'
                   AND pg_get_indexdef(i.indexrelid, 1, true) = 'embedding'
@@ -101,26 +127,38 @@ def retrieve(query: str) -> dict:
         """).fetchone()[0]
         if not has_hnsw:
             raise RuntimeError(
-                "No valid cosine HNSW index on public.chunks.embedding. "
+                f"No valid cosine HNSW index on {table}.embedding. "
                 "The existing src.db.load_embeddings command creates this index."
             )
 
         query_vector = embed_query(query)
-        chunks = fetch_chunks(conn, tax_year)
+        chunks = fetch_chunks(conn, tax_year, **corpus_options)
+        excluded_ids = []
+        if exclude_reference_chunks:
+            chunks, excluded_ids, stale = filter_chunks(chunks)
+            if stale:
+                logging.getLogger(__name__).warning("Retained %d chunks with stale exclusion fingerprints", len(stale))
         conn.execute("SET LOCAL enable_seqscan = off")
-        rows = vector_search(conn, query_vector, model, tax_year, k=top_k)
+        options = {"excluded_ids": excluded_ids} if excluded_ids else {}
+        rows = vector_search(conn, query_vector, model, tax_year, k=candidate_k, **options, **corpus_options)
 
     vector_matches = [
         {"chunk_id": row[0], "citation": row[1], "text": row[2], "score": row[3]}
         for row in rows
     ]
-    keyword_matches = bm25_search(query, chunks, k=top_k)
+    keyword_matches = bm25_search(query, chunks, k=candidate_k)
+    fused = fuse_rankings(vector_matches, keyword_matches, k=fusion_k, rrf_constant=rrf_constant)
+    matches = rerank_matches(query, fused, {c["id"]: c["embed_text"] for c in chunks}, k=top_k, settings=settings) if rerank_enabled else fused[:top_k]
+    provenance = {c["id"]: c.get("provenance", []) for c in chunks}
+    for match in matches:
+        aliases = [p["citation"] for p in provenance.get(match["chunk_id"], []) if p["citation"] != match["citation"]]
+        if aliases:
+            match["additional_citations"] = aliases
     return {
         "tax_year": tax_year,
         "embedding_model": model,
-        "retrieval_method": "hnsw_bm25_rrf",
-        "matches": fuse_rankings(vector_matches, keyword_matches, k=top_k,
-                                 rrf_constant=rrf_constant),
+        "retrieval_method": "hnsw_bm25_rrf_rerank" if rerank_enabled else "hnsw_bm25_rrf",
+        "matches": matches,
     }
 
 

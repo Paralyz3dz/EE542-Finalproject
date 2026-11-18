@@ -1,0 +1,55 @@
+--- baseline/src/rag/reranker.py
++++ measured/src/rag/reranker.py
+@@ -86,0 +87,40 @@
++def rrf_weight(settings):
++    value = settings.get("rerank_rrf_weight", 0.0)
++    if type(value) not in (int, float) or not np.isfinite(value) or not 0 <= value <= 1:
++        raise ValueError("rerank_rrf_weight must be a finite number between zero and one")
++    return float(value)
++
++
++def minmax(values):
++    values = np.asarray(values, dtype=np.float64)
++    spread = float(np.max(values) - np.min(values))
++    return (values - np.min(values)) / spread if spread else np.zeros_like(values)
++
++
++def rank_scored_matches(matches, scores, *, k=5, weight=0.0):
++    weight = rrf_weight({"rerank_rrf_weight": weight})
++    values = np.asarray(scores, dtype=np.float32)
++    if values.shape != (len(matches),) or not np.isfinite(values).all():
++        raise RuntimeError("Reranker returned invalid relevance scores")
++    if not matches:
++        return []
++    rrf = np.asarray([m["score"] for m in matches], dtype=np.float64)
++    if not np.isfinite(rrf).all():
++        raise ValueError("RRF returned invalid relevance scores")
++    ranked = [{**match, "rrf_score": match["score"], "rrf_rank": i,
++               "score": float(score), "rerank_score": float(score)}
++              for i, (match, score) in enumerate(zip(matches, values), 1)]
++    pure = sorted(ranked, key=lambda match: (-match["rerank_score"], match["rrf_rank"], match["chunk_id"]))
++    for i, match in enumerate(pure, 1):
++        match["rerank_rank"] = i
++    if weight == 0:
++        return pure[:k]
++    rrf_normalized, rerank_normalized = minmax(rrf), minmax(values)
++    for match, a, b in zip(ranked, rrf_normalized, rerank_normalized):
++        match.update(normalized_rrf_score=float(a), normalized_rerank_score=float(b),
++                     blend_score=float(weight * a + (1 - weight) * b))
++        match["score"] = match["blend_score"]
++    ranked.sort(key=lambda match: (-match["blend_score"], match["rrf_rank"], match["chunk_id"]))
++    return [{**match, "blend_rank": i} for i, match in enumerate(ranked[:k], 1)]
++
++
+@@ -94,0 +135 @@
++    weight = rrf_weight(settings or {})
+@@ -102,8 +143 @@
+-    values = np.asarray(scores, dtype=np.float32)
+-    if values.shape != (len(matches),) or not np.isfinite(values).all():
+-        raise RuntimeError("Reranker returned invalid relevance scores")
+-    ranked = [{**match, "rrf_score": match["score"], "rrf_rank": i,
+-               "score": float(score), "rerank_score": float(score)}
+-              for i, (match, score) in enumerate(zip(matches, values), 1)]
+-    ranked.sort(key=lambda match: (-match["rerank_score"], match["rrf_rank"], match["chunk_id"]))
+-    return [{**match, "rerank_rank": i} for i, match in enumerate(ranked[:k], 1)]
++    return rank_scored_matches(matches, scores, k=k, weight=weight)

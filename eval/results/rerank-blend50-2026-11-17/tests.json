@@ -1,0 +1,18 @@
+{
+  "command": "python -m pytest -q --basetemp data/processed/pytest-blend50-before-20261117",
+  "passed": 192,
+  "subtests_passed": 10,
+  "duration_seconds": 15.81,
+  "rrf_weight": 0.5,
+  "live_retrievals": 0,
+  "database_writes": 0,
+  "after_restoration": {
+    "command": "python -m pytest -q --basetemp data/processed/pytest-blend50-restored-20261117",
+    "passed": 192,
+    "subtests_passed": 10,
+    "duration_seconds": 16.69,
+    "applied_rrf_weight": 0.0,
+    "live_retrievals": 0,
+    "database_writes": 0
+  }
+}

@@ -381,6 +381,7 @@ def check_references(source: str, citations: list[dict], retrieval_ok: bool) -> 
         None   retrieval was down, so it could not be checked.
     """
     found = {_doc_key(c["citation"]) for c in citations if c.get("citation")}
+    found.update(_doc_key(alias) for c in citations for alias in c.get("additional_citations", []))
     refs = []
     for part in source.split(";"):
         ref = part.strip()
@@ -399,7 +400,7 @@ def _section_label(definition: dict, fact: dict) -> str | None:
     return None
 
 
-def build_guide(state: State, question: dict, search=None, top_n: int = 3) -> dict:
+def build_guide(state: State, question: dict, search=None, top_n: int = 5) -> dict:
     """Build what the assistant sees for one question.
 
     Reads: the question dict, its fact definition (type, options), state.flags,
@@ -408,7 +409,7 @@ def build_guide(state: State, question: dict, search=None, top_n: int = 3) -> di
     still returned without passages, so the interview never stops because of RAG.
 
     Two kinds of "source" are kept apart:
-        citations   passages retrieval really returned (top_n, text cut to 600 chars)
+        citations   passages retrieval really returned (top_n, complete chunk text)
         references  the playbook's pointer to where the rule lives, marked by
                     check_references() as found / not found / unchecked
     Both are stored in state.evidence[question id] for summarize().
@@ -424,7 +425,10 @@ def build_guide(state: State, question: dict, search=None, top_n: int = 3) -> di
     try:
         result = search(question["retrieval_query"])
         for m in result.get("matches", [])[:top_n]:
-            citations.append({"citation": m.get("citation"), "text": (m.get("text") or "")[:600]})
+            passage = {"citation": m.get("citation"), "text": (m.get("text") or "")}
+            if m.get("additional_citations"):
+                passage["additional_citations"] = m["additional_citations"]
+            citations.append(passage)
     except Exception as exc:
         retrieval_error = f"{type(exc).__name__}: {exc}"
         logger.warning("Retrieval failed for %r: %s", question["retrieval_query"], retrieval_error)

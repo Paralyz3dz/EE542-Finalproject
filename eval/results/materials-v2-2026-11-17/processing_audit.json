@@ -1,0 +1,97 @@
+{
+  "chunks": 8752,
+  "eligible_chunks": 8390,
+  "numeric_or_oversized_locators_excluded": 362,
+  "sources": 21,
+  "tables": 554,
+  "all_chunks_within_400_words": true,
+  "word_boundary_splits": 0,
+  "known_index_prompts": 0,
+  "useful_items_catalog_prompts": 0,
+  "form_pages_included": 0,
+  "protected_body_and_worksheet_checks": [
+    {
+      "source": "IRS Pub 590-B (2025)",
+      "pdf_page": 70,
+      "phrase": "total amounts of contributions deducted in prior years",
+      "chunk_ids": [
+        "p590b_2025_ch03_d5a7aa39181f5df6_14c52430fb"
+      ]
+    },
+    {
+      "source": "IRS Pub 590-A (2025)",
+      "pdf_page": 59,
+      "phrase": "Enter your adjusted gross income",
+      "chunk_ids": [
+        "p590a_2025_ch03_1a62d167d9dcb433_73d44037dc"
+      ]
+    },
+    {
+      "source": "IRS Pub 925 (2025)",
+      "pdf_page": 27,
+      "phrase": "TAS has offices in every state",
+      "chunk_ids": [
+        "p925_2025_ch00_1dcddc85a147922c"
+      ]
+    },
+    {
+      "source": "IRS Pub 525 (2025)",
+      "pdf_page": 39,
+      "phrase": "TAS has offices in every state",
+      "chunk_ids": [
+        "p525_2025_ch00_8976bc77b80344e6"
+      ]
+    },
+    {
+      "source": "IRS Pub 544 (2025)",
+      "pdf_page": 61,
+      "phrase": "Taxpayer Bill of Rights",
+      "chunk_ids": [
+        "p334_2025_ch12_f6e405549d3b19f6"
+      ]
+    },
+    {
+      "source": "IRS Pub 334 (2025)",
+      "pdf_page": 32,
+      "phrase": "personal part is generally not deductible",
+      "chunk_ids": [
+        "p334_2025_ch08_39de4a23a678bde1"
+      ]
+    },
+    {
+      "source": "IRS Pub 505 (2025)",
+      "pdf_page": 19,
+      "phrase": "Who must pay estimated tax",
+      "chunk_ids": [
+        "p505_2025_ch02_4ed3703ed6e7586a"
+      ]
+    }
+  ],
+  "exact_duplicate_groups": 160,
+  "short_sections": 7542,
+  "short_sections_under_40": 2783,
+  "short_sections_with_bold_runin": 4907,
+  "shortest_non_table_rules": [
+    {
+      "id": "i1040gi_2025_ch00_92883b3002991aef",
+      "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 23 > Archer MSA Deduction', PDF p. 99",
+      "text": "See Form 8853."
+    },
+    {
+      "id": "i1040gi_2025_ch00_8b7f321e7d6fcdd6",
+      "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 23 > Lines 24a Through 24z > Line 24z', PDF p. 100",
+      "text": "Leave line 24z blank."
+    }
+  ],
+  "table_extraction_methods": {
+    "pdf_grid": 169,
+    "layout": 75,
+    "numeric_geometry": 308,
+    "html": 2
+  },
+  "files_sha256": {
+    "chunks.json": "fe45a67ed8cbad274a6a64ff7b6db49ad0fa9e69cc8724b4f18cde46234d0e4e",
+    "tables.json": "6e7ba760041291f676289d7d7b3ac79c8a207f75b5ae0cd641edb4a5f0dd65c8",
+    "quality.json": "bbd6f809a5f8bd5a779dc0b0599c70213ef0db4da9cb6a36ff156c9b9a424f1c"
+  }
+}

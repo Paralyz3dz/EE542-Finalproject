@@ -1,0 +1,18 @@
+{
+  "command": "python -m pytest -q --basetemp data/processed/pytest-pool15-before-20261117",
+  "passed": 178,
+  "subtests_passed": 10,
+  "duration_seconds": 17.24,
+  "measured_fusion_k": 15,
+  "live_retrievals": 0,
+  "database_writes": 0,
+  "after_restoration": {
+    "command": "python -m pytest -q --basetemp data/processed/pytest-pool15-restored-20261117",
+    "passed": 178,
+    "subtests_passed": 10,
+    "duration_seconds": 16.19,
+    "applied_fusion_k": 10,
+    "live_retrievals": 0,
+    "database_writes": 0
+  }
+}

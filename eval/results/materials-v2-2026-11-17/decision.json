@@ -1,0 +1,28 @@
+{
+  "default_corpus": "rag_materials_v2",
+  "primary_nonregression_passed": true,
+  "hit_at_5_improved": true,
+  "mrr_at_5_improved": true,
+  "source_hit_at_3_target_80_percent_passed": false,
+  "gained_hit_at_3": [
+    "q_has_retirement_income",
+    "q_made_donations",
+    "q_had_disaster_loss",
+    "q_made_estimated_payments",
+    "q_rental_in_ca",
+    "q_social_security_benefits",
+    "q_has_retirement_distribution",
+    "q_received_income_without_form",
+    "q_paid_in_crypto"
+  ],
+  "lost_hit_at_3": [
+    "q_lived_apart_last_6_months",
+    "q_has_unemployment",
+    "q_had_credit_disallowed",
+    "q_retirement_distributions",
+    "q_considering_llc"
+  ],
+  "evaluation_rounds": 1,
+  "scored_queries": 104,
+  "additional_live_smoke_queries": 0
+}

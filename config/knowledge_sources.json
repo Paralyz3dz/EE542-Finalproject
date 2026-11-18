@@ -1,0 +1,107 @@
+[
+  {
+    "name": "IRS Pub 17",
+    "path": "data/raw/irs/p17--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p17--2025.pdf"
+  },
+  {
+    "name": "IRS Schedule C Instructions",
+    "path": "data/raw/irs/i1040sc--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/i1040sc--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 527",
+    "path": "data/raw/irs/p527--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p527--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 334",
+    "path": "data/raw/irs/p334--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p334--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 503",
+    "path": "data/raw/irs/p503--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p503--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 463",
+    "path": "data/raw/irs/p463--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p463--2025.pdf"
+  },
+  {
+    "name": "IRS Form 1040 Instructions",
+    "path": "data/raw/irs/i1040gi--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/i1040gi--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 575",
+    "path": "data/raw/irs/p575--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p575--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 970",
+    "path": "data/raw/irs/p970--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p970--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 915",
+    "path": "data/raw/irs/p915--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p915--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 525",
+    "path": "data/raw/irs/p525--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p525--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 505",
+    "path": "data/raw/irs/p505--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p505--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 925",
+    "path": "data/raw/irs/p925--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p925--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 544",
+    "path": "data/raw/irs/p544--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p544--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 590-A",
+    "path": "data/raw/irs/p590a--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf"
+  },
+  {
+    "name": "IRS Pub 590-B",
+    "path": "data/raw/irs/p590b--2025.pdf",
+    "url": "https://www.irs.gov/pub/irs-prior/p590b--2025.pdf"
+  },
+  {
+    "name": "FTB Schedule S Instructions",
+    "path": "data/raw/ftb/2025-540-s-instructions.html",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-540-s-instructions.html"
+  },
+  {
+    "name": "FTB Pub 1031",
+    "path": "data/raw/ftb/2025-1031-publication.pdf",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-1031-publication.pdf"
+  },
+  {
+    "name": "FTB Schedule CA (540) Instructions",
+    "path": "data/raw/ftb/2025-540-ca-instructions.html",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html"
+  },
+  {
+    "name": "FTB 3514 Instructions",
+    "path": "data/raw/ftb/2025-3514-booklet.pdf",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-3514-booklet.pdf"
+  },
+  {
+    "name": "FTB 540 Booklet",
+    "path": "data/raw/ftb/2025-540-booklet.pdf",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-540-booklet.pdf"
+  }
+]

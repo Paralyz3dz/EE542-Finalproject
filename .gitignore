@@ -8,3 +8,4 @@ logs/*
 !logs/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+.pytest_cache/

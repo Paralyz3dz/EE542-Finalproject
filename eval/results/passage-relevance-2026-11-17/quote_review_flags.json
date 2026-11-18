@@ -1,0 +1,2709 @@
+[
+  {
+    "id": "q_lived_in_multiple_states",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Details the eligibility for California residents to claim a credit for taxes paid to other states, directly addressing the retrieval need.",
+        "evidence_quote": "California resident individuals...may claim the other state tax credit.",
+        "rank": 2,
+        "chunk_id": "ftb_540_s_instructions_2025_ch00_977c7aa2d99a9e3a",
+        "citation": "FTB Schedule S Instructions (2025), '2025 Instructions for Schedule S Other State Tax Credit > C. California Residents', web section",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Clarifies the purpose of Schedule S and the conditions under which California residents can claim a credit for taxes paid to other states, relevant to the question.",
+        "evidence_quote": "use Schedule S to claim a credit against California tax for net income taxes imposed by and paid to another state.",
+        "rank": 4,
+        "chunk_id": "ftb_540_s_instructions_2025_ch00_aaedba67649edf06",
+        "citation": "FTB Schedule S Instructions (2025), '2025 Instructions for Schedule S Other State Tax Credit > A. Purpose', web section",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_age_65_or_older",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Details conditions under which a higher standard deduction applies if a spouse is 65 or older, directly relevant.",
+        "evidence_quote": "You can take the higher standard deduction if your spouse is age 65 or older or blind.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch10_3b054054ded993fd",
+        "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Standard Deduction Amount > Spouse 65 or Older or Blind', PDF p. 95, printed 93",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Discusses standard deduction amounts but lacks specific rules for seniors or the enhanced deduction.",
+        "evidence_quote": "The standard deduction amount depends on your filing status, whether you are 65 or older or blind.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch10_f85c3cd763987c56",
+        "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Standard Deduction Amount', PDF p. 94, printed 92",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_can_be_claimed_as_dependent",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Provides specific rules regarding the standard deduction for individuals who can be claimed as dependents, directly addressing the retrieval need.",
+        "evidence_quote": "The standard deduction for an individual who can be claimed as a dependent... is generally limited to the greater of: • $1,350, or • The individual's earned income for the year plus $450.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch10_86ee7fd9e7b6009c",
+        "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Standard Deduction for Dependents', PDF p. 95, printed 93",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_is_us_citizen",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "Mentions filing jointly for nonresident aliens but does not provide a clear rule or definition relevant to the citizenship question.",
+        "evidence_quote": "Generally, a married couple can’t file a joint return if either one is a nonresident alien.",
+        "rank": 2,
+        "chunk_id": "p17_2025_ch02_fb6aa5e5c31bb724",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Married Filing Jointly > Filing a Joint Return > Nonresident alien or dual-status alien.', PDF p. 25, printed 23",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses nonresident and dual-status aliens but lacks specific filing rules or definitions relevant to the question.",
+        "evidence_quote": "These rules also apply if you were a nonresident alien or a dual-status alien.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_da76ab1833aa0a08",
+        "citation": "IRS Form 1040 Instructions (2025), 'Filing Requirements > Do You Have To File? > Nonresident aliens and dual-status aliens.', PDF p. 8",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Discusses nonresident alien spouses but lacks direct relevance to the question about U.S. citizenship status.",
+        "evidence_quote": "You are considered unmarried for head of household purposes if your spouse was a nonresident alien.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch02_7159936f3c6dfc78",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Married Filing Separately > Up a Home > Nonresident alien spouse.', PDF p. 26, printed 24",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_is_full_time_student",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Defines full-time student status and specifies conditions relevant for education credits and dependents.",
+        "evidence_quote": "A full-time student is a child who during any part of 5 calendar months of 2025 was enrolled as a full-time student at a school.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_e643022c3bb555e8",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Lines 27a, 27b, and 27c— Earned Income Credit (EIC) > Definitions and Special Rules > Full-time student.', PDF p. 44",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Defines full-time student status for 2025, relevant for education credits, including eligibility criteria.",
+        "evidence_quote": "You are a full-time student for 2025 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution.",
+        "rank": 2,
+        "chunk_id": "p970_2025_ch02_96078654b218cc2a",
+        "citation": "IRS Pub 970 (2025), 'Chapter 2 American Opportunity Credit > Figuring the Credit > Refundable Part of Credit > Full-time student.', PDF p. 21",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Provides a clear definition of full-time student status relevant for education credits, including specific conditions.",
+        "evidence_quote": "You are a full-time student if, during some part of each of 5 calendar months... you are either: A full-time student at a school... or a student taking a full-time, on-farm training course.",
+        "rank": 3,
+        "chunk_id": "p590a_2025_ch03_077ff27d8e74ff44",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 3 Retirement Savings Contributions Credit (Saver's Credit) > Introduction > Full-time student.', PDF pp. 46-47",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Similar to P4, it defines full-time student status and includes relevant conditions for dependents.",
+        "evidence_quote": "A full-time student is a child who during any part of 5 calendar months of 2025 was enrolled as a full-time student at a school.",
+        "rank": 4,
+        "chunk_id": "i1040gi_2025_ch00_c1b9591d1e82fd0e",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Definitions and Special Rules > Full-time student.', PDF p. 21",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_blind_or_disabled",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Explains the requirements for claiming the higher standard deduction for those who are not totally blind, relevant to the question.",
+        "evidence_quote": "If you aren't totally blind, you must get a certified statement from an eye doctor.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch10_aa656176a46fd45d",
+        "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Standard Deduction Amount > Higher Standard Deduction for Blindness > Not totally blind.', PDF p. 95, printed 93",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Provides a detailed chart showing standard deduction amounts for individuals who are blind, directly relevant to the question.",
+        "evidence_quote": "THEN your standard deduction is Single | 1 2 | $17,750 19,750.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch10_4340680d0c5d1cb7_b5c1bb7826",
+        "citation": "IRS Pub 17 (2025), 'Chapter 10 Standard Deduction > Who Should Itemize > Table 10-2. Standard Deduction Chart for People Born Before January 2, 1961, or Who Are Blind*', PDF p. 97, printed 95, table rows 1-8",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_digital_assets",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage provides clear instructions on when to check 'Yes' for digital asset transactions, directly relevant to the question about ownership and transactions.",
+        "evidence_quote": "check the “Yes” box next to the question on digital assets on page 1 of Form 1040.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_81d5c3644549a859",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Digital Assets', PDF pp. 15-16",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage defines digital assets and outlines various transactions that require reporting, directly relevant to the interview question.",
+        "evidence_quote": "check “Yes” next to the question on digital assets on page 1 of Form 1040.",
+        "rank": 2,
+        "chunk_id": "p544_2025_ch02_6a5b3ae79b35532f",
+        "citation": "IRS Pub 544 (2025), 'Chapter 2 Ordinary or Capital Gain or Loss > Other Dispositions > Digital Assets', PDF p. 39",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_marital_status",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage defines when a person is considered unmarried on the last day of the year, which is crucial for determining filing status.",
+        "evidence_quote": "You are considered unmarried for the whole year if, on the last day of your tax year, you are either: Unmarried, or Legally separated.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch02_0d95fc358fb2ed4a",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Marital Status > Unmarried persons.', PDF p. 23, printed 21",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains how being divorced by the last day of the year affects filing status, directly relevant to the question about marital status.",
+        "evidence_quote": "If you are divorced under a final decree by the last day of the year, you are considered unmarried for the whole year.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch02_d3a8e141ad931870",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Married Filing Jointly > Divorced persons.', PDF p. 24, printed 22",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_marital_status_changed",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Covers married filing separately and head of household but does not directly address divorce or separation rules.",
+        "evidence_quote": "you may be able to choose head of household filing status if you are considered unmarried because you live apart from your spouse.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch02_3ff554b495614b6b",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Married Filing Separately', PDF p. 25, printed 23",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Explicitly states the rule regarding filing status for divorced persons, directly relevant to the question.",
+        "evidence_quote": "If you are divorced under a final decree by the last day of the year, you are considered unmarried for the whole year.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch02_d3a8e141ad931870",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Married Filing Jointly > Divorced persons.', PDF p. 24, printed 22",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_lived_apart_last_6_months",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains that married individuals who lived apart for the last 6 months can be considered unmarried for head of household status.",
+        "evidence_quote": "You are married but lived apart from your spouse for the last 6 months of 2025.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_fff93398cc326458",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Head of Household', PDF p. 14",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage outlines the conditions under which a married person living apart can file as head of household, directly addressing the retrieval need.",
+        "evidence_quote": "You may be able to file as head of household if your child lived with you and you lived apart from your spouse/RDP during the entire last six months of 2025.",
+        "rank": 4,
+        "chunk_id": "ftb_540_booklet_2025_ch00_1f8c0c2468caaecb",
+        "citation": "FTB 540 Booklet (2025), 'Do I Have to File? > Filing Status > Married/RDP Filing Separately', PDF p. 5",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage mentions the possibility of filing as head of household but lacks detailed rules or conditions necessary for qualification.",
+        "evidence_quote": "You may be able to file as head of household if you had a child living with you and you lived apart from your spouse.",
+        "rank": 5,
+        "chunk_id": "i1040gi_2025_ch00_dd1fd6661631c0ea",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Married Filing Separately', PDF p. 14",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_dependents",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "Defines who qualifies as a dependent, including qualifying relatives and conditions for support.",
+        "evidence_quote": "Any other person (other than your spouse) who lived with you all year as a member of your household.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_6c95374017502986",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Your Dependent? > A qualifying relative is your', PDF p. 19",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Discusses qualifying persons for filing status but lacks direct definitions or rules for dependents.",
+        "evidence_quote": "a qualifying person, whether or not the child meets the Citizen or Resident Test.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch02_91960c87dff97a1e_790858e321",
+        "citation": "IRS Pub 17 (2025), 'Chapter 2 Filing Status > Head of Household > Qualifying Person > Who Is a Qualifying Person Qualifying You To File as Head of Household?1 > Caution. > Who Is a Qualifying Person Qualifying You To File as Head of Household?1', PDF p. 27, printed 25, table rows 1-10",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_wages",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "This passage mentions the requirement to file Form W-2 but lacks specific details on employee circumstances or reporting.",
+        "evidence_quote": "You must file Form W-2 to report payments to your employees, such as wages, tips, and other compensation.",
+        "rank": 3,
+        "chunk_id": "p334_2025_ch01_9909f710f05baab7",
+        "citation": "IRS Pub 334 (2025), 'Chapter 1 Filing and Paying Business Taxes > Information Returns > Form W-2.', PDF p. 12",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage discusses how taxable fringe benefits are reported on Form W-2, relevant to employee compensation.",
+        "evidence_quote": "Your employer must include all taxable fringe benefits in box 1 of Form W-2 as wages, tips, and other compensation.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch05_32e2a2f2aa9ba1d7",
+        "citation": "IRS Pub 17 (2025), 'Chapter 5 Wages, Salaries, and Other Earnings > Employee Compensation > Fringe Benefits > Form W-2.', PDF p. 50, printed 48",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage defines what constitutes compensation as reported on Form W-2, which is relevant to the question about receiving a W-2.",
+        "evidence_quote": "The IRS treats as compensation any amount properly shown in box 1 (Wages, tips, other compensation) of Form W-2.",
+        "rank": 5,
+        "chunk_id": "p590a_2025_ch01_b909c4944d9abf22",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > Who Can Open a Traditional IRA? > What Is Compensation? > Wages, salaries, etc.', PDF p. 6",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_w2_job_count",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage provides a clear rule about excess social security tax withholding for individuals with multiple employers and specific wage thresholds.",
+        "evidence_quote": "too much social security...may have been withheld...if you had more than one employer for 2025 and total wages of more than $176,100.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_99c2416a2d82f5a1",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 11 > Excess Social Security and Tier 1 RRTA Tax Withheld', PDF p. 117",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_received_tips",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Explains how to allocate deductions for qualified tips and the conditions affecting the deduction on Schedule 1-A.",
+        "evidence_quote": "The net income limitation will be the net profit shown on the Schedule C for the business.",
+        "rank": 4,
+        "chunk_id": "i1040gi_2025_ch00_17d76a0f1b5827ef",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before > Net income limitation.', PDF p. 105",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_qualified_overtime",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Explicitly states the deduction eligibility for qualified overtime compensation on Schedule 1-A.",
+        "evidence_quote": "if you earned qualified overtime pay, you may be eligible to deduct up to $12,500.",
+        "rank": 1,
+        "chunk_id": "p334_2025_ch00_85d5838eac4ccf88",
+        "citation": "IRS Pub 334 (2025), 'Tax Guide for Small Business > What’s New for 2025 > No tax on qualified overtime.', PDF p. 4",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Clearly outlines the deduction eligibility for qualified overtime compensation on Schedule 1-A.",
+        "evidence_quote": "if you earned qualified overtime pay you may be eligible to deduct up to $12,500.",
+        "rank": 2,
+        "chunk_id": "i1040sc_2025_ch00_07ca460700dafb34",
+        "citation": "IRS Schedule C Instructions (2025), 'Instructions for Schedule C (Form 1040) > What’s New > No tax on qualified overtime.', PDF p. 1",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "Mentions deduction calculations but lacks a clear rule or definition for qualified overtime compensation.",
+        "evidence_quote": "You can include $5,000 of your overtime pay when figuring your deduction for qualified overtime compensation.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_5a64ed0443e9cee9",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part III No Tax on Overtime > (b) Qualified overtime reported on Form 1099-NEC, box 1, or Form 1099-MISC, box 3', PDF p. 108",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_self_employment",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Similar to P4, it defines gig economy and outlines income reporting obligations.",
+        "evidence_quote": "if you have income from sharing economy transactions, or you did gig work, you must include all income received.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch08_8d0b87282f6d1aa3",
+        "citation": "IRS Pub 17 (2025), 'Chapter 8 Other Income > Other Income > Sharing/gig economy.', PDF p. 79, printed 77",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Defines gig economy and specifies income reporting requirements.",
+        "evidence_quote": "if you did gig work, you must include all income received whether you received a Form 1099-K, Payment Card and Third Party Network Transactions, or not.",
+        "rank": 2,
+        "chunk_id": "p525_2025_ch00_e64eb72a41bb5b3c",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Sharing/Gig Economy', PDF p. 28",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Clarifies that self-employed individuals must report income on Schedule C.",
+        "evidence_quote": "your gross income includes the amount on line 7 of Schedule C (Form 1040), Profit or Loss From Business.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch01_9df77d3a5c978156",
+        "citation": "IRS Pub 17 (2025), 'Chapter 1 Filing Information > Do I Have To File a Return? > Individuals—In General > Self-employed individuals.', PDF p. 9, printed 7",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Discusses gig economy but lacks specific filing requirements or rules.",
+        "evidence_quote": "the gig (or on-demand, sharing, or access) economy refers to an activity where people earn income providing on-demand work.",
+        "rank": 5,
+        "chunk_id": "i1040sc_2025_ch00_1c3e13afcd11ed0a",
+        "citation": "IRS Schedule C Instructions (2025), 'Instructions for Schedule C (Form 1040) > Reminders > Gig economy tax center.', PDF p. 1",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_retirement_income",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage provides a clear rule about fully taxable pensions and annuities, relevant to the interview question.",
+        "evidence_quote": "Your payments are fully taxable if (a) you didn’t contribute to the cost... of your pension or annuity.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_54d3725b376f79eb",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Income > Lines 5a, 5b, and 5c > Lines 5a and 5b Pensions and Annuities > Fully Taxable Pensions and Annuities', PDF p. 28",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "This passage mentions railroad retirement annuities as taxable but lacks specific rules for Social Security or general pensions.",
+        "evidence_quote": "The following types of payments are treated as pension or annuity income and are taxable under the rules explained in Pub. 575.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch08_2f0fee591833e442",
+        "citation": "IRS Pub 17 (2025), 'Chapter 8 Other Income > Other Income > Railroad retirement annuities.', PDF p. 78, printed 76",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_owns_rental",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Discusses deductible expenses related to Schedule E but does not directly address the reporting of rental income itself.",
+        "evidence_quote": "you can deduct, as a rental expense, legal and other professional expenses such as tax return preparation fees.",
+        "rank": 5,
+        "chunk_id": "p527_2025_ch01_bb0c8fd00c7e08b6",
+        "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Expenses > Types of Expenses > Legal and other professional fees.', PDF p. 5",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_unemployment",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Mentions taxation of payments similar to unemployment compensation but does not address general unemployment compensation rules.",
+        "evidence_quote": "Payments similar to a state’s unemployment compensation may be made by the state to its employees.",
+        "rank": 3,
+        "chunk_id": "p525_2025_ch00_fe58fde5dfd39e28",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Unemployment Benefits > State employees.', PDF p. 29",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_had_state_refund",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Details the allocation of taxable recoveries between state income tax refunds and other income, relevant for determining taxability.",
+        "evidence_quote": "you must allocate the taxable recoveries between the state income tax refund you report on Schedule 1.",
+        "rank": 1,
+        "chunk_id": "p525_2025_ch00_e1efd0fcd2a5ac07",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Itemized Deduction Recoveries > Allocating the included part.', PDF p. 25",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Clarifies the conditions under which a state tax refund must be included in income, directly addressing taxability.",
+        "evidence_quote": "you must include in your income the full amount of a refund of state or local income tax or general sales tax if the excess of the tax you deducted over the tax you didn’t deduct is more than the refund.",
+        "rank": 2,
+        "chunk_id": "p525_2025_ch00_8b0f421ee4974638",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Itemized Deduction Recoveries > State tax refund.', PDF p. 25",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Illustrates how to calculate the amount of state tax refund to report based on total recoveries and deductions.",
+        "evidence_quote": "The amount you report as a state tax refund on Schedule 1 (Form 1040), line 1, is $300.",
+        "rank": 3,
+        "chunk_id": "p525_2025_ch00_f21f45df421b064b",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Itemized Deduction Recoveries > Example 31.', PDF p. 25",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Provides a specific example of how to report a state tax refund based on itemized deductions from the previous year.",
+        "evidence_quote": "you must include your total recoveries in your income for 2025. Report the state and local income tax refund of $400 on Schedule 1 (Form 1040), line 1.",
+        "rank": 4,
+        "chunk_id": "p525_2025_ch00_aea252d55e85e0ee",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Recoveries > Itemized Deduction Recoveries > Example 30.', PDF p. 25",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_sold_investments",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage provides a clear explanation of how to determine and report capital gains or losses from stock sales, relevant to the retrieval need.",
+        "evidence_quote": "Your income or loss is the difference between the amount you paid for the stock... and report it as explained in the Instructions for Schedule D (Form 1040).",
+        "rank": 3,
+        "chunk_id": "p525_2025_ch00_87a036c1a1085228",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Employee Compensation > Stock Options > Statutory Stock Options > Sale of the stock.', PDF p. 12",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_received_alimony",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains that alimony received under agreements executed before 2019 is taxable unless modified after 2018 to exclude it from income.",
+        "evidence_quote": "Don’t include alimony payments you receive under a divorce or separation agreement... executed before 2019 but later modified if the modification expressly states the repeal of the deduction.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch08_c5a5fab2c9092570",
+        "citation": "IRS Pub 17 (2025), 'Chapter 8 Other Income > Other Income', PDF p. 76, printed 74",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage reiterates that alimony received under agreements executed before 2019 is taxable unless modified after 2018 to exclude it from income.",
+        "evidence_quote": "Don’t include alimony payments you receive under a divorce or separation instrument... executed before 2019 but modified after 2018.",
+        "rank": 2,
+        "chunk_id": "p525_2025_ch00_466475b0cbcb4e94",
+        "citation": "IRS Pub 525 (2025), 'Taxable and Nontaxable Income > Miscellaneous Income > Other Income > Caution:', PDF p. 31",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage provides a clear rule that alimony received from agreements before 2019 is taxable unless modified after that date.",
+        "evidence_quote": "Enter amounts received as alimony... pursuant to a divorce or separation agreement entered into on or before December 31, 2018.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_c345d93aee4cdc0e",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Additional Income > Lines 2a and 2b > Alimony Received > Line 2a', PDF p. 89",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage clarifies that alimony from agreements executed before 2019 is taxable unless modified after 2018 to state otherwise.",
+        "evidence_quote": "Amounts paid as alimony... executed before 2019 and modified after 2018... won't be includible in the income of the recipient.",
+        "rank": 4,
+        "chunk_id": "p590a_2025_ch00_f80e30966ca616c2",
+        "citation": "IRS Pub 590-A (2025), 'Contributions to Individual Retirement Arrangements (IRAs) > Reminders > Divorce or separation instruments after 2018.', PDF p. 3",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage discusses deductions for alimony paid but does not directly address the taxability of alimony received from agreements before 2019.",
+        "evidence_quote": "If you made payments to or for your spouse... under a divorce or separation agreement entered into on or before December 31, 2018.",
+        "rank": 5,
+        "chunk_id": "i1040gi_2025_ch00_eebf76d4e0634cd7",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Lines 19a, 19b, and 19c > Alimony Paid > Line 19a', PDF p. 95",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_gambling_winnings",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage discusses backup withholding on gambling winnings, indicating that such winnings are taxable under certain conditions.",
+        "evidence_quote": "If you have any kind of gambling winnings...the payer may have to withhold income tax.",
+        "rank": 4,
+        "chunk_id": "p505_2025_ch01_2b65af5f410ebb2f",
+        "citation": "IRS Pub 505 (2025), 'Chapter 1 Tax Withholding for 2025 > Gambling Winnings > Backup withholding on gambling winnings.', PDF p. 10",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_paid_mortgage_interest",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Details the limits on mortgage interest deductions and conditions under which they apply, relevant to itemizing deductions.",
+        "evidence_quote": "Federal law limited the mortgage interest deduction acquisition debt maximum from $1,000,000... to $750,000.",
+        "rank": 1,
+        "chunk_id": "ftb_540_ca_instructions_2025_ch00_b9f0a9743a0c2de5",
+        "citation": "FTB Schedule CA (540) Instructions (2025), '2025 Instructions for Schedule CA (540) California Adjustments – Residents Revised: 04/2026 > Specific Line Instructions > Part II Adjustments to Federal Itemized Deductions > Line 8 – Home Mortgage Interest', web section",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage provides a clear directive on treating mortgage interest as a personal expense and its deductibility when itemizing.",
+        "evidence_quote": "Treat all the mortgage interest you paid for mortgages secured by your home(s) as a personal expense and figure the amount that would be deductible.",
+        "rank": 2,
+        "chunk_id": "p527_2025_ch05_2f3f0dcf933c40c9",
+        "citation": "IRS Pub 527 (2025), 'Chapter 5 Personal Use of Dwelling Unit (Including Vacation Home) > Rental Deductions for a Dwelling Unit Used as a Home > Deductions for a Dwelling Unit Used as a Home > Step 1.', PDF p. 30",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Similar to P4, it discusses limits on mortgage interest deductions but lacks a direct explanation of the deduction process itself.",
+        "evidence_quote": "Federal law limited the mortgage interest deduction acquisition debt maximum from $1,000,000... to $750,000.",
+        "rank": 3,
+        "chunk_id": "ftb_540_booklet_2025_ch00_5e3d1e58737b5840",
+        "citation": "FTB 540 Booklet (2025), '2025 Instructions for Schedule CA (540) > Column B and Column C — Subtractions and Additions', PDF p. 66",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Discusses adjustments to itemized deductions related to mortgage interest credit but lacks a direct explanation of the mortgage interest deduction itself.",
+        "evidence_quote": "If you reduced your federal mortgage interest deduction by the amount of your mortgage interest credit... increase your California itemized deductions.",
+        "rank": 4,
+        "chunk_id": "ftb_540_ca_instructions_2025_ch00_5da52e9e324e8396",
+        "citation": "FTB Schedule CA (540) Instructions (2025), '2025 Instructions for Schedule CA (540) California Adjustments – Residents Revised: 04/2026 > Specific Line Instructions > Part II Adjustments to Federal Itemized Deductions > Line 8 – Home Mortgage Interest > Mortgage interest credit', web section",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains how to report mortgage interest when itemizing deductions, directly relevant to the question about paying mortgage interest.",
+        "evidence_quote": "If you are itemizing your deductions on Schedule A, figure the amount of mortgage interest to include on line 2a.",
+        "rank": 5,
+        "chunk_id": "p527_2025_ch05_0dc5879181bd82c4",
+        "citation": "IRS Pub 527 (2025), 'Chapter 5 Personal Use of Dwelling Unit (Including Vacation Home) > Rental Deductions for a Dwelling Unit Used as a Home > Deductions for a Dwelling Unit Used as a Home > Line 2a.', PDF p. 30",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_paid_property_tax",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "It provides a calculation method for real estate tax deductions but lacks a clear definition of what taxes are deductible.",
+        "evidence_quote": "This is your deduction. Enter it on Schedule A (Form 1040), line 5b.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch11_8d9a179c5f190aac",
+        "citation": "IRS Pub 17 (2025), 'Chapter 11 Taxes > State and Local Real Estate Taxes > State and Local Real Estate Tax Deduction—Taxes on New Home', PDF p. 100, printed 98",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "While it discusses calculating deductions for real estate taxes, it lacks a clear definition or rule about what qualifies as deductible.",
+        "evidence_quote": "This is your deduction. Claim it on Schedule A $501 (Form 1040), line 5b.",
+        "rank": 2,
+        "chunk_id": "p17_2025_ch11_fa05b2cf8c605ce7",
+        "citation": "IRS Pub 17 (2025), 'Chapter 11 Taxes > State and Local Real Estate Taxes > State and Local Real Estate Tax Deduction—Taxes on New Home', PDF p. 100, printed 98",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage outlines steps for calculating the deduction but does not define deductible real estate taxes or their conditions.",
+        "evidence_quote": "This is your deduction. Enter it on Schedule A (Form 1040), line 5b.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch11_8fbcb625bc051246",
+        "citation": "IRS Pub 17 (2025), 'Chapter 11 Taxes > State and Local Real Estate Taxes > Your State and Local Real Estate Tax Deduction', PDF p. 100, printed 98",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_made_donations",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Details conditions under which charitable contributions may be disallowed, relevant for understanding deduction eligibility and necessary records.",
+        "evidence_quote": "California disallows a charitable contribution deduction to an educational organization that is a postsecondary institution.",
+        "rank": 2,
+        "chunk_id": "ftb_540_booklet_2025_ch00_37e3c8d2bd01b23c",
+        "citation": "FTB 540 Booklet (2025), '2025 Instructions for Schedule CA (540) > Column B and Column C — Subtractions and Additions', PDF pp. 66-67",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_paid_student_loan_interest",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "Mentions the student loan interest deduction but focuses on a specific limitation without broader context.",
+        "evidence_quote": "You can’t deduct as interest on a student loan any interest paid by your employer after March 27, 2020.",
+        "rank": 1,
+        "chunk_id": "p970_2025_ch00_d56fdf5035440ee5",
+        "citation": "IRS Pub 970 (2025), 'Tax Benefits for Education > Reminders > Student loan interest deduction.', PDF p. 2",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Details how income affects the student loan interest deduction, which is crucial for understanding eligibility.",
+        "evidence_quote": "IF your filing status is | AND your MAGI is | THEN your student loan interest deduction is.",
+        "rank": 3,
+        "chunk_id": "p970_2025_ch04_b455a053de7f2359_3eae8beaa0",
+        "citation": "IRS Pub 970 (2025), 'Chapter 4 Student Loan Interest Deduction > Figuring the Deduction > Effect of the Amount of Your Income on the Amount of Your Deduction > Interest Deduction > Interest Deduction', PDF p. 34, table rows 1-7",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Discusses limitations on the student loan interest deduction but lacks direct relevance to claiming the deduction itself.",
+        "evidence_quote": "You can’t deduct as interest on a student loan any amount that is an allowable deduction under any other provision of the tax law.",
+        "rank": 4,
+        "chunk_id": "p970_2025_ch04_62276ec15aa969ee",
+        "citation": "IRS Pub 970 (2025), 'Chapter 4 Student Loan Interest Deduction > Can You Claim the Deduction? > No Double Benefit Allowed', PDF p. 33",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_contributed_to_retirement",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage explains eligibility for a tax credit related to contributions to retirement plans, directly addressing the question about IRA contributions.",
+        "evidence_quote": "You may be able to take a tax credit if you make eligible contributions... to an IRA.",
+        "rank": 1,
+        "chunk_id": "p590a_2025_ch03_8aee5c8e37c706b3",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 3 Retirement Savings Contributions Credit (Saver's Credit) > Introduction', PDF p. 46",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage outlines the conditions under which IRA contributions can be deductible, which is directly relevant to the interview question.",
+        "evidence_quote": "If your modified AGI isn’t over this amount, you can take an IRA deduction for your contributions.",
+        "rank": 2,
+        "chunk_id": "p590a_2025_ch03_dbd9ee7a5d29896c_71e212363f",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 3 Retirement Savings Contributions Credit (Saver's Credit) > Appendices > Appendix B (continued) > Appendix B (continued)', PDF p. 58, table rows 1-13",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage provides detailed conditions for IRA deductions based on modified AGI, which is pertinent to the question about retirement account contributions.",
+        "evidence_quote": "If your modified AGI isn’t over this amount, you can take an IRA deduction for your contributions.",
+        "rank": 3,
+        "chunk_id": "p590a_2025_ch03_2b54bd62356068b1_8d381b79fb",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 3 Retirement Savings Contributions Credit (Saver's Credit) > Appendices > Appendix B (continued) > Appendix B (continued)', PDF p. 55, table rows 1-13",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "While this passage discusses adjusted gross income and deductions, it lacks a clear rule or explanation specifically about IRA contributions or the saver's credit.",
+        "evidence_quote": "",
+        "rank": 5,
+        "chunk_id": "p590a_2025_ch03_080ce515c7e963df_13ab72475f",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 3 Retirement Savings Contributions Credit (Saver's Credit) > Appendices > Appendix B (continued) > Appendix B (continued)', PDF p. 59, table rows 1-11",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_is_educator_with_expenses",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses educator expenses but lacks specific deduction details useful for the question.",
+        "evidence_quote": "Educator expenses include amounts paid or incurred in 2025 for personal protective equipment, disinfectant, and other supplies.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch12_17b446754111424d",
+        "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Miscellaneous Itemized Deductions > Educator Expenses', PDF p. 103, printed 101",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Defines eligible educators and details the deduction amount and qualified expenses, directly addressing the question.",
+        "evidence_quote": "An eligible educator is a kindergarten through grade 12 teacher... you can deduct on line 11 up to $300 of qualified expenses.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_8792e5ff221bf958",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 11 > Educator Expenses', PDF p. 93",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Provides specific deduction information for eligible educators, directly relevant to the question.",
+        "evidence_quote": "you can deduct up to $300 of qualified expenses you paid in 2025 as an adjustment to gross income.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch12_7fd8a1913ba0e09b",
+        "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Miscellaneous Itemized Deductions > Educator Expenses', PDF p. 103, printed 101",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_took_education_classes",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "This passage discusses coordination between education credits and Coverdell ESA distributions but lacks direct information on claiming education credits.",
+        "evidence_quote": "The American opportunity or lifetime learning credit can be claimed in the same year the beneficiary takes a tax-free distribution.",
+        "rank": 1,
+        "chunk_id": "p970_2025_ch06_01e559f5a3af53d3",
+        "citation": "IRS Pub 970 (2025), 'Chapter 6 Coverdell Education Savings Account (ESA) > Distributions > Taxable Distributions > Coordination With American Opportunity and Lifetime Learning Credits', PDF p. 45",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage introduces the education credits available for 2025, directly addressing the retrieval need regarding education expenses.",
+        "evidence_quote": "there are two tax credits available to help you offset the costs of higher education.",
+        "rank": 5,
+        "chunk_id": "p970_2025_ch03_05000302f00350a5",
+        "citation": "IRS Pub 970 (2025), 'Chapter 3 Lifetime Learning Credit > Introduction', PDF p. 21",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_marketplace_insurance",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Details the reconciliation process for the premium tax credit and the necessity of Form 1095-A, directly relevant to the question.",
+        "evidence_quote": "complete Form 8962 to reconcile... you should have received Form 1095-A from the Marketplace.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_f61760d1640a51bb",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Lines 1a Through 1z > Additions to Tax > Line 1a. Excess advance premium tax credit repayment.', PDF p. 111",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Clearly states the requirement to file a return and attach Form 8962 if enrolled in Marketplace coverage, referencing Form 1095-A.",
+        "evidence_quote": "you must file a 2025 return and attach Form 8962... you should have received Form 1095-A from the Marketplace.",
+        "rank": 4,
+        "chunk_id": "i1040gi_2025_ch00_bfd9cea2daeb5cd0",
+        "citation": "IRS Form 1040 Instructions (2025), 'Filing Requirements > Do You Have To File?', PDF p. 8",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "Mentions Form 1095-A and premium tax credit but lacks a clear rule or requirement related to the interview question.",
+        "evidence_quote": "you should have received Form 1095-A from the Marketplace with information about your coverage and any advance credit payments.",
+        "rank": 5,
+        "chunk_id": "i1040gi_2025_ch00_7a6d3e9ab24c6e66",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Specific Instructions > Line 9 > Negative Form 8978 Adjustment Worksheet—Schedule 3 (Line 6l) > Note.', PDF pp. 116-117",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_bought_new_vehicle",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Explains the deduction for qualified passenger vehicle loan interest on Schedule 1-A and its relation to business use.",
+        "evidence_quote": "you may be able to deduct as qualified passenger vehicle loan interest the part of the interest expense that represents your personal use of the vehicle on Schedule 1-A.",
+        "rank": 1,
+        "chunk_id": "p334_2025_ch08_78b6cdeffdc7916f",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Interest > Interest on car loans.', PDF p. 38",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Clearly states the ability to claim a deduction for qualified passenger vehicle loan interest in 2025.",
+        "evidence_quote": "You may be able to claim a deduction if you and/or your spouse paid or accrued qualified passenger vehicle loan interest.",
+        "rank": 4,
+        "chunk_id": "i1040gi_2025_ch00_4ca1ca86ff269911",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part IV No Tax on Car Loan Interest', PDF p. 109",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_sold_home",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Explains conditions under which gain from the sale of a main home can be excluded.",
+        "evidence_quote": "You may be able to exclude all or part of the gain if you owned and lived in the property as your main home for at least 2 years.",
+        "rank": 4,
+        "chunk_id": "p544_2025_ch01_54158e7f59d71387",
+        "citation": "IRS Pub 544 (2025), 'Chapter 1 Gain or Loss > Sales and Exchanges > Gain or Loss From Sales and Exchanges > Property Changed to Business or Rental Use > Gain.', PDF p. 6",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_had_disaster_loss",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "Mentions federally declared disasters but focuses on tax deadline postponements, not casualty loss.",
+        "evidence_quote": "Certain taxpayers affected by a federally declared disaster...may be eligible for a mandatory 60-day postponement.",
+        "rank": 4,
+        "chunk_id": "p590b_2025_ch03_f40117a3dc3f37fc",
+        "citation": "IRS Pub 590-B (2025), 'Chapter 3 Disaster-Related Relief > Additional Disaster Relief Issues > Mandatory 60-Day Postponement', PDF p. 41",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_had_credit_disallowed",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Details the conditions under which Form 8862 must be filed for the EIC if it was disallowed, relevant to the interview question.",
+        "evidence_quote": "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_d2f449d3392e3306",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Lines 27a, 27b, and 27c— Earned Income Credit (EIC) > Definitions and Special Rules > Form 8862, who must file.', PDF p. 43",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Specifically mentions the requirement to file Form 8862 if the EIC was reduced or disallowed, directly addressing the retrieval need.",
+        "evidence_quote": "If your EIC for a year after 1996 was reduced or disallowed, see Form 8862, who must file.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_a4912a7c08cc4e50",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Lines 27a, 27b, and 27c— Earned Income Credit (EIC) > Definitions and Special Rules > EIC', PDF p. 48",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Explains that if the EIC was reduced or disallowed, Form 8862 must be filed, which is directly relevant to the question.",
+        "evidence_quote": "If your credit for any year after 1996 was reduced or disallowed by the IRS, you may also have to file Form 8862.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch13_3eb669297205a9d9",
+        "citation": "IRS Pub 17 (2025), 'Chapter 13 How To Figure Your Tax > Tax Figured by the IRS > Filing the Return > Form 1040 or 1040-SR Line Entries > Earned income credit.', PDF p. 110, printed 108",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_registered_domestic_partner",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Reiterates filing requirements for registered domestic partners, directly addressing the retrieval need.",
+        "evidence_quote": "Under California law, RDPs must file their California income tax return using either the married/RDP filing jointly or married/RDP filing separately filing status.",
+        "rank": 3,
+        "chunk_id": "ftb_540_booklet_2025_ch00_bb18654dbda655ea",
+        "citation": "FTB 540 Booklet (2025), 'What’s New and Other Important Information for 2025 > Other Important Information', PDF p. 9",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Clarifies that only registered domestic partners must file using specific statuses, directly relevant to the question.",
+        "evidence_quote": "Only domestic partners who are registered with the California Secretary of State are required to file using the married/RDP filing.",
+        "rank": 4,
+        "chunk_id": "ftb_540_booklet_2025_ch00_1f64938c14ce33af",
+        "citation": "FTB 540 Booklet (2025), 'Frequently Asked Questions > (Go to ftb.ca.gov for more frequently asked questions.) > 11. Are all domestic partners required to file joint or separate tax returns?', PDF p. 32",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses filing status but lacks specific rules for registered domestic partners in California.",
+        "evidence_quote": "You are single if any of the following was true on December 31, 2025: • You were not married or an RDP.",
+        "rank": 5,
+        "chunk_id": "ftb_540_booklet_2025_ch00_888be673eeeeef67",
+        "citation": "FTB 540 Booklet (2025), 'Do I Have to File? > Filing Status > Community Property States:', PDF p. 4",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_farm_income",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Mentions farm income and expenses reported on Schedule F but focuses on legal expenses, lacking direct relevance to the question.",
+        "evidence_quote": "...from farm income and expenses reported on Schedule F (Form 1040), Profit or Loss From Farming.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch12_151296d8e06c42e3",
+        "citation": "IRS Pub 17 (2025), 'Chapter 12 Other Itemized Deductions > Miscellaneous Itemized Deductions > Expenses You Can’t Deduct > Legal Expenses', PDF p. 104, printed 102",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_retirement_contribution_type",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Explains employer contributions to traditional IRAs and the distinction between SEP and SIMPLE IRAs, relevant for understanding contribution rules.",
+        "evidence_quote": "Under a SEP arrangement, an employer contributes to traditional IRAs (sometimes referred to as traditional SEP IRAs) or Roth IRAs.",
+        "rank": 3,
+        "chunk_id": "p590b_2025_ch01_da92f7249a6c78ab",
+        "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Reminders > Types of IRAs.', PDF p. 5",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Similar to P2, it explains employer contributions to traditional IRAs and the restrictions of SIMPLE IRAs, relevant for understanding contribution rules.",
+        "evidence_quote": "Under a SIMPLE IRA plan, an employer contributes salary reduction contributions... to traditional IRAs.",
+        "rank": 4,
+        "chunk_id": "p590a_2025_ch01_c520daadf1b979f8",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > Reminders > Types of IRAs.', PDF p. 6",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Covers types of IRAs and employer contributions, providing useful context for understanding traditional IRA contributions and deductions.",
+        "evidence_quote": "Under a SEP arrangement, an employer contributes to traditional IRAs (sometimes referred to as traditional SEP IRAs) or Roth IRAs.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch09_38b7b98bc49976ff",
+        "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Types of IRAs', PDF p. 80, printed 78",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_dependent_lived_with_you_half_year",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage provides a specific rule regarding children born or dying during the year and their residency status.",
+        "evidence_quote": "A child who was born or died during the year is treated as having lived with you more than half of the year.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch03_8b7ae7d99f6f7265",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > Residency Test > Death or birth of child.', PDF p. 30, printed 28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage explains how adopted or foster children can meet the residency test, relevant to the question about living arrangements.",
+        "evidence_quote": "This child is considered to have lived with you for more than half of 2025.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch03_96346f1ebe3fad37",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > Residency Test > Adopted or foster child.', PDF p. 30, printed 28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_child_under_17",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "This passage mentions the age requirement for the Child Tax Credit but lacks detailed conditions or rules.",
+        "evidence_quote": "You may be entitled to a child tax credit for each qualifying child who was under age 17.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch03_f459bcaf880f5837",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Child tax credit.', PDF p. 28, printed 26",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_child_under_6",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses the Young Child Tax Credit but lacks specific rules about qualifying children under 6.",
+        "evidence_quote": "you have at least one qualifying child who is younger than six years old as of the last day of the taxable year.",
+        "rank": 3,
+        "chunk_id": "ftb_540_booklet_2025_ch00_1272b8916453c6c5",
+        "citation": "FTB 540 Booklet (2025), 'Important Dates > $$$ for You', PDF p. 3",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Mentions the requirement for a qualifying child to be under six years old for the Young Child Tax Credit.",
+        "evidence_quote": "who is younger than six years old as of the last day of the taxable year.",
+        "rank": 5,
+        "chunk_id": "ftb_3514_booklet_2025_ch00_1e585408ad82b343",
+        "citation": "FTB 3514 Instructions (2025), '2025 Instructions for Form FTB 3514. > Step 8 Qualifications for Young Child Tax Credit (Y C T C) Step 8 Qualifications for Young Ch ild Tax Credit (Y C T C) > Caution:', PDF p. 9",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_supports_other_relative",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Provides a clear example illustrating the support test and gross income test for a qualifying relative.",
+        "evidence_quote": "You can’t claim your parent as a dependent because the $4,000 you provide isn’t more than half of your parent’s total support.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch03_14e20ae0f2500dfa",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Relative > Support Test (To Be a Qualifying Relative) > Example 1.', PDF p. 37, printed 35",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_dependent_is_student_or_disabled",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage outlines the criteria for qualifying child status, including age, student status, and disability.",
+        "evidence_quote": "A student under age 24 at the end of the year... or Permanently and totally disabled at any time during the year.",
+        "rank": 2,
+        "chunk_id": "p17_2025_ch03_5bbbb9e11d12b49f",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > Age Test', PDF p. 30, printed 28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage defines qualifying child criteria, including age and student status, directly relevant to the interview question.",
+        "evidence_quote": "Under age 24 at the end of 2025, a full-time student... or Any age and permanently and totally disabled.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_d6210079f0583713",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Lines 27a, 27b, and 27c— Earned Income Credit (EIC) > Qualifying Child > Step 3 > A qualifying child for the EIC is your', PDF p. 41",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage also defines permanently and totally disabled, relevant for assessing qualifying child status.",
+        "evidence_quote": "A person is permanently and totally disabled if... could not engage in any substantial gainful activity.",
+        "rank": 4,
+        "chunk_id": "ftb_3514_booklet_2025_ch00_55c792e92163b009",
+        "citation": "FTB 3514 Instructions (2025), '2025 Instructions for Form FTB 3514. > Step 3 Qualifying Child Step 3 Qualifying Child Step 3 Qualifying Child > Line 9b – Permanently and totally disabled', PDF p. 6",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage discusses the age test but lacks specific rules about student status or disability.",
+        "evidence_quote": "Unless this child was permanently and totally disabled or a student, this child doesn't meet the age test.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch03_3d846f3560fd763f",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > Age Test > Example.', PDF p. 30, printed 28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_shared_custody",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Explains the use of Form 8332 for custodial parents to release claims, pertinent to custody arrangements.",
+        "evidence_quote": "The custodial parent must use either Form 8332 or a similar statement... to make the written declaration.",
+        "rank": 2,
+        "chunk_id": "p17_2025_ch03_d3d0a9912dace145",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > Residency Test > Children of divorced or separated parents > Written declaration.', PDF p. 31, printed 29",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Clarifies requirements for post-2008 agreements regarding custodial claims, relevant to custody situations.",
+        "evidence_quote": "The custodial parent must sign either Form 8332 or a similar statement... to release the custodial parent's claim.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch03_77df67c85aca3991",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > Residency Test > Children of divorced or separated parents > Post-2008 divorce decree or separation agreement.', PDF p. 32, printed 30",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "Mentions the earned income credit but lacks detailed rules on custody or claiming dependents.",
+        "evidence_quote": "Even if statements (1) through (4) are all true... this doesn’t allow the noncustodial parent to claim the child.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch03_8ef8e9e95dec415a",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > Residency Test > Children of divorced or separated parents > Example—Earned income credit.', PDF p. 31, printed 29",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_someone_else_could_claim",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage outlines specific tiebreaker rules for divorced or separated parents, clarifying who can claim the child as a dependent and for which tax benefits.",
+        "evidence_quote": "If a child is treated as the qualifying child of the noncustodial parent... only the noncustodial parent can claim the child as a dependent and claim the child tax credit.",
+        "rank": 2,
+        "chunk_id": "p17_2025_ch03_7acdee962f589783",
+        "citation": "IRS Pub 17 (2025), 'Chapter 3 Dependents > Dependents > Qualifying Child > here. > Applying the tiebreaker rules to divorced or separated parents (or parents who live apart).', PDF p. 35, printed 33",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains the tiebreaker rules for claiming a qualifying child, detailing how to determine who can claim the child based on living arrangements and AGI.",
+        "evidence_quote": "If the parents don’t file a joint return together but both parents claim the child as a qualifying child, the IRS will treat the child as the qualifying child of the parent with whom the child lived for the longer period of time.",
+        "rank": 5,
+        "chunk_id": "i1040gi_2025_ch00_b9bdca4e75541e8f",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Who Qualifies as Your Dependent > Definitions and Special Rules > Qualifying child of more than one person.', PDF p. 21",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_paid_childcare",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage provides an example of calculating the credit but does not directly answer the question about qualifying expenses for care.",
+        "evidence_quote": "George qualifies to claim the credit for child and dependent care expenses.",
+        "rank": 2,
+        "chunk_id": "p503_2025_ch00_684d6103eff7f2bf",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Dollar Limit > Reduced Dollar Limit > Example 1.', PDF p. 12",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "This passage discusses the dollar limit for work-related expenses but lacks direct relevance to the question about qualifying expenses.",
+        "evidence_quote": "The maximum amount of work-related expenses you can take into account for purposes of the credit is $6,000.",
+        "rank": 4,
+        "chunk_id": "p503_2025_ch00_f76335f4342bb199",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Dollar Limit > Tip:', PDF p. 12",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage provides a clear example of work-related expenses for child care while working, directly relevant to the question.",
+        "evidence_quote": "You must allocate your expenses for dependent care between days worked and days not worked.",
+        "rank": 5,
+        "chunk_id": "p503_2025_ch00_826838678d67f0e6",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Are These Work-Related Expenses? > Working or Looking for Work > Example 1.', PDF p. 6",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_paid_after_school_or_camp",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Clearly states that costs for day camps may be work-related expenses, directly relevant to the question about after-school programs and day camps.",
+        "evidence_quote": "The cost of sending your child to a day camp may be a work-related expense.",
+        "rank": 1,
+        "chunk_id": "p503_2025_ch00_33b1a5863cb77b21",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Are These Work-Related Expenses? > Care of a Qualifying Person > Camp.', PDF p. 7",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Mentions dependent care expenses but does not specifically address day camps or after-school programs as work-related expenses.",
+        "evidence_quote": "You must allocate your expenses for dependent care between days worked and days not worked.",
+        "rank": 4,
+        "chunk_id": "p503_2025_ch00_826838678d67f0e6",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Are These Work-Related Expenses? > Working or Looking for Work > Example 1.', PDF p. 6",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Mentions the credit for care of qualifying children but does not specifically address day camps or after-school programs.",
+        "evidence_quote": "Claim this credit if you paid someone to care for your qualifying child under the age of 13.",
+        "rank": 5,
+        "chunk_id": "ftb_540_booklet_2025_ch00_dc2b480af147866c",
+        "citation": "FTB 540 Booklet (2025), '2025 Instructions for Form 540 > Special Credits and Nonrefundable Credits > Line 40 – Nonrefundable Child and Dependent Care Expenses Credit — Code 232', PDF p. 15",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_provider_details",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Explicitly lists the required information for care provider identification needed for Form 2441.",
+        "evidence_quote": "To identify the care provider, you must give the provider's: Name, Address, and Taxpayer identification number.",
+        "rank": 1,
+        "chunk_id": "p503_2025_ch00_af969a0e5accc498",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Care Provider Identification Test > Information needed.', PDF p. 9",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses reporting when provider information is incomplete but lacks specific identification requirements.",
+        "evidence_quote": "If the provider refuses to give you the identifying information, you should report on Form 2441 whatever information you have.",
+        "rank": 3,
+        "chunk_id": "p503_2025_ch00_575b38ee83752ae5",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Care Provider Identification Test > Provider refusal.', PDF p. 9",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Mentions the need for taxpayer identification numbers but does not specify care provider identification requirements.",
+        "evidence_quote": "You must include on line 2 of Form 2441, Child and Dependent Care Expenses, the name and taxpayer identification number.",
+        "rank": 4,
+        "chunk_id": "p503_2025_ch00_5cc2d187a66aa37d",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Reminders > Taxpayer identification number needed for each qualifying person.', PDF p. 1",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_employer_dependent_care_benefits",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains that dependent care benefits are shown in box 10 of the W-2, directly addressing the interview question.",
+        "evidence_quote": "If you received dependent care benefits as an employee, they should be shown in box 10 of your Form W-2.",
+        "rank": 1,
+        "chunk_id": "p503_2025_ch00_cd0af3eb66231324",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Dependent Care Benefits > Dependent care benefits.', PDF p. 10",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage states that employers must show dependent care benefits in box 10 of the W-2, which is relevant to the interview question.",
+        "evidence_quote": "Your employer must give you a Form W-2... showing in box 10 the total amount of dependent care benefits.",
+        "rank": 4,
+        "chunk_id": "p503_2025_ch00_3e0607bea4b818f0",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Figuring Total Work-Related Expenses > Dependent Care Benefits > Statement for employee.', PDF p. 11",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "While it mentions dependent care benefits, it lacks specific details about their reporting on the W-2 relevant to the question.",
+        "evidence_quote": "If you received any dependent care benefits from your employer during the year, you may be able to exclude all or part of them.",
+        "rank": 5,
+        "chunk_id": "p503_2025_ch00_2ae5753477061ba5",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Introduction > Dependent care benefits.', PDF p. 2",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_household_employee",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses household workers but lacks specific tax duties or thresholds for employment taxes.",
+        "evidence_quote": "A household worker is an employee who performs household work in a private home.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch04_0b3f3be76f37ee98",
+        "citation": "IRS Pub 17 (2025), 'Chapter 4 Tax Withholding and Estimated Tax > Introduction > Salaries and Wages > Household workers.', PDF p. 39, printed 37",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Similar to P1, it mentions household workers but does not provide specific tax obligations.",
+        "evidence_quote": "A household worker is an employee who performs household work in a private home.",
+        "rank": 5,
+        "chunk_id": "p505_2025_ch01_d82968ec91b70e60",
+        "citation": "IRS Pub 505 (2025), 'Chapter 1 Tax Withholding for 2025 > Salaries and Wages > Household workers.', PDF p. 3",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_care_provider_is_family",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage explicitly outlines the restrictions on payments to relatives, including children under 19, relevant to the interview question.",
+        "evidence_quote": "You can count work-related payments you make to relatives who aren't your dependents.",
+        "rank": 3,
+        "chunk_id": "p503_2025_ch00_5ef0abc593660c7d",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Can You Claim the Credit? > Are These Work-Related Expenses? > Payments to Relatives or Dependents', PDF p. 8",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "This passage mentions the credit for care provided to a qualifying child but lacks specific details about payments to family members.",
+        "evidence_quote": "Claim this credit if you paid someone to care for your qualifying child under the age of 13.",
+        "rank": 4,
+        "chunk_id": "ftb_540_booklet_2025_ch00_dc2b480af147866c",
+        "citation": "FTB 540 Booklet (2025), '2025 Instructions for Form 540 > Special Credits and Nonrefundable Credits > Line 40 – Nonrefundable Child and Dependent Care Expenses Credit — Code 232', PDF p. 15",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage explains the credit for care expenses but does not specify the restrictions on payments to family members.",
+        "evidence_quote": "You may be able to claim the credit if you pay someone to care for your dependent who is under age 13.",
+        "rank": 5,
+        "chunk_id": "p503_2025_ch00_92c8ec57c9ef6b2c",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > Introduction', PDF pp. 1-2, printed 2",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_rented_fewer_than_15_days",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Clearly states that renting a home for fewer than 15 days does not require reporting rental income or expenses.",
+        "evidence_quote": "If you use a dwelling unit as a home and you rent it less than 15 days during the year, its primary function isn’t considered to be rental.",
+        "rank": 1,
+        "chunk_id": "p527_2025_ch05_9238cdac3b2897ea",
+        "citation": "IRS Pub 527 (2025), 'Chapter 5 Personal Use of Dwelling Unit (Including Vacation Home) > Reporting Income and Deductions > Used as a home but rented less than 15 days.', PDF p. 28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_rental_in_ca",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "Mentions nonresidents claiming tax credits but lacks specific rules on rental property taxation.",
+        "evidence_quote": "California nonresident individuals...may claim the other state tax credit.",
+        "rank": 5,
+        "chunk_id": "ftb_540_s_instructions_2025_ch00_3beac9c990a13ec5",
+        "citation": "FTB Schedule S Instructions (2025), '2025 Instructions for Schedule S Other State Tax Credit > D. California Nonresidents', web section",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_rental_income",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "Defines advance rent as income received before the rental period, directly relevant to total rent received.",
+        "evidence_quote": "Include advance rent in your rental income in the year you receive it regardless of the period covered.",
+        "rank": 2,
+        "chunk_id": "p527_2025_ch01_dafba3e022ec287b",
+        "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Income > Types of Income > Advance rent.', PDF p. 3",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_rental_expenses",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "Mentions betterments but lacks specific rules or conditions for deducting expenses related to repairs.",
+        "evidence_quote": "Expenses that may result in a betterment to your property include expenses for fixing a pre-existing defect.",
+        "rank": 2,
+        "chunk_id": "p527_2025_ch01_dcc948d4e26059c6",
+        "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Expenses > Types of Expenses > Repairs and Improvements > Betterments.', PDF p. 7",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Describes restoration expenses but does not provide a clear rule or condition for deductibility of rental expenses.",
+        "evidence_quote": "Expenses that may be for restoration include expenses for replacing a substantial structural part of your property.",
+        "rank": 3,
+        "chunk_id": "p527_2025_ch01_cae8ba3f1470e405",
+        "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Expenses > Types of Expenses > Repairs and Improvements > Restoration.', PDF p. 7",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Explains that repair expenses can be deducted, which is directly relevant to the question about rental expenses.",
+        "evidence_quote": "Generally, an expense for repairing or maintaining your rental property may be deducted.",
+        "rank": 4,
+        "chunk_id": "p527_2025_ch01_62b3987d5d4e6407",
+        "citation": "IRS Pub 527 (2025), 'Chapter 1 Rental Income and Expenses (If No Personal Use of Dwelling) > Rental Expenses > Types of Expenses > Repairs and Improvements', PDF p. 7",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_placed_in_service_this_year",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "Describes the mid-quarter convention but does not directly address when depreciation begins for newly placed properties.",
+        "evidence_quote": "A mid-quarter convention must be used if the mid-month convention doesn’t apply.",
+        "rank": 5,
+        "chunk_id": "p527_2025_ch02_93f2645a7554e52c",
+        "citation": "IRS Pub 527 (2025), 'Chapter 2 Depreciation of Rental Property > MACRS Depreciation > Conventions > Mid-quarter convention.', PDF p. 14",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_personal_use_over_limit",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage defines the conditions under which a dwelling unit is considered a home, directly addressing the criteria of personal use relevant to the question.",
+        "evidence_quote": "You use a dwelling unit as a home during the tax year if you use it for personal purposes more than the greater of: 1. 14 days, or 2. 10% of the total days it is rented.",
+        "rank": 2,
+        "chunk_id": "p527_2025_ch05_ddc87e0c37d7f2d4",
+        "citation": "IRS Pub 527 (2025), 'Chapter 5 Personal Use of Dwelling Unit (Including Vacation Home) > Dwelling Unit Used as a Home', PDF p. 26",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage provides an example of personal use exceeding the specified thresholds, directly addressing the criteria relevant to the interview question.",
+        "evidence_quote": "You used the apartment as a home because you used it for personal purposes for 17 days. That is more than the greater of 14 days or 10% of the 160 days it was rented.",
+        "rank": 3,
+        "chunk_id": "p527_2025_ch05_34b02ec473d62cfe",
+        "citation": "IRS Pub 527 (2025), 'Chapter 5 Personal Use of Dwelling Unit (Including Vacation Home) > Dwelling Unit Used as a Home > Example 3.', PDF p. 28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage provides a clear example of personal use exceeding the 14-day threshold and 10% of rental days, directly relevant to the interview question.",
+        "evidence_quote": "You used it for personal purposes for 21 days. That is more than the greater of 14 days or 10% of the 27 days it was rented.",
+        "rank": 4,
+        "chunk_id": "p527_2025_ch05_3256b74231dbc587",
+        "citation": "IRS Pub 527 (2025), 'Chapter 5 Personal Use of Dwelling Unit (Including Vacation Home) > Dwelling Unit Used as a Home > Example 2.', PDF pp. 27-28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage explains how personal use is calculated and confirms that exceeding the 14-day and 10% thresholds classifies the property as a home, relevant to the question.",
+        "evidence_quote": "Because you used the cottage for personal purposes more than 14 days and more than 10% of the days of rental use.",
+        "rank": 5,
+        "chunk_id": "p527_2025_ch05_6f9cd06579b0b71f",
+        "citation": "IRS Pub 527 (2025), 'Chapter 5 Personal Use of Dwelling Unit (Including Vacation Home) > Dividing Expenses > Note:', PDF p. 26",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_sold_rental_property",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "This passage outlines applicable percentages for different property types but lacks specific reporting requirements for gain or loss.",
+        "evidence_quote": "The applicable percentage used to figure the ordinary income because of additional depreciation depends on whether the real property you disposed of is nonresidential real property.",
+        "rank": 4,
+        "chunk_id": "p544_2025_ch03_d744f6bfd5d4449c",
+        "citation": "IRS Pub 544 (2025), 'Chapter 3 Ordinary or Capital Gain or Loss for Business Property > Depreciation Recapture > Section 1250 Property > Applicable Percentage', PDF p. 45",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage mentions reporting ordinary income for depreciation recapture in certain transactions but does not specifically address sales of rental property.",
+        "evidence_quote": "If you transfer depreciable personal property or real property for less than its FMV in a transaction considered to be partly a gift and partly a sale or exchange.",
+        "rank": 5,
+        "chunk_id": "p544_2025_ch03_554a8946e896aad0",
+        "citation": "IRS Pub 544 (2025), 'Chapter 3 Ordinary or Capital Gain or Loss for Business Property > Depreciation Recapture > Gifts > Part gift and part sale or exchange.', PDF p. 48",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_rents_personal_property",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains how to report rental expenses for personal property, which is directly relevant to the question about renting personal property.",
+        "evidence_quote": "If you rent personal property for profit, include your rental expenses in the total amount you enter on Schedule 1 (Form 1040), line 24b.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch08_e2685d48d302a706",
+        "citation": "IRS Pub 17 (2025), 'Chapter 8 Other Income > Rents From Personal Property > Reporting nonbusiness expenses.', PDF p. 73, printed 71",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_receives_social_security",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Explains conditions under which Social Security benefits may be taxable based on income comparison.",
+        "evidence_quote": "If the amount on line E equals or is less than the base amount for your filing status, none of your benefits are taxable.",
+        "rank": 3,
+        "chunk_id": "p17_2025_ch07_219a553f91332d15",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "Similar to P4, it outlines conditions for determining taxability of benefits based on income.",
+        "evidence_quote": "If the amount on line E equals or is less than the base amount for your filing status, none of your benefits are taxable.",
+        "rank": 4,
+        "chunk_id": "p17_2025_ch07_5162533d2ff639a4",
+        "citation": "IRS Pub 17 (2025), 'Chapter 7 Social Security and Equivalent Railroad Retirement Benefits > Are Any of Your Benefits Taxable? > Note:', PDF p. 65, printed 63",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_social_security_benefits",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Illustrates how to report net social security benefits from box 5, relevant to the question about taxable amounts.",
+        "evidence_quote": "Kris must include 85% of Kris’s social security benefits in Kris’s taxable income because Kris is married filing separately.",
+        "rank": 3,
+        "chunk_id": "p915_2025_ch00_9cf3bb9dcc605412",
+        "citation": "IRS Pub 915 (2025), 'Social Security and Equivalent Railroad Retirement Benefits > How Much Is Taxable? > Examples > Example 4.', PDF p. 10",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_distribution_account_type",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Details specific distribution codes for loans treated as distributions on Form 1099-R, relevant to identifying account types.",
+        "evidence_quote": "If your loan is treated as a distribution (deemed distribution), you should receive a Form 1099-R showing code 'L' in box 7.",
+        "rank": 1,
+        "chunk_id": "p575_2025_ch00_64b640438f65184b",
+        "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Taxation of Nonperiodic Payments > Loans Treated as Distributions > Reporting by plan.', PDF p. 19",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Explains exceptions to early distribution tax and relevant distribution codes for Form 1099-R, directly addressing the retrieval need.",
+        "evidence_quote": "If the payer knows that an exception applies to your early distribution, distribution code '2,' '3,' or '4' should be shown in box 7.",
+        "rank": 2,
+        "chunk_id": "p575_2025_ch00_4d707a9dd03f0cbf",
+        "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Special Additional Taxes > Example Recapture Allocation Chart > Exceptions to tax.', PDF p. 27",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Provides a list of letter codes used on Form 1099-R, which helps identify the type of account the distribution came from.",
+        "evidence_quote": "If the distribution shown on Form 1099-R is from your IRA, SEP IRA, or SIMPLE IRA, the small box in box 7... should be marked with an 'X'.",
+        "rank": 5,
+        "chunk_id": "p590b_2025_ch01_00bab3e9a26b9597",
+        "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > Are Distributions Taxable? > Reporting and Withholding Requirements for Taxable Amounts > Letter codes.', PDF p. 21",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_under_59_half_at_distribution",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage outlines an exception for corrective distributions, which is relevant to the additional tax on early distributions.",
+        "evidence_quote": "The 10% additional tax on early distributions will not apply to a corrective IRA distribution, which consists of an excess contribution.",
+        "rank": 1,
+        "chunk_id": "p590b_2025_ch01_3a06cef4fe86d60b",
+        "citation": "IRS Pub 590-B (2025), 'Chapter 1 Traditional IRAs > What Acts Result in Penalties or Additional Taxes? > Early Distributions > Exceptions > Certain corrective distributions not subject to 10% early distribution tax.', PDF p. 25",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_did_rollover",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "Passage explains the 60-day rule for rollovers, which is directly relevant to the interview question about moving money into another retirement account.",
+        "evidence_quote": "You must generally make the rollover contribution by the 60th day after the day you receive the distribution.",
+        "rank": 1,
+        "chunk_id": "p17_2025_ch09_bbbc9332ee0dd4a1",
+        "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Can You Move Retirement Plan Assets? > Rollovers > Time limit for making a rollover contribution.', PDF p. 85, printed 83",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Provides a specific example of the 60-day rollover rule, illustrating the timeline necessary to avoid tax implications, relevant to the interview question.",
+        "evidence_quote": "To postpone including the distribution in your income, you must complete the rollover by August 29, 2025.",
+        "rank": 3,
+        "chunk_id": "p590a_2025_ch01_193c788d72dbb9ab",
+        "citation": "IRS Pub 590-A (2025), 'Chapter 1 Traditional IRAs > Can You Move Retirement Plan Assets? > Rollovers > Time Limit for Making a Rollover Contribution > Example.', PDF p. 22",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage outlines the 60-day requirement for completing a rollover, which is essential for understanding the tax implications of moving retirement funds.",
+        "evidence_quote": "You must generally complete the rollover of an eligible rollover distribution paid to you by the 60th day following the day on which you receive the distribution.",
+        "rank": 5,
+        "chunk_id": "p575_2025_ch00_15fc3e17dd834c00",
+        "citation": "IRS Pub 575 (2025), 'Pension and Annuity Income > Rollovers > Time for making rollover.', PDF p. 22",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_does_rideshare_delivery",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage directly addresses the receipt of Form 1099-K by rideshare drivers, relevant for reporting income.",
+        "evidence_quote": "You are a rideshare driver and receive a Form 1099-K from the rideshare company.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_e88c308dba1d8706",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before > Example 1.', PDF pp. 103-104",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage outlines how to report income from a business, including rideshare driving, using Schedule C, relevant for self-employment income.",
+        "evidence_quote": "Use Schedule C (Form 1040) to report income or (loss) from a business you operated.",
+        "rank": 3,
+        "chunk_id": "i1040sc_2025_ch00_7287fcd104e7104e",
+        "citation": "IRS Schedule C Instructions (2025), 'Instructions for Schedule C (Form 1040) > General Instructions', PDF p. 2, printed C-2",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "This passage discusses qualified tips but lacks a clear connection to rideshare income reporting requirements.",
+        "evidence_quote": "",
+        "rank": 5,
+        "chunk_id": "i1040gi_2025_ch00_91947d47bcea1b4d_29ef89b2b9",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips > Qualified Tips > Occupations that customarily and regularly received tips on or before > Net income limitation. > Occupations that customarily and regularly received tips on or before', PDF p. 105, table rows 1-7",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_sells_online",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage provides the threshold for receiving Form 1099-K, which is crucial for determining if online sales are considered business transactions.",
+        "evidence_quote": "required to send you a Form 1099-K only if the amount of your business transactions during the year is more than $20,000.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_af26c67c128fea4e",
+        "citation": "IRS Form 1040 Instructions (2025), 'What’s New > Form 1099-K.', PDF p. 7",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage reiterates the threshold for receiving Form 1099-K, which is essential for understanding reporting requirements for online sales.",
+        "evidence_quote": "payment card companies, payment apps, and online marketplaces will be required to send you a Form 1099-K only if the amount of your business transactions...more than $20,000.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_fe2483474ce6a7b4",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K', PDF p. 88",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage provides an example of how to report gains and losses from personal items sold, directly relevant to the question about selling items.",
+        "evidence_quote": "You would enter $700 in the entry space at the top of Schedule 1 for your loss on selling the couch.",
+        "rank": 5,
+        "chunk_id": "i1040gi_2025_ch00_fdd724534fdb0463",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K > Example–Personal items sold at a loss and a gain.', PDF p. 88",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_does_freelance_contract",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Details the filing requirements for Form 1099-NEC, directly relevant to nonemployee compensation reporting.",
+        "evidence_quote": "File Form 1099-NEC, Nonemployee Compensation, for each person in the course of your business to whom you have paid at least $600.",
+        "rank": 1,
+        "chunk_id": "p334_2025_ch01_77bbefdd3492983e",
+        "citation": "IRS Pub 334 (2025), 'Chapter 1 Filing and Paying Business Taxes > Information Returns > Form 1099-NEC.', PDF p. 12",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Mentions Form 1099-NEC but focuses on qualified overtime compensation, which is less relevant to the main question.",
+        "evidence_quote": "The amount on Form 1099-NEC, box 1, or Form 1099-MISC, box 3, is your nonemployee compensation or other income.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_ebd4bb6c6f1620ff",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part III No Tax on Overtime > (b) Qualified overtime reported on Form 1099-NEC, box 1, or Form 1099-MISC, box 3 > Line 14b.', PDF p. 108",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Clearly states the requirement for Form 1099-NEC when receiving nonemployee compensation, relevant to the question.",
+        "evidence_quote": "the payer should send you a Form 1099-NEC if the fees for your services total $600 or more.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch08_42d6f42bed0d4c60",
+        "citation": "IRS Pub 17 (2025), 'Chapter 8 Other Income > Other Income > Nonemployee compensation.', PDF p. 77, printed 75",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_main_income_source",
+    "passages": [
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses self-employment income but lacks direct comparison to employee income.",
+        "evidence_quote": "Compensation is the net earnings from your trade or business... reduced by the total of... contributions made on your behalf to retirement plans.",
+        "rank": 5,
+        "chunk_id": "p17_2025_ch09_e68f31c4ae8f4d38",
+        "citation": "IRS Pub 17 (2025), 'Chapter 9 Individual Retirement Arrangements (IRAs) > Traditional IRAs > Who Can Open a Traditional IRA? > Self-employment income.', PDF p. 80, printed 78",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_side_gross_income",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "Mentions tips and self-employment income but does not directly address gross receipts from all income sources.",
+        "evidence_quote": "In general, tips received as an employee or from self-employment must be included in your gross income.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_fa43aa198ba5ec2b",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Part II No Tax on Tips', PDF p. 101",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Specifically addresses self-employment income and reporting requirements for income over $600, relevant to total income from side work.",
+        "evidence_quote": "If your NIL income is greater than $600 from any source, including non-cash income, you should receive Form 1099-NEC.",
+        "rank": 2,
+        "chunk_id": "p334_2025_ch05_071853107b5b8225",
+        "citation": "IRS Pub 334 (2025), 'Chapter 5 Business Income > Introduction > Name, Image, Likeness (NIL).', PDF p. 21",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "Provides guidance on tracking gross receipts, which is essential for reporting total income from side work.",
+        "evidence_quote": "At the end of each business day, make sure your records balance with your actual cash and credit receipts.",
+        "rank": 4,
+        "chunk_id": "p334_2025_ch07_be2843b071ea2e7d",
+        "citation": "IRS Pub 334 (2025), 'Chapter 7 Figuring Gross Profit > Items To Check > Gross receipts.', PDF p. 31",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses self-employment earnings but focuses on earned income limits rather than gross receipts from all income sources.",
+        "evidence_quote": "Include your self-employment earnings in earned income, even if they are less than $400.",
+        "rank": 5,
+        "chunk_id": "p503_2025_ch00_526602f313df3294",
+        "citation": "IRS Pub 503 (2025), 'Child and Dependent Care Expenses > How To Figure the Credit > Earned Income Limit > Self-employment earnings.', PDF p. 11",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_paid_in_crypto",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Passage describes digital assets and mentions checking a box for receiving them, but lacks detailed reporting instructions for income.",
+        "evidence_quote": "Check the “Yes” box next to the question on digital assets on page 1 of Form 1040.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_81d5c3644549a859",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Digital Assets', PDF pp. 15-16",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Passage outlines how to report income from digital assets received as compensation, directly relevant to the interview question.",
+        "evidence_quote": "you must report the income as you would report other income of the same type.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_576644dafe0bd901",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line Instructions for Forms 1040 and 1040-SR > Filing Status > Digital Assets > How To Report Digital Asset Transactions', PDF p. 16",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Passage defines digital assets and mentions their receipt as payment, but lacks specific reporting requirements for income.",
+        "evidence_quote": "The receipt of digital assets as payment for goods or services provided.",
+        "rank": 4,
+        "chunk_id": "p544_2025_ch02_6a5b3ae79b35532f",
+        "citation": "IRS Pub 544 (2025), 'Chapter 2 Ordinary or Capital Gain or Loss > Other Dispositions > Digital Assets', PDF p. 39",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "Passage explains how to report digital assets received as compensation, directly addressing the question about payment in digital assets.",
+        "evidence_quote": "If you received digital assets as compensation for your services, you must report the income as wages on Form 1040.",
+        "rank": 5,
+        "chunk_id": "p544_2025_ch02_b42786af85cf29ef",
+        "citation": "IRS Pub 544 (2025), 'Chapter 2 Ordinary or Capital Gain or Loss > Other Dispositions > Digital Assets', PDF p. 39",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_selling_type",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage discusses how to report gains and losses from personal items sold, which is pertinent to the interview question.",
+        "evidence_quote": "You would enter $700 in the entry space at the top of Schedule 1 for your loss on selling the couch.",
+        "rank": 1,
+        "chunk_id": "i1040gi_2025_ch00_fdd724534fdb0463",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K > Example–Personal items sold at a loss and a gain.', PDF p. 88",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "This passage provides an example of selling a personal item at a loss but lacks a broader explanation of tax implications for personal item sales.",
+        "evidence_quote": "You bought a couch for $1,000 and sold it through a third-party vendor for $700.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_88b74c0d908902d7",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K > Example–Personal item sold at a loss.', PDF p. 88",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage details how to report amounts from Form 1099-K related to personal items sold, relevant to the question about selling personal items.",
+        "evidence_quote": "If, for tax year 2025, you received a Form(s) 1099-K that shows payments that were included in error... for personal items that you sold at a loss.",
+        "rank": 3,
+        "chunk_id": "i1040gi_2025_ch00_0f128575de2940bd",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K', PDF p. 88",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains how to report gains from personal items sold, which is relevant to the question about selling personal items.",
+        "evidence_quote": "If you received a Form 1099-K for a personal item that you sold at a gain, don’t report this amount in the entry space at the top of Schedule 1.",
+        "rank": 4,
+        "chunk_id": "i1040gi_2025_ch00_719ae8a64d54c8f6",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > General Instructions > Form(s) 1099-K', PDF p. 88",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_inventory",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage reiterates the rules for small business taxpayers regarding inventory, directly addressing the question about keeping stock.",
+        "evidence_quote": "If you choose to keep an inventory, you must generally use an accrual method of accounting and value the inventory each year.",
+        "rank": 2,
+        "chunk_id": "p334_2025_ch02_8ee2d6caaf56605a",
+        "citation": "IRS Pub 334 (2025), 'Chapter 2 Accounting Periods and Methods > Accounting Methods > Inventories > Exception for small business taxpayers.', PDF p. 16",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "Discusses the treatment of donated inventory, which is related to inventory but does not directly address the question about keeping stock.",
+        "evidence_quote": "If you contribute inventory (property that you sell in the course of your business), the amount you can claim as a contribution deduction is the smaller of its fair market value.",
+        "rank": 3,
+        "chunk_id": "p334_2025_ch06_07dcea31422a6bac",
+        "citation": "IRS Pub 334 (2025), 'Chapter 6 How To Figure Cost of Goods Sold > Figuring Cost of Goods Sold on Schedule C, Lines 35 Through 42 > Line 35—Inventory at Beginning of Year > Donation of inventory.', PDF p. 29",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage explains the inventory accounting rules for small business taxpayers, directly relevant to the question about keeping stock.",
+        "evidence_quote": "If you choose to keep an inventory, you must generally value the inventory each year to determine your cost of goods sold.",
+        "rank": 4,
+        "chunk_id": "i1040sc_2025_ch00_bf1b34e092487ce1",
+        "citation": "IRS Schedule C Instructions (2025), 'Part III. Cost of Goods Sold > Exception for small business taxpayers.', PDF p. 15, printed C-15",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage provides a clear rule about deducting cost of goods sold and valuing inventory, directly relevant to the question.",
+        "evidence_quote": "If you make or buy goods to sell, you can deduct the cost of goods sold from your gross receipts on Schedule C.",
+        "rank": 5,
+        "chunk_id": "p334_2025_ch06_465eb6f2c0a9c5a7",
+        "citation": "IRS Pub 334 (2025), 'Chapter 6 How To Figure Cost of Goods Sold > Introduction', PDF p. 28",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_uses_car_for_business",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage provides the standard mileage rate for 2025, which is relevant but does not explain how to apply it to specific driving circumstances.",
+        "evidence_quote": "",
+        "rank": 2,
+        "chunk_id": "p463_2025_ch04_41cfeb2ffc96f652",
+        "citation": "IRS Pub 463 (2025), 'Chapter 4 Transportation > Car Expenses > Standard Mileage Rate', PDF p. 20",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "This passage discusses changing a car's use from personal to business but lacks specific deduction rules or calculations for business use.",
+        "evidence_quote": "",
+        "rank": 5,
+        "chunk_id": "p463_2025_ch04_75b8ca5c9108aa0f",
+        "citation": "IRS Pub 463 (2025), 'Chapter 4 Transportation > Car Expenses > Actual Car Expenses > Depreciation Deduction > Change from personal to business use.', PDF pp. 25-26",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_car_expense_method",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "This passage outlines the requirement to choose the standard mileage rate in the first year, relevant for deciding between methods.",
+        "evidence_quote": "If you want to use the standard mileage rate for a car or truck you own, you must choose to use it in the first year.",
+        "rank": 2,
+        "chunk_id": "p334_2025_ch08_55cfd66c7f56f9c9",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Car and Truck Expenses > Methods for Deducting Car and Truck Expenses > Choosing the standard mileage rate.', PDF p. 35",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_has_mileage_log",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 2,
+        "reason": "This passage includes a section on car expenses that emphasizes the importance of detailing mileage, which supports the need for a written record.",
+        "evidence_quote": "List all car expenses—The division between business and personal expenses may be made at the end of the year.",
+        "rank": 2,
+        "chunk_id": "p463_2025_ch05_e4040f5bcf6d91ab_5de5d231da",
+        "citation": "IRS Pub 463 (2025), 'Chapter 5 Recordkeeping > How To Prove Expenses > Examples of Records > THIS IS NOT AN OFFICIAL INTERNAL REVENUE FORM > THIS IS NOT AN OFFICIAL INTERNAL REVENUE FORM', PDF p. 40, table rows 1-38",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 1,
+        "reason": "This passage mentions the standard mileage rate but does not provide specific information about the necessity of maintaining written records for business mileage.",
+        "evidence_quote": "You may be able to use the standard mileage rate to figure the deductible costs of operating your car.",
+        "rank": 4,
+        "chunk_id": "p334_2025_ch08_b707b648065fb447",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Car and Truck Expenses > Methods for Deducting Car and Truck Expenses > Standard mileage rate.', PDF p. 35",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_pays_platform_fees",
+    "passages": [
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Explains that legal and professional fees related to business operations are deductible, relevant to platform fees.",
+        "evidence_quote": "ordinary and necessary expenses directly related to operating your business are deductible.",
+        "rank": 2,
+        "chunk_id": "p334_2025_ch08_8987b4ab9a1aad34",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees', PDF p. 39",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_side_expenses",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Mentions legal and professional fees as deductible business expenses but does not cover broader ordinary and necessary expenses.",
+        "evidence_quote": "Legal and professional fees, such as fees charged by accountants, that are ordinary and necessary expenses directly related to operating your business are deductible.",
+        "rank": 1,
+        "chunk_id": "p334_2025_ch08_8987b4ab9a1aad34",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees', PDF p. 39",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 1,
+        "reason": "Discusses deductible expenses related to business but focuses on tax preparation fees, not general business expenses.",
+        "evidence_quote": "You can deduct on Schedule C (Form 1040) the cost of preparing that part of your tax return relating to your business.",
+        "rank": 2,
+        "chunk_id": "p334_2025_ch08_483886e89fff35ad",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Legal and Professional Fees > Tax preparation fees.', PDF p. 39",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_record_keeping",
+    "passages": [
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage emphasizes the importance of timely recordkeeping for expenses, which is crucial for tracking side work money.",
+        "evidence_quote": "You should record the elements of an expense or of a business use at or near the time of the expense or use.",
+        "rank": 2,
+        "chunk_id": "p463_2025_ch05_651b1c7ff2f0b576",
+        "citation": "IRS Pub 463 (2025), 'Chapter 5 Recordkeeping > How To Prove Expenses > What Are Adequate Records? > Timely kept records.', PDF p. 36",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "This passage explains the necessity of keeping records to support deductions for expenses, which is directly relevant to tracking side work money.",
+        "evidence_quote": "You must keep records that support your deduction (or an item of income) for 3 years from the date you file the income tax return.",
+        "rank": 4,
+        "chunk_id": "p463_2025_ch05_39d14150f884284d",
+        "citation": "IRS Pub 463 (2025), 'Chapter 5 Recordkeeping > How To Prove Expenses > How Long To Keep Records and Receipts', PDF p. 37",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_business_travel",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 2,
+        "reason": "Defines travel expenses as necessary for business, which is crucial for understanding the deductibility of expenses related to the interview question.",
+        "evidence_quote": "Travel expenses are the ordinary and necessary expenses of traveling away from home for your business.",
+        "rank": 2,
+        "chunk_id": "p463_2025_ch01_3becde473a9bf092",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > Travel expenses defined.', PDF p. 3",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_travel_purpose",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "Discusses a specific exception for travel considered entirely business but lacks broader applicability to mixed-purpose travel.",
+        "evidence_quote": "Your trip is considered entirely for business if: • You were outside the United States for more than a week.",
+        "rank": 3,
+        "chunk_id": "p463_2025_ch01_26ce0b2f53c79400",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 3—less than 25% of time on personal activities.', PDF p. 10",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 1,
+        "reason": "Mentions criteria for considering a trip entirely business but does not address mixed-use travel directly.",
+        "evidence_quote": "Your trip is considered entirely for business if you can establish that a personal vacation wasn’t a major consideration.",
+        "rank": 4,
+        "chunk_id": "p463_2025_ch01_262b732434cf13ba",
+        "citation": "IRS Pub 463 (2025), 'Chapter 1 Travel > What Travel Expenses Are Deductible? > Travel Outside the United States > Travel Entirely for Business or Considered Entirely for Business > Exception 4—vacation not a major consideration.', PDF p. 10",
+        "matches_expected_source": true,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_uses_home_for_business",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "This passage mentions the reporting requirements for business use of home deductions but lacks specific rules or definitions relevant to the question.",
+        "evidence_quote": "Taxpayers who file Form 1040-SS and claim a deduction for business use of home will report the expense on Schedule C.",
+        "rank": 5,
+        "chunk_id": "i1040sc_2025_ch00_11e31a954a665a18",
+        "citation": "IRS Schedule C Instructions (2025), 'Instructions for Schedule C (Form 1040) > Reminders > Form 1040-SS filers and business use of home.', PDF p. 1",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_bought_big_equipment",
+    "passages": [
+      {
+        "passage_id": "P3",
+        "score": 1,
+        "reason": "Indicates section 179 can apply to other assets but lacks specific details on equipment costing over $2,500.",
+        "evidence_quote": "you may still claim depreciation or the section 179 expense deduction on other assets.",
+        "rank": 2,
+        "chunk_id": "i1040sc_2025_ch00_f3f784a50327961a",
+        "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Simplified Method Worksheet > Daycare Facility Worksheet (for simplified method)', PDF p. 13, printed C-13",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P4",
+        "score": 2,
+        "reason": "Defines depreciation and section 179 expense deduction, directly relevant to large equipment purchases.",
+        "evidence_quote": "you can also elect under section 179 to expense part or all of the cost of certain property you bought in 2025.",
+        "rank": 3,
+        "chunk_id": "i1040sc_2025_ch00_a474b971faf76969",
+        "citation": "IRS Schedule C Instructions (2025), 'Part II. Expenses > Line 13 > Depreciation and section 179 expense deduction.', PDF p. 7, printed C-7",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  },
+  {
+    "id": "q_paid_own_health_insurance",
+    "passages": [
+      {
+        "passage_id": "P2",
+        "score": 1,
+        "reason": "This passage mentions the self-employed health insurance deduction but lacks specific conditions or rules that would be useful for the retrieval need.",
+        "evidence_quote": "You may be able to deduct the amount you paid for medical and dental insurance.",
+        "rank": 1,
+        "chunk_id": "p334_2025_ch08_8917c997049acda5",
+        "citation": "IRS Pub 334 (2025), 'Chapter 8 Business Expenses > Insurance > Self-employed health insurance deduction.', PDF p. 38",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P1",
+        "score": 2,
+        "reason": "This passage provides detailed conditions for deducting health insurance premiums for self-employed individuals, directly addressing the retrieval need.",
+        "evidence_quote": "You may be able to deduct the amount you paid for health insurance... if you were self-employed and had a net profit for the year.",
+        "rank": 2,
+        "chunk_id": "i1040gi_2025_ch00_1fadb8fa24be64bc",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 17 > Self-Employed Health Insurance Deduction', PDF p. 94",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      },
+      {
+        "passage_id": "P5",
+        "score": 2,
+        "reason": "This passage provides instructions on entering health insurance premiums for self-employed individuals, relevant to the deduction process.",
+        "evidence_quote": "Enter the total amount paid in 2025 for health insurance coverage established under your business.",
+        "rank": 5,
+        "chunk_id": "i1040gi_2025_ch00_b0feeb525c4bd820",
+        "citation": "IRS Form 1040 Instructions (2025), 'General Information > Adjustments to Income > Line 16 > Self-Employed SEP, SIMPLE, and Qualified Plans > Self-Employed Health Insurance Deduction Worksheet—Schedule 1, Line 17 > Before you begin:', PDF p. 94",
+        "matches_expected_source": false,
+        "quote_status": "unverified",
+        "quote_verified": false
+      }
+    ]
+  }
+]

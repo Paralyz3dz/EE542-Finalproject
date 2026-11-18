@@ -1,0 +1,20 @@
+[
+  {
+    "id": "q_sold_investments",
+    "vector_k": 10,
+    "excluded_count": 440,
+    "bm25_k": 10,
+    "eligible_chunks": 5564,
+    "returned_count": 5,
+    "matches_cleaned_run": true
+  },
+  {
+    "id": "q_is_full_time_student",
+    "vector_k": 10,
+    "excluded_count": 440,
+    "bm25_k": 10,
+    "eligible_chunks": 5564,
+    "returned_count": 5,
+    "matches_cleaned_run": true
+  }
+]

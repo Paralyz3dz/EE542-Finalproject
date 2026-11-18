@@ -41,6 +41,17 @@ class MetricTests(unittest.TestCase):
         self.assertEqual(result["status"], "ok")
         self.assertEqual(model.invoke.call_args.args[0], {"messages": [{"role": "user", "content": "Question"}]})
 
+    def test_observer_forwards_optional_exclusion_parameters(self):
+        observer = RetrievalObserver()
+        observer.original_vector = MagicMock(return_value=[("rule", "Citation", "Passage", 0.9)])
+        token = observer.current_call.set({})
+        try:
+            observer.observe_vector("connection", [1.0], "model", 2025, k=10, excluded_ids=["index"])
+            observer.original_vector.assert_called_once_with("connection", [1.0], "model", 2025, k=10, excluded_ids=["index"])
+            self.assertEqual(observer.current_call.get()["hnsw"][0]["chunk_id"], "rule")
+        finally:
+            observer.current_call.reset(token)
+
     def test_observer_keeps_parallel_case_contexts_separate(self):
         observer = RetrievalObserver()
         def fake_retrieve(query):
