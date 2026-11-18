@@ -1,0 +1,28 @@
+{
+  "inventory": [
+    8752,
+    8752,
+    21,
+    8390
+  ],
+  "dimensions": [
+    [
+      1024,
+      8752
+    ]
+  ],
+  "planner_nodes": [
+    {
+      "Node Type": "Limit",
+      "Plan Rows": 10
+    },
+    {
+      "Node Type": "Index Scan",
+      "Index Name": "rag_materials_v2_embedding_hnsw",
+      "Relation Name": "rag_materials_v2_chunks",
+      "Plan Rows": 8390
+    }
+  ],
+  "explain_only": true,
+  "scored_retrieval_calls": 0
+}

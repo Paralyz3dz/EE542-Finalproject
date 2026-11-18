@@ -124,8 +124,8 @@ class RetrievalObserver:
             call["elapsed_seconds"] = time.perf_counter() - started
             self.current_call.reset(token)
 
-    def observe_vector(self, conn, query_vec, model, tax_year, k=5):
-        rows = self.original_vector(conn, query_vec, model, tax_year, k=k)
+    def observe_vector(self, conn, query_vec, model, tax_year, k=5, **options):
+        rows = self.original_vector(conn, query_vec, model, tax_year, k=k, **options)
         self.current_call.get()["hnsw"] = [
             {"chunk_id": row[0], "citation": row[1], "score": row[3]}
             for row in rows

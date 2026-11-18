@@ -1,0 +1,20 @@
+{
+  "corpus": "rag_materials_v2",
+  "chunks": 8752,
+  "vectors": 8752,
+  "sources": 21,
+  "tables": 554,
+  "public_before": [
+    6004,
+    "a0a3ecdba964e3dd15c82f718fc3bc79"
+  ],
+  "public_after": [
+    6004,
+    "a0a3ecdba964e3dd15c82f718fc3bc79"
+  ],
+  "files_sha256": {
+    "chunks.json": "fe45a67ed8cbad274a6a64ff7b6db49ad0fa9e69cc8724b4f18cde46234d0e4e",
+    "tables.json": "6e7ba760041291f676289d7d7b3ac79c8a207f75b5ae0cd641edb4a5f0dd65c8",
+    "embeddings.jsonl": "d0819d7687d3d8285abc6f298a74c703d207e1e32fe47df6d4880463f2549f6c"
+  }
+}

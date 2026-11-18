@@ -1,0 +1,192 @@
+{
+  "rounds": 1,
+  "queries": 104,
+  "passages": 520,
+  "direct_hits_at_3": 101,
+  "direct_hit_rate_at_3": 0.9711538461538461,
+  "direct_hits_at_5": 104,
+  "direct_hit_rate_at_5": 1.0,
+  "direct_precision_at_5": 0.575,
+  "direct_mrr_at_5": 0.8806089743589745,
+  "mean_grade_out_of_2": 1.448076923076923,
+  "passage_grade_counts": {
+    "0": 66,
+    "1": 155,
+    "2": 299
+  },
+  "quote_verified_direct_hits_at_5": 92,
+  "quote_verified_direct_passages": 176,
+  "positive_quote_status_counts": {
+    "verbatim": 228,
+    "normalized_verbatim": 8,
+    "ellipsized_verbatim": 27,
+    "unverified": 191
+  },
+  "questions_with_unverified_positive_quotes": 83,
+  "source_hits_at_5": 85,
+  "questions_with_direct_relevant_other_source": 77,
+  "source_vs_relevance": {
+    "source_hit_false_direct_hit_false": {
+      "count": 0,
+      "question_ids": []
+    },
+    "source_hit_false_direct_hit_true": {
+      "count": 19,
+      "question_ids": [
+        "q_had_state_refund",
+        "q_sold_investments",
+        "q_paid_mortgage_interest",
+        "q_large_medical_expenses",
+        "q_contributed_to_retirement",
+        "q_paid_alimony",
+        "q_has_marketplace_insurance",
+        "q_installed_energy_efficient_items",
+        "q_had_disaster_loss",
+        "q_received_irs_letter",
+        "q_rents_personal_property",
+        "q_has_retirement_distribution",
+        "q_sells_online",
+        "q_does_freelance_contract",
+        "q_side_gross_income",
+        "q_selling_type",
+        "q_selling_for_profit",
+        "q_record_keeping",
+        "q_paid_own_health_insurance"
+      ]
+    },
+    "source_hit_true_direct_hit_false": {
+      "count": 0,
+      "question_ids": []
+    },
+    "source_hit_true_direct_hit_true": {
+      "count": 85,
+      "question_ids": [
+        "q_ca_resident_full_year",
+        "q_lived_in_multiple_states",
+        "q_age_65_or_older",
+        "q_can_be_claimed_as_dependent",
+        "q_is_us_citizen",
+        "q_is_full_time_student",
+        "q_blind_or_disabled",
+        "q_has_digital_assets",
+        "q_marital_status",
+        "q_marital_status_changed",
+        "q_lived_apart_last_6_months",
+        "q_has_dependents",
+        "q_has_wages",
+        "q_w2_job_count",
+        "q_received_tips",
+        "q_has_qualified_overtime",
+        "q_has_self_employment",
+        "q_has_retirement_income",
+        "q_owns_rental",
+        "q_has_unemployment",
+        "q_has_interest_dividends",
+        "q_received_alimony",
+        "q_has_gambling_winnings",
+        "q_has_other_income",
+        "q_paid_property_tax",
+        "q_made_donations",
+        "q_paid_student_loan_interest",
+        "q_is_educator_with_expenses",
+        "q_took_education_classes",
+        "q_has_hsa",
+        "q_bought_new_vehicle",
+        "q_sold_home",
+        "q_had_debt_forgiven",
+        "q_had_credit_disallowed",
+        "q_made_estimated_payments",
+        "q_registered_domestic_partner",
+        "q_has_farm_income",
+        "q_has_foreign_accounts",
+        "q_retirement_contribution_type",
+        "q_dependent_lived_with_you_half_year",
+        "q_dependent_count",
+        "q_has_child_under_17",
+        "q_has_child_under_6",
+        "q_supports_other_relative",
+        "q_dependent_is_student_or_disabled",
+        "q_shared_custody",
+        "q_someone_else_could_claim",
+        "q_paid_childcare",
+        "q_paid_after_school_or_camp",
+        "q_has_provider_details",
+        "q_employer_dependent_care_benefits",
+        "q_household_employee",
+        "q_care_provider_is_family",
+        "q_rented_fewer_than_15_days",
+        "q_rental_in_ca",
+        "q_rental_income",
+        "q_rental_expenses",
+        "q_placed_in_service_this_year",
+        "q_personal_use_over_limit",
+        "q_short_term_rental",
+        "q_sold_rental_property",
+        "q_receives_social_security",
+        "q_social_security_benefits",
+        "q_distribution_account_type",
+        "q_retirement_distributions",
+        "q_under_59_half_at_distribution",
+        "q_did_rollover",
+        "q_has_disability_benefits",
+        "q_does_rideshare_delivery",
+        "q_main_income_source",
+        "q_received_income_without_form",
+        "q_paid_in_crypto",
+        "q_has_inventory",
+        "q_uses_car_for_business",
+        "q_car_expense_method",
+        "q_has_mileage_log",
+        "q_pays_platform_fees",
+        "q_side_expenses",
+        "q_business_travel",
+        "q_travel_purpose",
+        "q_uses_home_for_business",
+        "q_has_workers",
+        "q_bought_big_equipment",
+        "q_side_work_lost_money",
+        "q_considering_llc"
+      ]
+    }
+  },
+  "by_module": {
+    "base_intake": {
+      "queries": 49,
+      "direct_hits_at_5": 49,
+      "direct_precision_at_5": 0.5959183673469388
+    },
+    "family": {
+      "queries": 14,
+      "direct_hits_at_5": 14,
+      "direct_precision_at_5": 0.5142857142857143
+    },
+    "rental": {
+      "queries": 9,
+      "direct_hits_at_5": 9,
+      "direct_precision_at_5": 0.6000000000000001
+    },
+    "retiree": {
+      "queries": 8,
+      "direct_hits_at_5": 8,
+      "direct_precision_at_5": 0.6
+    },
+    "side_gig": {
+      "queries": 24,
+      "direct_hits_at_5": 24,
+      "direct_precision_at_5": 0.55
+    }
+  },
+  "limitations": "Single automatic relevance judgment per passage; no human ground truth, sufficiency score or answer-correctness evaluation; not recall or nDCG",
+  "judge_models_returned": [
+    "gpt-4o-mini-2024-07-18"
+  ],
+  "judge_calls_with_response": 104,
+  "calls_without_api_response": 0,
+  "validated_case_judgments": 104,
+  "initial_quote_validation_failures_recovered": 2,
+  "token_usage": {
+    "prompt_tokens": 149148,
+    "completion_tokens": 31297,
+    "total_tokens": 180445
+  }
+}

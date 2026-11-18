@@ -1,0 +1,9 @@
+{
+  "questions_with_all_five_directly_relevant": 3,
+  "questions_with_any_topical_or_unrelated_passage": 101,
+  "source_matching_but_unrelated_passages": 25,
+  "direct_relevance_source_misses": 19,
+  "unchanged_model_grades_verified_against_original_responses": true,
+  "unique_model_responses": 104,
+  "additional_model_calls_for_quote_recovery": 0
+}

@@ -421,3 +421,19 @@ def test_button_answers_do_not_trigger():
         state, out = step(state, "yes" if out.get("input_type") == "bool" else (out.get("options") or ["1000"])[0], search=stub)
     state, out = step(state, "business_miles", search=stub)
     assert state.boosted == []
+
+
+def test_guide_uses_all_five_passages_and_recognizes_sources_after_rank_three():
+    from src.workflow.engine import build_guide, next_question, start_interview
+    state = start_interview("ca_w2_side_gig")
+    question = next_question(state)
+    matches = [{"citation": f"IRS Pub 527 (2025), p. {i}", "text": f"Rental passage {i}."} for i in range(1, 4)]
+    matches.extend([
+        {"citation": "IRS Pub 17 (2025), 'Filing Status', p. 23", "text": "Source context. " * 60 + "The decisive condition."},
+        {"citation": "IRS Pub 970 (2025), p. 21", "text": "Fifth supporting passage."},
+        {"citation": "IRS Pub 334 (2025), p. 6", "text": "Outside the five-passage limit."},
+    ])
+    guide = build_guide(state, question, search=lambda _: {"matches": matches})
+    assert guide["citations"] == matches[:5]
+    assert guide["references"] == [{"reference": "IRS Pub 17, Chapter 2", "retrieved": True}]
+    assert state.evidence[question["id"]]["citations"] == [m["citation"] for m in matches[:5]]

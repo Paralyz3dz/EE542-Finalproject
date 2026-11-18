@@ -1,0 +1,43 @@
+{
+  "rounds": 1,
+  "queries": 104,
+  "baseline_rrf10_reranked_top5": {
+    "hits_at_3": 75,
+    "hit_at_3": 0.7211538461538461,
+    "hits_at_5": 85,
+    "hit_at_5": 0.8173076923076923,
+    "mrr_at_5": 0.6177884615384616
+  },
+  "rrf15_reranked_top5": {
+    "hits_at_3": 75,
+    "hit_at_3": 0.7211538461538461,
+    "hits_at_5": 85,
+    "hit_at_5": 0.8173076923076923,
+    "mrr_at_5": 0.6203525641025641
+  },
+  "rrf_source_coverage_at_10": 96,
+  "rrf_source_coverage_at_15": 100,
+  "actual_fusion_count_histogram": {
+    "11": 4,
+    "12": 7,
+    "13": 14,
+    "14": 15,
+    "15": 64
+  },
+  "gained_hit_at_5": [
+    "q_large_medical_expenses",
+    "q_installed_energy_efficient_items"
+  ],
+  "lost_hit_at_5": [
+    "q_receives_social_security",
+    "q_received_income_without_form"
+  ],
+  "baseline_mean_total_seconds": 7.011829851923083,
+  "mean_retrieval_seconds": 3.0487265576922833,
+  "mean_rerank_seconds": 5.435455558653871,
+  "mean_total_seconds": 8.488724304807725,
+  "p95_total_seconds": 12.26515654999957,
+  "primary_improved": false,
+  "baseline_candidate_routes_and_rrf10_prefix_reproduced": true,
+  "limitations": "Primary-document source coverage only; saved baseline timing; no semantic judge or generated answers"
+}

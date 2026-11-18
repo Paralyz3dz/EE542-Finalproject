@@ -1,0 +1,1126 @@
+[
+  {
+    "id": "q_has_mileage_log",
+    "source": "IRS Pub 463",
+    "query": "mileage log records car expenses",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 2,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 3,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_253",
+        "citation": "IRS Pub 463 (2025), 'Daily business mileage and expense log (Table 5-2) Depreciation of car; Depreciation of Car; Disabled employees; Documentary evidence', p. 60",
+        "score": 0.032266458495966696,
+        "vector_score": 0.6741058645502538,
+        "bm25_score": 27.857859893625996,
+        "vector_rank": 3,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_268",
+        "citation": "IRS Pub 463 (2025), 'Recordkeeping requirements; Regular federal method', p. 61",
+        "score": 0.031754032258064516,
+        "vector_score": 0.6650376308233671,
+        "bm25_score": 24.68360405093082,
+        "vector_rank": 4,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_249",
+        "citation": "IRS Pub 463 (2025), 'Canceled checks; Car expenses', p. 60",
+        "score": 0.031099324975891997,
+        "vector_score": 0.6792952542526544,
+        "bm25_score": 18.60053602682671,
+        "vector_rank": 1,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_087",
+        "citation": "IRS Pub 463 (2025), 'Business and personal use', p. 21",
+        "score": 0.030621785881252923,
+        "vector_score": 0.6790524022389299,
+        "bm25_score": 18.356568368169007,
+        "vector_rank": 2,
+        "bm25_rank": 9
+      },
+      {
+        "chunk_id": "irs_pub_334_2025_ch00_197",
+        "citation": "IRS Pub 334 (2025), 'Actual expenses', p. 35",
+        "score": 0.030309988518943745,
+        "vector_score": 0.6440578264601234,
+        "bm25_score": 19.026103672129672,
+        "vector_rank": 7,
+        "bm25_rank": 5
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_087",
+        "citation": "IRS Pub 463 (2025), 'Business and personal use', p. 21",
+        "score": 0.031544957774465976,
+        "vector_score": 0.6790524022389299,
+        "bm25_score": 18.751294916870485,
+        "vector_rank": 1,
+        "bm25_rank": 6
+      },
+      {
+        "chunk_id": "irs_pub_334_2025_ch00_197",
+        "citation": "IRS Pub 334 (2025), 'Actual expenses', p. 35",
+        "score": 0.03149801587301587,
+        "vector_score": 0.6440578264601234,
+        "bm25_score": 19.474747389757404,
+        "vector_rank": 4,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_334_2025_ch00_195",
+        "citation": "IRS Pub 334 (2025), 'Standard mileage rate', p. 35",
+        "score": 0.030834914611005692,
+        "vector_score": 0.6212514169523022,
+        "bm25_score": 19.520209330752284,
+        "vector_rank": 8,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_197",
+        "citation": "IRS Pub 463 (2025), 'Car expenses', p. 49",
+        "score": 0.030834914611005692,
+        "vector_score": 0.6510873173244472,
+        "bm25_score": 18.10290833216302,
+        "vector_rank": 2,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_082",
+        "citation": "IRS Pub 463 (2025), 'Caution; Choosing the standard mileage rate', p. 20",
+        "score": 0.030776515151515152,
+        "vector_score": 0.6383327195049151,
+        "bm25_score": 19.281711964085723,
+        "vector_rank": 6,
+        "bm25_rank": 4
+      }
+    ],
+    "removed_noise": [
+      "irs_pub_463_2025_ch00_253",
+      "irs_pub_463_2025_ch00_268",
+      "irs_pub_463_2025_ch00_249"
+    ]
+  },
+  {
+    "id": "q_has_provider_details",
+    "source": "IRS Pub 503",
+    "query": "care provider identification test Form 2441",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 2,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 3,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_034",
+        "citation": "IRS Pub 503 (2025), 'Information needed', p. 9",
+        "score": 0.03278688524590164,
+        "vector_score": 0.7956850752990368,
+        "bm25_score": 37.680772890344755,
+        "vector_rank": 1,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_077",
+        "citation": "IRS Pub 503 (2025), 'Calculation of credit Camp; Care; Care Provider Identification Test; Children; Church employee Claiming of credit', p. 19",
+        "score": 0.03200204813108039,
+        "vector_score": 0.5777160617966726,
+        "bm25_score": 30.87558220363712,
+        "vector_rank": 3,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_035",
+        "citation": "IRS Pub 503 (2025), 'Getting the information; Due diligence; U.S. citizens and resident aliens living abroad', p. 9",
+        "score": 0.0315136476426799,
+        "vector_score": 0.6502511768486101,
+        "bm25_score": 28.686648240300563,
+        "vector_rank": 2,
+        "bm25_rank": 5
+      },
+      {
+        "chunk_id": "irs_form_1040_instructions_2025_ch00_119",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line 1e Taxable Dependent Care Benefits From Form 2441, Line 26', p. 24",
+        "score": 0.02967032967032967,
+        "vector_score": 0.5489322274286892,
+        "bm25_score": 17.635144929279754,
+        "vector_rank": 5,
+        "bm25_rank": 10
+      },
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_009",
+        "citation": "IRS Pub 503 (2025), 'Tests you must meet to claim a credit for child and dependent care expenses', pp. 2-3",
+        "score": 0.029437229437229435,
+        "vector_score": 0.5147902558181433,
+        "bm25_score": 26.16559403870719,
+        "vector_rank": 10,
+        "bm25_rank": 6
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_034",
+        "citation": "IRS Pub 503 (2025), 'Information needed', p. 9",
+        "score": 0.03278688524590164,
+        "vector_score": 0.7956850752990368,
+        "bm25_score": 38.19397397141637,
+        "vector_rank": 1,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_035",
+        "citation": "IRS Pub 503 (2025), 'Getting the information; Due diligence; U.S. citizens and resident aliens living abroad', p. 9",
+        "score": 0.03200204813108039,
+        "vector_score": 0.6502511768486101,
+        "bm25_score": 29.17459132062487,
+        "vector_rank": 2,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_053",
+        "citation": "IRS Pub 503 (2025), 'Recordkeeping', pp. 13-14",
+        "score": 0.030621785881252923,
+        "vector_score": 0.5014592409133947,
+        "bm25_score": 29.51204861896786,
+        "vector_rank": 9,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_form_1040_instructions_2025_ch00_119",
+        "citation": "IRS Form 1040 Instructions (2025), 'Line 1e Taxable Dependent Care Benefits From Form 2441, Line 26', p. 24",
+        "score": 0.030330882352941176,
+        "vector_score": 0.5489322274286892,
+        "bm25_score": 17.82157606971985,
+        "vector_rank": 4,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_009",
+        "citation": "IRS Pub 503 (2025), 'Tests you must meet to claim a credit for child and dependent care expenses', pp. 2-3",
+        "score": 0.030330882352941176,
+        "vector_score": 0.5147902558181433,
+        "bm25_score": 26.604286522300505,
+        "vector_rank": 8,
+        "bm25_rank": 4
+      }
+    ],
+    "removed_noise": [
+      "irs_pub_503_2025_ch00_077"
+    ]
+  },
+  {
+    "id": "q_has_retirement_income",
+    "source": "IRS Pub 17",
+    "query": "social security benefits pensions annuities taxable",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 2,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 3,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": true,
+        "after_hit5": true
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+        "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+        "score": 0.031754032258064516,
+        "vector_score": 0.6525713230542531,
+        "bm25_score": 19.530847651508886,
+        "vector_rank": 2,
+        "bm25_rank": 4
+      },
+      {
+        "chunk_id": "irs_pub_575_2025_ch00_007",
+        "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+        "score": 0.028991596638655463,
+        "vector_score": 0.6235067132580409,
+        "bm25_score": 18.129699119189596,
+        "vector_rank": 10,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_575_2025_ch00_012",
+        "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+        "score": 0.01639344262295082,
+        "vector_score": null,
+        "bm25_score": 20.374049357631826,
+        "vector_rank": null,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "pub17_2025_ch07_020",
+        "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+        "score": 0.01639344262295082,
+        "vector_score": 0.6668622691960451,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null
+      },
+      {
+        "chunk_id": "irs_pub_915_2025_ch00_004",
+        "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+        "score": 0.016129032258064516,
+        "vector_score": null,
+        "bm25_score": 20.28189067278775,
+        "vector_rank": null,
+        "bm25_rank": 2
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+        "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+        "score": 0.03225806451612903,
+        "vector_score": 0.6525713230542531,
+        "bm25_score": 20.13239970134544,
+        "vector_rank": 2,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_915_2025_ch00_012",
+        "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+        "score": 0.03057889822595705,
+        "vector_score": 0.6478873021166077,
+        "bm25_score": 17.465655027884374,
+        "vector_rank": 3,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_575_2025_ch00_007",
+        "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+        "score": 0.029437229437229435,
+        "vector_score": 0.6235067132580409,
+        "bm25_score": 18.82644758856333,
+        "vector_rank": 10,
+        "bm25_rank": 6
+      },
+      {
+        "chunk_id": "irs_pub_915_2025_ch00_004",
+        "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+        "score": 0.01639344262295082,
+        "vector_score": null,
+        "bm25_score": 20.62441678592247,
+        "vector_rank": null,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "pub17_2025_ch07_020",
+        "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+        "score": 0.01639344262295082,
+        "vector_score": 0.6668622691960451,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null
+      }
+    ],
+    "removed_noise": [
+      "irs_pub_575_2025_ch00_012"
+    ]
+  },
+  {
+    "id": "q_is_full_time_student",
+    "source": "IRS Pub 17",
+    "query": "full-time student definition education credits",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": true,
+        "after_hit5": false
+      },
+      {
+        "round": 2,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": true,
+        "after_hit5": false
+      },
+      {
+        "round": 3,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": true,
+        "after_hit5": false
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_117",
+        "citation": "IRS Pub 970 (2025), 'Support; Full-time student', p. 21",
+        "score": 0.032018442622950824,
+        "vector_score": 0.6255366951866979,
+        "bm25_score": 19.892609367927502,
+        "vector_rank": 4,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_092",
+        "citation": "IRS Pub 970 (2025), 'Enrolled at least half-time', p. 17",
+        "score": 0.03200204813108039,
+        "vector_score": 0.6562915630688146,
+        "bm25_score": 19.4227892692249,
+        "vector_rank": 2,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_059",
+        "citation": "IRS Pub 970 (2025), 'Student qualifications', pp. 10-11",
+        "score": 0.03007688828584351,
+        "vector_score": 0.6161609520816334,
+        "bm25_score": 16.580136838651978,
+        "vector_rank": 6,
+        "bm25_rank": 7
+      },
+      {
+        "chunk_id": "pub17_2025_ch03_016",
+        "citation": "IRS Pub 17 (2025), Chapter 3 Dependents, 'Student defined; Permanently and totally disabled', p. 28",
+        "score": 0.02967032967032967,
+        "vector_score": 0.6229038912826056,
+        "bm25_score": 16.0847324705529,
+        "vector_rank": 5,
+        "bm25_rank": 10
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_408",
+        "citation": "IRS Pub 970 (2025), 'student American opportunity credit; tion', pp. 75-76",
+        "score": 0.01639344262295082,
+        "vector_score": 0.6625593908025218,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_117",
+        "citation": "IRS Pub 970 (2025), 'Support; Full-time student', p. 21",
+        "score": 0.032018442622950824,
+        "vector_score": 0.6255366951866979,
+        "bm25_score": 19.801317322032233,
+        "vector_rank": 4,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_092",
+        "citation": "IRS Pub 970 (2025), 'Enrolled at least half-time', p. 17",
+        "score": 0.03200204813108039,
+        "vector_score": 0.6562915630688146,
+        "bm25_score": 19.426102268182138,
+        "vector_rank": 2,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_059",
+        "citation": "IRS Pub 970 (2025), 'Student qualifications', pp. 10-11",
+        "score": 0.03007688828584351,
+        "vector_score": 0.6161609520816334,
+        "bm25_score": 16.682629737147423,
+        "vector_rank": 6,
+        "bm25_rank": 7
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_408",
+        "citation": "IRS Pub 970 (2025), 'student American opportunity credit; tion', pp. 75-76",
+        "score": 0.01639344262295082,
+        "vector_score": 0.6625593908025218,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_299",
+        "citation": "IRS Pub 970 (2025), 'Half-time student', p. 50",
+        "score": 0.016129032258064516,
+        "vector_score": null,
+        "bm25_score": 19.692739406850283,
+        "vector_rank": null,
+        "bm25_rank": 2
+      }
+    ],
+    "removed_noise": []
+  },
+  {
+    "id": "q_paid_after_school_or_camp",
+    "source": "IRS Pub 503",
+    "query": "day camp overnight camp child care credit",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 2,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 3,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_025",
+        "citation": "IRS Pub 503 (2025), 'Care outside your home', p. 7",
+        "score": 0.03252247488101534,
+        "vector_score": 0.5737795228822241,
+        "bm25_score": 49.972110664338246,
+        "vector_rank": 2,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_077",
+        "citation": "IRS Pub 503 (2025), 'Calculation of credit Camp; Care; Care Provider Identification Test; Children; Church employee Claiming of credit', p. 19",
+        "score": 0.03252247488101534,
+        "vector_score": 0.5987600209546318,
+        "bm25_score": 46.403228457037386,
+        "vector_rank": 1,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "ftb_540_booklet_2025_ch00_074",
+        "citation": "FTB 540 Booklet (2025), 'Line 40 – Nonrefundable Child and Dependent Care Expenses Credit — Code 232', p. 15",
+        "score": 0.03057889822595705,
+        "vector_score": 0.5343838211117469,
+        "bm25_score": 14.754220006997082,
+        "vector_rank": 3,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_form_1040_instructions_2025_ch00_631",
+        "citation": "IRS Form 1040 Instructions (2025), 'Credit for Child and Dependent Care Expenses', p. 115",
+        "score": 0.02964426877470356,
+        "vector_score": 0.5216066189750298,
+        "bm25_score": 14.709944684679236,
+        "vector_rank": 6,
+        "bm25_rank": 9
+      },
+      {
+        "chunk_id": "pub17_2025_ch03_022",
+        "citation": "IRS Pub 17 (2025), Chapter 3 Dependents, 'Children of divorced or separated parents (or parents who live apart)', pp. 29-30",
+        "score": 0.015873015873015872,
+        "vector_score": null,
+        "bm25_score": 23.722306693986283,
+        "vector_rank": null,
+        "bm25_rank": 3
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_pub_503_2025_ch00_025",
+        "citation": "IRS Pub 503 (2025), 'Care outside your home', p. 7",
+        "score": 0.03278688524590164,
+        "vector_score": 0.5737795228822241,
+        "bm25_score": 50.95802702435869,
+        "vector_rank": 1,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "ftb_540_booklet_2025_ch00_074",
+        "citation": "FTB 540 Booklet (2025), 'Line 40 – Nonrefundable Child and Dependent Care Expenses Credit — Code 232', p. 15",
+        "score": 0.031054405392392875,
+        "vector_score": 0.5343838211117469,
+        "bm25_score": 14.824448589844808,
+        "vector_rank": 2,
+        "bm25_rank": 7
+      },
+      {
+        "chunk_id": "irs_form_1040_instructions_2025_ch00_631",
+        "citation": "IRS Form 1040 Instructions (2025), 'Credit for Child and Dependent Care Expenses', p. 115",
+        "score": 0.030090497737556562,
+        "vector_score": 0.5216066189750298,
+        "bm25_score": 14.7820917234073,
+        "vector_rank": 5,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "pub17_2025_ch03_022",
+        "citation": "IRS Pub 17 (2025), Chapter 3 Dependents, 'Children of divorced or separated parents (or parents who live apart)', pp. 29-30",
+        "score": 0.016129032258064516,
+        "vector_score": null,
+        "bm25_score": 24.327404421907943,
+        "vector_rank": null,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_schedule_c_instructions_2025_ch00_070",
+        "citation": "IRS Schedule C Instructions (2025), 'Daycare providers', p. 10",
+        "score": 0.015873015873015872,
+        "vector_score": 0.527376541744615,
+        "bm25_score": null,
+        "vector_rank": 3,
+        "bm25_rank": null
+      }
+    ],
+    "removed_noise": [
+      "irs_pub_503_2025_ch00_077"
+    ]
+  },
+  {
+    "id": "q_record_keeping",
+    "source": "IRS Pub 334",
+    "query": "recordkeeping small business what records to keep",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": false,
+        "after_hit5": false
+      },
+      {
+        "round": 2,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": false,
+        "after_hit5": false
+      },
+      {
+        "round": 3,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": false,
+        "after_hit5": false
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "pub17_2025_ch01_109",
+        "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'What Records Should I Keep?', pp. 16-17",
+        "score": 0.03252247488101534,
+        "vector_score": 0.6187466666094638,
+        "bm25_score": 29.158290308260703,
+        "vector_rank": 2,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_590_a_2025_ch00_089",
+        "citation": "IRS Pub 590-A (2025), 'Recordkeeping', p. 17",
+        "score": 0.03036576949620428,
+        "vector_score": 0.5765735872142731,
+        "bm25_score": 22.633443818262105,
+        "vector_rank": 9,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_463_2025_ch00_268",
+        "citation": "IRS Pub 463 (2025), 'Recordkeeping requirements; Regular federal method', p. 61",
+        "score": 0.030158730158730156,
+        "vector_score": 0.6096883343164131,
+        "bm25_score": 20.95783333605847,
+        "vector_rank": 3,
+        "bm25_rank": 10
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_380",
+        "citation": "IRS Pub 970 (2025), 'Examples of records to keep', pp. 66-67",
+        "score": 0.03007688828584351,
+        "vector_score": 0.5834318399429984,
+        "bm25_score": 21.654827537653997,
+        "vector_rank": 7,
+        "bm25_rank": 6
+      },
+      {
+        "chunk_id": "pub17_2025_ch01_111",
+        "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Electronic records', p. 17",
+        "score": 0.01639344262295082,
+        "vector_score": 0.6377484202385674,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "pub17_2025_ch01_109",
+        "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'What Records Should I Keep?', pp. 16-17",
+        "score": 0.03252247488101534,
+        "vector_score": 0.6187466666094638,
+        "bm25_score": 29.71393036408063,
+        "vector_rank": 2,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_590_a_2025_ch00_089",
+        "citation": "IRS Pub 590-A (2025), 'Recordkeeping', p. 17",
+        "score": 0.03057889822595705,
+        "vector_score": 0.5765735872142731,
+        "bm25_score": 23.342008479736023,
+        "vector_rank": 8,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_970_2025_ch00_380",
+        "citation": "IRS Pub 970 (2025), 'Examples of records to keep', pp. 66-67",
+        "score": 0.03007688828584351,
+        "vector_score": 0.5834318399429984,
+        "bm25_score": 22.059206698428092,
+        "vector_rank": 6,
+        "bm25_rank": 7
+      },
+      {
+        "chunk_id": "pub17_2025_ch01_110",
+        "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Identify sources of income; Keep track of expenses; Keep track of the basis of property; Prepare tax returns; Support items reported on tax returns', p. 17",
+        "score": 0.029910714285714284,
+        "vector_score": 0.6021381629336894,
+        "bm25_score": 20.30430691444565,
+        "vector_rank": 4,
+        "bm25_rank": 10
+      },
+      {
+        "chunk_id": "pub17_2025_ch01_111",
+        "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Electronic records', p. 17",
+        "score": 0.01639344262295082,
+        "vector_score": 0.6377484202385674,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null
+      }
+    ],
+    "removed_noise": [
+      "irs_pub_463_2025_ch00_268"
+    ]
+  },
+  {
+    "id": "q_rental_expenses",
+    "source": "IRS Pub 527",
+    "query": "rental expenses repairs improvements",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 2,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 3,
+        "before_hit3": true,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_041",
+        "citation": "IRS Pub 527 (2025), 'Improvements', p. 7",
+        "score": 0.03252247488101534,
+        "vector_score": 0.7675672721218063,
+        "bm25_score": 21.15732739922152,
+        "vector_rank": 1,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_189",
+        "citation": "IRS Pub 527 (2025), 'expenses; income; losses', p. 37",
+        "score": 0.03252247488101534,
+        "vector_score": 0.6564746285192188,
+        "bm25_score": 22.72207661505518,
+        "vector_rank": 2,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_122",
+        "citation": "IRS Pub 527 (2025), 'Example—Property Changed to Rental Use', p. 24",
+        "score": 0.03125763125763126,
+        "vector_score": 0.6526547657836906,
+        "bm25_score": 16.561152822007866,
+        "vector_rank": 3,
+        "bm25_rank": 5
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_024",
+        "citation": "IRS Pub 527 (2025), 'Depreciation', pp. 4-5",
+        "score": 0.029857397504456328,
+        "vector_score": 0.6351657699098151,
+        "bm25_score": 15.147086814586476,
+        "vector_rank": 6,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_023",
+        "citation": "IRS Pub 527 (2025), 'Personal use of rental property; Part interest', p. 4",
+        "score": 0.02964426877470356,
+        "vector_score": 0.6088529903284018,
+        "bm25_score": 15.667542282714574,
+        "vector_rank": 9,
+        "bm25_rank": 6
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_041",
+        "citation": "IRS Pub 527 (2025), 'Improvements', p. 7",
+        "score": 0.03278688524590164,
+        "vector_score": 0.7675672721218063,
+        "bm25_score": 21.688931497520837,
+        "vector_rank": 1,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_122",
+        "citation": "IRS Pub 527 (2025), 'Example—Property Changed to Rental Use', p. 24",
+        "score": 0.03225806451612903,
+        "vector_score": 0.6526547657836906,
+        "bm25_score": 17.00406352042176,
+        "vector_rank": 2,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_024",
+        "citation": "IRS Pub 527 (2025), 'Depreciation', pp. 4-5",
+        "score": 0.03076923076923077,
+        "vector_score": 0.6351657699098151,
+        "bm25_score": 15.419758746557935,
+        "vector_rank": 5,
+        "bm25_rank": 5
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_023",
+        "citation": "IRS Pub 527 (2025), 'Personal use of rental property; Part interest', p. 4",
+        "score": 0.03057889822595705,
+        "vector_score": 0.6088529903284018,
+        "bm25_score": 15.927837130107186,
+        "vector_rank": 8,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_125",
+        "citation": "IRS Pub 527 (2025), 'Adjusted basis', pp. 24-25",
+        "score": 0.03036576949620428,
+        "vector_score": 0.6385314324582434,
+        "bm25_score": 14.482938819666886,
+        "vector_rank": 3,
+        "bm25_rank": 9
+      }
+    ],
+    "removed_noise": [
+      "irs_pub_527_2025_ch00_189"
+    ]
+  },
+  {
+    "id": "q_sold_home",
+    "source": "IRS Pub 17",
+    "query": "sale of main home exclusion",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": false,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 2,
+        "before_hit3": false,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      },
+      {
+        "round": 3,
+        "before_hit3": false,
+        "after_hit3": true,
+        "before_hit5": true,
+        "after_hit5": true
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_008",
+        "citation": "IRS Pub 527 (2025), 'Sale or exchange of rental property', p. 2",
+        "score": 0.031754032258064516,
+        "vector_score": 0.5684096976303495,
+        "bm25_score": 19.250810033875283,
+        "vector_rank": 4,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_035",
+        "citation": "IRS Pub 544 (2025), 'Gain', p. 6",
+        "score": 0.031099324975891997,
+        "vector_score": 0.638225393083743,
+        "bm25_score": 16.931235085405596,
+        "vector_rank": 1,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_525_2025_ch00_244",
+        "citation": "IRS Pub 525 (2025), 'Railroad retirement annuities; Rewards; Sale of home; Sale of personal items', p. 35",
+        "score": 0.030536130536130537,
+        "vector_score": 0.5545633175071787,
+        "bm25_score": 16.98065034167564,
+        "vector_rank": 6,
+        "bm25_rank": 5
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_068",
+        "citation": "IRS Pub 544 (2025), 'Main home replaced', p. 14",
+        "score": 0.0304147465437788,
+        "vector_score": 0.5931088439355945,
+        "bm25_score": 16.50540228670116,
+        "vector_rank": 2,
+        "bm25_rank": 10
+      },
+      {
+        "chunk_id": "pub17_2025_ch08_081",
+        "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Railroad retirement annuities; Rewards; Sale of home; Sale of personal items', pp. 76-77",
+        "score": 0.03036576949620428,
+        "vector_score": 0.5723355667391091,
+        "bm25_score": 16.899044085427914,
+        "vector_rank": 3,
+        "bm25_rank": 9
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_pub_527_2025_ch00_008",
+        "citation": "IRS Pub 527 (2025), 'Sale or exchange of rental property', p. 2",
+        "score": 0.031754032258064516,
+        "vector_score": 0.5684096976303495,
+        "bm25_score": 19.386689758878184,
+        "vector_rank": 4,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_035",
+        "citation": "IRS Pub 544 (2025), 'Gain', p. 6",
+        "score": 0.03131881575727918,
+        "vector_score": 0.638225393083743,
+        "bm25_score": 17.08048874603682,
+        "vector_rank": 1,
+        "bm25_rank": 7
+      },
+      {
+        "chunk_id": "pub17_2025_ch08_081",
+        "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Railroad retirement annuities; Rewards; Sale of home; Sale of personal items', pp. 76-77",
+        "score": 0.03057889822595705,
+        "vector_score": 0.5723355667391091,
+        "bm25_score": 17.069375935523418,
+        "vector_rank": 3,
+        "bm25_rank": 8
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_051",
+        "citation": "IRS Pub 544 (2025), 'Main home condemned; Condemnation award', p. 10",
+        "score": 0.03055037313432836,
+        "vector_score": 0.5542791054928039,
+        "bm25_score": 17.18195464556051,
+        "vector_rank": 7,
+        "bm25_rank": 4
+      },
+      {
+        "chunk_id": "irs_pub_525_2025_ch00_244",
+        "citation": "IRS Pub 525 (2025), 'Railroad retirement annuities; Rewards; Sale of home; Sale of personal items', p. 35",
+        "score": 0.030536130536130537,
+        "vector_score": 0.5545633175071787,
+        "bm25_score": 17.149287115424574,
+        "vector_rank": 6,
+        "bm25_rank": 5
+      }
+    ],
+    "removed_noise": []
+  },
+  {
+    "id": "q_sold_investments",
+    "source": "IRS Pub 17",
+    "query": "capital gains and losses sale of stock",
+    "rounds": [
+      {
+        "round": 1,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": false,
+        "after_hit5": false
+      },
+      {
+        "round": 2,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": false,
+        "after_hit5": false
+      },
+      {
+        "round": 3,
+        "before_hit3": false,
+        "after_hit3": false,
+        "before_hit5": false,
+        "after_hit5": false
+      }
+    ],
+    "before": [
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_280",
+        "citation": "IRS Pub 544 (2025), 'Capital gains and losses Franchise; G', p. 61",
+        "score": 0.03177805800756621,
+        "vector_score": 0.5917205810547254,
+        "bm25_score": 31.460463230795323,
+        "vector_rank": 5,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_127",
+        "citation": "IRS Pub 544 (2025), 'Capital gain or loss', p. 30",
+        "score": 0.01639344262295082,
+        "vector_score": 0.6058053139332393,
+        "bm25_score": null,
+        "vector_rank": 1,
+        "bm25_rank": null
+      },
+      {
+        "chunk_id": "irs_pub_525_2025_ch00_286",
+        "citation": "IRS Pub 525 (2025), 'Cafeteria plans Campaign contributions Campus lodging Cancellation of debt Cancellation of sales contracts Capital gains; Capital gains or losses; Car; Carpools Cash or deferred arrangements (CODAs) Cash rebates Casualty insurance', p. 40",
+        "score": 0.016129032258064516,
+        "vector_score": null,
+        "bm25_score": 30.757769159048923,
+        "vector_rank": null,
+        "bm25_rank": 2
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_248",
+        "citation": "IRS Pub 544 (2025), 'Net gain; Net loss', p. 55",
+        "score": 0.016129032258064516,
+        "vector_score": 0.6029226845639651,
+        "bm25_score": null,
+        "vector_rank": 2,
+        "bm25_rank": null
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_179",
+        "citation": "IRS Pub 544 (2025), 'Treatment as ordinary or capital', p. 41",
+        "score": 0.015873015873015872,
+        "vector_score": null,
+        "bm25_score": 28.21319216988142,
+        "vector_rank": null,
+        "bm25_rank": 3
+      }
+    ],
+    "after": [
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_127",
+        "citation": "IRS Pub 544 (2025), 'Capital gain or loss', p. 30",
+        "score": 0.030679156908665108,
+        "vector_score": 0.6058053139332393,
+        "bm25_score": 26.084318906740137,
+        "vector_rank": 1,
+        "bm25_rank": 10
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_248",
+        "citation": "IRS Pub 544 (2025), 'Net gain; Net loss', p. 55",
+        "score": 0.030621785881252923,
+        "vector_score": 0.6029226845639651,
+        "bm25_score": 26.55373411039435,
+        "vector_rank": 2,
+        "bm25_rank": 9
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_247",
+        "citation": "IRS Pub 544 (2025), 'Net short-term capital gain or loss; Net long-term capital gain or loss', p. 55",
+        "score": 0.03036576949620428,
+        "vector_score": 0.5540698565369676,
+        "bm25_score": 28.105549876060877,
+        "vector_rank": 9,
+        "bm25_rank": 3
+      },
+      {
+        "chunk_id": "irs_pub_544_2025_ch00_179",
+        "citation": "IRS Pub 544 (2025), 'Treatment as ordinary or capital', p. 41",
+        "score": 0.01639344262295082,
+        "vector_score": null,
+        "bm25_score": 28.904573462382828,
+        "vector_rank": null,
+        "bm25_rank": 1
+      },
+      {
+        "chunk_id": "irs_pub_334_2025_ch00_129",
+        "citation": "IRS Pub 334 (2025), 'Restricted property; Gains and losses; Promissory notes', pp. 24-25",
+        "score": 0.016129032258064516,
+        "vector_score": null,
+        "bm25_score": 28.181208809952242,
+        "vector_rank": null,
+        "bm25_rank": 2
+      }
+    ],
+    "removed_noise": [
+      "irs_pub_544_2025_ch00_280",
+      "irs_pub_525_2025_ch00_286"
+    ]
+  }
+]

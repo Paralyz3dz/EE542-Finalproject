@@ -1,3 +1,21 @@
+For the source-blind relevance evaluation of the saved default interview top five, see
+[the passage relevance report](results/passage-relevance-2026-11-17/report.md).
+It evaluates 104 questions and 520 passages using grade 0 (unrelated), 1 (topical)
+and 2 (directly relevant). It reuses saved passages, makes no retrieval/database
+changes, and reports passage Precision@5 separately from question-level hit@5.
+Automatic labels and evidence-quote review flags are provisional, not human truth
+or answer-correctness scores. The single completed round refuses reruns:
+
+```powershell
+python -m eval.run_passage_relevance --env-file ../EE542-Finalproject/.env
+```
+
+For the paired 104-query index/reference-block cleanup experiment, see
+[corpus-hygiene.md](../docs/corpus-hygiene.md).
+
+For controlled 104-question intake candidate-pool comparisons, see
+[candidate_experiment.md](candidate_experiment.md).
+
 Run the current Agentic RAG baseline against the evaluation dataset:
 
 ```powershell

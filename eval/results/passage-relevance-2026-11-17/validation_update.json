@@ -1,0 +1,11 @@
+{
+  "reason": "Some initial evidence quotes were abbreviated or paraphrased, causing a formatting/grounding validation stop",
+  "rubric_prompt_and_schema_unchanged": true,
+  "model_configuration_unchanged": true,
+  "quote_check": "Independent audit flag; original model grades preserved; unverified quotes require review",
+  "existing_api_responses_reused": 3,
+  "initial_quote_validation_failures_recovered": 2,
+  "additional_model_calls_for_recovery": 0,
+  "original_raw_judgments_preserved": true,
+  "initially_completed_grades_unchanged": true
+}

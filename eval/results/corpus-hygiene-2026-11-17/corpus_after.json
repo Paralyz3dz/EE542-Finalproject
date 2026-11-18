@@ -1,0 +1,20 @@
+{
+  "chunks": 6004,
+  "documents": 21,
+  "sha256": "baa352db9fad6e6a9b672baf329b8006ec85da49290443b95687215ae2271bbf",
+  "indexes": [
+    [
+      "chunks_embedding_hnsw",
+      "CREATE INDEX chunks_embedding_hnsw ON public.chunks USING hnsw (embedding vector_cosine_ops)"
+    ],
+    [
+      "chunks_pkey",
+      "CREATE UNIQUE INDEX chunks_pkey ON public.chunks USING btree (id)"
+    ],
+    [
+      "chunks_year_type",
+      "CREATE INDEX chunks_year_type ON public.chunks USING btree (tax_year, type)"
+    ]
+  ],
+  "hnsw_ef_search": "40"
+}

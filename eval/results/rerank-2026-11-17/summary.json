@@ -1,0 +1,40 @@
+{
+  "rounds": 1,
+  "queries": 104,
+  "baseline_rrf_top5": {
+    "hits_at_3": 76,
+    "hit_at_3": 0.7307692307692307,
+    "hits_at_5": 82,
+    "hit_at_5": 0.7884615384615384,
+    "mrr_at_5": 0.5873397435897435
+  },
+  "reranked_top5": {
+    "hits_at_3": 75,
+    "hit_at_3": 0.7211538461538461,
+    "hits_at_5": 85,
+    "hit_at_5": 0.8173076923076923,
+    "mrr_at_5": 0.6177884615384616
+  },
+  "rrf_source_coverage_at_10": 96,
+  "gained_hit_at_5": [
+    "q_has_digital_assets",
+    "q_had_credit_disallowed",
+    "q_has_farm_income",
+    "q_does_rideshare_delivery",
+    "q_main_income_source",
+    "q_bought_big_equipment"
+  ],
+  "lost_hit_at_5": [
+    "q_had_disaster_loss",
+    "q_has_retirement_distribution",
+    "q_selling_for_profit"
+  ],
+  "mean_retrieval_seconds": 2.896172101923106,
+  "mean_rerank_seconds": 4.1115279355769525,
+  "mean_total_seconds": 7.011829851923083,
+  "p95_total_seconds": 10.091632995000007,
+  "primary_improved": true,
+  "limitations": "Primary-document source metrics are proxies; no answer generator or semantic sufficiency judge was run.",
+  "saved_baseline_top5_differences": [],
+  "saved_baseline_metric_differences": []
+}

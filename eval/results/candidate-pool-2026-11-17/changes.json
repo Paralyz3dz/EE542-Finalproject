@@ -1,0 +1,3928 @@
+[
+  {
+    "id": "q_has_self_employment",
+    "query": "self-employment income gig economy Schedule C who must file",
+    "source": "IRS Schedule C Instructions",
+    "candidate_k": 10,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_494",
+            "citation": "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6426020477651888,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch05_004",
+            "citation": "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Childcare providers; Self-employment tax', p. 47",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6152094831938395,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.031054405392392875,
+            "vector_score": 0.6051063051630583,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": 7,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch08_083",
+            "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Sharing/gig economy; State tax payments', p. 77",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6028368105281426,
+            "bm25_score": 30.103612025970495,
+            "vector_rank": 8,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "pub17_2025_ch01_021",
+            "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Self-Employed Persons', p. 8",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6124893099044152,
+            "bm25_score": 20.716106553471874,
+            "vector_rank": 5,
+            "bm25_rank": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_494",
+            "citation": "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6426020477651888,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch05_004",
+            "citation": "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Childcare providers; Self-employment tax', p. 47",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6152094831938395,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.031054405392392875,
+            "vector_score": 0.6051063051630583,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": 7,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch08_083",
+            "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Sharing/gig economy; State tax payments', p. 77",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6028368105281426,
+            "bm25_score": 30.103612025970495,
+            "vector_rank": 8,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "pub17_2025_ch01_021",
+            "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Self-Employed Persons', p. 8",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6124893099044152,
+            "bm25_score": 20.716106553471874,
+            "vector_rank": 5,
+            "bm25_rank": 7
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_494",
+            "citation": "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6426020477651888,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch05_004",
+            "citation": "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Childcare providers; Self-employment tax', p. 47",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6152094831938395,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.031054405392392875,
+            "vector_score": 0.6051063051630583,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": 7,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch08_083",
+            "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Sharing/gig economy; State tax payments', p. 77",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6028368105281426,
+            "bm25_score": 30.103612025970495,
+            "vector_rank": 8,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "pub17_2025_ch01_021",
+            "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Self-Employed Persons', p. 8",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6124893099044152,
+            "bm25_score": 20.716106553471874,
+            "vector_rank": 5,
+            "bm25_rank": 7
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_has_retirement_income",
+    "query": "social security benefits pensions annuities taxable",
+    "source": "IRS Pub 17",
+    "candidate_k": 10,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_007",
+            "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6235067132580409,
+            "bm25_score": 18.129699119189596,
+            "vector_rank": 10,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_007",
+            "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6235067132580409,
+            "bm25_score": 18.129699119189596,
+            "vector_rank": 10,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_007",
+            "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6235067132580409,
+            "bm25_score": 18.129699119189596,
+            "vector_rank": 10,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_had_credit_disallowed",
+    "query": "credit disallowed Form 8862 earned income credit",
+    "source": "IRS Pub 17",
+    "candidate_k": 10,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_258",
+            "citation": "IRS Form 1040 Instructions (2025), '8', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6645047651112339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_259",
+            "citation": "IRS Form 1040 Instructions (2025), 'earned income credit; 11', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.057779779829577,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.03128054740957967,
+            "vector_score": 0.6301953229136544,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": 6,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_970_2025_ch00_053",
+            "citation": "IRS Pub 970 (2025), 'Form 8862 may be required', p. 9",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6466438855598864,
+            "bm25_score": 18.69432540582202,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_314",
+            "citation": "IRS Form 1040 Instructions (2025), 'Form 8862 required', p. 61",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6194859674642831,
+            "bm25_score": 19.60796263583888,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_005",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form (and Instructions) Schedule 8812 (Form 1040); 8862', p. 109",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6107938850117074,
+            "bm25_score": 18.202028504037365,
+            "vector_rank": 8,
+            "bm25_rank": 10
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_258",
+            "citation": "IRS Form 1040 Instructions (2025), '8', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6645047651112339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_259",
+            "citation": "IRS Form 1040 Instructions (2025), 'earned income credit; 11', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.057779779829577,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.03128054740957967,
+            "vector_score": 0.6301953229136544,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": 6,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_970_2025_ch00_053",
+            "citation": "IRS Pub 970 (2025), 'Form 8862 may be required', p. 9",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6466438855598864,
+            "bm25_score": 18.69432540582202,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_314",
+            "citation": "IRS Form 1040 Instructions (2025), 'Form 8862 required', p. 61",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6194859674642831,
+            "bm25_score": 19.60796263583888,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_005",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form (and Instructions) Schedule 8812 (Form 1040); 8862', p. 109",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6107938850117074,
+            "bm25_score": 18.202028504037365,
+            "vector_rank": 8,
+            "bm25_rank": 10
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_258",
+            "citation": "IRS Form 1040 Instructions (2025), '8', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6645047651112339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_259",
+            "citation": "IRS Form 1040 Instructions (2025), 'earned income credit; 11', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.057779779829577,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.03128054740957967,
+            "vector_score": 0.6301953229136544,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": 6,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_970_2025_ch00_053",
+            "citation": "IRS Pub 970 (2025), 'Form 8862 may be required', p. 9",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6466438855598864,
+            "bm25_score": 18.69432540582202,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_314",
+            "citation": "IRS Form 1040 Instructions (2025), 'Form 8862 required', p. 61",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6194859674642831,
+            "bm25_score": 19.60796263583888,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_005",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form (and Instructions) Schedule 8812 (Form 1040); 8862', p. 109",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6107938850117074,
+            "bm25_score": 18.202028504037365,
+            "vector_rank": 8,
+            "bm25_rank": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_distribution_account_type",
+    "query": "Form 1099-R distribution code box 7",
+    "source": "IRS Pub 575",
+    "candidate_k": 10,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_092",
+            "citation": "IRS Pub 590-B (2025), 'Letter codes', p. 21",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6706417206503525,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.030621785881252923,
+            "vector_score": 0.6349214239723951,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": 9,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_074",
+            "citation": "IRS Pub 575 (2025), 'Smith', p. 16",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6594728034891987,
+            "bm25_score": 21.513306073474702,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_094",
+            "citation": "IRS Pub 575 (2025), 'Reporting by plan; Effect on investment in the contract', p. 19",
+            "score": 0.029437229437229435,
+            "vector_score": 0.6193795588819424,
+            "bm25_score": 25.003078535194373,
+            "vector_rank": 10,
+            "bm25_rank": 6
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_092",
+            "citation": "IRS Pub 590-B (2025), 'Letter codes', p. 21",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6706417206503525,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.030621785881252923,
+            "vector_score": 0.6349214239723951,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": 9,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_074",
+            "citation": "IRS Pub 575 (2025), 'Smith', p. 16",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6594728034891987,
+            "bm25_score": 21.513306073474702,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_094",
+            "citation": "IRS Pub 575 (2025), 'Reporting by plan; Effect on investment in the contract', p. 19",
+            "score": 0.029437229437229435,
+            "vector_score": 0.6193795588819424,
+            "bm25_score": 25.003078535194373,
+            "vector_rank": 10,
+            "bm25_rank": 6
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_092",
+            "citation": "IRS Pub 590-B (2025), 'Letter codes', p. 21",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6706417206503525,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.030621785881252923,
+            "vector_score": 0.6349214239723951,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": 9,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_074",
+            "citation": "IRS Pub 575 (2025), 'Smith', p. 16",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6594728034891987,
+            "bm25_score": 21.513306073474702,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_094",
+            "citation": "IRS Pub 575 (2025), 'Reporting by plan; Effect on investment in the contract', p. 19",
+            "score": 0.029437229437229435,
+            "vector_score": 0.6193795588819424,
+            "bm25_score": 25.003078535194373,
+            "vector_rank": 10,
+            "bm25_rank": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_retirement_distributions",
+    "query": "1099-R gross distribution taxable amount",
+    "source": "IRS Pub 575",
+    "candidate_k": 10,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.030834914611005692,
+            "vector_score": 0.6253596618128439,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": 8,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_237",
+            "citation": "IRS Pub 575 (2025), 'Form 1099-INT; Form 1099-R; Form 5329; Form RRB-1099-R Form W-4P; Form W-4V; Frozen deposits Fully taxable payments', p. 45",
+            "score": 0.030309988518943745,
+            "vector_score": 0.627095877124885,
+            "bm25_score": 16.956803282905966,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.030834914611005692,
+            "vector_score": 0.6253596618128439,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": 8,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_237",
+            "citation": "IRS Pub 575 (2025), 'Form 1099-INT; Form 1099-R; Form 5329; Form RRB-1099-R Form W-4P; Form W-4V; Frozen deposits Fully taxable payments', p. 45",
+            "score": 0.030309988518943745,
+            "vector_score": 0.627095877124885,
+            "bm25_score": 16.956803282905966,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.030834914611005692,
+            "vector_score": 0.6253596618128439,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": 8,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_237",
+            "citation": "IRS Pub 575 (2025), 'Form 1099-INT; Form 1099-R; Form 5329; Form RRB-1099-R Form W-4P; Form W-4V; Frozen deposits Fully taxable payments', p. 45",
+            "score": 0.030309988518943745,
+            "vector_score": 0.627095877124885,
+            "bm25_score": 16.956803282905966,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_has_self_employment",
+    "query": "self-employment income gig economy Schedule C who must file",
+    "source": "IRS Schedule C Instructions",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_494",
+            "citation": "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6426020477651888,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch05_004",
+            "citation": "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Childcare providers; Self-employment tax', p. 47",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6152094831938395,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.031054405392392875,
+            "vector_score": 0.6051063051630583,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": 7,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch08_083",
+            "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Sharing/gig economy; State tax payments', p. 77",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6028368105281426,
+            "bm25_score": 30.103612025970495,
+            "vector_rank": 8,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "pub17_2025_ch01_021",
+            "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Self-Employed Persons', p. 8",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6124893099044152,
+            "bm25_score": 20.716106553471874,
+            "vector_rank": 5,
+            "bm25_rank": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_494",
+            "citation": "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6426020477651888,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch05_004",
+            "citation": "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Childcare providers; Self-employment tax', p. 47",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6152094831938395,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.031054405392392875,
+            "vector_score": 0.6051063051630583,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": 7,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch08_083",
+            "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Sharing/gig economy; State tax payments', p. 77",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6028368105281426,
+            "bm25_score": 30.103612025970495,
+            "vector_rank": 8,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "pub17_2025_ch01_021",
+            "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Self-Employed Persons', p. 8",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6124893099044152,
+            "bm25_score": 20.716106553471874,
+            "vector_rank": 5,
+            "bm25_rank": 7
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_494",
+            "citation": "IRS Form 1040 Instructions (2025), 'State and Local Income Tax Refund Worksheet—Schedule', pp. 89-90",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6426020477651888,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch05_004",
+            "citation": "IRS Pub 17 (2025), Chapter 5 Wages, Salaries, and Other Earnings, 'Childcare providers; Self-employment tax', p. 47",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6152094831938395,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_334_2025_ch00_020",
+            "citation": "IRS Pub 334 (2025), 'Small Business and Self-Employed (SB/SE) Tax Center; Gig Economy Tax Center', p. 5",
+            "score": 0.03278688524590164,
+            "vector_score": 0.6551560512836205,
+            "bm25_score": 39.67552742717821,
+            "vector_rank": 1,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_200",
+            "citation": "IRS Pub 525 (2025), 'Sharing/Gig Economy', p. 28",
+            "score": 0.03149801587301587,
+            "vector_score": 0.6134985129530778,
+            "bm25_score": 31.2167476277372,
+            "vector_rank": 4,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_schedule_c_instructions_2025_ch00_006",
+            "citation": "IRS Schedule C Instructions (2025), 'Form 1040-SS filers and business use of home; Redesigned Form 1040-SS; Business meals deduction; Reporting nontaxable Medicaid waiver payments; Gig economy tax center', PDF p. 1",
+            "score": 0.031054405392392875,
+            "vector_score": 0.6051063051630583,
+            "bm25_score": 34.66076343097073,
+            "vector_rank": 7,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch08_083",
+            "citation": "IRS Pub 17 (2025), Chapter 8 Other Income, 'Sharing/gig economy; State tax payments', p. 77",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6028368105281426,
+            "bm25_score": 30.103612025970495,
+            "vector_rank": 8,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "pub17_2025_ch01_021",
+            "citation": "IRS Pub 17 (2025), Chapter 1 Filing Information, 'Self-Employed Persons', p. 8",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6124893099044152,
+            "bm25_score": 20.716106553471874,
+            "vector_rank": 5,
+            "bm25_rank": 7
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_has_retirement_income",
+    "query": "social security benefits pensions annuities taxable",
+    "source": "IRS Pub 17",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.03021353930031804,
+            "vector_score": 0.6169976731536042,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": 11,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": 17.213947080001564,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.02921395544346364,
+            "vector_score": 0.6083012118878158,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": 18,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_007",
+            "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6235067132580409,
+            "bm25_score": 18.129699119189596,
+            "vector_rank": 10,
+            "bm25_rank": 8
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.03021353930031804,
+            "vector_score": 0.6169976731536042,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": 11,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": 17.213947080001564,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.02921395544346364,
+            "vector_score": 0.6083012118878158,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": 18,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_007",
+            "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6235067132580409,
+            "bm25_score": 18.129699119189596,
+            "vector_rank": 10,
+            "bm25_rank": 8
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_020",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, '11; 19. Taxable benefits', pp. 64-65",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6668622691960451,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_153",
+            "citation": "IRS Form 1040 Instructions (2025), 'Fully Taxable Pensions and Annuities; Partially Taxable Pensions and Annuities', p. 28",
+            "score": 0.031754032258064516,
+            "vector_score": 0.6525713230542531,
+            "bm25_score": 19.530847651508886,
+            "vector_rank": 2,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.03021353930031804,
+            "vector_score": 0.6169976731536042,
+            "bm25_score": 20.28189067278775,
+            "vector_rank": 11,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_012",
+            "citation": "IRS Pub 915 (2025), 'May Be Taxable', p. 4",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6478873021166077,
+            "bm25_score": 17.213947080001564,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_012",
+            "citation": "IRS Pub 575 (2025), '907; 915; 939; Form (and Instructions) W-4P; W-4R; 1099-R; 4972; 5329; 8915-F', p. 3",
+            "score": 0.02921395544346364,
+            "vector_score": 0.6083012118878158,
+            "bm25_score": 20.374049357631826,
+            "vector_rank": 18,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_007",
+            "citation": "IRS Pub 575 (2025), 'What isn’t covered in this publication?', pp. 2-3",
+            "score": 0.028991596638655463,
+            "vector_score": 0.6235067132580409,
+            "bm25_score": 18.129699119189596,
+            "vector_rank": 10,
+            "bm25_rank": 8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_has_hsa",
+    "query": "health savings account California adjustment Schedule CA",
+    "source": "FTB Schedule CA (540) Instructions",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_247",
+            "citation": "FTB 540 Booklet (2025), 'Line 12 Certain Business Expenses of Reservists, Performing Artists, and Fee-Basis Government Officials; Line 13 Health Savings Account Deduction; Line 14 Moving Expenses', p. 65",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.467038011503004,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "ftb_schedule_ca_540_instructions_2025_ch00_017",
+            "citation": "FTB Schedule CA (540) Instructions (2025), 'Column A – Federal Amounts Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a', web instruction PDF p. 7",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6807920298836831,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_203",
+            "citation": "FTB 540 Booklet (2025), 'Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a; Section B, Line 2a and Line 2b', p. 58",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6646244914753292,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "ftb_schedule_ca_540_instructions_2025_ch00_055",
+            "citation": "FTB Schedule CA (540) Instructions (2025), 'Section C – Adjustments to Income Line 11 through Line 25', web instruction PDF p. 25",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 21.364461414413793,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_248",
+            "citation": "FTB 540 Booklet (2025), 'Line 15 Deductible Part of Self-employment Tax; Line 17 Self-employed Health Insurance Deduction; Note', p. 65",
+            "score": 0.015873015873015872,
+            "vector_score": null,
+            "bm25_score": 20.814695631618804,
+            "vector_rank": null,
+            "bm25_rank": 3
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_247",
+            "citation": "FTB 540 Booklet (2025), 'Line 12 Certain Business Expenses of Reservists, Performing Artists, and Fee-Basis Government Officials; Line 13 Health Savings Account Deduction; Line 14 Moving Expenses', p. 65",
+            "score": 0.029906956136464335,
+            "vector_score": 0.5836229846140454,
+            "bm25_score": 26.467038011503004,
+            "vector_rank": 14,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_248",
+            "citation": "FTB 540 Booklet (2025), 'Line 15 Deductible Part of Self-employment Tax; Line 17 Self-employed Health Insurance Deduction; Note', p. 65",
+            "score": 0.029206349206349208,
+            "vector_score": 0.5817774653301339,
+            "bm25_score": 20.814695631618804,
+            "vector_rank": 15,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_061",
+            "citation": "FTB 540 Booklet (2025), 'Line 14 – California Adjustments – Subtractions [from Schedule CA (540), Part I, line 27, column B]', p. 13",
+            "score": 0.028850145288501453,
+            "vector_score": 0.6022883423406015,
+            "bm25_score": 15.611246020269665,
+            "vector_rank": 6,
+            "bm25_rank": 13
+          },
+          {
+            "chunk_id": "ftb_pub_1031_2025_ch00_079",
+            "citation": "FTB Pub 1031 (2025), '1', p. 13",
+            "score": 0.026785714285714288,
+            "vector_score": 0.5942826335773711,
+            "bm25_score": 15.111466697974265,
+            "vector_rank": 10,
+            "bm25_rank": 20
+          },
+          {
+            "chunk_id": "ftb_pub_1031_2025_ch00_077",
+            "citation": "FTB Pub 1031 (2025), '1', p. 13",
+            "score": 0.026742734890354787,
+            "vector_score": 0.5940686659033299,
+            "bm25_score": 15.18645176375859,
+            "vector_rank": 11,
+            "bm25_rank": 19
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_247",
+            "citation": "FTB 540 Booklet (2025), 'Line 12 Certain Business Expenses of Reservists, Performing Artists, and Fee-Basis Government Officials; Line 13 Health Savings Account Deduction; Line 14 Moving Expenses', p. 65",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.467038011503004,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "ftb_schedule_ca_540_instructions_2025_ch00_017",
+            "citation": "FTB Schedule CA (540) Instructions (2025), 'Column A – Federal Amounts Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a', web instruction PDF p. 7",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6807920298836831,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_203",
+            "citation": "FTB 540 Booklet (2025), 'Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a; Section B, Line 2a and Line 2b', p. 58",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6646244914753292,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "ftb_schedule_ca_540_instructions_2025_ch00_055",
+            "citation": "FTB Schedule CA (540) Instructions (2025), 'Section C – Adjustments to Income Line 11 through Line 25', web instruction PDF p. 25",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 21.364461414413793,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_248",
+            "citation": "FTB 540 Booklet (2025), 'Line 15 Deductible Part of Self-employment Tax; Line 17 Self-employed Health Insurance Deduction; Note', p. 65",
+            "score": 0.015873015873015872,
+            "vector_score": null,
+            "bm25_score": 20.814695631618804,
+            "vector_rank": null,
+            "bm25_rank": 3
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_247",
+            "citation": "FTB 540 Booklet (2025), 'Line 12 Certain Business Expenses of Reservists, Performing Artists, and Fee-Basis Government Officials; Line 13 Health Savings Account Deduction; Line 14 Moving Expenses', p. 65",
+            "score": 0.029906956136464335,
+            "vector_score": 0.5836229846140454,
+            "bm25_score": 26.467038011503004,
+            "vector_rank": 14,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_248",
+            "citation": "FTB 540 Booklet (2025), 'Line 15 Deductible Part of Self-employment Tax; Line 17 Self-employed Health Insurance Deduction; Note', p. 65",
+            "score": 0.029206349206349208,
+            "vector_score": 0.5817774653301339,
+            "bm25_score": 20.814695631618804,
+            "vector_rank": 15,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_061",
+            "citation": "FTB 540 Booklet (2025), 'Line 14 – California Adjustments – Subtractions [from Schedule CA (540), Part I, line 27, column B]', p. 13",
+            "score": 0.028850145288501453,
+            "vector_score": 0.6022883423406015,
+            "bm25_score": 15.611246020269665,
+            "vector_rank": 6,
+            "bm25_rank": 13
+          },
+          {
+            "chunk_id": "ftb_pub_1031_2025_ch00_079",
+            "citation": "FTB Pub 1031 (2025), '1', p. 13",
+            "score": 0.026785714285714288,
+            "vector_score": 0.5942826335773711,
+            "bm25_score": 15.111466697974265,
+            "vector_rank": 10,
+            "bm25_rank": 20
+          },
+          {
+            "chunk_id": "ftb_pub_1031_2025_ch00_077",
+            "citation": "FTB Pub 1031 (2025), '1', p. 13",
+            "score": 0.026742734890354787,
+            "vector_score": 0.5940686659033299,
+            "bm25_score": 15.18645176375859,
+            "vector_rank": 11,
+            "bm25_rank": 19
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_247",
+            "citation": "FTB 540 Booklet (2025), 'Line 12 Certain Business Expenses of Reservists, Performing Artists, and Fee-Basis Government Officials; Line 13 Health Savings Account Deduction; Line 14 Moving Expenses', p. 65",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.467038011503004,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "ftb_schedule_ca_540_instructions_2025_ch00_017",
+            "citation": "FTB Schedule CA (540) Instructions (2025), 'Column A – Federal Amounts Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a', web instruction PDF p. 7",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6807920298836831,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_203",
+            "citation": "FTB 540 Booklet (2025), 'Section A, Line 1a through Line 7a, and Section B, Line 1 through Line 9a; Section B, Line 2a and Line 2b', p. 58",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6646244914753292,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "ftb_schedule_ca_540_instructions_2025_ch00_055",
+            "citation": "FTB Schedule CA (540) Instructions (2025), 'Section C – Adjustments to Income Line 11 through Line 25', web instruction PDF p. 25",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 21.364461414413793,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_248",
+            "citation": "FTB 540 Booklet (2025), 'Line 15 Deductible Part of Self-employment Tax; Line 17 Self-employed Health Insurance Deduction; Note', p. 65",
+            "score": 0.015873015873015872,
+            "vector_score": null,
+            "bm25_score": 20.814695631618804,
+            "vector_rank": null,
+            "bm25_rank": 3
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_247",
+            "citation": "FTB 540 Booklet (2025), 'Line 12 Certain Business Expenses of Reservists, Performing Artists, and Fee-Basis Government Officials; Line 13 Health Savings Account Deduction; Line 14 Moving Expenses', p. 65",
+            "score": 0.029906956136464335,
+            "vector_score": 0.5836229846140454,
+            "bm25_score": 26.467038011503004,
+            "vector_rank": 14,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_248",
+            "citation": "FTB 540 Booklet (2025), 'Line 15 Deductible Part of Self-employment Tax; Line 17 Self-employed Health Insurance Deduction; Note', p. 65",
+            "score": 0.029206349206349208,
+            "vector_score": 0.5817774653301339,
+            "bm25_score": 20.814695631618804,
+            "vector_rank": 15,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "ftb_540_booklet_2025_ch00_061",
+            "citation": "FTB 540 Booklet (2025), 'Line 14 – California Adjustments – Subtractions [from Schedule CA (540), Part I, line 27, column B]', p. 13",
+            "score": 0.028850145288501453,
+            "vector_score": 0.6022883423406015,
+            "bm25_score": 15.611246020269665,
+            "vector_rank": 6,
+            "bm25_rank": 13
+          },
+          {
+            "chunk_id": "ftb_pub_1031_2025_ch00_079",
+            "citation": "FTB Pub 1031 (2025), '1', p. 13",
+            "score": 0.026785714285714288,
+            "vector_score": 0.5942826335773711,
+            "bm25_score": 15.111466697974265,
+            "vector_rank": 10,
+            "bm25_rank": 20
+          },
+          {
+            "chunk_id": "ftb_pub_1031_2025_ch00_077",
+            "citation": "FTB Pub 1031 (2025), '1', p. 13",
+            "score": 0.026742734890354787,
+            "vector_score": 0.5940686659033299,
+            "bm25_score": 15.18645176375859,
+            "vector_rank": 11,
+            "bm25_rank": 19
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_had_credit_disallowed",
+    "query": "credit disallowed Form 8862 earned income credit",
+    "source": "IRS Pub 17",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_258",
+            "citation": "IRS Form 1040 Instructions (2025), '8', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6645047651112339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_259",
+            "citation": "IRS Form 1040 Instructions (2025), 'earned income credit; 11', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.057779779829577,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.03128054740957967,
+            "vector_score": 0.6301953229136544,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": 6,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_970_2025_ch00_053",
+            "citation": "IRS Pub 970 (2025), 'Form 8862 may be required', p. 9",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6466438855598864,
+            "bm25_score": 18.69432540582202,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_314",
+            "citation": "IRS Form 1040 Instructions (2025), 'Form 8862 required', p. 61",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6194859674642831,
+            "bm25_score": 19.60796263583888,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": 16.83773097423625,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_258",
+            "citation": "IRS Form 1040 Instructions (2025), '8', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6645047651112339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_259",
+            "citation": "IRS Form 1040 Instructions (2025), 'earned income credit; 11', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.057779779829577,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.03128054740957967,
+            "vector_score": 0.6301953229136544,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": 6,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_970_2025_ch00_053",
+            "citation": "IRS Pub 970 (2025), 'Form 8862 may be required', p. 9",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6466438855598864,
+            "bm25_score": 18.69432540582202,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_314",
+            "citation": "IRS Form 1040 Instructions (2025), 'Form 8862 required', p. 61",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6194859674642831,
+            "bm25_score": 19.60796263583888,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": 16.83773097423625,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_258",
+            "citation": "IRS Form 1040 Instructions (2025), '8', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6645047651112339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_259",
+            "citation": "IRS Form 1040 Instructions (2025), 'earned income credit; 11', p. 48",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 26.057779779829577,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_250",
+            "citation": "IRS Form 1040 Instructions (2025), 'smaller; credit. 6; 1a', pp. 46-47",
+            "score": 0.03200204813108039,
+            "vector_score": 0.6644730954183428,
+            "bm25_score": 23.538897879671325,
+            "vector_rank": 2,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "pub17_2025_ch13_014",
+            "citation": "IRS Pub 17 (2025), Chapter 13 How To Figure Your Tax, 'Earned income credit', p. 108",
+            "score": 0.03128054740957967,
+            "vector_score": 0.6301953229136544,
+            "bm25_score": 24.87476767173144,
+            "vector_rank": 6,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_970_2025_ch00_053",
+            "citation": "IRS Pub 970 (2025), 'Form 8862 may be required', p. 9",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6466438855598864,
+            "bm25_score": 18.69432540582202,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_314",
+            "citation": "IRS Form 1040 Instructions (2025), 'Form 8862 required', p. 61",
+            "score": 0.030309988518943745,
+            "vector_score": 0.6194859674642831,
+            "bm25_score": 19.60796263583888,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "pub17_2025_ch14_008",
+            "citation": "IRS Pub 17 (2025), Chapter 14 Child Tax Credit and Credit for Other Dependents, 'Form 8862 may be required', p. 109",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6545609387545295,
+            "bm25_score": 16.83773097423625,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_receives_social_security",
+    "query": "social security benefits taxable portion",
+    "source": "IRS Pub 915",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 21.009935180102275,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_009",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; base amount; amount', p. 63",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7299349951899063,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.016129032258064516,
+            "vector_score": 0.7267172119999921,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_006",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Are Any of Your Benefits Taxable?', p. 62",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.877810417663664,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_003",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; What isn’t covered in this chapter', p. 62",
+            "score": 0.015873015873015872,
+            "vector_score": null,
+            "bm25_score": 20.38986794132641,
+            "vector_rank": null,
+            "bm25_rank": 3
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "pub17_2025_ch07_006",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Are Any of Your Benefits Taxable?', p. 62",
+            "score": 0.02928692699490662,
+            "vector_score": 0.6810723871839778,
+            "bm25_score": 20.877810417663664,
+            "vector_rank": 16,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.02878726010616578,
+            "vector_score": 0.7267172119999921,
+            "bm25_score": 16.52079187596666,
+            "vector_rank": 2,
+            "bm25_rank": 19
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_002",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Introduction', p. 62",
+            "score": 0.02871794871794872,
+            "vector_score": 0.6838671361247708,
+            "bm25_score": 20.015951174115173,
+            "vector_rank": 15,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_068",
+            "citation": "IRS Pub 590-A (2025), 'Social Security Recipients', p. 13",
+            "score": 0.027912386121341344,
+            "vector_score": 0.675785738042417,
+            "bm25_score": 19.67690101963963,
+            "vector_rank": 17,
+            "bm25_rank": 7
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 21.009935180102275,
+            "vector_rank": null,
+            "bm25_rank": 1
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 21.009935180102275,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_009",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; base amount; amount', p. 63",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7299349951899063,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.016129032258064516,
+            "vector_score": 0.7267172119999921,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_006",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Are Any of Your Benefits Taxable?', p. 62",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.877810417663664,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_003",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; What isn’t covered in this chapter', p. 62",
+            "score": 0.015873015873015872,
+            "vector_score": null,
+            "bm25_score": 20.38986794132641,
+            "vector_rank": null,
+            "bm25_rank": 3
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "pub17_2025_ch07_006",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Are Any of Your Benefits Taxable?', p. 62",
+            "score": 0.02928692699490662,
+            "vector_score": 0.6810723871839778,
+            "bm25_score": 20.877810417663664,
+            "vector_rank": 16,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.02878726010616578,
+            "vector_score": 0.7267172119999921,
+            "bm25_score": 16.52079187596666,
+            "vector_rank": 2,
+            "bm25_rank": 19
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_002",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Introduction', p. 62",
+            "score": 0.02871794871794872,
+            "vector_score": 0.6838671361247708,
+            "bm25_score": 20.015951174115173,
+            "vector_rank": 15,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_068",
+            "citation": "IRS Pub 590-A (2025), 'Social Security Recipients', p. 13",
+            "score": 0.027912386121341344,
+            "vector_score": 0.675785738042417,
+            "bm25_score": 19.67690101963963,
+            "vector_rank": 17,
+            "bm25_rank": 7
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 21.009935180102275,
+            "vector_rank": null,
+            "bm25_rank": 1
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "loss",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 21.009935180102275,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_009",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; base amount; amount', p. 63",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7299349951899063,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.016129032258064516,
+            "vector_score": 0.7267172119999921,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_006",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Are Any of Your Benefits Taxable?', p. 62",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 20.877810417663664,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_003",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; What isn’t covered in this chapter', p. 62",
+            "score": 0.015873015873015872,
+            "vector_score": null,
+            "bm25_score": 20.38986794132641,
+            "vector_rank": null,
+            "bm25_rank": 3
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "pub17_2025_ch07_006",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Are Any of Your Benefits Taxable?', p. 62",
+            "score": 0.02928692699490662,
+            "vector_score": 0.6810723871839778,
+            "bm25_score": 20.877810417663664,
+            "vector_rank": 16,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.02878726010616578,
+            "vector_score": 0.7267172119999921,
+            "bm25_score": 16.52079187596666,
+            "vector_rank": 2,
+            "bm25_rank": 19
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_002",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Introduction', p. 62",
+            "score": 0.02871794871794872,
+            "vector_score": 0.6838671361247708,
+            "bm25_score": 20.015951174115173,
+            "vector_rank": 15,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_068",
+            "citation": "IRS Pub 590-A (2025), 'Social Security Recipients', p. 13",
+            "score": 0.027912386121341344,
+            "vector_score": 0.675785738042417,
+            "bm25_score": 19.67690101963963,
+            "vector_rank": 17,
+            "bm25_rank": 7
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_004",
+            "citation": "IRS Pub 915 (2025), 'Note; What is covered in this publication; What isn’t covered in this publication', p. 2",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 21.009935180102275,
+            "vector_rank": null,
+            "bm25_rank": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_social_security_benefits",
+    "query": "how much social security is taxable worksheet",
+    "source": "IRS Pub 915",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_175",
+            "citation": "IRS Form 1040 Instructions (2025), 'Social Security Benefits Worksheet—Lines', p. 32",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7003651263506172,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_013",
+            "citation": "IRS Pub 590-A (2025), 'Table I-1. Using This Publication', p. 4",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 24.755562478472534,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_505_2025_ch00_188",
+            "citation": "IRS Pub 505 (2025), 'Worksheet 2-2. 2025 Estimated Tax Worksheet—Line Estimated Taxable Social Benefits', p. 32",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6760877404527504,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_033",
+            "citation": "IRS Pub 915 (2025), 'Example 4.', p. 10",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 21.958170425897528,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6742762167065411,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "pub17_2025_ch07_014",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Maximum taxable part; Which worksheet to use; Lump-sum election', pp. 63-64",
+            "score": 0.028850145288501453,
+            "vector_score": 0.6628576302530992,
+            "bm25_score": 18.690229122658288,
+            "vector_rank": 6,
+            "bm25_rank": 13
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_028",
+            "citation": "IRS Pub 915 (2025), 'Filled-in Worksheet 1. Figuring Your Taxable Benefits', pp. 8-9",
+            "score": 0.02804284323271665,
+            "vector_score": 0.6351562947966606,
+            "bm25_score": 21.52322226421538,
+            "vector_rank": 19,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_068",
+            "citation": "IRS Pub 590-A (2025), 'Social Security Recipients', p. 13",
+            "score": 0.027692895339954164,
+            "vector_score": 0.6387991424797329,
+            "bm25_score": 20.49512420342842,
+            "vector_rank": 17,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_009",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; base amount; amount', p. 63",
+            "score": 0.027479766610201392,
+            "vector_score": 0.6584653432564918,
+            "bm25_score": 17.2173443564925,
+            "vector_rank": 9,
+            "bm25_rank": 17
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_175",
+            "citation": "IRS Form 1040 Instructions (2025), 'Social Security Benefits Worksheet—Lines', p. 32",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7003651263506172,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_175",
+            "citation": "IRS Form 1040 Instructions (2025), 'Social Security Benefits Worksheet—Lines', p. 32",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7003651263506172,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_013",
+            "citation": "IRS Pub 590-A (2025), 'Table I-1. Using This Publication', p. 4",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 24.755562478472534,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_505_2025_ch00_188",
+            "citation": "IRS Pub 505 (2025), 'Worksheet 2-2. 2025 Estimated Tax Worksheet—Line Estimated Taxable Social Benefits', p. 32",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6760877404527504,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_033",
+            "citation": "IRS Pub 915 (2025), 'Example 4.', p. 10",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 21.958170425897528,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6742762167065411,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "pub17_2025_ch07_014",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Maximum taxable part; Which worksheet to use; Lump-sum election', pp. 63-64",
+            "score": 0.028850145288501453,
+            "vector_score": 0.6628576302530992,
+            "bm25_score": 18.690229122658288,
+            "vector_rank": 6,
+            "bm25_rank": 13
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_028",
+            "citation": "IRS Pub 915 (2025), 'Filled-in Worksheet 1. Figuring Your Taxable Benefits', pp. 8-9",
+            "score": 0.02804284323271665,
+            "vector_score": 0.6351562947966606,
+            "bm25_score": 21.52322226421538,
+            "vector_rank": 19,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_068",
+            "citation": "IRS Pub 590-A (2025), 'Social Security Recipients', p. 13",
+            "score": 0.027692895339954164,
+            "vector_score": 0.6387991424797329,
+            "bm25_score": 20.49512420342842,
+            "vector_rank": 17,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_009",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; base amount; amount', p. 63",
+            "score": 0.027479766610201392,
+            "vector_score": 0.6584653432564918,
+            "bm25_score": 17.2173443564925,
+            "vector_rank": 9,
+            "bm25_rank": 17
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_175",
+            "citation": "IRS Form 1040 Instructions (2025), 'Social Security Benefits Worksheet—Lines', p. 32",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7003651263506172,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_175",
+            "citation": "IRS Form 1040 Instructions (2025), 'Social Security Benefits Worksheet—Lines', p. 32",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7003651263506172,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_013",
+            "citation": "IRS Pub 590-A (2025), 'Table I-1. Using This Publication', p. 4",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 24.755562478472534,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_505_2025_ch00_188",
+            "citation": "IRS Pub 505 (2025), 'Worksheet 2-2. 2025 Estimated Tax Worksheet—Line Estimated Taxable Social Benefits', p. 32",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6760877404527504,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_033",
+            "citation": "IRS Pub 915 (2025), 'Example 4.', p. 10",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 21.958170425897528,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_168",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 31",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6742762167065411,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "pub17_2025_ch07_014",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Maximum taxable part; Which worksheet to use; Lump-sum election', pp. 63-64",
+            "score": 0.028850145288501453,
+            "vector_score": 0.6628576302530992,
+            "bm25_score": 18.690229122658288,
+            "vector_rank": 6,
+            "bm25_rank": 13
+          },
+          {
+            "chunk_id": "irs_pub_915_2025_ch00_028",
+            "citation": "IRS Pub 915 (2025), 'Filled-in Worksheet 1. Figuring Your Taxable Benefits', pp. 8-9",
+            "score": 0.02804284323271665,
+            "vector_score": 0.6351562947966606,
+            "bm25_score": 21.52322226421538,
+            "vector_rank": 19,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_590_a_2025_ch00_068",
+            "citation": "IRS Pub 590-A (2025), 'Social Security Recipients', p. 13",
+            "score": 0.027692895339954164,
+            "vector_score": 0.6387991424797329,
+            "bm25_score": 20.49512420342842,
+            "vector_rank": 17,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "pub17_2025_ch07_009",
+            "citation": "IRS Pub 17 (2025), Chapter 7 Social Security and Equivalent Railroad Retirement Benefits, 'Note; base amount; amount', p. 63",
+            "score": 0.027479766610201392,
+            "vector_score": 0.6584653432564918,
+            "bm25_score": 17.2173443564925,
+            "vector_rank": 9,
+            "bm25_rank": 17
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_175",
+            "citation": "IRS Form 1040 Instructions (2025), 'Social Security Benefits Worksheet—Lines', p. 32",
+            "score": 0.01639344262295082,
+            "vector_score": 0.7003651263506172,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_distribution_account_type",
+    "query": "Form 1099-R distribution code box 7",
+    "source": "IRS Pub 575",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_092",
+            "citation": "IRS Pub 590-B (2025), 'Letter codes', p. 21",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6706417206503525,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.030621785881252923,
+            "vector_score": 0.6349214239723951,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": 9,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_074",
+            "citation": "IRS Pub 575 (2025), 'Smith', p. 16",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6594728034891987,
+            "bm25_score": 21.513306073474702,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.03028233151183971,
+            "vector_score": 0.6098399242424809,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": 12,
+            "bm25_rank": 1
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_092",
+            "citation": "IRS Pub 590-B (2025), 'Letter codes', p. 21",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6706417206503525,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.030621785881252923,
+            "vector_score": 0.6349214239723951,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": 9,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_074",
+            "citation": "IRS Pub 575 (2025), 'Smith', p. 16",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6594728034891987,
+            "bm25_score": 21.513306073474702,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.03028233151183971,
+            "vector_score": 0.6098399242424809,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": 12,
+            "bm25_rank": 1
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.01639344262295082,
+            "vector_score": null,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": null,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_092",
+            "citation": "IRS Pub 590-B (2025), 'Letter codes', p. 21",
+            "score": 0.016129032258064516,
+            "vector_score": 0.6706417206503525,
+            "bm25_score": null,
+            "vector_rank": 2,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.032266458495966696,
+            "vector_score": 0.8008613585142688,
+            "bm25_score": 27.984414873380096,
+            "vector_rank": 1,
+            "bm25_rank": 3
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125763125763126,
+            "vector_score": 0.6691847055972118,
+            "bm25_score": 27.41215506125355,
+            "vector_rank": 3,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_190",
+            "citation": "IRS Pub 575 (2025), 'Information for Eligible Retirement Plans', p. 38",
+            "score": 0.030621785881252923,
+            "vector_score": 0.6349214239723951,
+            "bm25_score": 28.323983533060044,
+            "vector_rank": 9,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_074",
+            "citation": "IRS Pub 575 (2025), 'Smith', p. 16",
+            "score": 0.030330882352941176,
+            "vector_score": 0.6594728034891987,
+            "bm25_score": 21.513306073474702,
+            "vector_rank": 4,
+            "bm25_rank": 8
+          },
+          {
+            "chunk_id": "irs_pub_525_2025_ch00_084",
+            "citation": "IRS Pub 525 (2025), 'Excess deferrals', p. 10",
+            "score": 0.03028233151183971,
+            "vector_score": 0.6098399242424809,
+            "bm25_score": 28.498511764336182,
+            "vector_rank": 12,
+            "bm25_rank": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_retirement_distributions",
+    "query": "1099-R gross distribution taxable amount",
+    "source": "IRS Pub 575",
+    "candidate_k": 20,
+    "rounds": [
+      {
+        "round": 1,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.030834914611005692,
+            "vector_score": 0.6253596618128439,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": 8,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_237",
+            "citation": "IRS Pub 575 (2025), 'Form 1099-INT; Form 1099-R; Form 5329; Form RRB-1099-R Form W-4P; Form W-4V; Frozen deposits Fully taxable payments', p. 45",
+            "score": 0.030309988518943745,
+            "vector_score": 0.627095877124885,
+            "bm25_score": 16.956803282905966,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": 16.08241669361657,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.030834914611005692,
+            "vector_score": 0.6253596618128439,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": 8,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_237",
+            "citation": "IRS Pub 575 (2025), 'Form 1099-INT; Form 1099-R; Form 5329; Form RRB-1099-R Form W-4P; Form W-4V; Frozen deposits Fully taxable payments', p. 45",
+            "score": 0.030309988518943745,
+            "vector_score": 0.627095877124885,
+            "bm25_score": 16.956803282905966,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": 16.08241669361657,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "change": "gain",
+        "baseline": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_165",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lump-Sum Distributions', p. 30",
+            "score": 0.01639344262295082,
+            "vector_score": 0.6938519015665339,
+            "bm25_score": null,
+            "vector_rank": 1,
+            "bm25_rank": null
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.016129032258064516,
+            "vector_score": null,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": null,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.015873015873015872,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": null,
+            "vector_rank": 3,
+            "bm25_rank": null
+          }
+        ],
+        "experiment": [
+          {
+            "chunk_id": "irs_pub_590_b_2025_ch00_091",
+            "citation": "IRS Pub 590-B (2025), 'Number codes; Caution', p. 21",
+            "score": 0.03252247488101534,
+            "vector_score": 0.6839213121171965,
+            "bm25_score": 17.619255319910636,
+            "vector_rank": 2,
+            "bm25_rank": 1
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_613",
+            "citation": "IRS Form 1040 Instructions (2025), 'Exception', p. 112",
+            "score": 0.03125,
+            "vector_score": 0.656713284662595,
+            "bm25_score": 17.173158146545234,
+            "vector_rank": 4,
+            "bm25_rank": 4
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_139",
+            "citation": "IRS Pub 575 (2025), 'Note; Exceptions to tax', p. 27",
+            "score": 0.030834914611005692,
+            "vector_score": 0.6253596618128439,
+            "bm25_score": 17.590422751591746,
+            "vector_rank": 8,
+            "bm25_rank": 2
+          },
+          {
+            "chunk_id": "irs_pub_575_2025_ch00_237",
+            "citation": "IRS Pub 575 (2025), 'Form 1099-INT; Form 1099-R; Form 5329; Form RRB-1099-R Form W-4P; Form W-4V; Frozen deposits Fully taxable payments', p. 45",
+            "score": 0.030309988518943745,
+            "vector_score": 0.627095877124885,
+            "bm25_score": 16.956803282905966,
+            "vector_rank": 7,
+            "bm25_rank": 5
+          },
+          {
+            "chunk_id": "irs_form_1040_instructions_2025_ch00_138",
+            "citation": "IRS Form 1040 Instructions (2025), 'Lines 4a, 4b, and 4c Lines 4a and 4b IRA Distributions', pp. 26-27",
+            "score": 0.029957522915269395,
+            "vector_score": 0.6766157921276637,
+            "bm25_score": 16.08241669361657,
+            "vector_rank": 3,
+            "bm25_rank": 11
+          }
+        ]
+      }
+    ]
+  }
+]

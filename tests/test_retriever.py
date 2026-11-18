@@ -48,6 +48,12 @@ class QueryEmbeddingTests(unittest.TestCase):
 
 class RetrievalTests(unittest.TestCase):
     def setUp(self):
+        self.settings_root = patch.object(retriever, "ROOT")
+        configured = self.settings_root.start()
+        configured.__truediv__.return_value.read_text.return_value = json.dumps({
+            "tax_year": 2025, "retrieve_top_k": 5, "rrf_constant": 60,
+        })
+        self.addCleanup(self.settings_root.stop)
         self.conn = MagicMock()
         self.connection = patch.object(retriever, "get_conn")
         self.connection.start().return_value.__enter__.return_value = self.conn
@@ -103,6 +109,44 @@ class RetrievalTests(unittest.TestCase):
         statements = [call.args[0] for call in self.conn.execute.call_args_list]
         self.assertEqual(statements[0], "SET TRANSACTION READ ONLY")
         self.assertFalse(any(s.lstrip().upper().startswith(("INSERT", "UPDATE", "DELETE", "CREATE")) for s in statements))
+
+    def test_candidate_pool_is_separate_from_output_limit(self):
+        self.configure_database(6004)
+        self.vector_search.return_value = [
+            (f"c{i}", f"Citation {i}", "Passage", 1 - i / 100)
+            for i in range(20)
+        ]
+        with patch.object(retriever, "bm25_search", return_value=[]) as keyword:
+            result = retriever.retrieve("Who must file?", candidate_k=20)
+        self.assertEqual(self.vector_search.call_args.kwargs["k"], 20)
+        self.assertEqual(keyword.call_args.kwargs["k"], 20)
+        self.assertEqual(len(result["matches"]), 5)
+        self.assertEqual([m["chunk_id"] for m in result["matches"]], [f"c{i}" for i in range(5)])
+
+    def test_missing_candidate_setting_preserves_top_five(self):
+        self.configure_database(6004)
+        self.vector_search.return_value = []
+        settings = {"tax_year": 2025, "retrieve_top_k": 5, "rrf_constant": 60}
+        with patch.object(retriever.json, "loads", return_value=settings):
+            retriever.retrieve("Who must file?")
+        self.assertEqual(self.vector_search.call_args.kwargs["k"], 5)
+
+    def test_configured_candidate_count_and_explicit_override(self):
+        settings = {"tax_year": 2025, "retrieve_top_k": 5, "rrf_constant": 60, "retrieve_candidate_k": 10}
+        for override, expected in ((None, 10), (20, 20)):
+            self.configure_database(6004)
+            self.vector_search.return_value = []
+            with patch.object(retriever.json, "loads", return_value=settings):
+                retriever.retrieve("Who must file?", candidate_k=override)
+            self.assertEqual(self.vector_search.call_args.kwargs["k"], expected)
+
+    def test_invalid_candidate_count_fails_before_database_access(self):
+        for count in (0, -1, 4, True, 10.5, "20"):
+            with self.subTest(count=count), self.assertRaises(ValueError):
+                retriever.retrieve("Who must file?", candidate_k=count)
+        self.vector_search.assert_not_called()
+        self.conn.execute.assert_not_called()
+        self.embed_query.assert_not_called()
 
     def test_keyword_only_candidate_can_reach_agent_results(self):
         self.configure_database(820)

@@ -1,0 +1,2760 @@
+{
+  "version": 1,
+  "scope": "Reviewed index and pure publication/form-reference blocks in the 2025 corpus. Mixed substantive chunks are retained.",
+  "index_regions": [
+    {
+      "source": "IRS Pub 527 (2025)",
+      "pdf_page": 36,
+      "top": 45.49,
+      "page_count": 37
+    },
+    {
+      "source": "IRS Pub 334 (2025)",
+      "pdf_page": 54,
+      "top": 60.49,
+      "page_count": 57
+    },
+    {
+      "source": "IRS Pub 503 (2025)",
+      "pdf_page": 19,
+      "top": 45.49,
+      "page_count": 20
+    },
+    {
+      "source": "IRS Pub 463 (2025)",
+      "pdf_page": 60,
+      "top": 45.49,
+      "page_count": 62
+    },
+    {
+      "source": "IRS Pub 575 (2025)",
+      "pdf_page": 45,
+      "top": 45.49,
+      "page_count": 46
+    },
+    {
+      "source": "IRS Pub 970 (2025)",
+      "pdf_page": 78,
+      "top": 45.49,
+      "page_count": 81
+    },
+    {
+      "source": "IRS Pub 915 (2025)",
+      "pdf_page": 33,
+      "top": 60.49,
+      "page_count": 33
+    },
+    {
+      "source": "IRS Pub 925 (2025)",
+      "pdf_page": 27,
+      "top": 496.24,
+      "page_count": 28
+    },
+    {
+      "source": "IRS Pub 544 (2025)",
+      "pdf_page": 61,
+      "top": 199.49,
+      "page_count": 64
+    },
+    {
+      "source": "IRS Pub 590-A (2025)",
+      "pdf_page": 60,
+      "top": 76.49,
+      "page_count": 62
+    },
+    {
+      "source": "IRS Pub 590-B (2025)",
+      "pdf_page": 70,
+      "top": 220.24,
+      "page_count": 71
+    },
+    {
+      "source": "IRS Pub 505 (2025)",
+      "pdf_page": 44,
+      "top": 50.99,
+      "page_count": 45
+    },
+    {
+      "source": "IRS Pub 525 (2025)",
+      "pdf_page": 39,
+      "top": 530.74,
+      "page_count": 42
+    },
+    {
+      "source": "IRS Form 1040 Instructions (2025)",
+      "pdf_page": 123,
+      "top": 46.49,
+      "page_count": 126
+    }
+  ],
+  "protected_ids": [
+    "irs_pub_334_2025_ch00_067",
+    "irs_pub_334_2025_ch00_101",
+    "irs_pub_334_2025_ch00_178",
+    "irs_pub_505_2025_ch00_101",
+    "irs_pub_525_2025_ch00_272",
+    "irs_pub_525_2025_ch00_273",
+    "irs_pub_525_2025_ch00_277",
+    "irs_pub_525_2025_ch00_278",
+    "irs_pub_525_2025_ch00_283",
+    "irs_pub_544_2025_ch00_008",
+    "irs_pub_544_2025_ch00_128",
+    "irs_pub_544_2025_ch00_170",
+    "irs_pub_544_2025_ch00_229",
+    "irs_pub_544_2025_ch00_272",
+    "irs_pub_544_2025_ch00_273",
+    "irs_pub_544_2025_ch00_289",
+    "irs_pub_590_a_2025_ch00_284",
+    "irs_pub_590_b_2025_ch00_226",
+    "irs_pub_925_2025_ch00_111",
+    "irs_pub_925_2025_ch00_112",
+    "irs_pub_925_2025_ch00_113",
+    "irs_pub_925_2025_ch00_116",
+    "irs_pub_970_2025_ch00_413",
+    "pub17_2025_ch02_003",
+    "pub17_2025_ch05_002",
+    "pub17_2025_ch10_006"
+  ],
+  "exclusions": [
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_661",
+      "content_hash": "5b8b68ea3446be91",
+      "text_sha256": "f06eb42504e0ee448c6ac71a7eb649c5d24527e181c1dc1ac845694b40c9aa9f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_662",
+      "content_hash": "9c4b915e7a4724d9",
+      "text_sha256": "7f44f140b2ab66a5a146cc50bf0ad193943861eadbe1795a7c93840a82a7641a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_663",
+      "content_hash": "0795f19ef1f83f91",
+      "text_sha256": "687f5c0a0827ada5cca6de82728739e407f14a84d3effa4195be8655b41d8010",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_664",
+      "content_hash": "5e3355e3373915f3",
+      "text_sha256": "c47cf8e4976592ddde92f5baf0ff5d71d78a6b96fc92fc428d53ce8ae6f57f36",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_665",
+      "content_hash": "f0ebfd10c6b17ec4",
+      "text_sha256": "46a62637fbe2de1c110907911faef749544899d90c60738a1946a9fe2f3c7af3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_666",
+      "content_hash": "93bd27465282c409",
+      "text_sha256": "883d09b01b37cab1dcef61bda35b67bb76f21484cf63d28f18f64086e4a4a2e0",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_667",
+      "content_hash": "29add1e8b0f1601a",
+      "text_sha256": "5939b42b607abc0f222a864fa4c0be05d19ce2c96ba66a73070ca6179c8ac310",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_668",
+      "content_hash": "32ffdca45489b8db",
+      "text_sha256": "9f28ad340c028dac5c2573309145b2ec35370fa2b821b67e158038ae626bdd5a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_669",
+      "content_hash": "48d9d722f48d5ba2",
+      "text_sha256": "ba563c5808132985e2ad860a9db29937f580ce93ac0cfea641262378494a50b2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_670",
+      "content_hash": "63591f7ce525c9a7",
+      "text_sha256": "d634ca594656eded8174d4632e25e0b86e5ccecc656c9a9b594bcc2dd7b8848e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_671",
+      "content_hash": "b5707bfe56eef846",
+      "text_sha256": "7ac7b0a29b2c2560fcdaecab7bf1d96044175384590f93aea1b669cdaa822778",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_672",
+      "content_hash": "bcaa43d6435616df",
+      "text_sha256": "aa2b32ab22fb81b245ac5e4bd731ce5bdf0c3be933d01b04dc21df33ab156695",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_673",
+      "content_hash": "cdad35774893e7f3",
+      "text_sha256": "375cd9006e54b64bade4514c5e175aff7501bba91a9452c53905fd37ef26e676",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_674",
+      "content_hash": "7fdec0c9a45c9c8b",
+      "text_sha256": "1877482fb73775f46221ff6e2bc294f90618293d1c094bdee2918b84ff861ecf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_675",
+      "content_hash": "a36761c9ee315272",
+      "text_sha256": "c03ccf6369cf49578298aecc3a8caa6c48f2d21f30eae58308aeb44e1b0d606f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_form_1040_instructions_2025_ch00_676",
+      "content_hash": "53ab3694bb728962",
+      "text_sha256": "bf96f053407d6199ff353af0385cedf0cfb388364623ce5ac92d74b2e7e80114",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_024",
+      "content_hash": "85cf1addce15cbc9",
+      "text_sha256": "76071d66502d5bb874460fdcebc1134a1d767923ad004a7ceb56dbe89b5d67ad",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_089",
+      "content_hash": "f8b7cf8c62535181",
+      "text_sha256": "1c5d642e4fdbea99ac16b66ce73816d105c25d8bcf5321dcc75f97cec2c414da",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_290",
+      "content_hash": "c359c0f62195da28",
+      "text_sha256": "cf16278d7fd7092f72000e330b71e0f11bb66bca0cab12ed74409f2e0c63f841",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_291",
+      "content_hash": "1861186dadf78b6f",
+      "text_sha256": "a7b5bc496f78e6a5cc12d5ae9013534fe52a37f46d51e8e778561e679b1b47aa",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_292",
+      "content_hash": "3a1ac203801b0a70",
+      "text_sha256": "55934797d7320035d10bacf475ceaf3b8e134f91eac8c0d98014030aac169cac",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_293",
+      "content_hash": "d74cc1550ee98453",
+      "text_sha256": "ae13e16d450aa805342cc53a26500b336a97e00e6926c5a393acb180f4ad6727",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_294",
+      "content_hash": "330f2e9fea4587f4",
+      "text_sha256": "80a55617f6f26ccaa0589c902e7c4f21643304f06b0a1f94c63acd15879e095c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_295",
+      "content_hash": "ce6975ecdfad8141",
+      "text_sha256": "63e9467c00e5f6e531cfd2feecf1e26e37674728581da19d41e8e87aed6f3de9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_296",
+      "content_hash": "48fcd9599f2083a9",
+      "text_sha256": "8bdce449bad759cff0e1fd2e816f6fbd7198c8721cb8e921b815c4f91445eb4d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_297",
+      "content_hash": "58466641f486b000",
+      "text_sha256": "6dd4dfa2be139c2827a4a6c929ba13913da9eac3e9341f0f6495b2cae2f7c490",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_298",
+      "content_hash": "1eed19e4d435f24b",
+      "text_sha256": "9019de9f19313597b6f3a3698a78f8f3292afee3b80351a68f6d69bb271b73a2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_299",
+      "content_hash": "33c747c55413f994",
+      "text_sha256": "e1b0624bc7882227c8a2d2d5052c6ec65a2f49f138e95bd2fd069e1f8a870629",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_300",
+      "content_hash": "56e034595593bcc7",
+      "text_sha256": "080532f7e40dce105f74a994491ab0b8542151f1ab509f7ebc6190234b7f512d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_301",
+      "content_hash": "a7e47947f94c6469",
+      "text_sha256": "1fcb8cbfa65458209b6f7ddea47aeea95e7fd763d49847cc460fe91e6ac4a08c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_302",
+      "content_hash": "c04dc4a1b42433fb",
+      "text_sha256": "cf1bc66c8dd4b2fc1735299fa2290d6cbc2a8046c461b3004320ae034724da52",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_303",
+      "content_hash": "239eb109bcc62139",
+      "text_sha256": "cac67c6a360ca32fa3c87c5ff0135a70a3dc5fa6cf5bed7cd0daafa403218179",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_304",
+      "content_hash": "e451adccbd0237fe",
+      "text_sha256": "53b54e5d8d21b7d63a96e8e6fce3478fcb224891996ade005cc1b2015e63c769",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_305",
+      "content_hash": "0cd85f922b2f039e",
+      "text_sha256": "a92563e364a93c2dc2e6e0e9fc6d942c2df805308108ac1534ddeb9c554329c8",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_306",
+      "content_hash": "7632d65f42e370b7",
+      "text_sha256": "bfae1f8ddb77196ae9eca9743fe9208529c5dbe037b633c7dae9eb84eedfdcfb",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_307",
+      "content_hash": "4698a30915f239d7",
+      "text_sha256": "605d5866a7581b07f98089fb6325c204600d96327986941c6967988755fceded",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_308",
+      "content_hash": "5b82297aad3d331c",
+      "text_sha256": "a62017fdf372de231c043c00654de1905d290fdd53963b30ad7dbf94d169f026",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_309",
+      "content_hash": "7dafa0119b60e507",
+      "text_sha256": "ba4b88a67d6c34b670134f9d6980831547858a7e684b996d25206100a8f84564",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_310",
+      "content_hash": "839c3080512c285c",
+      "text_sha256": "fbfee7dafb87d367a1257be6fb4728b8e41e66fbdf69ae753fbe25fe2c9a58df",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_311",
+      "content_hash": "119cecebfbf285a0",
+      "text_sha256": "ec3c437ee9570f8e4ca9c4f3f6b8df4c839f4aaa385de79747820787d9e1d495",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_312",
+      "content_hash": "d79ac27dfabb5247",
+      "text_sha256": "3109606d064f88efa3332de3032439dd280163a465542c44af4aeddec134ea66",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_313",
+      "content_hash": "7dea6e8a4df92e3a",
+      "text_sha256": "7467cef1d66243d0269e5a91067813c120f5baf76a4fa242f004c72e25320133",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_314",
+      "content_hash": "95caf85d2b6d6cdd",
+      "text_sha256": "2d9a6e68f277374bef3dfe3e678186ca4932aba090219909dfebf9cbcbe5ba89",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_315",
+      "content_hash": "a2d35439898b4391",
+      "text_sha256": "497d023dccf413c1f83ed2b996cfb6fc6a1e1a54008fc80ca26289192e496029",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_316",
+      "content_hash": "ab5da6479334c349",
+      "text_sha256": "1d1cbf6c814a82605997a72df78f3e1641341b7da41ed913acf8524046d5dfac",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_317",
+      "content_hash": "3d01ef6bfa0e997d",
+      "text_sha256": "681d23942a8914a82219e06f3268308d885fb55b8f4a6da11dc537ca91e5f25b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_318",
+      "content_hash": "bce7b2a14bd2a09a",
+      "text_sha256": "8f83c0799d5e8776c41fd22d82b479437464e5cc8f4a16415e9b20b9619abbdb",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_319",
+      "content_hash": "e808424b5725cc6a",
+      "text_sha256": "fdf104a62831c948fb552232d3f7512f73504f3b91ed4351d0c2f97614b6204a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_320",
+      "content_hash": "42180eecc04e0147",
+      "text_sha256": "043164cfef31ef713b607bbd4b521e6b641c99b581d3414ab0fa98b2daf80670",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_321",
+      "content_hash": "9eeb116023fb60ca",
+      "text_sha256": "b68d7ec546855f218434104efe60c0b567f86bb0aeac3c94856039c6e975881e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_322",
+      "content_hash": "0d5722fcf1fc06b3",
+      "text_sha256": "e42df004d20e340b7df6cdb99dfeea37856342cfc3df0509aa0516dae8e4f0f1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_323",
+      "content_hash": "dec8d2b8d963a247",
+      "text_sha256": "9273f51ea6831a7adde66ad9299aa1ea7d05d27b831153862047cc4deb0604f2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_324",
+      "content_hash": "9195a747926ce5fc",
+      "text_sha256": "fab326e42f8e0da249d187715199b48ef9a9b5919251a86a77fe9f1d50a716e3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_325",
+      "content_hash": "c7b0f8ad5fd1db88",
+      "text_sha256": "746f030d4e6f1f91b6bb342f0df6612651cab3f5b54efb6af196e205614c9f4f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_334_2025_ch00_326",
+      "content_hash": "87749a834833901e",
+      "text_sha256": "6c0bbe364f4045e4f6e54b66cd40cf19ce14381e7ddd7d2491c67bc9acd11d62",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_010",
+      "content_hash": "89260f5dd51ad51e",
+      "text_sha256": "ff78f44587b936d0ec41724df5815721da01c52b1b9bf48cd2e52228a70f3dc7",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_011",
+      "content_hash": "bf3d7921dc45607f",
+      "text_sha256": "400515b76b2cd5fcd27135b4798e368bd9f5aa59b4f306f1b42c40382928fb0c",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_012",
+      "content_hash": "a95b4674209cb991",
+      "text_sha256": "78fdceb0b5198f37fb518e69dffc44ce08254f5e1cd9e483b346f96c053261c5",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_243",
+      "content_hash": "2204a909dc9f75c5",
+      "text_sha256": "d8516eee8b0aa9e0db0792b466e1f0cef8a48eb41f01944c7f066c427b5c2554",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_244",
+      "content_hash": "0d0fcf532f012776",
+      "text_sha256": "51de563546af1b6aee66921762c16fc8164d5009d640ba732403b6aac98672b8",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_245",
+      "content_hash": "c7fe430bc8a64641",
+      "text_sha256": "51bbebac14af8a1b4a0cd3d8ccec9ab1caf8c51c58e5d460d3e4e7918b18b04e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_246",
+      "content_hash": "41d1388c0a856991",
+      "text_sha256": "58a73e4704bfef5e65c852b2b075edc17a888ed4e33c02d21b67917df096ec2d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_247",
+      "content_hash": "11819799b7aef283",
+      "text_sha256": "6523d527f0176db2af1582f2941a32cbe3d22cf60f147f2726ec194c5b82ed36",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_248",
+      "content_hash": "0bb396dd9cba2869",
+      "text_sha256": "63fe9d95a83160b2e5b4ed7582c1e3734b621500de5a24ad9ff34cfa4e168d08",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_249",
+      "content_hash": "2fb10734e92d10db",
+      "text_sha256": "a9d706fbe109296572d6a4455c6bde0cb7aa76de77dbafaa578723ec70df0bb0",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_250",
+      "content_hash": "2880873f9df18bce",
+      "text_sha256": "bb8a4795bf3ef708ea766871b6c19b43a77b683249ef999a94f9799f4450dd24",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_251",
+      "content_hash": "57c3048f49db97dd",
+      "text_sha256": "9c97e19e1e3abcf9a298c81bbf37cdeb5cbcf9f7f24ac194d9601b06d882f0ee",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_252",
+      "content_hash": "1017d266830ba208",
+      "text_sha256": "4867f00a495605d2bbc494f0827efa3b80909950a7ea013df1ef4e5378e4e555",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_253",
+      "content_hash": "e6d0cc4154feca3e",
+      "text_sha256": "b17b969d8e382e8ff2c6f9c0c74202b9a1068ca312fb88ad7e211a9108d0ddaa",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_254",
+      "content_hash": "058bdb1459a884f0",
+      "text_sha256": "89b60b717509f035da65a73cb195f6480a28062f929696562cc54c2eadf32ec5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_255",
+      "content_hash": "302a7f1f485c3af5",
+      "text_sha256": "740ad9368dc57f45308993fecc90b733eb7487dc83a661617aa4bee06f73f55b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_256",
+      "content_hash": "950167ca1f10781f",
+      "text_sha256": "9be83a3397ff23f06cc196515b56f64b9134f513d8d7ed2b3065afb07e909cf7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_257",
+      "content_hash": "d039c5ae0276762e",
+      "text_sha256": "f3f1aa4393b92877b14d00f1574f52d110299b0236158baab3d531bd6c3f523a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_258",
+      "content_hash": "321753bb2ca5ec3c",
+      "text_sha256": "520c60a073722b592efacb060225002b5ffd81747d2989f8a72984e42b422733",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_259",
+      "content_hash": "0ebc62aa4027eb2a",
+      "text_sha256": "8a8e2f7c6dc96b53aab040029de2be3f615fc95c2457b03c314be44ba7243246",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_260",
+      "content_hash": "e13277f608a8f316",
+      "text_sha256": "512f53cd3b81e170516576ab7af5ba2946afc30d2f74f5b4a913a46183cf8f87",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_261",
+      "content_hash": "6d622f5b933b5faf",
+      "text_sha256": "3bb5ff727c71015c52859ec5c78be73eeb61de1e37fc208d1115b0dffb404bf1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_262",
+      "content_hash": "aeba54524966bcfe",
+      "text_sha256": "eefd9e163c56b4b7f93a6ecbd5206f8c8c03b1d6370c2bf1fd2e3038a3d08c66",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_263",
+      "content_hash": "2f772289f0ece077",
+      "text_sha256": "c508e02cd4918310c97559829a8818299ab6b2920d076bd881febd46b9cd5fbe",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_264",
+      "content_hash": "883fb5d75d818c3a",
+      "text_sha256": "7b58fb7f3a6491d3a194cbb2ccd5e0af85f10fdf1b47a0d00da2fb2a502bbd06",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_265",
+      "content_hash": "64c37551917e7799",
+      "text_sha256": "67b20c5b53362e05cc7e9ac31606ecde25917bfff08094fc447ed9669c2d89a3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_266",
+      "content_hash": "7241f919e0c15764",
+      "text_sha256": "a6aca58b864291c5264441eeb349684d3555c1eb0784b5689b7a979901c5b3c1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_267",
+      "content_hash": "c9aa8e7f252a8f0c",
+      "text_sha256": "649da793fe7ba067890e140517dfc36178ebe95b66f32b571b77cac3a0604a47",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_268",
+      "content_hash": "4b92449f162b7689",
+      "text_sha256": "590961d3c2d4d1fc0402ed148da161c345d3de8d6214383a855ad5fd55910d17",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_269",
+      "content_hash": "25bc4612d65ef657",
+      "text_sha256": "8650eb78d83c52942aab521ef67e696b9b15c8d82646aa282dda1f7390e1c557",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_270",
+      "content_hash": "55cb35fcff5dddfa",
+      "text_sha256": "0813b54d1b1b484a51c78d8f4fc64523445b45ab33d0a1a1a3f82ae7a8993de5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_271",
+      "content_hash": "b42b010f8f95bb35",
+      "text_sha256": "806abf62401f9fbc77f2d7f87684ee9c2d2bb1cf0642a8c6154c6c93cfbeaf17",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_272",
+      "content_hash": "f41c809db48acb15",
+      "text_sha256": "93f21f4342aae98919de90aab22ebafc3d6a214f06dd0285e67cf55f368c2b42",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_273",
+      "content_hash": "fe916234e378bead",
+      "text_sha256": "8a9ec9457c9354851666d1340898ec83dec04cdff85db5cebc859c6735aca7fb",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_274",
+      "content_hash": "30505eabfe151249",
+      "text_sha256": "6bf989bb9c425253cca1bb09440035f1e8bc21daf06cf8a434b45c14555fe4f9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_275",
+      "content_hash": "b637e5d490c72059",
+      "text_sha256": "452f1b6f8332331127c61fd16288eca69510cb7cd89b48f861fb060e0cf10d67",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_276",
+      "content_hash": "42100a6ba4fc3171",
+      "text_sha256": "3d6b23357f6b3d6d12a481202358eaa1d27e99b1f4fa392bc12f7d08f21703c7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_277",
+      "content_hash": "20773a3b656587b2",
+      "text_sha256": "bda959bd756e41018c6534be3120d235b9bb680808f7ca984bc8aba20233dea1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_278",
+      "content_hash": "08a8494ba3fa2e61",
+      "text_sha256": "c7a03ca981a2530974a10529343a0432e811a8133e1d0fa60259030d69865c18",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_279",
+      "content_hash": "7cd2c4de9b9a4569",
+      "text_sha256": "726150e4d5f748e7e6c9201910495df97690d590fa2c7517a93d9e95b27ce311",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_463_2025_ch00_280",
+      "content_hash": "4e62ac7d138e1bb9",
+      "text_sha256": "ec04aa1ca442e99d83ed515c0c1879cff73851394125c007c2d554e6f0299642",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_007",
+      "content_hash": "c2d3197c10d86125",
+      "text_sha256": "2ffe8162507bc1aa78158d3b8770fb10b5fda2ef2ec6178e9b68badc223bd43a",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_076",
+      "content_hash": "0e5e53ccebba6a93",
+      "text_sha256": "870e5466e8bf1139cbf22ff745b87defab1f7c17c2141f49550100d124ec8f7d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_077",
+      "content_hash": "c06016f8bfba4361",
+      "text_sha256": "726328c7eefed12540608f29bd439137adeddab52e9acdc6dce0c9b884dc1a02",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_078",
+      "content_hash": "c2930a612bf1accf",
+      "text_sha256": "373fc8a358171dec091992a54415a3da0e57eb38e696edbdfe7ff699caeeec29",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_079",
+      "content_hash": "29a21f17b59ccb99",
+      "text_sha256": "ef2fb87a6753d1c4352e73f6c746e0881277f9ba13e096b48f3641847f16061a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_080",
+      "content_hash": "2f031504f45987bc",
+      "text_sha256": "6d13599371f972710426e634600aacfc186f24b21ce3f4f1fd147bb30a810314",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_081",
+      "content_hash": "c33af004a0eaffec",
+      "text_sha256": "6a995d86a0320d7a94c6fcf7087620adfc6f63a1ff3ac398c564abe09ab2d3ba",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_082",
+      "content_hash": "17bc23d7b6dfbb7b",
+      "text_sha256": "108eebda47b55d7446e3d73bb5fc06bd30309f065c768b4a4d063b1e6d6aebb9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_083",
+      "content_hash": "40d5c4f5c3c9abbc",
+      "text_sha256": "b9e0385e3eba59ef11d5611bfe1d0b6a4cdb95d297a492dfca396a4efdd2abdf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_084",
+      "content_hash": "3c805406d35e85d5",
+      "text_sha256": "2df6b8ae764f6c2f5995fcd6b6b7df9d0d6340a03565de23a9cd44d28f573691",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_085",
+      "content_hash": "610528d558ef3940",
+      "text_sha256": "04ee7a64c4547f1440ea4e0848ed5bd34c527a178f79c7c3502156ac53ea2220",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_086",
+      "content_hash": "ff0d831bbfd14940",
+      "text_sha256": "af4478866efca8cd485857b405d3b4a07f50b081a6425eb51605316b9499b126",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_087",
+      "content_hash": "a039a0c445f557b9",
+      "text_sha256": "64b73c247445bb1b8732fff5e1445f184d4abdf0901b656eea1098b3dca627ef",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_088",
+      "content_hash": "198758e65c907805",
+      "text_sha256": "25d8890c4d2dc3610d57711bd78403c3535973bbe842939e146d9831a4ab7b40",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_089",
+      "content_hash": "915e40a4cfef79b1",
+      "text_sha256": "32669ccda1a9b5118f6d4da30dbf509a3ebeb3a49c380076fcb4017587c4f917",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_090",
+      "content_hash": "d8b482ef69f567eb",
+      "text_sha256": "0f24f9f6122380e134e3a0bea38ae66f234f98af148ef9e7d100da93f767a842",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_091",
+      "content_hash": "9aaf88b04a7489da",
+      "text_sha256": "674331e07ba6202f726fbf22face6c776ab0f81383696833262732c89041197e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_092",
+      "content_hash": "0c02f2db1bd01ccf",
+      "text_sha256": "52c6d492f0059308d963cc97c0c707e51d8eddbeae982c97c81f0481172c4f29",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_093",
+      "content_hash": "26198eeaa9efa38b",
+      "text_sha256": "5799875ab1ea9531e1fa256da63d0033182d940a62f067a88e15fad947c506f3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_094",
+      "content_hash": "c90d45980b7ff960",
+      "text_sha256": "a2bf1669af38fec2c26218962baa850386a1f69192d0d854d5f1122896662c1f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_095",
+      "content_hash": "0b4bfae0ccec7d22",
+      "text_sha256": "f268bb05eb556d8b74b80ad67a19b21aab4835859347ca2acb3d405e6bee0096",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_096",
+      "content_hash": "e247156494ba8740",
+      "text_sha256": "1512a79916b1256fa47d2f51b19e9226ce3b94c1ab6220d30eda0f6c68e52399",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_097",
+      "content_hash": "d62362b2f56821bd",
+      "text_sha256": "a8f4203798299c43a4ef9f67749b3d3620fd19d89ec4bd967c8d5796e91bf71f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_098",
+      "content_hash": "60780bf7426233c7",
+      "text_sha256": "645fdc3f710fef749f8034b1c5b182e935604ffa48593f6496438afe5694115c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_099",
+      "content_hash": "099519cf92d60d97",
+      "text_sha256": "500d8a562e910c9831b22db12630064cd6607c9a8e4a45b902abe8daf1c34bb9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_100",
+      "content_hash": "51f38eebc130252f",
+      "text_sha256": "8e8c654c44fb3a016fedc2cf4493559d161216b17a21b9a5b04f080b3ff07d4e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_101",
+      "content_hash": "a2ddec3e2787185b",
+      "text_sha256": "f414fac1370cd3a7b35de12bff1770878aaeeacf6c7ae047036eb769cc6267a4",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_503_2025_ch00_102",
+      "content_hash": "217d6b5c4d4f2fbd",
+      "text_sha256": "1fa7633915f18c78b0ec1de49e379f0a717b9df89f2c4f7d5cf698286ce23b6f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_010",
+      "content_hash": "45b3b473701b558c",
+      "text_sha256": "cc0644e2a4a8322fd511282e792f6f9d756ba340f5e30324dc9d23e0925e0e15",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_259",
+      "content_hash": "4ff935aff09adc45",
+      "text_sha256": "751ac17a6c8dfe1966df6d850379edf4ccb1f53258a1cb040b94114b1605cec6",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_260",
+      "content_hash": "9d0e072fcb1028dd",
+      "text_sha256": "750c0695bf06e63dbb15f7f95508dbab40e48ae5e0f4dcac979158f24f8c0901",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_261",
+      "content_hash": "4a4cca9086473e87",
+      "text_sha256": "1da19462d106e6c608ecfb8ab8b21d742c83b268590f8345d3bdfa5c64d11b76",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_262",
+      "content_hash": "063923f6e460b0cf",
+      "text_sha256": "3555b72789f8756c4cdd893e8c8a6c241dfe35fea9b1d38a67219dd0037019e5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_263",
+      "content_hash": "4a1220cf96997023",
+      "text_sha256": "7b85ab628fa6b478cc096bae8fb88611daae191aa7dd3d86c4986cac18c29f5f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_264",
+      "content_hash": "3717eee6de3570dd",
+      "text_sha256": "9ec5d8452f6b4803e598916da1dbde4093542c52aff18ac01c4427e8a4ef8982",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_265",
+      "content_hash": "99eb38c1d267a52c",
+      "text_sha256": "2ed30984a969847ce70658134a0e51172da28606640f3e9282dc0826880256ae",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_266",
+      "content_hash": "9e6abf3a57e46cd5",
+      "text_sha256": "a81a7a90e57aacc2c5df194f7c2c54876031e423ca091d2aa519c639c1df7ea7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_267",
+      "content_hash": "03f8fa4baeac5357",
+      "text_sha256": "471b682aeb1ebba4b6a5d4543061869c2def5a9542b53b864e046b615d0cdcf8",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_268",
+      "content_hash": "0943172473d67e35",
+      "text_sha256": "3351fe825df8540a49f03b4fd9631d33c89b487a1647a27eae49d686a68b535f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_269",
+      "content_hash": "a648fe284dfd9a3e",
+      "text_sha256": "ce43027c7d2df1768cdd6da94f5ecd0daee9c5d9283c0f36cfe86cd3125fd361",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_270",
+      "content_hash": "8d4ac354cf95926a",
+      "text_sha256": "2a4d7e2a0db8e7d9e4f7ce014f93cb896a952411ad5f1b5e0187b537f5a8f41e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_271",
+      "content_hash": "10bc3ba1856350b8",
+      "text_sha256": "8aebfb50eff90ec121b946fe75b50fa55c6c0f49a5d8ab3608fc2e93bcd60540",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_272",
+      "content_hash": "fc09fafc339393c0",
+      "text_sha256": "d8086fee076a8e2de1d1777e4d7655338c5d26d2a182996daaef4fe8c481c004",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_273",
+      "content_hash": "5b357621953ccf9f",
+      "text_sha256": "573f8fd227737538cb20da0867889aac07456a13ae1a0febe43248c990100e9d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_274",
+      "content_hash": "22851ed76c2d3881",
+      "text_sha256": "a983f114e6244154c033f71a2d92f810c2a321ddf1f25a3631a3e4c25e935034",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_275",
+      "content_hash": "965b368c9336a6ee",
+      "text_sha256": "f6019d7565917c946a89c6895cba740f090318d832cfac83e283ff189e09f7c2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_276",
+      "content_hash": "fe9a99497fffbbcc",
+      "text_sha256": "30d3ccd789ad5797df7fdbcaa0ca77089ab09b3684a34d47607d80f0c8bc42c6",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_277",
+      "content_hash": "d471b8fd9bd2e423",
+      "text_sha256": "1bd32648ed2c1237fea584239e826c372138cbf52c6dfe313aedb22783fbb0fd",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_278",
+      "content_hash": "38a712b90fce6397",
+      "text_sha256": "864a67ae8023c8c5a439498a22523ac5e11965887a6815dc7383b4e144a605d7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_279",
+      "content_hash": "178885435d8c4f3a",
+      "text_sha256": "dc51d445aca5087376eb4cc5e84843670b561c980a5a36070a00f8ff44f24706",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_280",
+      "content_hash": "541860ef3638caa7",
+      "text_sha256": "5364254149b9e01d6e0a5e826c536a2c58a14dec66a8d4b0118dbce054119869",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_281",
+      "content_hash": "9720b016f47f188e",
+      "text_sha256": "e8aed7e855c1df2b291c50573dfaa01fe9e7baf6498d5905e6691ca5af64a152",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_282",
+      "content_hash": "13cff430f1be1e9d",
+      "text_sha256": "947a7d4b19441665d69887aa1d0a4c43a964ac1f0e814a67590ea2be9cbcac3e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_505_2025_ch00_283",
+      "content_hash": "995991ec8ec4b156",
+      "text_sha256": "6d5f0e0b596b117f2eecaf7c7ab1977d98f695aac43e9223676bda3334491566",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_021",
+      "content_hash": "a67883aab29e6458",
+      "text_sha256": "e7fe0989d7e7028c1cdd41baa8279526a52addd83446c6684cf5ebbd8a1183cf",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_022",
+      "content_hash": "5739fe474bc8e207",
+      "text_sha256": "975da5bdca4598b5db3bc65b4f170def2d993e27c7cb531d2b35e93849ac9cf8",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_023",
+      "content_hash": "c0791fd39addc25f",
+      "text_sha256": "351b105347d4c52266931b3349058521a4028e9a60a72c6aee2bac86437d9ef7",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_024",
+      "content_hash": "6723746e42768357",
+      "text_sha256": "58deba3e3f42ab2177c6e5f2a422a69f423872adcd4cd3e48fa45da147b9fae6",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_025",
+      "content_hash": "970e3dd7ac02313e",
+      "text_sha256": "47a20b7824947f5439ae5611a8debf5b759f8873189913e3bc9a237f441b6302",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_026",
+      "content_hash": "912def8cc65f9ada",
+      "text_sha256": "f190b2ad75da7bba1e6defd5320c19adb163687bde1ddea3b93982c8d83dfe57",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_027",
+      "content_hash": "c09e716924c6bd7b",
+      "text_sha256": "a1e10601ab3e710e98daeb4d4e266f6bf63687d02fd6f88b5fc847a770f334d4",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_274",
+      "content_hash": "ff6033206d3704b0",
+      "text_sha256": "5dfcb573a56aec60e213c4d7a2cd042478ed738f0b4518bae761454e1207b024",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_275",
+      "content_hash": "016bce0a489f59f4",
+      "text_sha256": "8e0270359668d26d3e1de54e1152c7c1ddcdf5e2c082609f36d02e9d68862373",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_276",
+      "content_hash": "f3ea6c1323eb4735",
+      "text_sha256": "5de4b6c86e5b1d1d697408a5905781048295b44aaeb1345dcb19dfbaa5b5d772",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_279",
+      "content_hash": "0b41c0f6ef2db142",
+      "text_sha256": "9cc1498d42ae4ad827db31c8280dcf636969ba0e5f47926bc0111187e99aaed7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_280",
+      "content_hash": "ae7d1c4522aa6d40",
+      "text_sha256": "03c2929bc0ae6b4802eed6925617e1964f6c5b7ba4879cb673c55e0709e0cd5f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_281",
+      "content_hash": "dc893539a1c24810",
+      "text_sha256": "7137b9c9d0b4150b55078dca82b1e0cedae5c45bfd9d733e8e22683728739d4e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_282",
+      "content_hash": "e9a4d1621925eada",
+      "text_sha256": "fc206d416b78cdeb7eed90191028690855179ce2158c813c9fc51e43800a6c63",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_284",
+      "content_hash": "1413f4a93b340e5f",
+      "text_sha256": "75270e372ce56c2bb339b0c1550f51b55b37aa90829b72fed57ac3dd2e0f7d45",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_285",
+      "content_hash": "51e9d431fdd086a9",
+      "text_sha256": "b9859218d64557475c0440d441d27429801a2d4d5cd8744153948baa096dfc0d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_286",
+      "content_hash": "9af7282073261ed1",
+      "text_sha256": "f4c379923e6f6efd44b4204764782d8eef79b7418c67f5339920c7f99167c70f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_287",
+      "content_hash": "44305322e047055d",
+      "text_sha256": "0a9e0bbbc63ab27c0bd86b70c136ebe90faf20c387511ab9b50e6e8e2fafbcd5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_288",
+      "content_hash": "f70ced0913f4ac0d",
+      "text_sha256": "ff62b28cbfd4f00603bdba9bb5c8f0fb78698e2a732cbbb59706b1b2bded22a9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_289",
+      "content_hash": "c80bf634e28d34f7",
+      "text_sha256": "d073ab1a534a9eee8280d81c59de64fd29461dfdf77b6f3773976a1c13942b97",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_290",
+      "content_hash": "810b2358c5e050e3",
+      "text_sha256": "3ce7b24cfd4f70ad24a85fd77f7c5fd4b9ac490b49d74594bfbbfc2c666fe946",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_291",
+      "content_hash": "aaf68fd75bc9e335",
+      "text_sha256": "d483a94bcc325e27cbb369205dc49477c0f08f117d570979d2bdcfeac24817ab",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_292",
+      "content_hash": "7bb290f67ef19d48",
+      "text_sha256": "95fa0f661f7591dce1d3ba50051205512a2baea0ae1362be7812788edbedbc92",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_293",
+      "content_hash": "ee84af283f4924b7",
+      "text_sha256": "f97b258a52d55263f3164166a4d1d31118ea317c331c7d87448799ac91e55aa0",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_294",
+      "content_hash": "e5548cff448483c9",
+      "text_sha256": "8d2bd370910df8e4e87153c396f98588b2f8620760ffe707a1eb66e8d70d304d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_295",
+      "content_hash": "f4ea82031892713f",
+      "text_sha256": "1fc40f20f200d3a9213c0aa4a5af8fc7ed9079cd93cefddfd6aa940fbb0b42df",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_296",
+      "content_hash": "22468bd03e1fbcd6",
+      "text_sha256": "37eed2f3c797875913e23dd6fe4b9ff2375caa0accb20b4a0fb8f8eae1745d5c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_297",
+      "content_hash": "ce88e5189e9da2ef",
+      "text_sha256": "96dea008828d9db747e16fb16d71c5b5d113dc9e668e1496fcfc15c140b5ddee",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_298",
+      "content_hash": "aad72d5cd9365485",
+      "text_sha256": "cedba3fbb4d53015928980686d9a8710f489ed5e5af3cc440944adaf9b16dc1e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_299",
+      "content_hash": "e31392cc9f27505f",
+      "text_sha256": "45991e532839f66b24677f8aba91d4334a645a00bb49dd322b692c4fb1111b7f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_300",
+      "content_hash": "0433b93c4cd34a3b",
+      "text_sha256": "86e5ddca3402d210663e09a2d0bd84fa166bb9aec588d6ae8a78a1ddcfcdda3e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_301",
+      "content_hash": "c6215fbf15b8fc5f",
+      "text_sha256": "785dbd71394e07085ebbd3e429a9dbfd197902bbe7efbdb708206ab3676f379b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_302",
+      "content_hash": "b45eb2d7e78c5aaf",
+      "text_sha256": "49b702682e6e1ee7ed9268092e1d906fc01b17c9c9c32a25763589d7cff1efe3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_303",
+      "content_hash": "56d88eef64d4d668",
+      "text_sha256": "ef5dce2ddcea4ea62de501e44f0b084a231cb4dc232f8d829313914ad0e5d705",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_304",
+      "content_hash": "4c26883a53b00999",
+      "text_sha256": "1d60832c25a326e2fc4f7e97d40d0b20e54a12e6e891fc2976c543f4c4d7e8ea",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_305",
+      "content_hash": "4190d78e3b8cbda4",
+      "text_sha256": "2376b8e904febe0352c4cd16e49924081828c5086d14b2d5812376a8ea82eb32",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_306",
+      "content_hash": "a5b0933b3552edca",
+      "text_sha256": "4323a055f69202401cc529894ca4bec5507882068ffd85960dc485c01baf8c49",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_307",
+      "content_hash": "243358e8fa99b73c",
+      "text_sha256": "939baa72f148538411a75a2c5f9dc493ecf364d69de0226482ab7c541ecbc6ab",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_308",
+      "content_hash": "ba9ee5bb5aa7b627",
+      "text_sha256": "85c9a80110a3d2bd06d8feee7348cf52c46f16eb06fc9a5d395a0c2ff474794d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_309",
+      "content_hash": "83ba4198a9cc60fd",
+      "text_sha256": "8fadb8af4dec5393bf3a4a901f74c9cf45e4a511e9a9c0b2ac73e89043290278",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_310",
+      "content_hash": "2ae8d640d2466f5d",
+      "text_sha256": "dd0849f3a72d860dfa2ba50842ae380e035eaaf053aedd761faa24efe559a869",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_311",
+      "content_hash": "e862b147c6ba6129",
+      "text_sha256": "922c44e1283dd65d8b06141f116159727110067bfd49c285690165853eb86232",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_312",
+      "content_hash": "50f3359bab9f41b0",
+      "text_sha256": "a1011b583e59e78d7bb2c74819e7dd5fe69a219dfccbdaf733daeb5418cfe198",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_313",
+      "content_hash": "7042a5b433477bcc",
+      "text_sha256": "d7259442ac7a4cb4769a5f3e6c2a09eea5604f2a46a67148304c9936f82944f9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_314",
+      "content_hash": "3c3ae9db6a02882c",
+      "text_sha256": "a2ccc3132dbb4219200a685a6f3d58a7967da9995b13ba55f1ebf4b22b587829",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_315",
+      "content_hash": "23454a3e7bdc1117",
+      "text_sha256": "69a1924504b51a58c7d97f85b851b1296f22ed3e91d09cdf5c19f973856fa0b0",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_316",
+      "content_hash": "622665162873dbc3",
+      "text_sha256": "11d9f7eda50ca1faa06633df83a346712fec0e963e3dd4b06c59d312b7dfb042",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_317",
+      "content_hash": "91687896a1919b1b",
+      "text_sha256": "d73c1ef2102f3f5029f238fbf2c2e4905cd317c2c45f250355a1e53faab31e24",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_318",
+      "content_hash": "7207c638380d4e52",
+      "text_sha256": "1330d2f73cb3c023b4697e8aee169b5344483465ae78394c0480cd0cb20731c4",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_319",
+      "content_hash": "00ec5d9290cf663b",
+      "text_sha256": "bc2c353fe4bd5e17ed2f67083f6ba474be38bfa9c9c45aeafed165c2bc00ac13",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_320",
+      "content_hash": "ca9c8b1531598698",
+      "text_sha256": "9e885a1f04638aa67c4097b9d8235e4e4928fb16e8071448c394f2235d553536",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_321",
+      "content_hash": "11f8566e22cdb496",
+      "text_sha256": "4ceccdeeed79d2fa42ca3fe2b9c0e06b79fdf4ed5d6eb75095ae8e20ff8d88fb",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_322",
+      "content_hash": "5c64d932046a6007",
+      "text_sha256": "645743ffbfd3e78f9a72a364344beeb326fd730bcd706646c6a73eae0d342d39",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_323",
+      "content_hash": "a2bb5a594f74b15f",
+      "text_sha256": "cbdd9b09caab33c4b9a78aaee71bef7222d877829f4bdf07d68913f9a1ec7fb7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_324",
+      "content_hash": "4c8b478e058c2818",
+      "text_sha256": "914234d1b44eee80d8e2413c55336757083928c3c4b51b1c3d5fe92862fa569f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_325",
+      "content_hash": "3445f43003789924",
+      "text_sha256": "28e79c3ad36ad69915e2813b961fbba80bca2f61dabcaae8e9b63c5658550957",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_326",
+      "content_hash": "590ba90dca5a5d1e",
+      "text_sha256": "d4ec0b1e156b336ded5fae8324d2797b04110432d2ebade47f668b0012092c32",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_327",
+      "content_hash": "8e4023d4db245423",
+      "text_sha256": "c24b98dc7d5d31ac72dbc7760b519cbeefe0e1e291c631d3d03df0dba0fa9c56",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_328",
+      "content_hash": "878001f44cd6a540",
+      "text_sha256": "16596c0c11c8263042d874fa839db933bd36438e1a9782b769b6a7da697e659d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_329",
+      "content_hash": "74180000f2a55bfe",
+      "text_sha256": "b3028da71e6b88c5b274674811468f31cf9d18b3716f584d0c6a50fb044faf68",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_330",
+      "content_hash": "c7b93c5df451cd04",
+      "text_sha256": "95484680fdb22e237eab483802fd6a43015574dcf051041f9e849878a2a8eefe",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_525_2025_ch00_331",
+      "content_hash": "96d079866af88942",
+      "text_sha256": "72d84e3c2530e1eea4e559f181df5e1443b21470ae30de805f51e2c457be8c7e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_010",
+      "content_hash": "5739fe474bc8e207",
+      "text_sha256": "975da5bdca4598b5db3bc65b4f170def2d993e27c7cb531d2b35e93849ac9cf8",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_011",
+      "content_hash": "530afad40ca8c943",
+      "text_sha256": "cf782bb17e85aa75eac4c6a971bf8bef25cbef4e6800548d96febe8494683551",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_012",
+      "content_hash": "dbf264502e91e7ff",
+      "text_sha256": "d36f72c1c5b286f021338adf4c95f795b9f46f7daf37625be7ff96a64906b684",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_013",
+      "content_hash": "d663ae5383ecacf5",
+      "text_sha256": "2ab08059fb5d55fd8dd9e6d88b1a72accf50baaa370b6a73479b0614375fe571",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_014",
+      "content_hash": "70debe72cd009b2a",
+      "text_sha256": "fcb96b4c96ddbe1ea96a029b3cde73b738a5ab30fd5043d6b6101f19a9a1c2b4",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_015",
+      "content_hash": "c09b98d3ab1b7858",
+      "text_sha256": "dc6a9ed06a6049b5c3bc17adeb2eb7ede454aea7ef3f98de7b1e338af11e8f11",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_177",
+      "content_hash": "25d9b236f21bd0e3",
+      "text_sha256": "93d39b434eb01276684056b1874bbb9c23e241218f185a06c72a3fa74a38b973",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_178",
+      "content_hash": "c2cae21604b6005d",
+      "text_sha256": "b07b2defb4745ddade797648c5e2be8b1de3337388eb2f047959cffb310c3146",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_179",
+      "content_hash": "f7c6c88d5f8a1484",
+      "text_sha256": "c7f63f7b7c9ec370653eeff9ad453733bc88248fc1a628dc455c0188defbe5aa",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_180",
+      "content_hash": "5e1c462265491c85",
+      "text_sha256": "02261a8e6fe39bbdd0d205892e8d76a2cb6d92217d5e159c6f632f19421dcf72",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_181",
+      "content_hash": "20d40411c74169ae",
+      "text_sha256": "6e5dfd67d311909e83704970c3ed4a2ff76096cd09abe31bb30744c8eda63faf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_182",
+      "content_hash": "77887dd76f4a405f",
+      "text_sha256": "9ee79ca6a961808c0019955e8beb9f00e55f8a498aaceb623f67ff67bad84c6d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_183",
+      "content_hash": "1366de516a269974",
+      "text_sha256": "fea70223cd8eb44f14ad6505c89a5cc353446962d81a3c7621f489dc94081d03",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_184",
+      "content_hash": "f04e2bc366ed91f0",
+      "text_sha256": "4a78f0d7c4780d6491921aee069a72bea10ff4866d31b180a24b03fe8fee203f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_185",
+      "content_hash": "c1fdda14f41a91cb",
+      "text_sha256": "9a380775433d8e8e4189116bf5ff5b228910858a17b3ce094b87edc298aa2f6d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_186",
+      "content_hash": "f00e02f64304694c",
+      "text_sha256": "a6ef915183698248cc5fe4ffe46d7c7a7a4226aa495e57159245f8222e58f296",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_187",
+      "content_hash": "1cb971a704686322",
+      "text_sha256": "18966e0145c1b77ed654f1fed6f10f1f8c7f29aacc37697ac1b8a427cec1b56d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_188",
+      "content_hash": "ed2fc6a685399330",
+      "text_sha256": "567ed7e5174edd99ac6faa08f62d568dcd1004e390fa5160360350c398792406",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_189",
+      "content_hash": "cae7e7df06b50680",
+      "text_sha256": "9a4e25b82b219f388ae6da61f8657d411a1e5bb30ce6762697c270a3eba31c67",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_190",
+      "content_hash": "e2d680290a0bd143",
+      "text_sha256": "fe3d0ab5a3a3a8b16b9a772d86233b614583149a2fb06ace22ea50303e674220",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_191",
+      "content_hash": "be22659eb0f089c5",
+      "text_sha256": "e0a751b6a185fbabd2bfa33db08b4844993537f4865d0e63173603b01a8ced59",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_527_2025_ch00_192",
+      "content_hash": "e746b6451189119f",
+      "text_sha256": "2d5fad0d62dc969c713575ed1731db9aae77ec63dc8cf08f990356168baf6521",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_009",
+      "content_hash": "6a0d03c677c9600e",
+      "text_sha256": "87b9da0019c0533f3e6bf5fcdcd89b4009107a33e8e4ff320ff40f300d2b182e",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_010",
+      "content_hash": "0cd5666b9ddad177",
+      "text_sha256": "d36f72c1c5b286f021338adf4c95f795b9f46f7daf37625be7ff96a64906b684",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_011",
+      "content_hash": "f2077f9deb854248",
+      "text_sha256": "f190b2ad75da7bba1e6defd5320c19adb163687bde1ddea3b93982c8d83dfe57",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_012",
+      "content_hash": "158748d4ad21d62f",
+      "text_sha256": "e9a4d179e001b988387b10504095913cceb05b0d4ff275d0bf2ab23b7593a9aa",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_013",
+      "content_hash": "95b05b65a92f5fd9",
+      "text_sha256": "c7994d92ed102a146bd69d2496144d8a06b35d48eac56b34708f5018282df75f",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_014",
+      "content_hash": "b77f7c1066104284",
+      "text_sha256": "17f7963aebb24a3b79e0bfa35f061793ae2a64310e1e2775dc1e80f13c49d383",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_129",
+      "content_hash": "3a48dc77bbb820d7",
+      "text_sha256": "0fe482bb38059768d34f1b850e4c856951749617b3d41e6fd4d7fab0d8aee821",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_130",
+      "content_hash": "9f07dd3ea859b1f7",
+      "text_sha256": "17f7963aebb24a3b79e0bfa35f061793ae2a64310e1e2775dc1e80f13c49d383",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_171",
+      "content_hash": "0dabc8212cc5b3ea",
+      "text_sha256": "fe385e98877cbdf3e349eb2ae7a44547a123b7b135fdf6ebcc9ef6c6d1617fa3",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_172",
+      "content_hash": "ff07910926699418",
+      "text_sha256": "d36f72c1c5b286f021338adf4c95f795b9f46f7daf37625be7ff96a64906b684",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_173",
+      "content_hash": "5bbbf3a5fc18af87",
+      "text_sha256": "19e19d3d8087f8a50ed23be96a9858f800a3d146bc287fb2832ad617e7bfd229",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_230",
+      "content_hash": "ae8e6dcc008e6252",
+      "text_sha256": "87b9da0019c0533f3e6bf5fcdcd89b4009107a33e8e4ff320ff40f300d2b182e",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_231",
+      "content_hash": "11539b288a238e2a",
+      "text_sha256": "299b829d3b950d84ee220c2b4a3a8364fe6dc3a11cb565c216eb52d374aa3268",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_232",
+      "content_hash": "c90a2e846c138b97",
+      "text_sha256": "ecc6ed55f61834249c082179d2dd252c42973f71aa4fcc0af560ddda018cd218",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_233",
+      "content_hash": "a3334311756585b1",
+      "text_sha256": "00cf275663b65242eaf5b514b189612dd9c7587d95a142af608b4574a3f4832f",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_234",
+      "content_hash": "967209d4338970c2",
+      "text_sha256": "c7994d92ed102a146bd69d2496144d8a06b35d48eac56b34708f5018282df75f",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_235",
+      "content_hash": "1c6c9438e28f13e4",
+      "text_sha256": "17f7963aebb24a3b79e0bfa35f061793ae2a64310e1e2775dc1e80f13c49d383",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_274",
+      "content_hash": "e3ec9d2a22a864a5",
+      "text_sha256": "2809451d6f6a8bd5e31b660fd0f46fab0895e5c8a88c5a722feb290d24f5115a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_275",
+      "content_hash": "e25dd4d36a153bd0",
+      "text_sha256": "10e87cf9da0671e30792e873957c685806599eba1209a34d7c8946cc5c099846",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_276",
+      "content_hash": "bbca0dbf9778cd89",
+      "text_sha256": "ca24ae19dfde89049f1522d0e4df0cb0fdd47524d2ddff993dc359579c8fa3c3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_277",
+      "content_hash": "669870df11f64521",
+      "text_sha256": "402614109e22c8cb317b74425e2744a354f4710a91546ab8f8aefe3d42b38bbb",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_278",
+      "content_hash": "fdd872d319829288",
+      "text_sha256": "5bd6d1cbb962ec1112c136ed16c1e352feee1ef8e78ff2c60e86046f5a3a8cce",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_279",
+      "content_hash": "e16f5787c21fbdb8",
+      "text_sha256": "9e5ec23a2339eae1c33e5c6c8cd0beb7868dc2ed663435bec82e2717146bddd5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_280",
+      "content_hash": "d4be2b5da11eba2f",
+      "text_sha256": "3411d59c8d125ca1a2f6ccd3896e43b0a82bd8dd6c16dc78434cf183a422fc16",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_281",
+      "content_hash": "a10a754a1a7e0c19",
+      "text_sha256": "14ea8fd21d3f15b3035a8ee9ffe340b65ede4bd99e6552b9d7f515a6d7cfad2a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_282",
+      "content_hash": "5ec8422047017e55",
+      "text_sha256": "ac58c871afe067e11a62b8e88213808138812c6b5b71874675d8b924da9950b5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_283",
+      "content_hash": "38397339fae8d143",
+      "text_sha256": "ebc0f2bf2e9e288f6e2905af5d6c4186db5e11232104bc446a1acc1032eddb4e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_284",
+      "content_hash": "3ea51ff1025efbce",
+      "text_sha256": "cdba7c90992d73ffac21d81929725f3ad8151a29a6ebd35013252200ac9444d2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_285",
+      "content_hash": "e6735c26138055fa",
+      "text_sha256": "8ea010a8b66be3afc56848276173efa393f5da2849d94678ca6a4610cd54c143",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_286",
+      "content_hash": "7417098f123d0439",
+      "text_sha256": "dc26879549b27c8595c15cc08d016c667cda2d46d10df08e7c5d918963aabcb5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_287",
+      "content_hash": "6faa4d810a084c5b",
+      "text_sha256": "2a7a6aa487d080be418ee52451bf0d4a111cb66563f78dfa6d47ee4b6987860c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_288",
+      "content_hash": "a79896558a2ac909",
+      "text_sha256": "192f352c36d98c518e00f43abc0d3137cf8fed1e7ac433d4c1d6527dd33109e3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_290",
+      "content_hash": "6968113fd62a931a",
+      "text_sha256": "4246a6ca6d3b073872383aa0c263f540e52bc50ecc2e49b37606aa85cc9bae64",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_291",
+      "content_hash": "dcd4d4fb23e7ddb2",
+      "text_sha256": "965ef12b6a58ca8ea628d4ed1e85c440d78b5097ef0e464c2e1b669dc1b1991f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_292",
+      "content_hash": "e4cb1122ea175ace",
+      "text_sha256": "3720d15da1e222c5886369ffb3abbc322292bc02d4bc76431c8241cde6913b85",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_293",
+      "content_hash": "8d7820e30fc24cae",
+      "text_sha256": "7f3a0b828e09557e5d9ef6507660b402398f1ebea117f73a33f3eabb2ac4ebfd",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_294",
+      "content_hash": "84c59946c156b8fb",
+      "text_sha256": "a2da4cafa63234290663ec2c2b8256f94b0c1fe2b3e4fff47d0b1c2d522b85e5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_296",
+      "content_hash": "35795ed5e6993599",
+      "text_sha256": "103fa77bf4666ebf083e91c00d3a617929452b5bbeb02257a894922d05d58c4a",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_297",
+      "content_hash": "20f91dcaea2503df",
+      "text_sha256": "3317d78b6a0b320f0bd3ddb8a9788b30a0f74d5fbc69388188ec373c00474b3f",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_298",
+      "content_hash": "ff467cf805bd50e0",
+      "text_sha256": "e0fa90269e5039f13d3e455bb1468919804ffdcb6b2d3fb8fb9d1c215c83cb53",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_299",
+      "content_hash": "8e0f9c385754b437",
+      "text_sha256": "fc76fe1c8e0c3fb06aeda35a9baff9ad3565049b928ee20a3bd250b613ab10e7",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_300",
+      "content_hash": "271fce6a904bd3ec",
+      "text_sha256": "1e90abdc75c092cc4a06de7113fbb7f11f75c37f00904030429c033f40777938",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_301",
+      "content_hash": "a6a2bedc0133419d",
+      "text_sha256": "6586fa95bc8f7da4564098ce83dd9c4198669a5815704816a9a98da51284abbe",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_302",
+      "content_hash": "084abe787017ca7e",
+      "text_sha256": "3cca1a92c533ee8c512a8af42264eb2d96ee9e9e3736380b58d8dd484461364f",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_544_2025_ch00_303",
+      "content_hash": "984c22f19b54d4cf",
+      "text_sha256": "b7c12e4f126ce78a98ec3f051bd030cdd776d726adf1d9f400b4dcee43f32d9c",
+      "reason": "reference_directory"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_010",
+      "content_hash": "8dbe06e74bbe10eb",
+      "text_sha256": "6e9592e2235f90d01148b06f06783352b885bccbdef50694457ac3f20abe4214",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_011",
+      "content_hash": "6d67fca9f67d0df3",
+      "text_sha256": "91915675c826021b9af73f49c5611e528ef402d9fac1db2aa2bb0c058ea19d48",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_012",
+      "content_hash": "9ad2c2e5a59b8818",
+      "text_sha256": "06d1b9939a7bc75c97278c5b950ad9c2c9665b514682d96034742bee50fd280b",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_225",
+      "content_hash": "f19a337dc3a22f57",
+      "text_sha256": "8da4cb7ea467c7e0ec8cc2a5d999ff3314f6848419e2653ba1d7105324f2d3f3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_226",
+      "content_hash": "f3d017530ddc8b21",
+      "text_sha256": "7d6d46f3a8997981b0a34aa9c6f6b8927ec326ea75b64211d976399ed47d2108",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_227",
+      "content_hash": "167a33c6a4f4c2dc",
+      "text_sha256": "526fb7adefbdf44d681bcc0bccebf802681ef732c4c59073dbae59feb008bded",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_228",
+      "content_hash": "1e79b9e68f0191ff",
+      "text_sha256": "77ec1a07a9f9e63290a40e503408df3dab0577894cd7b359af96cf342b8e0465",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_229",
+      "content_hash": "cc693816c954c64f",
+      "text_sha256": "c0817cdc7084ddf848ced76e7fc3941f0327fddb37e69d01274fe96211739093",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_230",
+      "content_hash": "ab16dab74d104d8b",
+      "text_sha256": "f3c12291d81074aa58a7a9d8cbf764df50ddb9f585b1df941f9b80989a1cbb63",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_231",
+      "content_hash": "892af0f24c6c503b",
+      "text_sha256": "601d7aed465acff55fac56511974061fa015f6322c606cc1983aefd7ee8ad46b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_232",
+      "content_hash": "cb483002c5ef3e0f",
+      "text_sha256": "7af551bffd37aaabe0bfa0e76b3a504dc55c42af61907153154f38cf9a685bd6",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_233",
+      "content_hash": "4e3529048d486bdd",
+      "text_sha256": "d4cd065b2486294cdc68893421fa458b33b39a36f9ad8fc39103b7d618f422c8",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_234",
+      "content_hash": "0a302cece06c879f",
+      "text_sha256": "d3af797f86a450a61aa890a176f161b53a351c8797ef47bbff1c2e56f1f5b7dd",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_235",
+      "content_hash": "cadeaf595383527c",
+      "text_sha256": "510ffd9dce7e24b2ad582d112e65e649258becea3f3717ccf91c40fac1d39ee8",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_236",
+      "content_hash": "77e59e57ca0593bb",
+      "text_sha256": "11bac613a57d1425b625f8f5eab7e2fc676aac45b39bf1dbc366552b1633c945",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_237",
+      "content_hash": "8979a93fdf0fb441",
+      "text_sha256": "72b1c01103fe4be91f568a31d044d77d4579b03c876f5855bbc74e1b627e24d9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_238",
+      "content_hash": "e33259c224e3b9c6",
+      "text_sha256": "3180fa7cee87f942f6d053c50f2b90d4276eca2a5348d7b69c3fc44360386f46",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_239",
+      "content_hash": "e34d12beaeb678c8",
+      "text_sha256": "1cce22f691733c3f42b5648fb3df8e3d0003ad8fc4b9b1fdb3642f39f6e080db",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_240",
+      "content_hash": "7963494b565276f1",
+      "text_sha256": "7d78b93173508f3414e8ba03ccc6d802175a9b3c2eac2afae1d39e0c2df1dfae",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_241",
+      "content_hash": "687ee4841ff70116",
+      "text_sha256": "cd9cd6e3c964894ac752f2318bf75e79058d36d050fe2be5a5ea5251d58fa813",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_242",
+      "content_hash": "f2920c79b24f9be0",
+      "text_sha256": "b280ebb9ab4d3a64df2e8d24e2138c2d859821b11236f66b4a7a8281dd22d270",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_243",
+      "content_hash": "ac774fa360cf6df0",
+      "text_sha256": "7b047671bc634d8d88417a7b8e359cd0df77f182dbab3e5da932b7695309caff",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_244",
+      "content_hash": "6952552fd2964ec5",
+      "text_sha256": "8d7c032af3ea3f037c18759e00bbd09cac4d1c227c19eb3d2a3b90fd4be0528f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_245",
+      "content_hash": "4fccb5fc94959ea7",
+      "text_sha256": "fe0e2909d7a96268299cb102dc70dffbaef131f4b9644bfb25155390d91e4705",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_246",
+      "content_hash": "c92f18795462198f",
+      "text_sha256": "1d6d6bd33e377cfdc5fd77b7ae0ac7513684f56f6b6ebc6c4bfd27b0340d26da",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_247",
+      "content_hash": "2f464538831d4883",
+      "text_sha256": "74979a834d02325ba0412179f18dee650aa5e868a6eb522abfae9f38092492c9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_248",
+      "content_hash": "381ba43057add54f",
+      "text_sha256": "ab73d091b9aa59c187b15ee64d73cf1290d102c842eef54131813d8aefaa9eb7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_249",
+      "content_hash": "af5859daaf704fe1",
+      "text_sha256": "d3f8e7eb4de55afdfde0f60f77db21f7704e5ae0111f3e6ce3ccf7a8865fac2a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_250",
+      "content_hash": "10f9408b414152fe",
+      "text_sha256": "793921abfc8e33371a3a62a34aa425e114d1c52c832b6d0dafa04c83379bcd69",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_251",
+      "content_hash": "7c9b556587e7fc90",
+      "text_sha256": "a9e1535e73688b109ca35f9af8bc8b2e988224ffbece8a22e14b32036e536e76",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_252",
+      "content_hash": "8d465549eb35da1d",
+      "text_sha256": "912ad6a2d35e6d35111cc3596d6f41aefb3552bde179ab5d9e65f8eb19411d4f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_253",
+      "content_hash": "9ee4bf723fccb277",
+      "text_sha256": "7293786ed569f60067e7b9633126474f403ce0ba52396b4fb6ad9eaf30eb4a24",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_575_2025_ch00_254",
+      "content_hash": "f00489c1492f2002",
+      "text_sha256": "f457e1afbc72a60b44f1fd3e5c7d29dc372c358f0db6cdce12b1f2e3c80a902a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_011",
+      "content_hash": "d9f1d7f6ff799fe4",
+      "text_sha256": "f5a692683acb7ea9351593c51fce055f9cc2b0e819624566353d6de57e72ab5e",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_285",
+      "content_hash": "1384afed1c711ccb",
+      "text_sha256": "1c6def45e4da22f93598aae978a8f04b4200bf32af39dcb8af6a61b2685f90cf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_286",
+      "content_hash": "de61df63222ed4b8",
+      "text_sha256": "297eaf2c8b8f3ea55038d89449825f58cd3af076f9a95195994f2794f7d844df",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_287",
+      "content_hash": "2684cf3d6a6129c8",
+      "text_sha256": "c7b43fc7e8bcdd666977269fbc0fb73970564004616eb3ba0fc2f375e575cd4b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_288",
+      "content_hash": "937b9d2d1b8f2b48",
+      "text_sha256": "1fdac13f9da7bdc2b9869052234c927f84295f1263e9d71037b53f754725b2ab",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_289",
+      "content_hash": "8ee6dcfa47e5d34a",
+      "text_sha256": "c659b4bd8838ea59f0632ac208743bcdd0398102ca8e3724d66361d2e69d9b48",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_290",
+      "content_hash": "be2cab0fe660fd3f",
+      "text_sha256": "42bbc5b175291a2b32c01e6e369eb59b6f6742a59584af548b75e1993b7863d4",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_291",
+      "content_hash": "5fef1b892f9f7653",
+      "text_sha256": "1910859bd29ee3253fee1bb3bd5844dfd6e8eb59bb00c6ea5a57dda883410910",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_292",
+      "content_hash": "77f7621e62c44c25",
+      "text_sha256": "50fb4d082e78b480044c8996938d4315f2a4fa1d3215077f2e835f8387215f3d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_293",
+      "content_hash": "582ea50a7a5fdaa5",
+      "text_sha256": "2cb64622de8da0148be07d01dc9df34fab36d68620b01bcfae206f9bd6b60538",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_294",
+      "content_hash": "921697574e5bed1f",
+      "text_sha256": "a060a7c77633d05a827937d505e221ba8d70721f4eb4896b13d80d6ad5a2585c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_295",
+      "content_hash": "8dab1de696ad50b0",
+      "text_sha256": "8ba6f6564f101f47286b6553645e6d32cc65c4b53ea110c1501d09e5f34d1e96",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_296",
+      "content_hash": "f1f01ad9d8ee7b2a",
+      "text_sha256": "a1fb4cc2d01472ff55b790771f20c4c5a48afd0b160ab1437024b059798b7085",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_297",
+      "content_hash": "9db05a2822b03467",
+      "text_sha256": "fd20edb36df517e4418cb71b316c443956289ffc74cb7eb6bced80ffa1271f09",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_298",
+      "content_hash": "9e4d2cf84232e05f",
+      "text_sha256": "f28a6ac789278d5672039831dcf93bd7b038f786085d1df3eaccdb8b4bfffe60",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_299",
+      "content_hash": "c3fbdbb75b3e948f",
+      "text_sha256": "58482ed20156ae29a8faecf8bcfb3e829f50ff0b311a4b4038474d3d51539054",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_300",
+      "content_hash": "7ea18b9e85b1f015",
+      "text_sha256": "dd3874e7fdc04698996eb263ffb2ae93aba8206dade11d6110c4f373c321916b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_301",
+      "content_hash": "d68618c1507f2e8f",
+      "text_sha256": "0fd59720354b90e9743ac9c7d999ec7e20900f0ec3fce9607a4a5970281571c3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_302",
+      "content_hash": "52279938b69b22bb",
+      "text_sha256": "77e0925042b1acd29100a6e64d5bbf8cf8a2e4e49eba3d9cdfdc461775bb5bde",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_303",
+      "content_hash": "354afef3a5ea66ce",
+      "text_sha256": "52f52de5c5754b86248bb7eff756bbfcd3a4962274556ebcb8b8179010820571",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_304",
+      "content_hash": "b187ff650b7e8216",
+      "text_sha256": "94d57f48e78717abae1b09e3da3679dbdb090ca3f729c366ab5ba6f5d966d8a6",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_305",
+      "content_hash": "0898454d4dfde1e5",
+      "text_sha256": "97e9326468c3b38339b43763ae5c3f1f04304850a0f9a537f29fc5ed818e7187",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_306",
+      "content_hash": "023cc0d443b7ad12",
+      "text_sha256": "ae2cdd50898661c44a83d62cccb764a2f505617ed45ffa65e78d8102879bc427",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_307",
+      "content_hash": "1e065a88e45be03c",
+      "text_sha256": "af6d09cc0bc60754ab4fca75c11012788aed850a1aeead3382bba705148fc69e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_308",
+      "content_hash": "97c7865ffdbfd32d",
+      "text_sha256": "e297d49b543f155c804e26f667d811355a85ea2de6ffefcdc3328f3d023de124",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_309",
+      "content_hash": "cfaa9a9a9da9f343",
+      "text_sha256": "3a84d75c916f8bf518b537cf8faecd70884dcc280c003a5a3203a41c6835bfbf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_310",
+      "content_hash": "fe2dfca97da0e5d9",
+      "text_sha256": "f67eb14e217bfffc34e23a7356d118d0421f1c575375734a13d5c1a403769b6d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_311",
+      "content_hash": "e270c4eafb50e72c",
+      "text_sha256": "3621970872d72958622ff8275383a0b4bfaaaffe4ea4ce72517ff54b8a114f85",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_a_2025_ch00_312",
+      "content_hash": "05cd48f8dcc34208",
+      "text_sha256": "15c84301151b154faf0717fcf479774d231d9cb920abf784fc52d7ab59d9f397",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_007",
+      "content_hash": "cdd23107c18bebfb",
+      "text_sha256": "1ef9ed3db5a771b69e89a69692c3b3d7529ec6cb346d2d7a3d5e3211f0584ded",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_227",
+      "content_hash": "a14de9c5b73625bf",
+      "text_sha256": "88a4dff06ebf2fdb3b6600556c1c68989290cc7e890ed40545128f2ad70b9036",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_228",
+      "content_hash": "d87bfea90517f9ef",
+      "text_sha256": "5a5a6d247e1c6953651893252f9c21791e2db42f779ab99bfa98c579120d56ad",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_229",
+      "content_hash": "e7c6b72229ddd76c",
+      "text_sha256": "0e5654cd52512fc86a989a700baf087c75089320ea42d8f9e4325194c504169e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_230",
+      "content_hash": "6c117fc70423551a",
+      "text_sha256": "b27f47f7372ad353f9a54376495b13a43287ed8cd2aa28d4b65600223cb6750e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_231",
+      "content_hash": "95484bbcfc8ec0b4",
+      "text_sha256": "a9e03626386dac0e9ad50f4c131200c5905aa896e5ddab4085e42e20d221c28d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_232",
+      "content_hash": "524b806952906c0d",
+      "text_sha256": "77f5b58e048b5491cbf25606b645fed35450d97fac269d1d4c1ca5e899063aab",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_233",
+      "content_hash": "40244ce6a990131c",
+      "text_sha256": "ba75f030cb617bfa0d604620faacaf6d9a88f6eee65fb78876d363972d991be2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_234",
+      "content_hash": "69ca07b90c238647",
+      "text_sha256": "7b686aa54421aa0d1e97e88898edc70813ee8a335ca49dff1afeb130060f00f7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_235",
+      "content_hash": "773a73dda8170ff4",
+      "text_sha256": "cecf19f45fa5b7f9a43e4f7d8944508a5592957fc08bb18c1e3d8b0c7abb3200",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_236",
+      "content_hash": "1d49058605c589c0",
+      "text_sha256": "251af1316fde06b0d10470b0b6194dca85e25338d4fc614b3faf40984c88a64d",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_237",
+      "content_hash": "43ae9b4c3820b5c8",
+      "text_sha256": "5edc5eea88cc2d93e0f97d8aebc63a08e2949ee2a8d0888d115ef8f788f9a9c0",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_238",
+      "content_hash": "8e3fa5d33313396b",
+      "text_sha256": "8b8a1e41b3d6df9dfd2d66cc2731654270ff34e10f2f0b02742e6493e9c84ad2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_239",
+      "content_hash": "32df8c74836ca424",
+      "text_sha256": "827906e8d1d1cdd68f7cfd5fac6a32d3ff05e9e37c97f0abb6be2f1465ca04c5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_240",
+      "content_hash": "aab8d3068be764c4",
+      "text_sha256": "cf06f5ddc1063df6488c07349fec904aee24e9b69a397a8296832f60adaa1c2c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_241",
+      "content_hash": "443ff910c5c5286c",
+      "text_sha256": "fcbd5730ad6fdb573a479ac6a28bed918f2c069de9455394d4fa2eefdfd0de18",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_242",
+      "content_hash": "2e28dbab26845d46",
+      "text_sha256": "26b01c140069ad191e81de9044be5037693248e75ebc3aa4838accd6722bde87",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_243",
+      "content_hash": "1371d65c3df24134",
+      "text_sha256": "4d359c9d90aa2af47e6bed495df41cf32d99ee30dd932ce8b3037e15736361c6",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_244",
+      "content_hash": "cb7f20c471703380",
+      "text_sha256": "b98ea7d9eb3b1851fa96f4226c0717f8c6d7c3a6d58f0a09d57c1f05549a7b05",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_245",
+      "content_hash": "ef306f17aa07aafb",
+      "text_sha256": "4f15be00f183fd50f7b1037628d34aca22d31599c35ceea0e28c43d1ede666a2",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_590_b_2025_ch00_246",
+      "content_hash": "de5729f5ccedb9d1",
+      "text_sha256": "08f7ed8870004750c098d9b5f1a545ee333385edcd7715596c2427331be3034c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_006",
+      "content_hash": "25218f30c5477138",
+      "text_sha256": "074a6bf459f694a23c206fab736742a23a568963cb6520d1ff90df70e1cc4808",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_125",
+      "content_hash": "1e5dc8853944cca9",
+      "text_sha256": "5ce4580d27f2499c9dc716cce417eab483a248e6a586ebf4f01ab1f804c62f1a",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_126",
+      "content_hash": "dad7b6c6eff0772f",
+      "text_sha256": "fbae7b5cf47e90533d4ca64e47802d71f10dd909b67fcc98fb1ecf1c766c4850",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_127",
+      "content_hash": "feece8e4621db3a4",
+      "text_sha256": "aaefa264e2cec92658e51581e9ba26b3d861f92c5b271795d7f7e637b7981e91",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_128",
+      "content_hash": "d819aae3d6de5522",
+      "text_sha256": "d96da3d9f62d53957afe8062b78f5c558cbe2378627e10f9449398b06d9d72fe",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_129",
+      "content_hash": "9d7beb12c04a454b",
+      "text_sha256": "2d3211a61062fb5fb5d8f43f9de5d3080c5c37a9f4d851d935a24c6d4eb2c2c3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_130",
+      "content_hash": "00434b98eba6a84f",
+      "text_sha256": "eab439ecb3d0f910018db45eb45b89bc7cbe65b0ae820acb78495f1195a299f5",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_131",
+      "content_hash": "456f72e595d86984",
+      "text_sha256": "221593f7e04216a9c3b790e38480f84e88b959ff8bdf70f28306b06bdb7635aa",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_132",
+      "content_hash": "0784a38657e92379",
+      "text_sha256": "4b18ada17a426b6365e542d3ee39568bb7ade8f59bb894b20bb0c07be66aacb1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_133",
+      "content_hash": "2f1a7de74a1be887",
+      "text_sha256": "a716fd4d365a19eda8f921c1006786464922ed170ba6ff10046ea55c05f7b2ae",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_134",
+      "content_hash": "aad931073e308ee5",
+      "text_sha256": "67b69447c75018ed4d06f03c00ea7f8e68ddf3ce4da663f3e52ce18def8dc8b1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_135",
+      "content_hash": "a73f1ddeca37b4e1",
+      "text_sha256": "7e704daf51c0b6edb40e9fe7de5e789fd9b04e35062558de012b82bdbcf5b8ca",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_136",
+      "content_hash": "fb055da7829da5eb",
+      "text_sha256": "515f906d4177206527f022185221970afbcbd7647b288da49d0996de16ca591b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_137",
+      "content_hash": "6ec6014679dc3eac",
+      "text_sha256": "14bc6302c301bd672caf8f4614815dd544e8db1ef891061ca39ecbebd461490c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_138",
+      "content_hash": "63044139b41dae55",
+      "text_sha256": "6f504c5965fc45a96a6f21c775e6412d3ca0fd838d6113f5ec5fff47e934a4b7",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_139",
+      "content_hash": "7f7cf2a95e021d78",
+      "text_sha256": "7c598376bbfc6b583221afb0c351a5b09971dea3161b01c096e5624bd0f91f5c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_915_2025_ch00_140",
+      "content_hash": "8609525a5efb8935",
+      "text_sha256": "3ebe079f88d6972b17367bce0e9deeecb25de5b3967e5c1d3536490e717def86",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_008",
+      "content_hash": "1150da5c5f816687",
+      "text_sha256": "c291d8c58f9f6583e9c6fc1aee9c66e917d667b43b89e8e144475d8f1d422318",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_009",
+      "content_hash": "6723746e42768357",
+      "text_sha256": "58deba3e3f42ab2177c6e5f2a422a69f423872adcd4cd3e48fa45da147b9fae6",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_010",
+      "content_hash": "0423e12fcf0c44e1",
+      "text_sha256": "111779eed9ad8101e60b92a7d841c489ae6fd61cf25c89206c7f19f6586abc86",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_011",
+      "content_hash": "3037131b79b7a97f",
+      "text_sha256": "38cb3a70ec55ca31f077d644146772e814053d87cb27e99eeb26ba84839052de",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_114",
+      "content_hash": "498b92d0c01a13bb",
+      "text_sha256": "54194a0e20c30197a1a58eab66cad1d6b0b58cb987823c6818013eeaf2567b25",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_115",
+      "content_hash": "8819d1984d600f1b",
+      "text_sha256": "e0fa30c68e6f13ebb73ed98787b09c71e274c37ecc8fb3412d55cc010be61317",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_117",
+      "content_hash": "4a0afe4e02eb1a03",
+      "text_sha256": "6f0f266e813d2547f20e70e6fd6571f154a6778596a94d4dde8be54e3e19938b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_118",
+      "content_hash": "152d1376789c331b",
+      "text_sha256": "33b300f41cb8d9c52dc300ed4eed3e9e216ef23e1a759233bcb008d02c4d06cf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_119",
+      "content_hash": "040fceca88ab17ad",
+      "text_sha256": "c63c8f8365e96dc5ab821a7bed7a7d8db4e50f8b48302d648ee2a0381989b1ba",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_120",
+      "content_hash": "38bac4e7822e87f2",
+      "text_sha256": "90c99e32f6350d408bc85107acbee67d1ed38da151190e83531760accb07526c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_121",
+      "content_hash": "694a1b998de23349",
+      "text_sha256": "913a7b31fcfa7c003b09d4ed6dd59000f71cc3486838da527a1f395195dee45f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_122",
+      "content_hash": "b2dea6584557f16c",
+      "text_sha256": "57f8671345321888cd7a0bf110b811198d9b37dd5e9fe133e7950321d1c05501",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_123",
+      "content_hash": "731cc5ff759eb70f",
+      "text_sha256": "06d43c6b654e56f7b149ffbbed9a7b7c78a844bd58a6bbc9391eaa9b4eadd191",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_124",
+      "content_hash": "5bd8cf2b6436e39a",
+      "text_sha256": "67285d6ad891b5e8f93829d95f9083ea848c3de787de28e7af0c4d67b9d1d883",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_125",
+      "content_hash": "9bab93ce8cf6c728",
+      "text_sha256": "84c9645155d32afaa918b0a71934bfe407639e5e52cc3393abe515b8eb401e7b",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_126",
+      "content_hash": "bf985e418aab0d38",
+      "text_sha256": "7f52c6623357ecc3f6bfdc9bb1ef2f6f16a1d24df1ad801dd789278e6f298cad",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_127",
+      "content_hash": "91fbd4b2fb47882e",
+      "text_sha256": "55ec2dc3df9524112ffb52acdc5af12298beb49c4da32a23f58f1422fd7576a0",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_128",
+      "content_hash": "155d1939b452b058",
+      "text_sha256": "0ca343edb8e7f4e3be3de430fd98e1b5b877c55da7b1a4084c0c6592903052b9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_925_2025_ch00_129",
+      "content_hash": "52997ff41bcb0a64",
+      "text_sha256": "b4415f7add16319baf18dbaead8f6f60ab4ecdb9d269b44324e428faf3753a0f",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_017",
+      "content_hash": "a7bb60a2cbe53bc7",
+      "text_sha256": "8b70f48ffaa9eb537c1153889dae20a1f0f5c7f11692456379ca5d0ef3655b2e",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_018",
+      "content_hash": "bf3d7921dc45607f",
+      "text_sha256": "400515b76b2cd5fcd27135b4798e368bd9f5aa59b4f306f1b42c40382928fb0c",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_019",
+      "content_hash": "77daf7bebe122fdd",
+      "text_sha256": "8eae55dabffa1a224d0aadb21d5ca8c65180c1506b828e2808181538d2a0e19d",
+      "reason": "reference_list"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_414",
+      "content_hash": "bef2f74428bd413e",
+      "text_sha256": "d100dc7d0ec4f08a936b9707c1d93dbb66ce0e2f8c0a08dd5c081a044310de39",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_415",
+      "content_hash": "e5072b1fdde39385",
+      "text_sha256": "caf00b010ce5c8b953bcbd48e28001216c57344780f651842d51e5b75fd0d2ad",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_416",
+      "content_hash": "62a83e4e56f0e4bc",
+      "text_sha256": "14d20d1ca9c8897d255e15f18199d5e50f91efce24dbda48f4a26bc838737fa9",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_417",
+      "content_hash": "f6630ee13414ca54",
+      "text_sha256": "7bd48fb7315c03c4d9f9076486f909b935f2a2c3e9db4fd3e850a0da700e40df",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_418",
+      "content_hash": "6cb0c27182ab32e0",
+      "text_sha256": "b0d2d0151467dafd42017cca63a2a96bf3bfc6b69d1fb5889c0ec25f5ede4aee",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_419",
+      "content_hash": "f7c3dd4d63a7ef09",
+      "text_sha256": "711d5007ae0889550ddedfd4850e1c204dadbb87143758cd290d148b62baf043",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_420",
+      "content_hash": "d609fc2e8d3314b9",
+      "text_sha256": "2a3b64825137259106b26baecc61b2cb9f20d2b3b37d308a0d4f6af68dc89df1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_421",
+      "content_hash": "4cba77c021d5bdca",
+      "text_sha256": "b9f4c5d4f58cd449f4aedd1364e0a74f7c4696dbc4c7d05d0374c781af9b0075",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_422",
+      "content_hash": "2e0d53dd96b23bba",
+      "text_sha256": "185a732fe3def1adfedd942453388251bd76c56554948ff1a20013552780381c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_423",
+      "content_hash": "81ca0fd8608236fc",
+      "text_sha256": "c5954b9bd9ae6d001d6719ddaf8aacb5b94c2efcc9f9a66766ef936e347768cf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_424",
+      "content_hash": "244815b1d796608c",
+      "text_sha256": "a86e13fe54d584c39590558cfd5f267e341298f923b99dcfcbb8a4ed9df91c13",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_425",
+      "content_hash": "47981ce42768ece6",
+      "text_sha256": "1cb7a017340a89c3f8cf8fc9bdbc8335e0720da906e491714e3ab37c6b6d7042",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_426",
+      "content_hash": "a3424e5430dee236",
+      "text_sha256": "d845cd990f2a80ce776b44321f06b17dec2444bba273a0b87e89c32dd8909dc1",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_427",
+      "content_hash": "c7ada9641141084e",
+      "text_sha256": "4d6fba91df21f42f856bdc8a6c208a15ab6d3d280f4fb0d41cbf50492d66aa8e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_428",
+      "content_hash": "446f00332637471b",
+      "text_sha256": "457d7161692651799d89c0214cdc031d056719da7dd72f5df21019991803bcc8",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_429",
+      "content_hash": "38b8e474b551645e",
+      "text_sha256": "f3a5a1d339e78f87581c52b2bfa4239f92eb21e231d730c5b4e19af66aa04d5e",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_430",
+      "content_hash": "2f08c9eab6e876cc",
+      "text_sha256": "1a1f186d50295e399ff299644d9a198c6114bb63847f6995ca112b2cbe184984",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_431",
+      "content_hash": "e37cbdceef2e6e03",
+      "text_sha256": "820d66b9cf293ef9ce2f6f9ed738c956c8f2ecbd46218667e4219fae274e7b02",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_432",
+      "content_hash": "cc48d8070acf02b0",
+      "text_sha256": "08b91cc221337306bfffdb490706713700ea41d808187852ff4cbca9d56eeeeb",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_433",
+      "content_hash": "2f9b233e330ed3f7",
+      "text_sha256": "ab2b6e9b18362bc64937cfd9ff9cfe60be426c3aeeddbb61ba1353e72cceee37",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_434",
+      "content_hash": "bfa481ad4ffab922",
+      "text_sha256": "df6857149ce2d4d8614bcc2973f5f4537272f8fe993ca02120cedf30939a7cba",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_435",
+      "content_hash": "21b3f4c47c5809a1",
+      "text_sha256": "6a8d48907fc28127ea16a2e5b7ca93b402cf5852bc928c556e9ac1e2c6d6bf93",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_436",
+      "content_hash": "9e5c07563e6474f9",
+      "text_sha256": "bde18b8f58669d1b2acedaccfc04ca4c78a7a114dadacfebf3610753e19b8355",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_437",
+      "content_hash": "82d9e4509c28f090",
+      "text_sha256": "9a0115747dc3d036a31691f4e70bba457f92edd5286f4fe6f7af7c64633d9caf",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_438",
+      "content_hash": "538ec195ffaee181",
+      "text_sha256": "26a9f5b0a9eb0cd2b95f91c06b9971a8a0716b1689ddd894ce8e0914b0a207b3",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_439",
+      "content_hash": "8fe3a77ec60e6b68",
+      "text_sha256": "2224ed93921c96d990aeddbbf16dfaf3669515735570aaac1eb4b69524eefb2c",
+      "reason": "index"
+    },
+    {
+      "id": "irs_pub_970_2025_ch00_440",
+      "content_hash": "f936dc44654dc734",
+      "text_sha256": "8aa7be240618f8eafd32961e625bf7637e1a1b659e0e67d67ac1ceb9271fa9d0",
+      "reason": "index"
+    },
+    {
+      "id": "pub17_2025_ch03_002",
+      "content_hash": "0018ad2927576e68",
+      "text_sha256": "831995c7aa40441dcb8f27106bc66a8a22e577df8e5ad1b2cda9700860a82705",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch04_004",
+      "content_hash": "3c44e1af211dc472",
+      "text_sha256": "7398f154dcf5adf8bcd2a88182f66e8d8df7a2009f73a398f42f9bbed1f9cc65",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch06_003",
+      "content_hash": "a9c19d8970abe150",
+      "text_sha256": "3364a470aba61303c72bef024a460b2721af30a34af00c7fbbdfe7acab789892",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch06_004",
+      "content_hash": "eb9805406a8223de",
+      "text_sha256": "04f9ded752f65fe5c0367c13436dfd5ba55454b3c2eca70c0d97db653fb271d9",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch07_004",
+      "content_hash": "ac226041594911b6",
+      "text_sha256": "b4e7c521c52ea2ca6b49ed8d863742e9ea28803f2761c8bbfcffd240f082828c",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch08_004",
+      "content_hash": "76aa4c3d18728013",
+      "text_sha256": "899a50c97359d443c72de5907d431fce41a6c970a44196c45f85472a85914479",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch09_007",
+      "content_hash": "809872f3407bef62",
+      "text_sha256": "9aa4d13b43ae4a0df70b9b58d2960053d4157daca494307e91d16d5d0a14065e",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch11_004",
+      "content_hash": "fb7b4c43f56eae75",
+      "text_sha256": "06a8e3df956aa4263febbd93afc0a8bac8b70756b3023331728935e2db3ed66c",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch12_004",
+      "content_hash": "0e6adef216130fb8",
+      "text_sha256": "a063c27c3c14b532f29aac172b1c3da0c7d10e4c24809fd35a72a50b7235cc2d",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch13_002",
+      "content_hash": "a4e8e7ec96165e59",
+      "text_sha256": "2ad8866253ac4e4f57404b12d94ef63e6f5ee223cb58c75aaf6f94335ce9e66e",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch13_003",
+      "content_hash": "1034ce3df70c0683",
+      "text_sha256": "5dcdea9c73b7a9726ea9f850c87cef4c385ba02fd498a24909bed71ef1f5d5f6",
+      "reason": "reference_list"
+    },
+    {
+      "id": "pub17_2025_ch14_005",
+      "content_hash": "146a7d8058120f53",
+      "text_sha256": "03365d44d8cc8473a9617520f5d6e482fad4ae41bde860f4c7135139383a031c",
+      "reason": "reference_list"
+    }
+  ]
+}
