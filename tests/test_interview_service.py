@@ -1,7 +1,10 @@
 """Interview service + model normalizer, without FastAPI, DB, Ollama or OpenAI."""
+import sqlite3
+
 import pytest
 
 from src.app.interviews import InterviewClosed, InterviewNotFound, InterviewService, list_playbooks
+from src.db.interview_store import InterviewStore
 from src.llm.normalize import make_normalizer
 
 
@@ -121,3 +124,107 @@ def test_intake_with_priority_from_the_service():
     with pytest.raises(ValueError):
         svc.start("intake", ["bogus"])
 
+
+
+def test_saved_interview_resumes_after_service_restart(tmp_path):
+    database = tmp_path / "interviews.sqlite3"
+    owner = "original-browser"
+    first = InterviewService(search=no_search, store=InterviewStore(path=database))
+    initial = first.start("ca_w2_side_gig", owner=owner)
+    iid = initial["state"]["interview_id"]
+    first.answer(iid, "single", initial["output"]["question_id"], owner=owner)
+    first.start("ca_retiree", owner=owner)
+
+    restarted = InterviewService(search=no_search, store=InterviewStore(path=database))
+    rows = restarted.list(owner)
+    assert len(rows) == 2
+    assert rows[-1]["interview_id"] == iid
+    assert set(rows[-1]) == {"interview_id", "status", "created_at", "updated_at", "title"}
+    assert restarted.list("another-browser") == []
+    with pytest.raises(InterviewNotFound):
+        restarted.get(iid, owner="another-browser")
+
+    saved = restarted.get(iid, owner=owner)
+    assert saved["turns"] == [{"question": initial["output"]["question"], "answer": "single"}]
+    assert saved["output"]["fact"] == "has_side_income"
+    restarted.answer(iid, "yes", saved["output"]["question_id"], owner=owner)
+    restarted.answer(iid, "12000", owner=owner)
+    restarted.decide(iid, approve=True, note="Reviewed", owner=owner)
+
+    final = first.get(iid, owner=owner)
+    assert first.list(owner)[0]["interview_id"] == iid
+    assert final["output"]["type"] == "summary"
+    assert final["output"]["status"] == "approved"
+    assert final["history"][-1] == {"decision": "approved", "note": "Reviewed"}
+
+
+def test_saved_attachments_can_be_kept_or_removed_after_restart(tmp_path, monkeypatch):
+    database = tmp_path / "interviews.sqlite3"
+    first = InterviewService(search=no_search, document_chat=lambda: None, store=InterviewStore(path=database))
+    monkeypatch.setattr(
+        "src.app.interviews.extract_document_facts",
+        lambda *args: [{"name": "intake.txt", "facts": {"filing_status": "single"}}],
+    )
+    staged = first.stage_documents("ca_w2_side_gig", [("intake.txt", b"")], owner="browser")
+    doc_id = staged["files"][0]["id"]
+    result = first.start("ca_w2_side_gig", document_ids=[doc_id], owner="browser")
+    iid = result["state"]["interview_id"]
+
+    restarted = InterviewService(search=no_search, store=InterviewStore(path=database))
+    assert restarted.get(iid, owner="browser")["documents"] == [{"id": doc_id, "name": "intake.txt", "count": 1}]
+    assert restarted.sync_documents(iid, [doc_id], owner="browser")["output"]["fact"] == "has_side_income"
+    assert restarted.sync_documents(iid, [], owner="browser")["output"]["fact"] == "filing_status"
+    assert restarted.get(iid, owner="browser")["documents"] == []
+
+
+def test_store_rejects_a_stale_write(tmp_path):
+    database = tmp_path / "interviews.sqlite3"
+    store = InterviewStore(path=database)
+    svc = InterviewService(search=no_search, store=store)
+    result = svc.start("ca_w2_side_gig")
+    iid = result["state"]["interview_id"]
+    stale = InterviewStore(path=database).get("", iid)
+    svc.answer(iid, "single")
+    assert store.save("", stale) is False
+    assert svc.get(iid)["state"]["facts"] == {"filing_status": "single"}
+
+
+def test_existing_database_migrates_and_saves_interview_names(tmp_path):
+    database = tmp_path / "interviews.sqlite3"
+    original = InterviewService(search=no_search, store=InterviewStore(path=database))
+    initial = original.start("ca_w2_side_gig", owner="browser")
+    iid = initial["state"]["interview_id"]
+    connection = sqlite3.connect(database)
+    try:
+        with connection:
+            connection.execute("ALTER TABLE guided_interviews DROP COLUMN title")
+    finally:
+        connection.close()
+
+    migrated = InterviewService(search=no_search, store=InterviewStore(path=database))
+    assert migrated.list("browser")[0]["title"] is None
+    assert migrated.get(iid, owner="browser")["output"] == initial["output"]
+    migrated.rename(iid, "Follow-up", owner="browser")
+    migrated.answer(iid, "single", owner="browser")
+
+    reopened = InterviewService(search=no_search, store=InterviewStore(path=database))
+    assert reopened.list("browser")[0]["title"] == "Follow-up"
+    assert reopened.get(iid, owner="browser")["output"]["fact"] == "has_side_income"
+
+
+def test_deleted_interview_stays_deleted_after_restart_and_stale_write(tmp_path):
+    database = tmp_path / "interviews.sqlite3"
+    store = InterviewStore(path=database)
+    owner = "browser"
+    svc = InterviewService(search=no_search, store=store)
+    result = svc.start("ca_w2_side_gig", owner=owner)
+    iid = result["state"]["interview_id"]
+    stale = store.get(owner, iid)
+
+    svc.delete(iid, owner=owner)
+    restarted_store = InterviewStore(path=database)
+    restarted = InterviewService(search=no_search, store=restarted_store)
+    assert restarted_store.save(owner, stale) is False
+    assert restarted.list(owner) == []
+    with pytest.raises(InterviewNotFound):
+        restarted.get(iid, owner=owner)

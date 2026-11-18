@@ -9,14 +9,18 @@ api.py: FastAPI app.
 from contextlib import asynccontextmanager
 from copy import deepcopy
 from dataclasses import dataclass, field
+from hashlib import sha256
 import logging
+import re
+from secrets import token_urlsafe
 from pathlib import Path
 from threading import Lock
+from typing import Annotated
 from uuid import UUID, uuid4
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse, Response
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, StringConstraints, field_validator
 from starlette.concurrency import run_in_threadpool
 from starlette.datastructures import UploadFile
 from starlette.formparsers import MultiPartException, MultiPartParser
@@ -31,6 +35,19 @@ from src.workflow.engine import INTAKE
 
 
 logger = logging.getLogger(__name__)
+
+INTERVIEW_COOKIE = "guided_interview_browser"
+
+
+def interview_owner(request: Request, response: Response | None = None) -> str:
+    token = request.cookies.get(INTERVIEW_COOKIE, "")
+    if not re.fullmatch(r"[A-Za-z0-9_-]{43}", token):
+        if response is None:
+            return ""
+        token = token_urlsafe(32)
+        response.set_cookie(INTERVIEW_COOKIE, token, max_age=365 * 24 * 60 * 60,
+                            httponly=True, samesite="lax", secure=request.url.scheme == "https")
+    return sha256(token.encode()).hexdigest()
 
 
 @dataclass
@@ -155,6 +172,11 @@ class AnswerRequest(BaseModel):
         return value
 
 
+class RenameInterviewRequest(BaseModel):
+    title: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100,
+                                           pattern=r"^[^\x00-\x1f\x7f]+$")]
+
+
 class DecisionRequest(BaseModel):
     """Body of POST /api/interviews/{id}/decision: {"approve": bool, "note": optional text}."""
     approve: bool
@@ -166,9 +188,12 @@ class SyncDocumentsRequest(BaseModel):
 
 
 @app.get("/interview", response_class=FileResponse)
-def interview_page():
+def interview_page(request: Request):
     """Serve the assistant's guided-interview page."""
-    return FileResponse(Path(__file__).parent / "static" / "interview.html")
+    response = FileResponse(Path(__file__).parent / "static" / "interview.html",
+                            headers={"Cache-Control": "no-store"})
+    interview_owner(request, response)
+    return response
 
 
 @app.get("/api/playbooks")
@@ -177,13 +202,24 @@ def playbooks():
     return {"playbooks": list_playbooks()}
 
 
+@app.get("/api/interviews")
+def interview_list(request: Request):
+    owner = interview_owner(request)
+    interviews = request.app.state.interviews.list(owner) if owner else []
+    return JSONResponse({"interviews": interviews}, headers={"Cache-Control": "no-store"})
+
+
 @app.post("/api/interviews")
-def start(payload: StartRequest, request: Request):
+def start(payload: StartRequest, request: Request, response: Response):
     """Start an interview; returns the first question and a sidebar snapshot (404 unknown scenario, 422 bad priority)."""
     try:
-        result = request.app.state.interviews.start(payload.scenario, payload.priority, payload.background,
-                                                    [str(document_id) for document_id in payload.document_ids])
-        return JSONResponse(result, headers={"Cache-Control": "no-store"})
+        owner = interview_owner(request, response)
+        result = request.app.state.interviews.start(
+            payload.scenario, payload.priority, payload.background,
+            [str(document_id) for document_id in payload.document_ids], owner=owner,
+        )
+        response.headers["Cache-Control"] = "no-store"
+        return result
     except StagedDocumentUnavailable as exc:
         raise HTTPException(409, str(exc)) from None
     except ValueError as exc:
@@ -194,7 +230,10 @@ def start(payload: StartRequest, request: Request):
 def answer(interview_id: str, payload: AnswerRequest, request: Request):
     """Submit an answer; returns the next question, an error, or the summary (404 / 409)."""
     try:
-        return request.app.state.interviews.answer(interview_id, payload.answer, payload.question_id)
+        result = request.app.state.interviews.answer(
+            interview_id, payload.answer, payload.question_id, owner=interview_owner(request),
+        )
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
     except InterviewNotFound:
         raise HTTPException(404, "Interview not found. Start a new one.") from None
     except InterviewClosed as exc:
@@ -202,7 +241,7 @@ def answer(interview_id: str, payload: AnswerRequest, request: Request):
 
 
 @app.post("/api/interview-documents")
-async def stage_documents(request: Request, scenario: str = INTAKE):
+async def stage_documents(request: Request, response: Response, scenario: str = INTAKE):
     content_type = request.headers.get("content-type", "").split(";", 1)[0].strip().lower()
     if content_type != "multipart/form-data":
         raise HTTPException(415, "Send the files as multipart form data.")
@@ -234,8 +273,10 @@ async def stage_documents(request: Request, scenario: str = INTAKE):
         await form.close()
 
     try:
-        result = await run_in_threadpool(request.app.state.interviews.stage_documents, scenario, uploads)
-        return JSONResponse(result, headers={"Cache-Control": "no-store"})
+        owner = interview_owner(request, response)
+        result = await run_in_threadpool(request.app.state.interviews.stage_documents, scenario, uploads, owner=owner)
+        response.headers["Cache-Control"] = "no-store"
+        return result
     except ValueError as exc:
         raise HTTPException(404, str(exc)) from None
     except DocumentExtractionUnavailable as exc:
@@ -244,7 +285,7 @@ async def stage_documents(request: Request, scenario: str = INTAKE):
 
 @app.delete("/api/interview-documents/{document_id}", status_code=204)
 def remove_document(document_id: UUID, request: Request):
-    request.app.state.interviews.remove_document(str(document_id))
+    request.app.state.interviews.remove_document(str(document_id), owner=interview_owner(request))
     return Response(status_code=204)
 
 
@@ -252,7 +293,7 @@ def remove_document(document_id: UUID, request: Request):
 def sync_documents(interview_id: str, payload: SyncDocumentsRequest, request: Request):
     try:
         result = request.app.state.interviews.sync_documents(
-            interview_id, [str(document_id) for document_id in payload.document_ids]
+            interview_id, [str(document_id) for document_id in payload.document_ids], owner=interview_owner(request),
         )
         return JSONResponse(result, headers={"Cache-Control": "no-store"})
     except InterviewNotFound:
@@ -263,18 +304,40 @@ def sync_documents(interview_id: str, payload: SyncDocumentsRequest, request: Re
 
 @app.get("/api/interviews/{interview_id}")
 def get_interview(interview_id: str, request: Request):
-    """Return the interview's snapshot and full history (404 if unknown)."""
+    """Return the interview state, history, and current question or summary."""
     try:
-        return request.app.state.interviews.get(interview_id)
+        result = request.app.state.interviews.get(interview_id, owner=interview_owner(request))
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
     except InterviewNotFound:
         raise HTTPException(404, "Interview not found.") from None
+
+
+@app.patch("/api/interviews/{interview_id}")
+def rename_interview(interview_id: str, payload: RenameInterviewRequest, request: Request):
+    try:
+        result = request.app.state.interviews.rename(interview_id, payload.title, owner=interview_owner(request))
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
+    except InterviewNotFound:
+        raise HTTPException(404, "Interview not found.") from None
+
+
+@app.delete("/api/interviews/{interview_id}", status_code=204)
+def delete_interview(interview_id: str, request: Request):
+    try:
+        request.app.state.interviews.delete(interview_id, owner=interview_owner(request))
+    except InterviewNotFound:
+        raise HTTPException(404, "Interview not found.") from None
+    return Response(status_code=204)
 
 
 @app.post("/api/interviews/{interview_id}/decision")
 def decide(interview_id: str, payload: DecisionRequest, request: Request):
     """Preparer approves or returns the summary (409 unless waiting for the preparer)."""
     try:
-        return request.app.state.interviews.decide(interview_id, payload.approve, payload.note)
+        result = request.app.state.interviews.decide(
+            interview_id, payload.approve, payload.note, owner=interview_owner(request),
+        )
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
     except InterviewNotFound:
         raise HTTPException(404, "Interview not found.") from None
     except InterviewClosed as exc:
@@ -283,7 +346,7 @@ def decide(interview_id: str, payload: DecisionRequest, request: Request):
 
 def completed_interview(interview_id: str, request: Request):
     try:
-        state = request.app.state.interviews.get(interview_id)["state"]
+        state = request.app.state.interviews.get(interview_id, owner=interview_owner(request))["state"]
     except InterviewNotFound:
         raise HTTPException(404, "Interview not found.") from None
     if state["status"] not in {"waiting_for_preparer", "approved", "returned"}:
