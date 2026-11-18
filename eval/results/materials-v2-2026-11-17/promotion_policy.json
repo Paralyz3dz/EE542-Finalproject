@@ -1,0 +1,7 @@
+{
+  "primary_metric": "strict primary-source hit@3",
+  "minimum_hits": 72,
+  "queries": 104,
+  "target_hits_for_80_percent": 84,
+  "decision": "Use the repaired default if the primary metric does not regress; report all secondary metrics and provenance coverage separately."
+}

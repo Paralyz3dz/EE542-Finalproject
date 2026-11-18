@@ -8,7 +8,7 @@ names the official document its rule comes from (field `source`). The knowledge 
 documents, so that each question can show the passage behind it and the summary can tell the
 preparer which references were actually found.
 
-All 21 listed documents are now stored in the remote knowledge base (6,004 chunks with vectors). The 2026-11-17 import added 5,184 chunks and 800 table records. Retrieval acceptance is not yet passed: source hit@3 is 68/104 (65.4%), below the 80% target. See [the import and validation report](knowledge-base-import.md) for results and limitations.
+The repaired default now holds all 21 documents in independent remote tables: 8,752 vectors, 8,390 searchable chunks and 554 exact tables. A single 104-question round improved primary-source hit@3 from 72/104 (69.2%) to 76/104 (73.1%), still below the 80% target. See [the processing and retrieval report](../eval/results/materials-v2-2026-11-17/report.md). The original 6,004-chunk corpus is preserved; [the import report](knowledge-base-import.md) records its historical results.
 
 ## 1. What the knowledge base does, and does not do
 
@@ -85,6 +85,8 @@ line is a real Pub 17 citation; the others show the pattern, their page numbers 
     IRS Schedule C Instructions (2025), 'Line 9. Car and truck expenses', p. C-6
     FTB Schedule CA (540) Instructions (2025), Part I Section B, 'Line 3', p. 5
 
+PDF citations explicitly label PDF pages and add printed page labels when they differ. Saved HTML instructions cite their real web section paths.
+
 The engine compares a citation with a playbook reference by dropping "(2025)", keeping the text
 before the first comma and lower-casing it (`_doc_key` in `src/workflow/engine.py`). So:
 
@@ -97,8 +99,7 @@ before the first comma and lower-casing it (`_doc_key` in `src/workflow/engine.p
 
 ## 4. Chunk format
 
-Same record as the existing Pub 17 chunks and the `chunks` table in `src/db/schema.sql`, so
-`src/db/load_chunks.py` and `src/rag/embed_chunks.py` load new documents without changes.
+The core record keeps the existing Pub 17 fields and `src/db/schema.sql` columns. Repaired versioned tables add `provenance` (all original source citations) and `retrieval_eligible` (numeric locators are excluded from passage search). Load the repaired snapshot with `src/db/load_materials.py`; the original loader remains for the saved baseline.
 
 ```json
 {
@@ -125,7 +126,7 @@ Same record as the existing Pub 17 chunks and the `chunks` table in `src/db/sche
 
 | Field | Rule |
 |---|---|
-| `id` | `<file prefix>_2025_<chapter or part>_<nnn>`: `p463_2025_ch04_007`, `i1040sc_2025_ln09_001`, `ftb1031_2025_s02_004` |
+| `id` | Repaired records use `<file prefix>_2025_ch<nn>_<content hash>`; table pieces add a row-data hash. Legacy counter IDs remain in the original corpus. |
 | `source` | KB name + " (2025)" |
 | heading fields | the heading path the chunk sits under; empty levels are null |
 | `type` | `rule` / `tip` / `caution` / `whats_new` / `table` (TIP and CAUTION boxes are their own chunks) |
@@ -137,13 +138,15 @@ Same record as the existing Pub 17 chunks and the `chunks` table in `src/db/sche
 Cutting rules (as in `chunk_pub17.py`):
 
 1. Cut at every heading and bold run-in heading; never across two sections.
-2. Merge small pieces and split long ones to 150-400 words.
-3. A table is its own chunk (`type: table`); its rows also go to `tax_tables` for exact lookup.
+2. Merge paragraphs within the same heading/run-in and split long ones at sentence or clause boundaries, targeting 150-400 words. Keep a shorter genuine section intact; never merge unrelated headings to reach the target.
+3. A table is its own chunk (`type: table`); its complete logical rows also go to `tax_tables` for exact lookup. Semantic table passages split only between rows and repeat their column headings. Numeric table locators are stored with vectors and excluded from both retrieval routes; amounts stay in exact tables.
 4. Line instructions (Schedule C, Form 1040, Schedule CA): each "Line N." heading is a section.
 5. FTB booklets: embed the instruction pages only, not the form pages; the 3514 EITC tables go to
    `tax_tables`.
 
 Embedding: Ollama `qwen3-embedding:0.6b`, stored in PostgreSQL + pgvector (unchanged).
+
+The repaired pipeline is `src/rag/materials.py`, with the 21 sources in `config/knowledge_sources.json`. See [processing and versioning](knowledge-base-processing.md). The original `public.chunks` corpus remains available as `corpus_version: original`; the repaired corpus uses independent versioned tables.
 
 ## 5. Retrieval interface used by the engine
 
@@ -152,7 +155,7 @@ search(query: str) -> {"matches": [{"citation": str, "text": str, "chunk_id": st
 ```
 
 - `query` is the question's `retrieval_query` (104 fixed queries, so results can be cached).
-- The engine uses the first 3 matches and shows up to 600 characters of each `text`.
+- The engine uses the first 3 matches and shows each complete chunk in the collapsed evidence panel. Exact duplicate passages keep all original citations.
 - On any failure (database stopped, Ollama off) raise an exception; do not return an empty list,
   or the engine would report the documents as missing from the knowledge base.
 - Possible later extension: `search(query, sources=["IRS Pub 463"])` to search only the documents a

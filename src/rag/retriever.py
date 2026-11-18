@@ -11,7 +11,7 @@ import numpy as np
 from pgvector.psycopg import register_vector
 
 from src.db.connection import ROOT, get_conn
-from src.db.queries import fetch_chunks, vector_search
+from src.db.queries import fetch_chunks, vector_search, corpus_table
 from src.rag.hybrid import bm25_search, fuse_rankings
 from src.rag.corpus_hygiene import filter_chunks
 
@@ -67,10 +67,14 @@ def embed_texts(texts: list[str], options: dict | None = None) -> np.ndarray:
     return vectors
 
 
-def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None) -> dict:
+def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None, corpus_version: str | None = None) -> dict:
     if not query.strip():
         raise ValueError("The retrieval query must not be empty.")
     settings = json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
+    corpus = corpus_version if corpus_version is not None else settings.get("corpus_version", "original")
+    table = corpus_table(corpus)
+    corpus_options = {"corpus": corpus} if corpus != "original" else {}
+    eligibility = " AND retrieval_eligible" if corpus != "original" else ""
     tax_year = settings["tax_year"]
     top_k = settings["retrieve_top_k"]
     if candidate_k is None:
@@ -88,8 +92,8 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
         conn.execute("SET TRANSACTION READ ONLY")
         register_vector(conn)
         available = conn.execute(
-            "SELECT count(*) FROM public.chunks WHERE tax_year = %s "
-            "AND embedding_model = %s AND embedding IS NOT NULL",
+            f"SELECT count(*) FROM {table} WHERE tax_year = %s "
+            f"AND embedding_model = %s AND embedding IS NOT NULL{eligibility}",
             [tax_year, model],
         ).fetchone()[0]
         if not available:
@@ -97,13 +101,13 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
                 f"No stored embeddings for tax year {tax_year} and model {model!r}. "
                 "Populate chunks.embedding and embedding_model before retrieval."
             )
-        has_hnsw = conn.execute("""
+        has_hnsw = conn.execute(f"""
             SELECT EXISTS (
                 SELECT 1 FROM pg_index i
                 JOIN pg_class idx ON idx.oid = i.indexrelid
                 JOIN pg_am am ON am.oid = idx.relam
                 JOIN pg_opclass ops ON ops.oid = i.indclass[0]
-                WHERE i.indrelid = 'public.chunks'::regclass
+                WHERE i.indrelid = '{table}'::regclass
                   AND i.indisvalid AND am.amname = 'hnsw'
                   AND ops.opcname = 'vector_cosine_ops'
                   AND pg_get_indexdef(i.indexrelid, 1, true) = 'embedding'
@@ -111,12 +115,12 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
         """).fetchone()[0]
         if not has_hnsw:
             raise RuntimeError(
-                "No valid cosine HNSW index on public.chunks.embedding. "
+                f"No valid cosine HNSW index on {table}.embedding. "
                 "The existing src.db.load_embeddings command creates this index."
             )
 
         query_vector = embed_query(query)
-        chunks = fetch_chunks(conn, tax_year)
+        chunks = fetch_chunks(conn, tax_year, **corpus_options)
         excluded_ids = []
         if exclude_reference_chunks:
             chunks, excluded_ids, stale = filter_chunks(chunks)
@@ -124,19 +128,24 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
                 logging.getLogger(__name__).warning("Retained %d chunks with stale exclusion fingerprints", len(stale))
         conn.execute("SET LOCAL enable_seqscan = off")
         options = {"excluded_ids": excluded_ids} if excluded_ids else {}
-        rows = vector_search(conn, query_vector, model, tax_year, k=candidate_k, **options)
+        rows = vector_search(conn, query_vector, model, tax_year, k=candidate_k, **options, **corpus_options)
 
     vector_matches = [
         {"chunk_id": row[0], "citation": row[1], "text": row[2], "score": row[3]}
         for row in rows
     ]
     keyword_matches = bm25_search(query, chunks, k=candidate_k)
+    matches = fuse_rankings(vector_matches, keyword_matches, k=top_k, rrf_constant=rrf_constant)
+    provenance = {c["id"]: c.get("provenance", []) for c in chunks}
+    for match in matches:
+        aliases = [p["citation"] for p in provenance.get(match["chunk_id"], []) if p["citation"] != match["citation"]]
+        if aliases:
+            match["additional_citations"] = aliases
     return {
         "tax_year": tax_year,
         "embedding_model": model,
         "retrieval_method": "hnsw_bm25_rrf",
-        "matches": fuse_rankings(vector_matches, keyword_matches, k=top_k,
-                                 rrf_constant=rrf_constant),
+        "matches": matches,
     }
 
 

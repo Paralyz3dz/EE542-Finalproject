@@ -1,0 +1,23 @@
+{
+  "rounds": 1,
+  "queries": 104,
+  "strict_primary_source": {
+    "hits_at_3": 76,
+    "hit_at_3": 0.7307692307692307,
+    "hits_at_5": 82,
+    "hit_at_5": 0.7884615384615384,
+    "mrr_at_5": 0.5873397435897435
+  },
+  "with_preserved_provenance": {
+    "hits_at_3": 76,
+    "hits_at_5": 82
+  },
+  "saved_cleaned_baseline": {
+    "hits_at_3": 72,
+    "hits_at_5": 80,
+    "mrr_at_5": 0.569551282051282
+  },
+  "mean_seconds": 2.8322966259598057,
+  "p95_seconds": 3.239124410007207,
+  "limitations": "Source provenance metrics do not establish passage relevance or sufficient evidence. No model judge or generated answers."
+}

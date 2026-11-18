@@ -1,0 +1,91 @@
+{
+  "corpus": {
+    "version": "rag_materials_v2",
+    "chunks": 8752,
+    "sources": 21,
+    "sha256": "c85f4476b12cf999d462092c6b1e61eca6e2584e22a46d07393ca5fdd094b210",
+    "indexes": [
+      [
+        "rag_materials_v2_chunks_pkey",
+        "CREATE UNIQUE INDEX rag_materials_v2_chunks_pkey ON public.rag_materials_v2_chunks USING btree (id)"
+      ],
+      [
+        "rag_materials_v2_embedding_hnsw",
+        "CREATE INDEX rag_materials_v2_embedding_hnsw ON public.rag_materials_v2_chunks USING hnsw (embedding vector_cosine_ops) WHERE retrieval_eligible"
+      ],
+      [
+        "rag_materials_v2_year_type",
+        "CREATE INDEX rag_materials_v2_year_type ON public.rag_materials_v2_chunks USING btree (tax_year, type)"
+      ]
+    ],
+    "hnsw_ef_search": "40"
+  },
+  "baseline": {
+    "chunks": 6004,
+    "documents": 21,
+    "sha256": "baa352db9fad6e6a9b672baf329b8006ec85da49290443b95687215ae2271bbf",
+    "indexes": [
+      [
+        "chunks_embedding_hnsw",
+        "CREATE INDEX chunks_embedding_hnsw ON public.chunks USING hnsw (embedding vector_cosine_ops)"
+      ],
+      [
+        "chunks_pkey",
+        "CREATE UNIQUE INDEX chunks_pkey ON public.chunks USING btree (id)"
+      ],
+      [
+        "chunks_year_type",
+        "CREATE INDEX chunks_year_type ON public.chunks USING btree (tax_year, type)"
+      ]
+    ],
+    "hnsw_ef_search": "40"
+  },
+  "questions_sha256": "b34fcf5ba35175012fa4a7757466282b1b585e9ea7893b705880fbf4d75f4221",
+  "settings": {
+    "tax_year": 2025,
+    "chunk_size_chars": 1500,
+    "retrieve_top_k": 5,
+    "rrf_constant": 60,
+    "rerank_top_k": 5,
+    "claude_model_extract": "claude-haiku-4-5",
+    "claude_model_dialogue": "claude-sonnet-4-6",
+    "temperature_extract": 0,
+    "temperature_dialogue": 0.5,
+    "retrieve_candidate_k": 10,
+    "exclude_reference_chunks": true
+  },
+  "query_vectors_sha256": "40054af7c4c6333b952135a1a4f5cb6bebb0fe12c590438d5b6b81e85d0742d5",
+  "model": {
+    "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+    "ollama_model": "qwen3-embedding:0.6b",
+    "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d"
+  },
+  "code_sha256": {
+    "src/rag/retriever.py": "d75f672aaad1c215d33c1a831a24d5c4f707aa66fd173ca840bfd10cb1802932",
+    "src/rag/materials.py": "598f9b291a4322a144608e74e63dfce146364396f3e988b216630dbe7152d04b",
+    "src/rag/hybrid.py": "2f58ebecbb9c549154fb03f5a1f18096db53bbdd2d88dbc2703b4c417f1b543c",
+    "src/db/queries.py": "f78c29ec94f65926e179638b5e50a6b4ca972534c858bd590f769fe93c040bb2",
+    "src/db/load_materials.py": "88d9a210307840a4af957770fbe1f0841f4770090bfcbd88328dcb0f219daedc",
+    "eval/run_materials_experiment.py": "c708f81d9f6863b0c0b46b99d442761ace2d8577c629d2c4df1b42f840f79948",
+    "config/settings.json": "1e7b197c5de3da6d347fc8794a5e11921b708112ea0e14fdb28f17e796db2797"
+  },
+  "rounds": 1,
+  "queries": 104,
+  "warmup_queries": 0,
+  "effective_settings": {
+    "tax_year": 2025,
+    "chunk_size_chars": 1500,
+    "retrieve_top_k": 5,
+    "rrf_constant": 60,
+    "rerank_top_k": 5,
+    "claude_model_extract": "claude-haiku-4-5",
+    "claude_model_dialogue": "claude-sonnet-4-6",
+    "temperature_extract": 0,
+    "temperature_dialogue": 0.5,
+    "retrieve_candidate_k": 10,
+    "exclude_reference_chunks": false,
+    "corpus_version": "rag_materials_v2"
+  },
+  "timing": "Production DB/vector/BM25/RRF pipeline; cached query vectors; no answer or semantic judge",
+  "metric": "Same strict primary-document source hit as the saved baseline; additional provenance coverage reported separately"
+}

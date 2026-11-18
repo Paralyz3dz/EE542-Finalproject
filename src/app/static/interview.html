@@ -174,7 +174,7 @@
       d.append(el('summary', null, `Retrieved official text (${q.citations.length})`));
       q.citations.forEach(c => {
         const p = el('p');
-        p.append(el('strong', null, (c.citation || 'Source') + '\n'), document.createTextNode(c.text));
+        p.append(el('strong', null, [c.citation || 'Source', ...(c.additional_citations || [])].join('; ') + '\n'), document.createTextNode(c.text));
         d.append(p);
       });
       b.append(d);

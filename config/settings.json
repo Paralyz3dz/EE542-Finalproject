@@ -9,5 +9,6 @@
   "temperature_extract": 0,
   "temperature_dialogue": 0.5,
   "retrieve_candidate_k": 10,
-  "exclude_reference_chunks": true
+  "exclude_reference_chunks": false,
+  "corpus_version": "rag_materials_v2"
 }

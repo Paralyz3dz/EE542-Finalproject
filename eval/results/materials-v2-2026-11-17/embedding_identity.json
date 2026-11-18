@@ -1,0 +1,13 @@
+{
+  "model": {
+    "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+    "ollama_model": "qwen3-embedding:0.6b",
+    "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d"
+  },
+  "chunks_sha256": "fe45a67ed8cbad274a6a64ff7b6db49ad0fa9e69cc8724b4f18cde46234d0e4e",
+  "options": {
+    "num_ctx": 8192,
+    "num_thread": 12
+  },
+  "batch_size": 8
+}
