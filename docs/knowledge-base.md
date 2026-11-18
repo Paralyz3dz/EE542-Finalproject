@@ -8,7 +8,7 @@ names the official document its rule comes from (field `source`). The knowledge 
 documents, so that each question can show the passage behind it and the summary can tell the
 preparer which references were actually found.
 
-The repaired default now holds all 21 documents in independent remote tables: 8,752 vectors, 8,390 searchable chunks and 554 exact tables. A single 104-question round improved primary-source hit@3 from 72/104 (69.2%) to 76/104 (73.1%), still below the 80% target. See [the processing and retrieval report](../eval/results/materials-v2-2026-11-17/report.md). The original 6,004-chunk corpus is preserved; [the import report](knowledge-base-import.md) records its historical results.
+The repaired default now holds all 21 documents in independent remote tables: 8,752 vectors, 8,390 searchable chunks and 554 exact tables. A single 104-question round improved primary-source hit@3 from 72/104 (69.2%) to 76/104 (73.1%), still below the 80% target. See [the processing and retrieval report](../eval/results/materials-v2-2026-11-17/report.md). The original 6,004-chunk corpus is preserved; [the import report](knowledge-base-import.md) records its historical results. The interview now uses all five returned passages. Its source coverage in that saved round is hit@5 = 82/104 (78.8%); changing the evidence limit does not rerun retrieval or change its ranking.
 
 ## 1. What the knowledge base does, and does not do
 
@@ -155,7 +155,7 @@ search(query: str) -> {"matches": [{"citation": str, "text": str, "chunk_id": st
 ```
 
 - `query` is the question's `retrieval_query` (104 fixed queries, so results can be cached).
-- The engine uses the first 3 matches and shows each complete chunk in the collapsed evidence panel. Exact duplicate passages keep all original citations.
+- The engine uses all 5 returned matches and shows each complete chunk in the collapsed evidence panel. Exact duplicate passages keep all original citations.
 - On any failure (database stopped, Ollama off) raise an exception; do not return an empty list,
   or the engine would report the documents as missing from the knowledge base.
 - Possible later extension: `search(query, sources=["IRS Pub 463"])` to search only the documents a
@@ -166,7 +166,7 @@ search(query: str) -> {"matches": [{"citation": str, "text": str, "chunk_id": st
 | Check | How | Pass |
 |---|---|---|
 | Names | every chunk's citation, cut by the rule in section 3, is a KB name in section 2 | 100% |
-| Coverage | for each of the 104 questions, does one of the top 3 matches for its `retrieval_query` come from its `source` document (hit@3)? | report the number per batch; aim for 80% or more |
+| Coverage | for each of the 104 questions, does one of the top 5 matches for its `retrieval_query` come from its `source` document (hit@5)? | report the number per batch; aim for 80% or more |
 | End to end | run one intake interview; the summary field `references_not_in_kb` | empty after batch 2 |
 
 When a playbook question gains a new `source`, add the document to section 2 and embed it.

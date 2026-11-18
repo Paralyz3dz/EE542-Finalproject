@@ -400,7 +400,7 @@ def _section_label(definition: dict, fact: dict) -> str | None:
     return None
 
 
-def build_guide(state: State, question: dict, search=None, top_n: int = 3) -> dict:
+def build_guide(state: State, question: dict, search=None, top_n: int = 5) -> dict:
     """Build what the assistant sees for one question.
 
     Reads: the question dict, its fact definition (type, options), state.flags,
