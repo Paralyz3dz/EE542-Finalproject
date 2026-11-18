@@ -17,11 +17,17 @@ from uuid import UUID, uuid4
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse, Response
 from pydantic import BaseModel, Field, field_validator
+from starlette.concurrency import run_in_threadpool
+from starlette.datastructures import UploadFile
+from starlette.formparsers import MultiPartException, MultiPartParser
 
 from src.agent import create_tax_agent
-from src.app.interviews import (InterviewClosed, InterviewNotFound, InterviewService,
+from src.app.documents import MAX_FILE_BYTES, MAX_FILES
+from src.app.interviews import (DocumentExtractionUnavailable, InterviewClosed,
+                                InterviewNotFound, InterviewService, StagedDocumentUnavailable,
                                 list_playbooks)
 from src.app.forms import FormRequest, fill_form, form_catalog, load_forms, prepare_form
+from src.workflow.engine import INTAKE
 
 
 logger = logging.getLogger(__name__)
@@ -131,11 +137,13 @@ class StartRequest(BaseModel):
     scenario: str = Field(min_length=1, max_length=100)
     priority: list[str] = Field(default_factory=list, max_length=20)
     background: str = Field(default="", max_length=2000)
+    document_ids: list[UUID] = Field(default_factory=list, max_length=MAX_FILES)
 
 
 class AnswerRequest(BaseModel):
     """Body of POST /api/interviews/{id}/answer: {"answer": text, 1-2000 chars}."""
     answer: str = Field(min_length=1, max_length=2000)
+    question_id: str | None = Field(default=None, max_length=100)
 
     @field_validator("answer")
     @classmethod
@@ -151,6 +159,10 @@ class DecisionRequest(BaseModel):
     """Body of POST /api/interviews/{id}/decision: {"approve": bool, "note": optional text}."""
     approve: bool
     note: str = Field(default="", max_length=2000)
+
+
+class SyncDocumentsRequest(BaseModel):
+    document_ids: list[UUID] = Field(max_length=MAX_FILES)
 
 
 @app.get("/interview", response_class=FileResponse)
@@ -169,7 +181,11 @@ def playbooks():
 def start(payload: StartRequest, request: Request):
     """Start an interview; returns the first question and a sidebar snapshot (404 unknown scenario, 422 bad priority)."""
     try:
-        return request.app.state.interviews.start(payload.scenario, payload.priority, payload.background)
+        result = request.app.state.interviews.start(payload.scenario, payload.priority, payload.background,
+                                                    [str(document_id) for document_id in payload.document_ids])
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
+    except StagedDocumentUnavailable as exc:
+        raise HTTPException(409, str(exc)) from None
     except ValueError as exc:
         raise HTTPException(404 if "scenario" in str(exc) else 422, str(exc)) from None
 
@@ -178,10 +194,70 @@ def start(payload: StartRequest, request: Request):
 def answer(interview_id: str, payload: AnswerRequest, request: Request):
     """Submit an answer; returns the next question, an error, or the summary (404 / 409)."""
     try:
-        return request.app.state.interviews.answer(interview_id, payload.answer)
+        return request.app.state.interviews.answer(interview_id, payload.answer, payload.question_id)
     except InterviewNotFound:
         raise HTTPException(404, "Interview not found. Start a new one.") from None
     except InterviewClosed as exc:
+        raise HTTPException(409, str(exc)) from None
+
+
+@app.post("/api/interview-documents")
+async def stage_documents(request: Request, scenario: str = INTAKE):
+    content_type = request.headers.get("content-type", "").split(";", 1)[0].strip().lower()
+    if content_type != "multipart/form-data":
+        raise HTTPException(415, "Send the files as multipart form data.")
+
+    async def limited_stream():
+        remaining = MAX_FILES * MAX_FILE_BYTES + 64 * 1024
+        async for chunk in request.stream():
+            remaining -= len(chunk)
+            if remaining < 0:
+                raise HTTPException(413, "This upload is too large. Choose smaller files.")
+            yield chunk
+
+    try:
+        form = await MultiPartParser(request.headers, limited_stream(), max_files=MAX_FILES,
+                                     max_fields=0).parse()
+    except MultiPartException:
+        raise HTTPException(400, f"Attach up to {MAX_FILES} files in the files field.") from None
+    try:
+        files = form.getlist("files")
+        if not files or len(files) != len(form.multi_items()) or not all(
+            isinstance(file, UploadFile) and file.filename for file in files
+        ):
+            raise HTTPException(422, "Attach one or more files in the files field.")
+        uploads = []
+        for file in files:
+            filename = Path(file.filename.replace("\\", "/")).name
+            uploads.append((filename, await file.read(MAX_FILE_BYTES + 1)))
+    finally:
+        await form.close()
+
+    try:
+        result = await run_in_threadpool(request.app.state.interviews.stage_documents, scenario, uploads)
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
+    except ValueError as exc:
+        raise HTTPException(404, str(exc)) from None
+    except DocumentExtractionUnavailable as exc:
+        raise HTTPException(503, str(exc)) from None
+
+
+@app.delete("/api/interview-documents/{document_id}", status_code=204)
+def remove_document(document_id: UUID, request: Request):
+    request.app.state.interviews.remove_document(str(document_id))
+    return Response(status_code=204)
+
+
+@app.put("/api/interviews/{interview_id}/documents")
+def sync_documents(interview_id: str, payload: SyncDocumentsRequest, request: Request):
+    try:
+        result = request.app.state.interviews.sync_documents(
+            interview_id, [str(document_id) for document_id in payload.document_ids]
+        )
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
+    except InterviewNotFound:
+        raise HTTPException(404, "Interview not found.") from None
+    except (InterviewClosed, StagedDocumentUnavailable) as exc:
         raise HTTPException(409, str(exc)) from None
 
 

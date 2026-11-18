@@ -180,6 +180,23 @@ python -m unittest discover -s tests -p test_chat_api.py
 
 ## Guided interview
 
+After starting an interview, select **+** beside the answer box to attach up to ten
+text-based PDFs, PNG images, JPG/JPEG images, or UTF-8 text files (10 MB each).
+Extraction begins automatically when you select the files, and you can continue
+answering while they are processed. The interview skips questions with extracted answers and preserves
+manually entered answers. Remove an attachment to withdraw its answers unless another
+attachment still supports them. A question may reappear when its answer is withdrawn.
+Attachments stay on the page when starting another interview. Remove them before
+starting a different client's interview.
+Documents must show the tax year configured in `config/settings.json`. Upload
+scanned pages as PNG or JPG images, or add a selectable text layer to the PDF.
+
+This prototype is intended for fictional or redacted documents. Extraction uses the
+existing OpenAI configuration (`OPENAI_API_KEY` and `TAX_AGENT_LLM`) and sends document
+text or prepared images to the model. Uploaded originals and full document content are not kept in interview
+state. Staged answers are available for 24 hours while the server is running. Answers
+used in an interview and their source filenames appear in the interview history.
+
 Start the server as above (`python -m uvicorn src.app.api:app --reload`) and open
 http://127.0.0.1:8000/interview. Choose a scenario and select Start interview.
 
@@ -219,8 +236,11 @@ Interview API (state is kept in server memory; restarting clears interviews):
 | Method | Path | Body | Returns |
 |---|---|---|---|
 | GET | `/api/playbooks` | | available scenarios |
-| POST | `/api/interviews` | `{"scenario": "ca_retiree"}` | first question + sidebar snapshot |
+| POST | `/api/interviews` | `{"scenario": "intake", "document_ids": []}` | first unanswered question or summary + sidebar snapshot |
 | POST | `/api/interviews/{id}/answer` | `{"answer": "yes"}` | next question, an error (same question again), or the summary |
+| POST | `/api/interview-documents` | multipart form with one or more `files` parts | per-file extraction status and staged IDs |
+| DELETE | `/api/interview-documents/{document_id}` | | removes a staged file's extracted answers |
+| PUT | `/api/interviews/{id}/documents` | `{"document_ids": ["..."]}` | syncs the active attachments and returns the current question or summary |
 | GET | `/api/interviews/{id}` | | snapshot + full history |
 | POST | `/api/interviews/{id}/decision` | `{"approve": true, "note": ""}` | preparer decision |
 
