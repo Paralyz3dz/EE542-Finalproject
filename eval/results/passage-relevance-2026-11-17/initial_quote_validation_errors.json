@@ -1,0 +1,74 @@
+[
+  {
+    "status": "error",
+    "id": "q_lived_in_multiple_states",
+    "elapsed_seconds": 7.30433080000148,
+    "error_type": "ValueError",
+    "status_code": null,
+    "api_error_code": null,
+    "validation_error": "Positive relevance grades require a verbatim quote from the supplied body",
+    "raw": {
+      "response_id": "chatcmpl-ElSGRtjjUk4fxNrx9VrQFcxsUMQla",
+      "model": "gpt-4o-mini-2024-07-18",
+      "system_fingerprint": "fp_2bf6f3634d",
+      "finish_reason": "stop",
+      "content": "{\"assessments\":[{\"passage_id\":\"P1\",\"score\":2,\"reason\":\"This passage explains the conditions under which California residents can claim a credit for taxes paid to another state, relevant to living or working in multiple states.\",\"evidence_quote\":\"California’s nonresident sourcing principles apply even though the results may be contrary to the other states’ principles.\"},{\"passage_id\":\"P2\",\"score\":1,\"reason\":\"Discusses the credit for beneficiaries of estates or trusts but lacks broader applicability to general income earned in multiple states.\",\"evidence_quote\":\"A beneficiary of an estate or trust who is a California resident and pays California tax on income that has been taxed to the estate or trust in another state may also claim the credit.\"},{\"passage_id\":\"P3\",\"score\":2,\"reason\":\"Details the eligibility for California residents to claim a credit for taxes paid to other states, directly addressing the retrieval need.\",\"evidence_quote\":\"California resident individuals...may claim the other state tax credit.\"},{\"passage_id\":\"P4\",\"score\":2,\"reason\":\"Explains how the credit for taxes paid to another state is applied, which is crucial for understanding filing requirements when living or working in multiple states.\",\"evidence_quote\":\"Credit is allowed for net income taxes paid to another state...on income that is also subject to California tax.\"},{\"passage_id\":\"P5\",\"score\":2,\"reason\":\"Clarifies the purpose of Schedule S and the conditions under which California residents can claim a credit for taxes paid to other states, relevant to the question.\",\"evidence_quote\":\"use Schedule S to claim a credit against California tax for net income taxes imposed by and paid to another state.\"}]}",
+      "refusal": null,
+      "usage": {
+        "completion_tokens": 343,
+        "prompt_tokens": 2173,
+        "total_tokens": 2516,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      }
+    }
+  },
+  {
+    "status": "error",
+    "id": "q_age_65_or_older",
+    "elapsed_seconds": 6.481873699998687,
+    "error_type": "ValueError",
+    "status_code": null,
+    "api_error_code": null,
+    "validation_error": "Positive relevance grades require a verbatim quote from the supplied body",
+    "raw": {
+      "response_id": "chatcmpl-ElSGXbfivDSDvlw2QcHGt2NYisp6R",
+      "model": "gpt-4o-mini-2024-07-18",
+      "system_fingerprint": "fp_2bf6f3634d",
+      "finish_reason": "stop",
+      "content": "{\"assessments\":[{\"passage_id\":\"P1\",\"score\":2,\"reason\":\"This passage explains the enhanced deduction for seniors, relevant for those 65 or older in 2025.\",\"evidence_quote\":\"taxpayers who are age 65 or older may be eligible for the enhanced deduction for seniors.\"},{\"passage_id\":\"P2\",\"score\":1,\"reason\":\"Discusses standard deduction amounts but lacks specific rules for seniors or the enhanced deduction.\",\"evidence_quote\":\"The standard deduction amount depends on your filing status, whether you are 65 or older or blind.\"},{\"passage_id\":\"P3\",\"score\":2,\"reason\":\"Clarifies the age consideration for the standard deduction related to death, relevant for determining eligibility.\",\"evidence_quote\":\"they are not considered 65 or older at the end of 2025 unless they were 65 or older at the time of death.\"},{\"passage_id\":\"P4\",\"score\":2,\"reason\":\"Details conditions under which a higher standard deduction applies if a spouse is 65 or older, directly relevant.\",\"evidence_quote\":\"You can take the higher standard deduction if your spouse is age 65 or older or blind.\"},{\"passage_id\":\"P5\",\"score\":2,\"reason\":\"Explicitly states the criteria for being considered 65 for the higher standard deduction, directly addressing the question.\",\"evidence_quote\":\"you can take a higher standard deduction for 2025 if you were born before January 2, 1961.\"}]}",
+      "refusal": null,
+      "usage": {
+        "completion_tokens": 305,
+        "prompt_tokens": 1109,
+        "total_tokens": 1414,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      }
+    }
+  }
+]

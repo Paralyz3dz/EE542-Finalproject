@@ -1,0 +1,37 @@
+{
+  "review_kind": "Qualitative assistant inspection of six selected cases; not human expert labels or a second scoring round",
+  "scores_changed": false,
+  "additional_model_calls": 0,
+  "cases": [
+    {
+      "id": "q_has_interest_dividends",
+      "note": "The first directly graded passage is at rank four and explicitly distinguishes certain dividend-labeled deposits from interest on Form 1099-INT. It is narrow evidence, not comprehensive coverage of all interest/dividend rules.",
+      "first_direct_rank": 4
+    },
+    {
+      "id": "q_paid_property_tax",
+      "note": "The first directly graded passage is at rank four and defines deductible real estate taxes and exclusions, supporting the requested deduction topic.",
+      "first_direct_rank": 4
+    },
+    {
+      "id": "q_side_expenses",
+      "note": "The first directly graded passage is at rank four and explicitly addresses ordinary/necessary Schedule C expenses and exclusions.",
+      "first_direct_rank": 4
+    },
+    {
+      "id": "q_large_medical_expenses",
+      "note": "The passage contains a medical-expense threshold inside a special California worker-classification adjustment. Topic relevance does not establish general applicability or complete deduction guidance.",
+      "first_direct_rank": 1
+    },
+    {
+      "id": "q_received_irs_letter",
+      "note": "The selected passage in Pub 505 describes responding to notices through the Document Upload Tool. A different publication can supply directly relevant information; it does not cover all notice-handling requirements.",
+      "first_direct_rank": 1
+    },
+    {
+      "id": "q_selling_for_profit",
+      "note": "The passage explicitly discusses income from activities not engaged in for profit. This inspection confirms subject overlap and reporting content, without validating tax-law correctness or completeness.",
+      "first_direct_rank": 1
+    }
+  ]
+}
