@@ -46,12 +46,74 @@
     .refs li { padding: 1px 0; }
     .ok { color: #1d6b3a; }
     .gap { color: #8a6d1c; }
-    .inputbar { border-top: 1px solid #e3e8ef; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .inputbar { padding: 10px 18px 16px; display: grid; gap: 8px; justify-items: center; }
+    .inputbar > * { width: 100%; max-width: 720px; min-width: 0; }
     .chips { display: flex; flex-wrap: wrap; gap: 6px; }
     .chips button { padding: 6px 12px; }
+    .inputbar > .chips:empty { display: none; }
     .row { display: flex; gap: 8px; }
-    .row textarea { flex: 1; min-height: 44px; max-height: 140px; resize: vertical; }
+    .composer {
+      display: grid;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid #cdd8e8;
+      border-radius: 24px;
+      background: #fcfdff;
+      box-shadow: 0 4px 16px #1c29380d;
+    }
+    .composer:focus-within { border-color: #7296e2; box-shadow: 0 0 0 3px #2458c619; }
+    .composer textarea {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      min-height: 52px;
+      max-height: 144px;
+      field-sizing: content;
+      padding: 5px 5px 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #1c2938;
+      outline: none;
+      resize: none;
+    }
+    .composer textarea::placeholder { color: #596579; }
+    .composer-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .attach-control { display: inline-flex; flex: none; }
+    .composer .attach-button {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      background: #eef3fc;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .attach-button:disabled { pointer-events: none; }
+    .composer .send-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .composer .attach-button:hover:not(:disabled) { background: #e1eaff; }
+    .composer .send-button:hover:not(:disabled) { background: #1d49ab; }
+    .composer .send-button:disabled { background: #e6ecf6; color: #596579; opacity: 1; cursor: default; }
+    .composer button:focus-visible { outline: 2px solid #2458c6; outline-offset: 2px; }
+    .attachments { display: flex; flex-wrap: wrap; gap: 6px; max-height: 144px; overflow-y: auto; }
+    .file-card { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: min(245px, 100%); padding: 6px 8px; border: 1px solid #dce2eb; border-radius: 12px; background: #fff; }
+    .file-type { padding: 5px; border-radius: 5px; background: #e4ecff; color: #2458c6; font-size: 11px; font-weight: 700; }
+    .file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+    .file-copy { min-width: 0; }
+    .file-copy small { display: block; overflow-wrap: anywhere; }
+    .file-card button { margin-left: auto; padding: 1px 6px; }
+    .composer p { margin: 0 5px; }
+    .composer p:empty, .attachments:empty { display: none; }
     #status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
+    #status:empty { display: none; }
     #status.error { color: #a32121; }
     aside { padding: 14px; overflow-y: auto; }
     aside h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #596579; margin: 14px 0 6px; }
@@ -72,6 +134,7 @@
       .layout { grid-template-columns: 1fr; }
       .controls { width: 100%; }
       #log { max-height: 60vh; }
+      .inputbar { padding-inline: 12px; }
     }
   </style>
 </head>
@@ -80,7 +143,7 @@
   <header>
     <div>
       <h1>Guided client interview</h1>
-      <p class="subtitle">For the preparer's assistant · Fictional cases only · Not final tax advice · <a href="/">Ask a tax question (chat)</a></p>
+      <p class="subtitle">For the preparer's assistant · Not final tax advice</p>
     </div>
     <div class="controls">
       <button id="start" type="button">Start interview</button>
@@ -102,9 +165,19 @@
       </div>
       <div class="inputbar">
         <div id="chips" class="chips"></div>
-        <form id="answer-form" class="row">
-          <textarea id="answer" aria-label="Client's answer" placeholder="Type the client's answer, or a short note…" disabled></textarea>
-          <button id="send" type="submit" disabled>Submit</button>
+        <form id="answer-form" class="composer">
+          <div id="attachments" class="attachments" aria-label="Files to upload"></div>
+          <p id="document-status" class="note" role="status"></p>
+          <p id="document-conflicts" class="note" role="status"></p>
+          <textarea id="answer" rows="2" aria-label="Client's answer" placeholder="Type the client's answer, or a short note…" disabled></textarea>
+          <div class="composer-actions">
+            <input id="document-files" type="file" accept=".pdf,.png,.jpg,.jpeg,.txt" multiple hidden disabled>
+            <span class="attach-control" title="PDF, PNG, JPG, or TXT &middot; 10 files max, 10 MB each.">
+              <button id="attach" class="secondary attach-button" type="button" aria-label="Attach tax documents" aria-describedby="document-help" disabled>+</button>
+              <span id="document-help" hidden>PDF, PNG, JPG, or TXT. Up to 10 files, 10 MB each.</span>
+            </span>
+            <button id="send" class="send-button" type="submit" disabled>Send <span aria-hidden="true">&uarr;</span></button>
+          </div>
         </form>
         <p id="status" role="status"></p>
       </div>
@@ -127,9 +200,19 @@
   const $ = (sel) => document.querySelector(sel);
   const log = $('#log'), chips = $('#chips'), answer = $('#answer'), send = $('#send');
   const statusLine = $('#status'), startBtn = $('#start');
+  const filePicker = $('#document-files'), attach = $('#attach');
+  const documentStatus = $('#document-status'), documentConflicts = $('#document-conflicts');
+  const maxAttachments = 10, maxAttachmentMB = 10, maxParallelUploads = 3;
   let interviewId = null;
   let busy = false;
   let draftUrl = null;
+  let currentQuestionId = null;
+  let summaryBubble = null;
+  let interviewStatus = null;
+  let attachments = [];
+  let activeUploads = 0;
+  let documentRevision = 0;
+  let syncedRevision = 0;
 
   function el(tag, cls, text) {
     const node = document.createElement(tag);
@@ -152,9 +235,12 @@
   }
   function fmt(v) { return Array.isArray(v) ? (v.join(', ') || 'none') : (v === true ? 'yes' : v === false ? 'no' : String(v)); }
 
-  async function api(path, body) {
-    const res = await fetch(path, body === undefined ? {} : {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+  async function api(path, body, method = body === undefined ? 'GET' : 'POST') {
+    const res = await fetch(path, {
+      method,
+      ...(body === undefined ? {} : body instanceof FormData ? { body } : {
+        headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+      })
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data.detail ? (typeof data.detail === 'string' ? data.detail : 'Invalid input') : `Request failed (${res.status})`);
@@ -183,6 +269,134 @@
     }
     addBubble(b);
     renderChips(q);
+  }
+
+  function activeDocumentIds() {
+    return attachments.filter(item => item.id && !item.removing).map(item => item.id);
+  }
+
+  function renderAttachments() {
+    const container = $('#attachments');
+    container.replaceChildren();
+    for (const item of attachments) {
+      const card = el('div', 'file-card');
+      const copy = el('div', 'file-copy');
+      const name = el('div', 'file-name', item.name);
+      name.title = item.name;
+      const progress = item.file ? 'Waiting…' : 'Extracting…';
+      const status = item.removing ? 'Removing…' : item.error || (item.count === undefined ? progress : '');
+      copy.append(name);
+      if (status) copy.append(el('small', item.error ? 'gap' : 'muted', status));
+      const remove = el('button', 'secondary', '×');
+      remove.type = 'button';
+      remove.setAttribute('aria-label', `Remove ${item.name}`);
+      remove.disabled = !!item.removing;
+      remove.addEventListener('click', () => removeAttachment(item));
+      card.append(el('span', 'file-type', item.name.split('.').pop().toUpperCase()), copy, remove);
+      container.append(card);
+    }
+  }
+
+  function showDocumentConflicts(keys) {
+    documentConflicts.textContent = keys.length
+      ? `Conflicting document answers excluded: ${keys.map(key => key.replaceAll('_', ' ')).join(', ')}.`
+      : '';
+  }
+
+  function uploadQueuedAttachments() {
+    for (const item of attachments) {
+      if (activeUploads === maxParallelUploads) break;
+      if (!item.file) continue;
+      const file = item.file;
+      delete item.file;
+      activeUploads++;
+      uploadAttachment(file, item).finally(() => {
+        activeUploads--;
+        uploadQueuedAttachments();
+      });
+    }
+    renderAttachments();
+  }
+
+  async function uploadAttachment(file, item) {
+    const body = new FormData();
+    body.append('files', file);
+    try {
+      const data = await api('/api/interview-documents', body);
+      const result = data.files[0];
+      if (!attachments.includes(item)) {
+        if (result.id) await api(`/api/interview-documents/${result.id}`, undefined, 'DELETE');
+        return;
+      }
+      Object.assign(item, result);
+      if (item.id) {
+        documentRevision++;
+        syncDocumentAnswers();
+      }
+    } catch (error) {
+      if (attachments.includes(item)) item.error = error.message;
+      else documentStatus.textContent = error.message;
+    }
+  }
+
+  async function removeAttachment(item) {
+    if (item.removing) return;
+    documentStatus.textContent = '';
+    if (item.id) {
+      item.removing = true;
+      documentRevision++;
+      renderAttachments();
+      try {
+        await api(`/api/interview-documents/${item.id}`, undefined, 'DELETE');
+      } catch (error) {
+        item.removing = false;
+        documentRevision++;
+        documentStatus.textContent = error.message;
+        renderAttachments();
+        syncDocumentAnswers();
+        return;
+      }
+    }
+    attachments = attachments.filter(attachment => attachment !== item);
+    renderAttachments();
+    attach.focus();
+    syncDocumentAnswers();
+  }
+
+  async function syncDocumentAnswers() {
+    if (busy || !['in_progress', 'waiting_for_preparer'].includes(interviewStatus) ||
+        syncedRevision === documentRevision) return;
+    const revision = documentRevision;
+    busy = true;
+    setInputEnabled(false);
+    try {
+      const data = await api(`/api/interviews/${interviewId}/documents`, {
+        document_ids: activeDocumentIds()
+      }, 'PUT');
+      syncedRevision = revision;
+      if (revision !== documentRevision) return;
+      renderSidebar(data.state);
+      showDocumentConflicts(data.conflicts);
+      if (data.output.type === 'summary' || data.output.question_id !== currentQuestionId) {
+        const note = summaryBubble?.querySelector('textarea')?.value;
+        if (summaryBubble) {
+          summaryBubble.remove();
+          summaryBubble = null;
+        }
+        if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
+        const draftCleared = !!answer.value.trim();
+        answer.value = '';
+        render(data.output);
+        if (summaryBubble && note) summaryBubble.querySelector('textarea').value = note;
+        if (draftCleared) setStatus('The question changed, so the draft answer was cleared.');
+      }
+    } catch (error) {
+      if (revision === documentRevision) documentStatus.textContent = error.message;
+    } finally {
+      busy = false;
+      setInputEnabled(!!currentQuestionId);
+      if (revision !== documentRevision) syncDocumentAnswers();
+    }
   }
 
   function refList(refs) {
@@ -254,14 +468,18 @@
     b.append(box);
     renderForms(b);
     addBubble(b);
+    summaryBubble = b;
 
     const decide = async (approve) => {
+      if (busy) return;
+      busy = true;
       ok.disabled = back.disabled = true;
       try {
         const data = await api(`/api/interviews/${interviewId}/decision`, { approve, note: note.value.trim() });
         renderSidebar(data.state);
         addBubble(el('article', 'bubble me', approve ? 'Preparer approved.' : 'Preparer returned it: ' + (note.value.trim() || '(no note)')));
       } catch (e) { setStatus(e.message, true); ok.disabled = back.disabled = false; }
+      finally { busy = false; syncDocumentAnswers(); }
     };
     ok.addEventListener('click', () => decide(true));
     back.addEventListener('click', () => decide(false));
@@ -370,12 +588,16 @@
   }
 
   function render(out) {
+    currentQuestionId = out.question_id || out.guide?.question_id || null;
     if (out.type === 'question') { renderQuestion(out); setInputEnabled(true); answer.focus(); }
     else if (out.type === 'error') {
       addBubble(el('article', 'bubble err', out.message));
       renderChips(out.guide); setInputEnabled(true); answer.focus();
     }
-    else if (out.type === 'summary') { renderSummary(out); setInputEnabled(false); }
+    else if (out.type === 'summary') {
+      renderSummary(out);
+      setInputEnabled(false);
+    }
   }
 
   function list(target, items, empty, cls) {
@@ -384,6 +606,7 @@
     items.forEach(text => target.append(el('li', cls, text)));
   }
   function renderSidebar(st) {
+    interviewStatus = st.status;
     const parsed = st.last_parsed_by === 'model' ? ' · last answer read by the model' : '';
     const prio = st.priority && st.priority.length ? ` · priority: ${st.priority.map(label).join(', ')}` : '';
     const trig = st.triggers && st.triggers.length ? ` · heard: ${st.triggers.join(', ')}` : '';
@@ -395,34 +618,41 @@
 
   async function startInterview() {
     if (busy) return;
+    const revision = documentRevision;
     busy = true; startBtn.disabled = true; setStatus('Starting…');
     try {
       const data = await api('/api/interviews', { scenario: SCENARIO, priority: chosen,
-                                                  background: $('#background').value.trim() });
+                                                  background: $('#background').value.trim(),
+                                                  document_ids: activeDocumentIds() });
       interviewId = data.state.interview_id;
+      attach.disabled = filePicker.disabled = false;
+      syncedRevision = revision;
+      answer.value = '';
+      summaryBubble = null;
       if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
       log.replaceChildren();
       renderSidebar(data.state);
+      showDocumentConflicts(data.conflicts);
       render(data.output);
       setStatus('');
     } catch (e) { setStatus(e.message, true); }
-    finally { busy = false; startBtn.disabled = false; }
+    finally { busy = false; startBtn.disabled = false; syncDocumentAnswers(); }
   }
 
   async function submit(text) {
     text = (text || '').trim();
-    if (busy || !text || !interviewId) return;
+    if (busy || !text || !currentQuestionId) return;
     busy = true; setInputEnabled(false); setStatus('Checking the answer…');
     addBubble(el('article', 'bubble me', text));
     answer.value = '';
     try {
-      const data = await api(`/api/interviews/${interviewId}/answer`, { answer: text });
+      const data = await api(`/api/interviews/${interviewId}/answer`, { answer: text, question_id: currentQuestionId });
       renderSidebar(data.state);
       render(data.output);
       setStatus('');
     } catch (e) {
       setStatus(e.message, true); setInputEnabled(true); answer.value = text;
-    } finally { busy = false; }
+    } finally { busy = false; syncDocumentAnswers(); }
   }
 
   $('#answer-form').addEventListener('submit', (e) => { e.preventDefault(); submit(answer.value); });
@@ -430,6 +660,26 @@
     if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); submit(answer.value); }
   });
   startBtn.addEventListener('click', startInterview);
+  attach.addEventListener('click', () => filePicker.click());
+  filePicker.addEventListener('change', () => {
+    const picked = Array.from(filePicker.files);
+    filePicker.value = '';
+    if (!interviewId || !picked.length) return;
+    const valid = picked.filter(file => /\.(pdf|png|jpe?g|txt)$/i.test(file.name) &&
+      file.size > 0 && file.size <= maxAttachmentMB * 1024 * 1024);
+    const notices = [];
+    if (valid.length !== picked.length) notices.push(`Choose nonempty PDF, PNG, JPG, or TXT files up to ${maxAttachmentMB} MB each.`);
+    for (const file of valid) {
+      if (attachments.some(item => item.name === file.name && item.size === file.size && item.lastModified === file.lastModified)) continue;
+      if (attachments.length === maxAttachments) {
+        notices.push(`You can keep up to ${maxAttachments} files attached.`);
+        break;
+      }
+      attachments.push({ name: file.name, size: file.size, lastModified: file.lastModified, file });
+    }
+    uploadQueuedAttachments();
+    documentStatus.textContent = notices.join(' ');
+  });
 
   // Every client gets the same intake (Form 13614-C base + topic modules opened by the answers),
   // so there is no scenario to choose; the assistant only sets priority topics and a background note.

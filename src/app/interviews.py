@@ -16,9 +16,14 @@ from __future__ import annotations
 import json
 import logging
 import os
+from copy import deepcopy
+from dataclasses import dataclass
 from threading import Lock
+from time import monotonic
+from uuid import uuid4
 
-from src.workflow.engine import INTAKE, MODULES, PLAYBOOKS, load_scenario, sections, start_interview, step
+from src.app.documents import TAX_YEAR, extract_document_facts
+from src.workflow.engine import INTAKE, MODULES, PLAYBOOKS, load_scenario, review, sections, start_interview, step, summarize
 from src.workflow.state import State
 
 logger = logging.getLogger(__name__)
@@ -30,6 +35,22 @@ class InterviewNotFound(KeyError):
 
 class InterviewClosed(RuntimeError):
     """The interview is not in a status that allows this action."""
+
+
+class DocumentExtractionUnavailable(RuntimeError):
+    pass
+
+
+class StagedDocumentUnavailable(RuntimeError):
+    pass
+
+
+@dataclass
+class StagedDocument:
+    scenario: str
+    name: str
+    facts: dict
+    expires_at: float
 
 
 def list_playbooks() -> list[dict]:
@@ -84,13 +105,15 @@ class InterviewService:
     normalizer  model note reader from src/llm/normalize.py (None = rules only)
     """
 
-    def __init__(self, search=None, normalizer=None):
+    def __init__(self, search=None, normalizer=None, document_chat=None):
         """Store the injected search / normalizer; start with no interviews and an empty cache."""
         self.search = search
         self.normalizer = normalizer
+        self.document_chat = document_chat
         self._store: dict[str, State] = {}
         self._lock = Lock()
         self._cache: dict[str, dict] = {}
+        self._documents: dict[str, StagedDocument] = {}
 
     @classmethod
     def from_env(cls) -> "InterviewService":
@@ -100,12 +123,16 @@ class InterviewService:
         if os.getenv("TAX_AGENT_RETRIEVAL", "on").lower() == "off":
             search = _no_search
         normalizer = None
+        document_chat = None
         if os.getenv("TAX_AGENT_LLM", "on").lower() != "off":
+            from src.llm.client import chat_json
             from src.llm.normalize import make_normalizer
             normalizer = make_normalizer()
+            if normalizer is not None:
+                document_chat = chat_json
         logger.info("Interview service: retrieval=%s, llm=%s",
                     "off" if search else "on", "on" if normalizer else "off")
-        return cls(search=search, normalizer=normalizer)
+        return cls(search=search, normalizer=normalizer, document_chat=document_chat)
 
     def _cached_search(self, query: str) -> dict:
         """Retrieve once per query and reuse the result.
@@ -130,7 +157,8 @@ class InterviewService:
             raise InterviewNotFound(interview_id)
         return state
 
-    def start(self, scenario: str, priority: list[str] | None = None, background: str = "") -> dict:
+    def start(self, scenario: str, priority: list[str] | None = None, background: str = "",
+              document_ids: list[str] | None = None) -> dict:
         """Start an interview for a playbook id and return its first question.
 
         priority: sections the assistant is unsure about and wants asked first (intake only).
@@ -141,12 +169,13 @@ class InterviewService:
         if scenario not in {p["id"] for p in list_playbooks()}:
             raise ValueError(f"Unknown scenario {scenario!r}")
         state = start_interview(scenario, priority, background)
-        state, out = step(state, search=self._cached_search, normalizer=self.normalizer)
         with self._lock:
+            _, conflicts = self._update_document_facts(state, document_ids or [])
+            state, out = step(state, search=self._cached_search, normalizer=self.normalizer)
             self._store[state.interview_id] = state
-        return {"output": out, "state": snapshot(state)}
+            return {"output": out, "state": snapshot(state), "conflicts": conflicts}
 
-    def answer(self, interview_id: str, answer_text: str) -> dict:
+    def answer(self, interview_id: str, answer_text: str, question_id: str | None = None) -> dict:
         """Submit the assistant's answer to the current question (one engine step).
 
         Raises InterviewNotFound, or InterviewClosed if the interview already ended.
@@ -156,9 +185,100 @@ class InterviewService:
             state = self._get(interview_id)
             if state.status != "in_progress":
                 raise InterviewClosed(f"Interview is {state.status}")
+            if question_id is not None and state.asked[-1] != question_id:
+                raise InterviewClosed("The current question changed. Refresh the interview before answering.")
             state, out = step(state, answer_text, search=self._cached_search,
                               normalizer=self.normalizer)
-        return {"output": out, "state": snapshot(state)}
+            return {"output": out, "state": snapshot(state)}
+
+    def stage_documents(self, scenario: str, files: list[tuple[str, bytes]]) -> dict:
+        if scenario not in {p["id"] for p in list_playbooks()}:
+            raise ValueError(f"Unknown scenario {scenario!r}")
+        if self.document_chat is None:
+            raise DocumentExtractionUnavailable("Document extraction requires an enabled model and OPENAI_API_KEY.")
+        definition, questions = load_scenario(scenario)
+        extracted = extract_document_facts(files, definition, questions, self.document_chat)
+        reports = []
+        with self._lock:
+            now = monotonic()
+            self._documents = {key: doc for key, doc in self._documents.items() if doc.expires_at > now}
+            for item in extracted:
+                name, facts = item["name"], item["facts"]
+                report = {"id": None, "name": name, "count": len(facts)}
+                if item.get("error"):
+                    report["error"] = item["error"]
+                if facts:
+                    document_id = str(uuid4())
+                    self._documents[document_id] = StagedDocument(scenario, name, facts, now + 24 * 60 * 60)
+                    report["id"] = document_id
+                reports.append(report)
+        return {"tax_year": TAX_YEAR, "files": reports}
+
+    def remove_document(self, document_id: str) -> None:
+        with self._lock:
+            self._documents.pop(document_id, None)
+
+    def _update_document_facts(self, state: State, document_ids: list[str]) -> tuple[bool, list[str]]:
+        candidates, sources, conflicts = {}, {}, set()
+        now = monotonic()
+        for document_id in dict.fromkeys(document_ids):
+            document = self._documents.get(document_id)
+            if document is None or document.expires_at <= now or document.scenario != state.scenario:
+                raise StagedDocumentUnavailable("A staged file is unavailable. Remove it or upload it again.")
+            for key, value in document.facts.items():
+                if candidates.setdefault(key, value) != value:
+                    conflicts.add(key)
+                sources.setdefault(key, []).append(document.name)
+
+        previous = {}
+        manual_history = []
+        for entry in state.history:
+            if entry.get("parsed_by") == "document":
+                previous.update(entry["facts"])
+            else:
+                manual_history.append(entry)
+        for key in previous:
+            state.facts[key] = None
+
+        accepted = {}
+        for key, value in candidates.items():
+            manual_value = state.facts.get(key)
+            if manual_value is not None and manual_value != value:
+                conflicts.add(key)
+            if manual_value is None and key not in conflicts:
+                accepted[key] = value
+        state.facts.update(accepted)
+
+        if previous or accepted:
+            _, questions = load_scenario(state.scenario)
+            question_ids = {q["fact"]: q["id"] for q in questions}
+            state.history = manual_history + [
+                {"question_id": question_ids[key], "facts": {key: value}, "parsed_by": "document",
+                 "files": list(dict.fromkeys(sources[key]))}
+                for key, value in accepted.items()
+            ]
+        changed = previous != accepted
+        if changed:
+            state.flags.clear()
+            state.missing_docs.clear()
+            review(state)
+        return changed, sorted(conflicts)
+
+    def sync_documents(self, interview_id: str, document_ids: list[str]) -> dict:
+        with self._lock:
+            state = self._get(interview_id)
+            if state.status not in {"in_progress", "waiting_for_preparer"}:
+                raise InterviewClosed(f"Interview is {state.status}")
+            updated = deepcopy(state)
+            changed, conflicts = self._update_document_facts(updated, document_ids)
+            if changed:
+                updated.status = "in_progress"
+            if updated.status == "in_progress":
+                updated, out = step(updated, search=self._cached_search, normalizer=self.normalizer)
+            else:
+                out = summarize(updated)
+            self._store[interview_id] = updated
+            return {"output": out, "state": snapshot(updated), "conflicts": conflicts}
 
     def get(self, interview_id: str) -> dict:
         """Return {"state": snapshot, "history": full history} for the preparer view."""

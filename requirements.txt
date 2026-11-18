@@ -9,12 +9,14 @@ beautifulsoup4
 reportlab
 requests
 pypdf>=6.1,<8
+Pillow
 sentence-transformers
 torch
 psycopg[binary]
 pgvector
 rank_bm25
 fastapi
+python-multipart
 uvicorn
 streamlit
 numpy
