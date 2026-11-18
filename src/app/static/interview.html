@@ -3,15 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tax Agent Interview</title>
+  <title>Tax Intake</title>
   <style>
+    @font-face {
+      font-family: Inter;
+      src: url("/interview/inter-variable.woff2") format("woff2");
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Instrument Serif";
+      src: url("/interview/instrument-serif.ttf") format("truetype");
+      font-weight: 400;
+      font-display: swap;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #f5f7fa; color: #1c2938; font: 15px/1.55 system-ui, sans-serif; }
+    body { margin: 0; background: #f5f7fa; color: #1c2938; font: 15px/1.55 Inter, system-ui, sans-serif; }
     .page { max-width: 1180px; height: 100dvh; margin: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-    header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-    h1 { font-size: 22px; margin: 0; }
+    [hidden] { display: none !important; }
+    .intro { width: min(100%, 680px); margin: auto; }
+    .page.in-interview .intro { width: 100%; margin-block: 0; }
+    .interview-header { position: relative; text-align: center; }
+    .interview-header h1 {
+      margin: 0; font: 400 38px/1.25 "Instrument Serif", Georgia, serif;
+    }
+    .page.in-interview .interview-header { min-height: 40px; }
+    .page.in-interview .interview-header h1 { font-size: 26px; }
     .subtitle { margin: 2px 0 0; font-size: 13px; color: #596579; }
-    .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; min-width: 0; max-width: 100%; }
+    .in-interview .subtitle { display: none; }
+    .history-toggle, .new-interview { position: absolute; top: 50%; transform: translateY(-50%); }
+    .history-toggle { left: 0; }
+    .history-toggle, .history-edit-button, .history-delete-button, .history-close-button {
+      display: inline-grid; place-items: center; padding: 0;
+      width: 40px; height: 40px;
+    }
+    .history-toggle svg, .history-row-actions svg, .history-close-button svg { width: 20px; height: 20px; }
+    .new-interview { right: 0; }
+    .history-drawer {
+      width: min(292px, calc(100% - 32px)); max-width: none; height: 100%; max-height: none;
+      margin: 0; padding: 0; border: 0; border-right: 1px solid #dce2eb;
+      border-radius: 0 16px 16px 0; box-shadow: 8px 0 30px #1c293826; color: inherit;
+    }
+    .history-drawer::backdrop { background: #1c293861; }
+    .history-drawer[open] { display: flex; flex-direction: column; }
+    .history-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; padding: 16px; border-bottom: 1px solid #edf0f5;
+    }
+    .history-header h2 { margin: 0; font-size: 16px; }
+    .history-body { padding: 12px; overflow-y: auto; }
+    .history-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+    .history-row {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start;
+      border: 1px solid transparent; border-radius: 8px;
+    }
+    .history-row:hover, .history-row.is-current { background: #eef3fc; }
+    .history-row.is-current { border-color: #bfd0ee; }
+    .history-item {
+      display: grid; gap: 4px; width: 100%; padding: 9px 10px;
+      background: transparent; color: inherit; text-align: left;
+    }
+    .history-item span { font-weight: 600; overflow-wrap: anywhere; }
+    .history-item small, .history-item time { font-size: 12px; color: #596579; }
+    .history-row-actions { display: flex; gap: 2px; padding: 3px; }
+    .history-edit-button, .history-delete-button {
+      width: 36px; height: 36px; background: transparent; color: #596579;
+    }
+    .history-edit-button:hover, button.history-toggle:hover, button.history-close-button:hover {
+      background: #e4ecff; color: #2458c6;
+    }
+    .history-delete-button:hover { background: #fdecec; color: #a32121; }
+    .history-row-form { grid-column: 1 / -1; display: grid; gap: 8px; padding: 8px; }
+    .history-row-form p { margin: 0; overflow-wrap: anywhere; }
+    .history-rename input { width: 100%; min-width: 0; }
+    .history-form-actions { display: flex; gap: 6px; justify-content: end; }
+    .history-form-actions button { padding: 5px 10px; font-size: 13px; }
+    .setup {
+      display: grid; gap: 18px; margin-top: 24px; padding: 24px;
+      box-shadow: 0 12px 32px #1c293810;
+    }
+    .setup-fields { display: grid; gap: 24px; min-width: 0; margin: 0; padding: 0; border: 0; }
+    .setup-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
     select, input, textarea, button { font: inherit; }
     select, input[type=text], textarea { border: 1px solid #bcc8d9; border-radius: 8px; padding: 8px 10px; background: white; }
     button { border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; background: #2458c6; color: white; }
@@ -19,19 +91,29 @@
     button.danger { background: #a32121; }
     button:disabled { opacity: .55; cursor: wait; }
     a { color: #2458c6; }
-    .priority { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; color: #3d4a5c; }
-    .priority[hidden] { display: none; }
-    .priority button { padding: 4px 10px; font-size: 13px; }
-    .priority button.on { background: #2458c6; color: white; border-color: #2458c6; }
-    .background { display: flex; gap: 8px; align-items: center; font-size: 13px; color: #3d4a5c; }
-    .background[hidden] { display: none; }
-    .background input { flex: 1; min-width: 0; border: 1px solid #bcc8d9; border-radius: 8px; padding: 6px 10px; font: inherit; }
+    .priority h2, .background > span { margin: 0; font-size: 15px; font-weight: 700; }
+    .priority p { margin: 4px 0 10px; font-size: 13px; color: #596579; }
+    .priority-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    button.priority-option {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px;
+      min-height: 48px; padding: 8px 10px; font-size: 13px; line-height: 1.35;
+      color: #1c2938; text-align: left; overflow-wrap: anywhere;
+    }
+    button.priority-option[aria-pressed="false"]:hover:not(:disabled) { background: #f5f8ff; border-color: #9cb6eb; }
+    button.priority-option[aria-pressed="true"] { background: #e9f1ff; border-color: #7296e2; color: #173e92; }
+    button.priority-option:focus-visible { outline: 2px solid #2458c6; outline-offset: 2px; }
+    .priority-order {
+      display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
+      background: #2458c6; color: white; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
+    }
+    .priority-order:empty { visibility: hidden; }
+    .background { display: grid; gap: 6px; }
+    .background textarea { width: 100%; min-width: 0; resize: vertical; }
     .trigger { font-size: 12px; color: #2458c6; margin: 2px 0 4px; }
     .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 12px; }
     .panel { background: white; border: 1px solid #dce2eb; border-radius: 12px; }
     .chat { display: flex; flex-direction: column; min-height: 0; }
     #log { flex: 1; overflow-y: auto; padding: 18px; }
-    .empty { color: #596579; text-align: center; padding: 40px 0; }
     .bubble { max-width: 88%; margin-bottom: 14px; padding: 12px 14px; border-radius: 10px; overflow-wrap: anywhere; }
     .bot { background: #f2f5fa; }
     .me { background: #e4ecff; margin-left: auto; white-space: pre-wrap; }
@@ -112,9 +194,9 @@
     .file-card button { margin-left: auto; padding: 1px 6px; }
     .composer p { margin: 0 5px; }
     .composer p:empty, .attachments:empty { display: none; }
-    #status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
-    #status:empty { display: none; }
-    #status.error { color: #a32121; }
+    #status, #setup-status, #history-status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
+    #status:empty, #setup-status:empty, #history-status:empty { display: none; }
+    #status.error, #setup-status.error, #history-status.error { color: #a32121; }
     aside { padding: 14px; overflow-y: auto; }
     aside h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #596579; margin: 14px 0 6px; }
     aside h2:first-child { margin-top: 0; }
@@ -129,40 +211,72 @@
     .tax-form label { display: grid; gap: 3px; }
     .tax-form input { min-width: 0; width: 100%; }
     .tax-form iframe { width: 100%; height: 520px; border: 1px solid #dce2eb; }
+    @media (prefers-reduced-motion: no-preference) {
+      .history-drawer[open] { animation: history-enter 220ms ease-out; }
+      @keyframes history-enter {
+        from { transform: translateX(-100%); }
+      }
+    }
     @media (max-width: 820px) {
       .page { height: auto; min-height: 100dvh; }
       .layout { grid-template-columns: 1fr; }
-      .controls { width: 100%; }
+      .history-toggle, .new-interview { position: static; margin-top: 8px; transform: none; }
+      .page:not(.in-interview) .history-toggle { position: absolute; top: 4px; margin-top: 0; }
+      .setup { padding: 16px; }
+      .setup-fields { gap: 18px; }
       #log { max-height: 60vh; }
       .inputbar { padding-inline: 12px; }
+    }
+    @media (max-width: 640px) {
+      .priority-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .setup-actions #start { width: 100%; }
+    }
+    @media (max-width: 350px) {
+      .priority-grid { grid-template-columns: minmax(0, 1fr); }
     }
   </style>
 </head>
 <body>
 <div class="page">
-  <header>
-    <div>
-      <h1>Guided client interview</h1>
-      <p class="subtitle">For the preparer's assistant · Not final tax advice</p>
-    </div>
-    <div class="controls">
-      <button id="start" type="button">Start interview</button>
-    </div>
-  </header>
-  <div id="priority" class="priority" hidden>
-    <span>Topics you're unsure about (asked first, in the order you pick):</span>
-    <span id="priority-chips" class="chips"></span>
-  </div>
-  <label id="background-row" class="background" hidden>
-    <span>Client background (optional):</span>
-    <input id="background" type="text" maxlength="2000" placeholder="e.g. W-2 job, drives Uber on weekends, two kids, travels to craft fairs">
-  </label>
-
-  <div class="layout">
-    <section class="panel chat">
-      <div id="log" role="log" aria-live="polite">
-        <p class="empty">Optionally pick the topics you are unsure about and enter the client's background, then select Start interview.</p>
+  <div class="intro">
+    <header class="interview-header">
+      <div id="interview-heading">
+        <h1 tabindex="-1">Tax Intake</h1>
+        <p class="subtitle">Collect client information for preparer review.</p>
       </div>
+      <button id="open-history" class="secondary history-toggle" type="button" aria-haspopup="dialog"
+              aria-controls="interview-history" aria-label="Interview history" title="Interview history">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/>
+          <path d="M9.5 4.5v15"/>
+        </svg>
+      </button>
+      <button id="new-interview" class="secondary new-interview" type="button" hidden>New interview</button>
+    </header>
+    <form id="interview-setup" class="panel setup">
+      <fieldset id="setup-fields" class="setup-fields">
+        <section class="priority" aria-labelledby="topics-heading" aria-describedby="topics-help">
+          <h2 id="topics-heading">Priority topics (optional)</h2>
+          <p id="topics-help">Select topics to ask about first. Selection order sets the priority.</p>
+          <div id="priority-chips" class="priority-grid"></div>
+        </section>
+        <label class="background">
+          <span>Client background (optional)</span>
+          <textarea id="background" rows="2" maxlength="2000"
+                    placeholder="e.g. W-2 job, weekend rideshare work, two children"></textarea>
+        </label>
+      </fieldset>
+      <div class="setup-actions">
+        <button id="back-to-interview" class="secondary" type="button" hidden>Back to interview</button>
+        <button id="start" type="submit" disabled>Start interview</button>
+      </div>
+      <p id="setup-status" role="status">Loading topics…</p>
+    </form>
+  </div>
+
+  <div id="interview-workspace" class="layout" hidden>
+    <section class="panel chat">
+      <div id="log" role="log" aria-live="polite"></div>
       <div class="inputbar">
         <div id="chips" class="chips"></div>
         <form id="answer-form" class="composer">
@@ -176,7 +290,7 @@
               <button id="attach" class="secondary attach-button" type="button" aria-label="Attach tax documents" aria-describedby="document-help" disabled>+</button>
               <span id="document-help" hidden>PDF, PNG, JPG, or TXT. Up to 10 files, 10 MB each.</span>
             </span>
-            <button id="send" class="send-button" type="submit" disabled>Send <span aria-hidden="true">&uarr;</span></button>
+            <button id="send" class="send-button" type="submit" disabled>Send</button>
           </div>
         </form>
         <p id="status" role="status"></p>
@@ -196,19 +310,71 @@
   </div>
 </div>
 
+<dialog id="interview-history" class="history-drawer" aria-labelledby="history-title">
+  <header class="history-header">
+    <h2 id="history-title">Interview history</h2>
+    <form method="dialog">
+      <button class="secondary history-close-button" type="submit" aria-label="Close interview history"
+              title="Close interview history" autofocus>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+             stroke-linecap="round" aria-hidden="true">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </form>
+  </header>
+  <div class="history-body">
+    <p id="history-status" role="status"></p>
+    <ul id="history-list" class="history-list"></ul>
+  </div>
+</dialog>
+
+<template id="history-edit-icon">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="m14.5 6.5 3 3M5 19l4.4-1 9.4-9.4a2.1 2.1 0 0 0-3-3L6.4 15 5 19Z"/>
+  </svg>
+</template>
+
+<template id="history-delete-icon">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 7h16M10 11v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+  </svg>
+</template>
+
 <script>
   const $ = (sel) => document.querySelector(sel);
   const log = $('#log'), chips = $('#chips'), answer = $('#answer'), send = $('#send');
-  const statusLine = $('#status'), startBtn = $('#start');
+  const statusLine = $('#status'), setupStatus = $('#setup-status'), startBtn = $('#start');
+  const setupForm = $('#interview-setup'), setupFields = $('#setup-fields');
+  const page = $('.page'), workspace = $('#interview-workspace'), heading = $('#interview-heading');
+  const interviewTitle = heading.querySelector('h1'), subtitle = heading.querySelector('.subtitle');
+  const historyToggle = $('#open-history');
+  const newInterviewBtn = $('#new-interview'), backToInterviewBtn = $('#back-to-interview');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const historyDialog = $('#interview-history'), historyList = $('#history-list'), historyStatus = $('#history-status');
+  const interviewDate = new Intl.DateTimeFormat('en', { dateStyle: 'medium', timeStyle: 'short' });
+  const statusLabels = {
+    in_progress: 'In progress',
+    waiting_for_preparer: 'Ready for review',
+    approved: 'Approved',
+    returned: 'Returned'
+  };
+  let historyRequest = 0;
+  let closeHistoryAction = null;
+  let historyDeletion = null;
   const filePicker = $('#document-files'), attach = $('#attach');
   const documentStatus = $('#document-status'), documentConflicts = $('#document-conflicts');
   const maxAttachments = 10, maxAttachmentMB = 10, maxParallelUploads = 3;
+  const taxAdviceNotice = 'Not final tax advice.';
   let interviewId = null;
   let busy = false;
   let draftUrl = null;
   let currentQuestionId = null;
   let summaryBubble = null;
   let interviewStatus = null;
+  let interviewScenario = null;
   let attachments = [];
   let activeUploads = 0;
   let documentRevision = 0;
@@ -221,13 +387,12 @@
     return node;
   }
   function addBubble(node) {
-    log.querySelector('.empty')?.remove();
     log.append(node);
     log.scrollTop = log.scrollHeight;
   }
-  function setStatus(text, isError = false) {
-    statusLine.textContent = text || '';
-    statusLine.className = isError ? 'error' : '';
+  function setStatus(text, isError = false, target = statusLine) {
+    target.textContent = text || '';
+    target.classList.toggle('error', isError);
   }
   function setInputEnabled(on) {
     answer.disabled = !on; send.disabled = !on;
@@ -275,6 +440,10 @@
     return attachments.filter(item => item.id && !item.removing).map(item => item.id);
   }
 
+  function canEditDocuments() {
+    return ['in_progress', 'waiting_for_preparer'].includes(interviewStatus);
+  }
+
   function renderAttachments() {
     const container = $('#attachments');
     container.replaceChildren();
@@ -290,7 +459,7 @@
       const remove = el('button', 'secondary', '×');
       remove.type = 'button';
       remove.setAttribute('aria-label', `Remove ${item.name}`);
-      remove.disabled = !!item.removing;
+      remove.disabled = !!item.removing || !canEditDocuments();
       remove.addEventListener('click', () => removeAttachment(item));
       card.append(el('span', 'file-type', item.name.split('.').pop().toUpperCase()), copy, remove);
       container.append(card);
@@ -322,7 +491,7 @@
     const body = new FormData();
     body.append('files', file);
     try {
-      const data = await api('/api/interview-documents', body);
+      const data = await api('/api/interview-documents?scenario=' + encodeURIComponent(interviewScenario), body);
       const result = data.files[0];
       if (!attachments.includes(item)) {
         if (result.id) await api(`/api/interview-documents/${result.id}`, undefined, 'DELETE');
@@ -340,7 +509,7 @@
   }
 
   async function removeAttachment(item) {
-    if (item.removing) return;
+    if (item.removing || !canEditDocuments()) return;
     documentStatus.textContent = '';
     if (item.id) {
       item.removing = true;
@@ -364,8 +533,7 @@
   }
 
   async function syncDocumentAnswers() {
-    if (busy || !['in_progress', 'waiting_for_preparer'].includes(interviewStatus) ||
-        syncedRevision === documentRevision) return;
+    if (busy || !canEditDocuments() || syncedRevision === documentRevision) return;
     const revision = documentRevision;
     busy = true;
     setInputEnabled(false);
@@ -437,6 +605,7 @@
     const b = el('article', 'bubble bot');
     b.append(el('div', 'qnum', 'Interview complete'));
     b.append(el('div', 'qtext', 'Summary for the preparer'));
+    b.append(el('div', 'note', taxAdviceNotice));
     const t = el('table');
     Object.entries(s.facts).forEach(([k, v]) => {
       const tr = el('tr'); tr.append(el('td', null, k.replaceAll('_', ' ')), el('td', null, fmt(v))); t.append(tr);
@@ -458,38 +627,48 @@
     if (s.references_not_in_kb.length) b.append(el('div', 'note', 'Not found in the knowledge base yet: ' + s.references_not_in_kb.join('; ')));
     if (s.references_unchecked.length) b.append(el('div', 'note', 'Not checked (retrieval was offline): ' + s.references_unchecked.join('; ')));
 
-    const box = el('div', 'decision');
-    const note = el('textarea'); note.placeholder = 'Preparer note (optional)'; note.setAttribute('aria-label', 'Preparer note');
-    const row = el('div', 'row');
-    const ok = el('button', null, 'Approve'); ok.type = 'button';
-    const back = el('button', 'danger', 'Return to assistant'); back.type = 'button';
-    row.append(ok, back);
-    box.append(note, row);
-    b.append(box);
+    if (s.status === 'waiting_for_preparer') {
+      const box = el('div', 'decision');
+      const note = el('textarea'); note.placeholder = 'Preparer note (optional)'; note.setAttribute('aria-label', 'Preparer note');
+      const row = el('div', 'row');
+      const ok = el('button', null, 'Approve'); ok.type = 'button';
+      const back = el('button', 'danger', 'Return to assistant'); back.type = 'button';
+      row.append(ok, back);
+      box.append(note, row);
+      b.append(box);
+
+      const decide = async (approve) => {
+        if (busy) return;
+        busy = true;
+        ok.disabled = back.disabled = true;
+        try {
+          const text = note.value.trim();
+          const data = await api('/api/interviews/' + interviewId + '/decision', { approve, note: text });
+          renderSidebar(data.state);
+          box.remove();
+          renderAttachments();
+          renderDecision({ decision: data.state.status, note: text });
+        } catch (e) { setStatus(e.message, true); ok.disabled = back.disabled = false; }
+        finally { busy = false; syncDocumentAnswers(); }
+      };
+      ok.addEventListener('click', () => decide(true));
+      back.addEventListener('click', () => decide(false));
+    }
     renderForms(b);
     addBubble(b);
     summaryBubble = b;
+  }
 
-    const decide = async (approve) => {
-      if (busy) return;
-      busy = true;
-      ok.disabled = back.disabled = true;
-      try {
-        const data = await api(`/api/interviews/${interviewId}/decision`, { approve, note: note.value.trim() });
-        renderSidebar(data.state);
-        addBubble(el('article', 'bubble me', approve ? 'Preparer approved.' : 'Preparer returned it: ' + (note.value.trim() || '(no note)')));
-      } catch (e) { setStatus(e.message, true); ok.disabled = back.disabled = false; }
-      finally { busy = false; syncDocumentAnswers(); }
-    };
-    ok.addEventListener('click', () => decide(true));
-    back.addEventListener('click', () => decide(false));
+  function renderDecision(entry) {
+    const message = entry.decision === 'approved' ? 'Preparer approved.' : 'Preparer returned it to the assistant.';
+    addBubble(el('article', 'bubble me', entry.note ? message + ' ' + entry.note : message));
   }
 
   async function renderForms(parent) {
     const details = el('details');
     details.append(el('summary', null, 'Tax form drafts'));
     const panel = el('div', 'tax-form');
-    panel.append(el('p', 'note', 'Suggestions depend on interview answers and configured rules. Confirm which forms you need; suggestions do not determine filing obligations.'));
+    panel.append(el('p', 'note', taxAdviceNotice + ' Suggestions depend on interview answers and configured rules. Confirm which forms you need; suggestions do not determine filing obligations.'));
     details.append(panel); parent.append(details);
     const id = interviewId;
     try {
@@ -587,17 +766,20 @@
     });
   }
 
-  function render(out) {
+  function render(out, focusAnswer = true) {
     currentQuestionId = out.question_id || out.guide?.question_id || null;
-    if (out.type === 'question') { renderQuestion(out); setInputEnabled(true); answer.focus(); }
-    else if (out.type === 'error') {
+    if (out.type === 'question') {
+      renderQuestion(out);
+      setInputEnabled(true);
+    } else if (out.type === 'error') {
       addBubble(el('article', 'bubble err', out.message));
-      renderChips(out.guide); setInputEnabled(true); answer.focus();
-    }
-    else if (out.type === 'summary') {
+      renderChips(out.guide);
+      setInputEnabled(true);
+    } else if (out.type === 'summary') {
       renderSummary(out);
       setInputEnabled(false);
     }
+    if (focusAnswer && currentQuestionId) answer.focus();
   }
 
   function list(target, items, empty, cls) {
@@ -607,6 +789,7 @@
   }
   function renderSidebar(st) {
     interviewStatus = st.status;
+    attach.disabled = filePicker.disabled = !canEditDocuments();
     const parsed = st.last_parsed_by === 'model' ? ' · last answer read by the model' : '';
     const prio = st.priority && st.priority.length ? ` · priority: ${st.priority.map(label).join(', ')}` : '';
     const trig = st.triggers && st.triggers.length ? ` · heard: ${st.triggers.join(', ')}` : '';
@@ -616,27 +799,382 @@
     list($('#side-facts'), Object.entries(st.facts).map(([k, v]) => `${k.replaceAll('_', ' ')}: ${fmt(v)}`), 'None yet');
   }
 
-  async function startInterview() {
-    if (busy) return;
-    const revision = documentRevision;
-    busy = true; startBtn.disabled = true; setStatus('Starting…');
+  function moveInterviewTitle(previousTop, previousSize, motion) {
+    const offset = previousTop - heading.getBoundingClientRect().top;
+    return [
+      heading.animate([{ transform: 'translateY(' + offset + 'px)' }, { transform: 'translateY(0)' }], motion),
+      interviewTitle.animate([{ fontSize: previousSize }, { fontSize: getComputedStyle(interviewTitle).fontSize }], motion)
+    ];
+  }
+
+  function showSetup(animateTitle = !reducedMotion.matches) {
+    backToInterviewBtn.hidden = !interviewId;
+    if (!setupForm.hidden) return;
+    const previousTop = heading.getBoundingClientRect().top;
+    const previousSize = getComputedStyle(interviewTitle).fontSize;
+    page.classList.remove('in-interview');
+    setupForm.hidden = false;
+    workspace.hidden = newInterviewBtn.hidden = true;
+    window.scrollTo(0, 0);
+    if (animateTitle) {
+      moveInterviewTitle(previousTop, previousSize, { duration: 230, easing: 'ease-out' });
+    }
+  }
+
+  async function returnToSetup() {
+    if (reducedMotion.matches) {
+      showSetup(false);
+      return;
+    }
+
+    page.inert = true;
+    const exit = [];
     try {
-      const data = await api('/api/interviews', { scenario: SCENARIO, priority: chosen,
-                                                  background: $('#background').value.trim(),
-                                                  document_ids: activeDocumentIds() });
-      interviewId = data.state.interview_id;
-      attach.disabled = filePicker.disabled = false;
-      syncedRevision = revision;
-      answer.value = '';
-      summaryBubble = null;
-      if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
-      log.replaceChildren();
-      renderSidebar(data.state);
-      showDocumentConflicts(data.conflicts);
-      render(data.output);
-      setStatus('');
-    } catch (e) { setStatus(e.message, true); }
-    finally { busy = false; startBtn.disabled = false; syncDocumentAnswers(); }
+      const fadeOut = [{ opacity: 1 }, { opacity: 0 }];
+      const exitTiming = { duration: 90, easing: 'ease-in', fill: 'forwards' };
+      for (const element of [workspace, historyToggle, newInterviewBtn]) {
+        exit.push(element.animate(fadeOut, exitTiming));
+      }
+      await Promise.all(exit.map(animation => animation.finished));
+
+      const previousTop = heading.getBoundingClientRect().top;
+      const previousSize = getComputedStyle(interviewTitle).fontSize;
+      showSetup(false);
+      exit.forEach(animation => animation.cancel());
+      const titleMotion = moveInterviewTitle(previousTop, previousSize, { duration: 250, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+      const timing = { duration: 155, delay: 145, easing: 'ease-out', fill: 'backwards' };
+      const fadeIn = [{ opacity: 0 }, { opacity: 1 }];
+      const entrance = [
+        setupForm.animate([{ opacity: 0, transform: 'translateY(8px)' },
+                           { opacity: 1, transform: 'translateY(0)' }], timing),
+        subtitle.animate(fadeIn, timing),
+        historyToggle.animate(fadeIn, timing)
+      ];
+      await Promise.all([...titleMotion, ...entrance].map(animation => animation.finished));
+    } finally {
+      exit.forEach(animation => animation.cancel());
+      page.inert = false;
+    }
+  }
+
+  async function enterInterview() {
+    const animate = !reducedMotion.matches;
+    const exit = [];
+    page.inert = true;
+    try {
+      if (animate) {
+        const timing = { duration: 90, easing: 'ease-in', fill: 'forwards' };
+        exit.push(
+          setupForm.animate([{ opacity: 1, transform: 'translateY(0)' },
+                             { opacity: 0, transform: 'translateY(-8px)' }], timing),
+          subtitle.animate([{ opacity: 1 }, { opacity: 0 }], timing),
+          historyToggle.animate([{ opacity: 1 }, { opacity: 0 }], timing)
+        );
+        await Promise.all(exit.map(animation => animation.finished));
+      }
+
+      const previousTop = heading.getBoundingClientRect().top;
+      const previousSize = getComputedStyle(interviewTitle).fontSize;
+      heading.getAnimations().forEach(animation => animation.cancel());
+      interviewTitle.getAnimations().forEach(animation => animation.cancel());
+      setupForm.hidden = true;
+      page.classList.add('in-interview');
+      window.scrollTo(0, 0);
+      if (animate) {
+        const from = Math.max(previousTop, heading.getBoundingClientRect().top);
+        const titleMotion = moveInterviewTitle(from, previousSize, { duration: 230, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+        await Promise.all(titleMotion.map(animation => animation.finished));
+      }
+
+      workspace.hidden = newInterviewBtn.hidden = false;
+      log.scrollTop = log.scrollHeight;
+      exit.forEach(animation => animation.cancel());
+      if (animate) {
+        const rise = [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }];
+        const timing = { duration: 115, easing: 'ease-out', fill: 'backwards' };
+        const entrance = [
+          workspace.querySelector('.chat').animate(rise, timing),
+          workspace.querySelector('aside').animate(rise, { ...timing, delay: 30 }),
+          historyToggle.animate([{ opacity: 0 }, { opacity: 1 }], timing),
+          newInterviewBtn.animate([{ opacity: 0 }, { opacity: 1 }], timing)
+        ];
+        await Promise.all(entrance.map(animation => animation.finished));
+      }
+    } finally {
+      exit.forEach(animation => animation.cancel());
+      page.inert = false;
+    }
+  }
+
+  async function startInterview(event) {
+    event.preventDefault();
+    if (busy || !intake) return;
+    if (activeUploads || attachments.some(item => item.removing)) {
+      setStatus('Wait for the current attachments to finish processing.', true, setupStatus);
+      return;
+    }
+    busy = true;
+    startBtn.disabled = setupFields.disabled = true;
+    setStatus('Starting interview…', false, setupStatus);
+    try {
+      const data = await api('/api/interviews', {
+        scenario: SCENARIO, priority: chosen, background: $('#background').value.trim()
+      });
+      await activateInterview(data);
+      setStatus('', false, setupStatus);
+    } catch (e) { setStatus(e.message, true, setupStatus); }
+    finally {
+      busy = false;
+      startBtn.disabled = setupFields.disabled = false;
+      syncDocumentAnswers();
+    }
+  }
+
+  function clearConversation() {
+    currentQuestionId = summaryBubble = null;
+    syncedRevision = documentRevision = 0;
+    answer.value = '';
+    documentStatus.textContent = '';
+    if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
+    log.replaceChildren();
+    chips.replaceChildren();
+    showDocumentConflicts([]);
+    setStatus('');
+  }
+
+  function clearDeletedInterview() {
+    interviewId = interviewScenario = null;
+    attachments = [];
+    clearConversation();
+    renderSidebar({ status: 'not_started', answered: 0, flags: [], missing_docs: [], facts: {} });
+    renderAttachments();
+    setInputEnabled(false);
+    showSetup();
+  }
+
+  async function activateInterview(data) {
+    clearConversation();
+    interviewId = data.state.interview_id;
+    interviewScenario = data.state.scenario;
+    attachments = data.documents || [];
+    renderSidebar(data.state);
+    renderAttachments();
+    showDocumentConflicts(data.conflicts);
+    for (const turn of data.turns || []) {
+      const question = el('article', 'bubble bot');
+      question.append(el('p', 'qtext', turn.question));
+      addBubble(question);
+      addBubble(el('article', 'bubble me', turn.answer));
+    }
+    render(data.output, false);
+    if (data.output.type === 'summary') {
+      const decision = data.history?.find(entry => entry.decision);
+      if (decision) renderDecision(decision);
+    }
+    if (workspace.hidden) await enterInterview();
+    if (!historyDialog.open) {
+      (currentQuestionId ? answer : interviewTitle).focus({ preventScroll: true });
+    }
+  }
+
+  function renderHistoryEntry(entry) {
+    const item = el('li', 'history-row');
+    const open = el('button', 'history-item');
+    open.type = 'button';
+    if (entry.interview_id === interviewId) {
+      item.classList.add('is-current');
+      open.setAttribute('aria-current', 'true');
+    }
+    const title = el('span', null, entry.title || 'Interview · ' + interviewDate.format(new Date(entry.created_at)));
+    const updated = el('time', null, 'Updated ' + interviewDate.format(new Date(entry.updated_at)));
+    updated.dateTime = entry.updated_at;
+    open.append(title, el('small', null, statusLabels[entry.status]), updated);
+    open.addEventListener('click', () => openSavedInterview(entry.interview_id));
+
+    const edit = el('button', 'history-edit-button');
+    edit.type = 'button';
+    edit.title = 'Rename interview';
+    edit.setAttribute('aria-label', 'Rename ' + title.textContent);
+    edit.append($('#history-edit-icon').content.cloneNode(true));
+
+    const remove = el('button', 'history-delete-button');
+    remove.type = 'button';
+    remove.title = 'Delete interview';
+    remove.setAttribute('aria-label', 'Delete ' + title.textContent);
+    remove.append($('#history-delete-icon').content.cloneNode(true));
+
+    const actions = el('div', 'history-row-actions');
+    actions.append(edit, remove);
+    item.append(open, actions);
+    edit.addEventListener('click', () => editHistoryTitle(entry.interview_id, title, item, edit, remove));
+    remove.addEventListener('click', () => confirmHistoryDeletion(entry.interview_id, title, item, remove));
+    return item;
+  }
+
+  function showHistoryAction(item, form, trigger, cancel) {
+    closeHistoryAction?.();
+    setStatus('', false, historyStatus);
+    const open = item.querySelector('.history-item');
+    const actions = item.querySelector('.history-row-actions');
+    open.hidden = actions.hidden = true;
+    item.append(form);
+
+    const close = (restoreFocus = false) => {
+      form.remove();
+      open.hidden = actions.hidden = false;
+      if (closeHistoryAction === close) closeHistoryAction = null;
+      if (restoreFocus) trigger.focus();
+    };
+    closeHistoryAction = close;
+    cancel.addEventListener('click', () => close(true));
+    form.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !event.isComposing) {
+        event.preventDefault();
+        if (!cancel.disabled) close(true);
+      }
+    });
+    return close;
+  }
+
+  function editHistoryTitle(id, title, item, edit, remove) {
+    const form = el('form', 'history-rename history-row-form');
+    const input = el('input');
+    input.type = 'text';
+    input.required = true;
+    input.maxLength = 100;
+    input.value = title.textContent;
+    input.setAttribute('aria-label', 'Interview name');
+    const actions = el('div', 'history-form-actions');
+    const cancel = el('button', 'secondary', 'Cancel');
+    cancel.type = 'button';
+    const save = el('button', null, 'Save');
+    save.type = 'submit';
+    actions.append(cancel, save);
+    form.append(input, actions);
+    const close = showHistoryAction(item, form, edit, cancel);
+    input.focus();
+    input.select();
+    input.addEventListener('input', () => input.setCustomValidity(''));
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (save.disabled) return;
+      const value = input.value.trim();
+      if (!value) {
+        input.setCustomValidity('Enter an interview name.');
+        input.reportValidity();
+        return;
+      }
+      if (value === title.textContent) {
+        close(true);
+        return;
+      }
+      const request = historyRequest;
+      input.readOnly = save.disabled = cancel.disabled = true;
+      try {
+        const result = await api('/api/interviews/' + encodeURIComponent(id), { title: value }, 'PATCH');
+        title.textContent = result.title;
+        edit.setAttribute('aria-label', 'Rename ' + result.title);
+        remove.setAttribute('aria-label', 'Delete ' + result.title);
+        if (request === historyRequest && historyDialog.open && form.isConnected) {
+          setStatus('', false, historyStatus);
+          close(true);
+        }
+      } catch (error) {
+        if (request === historyRequest && historyDialog.open && form.isConnected) {
+          setStatus(error.message, true, historyStatus);
+          input.readOnly = save.disabled = cancel.disabled = false;
+          input.focus();
+        }
+      }
+    });
+  }
+
+  function confirmHistoryDeletion(id, title, item, remove) {
+    const form = el('form', 'history-delete history-row-form');
+    const message = el('p', null, 'Delete “' + title.textContent + '”? This cannot be undone.');
+    const actions = el('div', 'history-form-actions');
+    const cancel = el('button', 'secondary', 'Cancel');
+    cancel.type = 'button';
+    const confirm = el('button', 'danger', 'Delete');
+    confirm.type = 'submit';
+    actions.append(cancel, confirm);
+    form.append(message, actions);
+    const close = showHistoryAction(item, form, remove, cancel);
+    cancel.focus();
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (confirm.disabled) return;
+      if (busy || (id === interviewId && (activeUploads || attachments.some(attachment => attachment.removing)))) {
+        setStatus('Wait for the current interview update to finish, then try again.', true, historyStatus);
+        return;
+      }
+      const request = historyRequest;
+      busy = confirm.disabled = cancel.disabled = true;
+      setStatus('Deleting interview…', false, historyStatus);
+      try {
+        historyDeletion = api('/api/interviews/' + encodeURIComponent(id), undefined, 'DELETE');
+        await historyDeletion;
+        if (id === interviewId) clearDeletedInterview();
+        const restoreFocus = closeHistoryAction === close;
+        if (restoreFocus) closeHistoryAction = null;
+        item.remove();
+        if (request === historyRequest && historyDialog.open) {
+          setStatus(historyList.children.length ? '' : 'No interviews yet.', false, historyStatus);
+          if (restoreFocus) {
+            const next = historyList.querySelector('.history-item:not([hidden])') || $('.history-close-button');
+            next.focus();
+          }
+        }
+      } catch (error) {
+        if (request === historyRequest && historyDialog.open && form.isConnected) {
+          setStatus(error.message, true, historyStatus);
+          confirm.disabled = cancel.disabled = false;
+          cancel.focus();
+        }
+      } finally {
+        historyDeletion = null;
+        busy = false;
+        syncDocumentAnswers();
+      }
+    });
+  }
+
+  async function openHistory() {
+    const request = ++historyRequest;
+    closeHistoryAction = null;
+    historyList.replaceChildren();
+    setStatus('Loading interviews…', false, historyStatus);
+    historyDialog.showModal();
+    try {
+      if (historyDeletion) await historyDeletion.catch(() => {});
+      const data = await api('/api/interviews');
+      if (request !== historyRequest || !historyDialog.open) return;
+      historyList.append(...data.interviews.map(renderHistoryEntry));
+      setStatus(data.interviews.length ? '' : 'No interviews yet.', false, historyStatus);
+    } catch (e) {
+      if (request === historyRequest && historyDialog.open) setStatus(e.message, true, historyStatus);
+    }
+  }
+
+  async function openSavedInterview(id) {
+    if (busy || activeUploads || attachments.some(item => item.removing)) {
+      setStatus('Wait for the current interview update to finish, then try again.', true, historyStatus);
+      return;
+    }
+    const request = historyRequest;
+    busy = true;
+    setStatus('Opening interview…', false, historyStatus);
+    try {
+      const data = await api('/api/interviews/' + encodeURIComponent(id));
+      if (request !== historyRequest || !historyDialog.open) return;
+      historyDialog.close();
+      await activateInterview(data);
+    } catch (e) {
+      if (request === historyRequest && historyDialog.open) setStatus(e.message, true, historyStatus);
+    } finally {
+      busy = false;
+    }
   }
 
   async function submit(text) {
@@ -659,12 +1197,34 @@
   answer.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); submit(answer.value); }
   });
-  startBtn.addEventListener('click', startInterview);
+  setupForm.addEventListener('submit', startInterview);
+  historyToggle.addEventListener('click', openHistory);
+  historyDialog.addEventListener('click', event => {
+    if (event.target === historyDialog && event.clientX > historyDialog.getBoundingClientRect().right) {
+      historyDialog.close();
+    }
+  });
+  newInterviewBtn.addEventListener('click', async () => {
+    if (page.inert || !setupForm.hidden) return;
+    await returnToSetup();
+    (startBtn.disabled ? interviewTitle : startBtn).focus({ preventScroll: true });
+  });
+  backToInterviewBtn.addEventListener('click', async () => {
+    if (busy) return;
+    busy = true;
+    try {
+      await enterInterview();
+      newInterviewBtn.focus({ preventScroll: true });
+    } finally {
+      busy = false;
+      syncDocumentAnswers();
+    }
+  });
   attach.addEventListener('click', () => filePicker.click());
   filePicker.addEventListener('change', () => {
     const picked = Array.from(filePicker.files);
     filePicker.value = '';
-    if (!interviewId || !picked.length) return;
+    if (!interviewId || !canEditDocuments() || !picked.length) return;
     const valid = picked.filter(file => /\.(pdf|png|jpe?g|txt)$/i.test(file.name) &&
       file.size > 0 && file.size <= maxAttachmentMB * 1024 * 1024);
     const notices = [];
@@ -691,29 +1251,33 @@
     return s ? s.label : id;
   }
   function renderPriority() {
-    const p = intake;
-    const box = $('#priority'), wrap = $('#priority-chips');
+    const wrap = $('#priority-chips');
     wrap.replaceChildren();
-    box.hidden = !(p && p.sections.length);
-    $('#background-row').hidden = box.hidden;
-    if (box.hidden) return;
-    p.sections.forEach(sec => {
+    intake.sections.forEach((sec, index) => {
       const i = chosen.indexOf(sec.id);
-      const btn = el('button', 'secondary' + (i >= 0 ? ' on' : ''), (i >= 0 ? `${i + 1}. ` : '') + sec.label);
+      const selected = i >= 0;
+      const btn = el('button', 'secondary priority-option');
+      const order = el('span', 'priority-order', selected ? String(i + 1) : '');
+      order.setAttribute('aria-hidden', 'true');
       btn.type = 'button';
-      btn.setAttribute('aria-pressed', String(i >= 0));
+      btn.setAttribute('aria-pressed', String(selected));
+      if (selected) btn.setAttribute('aria-label', sec.label + ', priority ' + (i + 1));
+      btn.append(el('span', null, sec.label), order);
       btn.addEventListener('click', () => {
-        chosen = i >= 0 ? chosen.filter(x => x !== sec.id) : [...chosen, sec.id];
+        chosen = selected ? chosen.filter(id => id !== sec.id) : [...chosen, sec.id];
         renderPriority();
+        wrap.children[index].focus({ preventScroll: true });
       });
       wrap.append(btn);
     });
   }
   api('/api/playbooks').then(data => {
     intake = data.playbooks.find(p => p.id === SCENARIO) || null;
-    if (!intake) { setStatus('The intake playbook (playbooks/modules/) was not found.', true); startBtn.disabled = true; return; }
+    if (!intake) throw new Error('The intake playbook (playbooks/modules/) was not found.');
     renderPriority();
-  }).catch(e => setStatus('Could not load the intake playbook: ' + e.message, true));
+    startBtn.disabled = false;
+    setStatus('', false, setupStatus);
+  }).catch(e => setStatus('Could not load the intake playbook: ' + e.message, true, setupStatus));
 </script>
 </body>
 </html>

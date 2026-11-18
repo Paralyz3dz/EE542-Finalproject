@@ -186,8 +186,9 @@ Extraction begins automatically when you select the files, and you can continue
 answering while they are processed. The interview skips questions with extracted answers and preserves
 manually entered answers. Remove an attachment to withdraw its answers unless another
 attachment still supports them. A question may reappear when its answer is withdrawn.
-Attachments stay on the page when starting another interview. Remove them before
-starting a different client's interview.
+Attachments belong to the interview where they were added. Starting a new interview
+opens an empty attachment list. Reopening an interview restores its saved attachment names
+and extracted answers.
 Documents must show the tax year configured in `config/settings.json`. Upload
 scanned pages as PNG or JPG images, or add a selectable text layer to the PDF.
 
@@ -198,7 +199,16 @@ state. Staged answers are available for 24 hours while the server is running. An
 used in an interview and their source filenames appear in the interview history.
 
 Start the server as above (`python -m uvicorn src.app.api:app --reload`) and open
-http://127.0.0.1:8000/interview. Choose a scenario and select Start interview.
+http://127.0.0.1:8000/interview. Choose any priority topics and select **Start interview**.
+Use the **Interview history** icon on the setup or conversation page to reopen a saved
+interview. Use the pencil to rename an entry or the trash icon to delete it after confirmation.
+
+The application uses an HTTP-only browser cookie to scope interview history to the
+same browser profile and server hostname. Users sharing a browser profile also share
+its interview history. Local development saves interviews to `logs/interviews.sqlite3`
+by default. Set `TAX_AGENT_INTERVIEW_DB_PATH` for a different SQLite location or
+`TAX_AGENT_INTERVIEW_DATABASE_URL` to use PostgreSQL. The configured role needs permission to create and manage the
+interview table and index.
 
 - Left: the conversation. Each question shows why to ask it, documents to request,
   playbook references (✓ found in the knowledge base / ⚠ not in the knowledge base yet),

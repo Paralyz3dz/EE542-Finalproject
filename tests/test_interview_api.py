@@ -41,6 +41,56 @@ class InterviewApiTests(unittest.TestCase):
         d = self.client.post(f"/api/interviews/{iid}/decision", json={"approve": True})
         self.assertEqual(d.json()["state"]["status"], "approved")
 
+    def test_history_list_and_detail_are_browser_scoped(self):
+        response = self.client.post("/api/interviews", json={"scenario": "ca_w2_side_gig"})
+        self.assertIn("HttpOnly", response.headers["Set-Cookie"])
+        iid = response.json()["state"]["interview_id"]
+        path = f"/api/interviews/{iid}"
+        self.client.post(path + "/answer", json={"answer": "single"})
+        history = self.client.get("/api/interviews")
+        self.assertEqual(history.headers["Cache-Control"], "no-store")
+        self.assertEqual(history.json()["interviews"][0]["interview_id"], iid)
+        detail = self.client.get(path).json()
+        self.assertEqual(detail["turns"][0]["answer"], "single")
+        self.assertEqual(detail["output"]["fact"], "has_side_income")
+
+        invalid_titles = ("   ", "x" * 101, "Line one\nLine two", "\x00")
+        for title in invalid_titles:
+            self.assertEqual(self.client.patch(path, json={"title": title}).status_code, 422)
+        renamed = self.client.patch(path, json={"title": "  2025 Intake · Follow-up  "})
+        self.assertEqual(renamed.json(), {"title": "2025 Intake · Follow-up"})
+        self.assertEqual(
+            self.client.get("/api/interviews").json()["interviews"][0]["title"], "2025 Intake · Follow-up",
+        )
+
+        other = TestClient(app)
+        self.addCleanup(other.close)
+        other.get("/interview")
+        self.assertEqual(other.get("/api/interviews").json(), {"interviews": []})
+        self.assertEqual(other.get(path).status_code, 404)
+        self.assertEqual(other.patch(path, json={"title": "Another browser"}).status_code, 404)
+        self.assertEqual(other.post(path + "/answer", json={"answer": "yes"}).status_code, 404)
+        self.assertEqual(other.get(path + "/forms").status_code, 404)
+
+    def test_delete_interview_removes_only_the_owned_record(self):
+        payload = {"scenario": "ca_w2_side_gig"}
+        first = self.client.post("/api/interviews", json=payload).json()["state"]["interview_id"]
+        second = self.client.post("/api/interviews", json=payload).json()["state"]["interview_id"]
+        path = f"/api/interviews/{first}"
+        other = TestClient(app)
+        self.addCleanup(other.close)
+        other.get("/interview")
+        self.assertEqual(other.delete(path).status_code, 404)
+        self.assertEqual(self.client.get(path).status_code, 200)
+
+        deleted = self.client.delete(path)
+        self.assertEqual(deleted.status_code, 204)
+        self.assertEqual(deleted.content, b"")
+        self.assertEqual(self.client.get(path).status_code, 404)
+        self.assertEqual(self.client.delete(path).status_code, 404)
+        rows = self.client.get("/api/interviews").json()["interviews"]
+        self.assertEqual([row["interview_id"] for row in rows], [second])
+
     def test_errors(self):
         """Unknown scenario / interview -> 404; blank answer -> 422."""
         self.assertEqual(self.client.post("/api/interviews", json={"scenario": "nope"}).status_code, 404)
