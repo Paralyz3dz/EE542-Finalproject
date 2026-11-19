@@ -210,38 +210,32 @@ by default. Set `TAX_AGENT_INTERVIEW_DB_PATH` for a different SQLite location or
 `TAX_AGENT_INTERVIEW_DATABASE_URL` to use PostgreSQL. The configured role needs permission to create and manage the
 interview table and index.
 
-- Left: the conversation. Each question shows why to ask it, documents to request,
-  playbook references (✓ found in the knowledge base / ⚠ not in the knowledge base yet),
-  and the retrieved official text. Quick-answer buttons match the fact type
-  (Yes/No, options); free-text notes are read by the LLM and validated by code.
-- Right: status, escalation flags, documents to collect, facts collected.
-- End: summary for the preparer with Approve / Return to assistant.
-
-Scenarios (`playbooks/`, all **draft**, not yet confirmed by a preparer):
-
-| Scenario | Questions | Notes |
+| Page | Who | What |
 |---|---|---|
-| `ca_w2_side_gig` | 3 | W-2 + side income; being expanded from the practitioner interview |
-| `ca_w2_family` | 14 | dependents, childcare, student loans, HSA (CA add-back), renter's credit |
-| `ca_retiree` | 12 | Social Security (not taxed by CA), pension / IRA, early distribution |
-| `ca_rental` | 11 | rental income, personal use, short-term rental, out-of-state property |
+| http://127.0.0.1:8000/interview | assistant | One intake for every client: optional topics to ask first and a background note, then one question at a time with why it is asked, documents to request and official passages; summary at the end |
+| http://127.0.0.1:8000/preparer | preparer | Interviews from the web page and from MCP, by status; summary, interview record, approve / return |
 
-Add a scenario by adding a folder with `scenario.json` and `questions.json`; the engine
-does not change. `tests/test_workflow.py` checks every playbook's structure and runs a
-full interview with each one.
+The intake is Form 13614-C plus topic modules opened by the answers (`playbooks/modules/`):
+`side_gig`, `family`, `retiree`, `rental`, `student` (Pub 970, Pub 4012 Tabs J and L, Form 8843).
+6 modules, 122 questions, 56 escalation rules, all **draft** (no preparer sign-off yet; see `docs/validation.md`).
 
-Settings in `.env` (see `.env.example`):
+Interviews started from your own AI assistant (MCP server) are saved in the same interview store under
+the owner `mcp-assistant`, so the preparer reviews both on `/preparer`. Fictional cases only.
+
+Use your own AI assistant instead of our API key: `docs/mcp.md` (ChatGPT desktop app, Claude Desktop,
+Gemini CLI, Cherry Studio).
+
+Settings in `.env` (see `.env.example` and `docs/architecture.md`):
 
 ```dotenv
-OPENAI_API_KEY=            # LLM note reader and the chat agent
-TAX_AGENT_RETRIEVAL=on     # off = no DB / Ollama needed; guides show no official text
+OPENAI_API_KEY=            # optional: model note reader on the web page and the chat agent
+TAX_AGENT_RETRIEVAL=on     # off = no DB / Ollama needed; questions show no official text
 TAX_AGENT_LLM=on           # off = exact answers only, never call the model
+TAX_AGENT_INTERVIEW_DB_PATH=        # optional: SQLite file (default logs/interviews.sqlite3)
+TAX_AGENT_INTERVIEW_DATABASE_URL=   # optional: PostgreSQL for interviews
 ```
 
-If the chat agent cannot start (e.g. no `OPENAI_API_KEY`), only `/api/chat` returns 503;
-the interview still works. If retrieval fails, the interview continues without passages.
-
-Interview API (state is kept in server memory; restarting clears interviews):
+Interview API:
 
 | Method | Path | Body | Returns |
 |---|---|---|---|
@@ -252,14 +246,20 @@ Interview API (state is kept in server memory; restarting clears interviews):
 | DELETE | `/api/interview-documents/{document_id}` | | removes a staged file's extracted answers |
 | PUT | `/api/interviews/{id}/documents` | `{"document_ids": ["..."]}` | syncs the active attachments and returns the current question or summary |
 | GET | `/api/interviews/{id}` | | snapshot + full history |
+| GET | `/api/interviews` | | this browser's interview history |
+| GET | `/api/preparer/interviews?status=waiting_for_preparer` | | every interview (web and MCP), newest first |
+| GET | `/api/preparer/interviews/{id}` | | snapshot, history, source, summary, question labels |
+| POST | `/api/preparer/interviews/{id}/decision` | `{"approve": true, "note": ""}` | preparer decision on any interview |
 | POST | `/api/interviews/{id}/decision` | `{"approve": true, "note": ""}` | preparer decision |
 
-Run the workflow tests (no OpenAI, Ollama, or PostgreSQL needed; retrieval and the
-model are stubbed):
+Tests (no OpenAI, Ollama or PostgreSQL needed):
 
 ```powershell
-python -m pytest tests/test_workflow.py tests/test_interview_service.py tests/test_interview_api.py -q
+python -m pytest tests -q
 ```
+
+More: `docs/architecture.md` (structure and roadmap), `docs/validation.md` (how the playbook is checked),
+`docs/knowledge-base.md` (documents and chunk format for RAG), `docs/demo.md` (final demo script).
 
 ## Status
 | Part | State |
@@ -268,20 +268,20 @@ python -m pytest tests/test_workflow.py tests/test_interview_service.py tests/te
 | Table extraction (`src/rag/tables.py`) | done: 20 tables, IF/AND/THEN rows as sentences, raw rows saved for code |
 | HNSW + BM25 hybrid retrieval | implemented: RRF fusion, final top-k 5; 200-case baseline completed, RRF Recall@5 87.00% (annotated chunk IDs) |
 | Web chat UI + FastAPI | implemented: local, in-memory conversations |
-| Workflow engine (`src/workflow/`) | implemented: code-chosen questions, ask_when follow-ups, escalation flags, required documents, summary, preparer approval |
-| LLM note reader (`src/llm/`) | implemented: OpenAI via one adapter; model proposes, rules validate |
-| Citations vs references | implemented: summary lists only retrieved citations; playbook references marked found / not in KB / unchecked |
-| Guided interview page (`/interview`) | implemented: 4 draft scenarios, end-to-end with RDS + Ollama + OpenAI |
+| Workflow engine (`src/workflow/`) | implemented: modular intake, priority topics, trigger words, escalations, reminders, summary |
+| Interview store (`src/db/interview_store.py`) | implemented: per-browser history; MCP interviews under owner `mcp-assistant`; the preparer page reads every owner |
+| Preparer review (`/preparer`) | implemented: list by status from both channels, summary, record, approve / return |
+| MCP server (`src/mcp_server/`) | implemented: user's own AI drives the interview, engine validates every answer |
+| Playbooks | 6 modules, 122 questions; checked against 13614-C, Direct File knockouts, Pub 4012 scope, 9 cases |
+| Form drafts (`src/app/forms.py`) | implemented (teammate): recommendations and PDF prefill |
+| Knowledge base | Pub 17 loaded; 22 documents to add (`docs/knowledge-base.md`) |
 | Practitioner input | written feedback + interview with a Big Four tax advisor (business tax) done; USC VITA interview planned |
-| California FTB documents in the knowledge base | next |
 
-## Next (target: system ready Nov 23)
-- Knowledge base: Schedule C / SE instructions, Pub 334, Pub 463, Pub 505, FTB 540 Booklet,
-  Schedule CA (540) instructions, FTB Pub 1001; citation names match playbook `source` names
-- Playbooks: expand `ca_w2_side_gig` from the interview (income split, expenses, records,
-  hobby vs business); update all references; add record-keeping reminders
-- Interview page: collapsible explanations, "send to preparer" button
-- Evaluation: questions for the new documents; fictional end-to-end client cases
+## Next
+- 11/20: knowledge base batch 1 (7 documents); document extraction contract (stage 1 → interview facts)
+- 11/23: knowledge base batch 2; form drafts from approved interviews only
+- 11/30 – 12/1: final demo (`docs/demo.md`)
+- Before any real use: login and roles, encryption and retention, MCP authentication, deployment, CI (`docs/architecture.md`)
 
 ## Rules
 - Never use real client data (IRC 7216). Fictional cases only.

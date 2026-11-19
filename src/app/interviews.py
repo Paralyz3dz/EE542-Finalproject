@@ -25,10 +25,13 @@ from dotenv import load_dotenv
 
 from src.app.documents import TAX_YEAR, extract_document_facts
 from src.db.interview_store import Interview, InterviewStore
-from src.workflow.engine import INTAKE, MODULES, PLAYBOOKS, load_scenario, review, sections, start_interview, step, summarize
+from src.workflow.engine import (INTAKE, MODULES, PLAYBOOKS, apply_triggers, load_scenario, review, sections,
+                                 start_interview, step, summarize)
 from src.workflow.state import State
 
 logger = logging.getLogger(__name__)
+
+MCP_OWNER = "mcp-assistant"
 
 
 class InterviewNotFound(KeyError):
@@ -365,3 +368,60 @@ class InterviewService:
             interview.output = interview.output | {"status": state.status}
             self._save(owner, interview)
             return {"state": snapshot(state)}
+
+    def add_note(self, interview_id: str, note: str, *, owner: str = "") -> list[str]:
+        """Record something else the client said; its trigger words move matching questions forward."""
+        with self._lock:
+            interview = self._get(interview_id, owner)
+            state = interview.state
+            if state.status != "in_progress":
+                raise InterviewClosed(f"Interview is {state.status}")
+            definition, _ = load_scenario(state.scenario)
+            triggers = apply_triggers(state, definition, note)
+            state.history.append({"note": note, "triggers": triggers})
+            self._save(owner, interview)
+            return triggers
+
+    def preparer_list(self, status: str | None = None, limit: int = 100) -> list[dict]:
+        """Every interview (web page and MCP), newest first, for the preparer review page."""
+        with self._lock:
+            rows = self._store.list_all(status, limit)
+        items = []
+        for row in rows:
+            state = row["state"]
+            history = state.get("history", [])
+            items.append({
+                "interview_id": row["interview_id"],
+                "channel": "mcp" if row["owner"] == MCP_OWNER else "web",
+                "status": row["status"], "title": row["title"],
+                "created_at": row["created_at"], "updated_at": row["updated_at"],
+                "answered": sum(1 for entry in history if entry.get("question_id")),
+                "escalations": len(state.get("flags", [])),
+                "priority": state.get("priority", []),
+                "background": next((entry["background"] for entry in history if entry.get("background")), ""),
+            })
+        return items
+
+    def preparer_get(self, interview_id: str) -> dict:
+        """One interview of any owner, with question labels and the summary once finished."""
+        with self._lock:
+            found = self._store.find(interview_id)
+        if found is None:
+            raise InterviewNotFound(interview_id)
+        result = self.get(interview_id, owner=found["owner"])
+        _, questions = load_scenario(result["state"]["scenario"])
+        output = result["output"]
+        return result | {
+            "channel": "mcp" if found["owner"] == MCP_OWNER else "web",
+            "created_at": found["created_at"], "updated_at": found["updated_at"], "title": found["title"],
+            "summary": output if output.get("type") == "summary" else None,
+            "labels": {q["fact"]: q["question"] for q in questions},
+        }
+
+    def preparer_decide(self, interview_id: str, approve: bool, note: str = "") -> dict:
+        """The preparer's decision on an interview of any owner (see decide)."""
+        with self._lock:
+            found = self._store.find(interview_id)
+        if found is None:
+            raise InterviewNotFound(interview_id)
+        return self.decide(interview_id, approve, note, owner=found["owner"])

@@ -90,6 +90,15 @@ Blank forms (Form 1040, schedules), Form 13614-C, Pub 4012 / Form 6744 / Pub 510
 used only for interview structure and wording), IRS ATS test scenarios, the Direct File extracts in
 `data/external/directfile/`, and any client document.
 
+### Student module references (added with the MCP / preparer PR)
+
+The `student` module (`playbooks/modules/student/`, 18 questions) brings the playbook to 122 questions
+and adds these `source` references: IRS Pub 970 (+11), IRS Form 8843 Instructions (4), IRS Pub 519 (1)
+and IRS Pub 17 (+2). Form 8843 Instructions and Pub 519 are not indexed on `main` yet; until they are,
+the five nonresident questions show unrelated passages. Statutes and regulations are not cited.
+Check the playbook against the index with `python -m src.workflow.retrieval_report` (hit@5 per source
+document, documents never returned, questions that missed).
+
 ## 3. Names and citations
 
 Every chunk's citation starts with the KB name, then the year in brackets, then where in the
