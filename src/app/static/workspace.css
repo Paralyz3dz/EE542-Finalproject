@@ -27,6 +27,12 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--canvas); color: var(--ink); font: 1rem/1.55 Inter, system-ui, sans-serif; }
 a { color: var(--accent); }
+.download-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px;
+  background: white; color: var(--accent); font-size: .875rem; font-weight: 600; text-decoration: none;
+}
+.download-button:hover { background: var(--tint); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .product-nav { background: var(--nav); color: white; }
 .product-nav-inner {

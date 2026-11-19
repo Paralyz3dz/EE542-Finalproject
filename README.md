@@ -40,37 +40,10 @@ decides the next question in code, and calls retrieval and the LLM only at fixed
    are collected
 6. When nothing is left to ask: a summary for the preparer (facts, flags, documents,
    citations actually retrieved, references still to verify)
-7. The preparer approves it or returns it with a note
+7. On the web, the assistant selects **Submit to preparer** to send the summary for review
+8. The preparer approves it or returns it with a note
 
 ## Quick start
-
-### Tax form draft prefill
-
-After finishing an interview at `/interview`, open **Tax form drafts**. The system
-suggests configured templates based on collected facts and shows the reason. Select
-a form, supply any supplemental details, and confirm the form and tax year before
-previewing/downloading. Suggestions do not determine filing obligations. Unmatched
-templates remain selectable, and existing preparer approval remains available.
-
-Templates are discovered from `assets/forms/**/*.mapping.json`, each beside its PDF.
-Each configuration supplies its unique ID, year, recommendation conditions, fields,
-validation and review notes. The page renders supplemental inputs from this metadata;
-API routes and PDF generation are shared across forms and years. Form 1040 (2025)
-is the initial example. See [the configuration guide](assets/forms/README.md) to add forms.
-
-Unknown values remain blank. Calculations, schedules and filing submissions are outside
-this prefill feature. Supplemental details and PDFs are processed in memory per request,
-not added to interview history or saved on the server; responses disable caching.
-PDFs carry a partial-draft notice. Current templates must have AcroForm fields.
-
-`GET /api/interviews/{id}/forms` lists available templates, recommendations and inputs.
-`POST /api/interviews/{id}/forms/{form_id}/preview` returns filled fields, missing inputs
-and review notes; the same path without `/preview` returns the PDF. POST bodies contain
-`tax_year`, `confirmed_tax_year: true` and a `values` object for supplemental inputs.
-All endpoints require a completed interview. These operations do not call LLM or RAG;
-they reuse the facts collected by the existing interview flow.
-
-Run focused checks with `python -m pytest tests/test_forms.py tests/test_interview_api.py`.
 
 ### Setup
 
@@ -209,6 +182,12 @@ Start the server as above (`python -m uvicorn src.app.api:app --reload`) and ope
 http://127.0.0.1:8000/interview. Choose any priority topics and select **Start interview**.
 Use the **Interview history** icon on the setup or conversation page to reopen a saved
 interview. Use the pencil to rename an entry or the trash icon to delete it after confirmation.
+Completed web interviews appear under **In progress** until the assistant selects **Submit to preparer**.
+An optional note is saved with the submission and shown in the preparer's review detail.
+On the assistant page, **Download summary PDF** exports the interview ID, its start time in UTC,
+its title if set, and the collected data as field names and values.
+On the preparer page, **Download review PDF** exports the saved review as it stands, including
+interview details, questions and answers, follow-up items, sources, uploaded filenames, and the interview record.
 
 The application uses an HTTP-only browser cookie to scope interview history to the
 same browser profile and server hostname. Users sharing a browser profile also share
@@ -253,11 +232,13 @@ Interview API:
 | DELETE | `/api/interview-documents/{document_id}` | | removes a staged file's extracted answers |
 | PUT | `/api/interviews/{id}/documents` | `{"document_ids": ["..."]}` | syncs the active attachments and returns the current question or summary |
 | GET | `/api/interviews/{id}` | | snapshot + full history |
+| GET | `/api/interviews/{id}/summary.pdf` | | PDF summary of a completed interview in this browser |
 | GET | `/api/interviews` | | this browser's interview history |
-| GET | `/api/preparer/interviews?status=waiting_for_preparer` | | every interview (web and MCP), newest first |
+| POST | `/api/interviews/{id}/submit` | `{"note": ""}` | move a completed web interview to the review queue |
+| GET | `/api/preparer/interviews?status=waiting_for_preparer` | | interviews waiting for review (web and MCP), newest first |
 | GET | `/api/preparer/interviews/{id}` | | snapshot, history, source, summary, question labels |
+| GET | `/api/preparer/interviews/{id}/summary.pdf` | | full PDF review of the selected web or MCP interview, including in-progress interviews |
 | POST | `/api/preparer/interviews/{id}/decision` | `{"approve": true, "note": ""}` | preparer decision on any interview |
-| POST | `/api/interviews/{id}/decision` | `{"approve": true, "note": ""}` | preparer decision |
 
 Tests (no OpenAI, Ollama or PostgreSQL needed):
 
@@ -280,13 +261,13 @@ More: `docs/architecture.md` (structure and roadmap), `docs/validation.md` (how 
 | Preparer review (`/preparer`) | implemented: list by status from both channels, summary, record, approve / return |
 | MCP server (`src/mcp_server/`) | implemented: user's own AI drives the interview, engine validates every answer |
 | Playbooks | 6 modules, 122 questions; checked against 13614-C, Direct File knockouts, Pub 4012 scope, 9 cases |
-| Form drafts (`src/app/forms.py`) | implemented (teammate): recommendations and PDF prefill |
+| Interview PDF exports (`src/app/interview_pdf.py`) | concise data summary for assistants and full review report for preparers |
 | Knowledge base | Pub 17 loaded; 22 documents to add (`docs/knowledge-base.md`) |
 | Practitioner input | written feedback + interview with a Big Four tax advisor (business tax) done; USC VITA interview planned |
 
 ## Next
 - 11/20: knowledge base batch 1 (7 documents); document extraction contract (stage 1 → interview facts)
-- 11/23: knowledge base batch 2; form drafts from approved interviews only
+- 11/23: knowledge base batch 2
 - 11/30 – 12/1: final demo (`docs/demo.md`)
 - Before any real use: login and roles, encryption and retention, MCP authentication, deployment, CI (`docs/architecture.md`)
 

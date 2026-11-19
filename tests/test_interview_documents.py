@@ -5,6 +5,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 from PIL import Image
 import pytest
+from pypdf import PdfReader
 from reportlab.pdfgen.canvas import Canvas
 
 from src.app.api import app
@@ -160,6 +161,7 @@ def test_files_stage_before_start_and_skip_current_and_follow_up_questions(clien
     assert response.status_code == 200
     result = response.json()
     assert result["output"]["type"] == "summary"
+    assert result["state"]["status"] == "in_progress"
     assert result["state"]["facts"] == {"filing_status": "single", "has_side_income": True, "side_income": 1200}
     path = f"/api/interviews/{result['state']['interview_id']}"
     saved = client.get(path).json()
@@ -167,12 +169,20 @@ def test_files_stage_before_start_and_skip_current_and_follow_up_questions(clien
     assert saved["history"][1]["files"] == ["earnings.pdf"]
     assert "123-45-6789" not in str(saved)
 
+    report = client.get(f"/api/preparer/interviews/{result['state']['interview_id']}/summary.pdf")
+    assert report.status_code == 200
+    text = "\n".join(page.extract_text() for page in PdfReader(BytesIO(report.content)).pages)
+    assert "Uploaded documents" in text and "Document extraction" in text
+    assert "earnings.pdf" in text and "intake.txt" in text
+
+    assert client.post(path + "/submit").json()["state"]["status"] == "waiting_for_preparer"
     assert client.delete(f"/api/interview-documents/{earnings['id']}").status_code == 204
     reopened = sync(client, path, intake["id"])
     assert reopened["state"]["status"] == "in_progress"
     assert reopened["state"]["facts"] == {"filing_status": "single"}
     assert reopened["output"]["fact"] == "has_side_income"
     assert reopened["state"]["missing_docs"] == []
+    assert client.post(path + "/submit").status_code == 409
     assert client.put(path + "/documents", json={"document_ids": [earnings["id"]]}).status_code == 409
 
 

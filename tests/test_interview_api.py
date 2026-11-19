@@ -1,8 +1,10 @@
 """HTTP layer for the guided interview. Needs fastapi (run in the project venv)."""
+from io import BytesIO
 import unittest
 from unittest.mock import MagicMock, patch
 
 from fastapi.testclient import TestClient
+from pypdf import PdfReader
 
 from src.app.api import app
 from src.app.interviews import InterviewService
@@ -30,16 +32,41 @@ class InterviewApiTests(unittest.TestCase):
         self.assertIn("ca_retiree", ids)
 
     def test_interview_round_trip(self):
-        """HTTP: start, three answers to the summary, 409 after the end, then approval."""
         r = self.client.post("/api/interviews", json={"scenario": "ca_w2_side_gig"}).json()
         iid = r["state"]["interview_id"]
+        path = f"/api/interviews/{iid}"
+        review = f"/api/preparer/interviews/{iid}"
+        queue = "/api/preparer/interviews"
         self.assertEqual(r["output"]["fact"], "filing_status")
+        self.assertEqual(self.client.post(path + "/submit").status_code, 409)
         for text in ["single", "yes", "12000"]:
-            r = self.client.post(f"/api/interviews/{iid}/answer", json={"answer": text}).json()
+            r = self.client.post(path + "/answer", json={"answer": text}).json()
         self.assertEqual(r["output"]["type"], "summary")
-        self.assertEqual(self.client.post(f"/api/interviews/{iid}/answer", json={"answer": "x"}).status_code, 409)
-        d = self.client.post(f"/api/interviews/{iid}/decision", json={"approve": True})
-        self.assertEqual(d.json()["state"]["status"], "approved")
+        self.assertEqual(r["output"]["status"], "in_progress")
+        self.assertEqual(r["state"]["status"], "in_progress")
+        self.assertEqual(self.client.get(queue, params={"status": "waiting_for_preparer"}).json()["interviews"], [])
+        pending = self.client.get(queue, params={"status": "in_progress"}).json()["interviews"]
+        self.assertEqual([record["interview_id"] for record in pending], [iid])
+        self.assertEqual(self.client.post(path + "/answer", json={"answer": "x"}).status_code, 409)
+        self.assertEqual(self.client.post(review + "/decision", json={"approve": True}).status_code, 409)
+
+        submitted = self.client.post(path + "/submit", json={"note": "  Check the income amount.  "})
+        self.assertEqual(submitted.status_code, 200)
+        self.assertEqual(submitted.json()["state"]["status"], "waiting_for_preparer")
+        self.assertEqual(submitted.json()["state"]["answered"], r["state"]["answered"])
+        self.assertEqual(self.client.post(path + "/submit").status_code, 200)
+        waiting = self.client.get(queue, params={"status": "waiting_for_preparer"}).json()["interviews"]
+        self.assertEqual([record["interview_id"] for record in waiting], [iid])
+        self.assertEqual(self.client.get(queue, params={"status": "in_progress"}).json()["interviews"], [])
+        detail = self.client.get(review).json()
+        self.assertEqual(detail["summary"]["status"], "waiting_for_preparer")
+        self.assertEqual([entry for entry in detail["history"] if entry.get("submitted")], [
+            {"submitted": True, "note": "Check the income amount."},
+        ])
+        self.assertEqual(self.client.post(path + "/decision", json={"approve": True}).status_code, 404)
+        decision = self.client.post(review + "/decision", json={"approve": True})
+        self.assertEqual(decision.json()["state"]["status"], "approved")
+        self.assertEqual(self.client.post(path + "/submit").status_code, 409)
 
     def test_history_list_and_detail_are_browser_scoped(self):
         response = self.client.post("/api/interviews", json={"scenario": "ca_w2_side_gig"})
@@ -70,7 +97,8 @@ class InterviewApiTests(unittest.TestCase):
         self.assertEqual(other.get(path).status_code, 404)
         self.assertEqual(other.patch(path, json={"title": "Another browser"}).status_code, 404)
         self.assertEqual(other.post(path + "/answer", json={"answer": "yes"}).status_code, 404)
-        self.assertEqual(other.get(path + "/forms").status_code, 404)
+        self.assertEqual(other.post(path + "/submit").status_code, 404)
+        self.assertEqual(other.get(path + "/summary.pdf").status_code, 404)
 
     def test_delete_interview_removes_only_the_owned_record(self):
         payload = {"scenario": "ca_w2_side_gig"}
@@ -111,64 +139,99 @@ class InterviewApiTests(unittest.TestCase):
         bad = self.client.post("/api/interviews", json={"scenario": "intake", "priority": ["bogus"]})
         self.assertEqual(bad.status_code, 422)
 
-    def test_form1040_generation_and_supplemental_data_are_not_saved(self):
-        started = self.client.post("/api/interviews", json={"scenario": "ca_w2_side_gig"}).json()
+    def test_summary_pdf_exports_interview_identity_and_named_data_fields(self):
+        background = "Client <prefers> email & text. \u4e2d\u6587"
+        started = self.client.post("/api/interviews", json={
+            "scenario": "ca_w2_side_gig", "background": background,
+        }).json()
         iid = started["state"]["interview_id"]
-        path = f"/api/interviews/{iid}/forms/federal-2025-1040"
-        payload = {"tax_year": 2025, "confirmed_tax_year": True, "values": {"first_name": "Alex", "ssn": "123456789"}}
-        self.assertEqual(self.client.post(path, json=payload).status_code, 409)
-        for text in ["single", "yes", "12000"]:
-            self.client.post(f"/api/interviews/{iid}/answer", json={"answer": text})
-        catalog = self.client.get(f"/api/interviews/{iid}/forms").json()["forms"]
-        self.assertTrue(catalog[0]["recommended"])
-        self.assertEqual(catalog[0]["id"], "federal-2025-1040")
-        self.assertEqual(self.client.post(f"/api/interviews/{iid}/forms/unknown", json=payload).status_code, 404)
-        before = self.client.get(f"/api/interviews/{iid}").json()
-        preview = self.client.post(path + "/preview", json=payload)
-        self.assertEqual(preview.status_code, 200)
-        self.assertIn("w2_federal_withholding", preview.json()["missing"])
-        response = self.client.post(path, json=payload)
+        path = f"/api/interviews/{iid}"
+        preparer_path = f"/api/preparer/interviews/{iid}"
+        self.assertEqual(self.client.get(path + "/summary.pdf").status_code, 409)
+
+        for answer in ("single", "yes", "12000"):
+            self.client.post(path + "/answer", json={"answer": answer})
+        created_at = self.client.get("/api/interviews").json()["interviews"][0]["created_at"]
+        started_line = f"Started: {created_at[:16].replace('T', ' ')} UTC"
+        untitled = self.client.get(path + "/summary.pdf")
+        self.assertEqual(untitled.status_code, 200)
+        text = PdfReader(BytesIO(untitled.content)).pages[0].extract_text()
+        self.assertIn(f"Interview ID: {iid}", text)
+        self.assertIn(started_line, text)
+        self.assertNotIn("Interview title:", text)
+
+        title = "Client <A> & \u4e2d\u6587"
+        self.assertEqual(self.client.patch(path, json={"title": title}).status_code, 200)
+        before = self.client.get(path).json()
+        self.assertEqual(before["state"]["status"], "in_progress")
+        other = TestClient(app)
+        self.addCleanup(other.close)
+        self.assertEqual(other.get(path + "/summary.pdf").status_code, 404)
+
+        expected = [
+            "Page 1", "Collected Interview Data", f"Interview title: {title}",
+            f"Interview ID: {iid}", started_line, "Data field", "Collected value",
+            "Filing status", "single", "Has side income", "Yes", "Side income", "12000",
+        ]
+        response = self.client.get(path + "/summary.pdf")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.headers["content-type"], "application/pdf")
         self.assertEqual(response.headers["cache-control"], "no-store")
-        self.assertTrue(response.content.startswith(b"%PDF"))
-        self.assertEqual(self.client.get(f"/api/interviews/{iid}").json(), before)
-        self.assertEqual(self.client.post(path, json=payload | {"tax_year": 2026}).status_code, 422)
-        self.assertEqual(self.client.post("/api/interviews/missing/forms/federal-2025-1040", json=payload).status_code, 404)
-        empty = self.client.post(path + "/preview", json={"tax_year": 2025, "confirmed_tax_year": True})
-        self.assertIn("first_name", empty.json()["missing"])
-        self.assertNotIn("Alex", str(empty.json()))
+        self.assertEqual(response.headers["content-disposition"], f'attachment; filename="interview-summary-{iid[:8]}.pdf"')
+        pages = PdfReader(BytesIO(response.content)).pages
+        self.assertEqual(len(pages), 1)
+        self.assertEqual([line.strip() for line in pages[0].extract_text().splitlines()], expected)
+        self.assertEqual(self.client.get(path).json(), before)
+        self.assertEqual(self.client.get(path + "/forms").status_code, 404)
 
-    def test_another_configured_form_uses_the_same_endpoints(self):
-        import json
-        from pathlib import Path
-        from shutil import copyfile
-        from tempfile import TemporaryDirectory
+        self.assertEqual(self.client.post(path + "/submit").status_code, 200)
+        note = "Follow-up required."
+        decision = self.client.post(preparer_path + "/decision", json={"approve": False, "note": note})
+        self.assertEqual(decision.json()["state"]["status"], "returned")
+        response = self.client.get(path + "/summary.pdf")
+        self.assertEqual(response.status_code, 200)
+        pages = PdfReader(BytesIO(response.content)).pages
+        self.assertEqual(len(pages), 1)
+        self.assertEqual([line.strip() for line in pages[0].extract_text().splitlines()], expected)
 
-        from src.app.forms import load_forms
+    def test_review_pdf_exports_current_review_and_record(self):
+        background = "Client prefers email & text. \u4e2d\u6587"
+        initial = self.client.post("/api/interviews", json={
+            "scenario": "ca_w2_side_gig", "background": background,
+        }).json()
+        iid = initial["state"]["interview_id"]
+        interview = f"/api/interviews/{iid}"
+        review = f"/api/preparer/interviews/{iid}"
+        download = review + "/summary.pdf"
 
-        original = load_forms()["federal-2025-1040"]
-        started = self.client.post("/api/interviews", json={"scenario": "ca_w2_side_gig"}).json()
-        iid = started["state"]["interview_id"]
-        for text in ["single", "yes", "12000"]:
-            self.client.post(f"/api/interviews/{iid}/answer", json={"answer": text})
-        with TemporaryDirectory() as directory:
-            root = Path(directory)
-            copyfile(original["template"], root / "example.pdf")
-            definition = {
-                "id": "example-2026-other", "title": "Fictional API test form", "tax_year": 2026,
-                "recommend_when": [{"fact": "filing_status", "equals": "single"}],
-                "fields": [{"key": "name", "label": "Name", "source": "input",
-                            "pdf_field": "topmostSubform[0].Page1[0].f1_14[0]"}],
-            }
-            (root / "example.mapping.json").write_text(json.dumps(definition), encoding="utf-8")
-            with patch("src.app.forms.FORMS_ROOT", root):
-                catalog = self.client.get(f"/api/interviews/{iid}/forms").json()["forms"]
-                self.assertEqual(catalog[0]["id"], "example-2026-other")
-                self.assertTrue(catalog[0]["recommended"])
-                path = f"/api/interviews/{iid}/forms/example-2026-other"
-                payload = {"tax_year": 2026, "confirmed_tax_year": True, "values": {"name": "Alex"}}
-                preview = self.client.post(path + "/preview", json=payload)
-                self.assertEqual(preview.status_code, 200)
-                self.assertEqual(preview.json()["title"], "Fictional API test form")
-                self.assertEqual(self.client.post(path, json=payload).status_code, 200)
+        partial = self.client.get(download)
+        self.assertEqual(partial.status_code, 200)
+        partial_text = PdfReader(BytesIO(partial.content)).pages[0].extract_text()
+        self.assertIn("In progress", partial_text)
+        self.assertIn(background, partial_text)
+
+        for answer in ("single", "yes", "12000"):
+            self.client.post(interview + "/answer", json={"answer": answer})
+        self.client.post(interview + "/submit", json={"note": "Verify the income amount."})
+        self.client.post(review + "/decision", json={
+            "approve": False, "note": "Follow-up required.\n" * 60 + "End of review note.",
+        })
+        before = self.client.get(review).json()
+        response = self.client.get(download)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["content-type"], "application/pdf")
+        self.assertEqual(response.headers["cache-control"], "no-store")
+        self.assertEqual(response.headers["content-disposition"], f'attachment; filename="interview-review-{iid[:8]}.pdf"')
+        pages = PdfReader(BytesIO(response.content)).pages
+        self.assertGreater(len(pages), 1)
+        text = " ".join(" ".join(page.extract_text().split()) for page in pages)
+        for line in (
+            iid, "Interview Review Report", "Status Returned", "Source Web", background,
+            "Information collected", "About how much did you earn from that side work in total?", "12000",
+            "Document to collect", "1099-NEC", "Playbook reference", "Schedule SE instructions",
+            "Interview record", "Assistant submission", "Verify the income amount.", "Preparer decision",
+            "End of review note.",
+        ):
+            self.assertIn(line, text)
+        self.assertEqual(text.count("Follow-up required."), 60)
+        self.assertEqual(self.client.get(review).json(), before)

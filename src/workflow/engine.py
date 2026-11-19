@@ -13,7 +13,7 @@ One turn, step(state, answer):
     2. review          escalation rules -> flags, required documents -> missing_docs
     3. next_question   first required, unknown, askable fact that has a question
     4. build_guide     question + why + documents + retrieved official text
-    5. summarize       when nothing is left: summary for the preparer, status waiting_for_preparer
+    5. summarize       when nothing is left: summary for the preparer, optionally submitted for review
 
 Principles:
     - Which question comes next is decided by code from the playbook, never by the model.
@@ -471,7 +471,7 @@ def build_guide(state: State, question: dict, search=None, top_n: int = 5, *, qu
 
 
 def summarize(state: State) -> dict:
-    """Build the summary for the preparer and set state.status = "waiting_for_preparer".
+    """Build the summary for the preparer.
 
     Reads: state.facts, flags, missing_docs, history, evidence; scenario.json facts;
     questions.json (to map facts to question ids).
@@ -514,7 +514,6 @@ def summarize(state: State) -> dict:
 
     reminders = [r["text"] for r in definition.get("reminders", []) if check(r.get("when"), state.facts)]
 
-    state.status = "waiting_for_preparer"
     return {
         "type": "summary",
         "interview_id": state.interview_id,
@@ -530,7 +529,7 @@ def summarize(state: State) -> dict:
         "references_unchecked": sorted(unchecked),
         "reminders": reminders,
         "priority": list(state.priority),
-        "turns": sum("tax_qa" not in entry for entry in state.history),
+        "turns": sum("tax_qa" not in entry and "submitted" not in entry for entry in state.history),
         "status": state.status,
     }
 
@@ -570,7 +569,7 @@ def record_answer(state: State, answer_text: str, normalizer=None) -> str | None
 
 
 def step(state: State, answer_text: str | None = None, search=None,
-         normalizer=None, *, question_search=None) -> tuple[State, dict]:
+         normalizer=None, *, question_search=None, auto_submit: bool = True) -> tuple[State, dict]:
     """Run one turn of the interview. Returns (state, output).
 
     step(state)          -> the first question (no answer yet)
@@ -599,5 +598,7 @@ def step(state: State, answer_text: str | None = None, search=None,
 
     question = next_question(state)
     if question is None:
+        if auto_submit:
+            state.status = "waiting_for_preparer"
         return state, summarize(state)
     return state, _show(state, question, search, question_search)
