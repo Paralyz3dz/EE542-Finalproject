@@ -23,7 +23,7 @@ def fingerprint(value):
 
 
 def dehyphenate(text):
-    compounds = {"tax-free", "tax-exempt", "self-employed", "self-employment", "full-time", "part-time", "long-term", "short-term", "year-end", "after-tax", "before-tax", "employer-provided"}
+    compounds = {"tax-free", "tax-exempt", "self-employed", "self-employment", "full-time", "part-time", "long-term", "short-term", "year-end", "after-tax", "before-tax", "employer-provided", "government-related"}
     return re.sub(r"([A-Za-z]+)-\s*\n\s*([a-z]+)", lambda m: m[1] + ("-" if (m[1] + "-" + m[2]).lower() in compounds else "") + m[2], text)
 
 
@@ -273,7 +273,7 @@ def grid_tables(page):
         result.append({"x0": x0, "y0": y0, "x1": x1, "y1": y1, "table": {"extract": rows, "row_count": len(rows), "col_count": table.col_count}, "metadata": {"extraction": "pdf_grid"}})
     return result
 
-def page_nodes(raw_page, layout_page, body_size, clip_bottom=None, grids=None):
+def page_nodes(raw_page, layout_page, body_size, clip_bottom=None, grids=None, *, clip_top=None):
     blocks = raw_page.get_text("dict")["blocks"]
     tables = [{**box, "metadata": {"extraction": "pdf_grid"}} for box in (grids or []) if clip_bottom is None or box["y1"] < clip_bottom + 2]
     for box in layout_page["boxes"]:
@@ -291,6 +291,8 @@ def page_nodes(raw_page, layout_page, body_size, clip_bottom=None, grids=None):
             tables.extend(bands if bands else [box])
     toc_blocks = {i for i, block in enumerate(blocks) if raw_page.number < 2 and any(re.search(r"(?:\.\s*){3,}\s*\d+\s*$", line_text(line)) for line in block.get("lines", []))}
     lines = [(i, line) for i, block in enumerate(blocks) for line in block.get("lines", []) if i not in toc_blocks]
+    if clip_top is not None:
+        lines = [(i, line) for i, line in lines if line["bbox"][1] >= clip_top]
     lines = [(i, line) for i, line in lines if (clip_bottom is None or line["bbox"][1] < clip_bottom) and not re.search(r"To help us develop a more useful index|See .*Comments and Suggestions.*Introduction", clean(line_text(line)))]
     lefts = Counter()
     for _, line in lines:
@@ -432,6 +434,8 @@ def pdf_elements(document, destination, policy):
         pages = ranges(document["name"], len(pdf))
         if document["name"] == "IRS Pub 17":
             pages = list(range(3, 113))
+        start_page = document.get("pdf_start_page", 1)
+        pages = [page for page in pages if page >= start_page]
         identity = {"source": fingerprint(path.read_bytes().hex()), "pages": pages, "parser": pymupdf.VersionBind, "ocr": False}
         if cache.exists():
             cached = json.loads(cache.read_text(encoding="utf-8"))
@@ -478,7 +482,9 @@ def pdf_elements(document, destination, policy):
             if str(number) not in grid_cache["pages"]:
                 grid_cache["pages"][str(number)] = grid_tables(raw_page)
                 grid_path.write_text(json.dumps(grid_cache), encoding="utf-8")
-            for node in page_nodes(raw_page, page, body_size, clip_bottom, grid_cache["pages"][str(number)]):
+            nodes = page_nodes(raw_page, page, body_size, clip_bottom, grid_cache["pages"][str(number)],
+                               clip_top=document.get("pdf_content_top"))
+            for node in nodes:
                 node.update(page=number, printed=printed)
                 elements.append(node)
     return elements, dict(removed)
@@ -578,6 +584,10 @@ def make_document(document, elements):
             if re.match(r"^Part (?:One|Two|Three|Four|Five|Six|[IVX]+)\.", text):
                 chapter_no, chapter, part = None, None, text
                 headings = {}
+            if re.match(r"^Appendix [A-Z][—–-]", text):
+                chapter_no, chapter, part = None, None, None
+                headings = {}
+                level = 1
             if pending_chapter is not None:
                 chapter_no, chapter = pending_chapter, text
                 pending_chapter = None
@@ -708,7 +718,8 @@ def main():
         chunks.extend(records)
         tables.extend(raw)
         print(document["name"], len(records), "chunks", len(raw), "tables", flush=True)
-    if len({c["source"] for c in chunks}) != 21 or len({c["id"] for c in chunks}) != len(chunks):
+    expected = {d["name"] + " (2025)" for d in documents}
+    if {c["source"] for c in chunks} != expected or len({c["id"] for c in chunks}) != len(chunks):
         raise ValueError("Invalid source or chunk inventory")
     for chunk in chunks:
         if chunk["type"] not in ALLOWED_TYPES or not re.fullmatch(r"[a-z0-9_]+_2025_ch\d{2}_[a-f0-9]{16}(?:_[a-f0-9]{10})?", chunk["id"]) or not chunk["text"] or chunk["n_words"] > 400 or chunk["embed_text"].split("\n", 1)[-1] != chunk["text"]:

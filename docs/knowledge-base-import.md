@@ -1,6 +1,6 @@
 # Knowledge-base import
 
-The 21-document inventory and source names are defined in `knowledge-base.md`.
+The original 21-document inventory and source names are listed in the batch tables in `knowledge-base.md`.
 The multi-document pipeline preserves the existing Pub 17 records and adds the other
 20 documents. All new records use tax year 2025 and Qwen3-Embedding-0.6B vectors
 with 1024 dimensions. The loader performs an additive upsert in one transaction;
