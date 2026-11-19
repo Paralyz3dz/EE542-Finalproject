@@ -83,8 +83,8 @@ def compose_modules() -> tuple[dict, list[dict]]:
             if gate:
                 f["ask_when"] = gate + (f.get("ask_when") or [])
             facts.append(f)
-        rules += [dict(r, module=m["id"]) for r in m.get("escalation_rules", [])]
-        reminders += [dict(r, module=m["id"]) for r in m.get("reminders", [])]
+        rules += [_gated(r, gate, m["id"]) for r in m.get("escalation_rules", [])]
+        reminders += [_gated(r, gate, m["id"]) for r in m.get("reminders", [])]
         triggers += [dict(t, module=m["id"]) for t in m.get("triggers", [])]
         qs = json.loads((folder / "questions.json").read_text(encoding="utf-8"))
         questions += [dict(q, module=m["id"]) for q in qs]
@@ -92,6 +92,16 @@ def compose_modules() -> tuple[dict, list[dict]]:
                   "facts": facts, "escalation_rules": rules, "reminders": reminders, "modules": modules,
                   "triggers": triggers}
     return definition, questions
+
+
+def _gated(item: dict, gate: list[dict], module: str) -> dict:
+    """Copy a module's escalation rule or reminder, tagged with the module and switched by its gate.
+
+    A module item may test base facts only (side_gig's estimated-tax reminder uses
+    made_estimated_payments), so without the gate it would fire for clients whose module is off.
+    """
+    when = list(item.get("when") or [])
+    return dict(item, module=module, when=[c for c in gate if c not in when] + when)
 
 
 def sections(definition: dict) -> list[dict]:
@@ -467,7 +477,10 @@ def summarize(state: State) -> dict:
         flags / needs_preparer_attention / missing_docs
         citations_retrieved    citations really returned for the answered questions
         references_to_verify   all playbook references of the answered questions
-        references_not_in_kb   references retrieval never returned (knowledge-base gaps)
+        references_not_in_kb   references whose document retrieval never returned for any question
+                               of this interview (possible knowledge-base gaps); a reference that
+                               missed the top results for one question but came back for another
+                               is in the knowledge base and is not listed
         references_unchecked   references not checked because retrieval was down
         reminders              record-keeping reminders whose conditions hold (modular playbook)
         priority               sections the assistant chose to ask first
@@ -491,6 +504,9 @@ def summarize(state: State) -> dict:
                 missing.add(r["reference"])
             elif r["retrieved"] is None:
                 unchecked.add(r["reference"])
+
+    seen_docs = {_doc_key(c) for c in retrieved}
+    missing = {ref for ref in missing if _doc_key(ref) not in seen_docs}
 
     reminders = [r["text"] for r in definition.get("reminders", []) if check(r.get("when"), state.facts)]
 
