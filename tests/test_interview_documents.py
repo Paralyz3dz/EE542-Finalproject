@@ -143,6 +143,42 @@ def test_shared_support_survives_removal_and_manual_answers_are_preserved(client
     assert [entry.get("files") for entry in history] == [None, ["backup.txt"]]
 
 
+def test_only_sent_attachments_update_the_interview(client):
+    path, question_id = start(client)
+    discarded, kept = stage(
+        client, text_file("discard.txt", "Self-employment income: No"),
+        text_file("keep.txt", "Filing status: Single"),
+    )
+    draft = client.get(path).json()
+    assert draft["state"]["facts"] == {}
+    assert draft["documents"] == []
+    assert draft["output"]["question_id"] == question_id
+    assert client.delete(f"/api/interview-documents/{discarded['id']}").status_code == 204
+
+    response = client.post(path + "/answer", json={"question_id": question_id, "document_ids": [kept["id"]]})
+    assert response.status_code == 200
+    assert response.json()["state"]["facts"] == {"filing_status": "single"}
+    assert response.json()["output"]["fact"] == "has_side_income"
+    saved = client.get(path).json()
+    assert saved["turns"] == [{"attachments": [{"id": kept["id"], "name": "keep.txt"}]}]
+
+
+def test_sending_answer_and_files_prefers_manual_answer_and_retries_invalid_draft(client):
+    path, question_id = start(client)
+    attachment, = stage(client, text_file("intake.txt", "Filing status: Single", "Self-employment income: No"))
+    request = {"question_id": question_id, "document_ids": [attachment["id"]]}
+
+    assert client.post(path + "/answer", json={**request, "answer": "unclear"}).status_code == 422
+    assert client.get(path).json()["state"]["facts"] == {}
+    response = client.post(path + "/answer", json={**request, "answer": "married_joint"})
+    assert response.status_code == 200
+    assert response.json()["state"]["facts"] == {"filing_status": "married_joint", "has_side_income": False}
+    assert response.json()["conflicts"] == ["filing_status"]
+    turn, = client.get(path).json()["turns"]
+    assert turn["answer"] == "married_joint"
+    assert turn["attachments"] == [{"id": attachment["id"], "name": "intake.txt"}]
+
+
 def test_removing_conflict_restores_remaining_document_and_preserves_manual_conflicts(client):
     path, initial = start(client)
     a, b = stage(
