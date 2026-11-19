@@ -811,6 +811,10 @@
   }
 
   function render(out, focusAnswer = true) {
+    if (out.type === 'tax_qa') {
+      renderTaxAnswer(out.tax_qa);
+      out = out.guide;
+    }
     currentQuestionId = out.question_id || out.guide?.question_id || null;
     if (out.type !== 'error') {
       quickAnswers?.remove();
@@ -818,9 +822,6 @@
     }
     if (out.type === 'question') {
       renderQuestion(out);
-    } else if (out.type === 'tax_qa') {
-      renderTaxAnswer(out.tax_qa);
-      renderQuestion(out.guide);
     } else if (out.type === 'error') {
       addBubble(el('article', 'bubble err', out.message));
     } else if (out.type === 'summary') {
@@ -1244,14 +1245,6 @@
         question_id: questionId,
         document_ids: files.map(file => file.id)
       });
-      if (data.output.type === 'tax_qa') {
-        answer.value = '';
-        addUserMessage(text, []);
-        renderSidebar(data.state);
-        render(data.output, false);
-        setStatus(files.length ? 'Attachments are ready for your interview reply.' : '');
-        return;
-      }
       attachments = [];
       answer.value = '';
       documentStatus.textContent = '';
