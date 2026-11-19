@@ -21,14 +21,14 @@ from uuid import UUID, uuid4
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse, Response
-from pydantic import BaseModel, Field, StringConstraints, field_validator
+from pydantic import BaseModel, Field, StringConstraints, field_validator, model_validator
 from starlette.concurrency import run_in_threadpool
 from starlette.datastructures import UploadFile
 from starlette.formparsers import MultiPartException, MultiPartParser
 
 from src.agent import create_tax_agent
 from src.app.documents import MAX_FILE_BYTES, MAX_FILES
-from src.app.interviews import (DocumentExtractionUnavailable, InterviewClosed,
+from src.app.interviews import (DocumentExtractionUnavailable, InvalidInterviewAnswer, InterviewClosed,
                                 InterviewNotFound, InterviewService, StagedDocumentUnavailable,
                                 list_playbooks)
 from src.app.forms import FormRequest, fill_form, form_catalog, load_forms, prepare_form
@@ -159,18 +159,26 @@ class StartRequest(BaseModel):
 
 
 class AnswerRequest(BaseModel):
-    """Body of POST /api/interviews/{id}/answer: {"answer": text, 1-2000 chars}."""
-    answer: str = Field(min_length=1, max_length=2000)
+    answer: str | None = Field(default=None, min_length=1, max_length=2000)
     question_id: str | None = Field(default=None, max_length=100)
+    document_ids: list[UUID] = Field(default_factory=list, max_length=MAX_FILES)
 
     @field_validator("answer")
     @classmethod
-    def strip_answer(cls, value: str) -> str:
+    def strip_answer(cls, value: str | None) -> str | None:
         """Trim spaces; reject an answer that is only whitespace (422)."""
+        if value is None:
+            return None
         value = value.strip()
         if not value:
             raise ValueError("Answer must not be blank.")
         return value
+
+    @model_validator(mode="after")
+    def require_content(self):
+        if self.answer is None and not self.document_ids:
+            raise ValueError("Send an answer or attach a file.")
+        return self
 
 
 class RenameInterviewRequest(BaseModel):
@@ -245,12 +253,15 @@ def answer(interview_id: str, payload: AnswerRequest, request: Request):
     try:
         result = request.app.state.interviews.answer(
             interview_id, payload.answer, payload.question_id, owner=interview_owner(request),
+            document_ids=[str(document_id) for document_id in payload.document_ids],
         )
         return JSONResponse(result, headers={"Cache-Control": "no-store"})
     except InterviewNotFound:
         raise HTTPException(404, "Interview not found. Start a new one.") from None
-    except InterviewClosed as exc:
+    except (InterviewClosed, StagedDocumentUnavailable) as exc:
         raise HTTPException(409, str(exc)) from None
+    except InvalidInterviewAnswer as exc:
+        raise HTTPException(422, str(exc)) from None
 
 
 @app.post("/api/interview-documents")

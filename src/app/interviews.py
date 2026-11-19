@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 
 from src.app.documents import TAX_YEAR, extract_document_facts
 from src.db.interview_store import Interview, InterviewStore
-from src.workflow.engine import (INTAKE, MODULES, PLAYBOOKS, apply_triggers, load_scenario, review, sections,
+from src.workflow.engine import (INTAKE, MODULES, PLAYBOOKS, apply_triggers, load_scenario, record_answer, review, sections,
                                  start_interview, step, summarize)
 from src.workflow.state import State
 
@@ -40,6 +40,10 @@ class InterviewNotFound(KeyError):
 
 class InterviewClosed(RuntimeError):
     """The interview is not in a status that allows this action."""
+
+
+class InvalidInterviewAnswer(ValueError):
+    pass
 
 
 class DocumentExtractionUnavailable(RuntimeError):
@@ -92,7 +96,7 @@ def snapshot(state: State) -> dict:
         "facts": {k: v for k, v in state.facts.items() if v is not None},
         "flags": state.flags,
         "missing_docs": state.missing_docs,
-        "answered": len(state.history),
+        "answered": sum("attachments" not in entry or "answer_text" in entry for entry in state.history),
         "priority": list(state.priority),
         "triggers": sorted({b["keyword"] for b in state.boosted}),
         "last_parsed_by": state.history[-1].get("parsed_by") if state.history else None,
@@ -212,8 +216,8 @@ class InterviewService:
             self._store.create(owner, Interview(state, out, documents, conflicts))
             return {"output": out, "state": snapshot(state), "conflicts": conflicts}
 
-    def answer(self, interview_id: str, answer_text: str, question_id: str | None = None,
-               *, owner: str = "") -> dict:
+    def answer(self, interview_id: str, answer_text: str | None, question_id: str | None = None,
+               *, owner: str = "", document_ids: list[str] | None = None) -> dict:
         """Submit the assistant's answer to the current question (one engine step).
 
         Raises InterviewNotFound, or InterviewClosed if the interview already ended.
@@ -222,15 +226,47 @@ class InterviewService:
         with self._lock:
             interview = self._get(interview_id, owner)
             state = interview.state
-            if state.status != "in_progress":
+            attachments_only = bool(document_ids) and answer_text is None
+            if state.status != "in_progress" and not (attachments_only and state.status == "waiting_for_preparer"):
                 raise InterviewClosed(f"Interview is {state.status}")
-            if question_id is not None and state.asked[-1] != question_id:
+            if question_id is not None and (not state.asked or state.asked[-1] != question_id):
                 raise InterviewClosed("The current question changed. Refresh the interview before answering.")
+            if document_ids:
+                return self._answer_with_documents(interview, answer_text, document_ids, owner)
             interview.state, out = step(state, answer_text, question_search=self._search_question,
                                         normalizer=self.normalizer)
             interview.output = out.get("guide", out)
             self._save(owner, interview)
             return {"output": out, "state": snapshot(interview.state)}
+
+    def _answer_with_documents(self, interview: Interview, answer_text: str | None,
+                               document_ids: list[str], owner: str) -> dict:
+        state = interview.state
+        selected = self._selected_documents(state, document_ids, owner, interview.documents)
+        uploaded = [{"id": key, "name": doc["name"]} for key, doc in selected.items()
+                    if key not in interview.documents]
+        if answer_text is None and not uploaded:
+            return {"output": interview.output, "state": snapshot(state), "conflicts": interview.conflicts}
+
+        if answer_text is not None:
+            error = record_answer(state, answer_text, self.normalizer)
+            if error is not None:
+                raise InvalidInterviewAnswer(error)
+            if uploaded:
+                state.history[-1]["attachments"] = uploaded
+        else:
+            state.history.append({"attachments": uploaded})
+
+        interview.documents = interview.documents | selected
+        changed, interview.conflicts = self._update_document_facts(state, interview.documents)
+        if changed:
+            state.status = "in_progress"
+        if state.status == "in_progress":
+            interview.state, interview.output = step(state, question_search=self._search_question, normalizer=self.normalizer)
+        else:
+            interview.output = summarize(state)
+        self._save(owner, interview)
+        return {"output": interview.output, "state": snapshot(state), "conflicts": interview.conflicts}
 
     def stage_documents(self, scenario: str, files: list[tuple[str, bytes]], *, owner: str = "") -> dict:
         if scenario not in {p["id"] for p in list_playbooks()}:
@@ -342,10 +378,17 @@ class InterviewService:
         state = interview.state
         _, questions = load_scenario(state.scenario)
         prompts = {question["id"]: question["question"] for question in questions}
-        turns = [
-            {"question": prompts.get(entry["question_id"], "Previous question"), "answer": entry["answer_text"]}
-            for entry in state.history if "answer_text" in entry
-        ]
+        turns = []
+        for entry in state.history:
+            turn = {}
+            if "answer_text" in entry:
+                turn.update(question=prompts.get(entry["question_id"], "Previous question"), answer=entry["answer_text"])
+            if "attachments" in entry:
+                turn["attachments"] = [item for item in entry["attachments"] if item["id"] in interview.documents]
+                if not turn["attachments"]:
+                    del turn["attachments"]
+            if turn:
+                turns.append(turn)
         return {
             "state": snapshot(state),
             "history": state.history,

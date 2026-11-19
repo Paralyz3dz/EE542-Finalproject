@@ -190,13 +190,11 @@ python -m unittest discover -s tests -p test_chat_api.py
 
 After starting an interview, select **+** beside the answer box to attach up to ten
 text-based PDFs, PNG images, JPG/JPEG images, or UTF-8 text files (10 MB each).
-Extraction begins automatically when you select the files, and you can continue
-answering while they are processed. The interview skips questions with extracted answers and preserves
-manually entered answers. Remove an attachment to withdraw its answers unless another
-attachment still supports them. A question may reappear when its answer is withdrawn.
-Attachments belong to the interview where they were added. Starting a new interview
-opens an empty attachment list. Reopening an interview restores its saved attachment names
-and extracted answers.
+Extraction begins when you select the files. While the files are processed, you can
+type a reply or remove attachments from the draft. Select **Send** with or without
+a reply to apply the remaining attachments. The interview skips questions answered by
+the submitted files and gives manually entered answers priority. Sent files appear in
+the conversation and reopen with the saved interview.
 Documents must show the tax year configured in `config/settings.json`. Upload
 scanned pages as PNG or JPG images, or add a selectable text layer to the PDF.
 
@@ -249,7 +247,7 @@ Interview API:
 |---|---|---|---|
 | GET | `/api/playbooks` | | available scenarios |
 | POST | `/api/interviews` | `{"scenario": "intake", "document_ids": []}` | first unanswered question or summary + sidebar snapshot |
-| POST | `/api/interviews/{id}/answer` | `{"answer": "yes"}` | next question, an error (same question again), or the summary |
+| POST | `/api/interviews/{id}/answer` | `{"answer": "yes", "document_ids": []}` | sends text, staged files, or both, then returns the next question or summary |
 | POST | `/api/interview-documents` | multipart form with one or more `files` parts | per-file extraction status and staged IDs |
 | DELETE | `/api/interview-documents/{document_id}` | | removes a staged file's extracted answers |
 | PUT | `/api/interviews/{id}/documents` | `{"document_ids": ["..."]}` | syncs the active attachments and returns the current question or summary |

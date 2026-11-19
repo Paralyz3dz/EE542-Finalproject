@@ -116,7 +116,26 @@
     #log { flex: 1; overflow-y: auto; padding: 18px; }
     .bubble { max-width: 88%; margin-bottom: 14px; padding: 12px 14px; border-radius: 10px; overflow-wrap: anywhere; }
     .bot { background: #f2f5fa; }
-    .me { background: #e4ecff; margin-left: auto; white-space: pre-wrap; }
+    .user-message {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      width: fit-content;
+      max-width: min(76%, 36rem);
+      margin: 0 0 16px auto;
+    }
+    .message-text {
+      max-width: 100%;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 18px;
+      background: #eef1f5;
+      color: #1c2938;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
     .err { background: #fdecec; color: #8a1c1c; }
     .qnum { font-size: 12px; color: #596579; text-transform: uppercase; letter-spacing: .04em; }
     .qtext { font-weight: 600; margin: 4px 0 8px; font-size: 16px; }
@@ -130,9 +149,27 @@
     .gap { color: #8a6d1c; }
     .inputbar { padding: 10px 18px 16px; display: grid; gap: 8px; justify-items: center; }
     .inputbar > * { width: 100%; max-width: 720px; min-width: 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-    .chips button { padding: 6px 12px; }
-    .inputbar > .chips:empty { display: none; }
+    .quick-answers { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+    .quick-answers button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      max-width: 100%;
+      min-height: 36px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border-color: #ccd4de;
+      color: #3d4a5c;
+      overflow-wrap: anywhere;
+    }
+    .quick-answers button:hover:not(:disabled), .quick-answers button[aria-pressed="true"] {
+      background: #e9f1ff;
+      border-color: #7296e2;
+      color: #173e92;
+    }
+    .quick-answers button:focus-visible { outline: 2px solid #2458c6; outline-offset: 2px; }
+    .quick-answer-check { visibility: hidden; }
+    .quick-answers button[aria-pressed="true"] .quick-answer-check { visibility: visible; }
     .row { display: flex; gap: 8px; }
     .composer {
       display: grid;
@@ -173,13 +210,14 @@
     }
     .attach-button:disabled { pointer-events: none; }
     .composer .send-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      min-height: 40px;
-      padding: 0 14px;
-      border-radius: 999px;
-      font-weight: 600;
+      display: inline-grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
     }
     .composer .attach-button:hover:not(:disabled) { background: #e1eaff; }
     .composer .send-button:hover:not(:disabled) { background: #1d49ab; }
@@ -192,6 +230,7 @@
     .file-copy { min-width: 0; }
     .file-copy small { display: block; overflow-wrap: anywhere; }
     .file-card button { margin-left: auto; padding: 1px 6px; }
+    .sent-attachments { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 100%; }
     .composer p { margin: 0 5px; }
     .composer p:empty, .attachments:empty { display: none; }
     #status, #setup-status, #history-status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
@@ -230,6 +269,7 @@
     @media (max-width: 640px) {
       .priority-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .setup-actions #start { width: 100%; }
+      .user-message { max-width: 92%; }
     }
     @media (max-width: 350px) {
       .priority-grid { grid-template-columns: minmax(0, 1fr); }
@@ -278,9 +318,8 @@
     <section class="panel chat">
       <div id="log" role="log" aria-live="polite"></div>
       <div class="inputbar">
-        <div id="chips" class="chips"></div>
         <form id="answer-form" class="composer">
-          <div id="attachments" class="attachments" aria-label="Files to upload"></div>
+          <div id="attachments" class="attachments" aria-label="Files to send"></div>
           <p id="document-status" class="note" role="status"></p>
           <p id="document-conflicts" class="note" role="status"></p>
           <textarea id="answer" rows="2" aria-label="Client's answer" placeholder="Type the client's answer, or a short note…" disabled></textarea>
@@ -290,7 +329,9 @@
               <button id="attach" class="secondary attach-button" type="button" aria-label="Attach tax documents" aria-describedby="document-help" disabled>+</button>
               <span id="document-help" hidden>PDF, PNG, JPG, or TXT. Up to 10 files, 10 MB each.</span>
             </span>
-            <button id="send" class="send-button" type="submit" disabled>Send</button>
+            <button id="send" class="send-button" type="submit" aria-label="Send" title="Send" disabled>
+              <span aria-hidden="true">↑</span>
+            </button>
           </div>
         </form>
         <p id="status" role="status"></p>
@@ -345,7 +386,7 @@
 
 <script>
   const $ = (sel) => document.querySelector(sel);
-  const log = $('#log'), chips = $('#chips'), answer = $('#answer'), send = $('#send');
+  const log = $('#log'), answer = $('#answer'), send = $('#send');
   const statusLine = $('#status'), setupStatus = $('#setup-status'), startBtn = $('#start');
   const setupForm = $('#interview-setup'), setupFields = $('#setup-fields');
   const page = $('.page'), workspace = $('#interview-workspace'), heading = $('#interview-heading');
@@ -372,13 +413,12 @@
   let busy = false;
   let draftUrl = null;
   let currentQuestionId = null;
+  let quickAnswers = null;
   let summaryBubble = null;
   let interviewStatus = null;
   let interviewScenario = null;
   let attachments = [];
   let activeUploads = 0;
-  let documentRevision = 0;
-  let syncedRevision = 0;
 
   function el(tag, cls, text) {
     const node = document.createElement(tag);
@@ -394,9 +434,18 @@
     target.textContent = text || '';
     target.classList.toggle('error', isError);
   }
-  function setInputEnabled(on) {
-    answer.disabled = !on; send.disabled = !on;
-    chips.querySelectorAll('button').forEach(b => b.disabled = !on);
+  function refreshComposer() {
+    const waiting = attachments.some(item => !item.id && !item.error);
+    const blocked = busy || waiting || attachments.some(item => item.error);
+    const canAnswer = !busy && !!currentQuestionId;
+    answer.disabled = !canAnswer;
+    const draft = answer.value.trim();
+    send.disabled = blocked || !((attachments.length && canEditDocuments()) || (canAnswer && draft));
+    attach.disabled = filePicker.disabled = !canEditDocuments();
+    for (const button of quickAnswers?.children || []) {
+      button.disabled = !canAnswer;
+      button.setAttribute('aria-pressed', String(button.value.toLowerCase() === draft.toLowerCase()));
+    }
   }
   function fmt(v) { return Array.isArray(v) ? (v.join(', ') || 'none') : (v === true ? 'yes' : v === false ? 'no' : String(v)); }
 
@@ -417,6 +466,8 @@
     b.append(el('div', 'qnum', `Question ${q.step_number}` + (q.section ? ` · ${q.section}` : '')));
     if (q.triggered_by) b.append(el('div', 'trigger', `Asked now because the client mentioned “${q.triggered_by}”.`));
     b.append(el('div', 'qtext', q.question));
+    quickAnswers = renderQuickAnswers(q);
+    if (quickAnswers) b.append(quickAnswers);
     b.append(el('div', 'meta', 'Why ask: ' + q.why_ask));
     if (q.required_docs.length) b.append(el('div', 'meta', 'Ask for: ' + q.required_docs.join(', ')));
     b.append(refList(q.references));
@@ -433,40 +484,53 @@
       b.append(el('div', 'note', 'Source passages unavailable: ' + q.retrieval_error));
     }
     addBubble(b);
-    renderChips(q);
-  }
-
-  function activeDocumentIds() {
-    return attachments.filter(item => item.id && !item.removing).map(item => item.id);
   }
 
   function canEditDocuments() {
-    return ['in_progress', 'waiting_for_preparer'].includes(interviewStatus);
+    return !busy && ['in_progress', 'waiting_for_preparer'].includes(interviewStatus);
+  }
+
+  function fileCard(item) {
+    const card = el('div', 'file-card');
+    const copy = el('div', 'file-copy');
+    const name = el('div', 'file-name', item.name);
+    name.title = item.name;
+    copy.append(name);
+    card.append(el('span', 'file-type', item.name.split('.').pop().toUpperCase()), copy);
+    return card;
+  }
+
+  function addUserMessage(text, files) {
+    const message = el('article', 'user-message');
+    if (files.length) {
+      const cards = el('div', 'sent-attachments');
+      cards.setAttribute('aria-label', 'Sent attachments');
+      cards.append(...files.map(fileCard));
+      message.append(cards);
+    }
+    if (text) message.append(el('p', 'message-text', text));
+    addBubble(message);
   }
 
   function renderAttachments() {
     const container = $('#attachments');
     container.replaceChildren();
     for (const item of attachments) {
-      const card = el('div', 'file-card');
-      const copy = el('div', 'file-copy');
-      const name = el('div', 'file-name', item.name);
-      name.title = item.name;
-      const progress = item.file ? 'Waiting…' : 'Extracting…';
-      const status = item.removing ? 'Removing…' : item.error || (item.count === undefined ? progress : '');
-      copy.append(name);
-      if (status) copy.append(el('small', item.error ? 'gap' : 'muted', status));
+      const card = fileCard(item);
+      const status = item.error || (item.id ? '' : item.file ? 'Waiting…' : 'Preparing…');
+      if (status) card.querySelector('.file-copy').append(el('small', item.error ? 'gap' : 'muted', status));
       const remove = el('button', 'secondary', '×');
       remove.type = 'button';
       remove.setAttribute('aria-label', `Remove ${item.name}`);
-      remove.disabled = !!item.removing || !canEditDocuments();
+      remove.disabled = !canEditDocuments();
       remove.addEventListener('click', () => removeAttachment(item));
-      card.append(el('span', 'file-type', item.name.split('.').pop().toUpperCase()), copy, remove);
+      card.append(remove);
       container.append(card);
     }
+    refreshComposer();
   }
 
-  function showDocumentConflicts(keys) {
+  function showDocumentConflicts(keys = []) {
     documentConflicts.textContent = keys.length
       ? `Conflicting document answers excluded: ${keys.map(key => key.replaceAll('_', ' ')).join(', ')}.`
       : '';
@@ -497,74 +561,20 @@
         if (result.id) await api(`/api/interview-documents/${result.id}`, undefined, 'DELETE');
         return;
       }
-      Object.assign(item, result);
-      if (item.id) {
-        documentRevision++;
-        syncDocumentAnswers();
-      }
+      item.id = result.id;
+      if (!item.id) item.error = result.error || 'No usable information found. Remove this file before sending.';
     } catch (error) {
       if (attachments.includes(item)) item.error = error.message;
-      else documentStatus.textContent = error.message;
     }
   }
 
   async function removeAttachment(item) {
-    if (item.removing || !canEditDocuments()) return;
+    if (!canEditDocuments()) return;
     documentStatus.textContent = '';
-    if (item.id) {
-      item.removing = true;
-      documentRevision++;
-      renderAttachments();
-      try {
-        await api(`/api/interview-documents/${item.id}`, undefined, 'DELETE');
-      } catch (error) {
-        item.removing = false;
-        documentRevision++;
-        documentStatus.textContent = error.message;
-        renderAttachments();
-        syncDocumentAnswers();
-        return;
-      }
-    }
     attachments = attachments.filter(attachment => attachment !== item);
     renderAttachments();
     attach.focus();
-    syncDocumentAnswers();
-  }
-
-  async function syncDocumentAnswers() {
-    if (busy || !canEditDocuments() || syncedRevision === documentRevision) return;
-    const revision = documentRevision;
-    busy = true;
-    setInputEnabled(false);
-    try {
-      const data = await api(`/api/interviews/${interviewId}/documents`, {
-        document_ids: activeDocumentIds()
-      }, 'PUT');
-      syncedRevision = revision;
-      if (revision !== documentRevision) return;
-      renderSidebar(data.state);
-      showDocumentConflicts(data.conflicts);
-      if (data.output.type === 'summary' || data.output.question_id !== currentQuestionId) {
-        const note = summaryBubble?.querySelector('textarea')?.value;
-        if (summaryBubble) {
-          summaryBubble.remove();
-          summaryBubble = null;
-        }
-        if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
-        const draftCleared = !!answer.value.trim();
-        answer.value = '';
-        render(data.output);
-        if (summaryBubble && note) summaryBubble.querySelector('textarea').value = note;
-        if (draftCleared) setStatus('The question changed, so the draft answer was cleared.');
-      }
-    } catch (error) {
-      if (revision === documentRevision) documentStatus.textContent = error.message;
-    } finally {
-      busy = false;
-      setInputEnabled(!!currentQuestionId);
-      if (revision !== documentRevision) syncDocumentAnswers();
-    }
+    if (item.id) await api(`/api/interview-documents/${item.id}`, undefined, 'DELETE').catch(() => {});
   }
 
   function refList(refs) {
@@ -583,25 +593,37 @@
     return wrap;
   }
 
-  function renderChips(q) {
-    chips.replaceChildren();
-    const quick = q.input_type === 'bool' ? ['Yes', 'No'] : q.input_type === 'enum' ? q.options : [];
-    quick.forEach(opt => {
-      const btn = el('button', 'secondary', opt.replaceAll('_', ' '));
-      btn.type = 'button';
-      btn.addEventListener('click', () => submit(opt));
-      chips.append(btn);
-    });
+  function renderQuickAnswers(q) {
     answer.placeholder = {
       money: 'Amount, e.g. 12000 — or a note like "about 12k"',
       list: 'Comma-separated, e.g. 1099-NEC, 1099-K — or "none"',
-      bool: 'Or type a note, e.g. "she said she didn\'t"',
-      enum: 'Or type a note describing the situation'
+      bool: 'Choose an answer or type a note',
+      enum: 'Choose an answer or type a note'
     }[q.input_type] || 'Type the client\'s answer…';
+    const quick = q.input_type === 'bool' ? ['Yes', 'No'] : q.input_type === 'enum' ? q.options : [];
+    if (!quick.length) return null;
+    const group = el('div', 'quick-answers');
+    group.setAttribute('role', 'group');
+    group.setAttribute('aria-label', 'Quick answers');
+    quick.forEach(opt => {
+      const btn = el('button', 'secondary');
+      btn.type = 'button';
+      btn.value = opt.replaceAll('_', ' ');
+      const check = el('span', 'quick-answer-check', '✓');
+      check.setAttribute('aria-hidden', 'true');
+      btn.append(el('span', null, btn.value), check);
+      btn.addEventListener('click', () => {
+        answer.value = btn.value;
+        refreshComposer();
+        answer.focus();
+        answer.setSelectionRange(answer.value.length, answer.value.length);
+      });
+      group.append(btn);
+    });
+    return group;
   }
 
   function renderSummary(s) {
-    chips.replaceChildren();
     const b = el('article', 'bubble bot');
     b.append(el('div', 'qnum', 'Interview complete'));
     b.append(el('div', 'qtext', 'Summary for the preparer'));
@@ -639,6 +661,10 @@
 
       const decide = async (approve) => {
         if (busy) return;
+        if (attachments.length) {
+          setStatus('Send or remove the draft attachments before submitting the review.', true);
+          return;
+        }
         busy = true;
         ok.disabled = back.disabled = true;
         try {
@@ -649,7 +675,7 @@
           renderAttachments();
           renderDecision({ decision: data.state.status, note: text });
         } catch (e) { setStatus(e.message, true); ok.disabled = back.disabled = false; }
-        finally { busy = false; syncDocumentAnswers(); }
+        finally { busy = false; renderAttachments(); }
       };
       ok.addEventListener('click', () => decide(true));
       back.addEventListener('click', () => decide(false));
@@ -768,17 +794,18 @@
 
   function render(out, focusAnswer = true) {
     currentQuestionId = out.question_id || out.guide?.question_id || null;
+    if (out.type !== 'error') {
+      quickAnswers?.remove();
+      quickAnswers = null;
+    }
     if (out.type === 'question') {
       renderQuestion(out);
-      setInputEnabled(true);
     } else if (out.type === 'error') {
       addBubble(el('article', 'bubble err', out.message));
-      renderChips(out.guide);
-      setInputEnabled(true);
     } else if (out.type === 'summary') {
       renderSummary(out);
-      setInputEnabled(false);
     }
+    refreshComposer();
     if (focusAnswer && currentQuestionId) answer.focus();
   }
 
@@ -909,10 +936,6 @@
   async function startInterview(event) {
     event.preventDefault();
     if (busy || !intake) return;
-    if (activeUploads || attachments.some(item => item.removing)) {
-      setStatus('Wait for the current attachments to finish processing.', true, setupStatus);
-      return;
-    }
     busy = true;
     startBtn.disabled = setupFields.disabled = true;
     setStatus('Starting interview…', false, setupStatus);
@@ -926,18 +949,17 @@
     finally {
       busy = false;
       startBtn.disabled = setupFields.disabled = false;
-      syncDocumentAnswers();
+      refreshComposer();
     }
   }
 
   function clearConversation() {
     currentQuestionId = summaryBubble = null;
-    syncedRevision = documentRevision = 0;
     answer.value = '';
     documentStatus.textContent = '';
     if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
     log.replaceChildren();
-    chips.replaceChildren();
+    quickAnswers = null;
     showDocumentConflicts([]);
     setStatus('');
   }
@@ -948,7 +970,6 @@
     clearConversation();
     renderSidebar({ status: 'not_started', answered: 0, flags: [], missing_docs: [], facts: {} });
     renderAttachments();
-    setInputEnabled(false);
     showSetup();
   }
 
@@ -956,16 +977,23 @@
     clearConversation();
     interviewId = data.state.interview_id;
     interviewScenario = data.state.scenario;
-    attachments = data.documents || [];
+    attachments = [];
     renderSidebar(data.state);
     renderAttachments();
     showDocumentConflicts(data.conflicts);
+    const sentIds = new Set();
     for (const turn of data.turns || []) {
-      const question = el('article', 'bubble bot');
-      question.append(el('p', 'qtext', turn.question));
-      addBubble(question);
-      addBubble(el('article', 'bubble me', turn.answer));
+      if (turn.question) {
+        const question = el('article', 'bubble bot');
+        question.append(el('p', 'qtext', turn.question));
+        addBubble(question);
+      }
+      const files = turn.attachments || [];
+      files.forEach(file => sentIds.add(file.id));
+      addUserMessage(turn.answer, files);
     }
+    const earlierFiles = (data.documents || []).filter(file => !sentIds.has(file.id));
+    if (earlierFiles.length) addUserMessage('', earlierFiles);
     render(data.output, false);
     if (data.output.type === 'summary') {
       const decision = data.history?.find(entry => entry.decision);
@@ -1105,7 +1133,7 @@
     form.addEventListener('submit', async event => {
       event.preventDefault();
       if (confirm.disabled) return;
-      if (busy || (id === interviewId && (activeUploads || attachments.some(attachment => attachment.removing)))) {
+      if (busy) {
         setStatus('Wait for the current interview update to finish, then try again.', true, historyStatus);
         return;
       }
@@ -1135,7 +1163,7 @@
       } finally {
         historyDeletion = null;
         busy = false;
-        syncDocumentAnswers();
+        refreshComposer();
       }
     });
   }
@@ -1158,7 +1186,7 @@
   }
 
   async function openSavedInterview(id) {
-    if (busy || activeUploads || attachments.some(item => item.removing)) {
+    if (busy) {
       setStatus('Wait for the current interview update to finish, then try again.', true, historyStatus);
       return;
     }
@@ -1174,25 +1202,51 @@
       if (request === historyRequest && historyDialog.open) setStatus(e.message, true, historyStatus);
     } finally {
       busy = false;
+      renderAttachments();
     }
   }
 
   async function submit(text) {
     text = (text || '').trim();
-    if (busy || !text || !currentQuestionId) return;
-    busy = true; setInputEnabled(false); setStatus('Checking the answer…');
-    addBubble(el('article', 'bubble me', text));
-    answer.value = '';
+    if (busy || (text && !currentQuestionId) || (!text && !attachments.length) ||
+        (attachments.length && !canEditDocuments()) ||
+        attachments.some(item => !item.id || item.error)) return;
+    const files = attachments.slice();
+    const questionId = currentQuestionId;
+    busy = true;
+    renderAttachments();
+    setStatus(files.length ? 'Sending attachments…' : 'Checking the answer…');
     try {
-      const data = await api(`/api/interviews/${interviewId}/answer`, { answer: text, question_id: currentQuestionId });
+      const data = await api(`/api/interviews/${interviewId}/answer`, {
+        answer: text || null,
+        question_id: questionId,
+        document_ids: files.map(file => file.id)
+      });
+      attachments = [];
+      answer.value = '';
+      documentStatus.textContent = '';
+      const note = summaryBubble?.querySelector('textarea')?.value;
+      if (summaryBubble) {
+        summaryBubble.remove();
+        summaryBubble = null;
+        if (draftUrl) { URL.revokeObjectURL(draftUrl); draftUrl = null; }
+      }
+      addUserMessage(text, files);
       renderSidebar(data.state);
-      render(data.output);
+      if (files.length) showDocumentConflicts(data.conflicts);
+      if (text || data.output.type !== 'question' || data.output.question_id !== questionId) render(data.output, false);
+      if (summaryBubble && note) summaryBubble.querySelector('textarea').value = note;
       setStatus('');
     } catch (e) {
-      setStatus(e.message, true); setInputEnabled(true); answer.value = text;
-    } finally { busy = false; syncDocumentAnswers(); }
+      setStatus(e.message, true);
+    } finally {
+      busy = false;
+      renderAttachments();
+      if (currentQuestionId) answer.focus();
+    }
   }
 
+  answer.addEventListener('input', refreshComposer);
   $('#answer-form').addEventListener('submit', (e) => { e.preventDefault(); submit(answer.value); });
   answer.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); submit(answer.value); }
@@ -1217,7 +1271,7 @@
       newInterviewBtn.focus({ preventScroll: true });
     } finally {
       busy = false;
-      syncDocumentAnswers();
+      refreshComposer();
     }
   });
   attach.addEventListener('click', () => filePicker.click());
@@ -1232,7 +1286,7 @@
     for (const file of valid) {
       if (attachments.some(item => item.name === file.name && item.size === file.size && item.lastModified === file.lastModified)) continue;
       if (attachments.length === maxAttachments) {
-        notices.push(`You can keep up to ${maxAttachments} files attached.`);
+        notices.push(`You can send up to ${maxAttachments} files in a message.`);
         break;
       }
       attachments.push({ name: file.name, size: file.size, lastModified: file.lastModified, file });
