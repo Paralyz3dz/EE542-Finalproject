@@ -254,6 +254,7 @@ def answer(interview_id: str, payload: AnswerRequest, request: Request):
         result = request.app.state.interviews.answer(
             interview_id, payload.answer, payload.question_id, owner=interview_owner(request),
             document_ids=[str(document_id) for document_id in payload.document_ids],
+            tax_questions=True,
         )
         return JSONResponse(result, headers={"Cache-Control": "no-store"})
     except InterviewNotFound:

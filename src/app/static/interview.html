@@ -116,6 +116,7 @@
     #log { flex: 1; overflow-y: auto; padding: 18px; }
     .bubble { max-width: 88%; margin-bottom: 14px; padding: 12px 14px; border-radius: 10px; overflow-wrap: anywhere; }
     .bot { background: #f2f5fa; }
+    .tax-answer { white-space: pre-wrap; margin: 0; }
     .user-message {
       display: flex;
       flex-direction: column;
@@ -322,7 +323,7 @@
           <div id="attachments" class="attachments" aria-label="Files to send"></div>
           <p id="document-status" class="note" role="status"></p>
           <p id="document-conflicts" class="note" role="status"></p>
-          <textarea id="answer" rows="2" aria-label="Client's answer" placeholder="Type the client's answer, or a short note…" disabled></textarea>
+          <textarea id="answer" rows="2" aria-label="Interview answer or tax question" placeholder="Reply or ask a tax question…" disabled></textarea>
           <div class="composer-actions">
             <input id="document-files" type="file" accept=".pdf,.png,.jpg,.jpeg,.txt" multiple hidden disabled>
             <span class="attach-control" title="PDF, PNG, JPG, or TXT &middot; 10 files max, 10 MB each.">
@@ -599,7 +600,8 @@
       list: 'Comma-separated, e.g. 1099-NEC, 1099-K — or "none"',
       bool: 'Choose an answer or type a note',
       enum: 'Choose an answer or type a note'
-    }[q.input_type] || 'Type the client\'s answer…';
+    }[q.input_type] || 'Type the client\'s answer';
+    answer.placeholder += ' · or ask a tax question';
     const quick = q.input_type === 'bool' ? ['Yes', 'No'] : q.input_type === 'enum' ? q.options : [];
     if (!quick.length) return null;
     const group = el('div', 'quick-answers');
@@ -792,6 +794,22 @@
     });
   }
 
+  function renderTaxAnswer(qa) {
+    const bubble = el('article', 'bubble bot');
+    bubble.append(el('p', 'tax-answer', qa.answer));
+    if (qa.citations.length) {
+      const sources = el('details');
+      sources.append(el('summary', null, `Sources (${qa.citations.length})`));
+      qa.citations.forEach(source => {
+        const passage = el('p');
+        passage.append(el('strong', null, source.citation), document.createTextNode(' — ' + source.text));
+        sources.append(passage);
+      });
+      bubble.append(sources);
+    }
+    addBubble(bubble);
+  }
+
   function render(out, focusAnswer = true) {
     currentQuestionId = out.question_id || out.guide?.question_id || null;
     if (out.type !== 'error') {
@@ -800,6 +818,9 @@
     }
     if (out.type === 'question') {
       renderQuestion(out);
+    } else if (out.type === 'tax_qa') {
+      renderTaxAnswer(out.tax_qa);
+      renderQuestion(out.guide);
     } else if (out.type === 'error') {
       addBubble(el('article', 'bubble err', out.message));
     } else if (out.type === 'summary') {
@@ -991,6 +1012,7 @@
       const files = turn.attachments || [];
       files.forEach(file => sentIds.add(file.id));
       addUserMessage(turn.answer, files);
+      if (turn.tax_qa) renderTaxAnswer(turn.tax_qa);
     }
     const earlierFiles = (data.documents || []).filter(file => !sentIds.has(file.id));
     if (earlierFiles.length) addUserMessage('', earlierFiles);
@@ -1222,6 +1244,14 @@
         question_id: questionId,
         document_ids: files.map(file => file.id)
       });
+      if (data.output.type === 'tax_qa') {
+        answer.value = '';
+        addUserMessage(text, []);
+        renderSidebar(data.state);
+        render(data.output, false);
+        setStatus(files.length ? 'Attachments are ready for your interview reply.' : '');
+        return;
+      }
       attachments = [];
       answer.value = '';
       documentStatus.textContent = '';
