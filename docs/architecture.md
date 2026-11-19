@@ -15,7 +15,7 @@ flowchart LR
   E -->|search| R["RAG<br/>src/rag + PostgreSQL/pgvector"]
   S --> DB[("Interview store<br/>SQLite file or PostgreSQL")]
   S2 --> DB
-  S --> F["Form drafts<br/>src/app/forms.py"]
+  API --> PDF["Interview summary and review PDFs<br/>src/app/interview_pdf.py"]
 ```
 
 The web server and the MCP server can be separate processes (Claude Desktop starts its own), so they share
@@ -25,10 +25,10 @@ interviews through the store, not through memory.
 
 | Layer | Code | Responsibility | State |
 |---|---|---|---|
-| Pages | `src/app/static/interview.html` | Assistant runs the interview: topics first, background note, one question at a time, sources, summary, form drafts | done |
-| | `src/app/static/preparer.html` | Preparer: every interview by status (web page and MCP), summary, record, approve / return | done |
+| Pages | `src/app/static/interview.html` | Assistant runs the interview: topics first, background note, one question at a time, sources, summary PDF | done |
+| | `src/app/static/preparer.html` | Preparer: every interview by status (web page and MCP), full review PDF, record, approve / return | done |
 | | `src/app/static/index.html` | Rule questions in chat (teammate) | done |
-| API | `src/app/api.py` | HTTP for the pages: interviews per browser (start, answer, documents, history, decision), `/api/preparer/...` for every interview, forms, chat | done |
+| API | `src/app/api.py` | HTTP for the pages: interviews per browser (start, answer, documents, history, submit), `/api/preparer/...` for review and decisions, summary downloads, chat | done |
 | MCP | `src/mcp_server/` | The user's own model drives the interview; our engine keeps control; no API key of ours | done |
 | Service | `src/app/interviews.py` | One engine step per call, document facts, interviews saved per owner; `preparer_*` methods read every owner; MCP owner `mcp-assistant` | done |
 | Store | `src/db/interview_store.py` | SQLite (default `logs/interviews.sqlite3`) or PostgreSQL; per-owner history; optimistic versioning | done |
@@ -41,8 +41,8 @@ interviews through the store, not through memory.
 
 | Status | Set by | Next |
 |---|---|---|
-| `in_progress` | `start` | answers until no question is left |
-| `waiting_for_preparer` | engine (summary written and saved) | preparer approves or returns |
+| `in_progress` | `start` | answer questions and submit the completed web interview |
+| `waiting_for_preparer` | assistant submission on the web or completion through MCP | preparer approves or returns |
 | `approved` / `returned` | preparer on `/preparer` | end (a returned interview is redone as a new one) |
 
 Every answer, client note, background note and decision is kept in `history`: the audit trail the preparer
@@ -78,5 +78,5 @@ Team members' database roles need SELECT, INSERT and UPDATE on it.
 | Date | Target |
 |---|---|
 | 11/20 | Pipeline complete: interview (web and MCP) → store → preparer review; knowledge base batch 1; document extraction contract |
-| 11/23 | System ready: knowledge base batch 2, form drafts from approved interviews |
+| 11/23 | System ready: knowledge base batch 2 |
 | 11/30 – 12/1 | Final presentation: `docs/demo.md` |

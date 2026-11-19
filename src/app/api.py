@@ -31,7 +31,7 @@ from src.app.documents import MAX_FILE_BYTES, MAX_FILES
 from src.app.interviews import (DocumentExtractionUnavailable, InvalidInterviewAnswer, InterviewClosed,
                                 InterviewNotFound, InterviewService, StagedDocumentUnavailable,
                                 list_playbooks)
-from src.app.forms import FormRequest, fill_form, form_catalog, load_forms, prepare_form
+from src.app.interview_pdf import render_interview_pdf, render_review_pdf
 from src.workflow.engine import INTAKE
 
 
@@ -186,10 +186,12 @@ class RenameInterviewRequest(BaseModel):
                                            pattern=r"^[^\x00-\x1f\x7f]+$")]
 
 
-class DecisionRequest(BaseModel):
-    """Body of POST /api/interviews/{id}/decision: {"approve": bool, "note": optional text}."""
-    approve: bool
+class SubmitInterviewRequest(BaseModel):
     note: str = Field(default="", max_length=2000)
+
+
+class DecisionRequest(SubmitInterviewRequest):
+    approve: bool
 
 
 class SyncDocumentsRequest(BaseModel):
@@ -360,12 +362,11 @@ def delete_interview(interview_id: str, request: Request):
     return Response(status_code=204)
 
 
-@app.post("/api/interviews/{interview_id}/decision")
-def decide(interview_id: str, payload: DecisionRequest, request: Request):
-    """Preparer approves or returns the summary (409 unless waiting for the preparer)."""
+@app.post("/api/interviews/{interview_id}/submit")
+def submit_interview(interview_id: str, request: Request, payload: SubmitInterviewRequest | None = None):
     try:
-        result = request.app.state.interviews.decide(
-            interview_id, payload.approve, payload.note, owner=interview_owner(request),
+        result = request.app.state.interviews.submit_for_review(
+            interview_id, payload.note.strip() if payload else "", owner=interview_owner(request),
         )
         return JSONResponse(result, headers={"Cache-Control": "no-store"})
     except InterviewNotFound:
@@ -412,48 +413,35 @@ def preparer_decide(interview_id: str, payload: DecisionRequest, request: Reques
     return JSONResponse(result, headers={"Cache-Control": "no-store"})
 
 
-def completed_interview(interview_id: str, request: Request):
+@app.get("/api/interviews/{interview_id}/summary.pdf")
+def interview_summary_pdf(interview_id: str, request: Request):
     try:
-        state = request.app.state.interviews.get(interview_id, owner=interview_owner(request))["state"]
+        interview = request.app.state.interviews.summary_export(interview_id, owner=interview_owner(request))
     except InterviewNotFound:
         raise HTTPException(404, "Interview not found.") from None
-    if state["status"] not in {"waiting_for_preparer", "approved", "returned"}:
-        raise HTTPException(409, "Finish the interview before generating a draft.")
-    return state
+    except InterviewClosed as exc:
+        raise HTTPException(409, str(exc)) from None
+    state = interview["state"]
+    interview_id = state["interview_id"]
+    pdf = render_interview_pdf(
+        state["facts"], interview_id=interview_id, title=interview["title"], created_at=interview["created_at"],
+    )
+    return pdf_download_response(pdf, "interview-summary", interview_id)
 
 
-def form_data(interview_id: str, form_id: str, payload: FormRequest, request: Request):
-    state = completed_interview(interview_id, request)
-    form = load_forms().get(form_id)
-    if form is None:
-        raise HTTPException(404, "Tax form template not found.")
+@app.get("/api/preparer/interviews/{interview_id}/summary.pdf")
+def preparer_summary_pdf(interview_id: str, request: Request):
     try:
-        return form, prepare_form(form, state["facts"], payload)
-    except ValueError as exc:
-        raise HTTPException(422, str(exc)) from None
+        review = request.app.state.interviews.preparer_get(interview_id)
+    except InterviewNotFound:
+        raise HTTPException(404, "Interview not found.") from None
+    return pdf_download_response(render_review_pdf(review), "interview-review", review["state"]["interview_id"])
 
 
-@app.get("/api/interviews/{interview_id}/forms")
-def interview_forms(interview_id: str, request: Request):
-    state = completed_interview(interview_id, request)
-    return JSONResponse({"forms": form_catalog(state["facts"])}, headers={"Cache-Control": "no-store"})
-
-
-@app.post("/api/interviews/{interview_id}/forms/{form_id}/preview")
-def preview_form(interview_id: str, form_id: str, payload: FormRequest, request: Request):
-    _, data = form_data(interview_id, form_id, payload, request)
-    return JSONResponse(data, headers={"Cache-Control": "no-store"})
-
-
-@app.post("/api/interviews/{interview_id}/forms/{form_id}")
-def download_form(interview_id: str, form_id: str, payload: FormRequest, request: Request):
-    form, data = form_data(interview_id, form_id, payload, request)
-    try:
-        content = fill_form(form, data["fields"])
-    except ValueError as exc:
-        raise HTTPException(422, str(exc)) from None
-    return Response(content, media_type="application/pdf", headers={
+def pdf_download_response(pdf: bytes, name: str, interview_id: str) -> Response:
+    short_id = re.sub(r"[^a-zA-Z0-9]", "", interview_id)[:8]
+    return Response(pdf, media_type="application/pdf", headers={
         "Cache-Control": "no-store",
-        "Content-Disposition": f'inline; filename="{form_id}-draft.pdf"',
+        "Content-Disposition": f'attachment; filename="{name}-{short_id}.pdf"',
     })
 

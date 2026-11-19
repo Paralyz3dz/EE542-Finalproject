@@ -48,10 +48,11 @@ def test_full_interview_then_preparer_approves():
     svc.answer(iid, "yes")
     r = svc.answer(iid, "12,000")
     assert r["output"]["type"] == "summary"
-    assert r["state"]["status"] == "waiting_for_preparer"
+    assert r["state"]["status"] == "in_progress"
 
     with pytest.raises(InterviewClosed):
         svc.answer(iid, "yes")
+    assert svc.submit_for_review(iid)["state"]["status"] == "waiting_for_preparer"
     assert svc.decide(iid, approve=True, note="ok")["state"]["status"] == "approved"
     with pytest.raises(InterviewClosed):
         svc.decide(iid, approve=False)
@@ -184,6 +185,8 @@ def test_saved_interview_resumes_after_service_restart(tmp_path):
     assert saved["output"]["fact"] == "has_side_income"
     restarted.answer(iid, "yes", saved["output"]["question_id"], owner=owner)
     restarted.answer(iid, "12000", owner=owner)
+    assert first.get(iid, owner=owner)["output"]["status"] == "in_progress"
+    restarted.submit_for_review(iid, owner=owner)
     restarted.decide(iid, approve=True, note="Reviewed", owner=owner)
 
     final = first.get(iid, owner=owner)

@@ -25,6 +25,7 @@ review time. The tool is a digital clone of the preparer's interview: it does no
 3. Open a question's "Why ask" and the official passage with its citation.
 4. Answer "mixed" for travel: an escalation appears in the sidebar.
 5. Type an unclear answer ("maybe?"): the engine refuses it and asks again.
+6. Complete the interview and select **Submit to preparer** on the summary.
 
 ## 3. The user's own AI runs the interview (3 min) — Claude Desktop
 
@@ -38,7 +39,7 @@ review time. The tool is a digital clone of the preparer's interview: it does no
 1. The F-1 interview appears under "Waiting for review", badge "AI assistant", next to web interviews.
 2. Open it: what needs the preparer (likely nonresident, Form 8843), questions and answers, documents,
    reminders, the full interview record.
-3. Approve with a note. Mention the form drafts (teammate's work) for approved interviews.
+3. Download the review PDF, then approve with a note.
 
 ## 5. Why trust it (1 min)
 
