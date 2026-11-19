@@ -242,7 +242,7 @@
     <header class="interview-header">
       <div id="interview-heading">
         <h1 tabindex="-1">Tax Intake</h1>
-        <p class="subtitle">Collect client information for preparer review.</p>
+        <p class="subtitle">Collect client information for preparer review. <a href="/preparer">Preparer review</a></p>
       </div>
       <button id="open-history" class="secondary history-toggle" type="button" aria-haspopup="dialog"
               aria-controls="interview-history" aria-label="Interview history" title="Interview history">
@@ -572,8 +572,8 @@
     wrap.append(el('span', null, 'Reference (to verify):'));
     const ul = el('ul', 'refs');
     refs.forEach(r => {
-      const mark = r.retrieved === true ? ['ok', ' ✓ found in knowledge base']
-                 : r.retrieved === false ? ['gap', ' ⚠ not in knowledge base yet']
+      const mark = r.retrieved === true ? ['ok', ' ✓ matches the retrieved text']
+                 : r.retrieved === false ? ['gap', ' · not in the top results']
                  : ['muted', ''];
       const li = el('li', null, r.reference);
       if (mark[1]) li.append(el('span', mark[0], mark[1]));
@@ -624,7 +624,7 @@
       b.append(el('div', 'note', 'No passages were retrieved during this interview.'));
     }
     if (s.references_to_verify.length) b.append(el('div', 'meta', 'Playbook references (to verify): ' + s.references_to_verify.join('; ')));
-    if (s.references_not_in_kb.length) b.append(el('div', 'note', 'Not found in the knowledge base yet: ' + s.references_not_in_kb.join('; ')));
+    if (s.references_not_in_kb.length) b.append(el('div', 'note', 'Never retrieved in this interview (may be missing from the knowledge base): ' + s.references_not_in_kb.join('; ')));
     if (s.references_unchecked.length) b.append(el('div', 'note', 'Not checked (retrieval was offline): ' + s.references_unchecked.join('; ')));
 
     if (s.status === 'waiting_for_preparer') {

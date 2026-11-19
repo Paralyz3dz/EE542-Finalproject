@@ -23,3 +23,4 @@ numpy
 pymupdf==2.1
 transformers==5.22.1
 huggingface-hub==2.4.0
+mcp

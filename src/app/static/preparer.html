@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tax Agent: Preparer review</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f7fa; color: #1c2938; font: 15px/1.55 system-ui, sans-serif; }
+    .page { max-width: 1280px; height: 100dvh; margin: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    h1 { font-size: 22px; margin: 0; }
+    .subtitle { margin: 2px 0 0; font-size: 13px; color: #596579; }
+    a { color: #2458c6; }
+    button { font: inherit; border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; background: #2458c6; color: white; }
+    button.secondary { background: white; color: #2458c6; border: 1px solid #d5deed; }
+    button.danger { background: #a32121; }
+    button:disabled { opacity: .55; cursor: wait; }
+    .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 12px; }
+    .panel { background: white; border: 1px solid #dce2eb; border-radius: 12px; min-height: 0; }
+    .list { display: flex; flex-direction: column; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px; border-bottom: 1px solid #e3e8ef; }
+    .tabs button { padding: 4px 10px; font-size: 13px; }
+    .tabs button.on { background: #2458c6; color: white; border-color: #2458c6; }
+    #rows { flex: 1; overflow-y: auto; }
+    .row { padding: 10px 12px; border-bottom: 1px solid #edf0f5; cursor: pointer; }
+    .row:hover, .row.on { background: #eef3fd; }
+    .row .top { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: #596579; }
+    .row .bg { font-size: 14px; margin-top: 2px; overflow-wrap: anywhere; }
+    .badge { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 10px; background: #eef1f6; color: #3d4a5c; margin-right: 4px; text-transform: uppercase; letter-spacing: .03em; }
+    .badge.mcp { background: #efe7ff; color: #5a2fb0; }
+    .badge.waiting_for_preparer { background: #fff3d6; color: #7a5600; }
+    .badge.approved { background: #e3f4e8; color: #1d6b3a; }
+    .badge.returned { background: #fdecec; color: #8a1c1c; }
+    .badge.flag { background: #fdecec; color: #8a1c1c; }
+    .empty { color: #596579; text-align: center; padding: 40px 12px; }
+    #detail { overflow-y: auto; padding: 18px 22px; }
+    h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #596579; margin: 18px 0 6px; }
+    .meta { font-size: 13px; color: #3d4a5c; }
+    ul.plain { margin: 4px 0; padding-left: 18px; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th { text-align: left; font-size: 12px; color: #596579; border-bottom: 1px solid #c9d3e2; padding: 4px 6px; }
+    td { border-bottom: 1px solid #edf0f5; padding: 4px 6px; vertical-align: top; overflow-wrap: anywhere; }
+    .flags li { color: #8a1c1c; }
+    .note { font-size: 12px; color: #8a6d1c; }
+    details { font-size: 13px; margin-top: 6px; }
+    .decision { margin-top: 18px; padding: 12px; border: 1px solid #d5deed; border-radius: 10px; background: #f8faff; }
+    .decision textarea { width: 100%; min-height: 60px; border: 1px solid #bcc8d9; border-radius: 8px; padding: 8px; font: inherit; }
+    .decision .buttons { display: flex; gap: 8px; margin-top: 8px; }
+    #status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
+    #status.error { color: #a32121; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .page { height: auto; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>Preparer review</h1>
+      <p class="subtitle">Interviews from the web page and from users' own AI assistants (MCP) · Fictional cases only · Not final tax advice ·
+        <a href="/interview">Interview page</a></p>
+    </div>
+    <button class="secondary" id="refresh" type="button">Refresh</button>
+  </header>
+  <p id="status" role="status"></p>
+  <div class="layout">
+    <section class="panel list" aria-label="Interviews">
+      <div class="tabs" id="tabs"></div>
+      <div id="rows"><p class="empty">Loading…</p></div>
+    </section>
+    <section class="panel" id="detail" aria-live="polite">
+      <p class="empty">Select an interview on the left.</p>
+    </section>
+  </div>
+</div>
+<script>
+  const $ = (s) => document.querySelector(s);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+  const human = (s) => String(s).replaceAll('_', ' ');
+  const fmt = (v) => v === true ? 'yes' : v === false ? 'no' : Array.isArray(v) ? (v.length ? v.join(', ') : 'none') : typeof v === 'number' ? v.toLocaleString('en-US') : String(v);
+  const when = (iso) => iso ? new Date(iso).toLocaleString() : '';
+  const TABS = [['waiting_for_preparer', 'Waiting for review'], ['in_progress', 'In progress'], ['approved', 'Approved'], ['returned', 'Returned'], ['', 'All']];
+  let tab = 'waiting_for_preparer', current = null;
+
+  function setStatus(text, error) { $('#status').textContent = text || ''; $('#status').className = error ? 'error' : ''; }
+  async function api(path, body) {
+    const res = await fetch(path, body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {});
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.detail || `HTTP ${res.status}`);
+    return data;
+  }
+
+  function renderTabs() {
+    const box = $('#tabs'); box.replaceChildren();
+    TABS.forEach(([id, label]) => {
+      const b = el('button', 'secondary' + (id === tab ? ' on' : ''), label);
+      b.type = 'button'; b.setAttribute('aria-pressed', String(id === tab));
+      b.addEventListener('click', () => { tab = id; renderTabs(); loadList(); });
+      box.append(b);
+    });
+  }
+
+  async function loadList() {
+    try {
+      const data = await api('/api/preparer/interviews' + (tab ? `?status=${tab}` : ''));
+      const rows = $('#rows'); rows.replaceChildren();
+      if (!data.interviews.length) { rows.append(el('p', 'empty', 'No interviews here yet.')); return; }
+      data.interviews.forEach(r => {
+        const row = el('div', 'row' + (r.interview_id === current ? ' on' : ''));
+        row.tabIndex = 0; row.setAttribute('role', 'button');
+        const top = el('div', 'top');
+        const left = el('span');
+        left.append(el('span', 'badge ' + r.channel, r.channel === 'mcp' ? 'AI assistant' : 'web'), el('span', 'badge ' + r.status, human(r.status)));
+        if (r.escalations) left.append(el('span', 'badge flag', `${r.escalations} to review`));
+        top.append(left, el('span', null, when(r.updated_at)));
+        row.append(top, el('div', 'bg', r.title || r.background || `${r.answered} answers · ${r.interview_id.slice(0, 8)}`));
+        const open = () => openInterview(r.interview_id);
+        row.addEventListener('click', open);
+        row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+        rows.append(row);
+      });
+      setStatus('');
+    } catch (e) { setStatus('Could not load interviews: ' + e.message, true); }
+  }
+
+  function section(box, title, items, cls) {
+    box.append(el('h2', null, title));
+    if (!items || !items.length) { box.append(el('p', 'meta', 'None.')); return; }
+    const ul = el('ul', 'plain ' + (cls || '')); items.forEach(i => ul.append(el('li', null, i))); box.append(ul);
+  }
+
+  async function openInterview(id) {
+    current = id;
+    document.querySelectorAll('.row').forEach(r => r.classList.remove('on'));
+    try {
+      const d = await api(`/api/preparer/interviews/${id}`);
+      const st = d.state, s = d.summary, box = $('#detail');
+      box.replaceChildren();
+      const head = el('div');
+      head.append(el('span', 'badge ' + d.channel, d.channel === 'mcp' ? 'AI assistant (MCP)' : 'web page'), el('span', 'badge ' + st.status, human(st.status)));
+      box.append(head, el('h1', null, 'Interview ' + id.slice(0, 8)));
+      box.append(el('p', 'meta', `Started ${when(d.created_at)} · last change ${when(d.updated_at)} · ${st.answered} answers`));
+      const bg = (d.history.find(h => h.background) || {}).background;
+      if (bg) box.append(el('p', 'meta', 'Background from the assistant: ' + bg));
+      if (st.priority && st.priority.length) box.append(el('p', 'meta', 'Asked first: ' + st.priority.map(human).join(', ')));
+
+      section(box, '1. Needs the preparer', st.flags.map(f => f.reason), 'flags');
+      box.append(el('h2', null, '2. Information collected'));
+      const facts = Object.entries(st.facts || {});
+      if (facts.length) {
+        const labels = d.labels || {};
+        const t = el('table'); const hr = el('tr'); ['Question', 'Answer'].forEach(h => hr.append(el('th', null, h))); t.append(hr);
+        facts.forEach(([k, v]) => { const tr = el('tr'); tr.append(el('td', null, labels[k] || human(k)), el('td', null, typeof v === 'string' ? human(v) : fmt(v))); t.append(tr); });
+        box.append(t);
+      } else box.append(el('p', 'meta', 'No answers yet.'));
+      section(box, '3. Documents to collect', st.missing_docs);
+      if (s) {
+        section(box, '4. Remind the client', s.reminders);
+        if (s.not_yet_covered && s.not_yet_covered.length) section(box, 'Not covered by the playbook', s.not_yet_covered.map(human));
+        const src = el('details');
+        src.append(el('summary', null, `Sources: ${s.citations_retrieved.length} passages retrieved, ${s.references_to_verify.length} playbook references`));
+        s.citations_retrieved.forEach(c => src.append(el('p', 'meta', c)));
+        if (s.references_not_in_kb.length) src.append(el('p', 'note', 'Never retrieved in this interview (may be missing from the knowledge base): ' + s.references_not_in_kb.join('; ')));
+        if (s.references_unchecked.length) src.append(el('p', 'note', 'Not checked (retrieval offline): ' + s.references_unchecked.join('; ')));
+        box.append(src);
+      } else box.append(el('p', 'note', 'The interview is still in progress; the summary appears when it is finished.'));
+
+      const hist = el('details');
+      hist.append(el('summary', null, `Interview record (${d.history.length} entries)`));
+      d.history.forEach(h => {
+        let line;
+        if (h.background !== undefined) line = `Background note: ${h.background}`;
+        else if (h.note !== undefined) line = `Client also mentioned: ${h.note}`;
+        else if (h.decision) line = `Preparer: ${human(h.decision)}${h.note ? ' — ' + h.note : ''}`;
+        else if (h.parsed_by === 'document') line = `From ${(h.files || []).join(', ') || 'a document'}: ${Object.entries(h.facts || {}).map(([k, v]) => human(k) + ' = ' + fmt(v)).join(', ')}`;
+        else line = `${human(h.question_id || '')}: "${h.answer_text}" → ${Object.entries(h.facts || {}).map(([k, v]) => human(k) + ' = ' + fmt(v)).join(', ') || 'not accepted'}${h.parsed_by && h.parsed_by !== 'rules' ? ' (' + h.parsed_by + ')' : ''}`;
+        hist.append(el('p', 'meta', line));
+      });
+      box.append(hist);
+
+      if (st.status === 'waiting_for_preparer') {
+        const dec = el('div', 'decision');
+        dec.append(el('strong', null, 'Your decision'), el('p', 'meta', 'Approve the summary, or return it to the assistant with what to ask again. The tool does not file anything.'));
+        const note = el('textarea'); note.placeholder = 'Note (optional)'; note.setAttribute('aria-label', 'Note for the assistant');
+        const buttons = el('div', 'buttons');
+        const ok = el('button', null, 'Approve'), back = el('button', 'danger', 'Return to assistant');
+        [ok, back].forEach(b => b.type = 'button');
+        const decide = async (approve) => {
+          ok.disabled = back.disabled = true;
+          try { await api(`/api/preparer/interviews/${id}/decision`, { approve, note: note.value.trim() }); setStatus(approve ? 'Approved.' : 'Returned to the assistant.'); await loadList(); await openInterview(id); }
+          catch (e) { setStatus(e.message, true); ok.disabled = back.disabled = false; }
+        };
+        ok.addEventListener('click', () => decide(true)); back.addEventListener('click', () => decide(false));
+        buttons.append(ok, back); dec.append(note, buttons); box.append(dec);
+      } else if (st.status === 'approved' || st.status === 'returned') {
+        const last = [...d.history].reverse().find(h => h.decision);
+        if (last) box.append(el('p', 'meta', `Decision: ${human(last.decision)}${last.note ? ' — ' + last.note : ''}`));
+      }
+      loadList();
+    } catch (e) { setStatus('Could not open the interview: ' + e.message, true); }
+  }
+
+  $('#refresh').addEventListener('click', loadList);
+  renderTabs(); loadList();
+  setInterval(() => { if (!document.hidden) loadList(); }, 10000);
+</script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+{
+  "id": "student",
+  "title": "Students",
+  "status": "draft",
+  "activate_when": [
+    {
+      "fact": "is_full_time_student",
+      "equals": true
+    }
+  ],
+  "keywords": [
+    "student",
+    "college",
+    "university",
+    "1098-t",
+    "scholarship",
+    "f-1",
+    "j-1",
+    "international student"
+  ],
+  "facts": [
+    {
+      "name": "student_under_24",
+      "type": "bool",
+      "required": true,
+      "part": "dependency"
+    },
+    {
+      "name": "paid_over_half_own_support",
+      "type": "bool",
+      "required": true,
+      "part": "dependency"
+    },
+    {
+      "name": "enrolled_at_least_half_time",
+      "type": "bool",
+      "required": true,
+      "part": "education"
+    },
+    {
+      "name": "received_1098t",
+      "type": "bool",
+      "required": true,
+      "part": "education"
+    },
+    {
+      "name": "form_1098t_box_4_or_6",
+      "type": "bool",
+      "required": true,
+      "part": "education",
+      "ask_when": [
+        {
+          "fact": "received_1098t",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "has_scholarship_or_grant",
+      "type": "bool",
+      "required": true,
+      "part": "education"
+    },
+    {
+      "name": "scholarship_exceeds_expenses",
+      "type": "enum",
+      "required": true,
+      "options": [
+        "no",
+        "yes",
+        "not_sure"
+      ],
+      "part": "education",
+      "ask_when": [
+        {
+          "fact": "has_scholarship_or_grant",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "scholarship_requires_work",
+      "type": "bool",
+      "required": true,
+      "part": "education",
+      "ask_when": [
+        {
+          "fact": "has_scholarship_or_grant",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "aotc_years_claimed",
+      "type": "enum",
+      "required": true,
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4_or_more"
+      ],
+      "part": "education",
+      "ask_when": [
+        {
+          "fact": "received_1098t",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "completed_four_years_before_2025",
+      "type": "bool",
+      "required": true,
+      "part": "education",
+      "ask_when": [
+        {
+          "fact": "received_1098t",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "felony_drug_conviction",
+      "type": "bool",
+      "required": true,
+      "part": "education",
+      "ask_when": [
+        {
+          "fact": "received_1098t",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "name": "paid_required_course_materials",
+      "type": "bool",
+      "required": true,
+      "part": "education"
+    },
+    {
+      "name": "received_1099q",
+      "type": "bool",
+      "required": true,
+      "part": "education"
+    },
+    {
+      "name": "has_green_card",
+      "type": "bool",
+      "required": true,
+      "part": "residency",
+      "ask_when": [
+        {
+          "fact": "is_us_citizen",
+          "equals": false
+        }
+      ]
+    },
+    {
+      "name": "student_visa_type",
+      "type": "enum",
+      "required": true,
+      "options": [
+        "f_visa",
+        "j_visa",
+        "m_visa",
+        "q_visa",
+        "other_visa"
+      ],
+      "part": "residency",
+      "ask_when": [
+        {
+          "fact": "is_us_citizen",
+          "equals": false
+        },
+        {
+          "fact": "has_green_card",
+          "equals": false
+        }
+      ]
+    },
+    {
+      "name": "visa_in_substantial_compliance",
+      "type": "bool",
+      "required": true,
+      "part": "residency",
+      "ask_when": [
+        {
+          "fact": "is_us_citizen",
+          "equals": false
+        },
+        {
+          "fact": "has_green_card",
+          "equals": false
+        }
+      ]
+    },
+    {
+      "name": "exempt_student_more_than_5_years",
+      "type": "bool",
+      "required": true,
+      "part": "residency",
+      "ask_when": [
+        {
+          "fact": "is_us_citizen",
+          "equals": false
+        },
+        {
+          "fact": "has_green_card",
+          "equals": false
+        }
+      ]
+    },
+    {
+      "name": "applied_for_green_card",
+      "type": "bool",
+      "required": true,
+      "part": "residency",
+      "ask_when": [
+        {
+          "fact": "is_us_citizen",
+          "equals": false
+        },
+        {
+          "fact": "has_green_card",
+          "equals": false
+        }
+      ]
+    }
+  ],
+  "escalation_rules": [
+    {
+      "id": "esc_student_possible_dependent",
+      "when": [
+        {
+          "fact": "student_under_24",
+          "equals": true
+        },
+        {
+          "fact": "paid_over_half_own_support",
+          "equals": false
+        },
+        {
+          "fact": "can_be_claimed_as_dependent",
+          "equals": false
+        }
+      ],
+      "reason": "A student under 24 who did not pay over half of their own support may be a parent's qualifying child; the preparer confirms who claims the student and the education credit."
+    },
+    {
+      "id": "esc_form_1098t_box_4_or_6",
+      "when": [
+        {
+          "fact": "form_1098t_box_4_or_6",
+          "equals": true
+        }
+      ],
+      "reason": "A Form 1098-T with amounts in box 4 or 6 (prior-year adjustments) is outside the volunteer scope."
+    },
+    {
+      "id": "esc_scholarship_exceeds_expenses",
+      "when": [
+        {
+          "fact": "scholarship_exceeds_expenses",
+          "equals": "yes"
+        }
+      ],
+      "reason": "Scholarships above qualified education expenses are partly taxable; the preparer works out the taxable part (Pub 970 Worksheet 1-1)."
+    },
+    {
+      "id": "esc_scholarship_exceeds_not_sure",
+      "when": [
+        {
+          "fact": "scholarship_exceeds_expenses",
+          "equals": "not_sure"
+        }
+      ],
+      "reason": "It is unknown whether scholarships exceed qualified expenses; the preparer compares the award letters with the 1098-T and account statement."
+    },
+    {
+      "id": "esc_received_1099q",
+      "when": [
+        {
+          "fact": "received_1099q",
+          "equals": true
+        }
+      ],
+      "reason": "529 plan or Coverdell distributions (Form 1099-Q) must be coordinated with education credits, and taxable amounts are outside the volunteer scope."
+    },
+    {
+      "id": "esc_possible_kiddie_tax",
+      "when": [
+        {
+          "fact": "student_under_24",
+          "equals": true
+        },
+        {
+          "fact": "paid_over_half_own_support",
+          "equals": false
+        },
+        {
+          "fact": "has_interest_dividends",
+          "equals": true
+        }
+      ],
+      "reason": "A student under 24 with investment income may owe tax at the parents' rate (Form 8615), which is outside the volunteer scope."
+    },
+    {
+      "id": "esc_nonresident_student_f",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "f_visa"
+        },
+        {
+          "fact": "exempt_student_more_than_5_years",
+          "equals": false
+        },
+        {
+          "fact": "visa_in_substantial_compliance",
+          "equals": true
+        }
+      ],
+      "reason": "Likely a nonresident alien (exempt student, Form 8843): Form 1040-NR needs a preparer certified in Foreign Student and Scholar tax law."
+    },
+    {
+      "id": "esc_nonresident_student_j",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "j_visa"
+        },
+        {
+          "fact": "exempt_student_more_than_5_years",
+          "equals": false
+        },
+        {
+          "fact": "visa_in_substantial_compliance",
+          "equals": true
+        }
+      ],
+      "reason": "Likely a nonresident alien (exempt student, Form 8843): Form 1040-NR needs a preparer certified in Foreign Student and Scholar tax law."
+    },
+    {
+      "id": "esc_nonresident_student_m",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "m_visa"
+        },
+        {
+          "fact": "exempt_student_more_than_5_years",
+          "equals": false
+        },
+        {
+          "fact": "visa_in_substantial_compliance",
+          "equals": true
+        }
+      ],
+      "reason": "Likely a nonresident alien (exempt student, Form 8843): Form 1040-NR needs a preparer certified in Foreign Student and Scholar tax law."
+    },
+    {
+      "id": "esc_student_visa_q",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "q_visa"
+        }
+      ],
+      "reason": "Q visa holders are outside the Foreign Student and Scholar volunteer scope; the preparer determines residency."
+    },
+    {
+      "id": "esc_student_visa_other",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "other_visa"
+        }
+      ],
+      "reason": "Not on an F, J, M or Q visa: the student is not an exempt individual and the substantial presence test applies; the preparer determines residency."
+    },
+    {
+      "id": "esc_visa_not_in_compliance",
+      "when": [
+        {
+          "fact": "visa_in_substantial_compliance",
+          "equals": false
+        }
+      ],
+      "reason": "Days cannot be excluded as an exempt student without substantial compliance with the visa; the preparer applies the substantial presence test."
+    },
+    {
+      "id": "esc_exempt_more_than_5_years",
+      "when": [
+        {
+          "fact": "exempt_student_more_than_5_years",
+          "equals": true
+        }
+      ],
+      "reason": "Exempt as a student in more than 5 calendar years: the student is likely a resident alien unless the Form 8843 line 13 exception applies; the preparer decides."
+    },
+    {
+      "id": "esc_applied_for_green_card",
+      "when": [
+        {
+          "fact": "applied_for_green_card",
+          "equals": true
+        }
+      ],
+      "reason": "Steps toward permanent residence can block the exempt-student exception and change residency; the preparer decides."
+    }
+  ],
+  "reminders": [
+    {
+      "id": "file_8843_f",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "f_visa"
+        },
+        {
+          "fact": "exempt_student_more_than_5_years",
+          "equals": false
+        }
+      ],
+      "text": "File Form 8843 for 2025 even with no U.S. income, and keep a copy; each F-2 or J-2 family member files their own Form 8843."
+    },
+    {
+      "id": "file_8843_j",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "j_visa"
+        },
+        {
+          "fact": "exempt_student_more_than_5_years",
+          "equals": false
+        }
+      ],
+      "text": "File Form 8843 for 2025 even with no U.S. income, and keep a copy; each F-2 or J-2 family member files their own Form 8843."
+    },
+    {
+      "id": "file_8843_m",
+      "when": [
+        {
+          "fact": "student_visa_type",
+          "equals": "m_visa"
+        },
+        {
+          "fact": "exempt_student_more_than_5_years",
+          "equals": false
+        }
+      ],
+      "text": "File Form 8843 for 2025 even with no U.S. income, and keep a copy; each F-2 or J-2 family member files their own Form 8843."
+    },
+    {
+      "id": "parents_claim_credit",
+      "when": [
+        {
+          "fact": "can_be_claimed_as_dependent",
+          "equals": true
+        },
+        {
+          "fact": "received_1098t",
+          "equals": true
+        }
+      ],
+      "text": "If your parents claim you as a dependent, only they can claim the education credit for your expenses; give them your 1098-T and account statement."
+    },
+    {
+      "id": "keep_course_receipts",
+      "when": [
+        {
+          "fact": "paid_required_course_materials",
+          "equals": true
+        }
+      ],
+      "text": "Keep receipts for books, supplies and equipment your courses required; they count for the American opportunity credit."
+    },
+    {
+      "id": "services_pay_is_taxable",
+      "when": [
+        {
+          "fact": "scholarship_requires_work",
+          "equals": true
+        }
+      ],
+      "text": "Pay for required teaching or research is taxable income; bring the W-2 or payment records for it."
+    }
+  ],
+  "triggers": [
+    {
+      "id": "student",
+      "keywords": [
+        "student",
+        "students",
+        "college",
+        "university",
+        "undergrad",
+        "grad school",
+        "graduate student",
+        "1098-t",
+        "scholarship",
+        "scholarships",
+        "fellowship",
+        "tuition"
+      ],
+      "ask_first": [
+        "is_full_time_student",
+        "student_under_24",
+        "received_1098t",
+        "has_scholarship_or_grant"
+      ]
+    },
+    {
+      "id": "international_student",
+      "keywords": [
+        "f-1",
+        "f1 visa",
+        "j-1",
+        "j1 visa",
+        "i-20",
+        "ds-2019",
+        "international student",
+        "student visa"
+      ],
+      "ask_first": [
+        "is_us_citizen",
+        "is_full_time_student",
+        "has_green_card",
+        "student_visa_type",
+        "exempt_student_more_than_5_years"
+      ]
+    }
+  ]
+}

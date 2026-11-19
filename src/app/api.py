@@ -5,6 +5,7 @@ api.py: FastAPI app.
     /interview        guided client interview page
     /api/chat         chat endpoint
     /api/playbooks, /api/interviews/...   guided interview endpoints (src/app/interviews.py)
+    /preparer, /api/preparer/...         preparer review of every interview (web page and MCP)
 """
 from contextlib import asynccontextmanager
 from copy import deepcopy
@@ -354,6 +355,44 @@ def decide(interview_id: str, payload: DecisionRequest, request: Request):
         raise HTTPException(404, "Interview not found.") from None
     except InterviewClosed as exc:
         raise HTTPException(409, str(exc)) from None
+
+
+PREPARER_STATUSES = {"in_progress", "waiting_for_preparer", "approved", "returned"}
+
+
+@app.get("/preparer", response_class=FileResponse)
+def preparer_page():
+    return FileResponse(Path(__file__).parent / "static" / "preparer.html", headers={"Cache-Control": "no-store"})
+
+
+@app.get("/api/preparer/interviews")
+def preparer_list(request: Request, status: str | None = None, limit: int = 100):
+    """Every interview (web page and MCP), newest first; status filters by state."""
+    if status is not None and status not in PREPARER_STATUSES:
+        raise HTTPException(422, f"status must be one of {sorted(PREPARER_STATUSES)}")
+    items = request.app.state.interviews.preparer_list(status, max(1, min(limit, 500)))
+    return JSONResponse({"interviews": items}, headers={"Cache-Control": "no-store"})
+
+
+@app.get("/api/preparer/interviews/{interview_id}")
+def preparer_get(interview_id: str, request: Request):
+    try:
+        result = request.app.state.interviews.preparer_get(interview_id)
+    except InterviewNotFound:
+        raise HTTPException(404, "Interview not found.") from None
+    return JSONResponse(result, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/api/preparer/interviews/{interview_id}/decision")
+def preparer_decide(interview_id: str, payload: DecisionRequest, request: Request):
+    """Approve or return any interview waiting for the preparer (409 otherwise)."""
+    try:
+        result = request.app.state.interviews.preparer_decide(interview_id, payload.approve, payload.note)
+    except InterviewNotFound:
+        raise HTTPException(404, "Interview not found.") from None
+    except InterviewClosed as exc:
+        raise HTTPException(409, str(exc)) from None
+    return JSONResponse(result, headers={"Cache-Control": "no-store"})
 
 
 def completed_interview(interview_id: str, request: Request):
