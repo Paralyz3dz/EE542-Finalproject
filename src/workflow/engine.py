@@ -530,7 +530,7 @@ def summarize(state: State) -> dict:
         "references_unchecked": sorted(unchecked),
         "reminders": reminders,
         "priority": list(state.priority),
-        "turns": len(state.history),
+        "turns": sum("tax_qa" not in entry for entry in state.history),
         "status": state.status,
     }
 

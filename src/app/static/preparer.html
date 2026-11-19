@@ -170,6 +170,7 @@
       d.history.forEach(h => {
         let line;
         if (h.background !== undefined) line = `Background note: ${h.background}`;
+        else if (h.tax_qa) line = `Tax question: ${h.message}\n${h.tax_qa.answer}`;
         else if (h.note !== undefined) line = `Client also mentioned: ${h.note}`;
         else if (h.decision) line = `Preparer: ${human(h.decision)}${h.note ? ' — ' + h.note : ''}`;
         else if (h.parsed_by === 'document') line = `From ${(h.files || []).join(', ') || 'a document'}: ${Object.entries(h.facts || {}).map(([k, v]) => human(k) + ' = ' + fmt(v)).join(', ')}`;

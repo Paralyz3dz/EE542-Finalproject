@@ -10,6 +10,7 @@ from reportlab.pdfgen.canvas import Canvas
 from src.app.api import app
 from src.app.documents import MAX_FILE_BYTES, MAX_FILES, TAX_YEAR
 from src.app.interviews import InterviewService
+from src.llm.interview_qa import ANSWER, CLASSIFY
 
 
 @pytest.fixture
@@ -86,6 +87,52 @@ def sync(client, path, *document_ids):
     response = client.put(path + "/documents", json={"document_ids": document_ids})
     assert response.status_code == 200
     return response.json()
+
+
+def test_tax_question_uses_its_own_sources_and_leaves_the_draft_attachment_ready(client):
+    service = app.state.interviews
+    query = "2025 IRS definition of self-employment income"
+    passage = {"citation": "IRS test source", "text": "Example evidence about self-employment."}
+    message = "Please explain what counts as self-employment"
+    response_text = "An explanation based on the retrieved passage."
+
+    def tax_chat(system, user):
+        request = json.loads(user)
+        assert request["message"] == message
+        if system == CLASSIFY:
+            assert request["interview_question"] == started["output"]["question"]
+            return {"kind": "tax_question", "search_query": query}
+        assert system == ANSWER and request["passages"] == {"1": passage}
+        return {"answer": response_text, "sources": ["1"]}
+
+    service.tax_chat = tax_chat
+    service.search = lambda text: {"matches": [passage] if text == query else []}
+    path, question_id = start(client)
+    started = client.get(path).json()
+    attachment, = stage(client, text_file("intake.txt", "Self-employment income: No"))
+    payload = {"question_id": question_id, "document_ids": [attachment["id"]]}
+
+    result = client.post(path + "/answer", json=payload | {"answer": message})
+    assert result.status_code == 200
+    data = result.json()
+    assert data["output"] == {
+        "type": "tax_qa",
+        "tax_qa": {"answer": response_text, "citations": [passage]},
+        "guide": started["output"],
+    }
+    assert data["state"] == started["state"]
+    saved = client.get(path).json()
+    assert saved["documents"] == []
+    assert saved["output"] == started["output"]
+    assert saved["turns"] == [{
+        "question": started["output"]["question"], "answer": message, "tax_qa": data["output"]["tax_qa"],
+    }]
+
+    accepted = client.post(path + "/answer", json=payload | {"answer": "single"}).json()
+    assert accepted["output"]["type"] == "summary"
+    assert accepted["state"]["facts"] == {"filing_status": "single", "has_side_income": False}
+    assert accepted["output"]["turns"] == 2
+    assert client.get(path).json()["documents"][0]["id"] == attachment["id"]
 
 
 def test_files_stage_before_start_and_skip_current_and_follow_up_questions(client):
