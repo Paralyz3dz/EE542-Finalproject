@@ -65,6 +65,26 @@ def test_search_results_are_cached():
     assert len(calls) == 1
 
 
+def test_real_search_receives_question_context_and_retries_fallback(monkeypatch):
+    calls = []
+
+    def search(query, *, question):
+        calls.append((query, question))
+        return {"matches": [], "rerank_fallback": len(calls) == 1}
+
+    monkeypatch.setattr("src.workflow.engine._default_search", search)
+    service = InterviewService()
+    started = service.start("ca_w2_side_gig")
+    interview_id = started["state"]["interview_id"]
+    service.answer(interview_id, "divorced")
+    service.answer(interview_id, "divorced")
+    assert len(calls) == 2
+    query, question = calls[0]
+    assert query == question["retrieval_query"]
+    assert question["question"] == started["output"]["question"]
+    assert question["why_ask"] == started["output"]["why_ask"]
+
+
 def fake_chat(value, reason="ok"):
     """Build a stub model that always answers with this value and reason."""
     return lambda system, user: {"value": value, "reason": reason}

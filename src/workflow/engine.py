@@ -359,13 +359,13 @@ def extract_facts(state: State, question: dict, answer_text: str, normalizer=Non
         return {"facts": {fact["name"]: value}, "parsed_by": "model"}
 
 
-def _default_search(query: str) -> dict:
+def _default_search(query: str, *, question: dict | None = None) -> dict:
     """Real retrieval (src/rag/retriever.retrieve: Ollama embedding + RDS hybrid search).
 
     Imported inside the function so the engine and its tests load without DB / Ollama.
     """
     from src.rag.retriever import retrieve
-    return retrieve(query)
+    return retrieve(query, question=question)
 
 
 def _doc_key(text: str) -> str:
@@ -410,7 +410,7 @@ def _section_label(definition: dict, fact: dict) -> str | None:
     return None
 
 
-def build_guide(state: State, question: dict, search=None, top_n: int = 5) -> dict:
+def build_guide(state: State, question: dict, search=None, top_n: int = 5, *, question_search=None) -> dict:
     """Build what the assistant sees for one question.
 
     Reads: the question dict, its fact definition (type, options), state.flags,
@@ -428,12 +428,16 @@ def build_guide(state: State, question: dict, search=None, top_n: int = 5) -> di
              question, why_ask, required_docs, references, citations, retrieval_error, flags}.
     input_type / options tell the page which buttons to show (Yes/No, option chips, text).
     """
-    search = search or _default_search
     definition, _ = load_scenario(state.scenario)
     fact = fact_definition(definition, question["fact"])
     citations, retrieval_error = [], None
     try:
-        result = search(question["retrieval_query"])
+        if question_search is not None:
+            result = question_search(question)
+        elif search is not None:
+            result = search(question["retrieval_query"])
+        else:
+            result = _default_search(question["retrieval_query"], question=question)
         for m in result.get("matches", [])[:top_n]:
             passage = {"citation": m.get("citation"), "text": (m.get("text") or "")}
             if m.get("additional_citations"):
@@ -540,15 +544,15 @@ def _question_by_id(state: State, question_id: str) -> dict:
     raise KeyError(question_id)
 
 
-def _show(state: State, question: dict, search) -> dict:
+def _show(state: State, question: dict, search, question_search) -> dict:
     """Mark the question as the current one (append to state.asked once) and build its guide."""
     if not state.asked or state.asked[-1] != question["id"]:
         state.asked.append(question["id"])
-    return build_guide(state, question, search=search)
+    return build_guide(state, question, search=search, question_search=question_search)
 
 
 def step(state: State, answer_text: str | None = None, search=None,
-         normalizer=None) -> tuple[State, dict]:
+         normalizer=None, *, question_search=None) -> tuple[State, dict]:
     """Run one turn of the interview. Returns (state, output).
 
     step(state)          -> the first question (no answer yet)
@@ -570,7 +574,7 @@ def step(state: State, answer_text: str | None = None, search=None,
 
     if answer_text is None or not state.asked:
         question = next_question(state)
-        return (state, summarize(state)) if question is None else (state, _show(state, question, search))
+        return (state, summarize(state)) if question is None else (state, _show(state, question, search, question_search))
 
     current = _question_by_id(state, state.asked[-1])
     definition, _ = load_scenario(state.scenario)
@@ -578,7 +582,7 @@ def step(state: State, answer_text: str | None = None, search=None,
         extracted = extract_facts(state, current, answer_text, normalizer=normalizer)
     except ValueError as exc:
         apply_triggers(state, definition, answer_text)
-        guide = build_guide(state, current, search=search)
+        guide = build_guide(state, current, search=search, question_search=question_search)
         return state, {"type": "error", "message": str(exc), "guide": guide}
 
     fired = apply_triggers(state, definition, answer_text) if extracted["parsed_by"] != "rules" else []
@@ -591,4 +595,4 @@ def step(state: State, answer_text: str | None = None, search=None,
     question = next_question(state)
     if question is None:
         return state, summarize(state)
-    return state, _show(state, question, search)
+    return state, _show(state, question, search, question_search)

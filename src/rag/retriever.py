@@ -12,8 +12,10 @@ from pgvector.psycopg import register_vector
 
 from src.db.connection import ROOT, get_conn
 from src.db.queries import fetch_chunks, vector_search, corpus_table
+from src.llm.client import LLMUnavailable
 from src.rag.hybrid import bm25_search, fuse_rankings
 from src.rag.corpus_hygiene import filter_chunks
+from src.rag.listwise import DEFAULT_MODEL as LISTWISE_MODEL, rank_listwise
 from src.rag.reranker import rerank_matches, options as reranker_options
 
 
@@ -68,7 +70,9 @@ def embed_texts(texts: list[str], options: dict | None = None) -> np.ndarray:
     return vectors
 
 
-def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None, corpus_version: str | None = None, rerank_enabled: bool | None = None) -> dict:
+def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_chunks: bool | None = None,
+             corpus_version: str | None = None, rerank_enabled: bool | None = None,
+             question: dict | None = None) -> dict:
     if not query.strip():
         raise ValueError("The retrieval query must not be empty.")
     settings = json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
@@ -90,13 +94,17 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
         rerank_enabled = settings.get("rerank_enabled", False)
     if type(rerank_enabled) is not bool:
         raise ValueError("rerank_enabled must be a boolean.")
+    rerank_method = settings.get("rerank_method", "bge") if rerank_enabled else None
+    if rerank_enabled and rerank_method not in ("bge", "listwise"):
+        raise ValueError("rerank_method must be bge or listwise.")
     fusion_k = settings.get("retrieve_fusion_k", top_k)
     if type(fusion_k) is not int or not top_k <= fusion_k <= 2 * candidate_k:
         raise ValueError("retrieve_fusion_k must cover the output and fit within the candidate union.")
     if rerank_enabled:
         if settings.get("rerank_top_k", top_k) != top_k:
             raise ValueError("rerank_top_k must match retrieve_top_k.")
-        reranker_options(settings)
+        if rerank_method == "bge":
+            reranker_options(settings)
     rrf_constant = settings["rrf_constant"]
     model = os.getenv("EMBEDDING_MODEL", "Qwen/Qwen3-Embedding-0.6B")
 
@@ -148,7 +156,22 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
     ]
     keyword_matches = bm25_search(query, chunks, k=candidate_k)
     fused = fuse_rankings(vector_matches, keyword_matches, k=fusion_k, rrf_constant=rrf_constant)
-    matches = rerank_matches(query, fused, {c["id"]: c["embed_text"] for c in chunks}, k=top_k, settings=settings) if rerank_enabled else fused[:top_k]
+    matches = fused[:top_k]
+    method = "hnsw_bm25_rrf"
+    fallback = False
+    if rerank_method == "bge":
+        matches = rerank_matches(query, fused, {c["id"]: c["embed_text"] for c in chunks}, k=top_k, settings=settings)
+        method = "hnsw_bm25_rrf_rerank"
+    elif rerank_method == "listwise" and len(fused) > 1:
+        candidate_ids = {match["chunk_id"] for match in fused}
+        passages = {c["id"]: c["embed_text"] for c in chunks if c["id"] in candidate_ids}
+        try:
+            matches = rank_listwise(query, fused, passages, tax_year=tax_year, k=top_k,
+                                    model=settings.get("listwise_model", LISTWISE_MODEL), question=question)
+            method = "hnsw_bm25_rrf_listwise"
+        except LLMUnavailable:
+            logging.getLogger(__name__).warning("Listwise reranking unavailable. Using RRF order.")
+            fallback = True
     provenance = {c["id"]: c.get("provenance", []) for c in chunks}
     for match in matches:
         aliases = [p["citation"] for p in provenance.get(match["chunk_id"], []) if p["citation"] != match["citation"]]
@@ -157,7 +180,8 @@ def retrieve(query: str, *, candidate_k: int | None = None, exclude_reference_ch
     return {
         "tax_year": tax_year,
         "embedding_model": model,
-        "retrieval_method": "hnsw_bm25_rrf_rerank" if rerank_enabled else "hnsw_bm25_rrf",
+        "retrieval_method": method,
+        **({"rerank_fallback": True} if fallback else {}),
         "matches": matches,
     }
 
