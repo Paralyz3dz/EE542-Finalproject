@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 
 import numpy as np
 
-from src.rag import retriever
+from src.rag import listwise, retriever
 
 
 class QueryEmbeddingTests(unittest.TestCase):
@@ -171,6 +171,48 @@ class RetrievalTests(unittest.TestCase):
         self.assertIsNotNone(keyword_hit["bm25_score"])
         self.assertEqual(keyword_hit["citation"], "Keyword source")
         self.fetch_chunks.assert_called_once_with(self.conn, 2025)
+
+    def test_listwise_uses_the_fused_pool_and_preserves_citations(self):
+        self.configure_database(10)
+        settings = {"tax_year": 2025, "retrieve_top_k": 5, "retrieve_candidate_k": 10,
+                    "retrieve_fusion_k": 10, "rrf_constant": 60, "rerank_enabled": True,
+                    "rerank_method": "listwise"}
+        self.vector_search.return_value = [(f"c{i}", f"Citation {i}", f"Body {i}", 0.5) for i in range(10)]
+        self.fetch_chunks.return_value = [{"id": f"c{i}", "embed_text": f"Heading {i}\nBody {i}",
+                                           "provenance": [{"citation": f"Alias {i}"}]} for i in range(10)]
+        question = {"id": "q", "question": "Interview question?", "why_ask": "Interview purpose."}
+
+        def rank(system, user, **kwargs):
+            payload = json.loads(user)
+            self.assertEqual(payload["question"], question["question"])
+            self.assertEqual(payload["interview_purpose"], question["why_ask"])
+            self.assertEqual(payload["retrieval_query"], "Query")
+            self.assertEqual(len(payload["passages"]), 10)
+            self.assertEqual(set(payload["passages"][0]), {"id", "heading", "body"})
+            first = next(item["id"] for item in payload["passages"] if item["heading"] == "Heading 9")
+            return {"ranking": [first] + [item["id"] for item in payload["passages"] if item["id"] != first]}
+
+        retriever.ROOT.__truediv__.return_value.read_text.return_value = json.dumps(settings)
+        with (patch.object(listwise, "chat_json", side_effect=rank),
+              patch.object(retriever, "rerank_matches") as bge):
+            result = retriever.retrieve("Query", question=question)
+        bge.assert_not_called()
+        self.assertEqual(result["retrieval_method"], "hnsw_bm25_rrf_listwise")
+        self.assertEqual(len(result["matches"]), 5)
+        self.assertEqual(result["matches"][0]["citation"], "Citation 9")
+        self.assertEqual(result["matches"][0]["additional_citations"], ["Alias 9"])
+
+    def test_listwise_invalid_permutation_falls_back_to_rrf(self):
+        self.configure_database(2)
+        settings = {"tax_year": 2025, "retrieve_top_k": 2, "rrf_constant": 60,
+                    "rerank_enabled": True, "rerank_method": "listwise"}
+        self.vector_search.return_value = [("a", "Citation a", "Body a", 0.8), ("b", "Citation b", "Body b", 0.7)]
+        with (patch.object(retriever.json, "loads", return_value=settings),
+              patch.object(listwise, "chat_json", return_value={"ranking": ["P01", "P01"]})):
+            result = retriever.retrieve("Query")
+        self.assertTrue(result["rerank_fallback"])
+        self.assertEqual(result["retrieval_method"], "hnsw_bm25_rrf")
+        self.assertEqual([match["chunk_id"] for match in result["matches"]], ["a", "b"])
 
 
 if __name__ == "__main__":

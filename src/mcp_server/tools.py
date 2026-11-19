@@ -9,8 +9,8 @@ Who does what when an MCP host (Claude Desktop, Cursor, ...) drives the intervie
                                               (parse_value), raises escalations, writes the summary
 
 The engine never trusts the host model: an answer it cannot parse comes back as an error and the
-question is asked again. Our own model note reader is switched off here (TAX_AGENT_LLM=off), so the
-server needs no OpenAI key; retrieval of official text still follows TAX_AGENT_RETRIEVAL.
+question is asked again. Our own model note reader is switched off here (TAX_AGENT_LLM=off).
+Retrieval of official text follows TAX_AGENT_RETRIEVAL and can use OpenAI for Listwise ranking.
 
 Interviews are saved in the web server's interview store (src/db/interview_store.py) under the owner
 MCP_OWNER, so the preparer reviews them on the /preparer page. A copy of each finished
@@ -145,7 +145,7 @@ def get_interview(interview_id: str) -> dict:
 
 
 def lookup_official_text(query: str) -> dict:
-    """Search the official IRS / FTB passages in the knowledge base (to explain why a question is asked)."""
+    """Search official IRS / FTB passages using a general tax topic without client details."""
     try:
         matches = get_service()._cached_search(query).get("matches", [])[:3]
     except Exception as exc:

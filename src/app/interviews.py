@@ -7,8 +7,8 @@ Interviews and their current outputs are stored by owner so they can be resumed.
 
 Reads from .env:
     TAX_AGENT_RETRIEVAL  "off" = no retrieval (no DB / Ollama needed)
-    TAX_AGENT_LLM        "off" = never call the model, exact answers only
-    OPENAI_API_KEY       needed for the model note reader
+    TAX_AGENT_LLM        "off" = exact answers only
+    OPENAI_API_KEY       used for Listwise ranking and the model note reader
 """
 from __future__ import annotations
 
@@ -117,7 +117,7 @@ class InterviewService:
         self.document_chat = document_chat
         self._store = store if store is not None else InterviewStore()
         self._lock = Lock()
-        self._cache: dict[str, dict] = {}
+        self._cache: dict[tuple, dict] = {}
         self._documents: dict[str, StagedDocument] = {}
 
     @classmethod
@@ -145,21 +145,28 @@ class InterviewService:
         )
         return cls(search=search, normalizer=normalizer, document_chat=document_chat, store=store)
 
-    def _cached_search(self, query: str) -> dict:
+    def _cached_search(self, query: str, *, question: dict | None = None) -> dict:
         """Retrieve once per query and reuse the result.
 
         A question shown again after an unreadable answer has the same retrieval_query,
         so it does not embed and query the database a second time. Failed searches raise
         and are not cached, so they are retried next time.
         """
-        if query not in self._cache:
-            if self.search is not None:
-                result = self.search(query)
-            else:
-                from src.workflow.engine import _default_search
-                result = _default_search(query)
-            self._cache[query] = result
-        return self._cache[query]
+        context = question if self.search is None and question is not None else {}
+        key = (query, context.get("id"), context.get("question"), context.get("why_ask"))
+        if key in self._cache:
+            return self._cache[key]
+        if self.search is not None:
+            result = self.search(query)
+        else:
+            from src.workflow.engine import _default_search
+            result = _default_search(query, question=question)
+        if not result.get("rerank_fallback"):
+            self._cache[key] = result
+        return result
+
+    def _search_question(self, question: dict) -> dict:
+        return self._cached_search(question["retrieval_query"], question=question)
 
     def _get(self, interview_id: str, owner: str) -> Interview:
         interview = self._store.get(owner, interview_id)
@@ -201,7 +208,7 @@ class InterviewService:
         with self._lock:
             documents = self._selected_documents(state, document_ids or [], owner, {})
             _, conflicts = self._update_document_facts(state, documents)
-            state, out = step(state, search=self._cached_search, normalizer=self.normalizer)
+            state, out = step(state, question_search=self._search_question, normalizer=self.normalizer)
             self._store.create(owner, Interview(state, out, documents, conflicts))
             return {"output": out, "state": snapshot(state), "conflicts": conflicts}
 
@@ -219,7 +226,7 @@ class InterviewService:
                 raise InterviewClosed(f"Interview is {state.status}")
             if question_id is not None and state.asked[-1] != question_id:
                 raise InterviewClosed("The current question changed. Refresh the interview before answering.")
-            interview.state, out = step(state, answer_text, search=self._cached_search,
+            interview.state, out = step(state, answer_text, question_search=self._search_question,
                                         normalizer=self.normalizer)
             interview.output = out.get("guide", out)
             self._save(owner, interview)
@@ -321,7 +328,7 @@ class InterviewService:
             if changed:
                 state.status = "in_progress"
             if state.status == "in_progress":
-                interview.state, interview.output = step(state, search=self._cached_search, normalizer=self.normalizer)
+                interview.state, interview.output = step(state, question_search=self._search_question, normalizer=self.normalizer)
             else:
                 interview.output = summarize(state)
             interview.documents = documents
