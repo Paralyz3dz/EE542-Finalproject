@@ -90,7 +90,7 @@ def snapshot(state: State) -> dict:
     missing_docs, number of answers, and whether the last answer was read by
     "rules" or the "model".
     """
-    history = [entry for entry in state.history if "tax_qa" not in entry]
+    history = [entry for entry in state.history if "tax_qa" not in entry and "submitted" not in entry]
     return {
         "interview_id": state.interview_id,
         "scenario": state.scenario,
@@ -176,6 +176,10 @@ class InterviewService:
     def _search_question(self, question: dict) -> dict:
         return self._cached_search(question["retrieval_query"], question=question)
 
+    def _step(self, state: State, owner: str, answer_text: str | None = None) -> tuple[State, dict]:
+        return step(state, answer_text, question_search=self._search_question,
+                    normalizer=self.normalizer, auto_submit=owner == MCP_OWNER)
+
     def _get(self, interview_id: str, owner: str) -> Interview:
         interview = self._store.get(owner, interview_id)
         if interview is None:
@@ -216,7 +220,7 @@ class InterviewService:
         with self._lock:
             documents = self._selected_documents(state, document_ids or [], owner, {})
             _, conflicts = self._update_document_facts(state, documents)
-            state, out = step(state, question_search=self._search_question, normalizer=self.normalizer)
+            state, out = self._step(state, owner)
             self._store.create(owner, Interview(state, out, documents, conflicts))
             return {"output": out, "state": snapshot(state), "conflicts": conflicts}
 
@@ -243,6 +247,8 @@ class InterviewService:
             attachments_only = bool(document_ids) and answer_text is None
             if state.status != "in_progress" and not (attachments_only and state.status == "waiting_for_preparer"):
                 raise InterviewClosed(f"Interview is {state.status}")
+            if not attachments_only and interview.output["type"] != "question":
+                raise InterviewClosed("The interview has no remaining questions.")
             if question_id is not None and (not state.asked or state.asked[-1] != question_id):
                 raise InterviewClosed("The current question changed. Refresh the interview before answering.")
 
@@ -258,8 +264,7 @@ class InterviewService:
                 return result
             if document_ids:
                 return self._answer_with_documents(interview, answer_text, document_ids, owner)
-            interview.state, out = step(state, answer_text, question_search=self._search_question,
-                                        normalizer=self.normalizer)
+            interview.state, out = self._step(state, owner, answer_text)
             interview.output = out.get("guide", out)
             self._save(owner, interview)
             return {"output": out, "state": snapshot(interview.state)}
@@ -291,7 +296,7 @@ class InterviewService:
         if changed:
             state.status = "in_progress"
         if state.status == "in_progress":
-            interview.state, interview.output = step(state, question_search=self._search_question, normalizer=self.normalizer)
+            interview.state, interview.output = self._step(state, owner)
         else:
             interview.output = summarize(state)
         self._save(owner, interview)
@@ -393,7 +398,7 @@ class InterviewService:
             if changed:
                 state.status = "in_progress"
             if state.status == "in_progress":
-                interview.state, interview.output = step(state, question_search=self._search_question, normalizer=self.normalizer)
+                interview.state, interview.output = self._step(state, owner)
             else:
                 interview.output = summarize(state)
             interview.documents = documents
@@ -431,6 +436,22 @@ class InterviewService:
             ],
             "conflicts": interview.conflicts,
         }
+
+    def submit_for_review(self, interview_id: str, note: str = "", *, owner: str = "") -> dict:
+        with self._lock:
+            interview = self._get(interview_id, owner)
+            state = interview.state
+            if state.status == "waiting_for_preparer":
+                return {"state": snapshot(state)}
+            if state.status != "in_progress":
+                raise InterviewClosed(f"Interview is {state.status}")
+            if interview.output.get("type") != "summary":
+                raise InterviewClosed("Finish the interview before submitting it for review.")
+            state.status = "waiting_for_preparer"
+            state.history.append({"submitted": True, "note": note})
+            interview.output = interview.output | {"status": state.status}
+            self._save(owner, interview)
+            return {"state": snapshot(state)}
 
     def decide(self, interview_id: str, approve: bool, note: str = "", *, owner: str = "") -> dict:
         """Record the preparer's decision on the summary.
@@ -497,7 +518,18 @@ class InterviewService:
             "created_at": found["created_at"], "updated_at": found["updated_at"], "title": found["title"],
             "summary": output if output.get("type") == "summary" else None,
             "labels": {q["fact"]: q["question"] for q in questions},
+            "question_prompts": {q["id"]: q["question"] for q in questions},
         }
+
+    def summary_export(self, interview_id: str, *, owner: str) -> dict:
+        with self._lock:
+            record = self._store.find(interview_id)
+            if record is None or record["owner"] != owner:
+                raise InterviewNotFound(interview_id)
+            interview = self._get(interview_id, owner)
+            if interview.output.get("type") != "summary":
+                raise InterviewClosed("Finish the interview before downloading its summary.")
+        return {"state": snapshot(interview.state), "title": record["title"], "created_at": record["created_at"]}
 
     def preparer_decide(self, interview_id: str, approve: bool, note: str = "") -> dict:
         """The preparer's decision on an interview of any owner (see decide)."""

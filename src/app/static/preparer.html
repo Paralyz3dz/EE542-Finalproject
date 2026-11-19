@@ -391,6 +391,8 @@
       overview.append(el('p', 'meta', metadata.join(' · ')));
       if (d.title && bg) overview.append(el('p', 'meta', 'Background from the assistant: ' + bg));
       if (st.priority && st.priority.length) overview.append(el('p', 'meta', 'Asked first: ' + st.priority.map(human).join(', ')));
+      const submission = d.history.findLast(entry => entry.submitted);
+      if (submission?.note) overview.append(el('p', 'meta', 'Note from the assistant: ' + submission.note));
 
       const priority = el('div', 'review-priority');
       section(priority, 'Needs review', st.flags.map(f => f.reason), 'flags');
@@ -431,6 +433,7 @@
         if (h.background !== undefined) line = `Background note: ${h.background}`;
         else if (h.tax_qa) line = `Tax question: ${h.message}\n${h.tax_qa.answer}`;
         else if (h.decision) line = `Preparer: ${human(h.decision)}${h.note ? ' — ' + h.note : ''}`;
+        else if (h.submitted) line = `Assistant submitted for review${h.note ? ' — ' + h.note : ''}`;
         else if (h.note !== undefined) line = `Client also mentioned: ${h.note}`;
         else if (h.parsed_by === 'document') line = `From ${(h.files || []).join(', ') || 'a document'}: ${Object.entries(h.facts || {}).map(([k, v]) => human(k) + ' = ' + fmt(v)).join(', ')}`;
         else line = `${human(h.question_id || '')}: "${h.answer_text}" → ${Object.entries(h.facts || {}).map(([k, v]) => human(k) + ' = ' + fmt(v)).join(', ') || 'not accepted'}${h.parsed_by && h.parsed_by !== 'rules' ? ' (' + h.parsed_by + ')' : ''}`;
@@ -439,14 +442,19 @@
       box.append(hist);
       detail.replaceChildren(box);
 
+      const dec = el('footer', 'decision');
+      const buttons = el('div', 'buttons');
+      const download = el('a', 'download-button', 'Download review PDF');
+      download.href = `/api/preparer/interviews/${encodeURIComponent(id)}/summary.pdf`;
+      download.download = '';
+      buttons.append(download);
+      dec.append(buttons);
       if (st.status === 'waiting_for_preparer') {
-        const dec = el('footer', 'decision');
         const label = el('label', null, 'Note for the assistant (optional)');
         const note = el('textarea');
         note.rows = 1;
         note.maxLength = 2000;
         label.append(note);
-        const buttons = el('div', 'buttons');
         const ok = el('button', null, 'Approve'), back = el('button', 'danger', 'Return to assistant');
         [ok, back].forEach(b => b.type = 'button');
         const decide = async (approve) => {
@@ -463,13 +471,14 @@
           }
         };
         ok.addEventListener('click', () => decide(true)); back.addEventListener('click', () => decide(false));
-        buttons.append(back, ok);
-        dec.append(label, buttons);
-        detail.append(dec);
+        buttons.prepend(back);
+        buttons.append(ok);
+        dec.prepend(label);
       } else if (st.status === 'approved' || st.status === 'returned') {
         const last = [...d.history].reverse().find(h => h.decision);
         if (last) box.append(el('p', 'meta', `Decision: ${human(last.decision)}${last.note ? ' — ' + last.note : ''}`));
       }
+      detail.append(dec);
       if (fromQueue) queue.close();
       if (detail.hidden) await showReviewDetail(detail);
       if (request !== detailRequest) return false;
