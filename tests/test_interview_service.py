@@ -5,12 +5,27 @@ import pytest
 
 from src.app.interviews import InterviewClosed, InterviewNotFound, InterviewService, list_playbooks
 from src.db.interview_store import InterviewStore
+from src.llm.interview_qa import ANSWER, CLASSIFY, NO_EVIDENCE, respond_to_question
 from src.llm.normalize import make_normalizer
 
 
 def no_search(query):
     """Stub search: one fake Pub 17 passage for any query."""
     return {"matches": [{"citation": "Pub 17 (stub)", "text": "passage for " + query}]}
+
+
+@pytest.mark.parametrize("matches", [[], [{"citation": "Pub 17", "text": "A retrieved passage."}]])
+def test_tax_question_on_list_input_requires_supported_sources(matches):
+    guide = {"fact": "forms", "input_type": "list", "options": [], "question": "Which forms did you receive?"}
+
+    def chat(system, user):
+        if system == CLASSIFY:
+            return {"kind": "tax_question", "search_query": "Form 1099-K"}
+        assert matches and system == ANSWER
+        return {"answer": "Unsupported answer", "sources": [2]}
+
+    result = respond_to_question(chat, lambda query: {"matches": matches}, guide, "What is Form 1099-K?", 2025)
+    assert result == {"answer": NO_EVIDENCE, "citations": []}
 
 
 def test_playbooks_are_listed():

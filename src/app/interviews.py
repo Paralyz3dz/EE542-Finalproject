@@ -25,6 +25,7 @@ from dotenv import load_dotenv
 
 from src.app.documents import TAX_YEAR, extract_document_facts
 from src.db.interview_store import Interview, InterviewStore
+from src.llm.interview_qa import respond_to_question
 from src.workflow.engine import (INTAKE, MODULES, PLAYBOOKS, apply_triggers, load_scenario, record_answer, review, sections,
                                  start_interview, step, summarize)
 from src.workflow.state import State
@@ -89,6 +90,7 @@ def snapshot(state: State) -> dict:
     missing_docs, number of answers, and whether the last answer was read by
     "rules" or the "model".
     """
+    history = [entry for entry in state.history if "tax_qa" not in entry]
     return {
         "interview_id": state.interview_id,
         "scenario": state.scenario,
@@ -96,10 +98,10 @@ def snapshot(state: State) -> dict:
         "facts": {k: v for k, v in state.facts.items() if v is not None},
         "flags": state.flags,
         "missing_docs": state.missing_docs,
-        "answered": sum("attachments" not in entry or "answer_text" in entry for entry in state.history),
+        "answered": sum("attachments" not in entry or "answer_text" in entry for entry in history),
         "priority": list(state.priority),
         "triggers": sorted({b["keyword"] for b in state.boosted}),
-        "last_parsed_by": state.history[-1].get("parsed_by") if state.history else None,
+        "last_parsed_by": history[-1].get("parsed_by") if history else None,
     }
 
 
@@ -115,10 +117,11 @@ class InterviewService:
     normalizer  model note reader from src/llm/normalize.py (None = rules only)
     """
 
-    def __init__(self, search=None, normalizer=None, document_chat=None, store=None):
+    def __init__(self, search=None, normalizer=None, document_chat=None, store=None, *, tax_chat=None):
         self.search = search
         self.normalizer = normalizer
         self.document_chat = document_chat
+        self.tax_chat = tax_chat
         self._store = store if store is not None else InterviewStore()
         self._lock = Lock()
         self._cache: dict[tuple, dict] = {}
@@ -147,7 +150,8 @@ class InterviewService:
             path=os.getenv("TAX_AGENT_INTERVIEW_DB_PATH") or root / "logs" / "interviews.sqlite3",
             postgres_url=os.getenv("TAX_AGENT_INTERVIEW_DATABASE_URL"),
         )
-        return cls(search=search, normalizer=normalizer, document_chat=document_chat, store=store)
+        return cls(search=search, normalizer=normalizer, document_chat=document_chat, store=store,
+                   tax_chat=document_chat)
 
     def _cached_search(self, query: str, *, question: dict | None = None) -> dict:
         """Retrieve once per query and reuse the result.
@@ -217,7 +221,7 @@ class InterviewService:
             return {"output": out, "state": snapshot(state), "conflicts": conflicts}
 
     def answer(self, interview_id: str, answer_text: str | None, question_id: str | None = None,
-               *, owner: str = "", document_ids: list[str] | None = None) -> dict:
+               *, owner: str = "", document_ids: list[str] | None = None, tax_questions: bool = False) -> dict:
         """Submit the assistant's answer to the current question (one engine step).
 
         Raises InterviewNotFound, or InterviewClosed if the interview already ended.
@@ -231,6 +235,19 @@ class InterviewService:
                 raise InterviewClosed(f"Interview is {state.status}")
             if question_id is not None and (not state.asked or state.asked[-1] != question_id):
                 raise InterviewClosed("The current question changed. Refresh the interview before answering.")
+
+        guide = interview.output
+        tax_qa = None
+        if tax_questions and answer_text is not None and guide["type"] == "question":
+            from src.workflow.engine import _default_search
+
+            tax_qa = respond_to_question(self.tax_chat, self.search or _default_search, guide, answer_text, TAX_YEAR)
+
+        with self._lock:
+            if tax_qa is not None:
+                state.history.append({"question": guide["question"], "message": answer_text, "tax_qa": tax_qa})
+                self._save(owner, interview)
+                return {"output": {"type": "tax_qa", "tax_qa": tax_qa, "guide": guide}, "state": snapshot(state)}
             if document_ids:
                 return self._answer_with_documents(interview, answer_text, document_ids, owner)
             interview.state, out = step(state, answer_text, question_search=self._search_question,
@@ -380,6 +397,9 @@ class InterviewService:
         prompts = {question["id"]: question["question"] for question in questions}
         turns = []
         for entry in state.history:
+            if "tax_qa" in entry:
+                turns.append({"question": entry["question"], "answer": entry["message"], "tax_qa": entry["tax_qa"]})
+                continue
             turn = {}
             if "answer_text" in entry:
                 turn.update(question=prompts.get(entry["question_id"], "Previous question"), answer=entry["answer_text"])
