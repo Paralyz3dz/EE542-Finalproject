@@ -192,7 +192,8 @@ After starting an interview, select **+** beside the answer box to attach up to 
 text-based PDFs, PNG images, JPG/JPEG images, or UTF-8 text files (10 MB each).
 Extraction begins when you select the files. While the files are processed, you can
 type a reply or remove attachments from the draft. Select **Send** with or without
-a reply to apply the remaining attachments. The interview skips questions answered by
+a reply to apply the remaining attachments. Attachments sent with a tax question
+are also applied in that turn. The interview skips questions answered by
 the submitted files and gives manually entered answers priority. Sent files appear in
 the conversation and reopen with the saved interview.
 Documents must show the tax year configured in `config/settings.json`. Upload

@@ -227,6 +227,16 @@ class InterviewService:
         Raises InterviewNotFound, or InterviewClosed if the interview already ended.
         Returns {"output": question | error | summary, "state": snapshot}.
         """
+        tax_qa = None
+        if tax_questions and answer_text is not None:
+            with self._lock:
+                guide = self._get(interview_id, owner).output
+            if guide["type"] == "question" and (question_id is None or question_id == guide["question_id"]):
+                from src.workflow.engine import _default_search
+
+                question_id = guide["question_id"]
+                tax_qa = respond_to_question(self.tax_chat, self.search or _default_search, guide, answer_text, TAX_YEAR)
+
         with self._lock:
             interview = self._get(interview_id, owner)
             state = interview.state
@@ -236,18 +246,16 @@ class InterviewService:
             if question_id is not None and (not state.asked or state.asked[-1] != question_id):
                 raise InterviewClosed("The current question changed. Refresh the interview before answering.")
 
-        guide = interview.output
-        tax_qa = None
-        if tax_questions and answer_text is not None and guide["type"] == "question":
-            from src.workflow.engine import _default_search
-
-            tax_qa = respond_to_question(self.tax_chat, self.search or _default_search, guide, answer_text, TAX_YEAR)
-
-        with self._lock:
             if tax_qa is not None:
-                state.history.append({"question": guide["question"], "message": answer_text, "tax_qa": tax_qa})
-                self._save(owner, interview)
-                return {"output": {"type": "tax_qa", "tax_qa": tax_qa, "guide": guide}, "state": snapshot(state)}
+                turn = {"question": guide["question"], "message": answer_text, "tax_qa": tax_qa}
+                if document_ids:
+                    result = self._answer_with_documents(interview, None, document_ids, owner, tax_turn=turn)
+                else:
+                    state.history.append(turn)
+                    self._save(owner, interview)
+                    result = {"output": interview.output, "state": snapshot(state)}
+                result["output"] = {"type": "tax_qa", "tax_qa": tax_qa, "guide": result["output"]}
+                return result
             if document_ids:
                 return self._answer_with_documents(interview, answer_text, document_ids, owner)
             interview.state, out = step(state, answer_text, question_search=self._search_question,
@@ -257,15 +265,19 @@ class InterviewService:
             return {"output": out, "state": snapshot(interview.state)}
 
     def _answer_with_documents(self, interview: Interview, answer_text: str | None,
-                               document_ids: list[str], owner: str) -> dict:
+                               document_ids: list[str], owner: str, *, tax_turn: dict | None = None) -> dict:
         state = interview.state
         selected = self._selected_documents(state, document_ids, owner, interview.documents)
         uploaded = [{"id": key, "name": doc["name"]} for key, doc in selected.items()
                     if key not in interview.documents]
-        if answer_text is None and not uploaded:
+        if answer_text is None and not uploaded and tax_turn is None:
             return {"output": interview.output, "state": snapshot(state), "conflicts": interview.conflicts}
 
-        if answer_text is not None:
+        if tax_turn is not None:
+            if uploaded:
+                tax_turn["attachments"] = uploaded
+            state.history.append(tax_turn)
+        elif answer_text is not None:
             error = record_answer(state, answer_text, self.normalizer)
             if error is not None:
                 raise InvalidInterviewAnswer(error)
@@ -397,11 +409,10 @@ class InterviewService:
         prompts = {question["id"]: question["question"] for question in questions}
         turns = []
         for entry in state.history:
-            if "tax_qa" in entry:
-                turns.append({"question": entry["question"], "answer": entry["message"], "tax_qa": entry["tax_qa"]})
-                continue
             turn = {}
-            if "answer_text" in entry:
+            if "tax_qa" in entry:
+                turn.update(question=entry["question"], answer=entry["message"], tax_qa=entry["tax_qa"])
+            elif "answer_text" in entry:
                 turn.update(question=prompts.get(entry["question_id"], "Previous question"), answer=entry["answer_text"])
             if "attachments" in entry:
                 turn["attachments"] = [item for item in entry["attachments"] if item["id"] in interview.documents]

@@ -211,6 +211,11 @@ def interview_font():
     return FileResponse(font, media_type="font/woff2")
 
 
+@app.get("/workspace.css", response_class=FileResponse, include_in_schema=False)
+def workspace_stylesheet():
+    return FileResponse(Path(__file__).parent / "static" / "workspace.css", media_type="text/css")
+
+
 @app.get("/interview/instrument-serif.ttf", response_class=FileResponse, include_in_schema=False)
 def interview_title_font():
     font = Path(__file__).parent / "static" / "fonts" / "InstrumentSerif-Regular.ttf"

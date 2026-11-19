@@ -4,85 +4,228 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tax Agent: Preparer review</title>
+  <link rel="stylesheet" href="/workspace.css">
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #f5f7fa; color: #1c2938; font: 15px/1.55 system-ui, sans-serif; }
-    .page { max-width: 1280px; height: 100dvh; margin: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-    header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-    h1 { font-size: 22px; margin: 0; }
-    .subtitle { margin: 2px 0 0; font-size: 13px; color: #596579; }
-    a { color: #2458c6; }
-    button { font: inherit; border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; background: #2458c6; color: white; }
-    button.secondary { background: white; color: #2458c6; border: 1px solid #d5deed; }
-    button.danger { background: #a32121; }
+    .page {
+      max-width: 1360px; height: calc(100dvh - var(--nav-height)); min-height: 540px; margin: auto;
+      padding: clamp(16px, 3vw, 32px); display: flex; flex-direction: column; gap: 18px;
+    }
+    [hidden] { display: none !important; }
+    .page-heading { text-align: center; }
+    .page-heading h1 { width: fit-content; margin: 0 auto; font: 400 clamp(2.75rem, 7vw, 4.25rem)/1 var(--serif); }
+    .subtitle { margin: 8px 0 0; font-size: .875rem; color: var(--muted); }
+    .page:has(#recent-reviews:not([hidden])) {
+      display: grid; grid-template-columns: min(100%, 770px); justify-content: center;
+      align-content: center; height: auto; min-height: calc(100dvh - var(--nav-height)); gap: 20px;
+    }
+    #recent-reviews {
+      padding: clamp(16px, 2.5vw, 24px) clamp(16px, 4vw, 34px);
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 16px; box-shadow: var(--shadow);
+    }
+    #recent-reviews h2 { margin: 0; font-size: 1rem; font-weight: 650; }
+    .recent-hint, #recent-status { margin: 4px 0 0; color: var(--muted); font-size: .875rem; }
+    #recent-status:empty { display: none; }
+    #recent-status.error { color: #88352e; }
+    #recent-retry { margin-top: 10px; }
+    .recent-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px;
+    }
+    .recent-grid:empty { display: none; }
+    .recent-grid button.row { min-width: 0; align-content: start; }
+    .recent-grid .tag-group { min-width: 0; }
+    button, textarea { font: inherit; }
+    button {
+      border: 1px solid transparent; border-radius: 8px; padding: 8px 14px; cursor: pointer;
+      background: var(--accent); color: white; font-size: .875rem; font-weight: 600;
+    }
+    button:hover:not(:disabled) { background: var(--accent-hover); }
+    button.secondary { background: white; color: var(--accent); border-color: var(--line); }
+    button.secondary:hover:not(:disabled) { background: var(--tint); }
+    button.danger { background: white; color: #9b3c34; border-color: #e6c6c3; }
+    button.danger:hover:not(:disabled) { background: #fbefee; }
     button:disabled { opacity: .55; cursor: wait; }
-    .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 12px; }
-    .panel { background: white; border: 1px solid #dce2eb; border-radius: 12px; min-height: 0; }
-    .list { display: flex; flex-direction: column; }
-    .tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px; border-bottom: 1px solid #e3e8ef; }
-    .tabs button { padding: 4px 10px; font-size: 13px; }
-    .tabs button.on { background: #2458c6; color: white; border-color: #2458c6; }
-    #rows { flex: 1; overflow-y: auto; }
-    .row { padding: 10px 12px; border-bottom: 1px solid #edf0f5; cursor: pointer; }
-    .row:hover, .row.on { background: #eef3fd; }
-    .row .top { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: #596579; }
-    .row .bg { font-size: 14px; margin-top: 2px; overflow-wrap: anywhere; }
-    .badge { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 10px; background: #eef1f6; color: #3d4a5c; margin-right: 4px; text-transform: uppercase; letter-spacing: .03em; }
-    .badge.mcp { background: #efe7ff; color: #5a2fb0; }
-    .badge.waiting_for_preparer { background: #fff3d6; color: #7a5600; }
-    .badge.approved { background: #e3f4e8; color: #1d6b3a; }
-    .badge.returned { background: #fdecec; color: #8a1c1c; }
-    .badge.flag { background: #fdecec; color: #8a1c1c; }
-    .empty { color: #596579; text-align: center; padding: 40px 12px; }
-    #detail { overflow-y: auto; padding: 18px 22px; }
-    h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #596579; margin: 18px 0 6px; }
-    .meta { font-size: 13px; color: #3d4a5c; }
-    ul.plain { margin: 4px 0; padding-left: 18px; }
-    table { border-collapse: collapse; width: 100%; font-size: 14px; }
-    th { text-align: left; font-size: 12px; color: #596579; border-bottom: 1px solid #c9d3e2; padding: 4px 6px; }
-    td { border-bottom: 1px solid #edf0f5; padding: 4px 6px; vertical-align: top; overflow-wrap: anywhere; }
-    .flags li { color: #8a1c1c; }
-    .note { font-size: 12px; color: #8a6d1c; }
-    details { font-size: 13px; margin-top: 6px; }
-    .decision { margin-top: 18px; padding: 12px; border: 1px solid #d5deed; border-radius: 10px; background: #f8faff; }
-    .decision textarea { width: 100%; min-height: 60px; border: 1px solid #bcc8d9; border-radius: 8px; padding: 8px; font: inherit; }
-    .decision .buttons { display: flex; gap: 8px; margin-top: 8px; }
-    #status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
-    #status.error { color: #a32121; }
-    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .page { height: auto; } }
+    #detail {
+      flex: 1; min-height: 0; display: flex; flex-direction: column; background: var(--surface);
+      border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+    }
+    #review-queue { background: #f4f7f8; }
+    #review-queue .drawer-heading {
+      padding: 20px 18px 12px; background: var(--tint); border: 0;
+    }
+    .queue-filters { padding: 0 18px 15px; background: var(--tint); border-bottom: 1px solid var(--line); }
+    .tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+    button.queue-filter {
+      padding: 5px 6px; border-radius: 7px; border-color: #cfdee5;
+      background: var(--surface); color: var(--muted); font-size: .8125rem;
+    }
+    button.queue-filter:hover:not(.on) { background: #f7fafb; color: var(--accent); }
+    button.queue-filter.on { background: var(--accent); border-color: var(--accent); color: white; }
+    button.queue-filter:focus-visible { outline-offset: 2px; }
+    .queue-tools {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 18px 6px;
+    }
+    #queue-count { margin: 0; color: var(--muted); font-size: .875rem; }
+    #refresh { display: inline-grid; place-items: center; flex: none; width: 36px; height: 36px; padding: 0; }
+    #refresh svg { width: 18px; height: 18px; transform-origin: center; }
+    #queue-status {
+      margin: 6px 18px 0; padding: 9px 10px; background: #fff2ef; border-radius: 8px;
+      color: #88352e; font-size: .875rem; overflow-wrap: anywhere;
+    }
+    #queue-status:empty { display: none; }
+    #rows { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: thin; padding: 8px 14px 16px; }
+    button.row {
+      display: grid; gap: 7px; width: 100%; padding: 12px 13px; border-radius: 11px;
+      background: var(--surface); color: var(--ink); border-color: var(--line);
+      text-align: left; overflow-wrap: anywhere;
+    }
+    #rows .row + .row { margin-top: 8px; }
+    button.row:hover { background: #f9fbfc; border-color: #adcad5; }
+    button.row.on { background: var(--tint); border-color: #adcad5; }
+    .row:focus-visible { outline-offset: -3px; }
+    .queue-empty {
+      margin: 0; padding: 22px 14px; border: 1px dashed #cbd9df; border-radius: 11px;
+      color: var(--muted); font-size: .875rem; text-align: center;
+    }
+    .tag-group { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+    .badge {
+      display: inline-block; font-size: .8125rem; font-weight: 600; line-height: 1.35;
+      padding: 3px 8px; border-radius: 999px; background: #ecf0f3; color: #3d5263;
+    }
+    .badge.mcp { background: #f0ebfc; color: #593b89; }
+    .badge.waiting_for_preparer { background: #f9ecd3; color: #6d4c12; }
+    .badge.approved { background: #e1f0e8; color: #1d6246; }
+    .badge.returned, .badge.flag { background: #f9e9e6; color: #88352e; }
+    .detail-content { flex: 1; min-height: 0; overflow-y: auto; padding: clamp(16px, 3vw, 28px); }
+    .case-heading { margin: 9px 0 4px; font: 400 clamp(2rem, 4vw, 2.75rem)/1.1 var(--serif); overflow-wrap: anywhere; }
+    .review-section { border-top: 1px solid var(--line); padding-top: 13px; margin-top: 15px; }
+    .review-section h3 { font-size: .9375rem; margin: 0 0 5px; }
+    .case-overview { padding: clamp(14px, 3vw, 20px); border-radius: 12px; background: var(--tint); }
+    .review-priority { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+    .review-priority .review-section {
+      margin: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 11px; background: #f7f9f9;
+    }
+    .review-priority .review-section:has(.flags) { background: #fff9f2; border-color: #eadac5; }
+    .meta { margin: 5px 0; font-size: .875rem; color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; }
+    ul.plain { margin: 5px 0 0; padding-left: 20px; font-size: .875rem; overflow-wrap: anywhere; }
+    table { border-collapse: collapse; width: 100%; font-size: .875rem; }
+    th { text-align: left; color: var(--muted); background: #f3f6f7; padding: 8px; }
+    td { border-bottom: 1px solid var(--line); padding: 8px; vertical-align: top; overflow-wrap: anywhere; }
+    .flags li { color: #88352e; }
+    .note { font-size: .8125rem; color: #6d4c12; overflow-wrap: anywhere; }
+    details { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: .875rem; }
+    details summary { color: var(--accent); font-weight: 600; cursor: pointer; }
+    .decision {
+      display: grid; gap: 8px; padding: 12px clamp(16px, 3vw, 28px); background: #f7fafb;
+      border-top: 1px solid var(--line); border-radius: 0 0 15px 15px;
+    }
+    .decision label { display: grid; gap: 4px; font-size: .875rem; font-weight: 600; }
+    .decision textarea {
+      width: 100%; min-height: 42px; max-height: 120px; resize: vertical;
+      color: var(--ink); border: 1px solid #bccbd1; border-radius: 8px; padding: 8px;
+      font-size: .875rem; font-weight: 400;
+    }
+    .decision .buttons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    #status { margin: 0; font-size: .875rem; color: var(--muted); }
+    #status:empty { position: absolute; }
+    #status.error { color: #9b3c34; }
+    @media (max-width: 760px) {
+      .page { height: auto; min-height: calc(100dvh - var(--nav-height)); }
+      .review-priority { grid-template-columns: minmax(0, 1fr); }
+      .decision { position: sticky; bottom: 0; }
+    }
+    @media (max-width: 640px) {
+      .product-nav:has(.nav-title:not([hidden])) + .page { min-height: 0; }
+      .recent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 440px) {
+      .recent-grid { grid-template-columns: minmax(0, 1fr); }
+    }
   </style>
 </head>
 <body>
-<div class="page">
-  <header>
-    <div>
-      <h1>Preparer review</h1>
-      <p class="subtitle">Interviews from the web page and from users' own AI assistants (MCP) · Fictional cases only · Not final tax advice ·
-        <a href="/interview">Interview page</a></p>
+<nav class="product-nav" aria-label="Workspace">
+  <div class="product-nav-inner">
+    <button id="open-queue" class="nav-drawer-toggle" type="button" aria-haspopup="dialog"
+            aria-controls="review-queue" aria-label="Review queue" title="Review queue">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+        <rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/>
+        <path d="M9.5 4.5v15"/>
+      </svg>
+    </button>
+    <div id="nav-title" class="nav-title" hidden></div>
+    <div class="product-links">
+      <a href="/interview">Interview</a>
+      <a href="/preparer" aria-current="page">Preparer review</a>
     </div>
-    <button class="secondary" id="refresh" type="button">Refresh</button>
+  </div>
+</nav>
+<main class="page">
+  <header class="page-heading">
+    <h1 id="preparer-title">Preparer review</h1>
+    <p class="subtitle">Review web and AI assistant interviews. Not final tax advice.</p>
   </header>
   <p id="status" role="status"></p>
-  <div class="layout">
-    <section class="panel list" aria-label="Interviews">
-      <div class="tabs" id="tabs"></div>
-      <div id="rows"><p class="empty">Loading…</p></div>
-    </section>
-    <section class="panel" id="detail" aria-live="polite">
-      <p class="empty">Select an interview on the left.</p>
-    </section>
+  <section id="recent-reviews" aria-labelledby="recent-heading">
+    <h2 id="recent-heading">Recent interviews</h2>
+    <p class="recent-hint">Open the Review queue from the top left to see more interviews.</p>
+    <div id="recent-rows" class="recent-grid"></div>
+    <p id="recent-status" role="status">Loading recent interviews&hellip;</p>
+    <button class="secondary" id="recent-retry" type="button" hidden>Retry</button>
+  </section>
+  <section id="detail" aria-label="Interview details" hidden></section>
+</main>
+<dialog id="review-queue" class="side-drawer" aria-labelledby="queue-heading">
+  <header class="drawer-heading">
+    <h2 id="queue-heading">Review queue</h2>
+    <form method="dialog">
+      <button class="secondary drawer-close" type="submit" aria-label="Close review queue"
+              title="Close review queue" autofocus>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+             stroke-linecap="round" aria-hidden="true">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </form>
+  </header>
+  <div class="queue-filters">
+    <div class="tabs" id="tabs" role="group" aria-label="Filter by status"></div>
   </div>
-</div>
+  <div class="queue-tools">
+    <p id="queue-count" role="status"></p>
+    <button class="secondary" id="refresh" type="button" aria-label="Refresh review queue" title="Refresh review queue">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 11a8 8 0 1 0-2 6M20 4v7h-7"/>
+      </svg>
+    </button>
+  </div>
+  <p id="queue-status" role="status"></p>
+  <div id="rows" role="group" aria-label="Interviews"></div>
+</dialog>
 <script>
   const $ = (s) => document.querySelector(s);
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
   const human = (s) => String(s).replaceAll('_', ' ');
+  const statusLabel = (status) => TABS.find(([id]) => id === status)?.[1] || human(status);
   const fmt = (v) => v === true ? 'yes' : v === false ? 'no' : Array.isArray(v) ? (v.length ? v.join(', ') : 'none') : typeof v === 'number' ? v.toLocaleString('en-US') : String(v);
-  const when = (iso) => iso ? new Date(iso).toLocaleString() : '';
-  const TABS = [['waiting_for_preparer', 'Waiting for review'], ['in_progress', 'In progress'], ['approved', 'Approved'], ['returned', 'Returned'], ['', 'All']];
-  let tab = 'waiting_for_preparer', current = null;
+  const reviewDate = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+  const when = (iso) => iso ? reviewDate.format(new Date(iso)) : '';
+  const queue = $('#review-queue'), queueStatus = $('#queue-status');
+  const queueCount = $('#queue-count'), rows = $('#rows');
+  const recentReviews = $('#recent-reviews'), recentRows = $('#recent-rows');
+  const reviewTitle = $('#preparer-title'), navTitle = $('#nav-title'), pageHeading = $('.page-heading');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const recentStatus = $('#recent-status'), recentRetry = $('#recent-retry');
+  const TABS = [['', 'All'], ['waiting_for_preparer', 'Waiting for review'], ['in_progress', 'In progress'], ['approved', 'Approved'], ['returned', 'Returned']];
+  let tab = '', current = null, listed = null;
+  let listRequest = 0, detailRequest = 0;
 
-  function setStatus(text, error) { $('#status').textContent = text || ''; $('#status').className = error ? 'error' : ''; }
+  function setStatus(text, error = false) {
+    const status = $('#status');
+    status.textContent = text;
+    status.classList.toggle('error', error);
+  }
   async function api(path, body) {
     const res = await fetch(path, body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {});
     const data = await res.json().catch(() => ({}));
@@ -93,69 +236,185 @@
   function renderTabs() {
     const box = $('#tabs'); box.replaceChildren();
     TABS.forEach(([id, label]) => {
-      const b = el('button', 'secondary' + (id === tab ? ' on' : ''), label);
+      const b = el('button', 'queue-filter' + (id === tab ? ' on' : ''), label);
       b.type = 'button'; b.setAttribute('aria-pressed', String(id === tab));
-      b.addEventListener('click', () => { tab = id; renderTabs(); loadList(); });
+      b.addEventListener('click', () => {
+        if (tab === id) return;
+        tab = id;
+        listed = null;
+        rows.replaceChildren();
+        for (const button of box.children) {
+          button.classList.toggle('on', button === b);
+          button.setAttribute('aria-pressed', String(button === b));
+        }
+        loadList();
+      });
       box.append(b);
     });
   }
 
+  function markSelected() {
+    document.querySelectorAll('.row').forEach(row => {
+      const selected = row.dataset.id === current;
+      row.classList.toggle('on', selected);
+      if (selected) row.setAttribute('aria-current', 'true');
+      else row.removeAttribute('aria-current');
+    });
+  }
+
+  function renderInterviewCard(record, fromQueue = false) {
+    const row = el('button', 'row');
+    row.type = 'button';
+    row.dataset.id = record.interview_id;
+    const tags = el('span', 'tag-group');
+    tags.append(el('span', 'badge ' + record.status, statusLabel(record.status)));
+    if (record.escalations) tags.append(el('span', 'badge flag', `${record.escalations} to review`));
+    const meta = el('span', 'drawer-record-meta', record.channel === 'mcp' ? 'AI assistant' : 'Web');
+    if (record.updated_at) {
+      const updated = el('time', null, when(record.updated_at));
+      updated.dateTime = record.updated_at;
+      meta.append(' · ', updated);
+    }
+    row.append(el('span', 'drawer-record-title', record.title || record.background || 'Interview ' + record.interview_id.slice(0, 8)), tags, meta);
+    row.addEventListener('click', () => openInterview(record.interview_id, fromQueue));
+    return row;
+  }
+
+  async function loadRecent() {
+    recentStatus.textContent = 'Loading recent interviews\u2026';
+    recentStatus.classList.remove('error');
+    recentRetry.hidden = true;
+    try {
+      const { interviews } = await api('/api/preparer/interviews?limit=9');
+      recentRows.replaceChildren(...interviews.map(record => renderInterviewCard(record)));
+      recentStatus.textContent = interviews.length ? '' : 'No interviews yet.';
+    } catch (error) {
+      recentStatus.textContent = 'Could not load recent interviews: ' + error.message;
+      recentStatus.classList.add('error');
+      recentRetry.hidden = false;
+    }
+  }
+
   async function loadList() {
+    const request = ++listRequest;
+    if (listed === null) queueCount.textContent = 'Loading interviews…';
     try {
       const data = await api('/api/preparer/interviews' + (tab ? `?status=${tab}` : ''));
-      const rows = $('#rows'); rows.replaceChildren();
-      if (!data.interviews.length) { rows.append(el('p', 'empty', 'No interviews here yet.')); return; }
-      data.interviews.forEach(r => {
-        const row = el('div', 'row' + (r.interview_id === current ? ' on' : ''));
-        row.tabIndex = 0; row.setAttribute('role', 'button');
-        const top = el('div', 'top');
-        const left = el('span');
-        left.append(el('span', 'badge ' + r.channel, r.channel === 'mcp' ? 'AI assistant' : 'web'), el('span', 'badge ' + r.status, human(r.status)));
-        if (r.escalations) left.append(el('span', 'badge flag', `${r.escalations} to review`));
-        top.append(left, el('span', null, when(r.updated_at)));
-        row.append(top, el('div', 'bg', r.title || r.background || `${r.answered} answers · ${r.interview_id.slice(0, 8)}`));
-        const open = () => openInterview(r.interview_id);
-        row.addEventListener('click', open);
-        row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      if (request !== listRequest) return;
+      queueStatus.textContent = '';
+      const snapshot = JSON.stringify(data.interviews);
+      if (listed === snapshot) return;
+      listed = snapshot;
+      const total = data.interviews.length;
+      queueCount.textContent = total === 1 ? '1 interview' : total + ' interviews';
+      const focused = rows.contains(document.activeElement) ? document.activeElement.dataset.id : null;
+      rows.replaceChildren();
+      if (!total) rows.append(el('p', 'queue-empty', 'No interviews match this status.'));
+      data.interviews.forEach(record => {
+        const row = renderInterviewCard(record, true);
         rows.append(row);
+        if (focused === record.interview_id) row.focus({ preventScroll: true });
       });
-      setStatus('');
-    } catch (e) { setStatus('Could not load interviews: ' + e.message, true); }
+      markSelected();
+    } catch (e) {
+      if (request === listRequest) {
+        if (listed === null) queueCount.textContent = '';
+        queueStatus.textContent = 'Could not load interviews: ' + e.message;
+      }
+    }
+  }
+
+  function reviewSection(box, title) {
+    const group = el('section', 'review-section');
+    group.append(el('h3', null, title));
+    box.append(group);
+    return group;
   }
 
   function section(box, title, items, cls) {
-    box.append(el('h2', null, title));
-    if (!items || !items.length) { box.append(el('p', 'meta', 'None.')); return; }
-    const ul = el('ul', 'plain ' + (cls || '')); items.forEach(i => ul.append(el('li', null, i))); box.append(ul);
+    const group = reviewSection(box, title);
+    if (!items || !items.length) { group.append(el('p', 'meta', 'None.')); return; }
+    const ul = el('ul', 'plain ' + (cls || ''));
+    items.forEach(i => ul.append(el('li', null, i)));
+    group.append(ul);
   }
 
-  async function openInterview(id) {
-    current = id;
-    document.querySelectorAll('.row').forEach(r => r.classList.remove('on'));
+  async function showReviewDetail(detail) {
+    const previous = reducedMotion.matches ? null : reviewTitle.getBoundingClientRect();
+    const color = previous ? getComputedStyle(reviewTitle).color : null;
+
+    navTitle.append(reviewTitle);
+    navTitle.hidden = false;
+    pageHeading.hidden = true;
+    recentReviews.hidden = true;
+    detail.hidden = false;
+    window.scrollTo(0, 0);
+    if (!previous) return;
+
+    const next = reviewTitle.getBoundingClientRect();
+    const x = previous.x + previous.width / 2 - next.x - next.width / 2;
+    const y = Math.max(previous.y + previous.height / 2 - next.y - next.height / 2, next.height);
+    const scale = previous.height / next.height;
+    const titleMotion = reviewTitle.animate([
+      { transform: 'translate(' + x + 'px, ' + y + 'px) scale(' + scale + ')', color },
+      { transform: 'none', color: getComputedStyle(reviewTitle).color }
+    ], { duration: 290, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+    const detailMotion = detail.animate([
+      { opacity: 0, transform: 'translateY(8px)' },
+      { opacity: 1, transform: 'none' }
+    ], { duration: 150, delay: 145, easing: 'ease-out', fill: 'backwards' });
+    await Promise.allSettled([titleMotion.finished, detailMotion.finished]);
+  }
+
+  async function openInterview(id, fromQueue = false) {
+    const request = ++detailRequest;
+    const detail = $('#detail');
+    setStatus('');
+    if (fromQueue) queueStatus.textContent = '';
     try {
       const d = await api(`/api/preparer/interviews/${id}`);
-      const st = d.state, s = d.summary, box = $('#detail');
-      box.replaceChildren();
-      const head = el('div');
-      head.append(el('span', 'badge ' + d.channel, d.channel === 'mcp' ? 'AI assistant (MCP)' : 'web page'), el('span', 'badge ' + st.status, human(st.status)));
-      box.append(head, el('h1', null, 'Interview ' + id.slice(0, 8)));
-      box.append(el('p', 'meta', `Started ${when(d.created_at)} · last change ${when(d.updated_at)} · ${st.answered} answers`));
-      const bg = (d.history.find(h => h.background) || {}).background;
-      if (bg) box.append(el('p', 'meta', 'Background from the assistant: ' + bg));
-      if (st.priority && st.priority.length) box.append(el('p', 'meta', 'Asked first: ' + st.priority.map(human).join(', ')));
+      if (request !== detailRequest || (fromQueue && !queue.open)) return false;
+      current = id;
+      markSelected();
+      const st = d.state, s = d.summary, box = el('div', 'detail-content');
+      const overview = el('header', 'case-overview');
+      box.append(overview);
+      const head = el('div', 'tag-group');
+      head.append(el('span', 'badge ' + d.channel, d.channel === 'mcp' ? 'AI assistant (MCP)' : 'Web'), el('span', 'badge ' + st.status, statusLabel(st.status)));
+      const bg = d.history.find(h => h.background)?.background;
+      const caseId = 'Interview ' + id.slice(0, 8);
+      const heading = el('h2', 'case-heading', d.title || bg || caseId);
+      heading.tabIndex = -1;
+      overview.append(head, heading);
+      const metadata = [`Started ${when(d.created_at)}`, `Updated ${when(d.updated_at)}`, `${st.answered} answers`];
+      if (heading.textContent !== caseId) metadata.unshift(caseId);
+      overview.append(el('p', 'meta', metadata.join(' · ')));
+      if (d.title && bg) overview.append(el('p', 'meta', 'Background from the assistant: ' + bg));
+      if (st.priority && st.priority.length) overview.append(el('p', 'meta', 'Asked first: ' + st.priority.map(human).join(', ')));
 
-      section(box, '1. Needs the preparer', st.flags.map(f => f.reason), 'flags');
-      box.append(el('h2', null, '2. Information collected'));
+      const priority = el('div', 'review-priority');
+      section(priority, 'Needs review', st.flags.map(f => f.reason), 'flags');
+      section(priority, 'Documents to collect', st.missing_docs);
+      box.append(priority);
+      const collected = reviewSection(box, 'Information collected');
       const facts = Object.entries(st.facts || {});
       if (facts.length) {
         const labels = d.labels || {};
-        const t = el('table'); const hr = el('tr'); ['Question', 'Answer'].forEach(h => hr.append(el('th', null, h))); t.append(hr);
-        facts.forEach(([k, v]) => { const tr = el('tr'); tr.append(el('td', null, labels[k] || human(k)), el('td', null, typeof v === 'string' ? human(v) : fmt(v))); t.append(tr); });
-        box.append(t);
-      } else box.append(el('p', 'meta', 'No answers yet.'));
-      section(box, '3. Documents to collect', st.missing_docs);
+        const t = el('table');
+        const hr = t.createTHead().insertRow();
+        ['Question', 'Answer'].forEach(h => {
+          const cell = el('th', null, h);
+          cell.scope = 'col';
+          hr.append(cell);
+        });
+        const body = t.createTBody();
+        facts.forEach(([k, v]) => {
+          body.insertRow().append(el('td', null, labels[k] || human(k)), el('td', null, typeof v === 'string' ? human(v) : fmt(v)));
+        });
+        collected.append(t);
+      } else collected.append(el('p', 'meta', 'No answers yet.'));
       if (s) {
-        section(box, '4. Remind the client', s.reminders);
+        section(box, 'Remind the client', s.reminders);
         if (s.not_yet_covered && s.not_yet_covered.length) section(box, 'Not covered by the playbook', s.not_yet_covered.map(human));
         const src = el('details');
         src.append(el('summary', null, `Sources: ${s.citations_retrieved.length} passages retrieved, ${s.references_to_verify.length} playbook references`));
@@ -171,39 +430,86 @@
         let line;
         if (h.background !== undefined) line = `Background note: ${h.background}`;
         else if (h.tax_qa) line = `Tax question: ${h.message}\n${h.tax_qa.answer}`;
-        else if (h.note !== undefined) line = `Client also mentioned: ${h.note}`;
         else if (h.decision) line = `Preparer: ${human(h.decision)}${h.note ? ' — ' + h.note : ''}`;
+        else if (h.note !== undefined) line = `Client also mentioned: ${h.note}`;
         else if (h.parsed_by === 'document') line = `From ${(h.files || []).join(', ') || 'a document'}: ${Object.entries(h.facts || {}).map(([k, v]) => human(k) + ' = ' + fmt(v)).join(', ')}`;
         else line = `${human(h.question_id || '')}: "${h.answer_text}" → ${Object.entries(h.facts || {}).map(([k, v]) => human(k) + ' = ' + fmt(v)).join(', ') || 'not accepted'}${h.parsed_by && h.parsed_by !== 'rules' ? ' (' + h.parsed_by + ')' : ''}`;
         hist.append(el('p', 'meta', line));
       });
       box.append(hist);
+      detail.replaceChildren(box);
 
       if (st.status === 'waiting_for_preparer') {
-        const dec = el('div', 'decision');
-        dec.append(el('strong', null, 'Your decision'), el('p', 'meta', 'Approve the summary, or return it to the assistant with what to ask again. The tool does not file anything.'));
-        const note = el('textarea'); note.placeholder = 'Note (optional)'; note.setAttribute('aria-label', 'Note for the assistant');
+        const dec = el('footer', 'decision');
+        const label = el('label', null, 'Note for the assistant (optional)');
+        const note = el('textarea');
+        note.rows = 1;
+        note.maxLength = 2000;
+        label.append(note);
         const buttons = el('div', 'buttons');
         const ok = el('button', null, 'Approve'), back = el('button', 'danger', 'Return to assistant');
         [ok, back].forEach(b => b.type = 'button');
         const decide = async (approve) => {
           ok.disabled = back.disabled = true;
-          try { await api(`/api/preparer/interviews/${id}/decision`, { approve, note: note.value.trim() }); setStatus(approve ? 'Approved.' : 'Returned to the assistant.'); await loadList(); await openInterview(id); }
-          catch (e) { setStatus(e.message, true); ok.disabled = back.disabled = false; }
+          try {
+            await api(`/api/preparer/interviews/${id}/decision`, { approve, note: note.value.trim() });
+            await loadList();
+            if (request === detailRequest && await openInterview(id)) {
+              setStatus(approve ? 'Approved.' : 'Returned to the assistant.');
+            }
+          } catch (e) {
+            if (request === detailRequest) setStatus(e.message, true);
+            ok.disabled = back.disabled = false;
+          }
         };
         ok.addEventListener('click', () => decide(true)); back.addEventListener('click', () => decide(false));
-        buttons.append(ok, back); dec.append(note, buttons); box.append(dec);
+        buttons.append(back, ok);
+        dec.append(label, buttons);
+        detail.append(dec);
       } else if (st.status === 'approved' || st.status === 'returned') {
         const last = [...d.history].reverse().find(h => h.decision);
         if (last) box.append(el('p', 'meta', `Decision: ${human(last.decision)}${last.note ? ' — ' + last.note : ''}`));
       }
-      loadList();
-    } catch (e) { setStatus('Could not open the interview: ' + e.message, true); }
+      if (fromQueue) queue.close();
+      if (detail.hidden) await showReviewDetail(detail);
+      if (request !== detailRequest) return false;
+      if (!queue.open) {
+        window.scrollTo(0, 0);
+        heading.focus({ preventScroll: true });
+      }
+      return true;
+    } catch (e) {
+      if (request === detailRequest) {
+        const message = 'Could not open the interview: ' + e.message;
+        if (fromQueue && queue.open) queueStatus.textContent = message;
+        else if (!fromQueue) setStatus(message, true);
+      }
+      return false;
+    }
   }
 
-  $('#refresh').addEventListener('click', loadList);
-  renderTabs(); loadList();
-  setInterval(() => { if (!document.hidden) loadList(); }, 10000);
+  function openQueue() {
+    queue.showModal();
+    loadList();
+  }
+
+  $('#open-queue').addEventListener('click', openQueue);
+  recentRetry.addEventListener('click', loadRecent);
+  queue.addEventListener('click', event => {
+    if (event.target === queue && event.clientX > queue.getBoundingClientRect().right) queue.close();
+  });
+  $('#refresh').addEventListener('click', event => {
+    if (!reducedMotion.matches) {
+      const icon = event.currentTarget.querySelector('svg');
+      icon.getAnimations().forEach(animation => animation.cancel());
+      icon.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }],
+                   { duration: 420, easing: 'ease-in-out' });
+    }
+    loadList();
+  });
+  renderTabs();
+  loadRecent();
+  setInterval(() => { if (queue.open && !document.hidden) loadList(); }, 10000);
 </script>
 </body>
 </html>
