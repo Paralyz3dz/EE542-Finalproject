@@ -1,6 +1,6 @@
 # Knowledge base for the guided interview
 
-As of 2026-11-17. Tax year 2025, federal (IRS) and California (FTB).
+As of 2026-11-18. Tax year 2025, federal (IRS) and California (FTB).
 
 This file defines what goes into the retrieval knowledge base and in what format. The document
 list is derived from the interview playbook: every question in `playbooks/modules/*/questions.json`
@@ -8,7 +8,9 @@ names the official document its rule comes from (field `source`). The knowledge 
 documents, so that each question can show the passage behind it and the summary can tell the
 preparer which references were actually found.
 
-The repaired default now holds all 21 documents in independent remote tables: 8,752 vectors, 8,390 searchable chunks and 554 exact tables. A single 104-question round improved primary-source hit@3 from 72/104 (69.2%) to 76/104 (73.1%), still below the 80% target. See [the processing and retrieval report](../eval/results/materials-v2-2026-11-17/report.md). The original 6,004-chunk corpus is preserved; [the import report](knowledge-base-import.md) records its historical results. The interview now uses all five returned passages. Its source coverage in that saved round is hit@5 = 82/104 (78.8%); changing the evidence limit does not rerun retrieval or change its ranking.
+The 23-source corpus adds Form 8843 instructions and Publication 519 to the previous 21-source collection. It stores 9,433 vectors, 9,071 searchable chunks and 558 exact tables under `rag_materials_v3`.
+
+The previous `rag_materials_v2` corpus holds 8,752 vectors, 8,390 searchable chunks and 554 exact tables. A single 104-question round improved primary-source hit@3 from 72/104 (69.2%) to 76/104 (73.1%), still below the 80% target. The interview uses all five returned passages, with hit@5 = 82/104 (78.8%) in that saved round. See [the processing and retrieval report](../eval/results/materials-v2-2026-11-17/report.md). The [import report](knowledge-base-import.md) records the original 6,004-chunk corpus.
 
 The current retrieval worktree adds a pinned local BGE cross-encoder: vector top 10 + BM25 top 10 -> RRF top 10 -> reranked top 5. One paired 104-question round improved primary-source hit@5 from 82/104 (78.85%) to 85/104 (81.73%), with mean retrieval time increasing from 2.896 to 7.012 seconds on local CPU, excluding query embedding and model startup. Reranking is enabled in this worktree. See the [reranking report](../eval/results/rerank-2026-11-17/report.md) for the hit@3 regression, setup and limitations. The corpus and stored vectors are unchanged.
 
@@ -27,10 +29,10 @@ A further single-round test combined independently min-max-normalized RRF and re
 If retrieval fails, the interview continues without passages and the error is shown; the knowledge
 base is never on the critical path.
 
-## 2. Documents to embed (21)
+## 2. Documents to embed (23)
 
 All tax year 2025. `KB name` is the exact name the playbook uses. `Questions` = playbook questions
-citing the document. Files follow the existing naming (`data/raw/irs/p17--2025.pdf`).
+citing the document. File paths are relative to `data/raw/`.
 
 ### Batch 1: needed first (6 documents, 79 of 104 question references)
 
@@ -73,12 +75,20 @@ inside the Form 1040 Instructions; there is no separate file.
 
 Before embedding, check that the cover or header says 2025. The 2026 editions appear in early 2027.
 
+### Federal residency and filing references
+
+| KB name | File | Indexed content | Source URL |
+|---|---|---|---|
+| IRS Form 8843 | `irs/forms/2025 Form 8843.pdf` | Instructions on PDF pages 3–4 | https://www.irs.gov/pub/irs-prior/f8843--2025.pdf |
+| IRS Pub 519 | `irs/publications/2025 Publication 519.pdf` | Main text and appendices through PDF page 91 | https://www.irs.gov/pub/irs-prior/p519--2025.pdf |
+
+These references expand evidence coverage for free-text questions about federal tax residency and filing.
+
 ### Not embedded
 
 Blank forms (Form 1040, schedules), Form 13614-C, Pub 4012 / Form 6744 / Pub 5101 (2026 editions,
 used only for interview structure and wording), IRS ATS test scenarios, the Direct File extracts in
-`data/external/directfile/`, and any client document. A document not cited by the playbook is added
-only together with a playbook question that cites it, so the list above stays the single source.
+`data/external/directfile/`, and any client document.
 
 ## 3. Names and citations
 
@@ -152,7 +162,7 @@ Cutting rules (as in `chunk_pub17.py`):
 
 Embedding: Ollama `qwen3-embedding:0.6b`, stored in PostgreSQL + pgvector (unchanged).
 
-The repaired pipeline is `src/rag/materials.py`, with the 21 sources in `config/knowledge_sources.json`. See [processing and versioning](knowledge-base-processing.md). The original `public.chunks` corpus remains available as `corpus_version: original`; the repaired corpus uses independent versioned tables.
+The repaired pipeline is `src/rag/materials.py`, with the 23 sources in `config/knowledge_sources.json`. See [processing and versioning](knowledge-base-processing.md). The original `public.chunks` corpus remains available as `corpus_version: original`; the repaired corpus uses independent versioned tables.
 
 ## 5. Retrieval interface used by the engine
 

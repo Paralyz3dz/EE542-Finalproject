@@ -18,6 +18,7 @@ The documents for the retrieval knowledge base, their names and the chunk format
 | `ats/ats3.pdf` | https://www.eitc.irs.gov/pub/irs-efile/1040_mef_ats_scenario_3_09152025.pdf | 2025 | ATS Test Scenario 3, Lynette Heather (1099-R, Schedules D/E/F) | 2026-11-16 |
 | `irs/forms/2025 Form 1040.pdf` | https://www.irs.gov/pub/irs-prior/f1040--2025.pdf | 2025 | 2025 Form 1040 | 2026-11-15 |
 | `irs/forms/2025 Form 2441.pdf` | https://www.irs.gov/pub/irs-prior/f2441--2025.pdf | 2025 | 2025 Form 2441 | 2026-11-15 |
+| `irs/forms/2025 Form 8843.pdf` | https://www.irs.gov/pub/irs-prior/f8843--2025.pdf | 2025 | 2025 Form 8843 | 2026-11-18 |
 | `irs/forms/2025 Form 8863.pdf` | https://www.irs.gov/pub/irs-prior/f8863--2025.pdf | 2025 | 2025 Form 8863 | 2026-11-15 |
 | `irs/forms/2025 Form 8962.pdf` | https://www.irs.gov/pub/irs-prior/f8962--2025.pdf | 2025 | 2025 Form 8962 | 2026-11-15 |
 | `irs/forms/2025 Schedule 1 (Form 1040).pdf` | https://www.irs.gov/pub/irs-prior/f1040s1--2025.pdf | 2025 | 2025 Schedule 1 (Form 1040) | 2026-11-15 |
@@ -40,6 +41,7 @@ The documents for the retrieval knowledge base, their names and the chunk format
 | `irs/publications/2025 Publication 17.pdf` | https://www.irs.gov/pub/irs-prior/p17--2025.pdf | 2025 | Publication 17 (2025) | 2026-11-16 |
 | `irs/publications/2025 Publication 501.pdf` | https://www.irs.gov/pub/irs-prior/p501--2025.pdf | 2025 | Publication 501 (2025) | 2026-11-16 |
 | `irs/publications/2025 Publication 503.pdf` | https://www.irs.gov/pub/irs-prior/p503--2025.pdf | 2025 | Publication 503 (2025) | 2026-11-16 |
+| `irs/publications/2025 Publication 519.pdf` | https://www.irs.gov/pub/irs-prior/p519--2025.pdf | 2025 | Publication 519 (2025), Feb 19, 2026 | 2026-11-18 |
 | `irs/publications/2025 Publication 550.pdf` | https://www.irs.gov/pub/irs-prior/p550--2025.pdf | 2025 | Publication 550 (2025) | 2026-11-16 |
 | `irs/publications/2025 Publication 596.pdf` | https://www.irs.gov/pub/irs-prior/p596--2025.pdf | 2025 | Publication 596 (2025) | 2026-11-16 |
 | `irs/publications/2025 Publication 970.pdf` | https://www.irs.gov/pub/irs-prior/p970--2025.pdf | 2025 | Publication 970 (2025) | 2026-11-16 |
