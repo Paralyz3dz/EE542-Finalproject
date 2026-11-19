@@ -4,118 +4,111 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tax Intake</title>
+  <link rel="stylesheet" href="/workspace.css">
   <style>
-    @font-face {
-      font-family: Inter;
-      src: url("/interview/inter-variable.woff2") format("woff2");
-      font-weight: 100 900;
-      font-display: swap;
+    :root { --option-hover: #f4f8fa; --selection-border: #adcad5; }
+    .page {
+      max-width: 1360px; min-height: calc(100dvh - var(--nav-height)); margin: auto;
+      padding: clamp(16px, 3vw, 32px); display: flex; flex-direction: column; gap: 14px;
     }
-    @font-face {
-      font-family: "Instrument Serif";
-      src: url("/interview/instrument-serif.ttf") format("truetype");
-      font-weight: 400;
-      font-display: swap;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #f5f7fa; color: #1c2938; font: 15px/1.55 Inter, system-ui, sans-serif; }
-    .page { max-width: 1180px; height: 100dvh; margin: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
     [hidden] { display: none !important; }
-    .intro { width: min(100%, 680px); margin: auto; }
-    .page.in-interview .intro { width: 100%; margin-block: 0; }
-    .interview-header { position: relative; text-align: center; }
-    .interview-header h1 {
-      margin: 0; font: 400 38px/1.25 "Instrument Serif", Georgia, serif;
-    }
-    .page.in-interview .interview-header { min-height: 40px; }
-    .page.in-interview .interview-header h1 { font-size: 26px; }
-    .subtitle { margin: 2px 0 0; font-size: 13px; color: #596579; }
-    .in-interview .subtitle { display: none; }
-    .history-toggle, .new-interview { position: absolute; top: 50%; transform: translateY(-50%); }
-    .history-toggle { left: 0; }
-    .history-toggle, .history-edit-button, .history-delete-button, .history-close-button {
-      display: inline-grid; place-items: center; padding: 0;
-      width: 40px; height: 40px;
-    }
-    .history-toggle svg, .history-row-actions svg, .history-close-button svg { width: 20px; height: 20px; }
-    .new-interview { right: 0; }
-    .history-drawer {
-      width: min(292px, calc(100% - 32px)); max-width: none; height: 100%; max-height: none;
-      margin: 0; padding: 0; border: 0; border-right: 1px solid #dce2eb;
-      border-radius: 0 16px 16px 0; box-shadow: 8px 0 30px #1c293826; color: inherit;
-    }
-    .history-drawer::backdrop { background: #1c293861; }
-    .history-drawer[open] { display: flex; flex-direction: column; }
-    .history-header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 8px; padding: 16px; border-bottom: 1px solid #edf0f5;
-    }
-    .history-header h2 { margin: 0; font-size: 16px; }
+    .intro { width: min(100%, 770px); margin: auto; }
+    .page.in-interview { height: calc(100dvh - var(--nav-height)); }
+    .page.in-interview .intro { display: none; }
+    .interview-header { text-align: center; }
+    .interview-header h1 { width: fit-content; margin: 0 auto; font: 400 clamp(2.75rem, 7vw, 4.25rem)/1 var(--serif); }
+    .subtitle { margin: 8px auto 0; color: var(--muted); }
+    .history-row-actions svg { width: 20px; height: 20px; }
     .history-body { padding: 12px; overflow-y: auto; }
     .history-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
     .history-row {
       display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start;
       border: 1px solid transparent; border-radius: 8px;
     }
-    .history-row:hover, .history-row.is-current { background: #eef3fc; }
-    .history-row.is-current { border-color: #bfd0ee; }
+    .history-row:hover { background: var(--option-hover); }
+    .history-row.is-current { background: var(--tint); border-color: var(--selection-border); }
     .history-item {
       display: grid; gap: 4px; width: 100%; padding: 9px 10px;
       background: transparent; color: inherit; text-align: left;
     }
-    .history-item span { font-weight: 600; overflow-wrap: anywhere; }
-    .history-item small, .history-item time { font-size: 12px; color: #596579; }
     .history-row-actions { display: flex; gap: 2px; padding: 3px; }
     .history-edit-button, .history-delete-button {
-      width: 36px; height: 36px; background: transparent; color: #596579;
+      display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0;
+      background: transparent; color: var(--muted);
     }
-    .history-edit-button:hover, button.history-toggle:hover, button.history-close-button:hover {
-      background: #e4ecff; color: #2458c6;
-    }
-    .history-delete-button:hover { background: #fdecec; color: #a32121; }
     .history-row-form { grid-column: 1 / -1; display: grid; gap: 8px; padding: 8px; }
     .history-row-form p { margin: 0; overflow-wrap: anywhere; }
     .history-rename input { width: 100%; min-width: 0; }
     .history-form-actions { display: flex; gap: 6px; justify-content: end; }
     .history-form-actions button { padding: 5px 10px; font-size: 13px; }
     .setup {
-      display: grid; gap: 18px; margin-top: 24px; padding: 24px;
-      box-shadow: 0 12px 32px #1c293810;
+      display: grid; gap: 14px; margin-top: 20px;
+      padding: clamp(16px, 2.5vw, 24px) clamp(18px, 4vw, 34px);
+      box-shadow: var(--shadow);
     }
-    .setup-fields { display: grid; gap: 24px; min-width: 0; margin: 0; padding: 0; border: 0; }
+    .setup-fields { display: grid; gap: 16px; min-width: 0; margin: 0; padding: 0; border: 0; }
     .setup-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    #start { position: relative; padding-inline: 2rem; }
+    .start-spinner {
+      position: absolute; inset-inline-end: .65rem; top: calc(50% - .4375rem);
+      width: .875rem; height: .875rem; border: 2px solid #ffffff60; border-top-color: currentColor;
+      border-radius: 50%; visibility: hidden;
+    }
+    #start[aria-busy="true"] { opacity: 1; cursor: progress; }
+    #start[aria-busy="true"] .start-spinner { visibility: visible; }
+    .setup:has(#start[aria-busy="true"]) #setup-status:not(.error) {
+      position: absolute; width: 1px; height: 1px; min-height: 0;
+      overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      #start[aria-busy="true"] .start-spinner { animation: start-spin .75s linear infinite; }
+      @keyframes start-spin { to { transform: rotate(360deg); } }
+    }
     select, input, textarea, button { font: inherit; }
     select, input[type=text], textarea { border: 1px solid #bcc8d9; border-radius: 8px; padding: 8px 10px; background: white; }
-    button { border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; background: #2458c6; color: white; }
-    button.secondary { background: white; color: #2458c6; border: 1px solid #d5deed; }
+    button { border: 0; border-radius: 8px; padding: 9px 15px; cursor: pointer; background: var(--accent); color: white; font-size: .875rem; font-weight: 600; }
+    button:hover:not(:disabled) { background: var(--accent-hover); }
+    button.history-item:hover:not(:disabled),
+    .history-row-actions button:hover:not(:disabled) { background: transparent; }
+    .history-item:focus-visible, .history-row-actions button:focus-visible { outline-offset: -3px; }
+    .history-edit-button:hover:not(:disabled) { color: var(--accent); }
+    .history-delete-button:hover:not(:disabled) { color: #a32121; }
+    button.secondary { background: white; color: var(--accent); border: 1px solid var(--line); }
+    button.secondary:hover:not(:disabled) { background: var(--tint); }
     button.danger { background: #a32121; }
+    button.danger:hover:not(:disabled) { background: #801919; }
     button:disabled { opacity: .55; cursor: wait; }
-    a { color: #2458c6; }
-    .priority h2, .background > span { margin: 0; font-size: 15px; font-weight: 700; }
-    .priority p { margin: 4px 0 10px; font-size: 13px; color: #596579; }
+    .priority h2, .background > span { margin: 0; font-size: 1rem; font-weight: 650; }
+    .priority p { margin: 4px 0 10px; font-size: .875rem; color: var(--muted); }
     .priority-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
     button.priority-option {
       display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px;
-      min-height: 48px; padding: 8px 10px; font-size: 13px; line-height: 1.35;
-      color: #1c2938; text-align: left; overflow-wrap: anywhere;
+      min-height: 46px; padding: 7px 12px; font-size: .875rem; line-height: 1.35;
+      color: var(--ink); text-align: left; overflow-wrap: anywhere;
     }
-    button.priority-option[aria-pressed="false"]:hover:not(:disabled) { background: #f5f8ff; border-color: #9cb6eb; }
-    button.priority-option[aria-pressed="true"] { background: #e9f1ff; border-color: #7296e2; color: #173e92; }
-    button.priority-option:focus-visible { outline: 2px solid #2458c6; outline-offset: 2px; }
+    button.priority-option[aria-pressed="false"]:hover:not(:disabled) { background: var(--option-hover); }
+    button.priority-option[aria-pressed="true"] { background: var(--tint); border-color: var(--selection-border); color: var(--accent); }
+    button.priority-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .priority-order {
       display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
-      background: #2458c6; color: white; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
+      background: var(--accent); color: white; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
     }
     .priority-order:empty { visibility: hidden; }
     .background { display: grid; gap: 6px; }
-    .background textarea { width: 100%; min-width: 0; resize: vertical; }
-    .trigger { font-size: 12px; color: #2458c6; margin: 2px 0 4px; }
-    .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 12px; }
-    .panel { background: white; border: 1px solid #dce2eb; border-radius: 12px; }
+    .background textarea { width: 100%; min-width: 0; min-height: 64px; resize: vertical; }
+    .trigger { font-size: 12px; color: var(--accent); margin: 2px 0 4px; }
+    .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 320px); gap: 16px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
     .chat { display: flex; flex-direction: column; min-height: 0; }
-    #log { flex: 1; overflow-y: auto; padding: 18px; }
-    .bubble { max-width: 88%; margin-bottom: 14px; padding: 12px 14px; border-radius: 10px; overflow-wrap: anywhere; }
-    .bot { background: #f2f5fa; }
+    .chat-heading {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      padding: 12px clamp(14px, 3vw, 28px); border-bottom: 1px solid var(--line);
+    }
+    .chat-heading h2, .progress-heading h2 { margin: 0; font-size: 1rem; font-weight: 650; }
+    #log { flex: 1; overflow-y: auto; padding: clamp(14px, 3vw, 28px); }
+    .bubble { width: fit-content; max-width: min(100%, 46rem); margin-bottom: 16px; padding: 15px 18px; border-radius: 12px; overflow-wrap: anywhere; }
+    .bot { background: var(--tint); border: 1px solid #e1ebef; }
+    .bot:has(.qnum) { border-inline-start: 3px solid #7da7aa; }
     .tax-answer { white-space: pre-wrap; margin: 0; }
     .user-message {
       display: flex;
@@ -131,15 +124,15 @@
       margin: 0;
       padding: 8px 14px;
       border-radius: 18px;
-      background: #eef1f5;
-      color: #1c2938;
+      background: var(--accent);
+      color: white;
       line-height: 1.5;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
     }
     .err { background: #fdecec; color: #8a1c1c; }
-    .qnum { font-size: 12px; color: #596579; text-transform: uppercase; letter-spacing: .04em; }
-    .qtext { font-weight: 600; margin: 4px 0 8px; font-size: 16px; }
+    .qnum { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+    .qtext { font-weight: 620; margin: 5px 0; font-size: 1.125rem; line-height: 1.45; }
     .meta { font-size: 13px; color: #3d4a5c; margin: 4px 0; }
     details { margin-top: 6px; font-size: 13px; }
     details p { margin: 6px 0; padding-left: 10px; border-left: 3px solid #d5deed; white-space: pre-wrap; }
@@ -148,8 +141,8 @@
     .refs li { padding: 1px 0; }
     .ok { color: #1d6b3a; }
     .gap { color: #8a6d1c; }
-    .inputbar { padding: 10px 18px 16px; display: grid; gap: 8px; justify-items: center; }
-    .inputbar > * { width: 100%; max-width: 720px; min-width: 0; }
+    .inputbar { padding: 12px clamp(14px, 3vw, 28px) 16px; display: grid; gap: 8px; border-top: 1px solid var(--line); }
+    .inputbar > * { width: 100%; min-width: 0; }
     .quick-answers { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
     .quick-answers button {
       display: inline-flex;
@@ -164,11 +157,11 @@
       overflow-wrap: anywhere;
     }
     .quick-answers button:hover:not(:disabled), .quick-answers button[aria-pressed="true"] {
-      background: #e9f1ff;
-      border-color: #7296e2;
-      color: #173e92;
+      background: var(--tint);
+      border-color: #749ba9;
+      color: #214f70;
     }
-    .quick-answers button:focus-visible { outline: 2px solid #2458c6; outline-offset: 2px; }
+    .quick-answers button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .quick-answer-check { visibility: hidden; }
     .quick-answers button[aria-pressed="true"] .quick-answer-check { visibility: visible; }
     .row { display: flex; gap: 8px; }
@@ -177,11 +170,11 @@
       gap: 8px;
       padding: 10px 12px;
       border: 1px solid #cdd8e8;
-      border-radius: 24px;
-      background: #fcfdff;
+      border-radius: 12px;
+      background: var(--surface);
       box-shadow: 0 4px 16px #1c29380d;
     }
-    .composer:focus-within { border-color: #7296e2; box-shadow: 0 0 0 3px #2458c619; }
+    .composer:focus-within { border-color: #749ba9; box-shadow: 0 0 0 3px #214f7019; }
     .composer textarea {
       display: block;
       width: 100%;
@@ -193,24 +186,14 @@
       border: 0;
       border-radius: 0;
       background: transparent;
-      color: #1c2938;
+      color: var(--ink);
       outline: none;
       resize: none;
     }
-    .composer textarea::placeholder { color: #596579; }
+    .composer textarea::placeholder { color: var(--muted); }
     .composer-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .attach-control { display: inline-flex; flex: none; }
-    .composer .attach-button {
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      border-radius: 50%;
-      background: #eef3fc;
-      font-size: 22px;
-      line-height: 1;
-    }
-    .attach-button:disabled { pointer-events: none; }
-    .composer .send-button {
+    .composer .attach-button, .composer .send-button {
       display: inline-grid;
       place-items: center;
       width: 40px;
@@ -220,13 +203,15 @@
       font-size: 22px;
       line-height: 1;
     }
-    .composer .attach-button:hover:not(:disabled) { background: #e1eaff; }
-    .composer .send-button:hover:not(:disabled) { background: #1d49ab; }
-    .composer .send-button:disabled { background: #e6ecf6; color: #596579; opacity: 1; cursor: default; }
-    .composer button:focus-visible { outline: 2px solid #2458c6; outline-offset: 2px; }
+    .composer .attach-button { background: var(--tint); }
+    .attach-button:disabled { pointer-events: none; }
+    .composer .attach-button:hover:not(:disabled) { background: #e1edf2; }
+    .composer .send-button:hover:not(:disabled) { background: var(--accent-hover); }
+    .composer .send-button:disabled { background: #e6ecf6; color: var(--muted); opacity: 1; cursor: default; }
+    .composer button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .attachments { display: flex; flex-wrap: wrap; gap: 6px; max-height: 144px; overflow-y: auto; }
     .file-card { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: min(245px, 100%); padding: 6px 8px; border: 1px solid #dce2eb; border-radius: 12px; background: #fff; }
-    .file-type { padding: 5px; border-radius: 5px; background: #e4ecff; color: #2458c6; font-size: 11px; font-weight: 700; }
+    .file-type { padding: 5px; border-radius: 5px; background: #e4ecff; color: var(--accent); font-size: 11px; font-weight: 700; }
     .file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
     .file-copy { min-width: 0; }
     .file-copy small { display: block; overflow-wrap: anywhere; }
@@ -234,16 +219,72 @@
     .sent-attachments { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 100%; }
     .composer p { margin: 0 5px; }
     .composer p:empty, .attachments:empty { display: none; }
-    #status, #setup-status, #history-status { min-height: 20px; margin: 0; font-size: 13px; color: #596579; }
+    #status, #setup-status, #history-status { min-height: 20px; margin: 0; font-size: 13px; color: var(--muted); }
     #status:empty, #setup-status:empty, #history-status:empty { display: none; }
     #status.error, #setup-status.error, #history-status.error { color: #a32121; }
-    aside { padding: 14px; overflow-y: auto; }
-    aside h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #596579; margin: 14px 0 6px; }
-    aside h2:first-child { margin-top: 0; }
-    aside ul { list-style: none; margin: 0; padding: 0; font-size: 14px; }
-    aside li { padding: 3px 0; border-bottom: 1px dashed #edf0f5; overflow-wrap: anywhere; }
+    .intake-overview {
+      min-height: 0; min-width: 0; overflow-y: auto; background: #f5f8f9;
+      scrollbar-width: thin;
+    }
+    .progress-heading {
+      position: sticky; top: 0; z-index: 1; padding: 16px;
+      background: var(--tint); border-bottom: 1px solid var(--line);
+    }
+    .progress-summary {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 6px 10px; margin-top: 8px;
+    }
+    .progress-status {
+      display: inline-block; padding: 3px 9px; border: 1px solid #cfdee5;
+      border-radius: 999px; background: var(--surface); color: var(--accent);
+      font-size: .8125rem; font-weight: 650; overflow-wrap: anywhere;
+    }
+    .progress-status[data-status="waiting_for_preparer"] {
+      background: #fff5df; color: #71521c; border-color: #ead8aa;
+    }
+    .progress-status[data-status="approved"] {
+      background: #edf6ef; color: #265b43; border-color: #cedfd4;
+    }
+    .progress-status[data-status="returned"] {
+      background: #fff2ef; color: #8d3c33; border-color: #efd4ce;
+    }
+    .progress-total { color: var(--muted); font-size: .875rem; }
+    .progress-total strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+    .progress-context {
+      display: grid; gap: 4px; margin: 9px 0 0; padding: 0;
+      color: var(--muted); list-style: none; font-size: .8125rem; overflow-wrap: anywhere;
+    }
+    .progress-context:empty { display: none; }
+    .progress-sections { display: grid; gap: 10px; padding: 12px; }
+    .progress-card {
+      min-width: 0; padding: 12px; background: var(--surface);
+      border: 1px solid var(--line); border-radius: 11px;
+    }
+    .progress-card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .progress-card h3 { margin: 0; font-size: .875rem; font-weight: 650; }
+    .progress-count {
+      flex: none; min-width: 22px; padding: 2px 6px; border-radius: 999px; text-align: center;
+      background: var(--tint); color: var(--accent); font-size: .75rem; font-weight: 650;
+      font-variant-numeric: tabular-nums;
+    }
+    .progress-card ul {
+      list-style: none; margin: 7px 0 0; padding: 0;
+      font-size: .875rem; overflow-wrap: anywhere;
+    }
+    .progress-card li + li { margin-top: 5px; }
+    .progress-review:has(.flag) { background: #fff9f2; border-color: #eadac5; }
+    .progress-review:has(.flag) .progress-count { background: #faeedc; color: #71521c; }
+    .fact-row {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
+      gap: 8px; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--line);
+    }
+    .fact-row:last-child { padding-bottom: 0; border-bottom: 0; }
+    .fact-row + .fact-row { margin-top: 0; }
+    .fact-label { color: var(--muted); }
+    .fact-label::first-letter { text-transform: uppercase; }
+    .fact-value { max-width: 8rem; color: var(--ink); font-weight: 600; text-align: right; }
     .flag { color: #a32121; }
-    .muted { color: #8794a6; font-size: 13px; }
+    .muted { color: var(--muted); font-size: .875rem; }
     table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 6px 0; }
     td { border-bottom: 1px solid #e3e8ef; padding: 4px 6px; vertical-align: top; }
     .decision { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
@@ -251,24 +292,21 @@
     .tax-form label { display: grid; gap: 3px; }
     .tax-form input { min-width: 0; width: 100%; }
     .tax-form iframe { width: 100%; height: 520px; border: 1px solid #dce2eb; }
-    @media (prefers-reduced-motion: no-preference) {
-      .history-drawer[open] { animation: history-enter 220ms ease-out; }
-      @keyframes history-enter {
-        from { transform: translateX(-100%); }
-      }
-    }
     @media (max-width: 820px) {
-      .page { height: auto; min-height: 100dvh; }
-      .layout { grid-template-columns: 1fr; }
-      .history-toggle, .new-interview { position: static; margin-top: 8px; transform: none; }
-      .page:not(.in-interview) .history-toggle { position: absolute; top: 4px; margin-top: 0; }
+      .page.in-interview { height: auto; }
+
+      .layout { grid-template-columns: minmax(0, 1fr); }
       .setup { padding: 16px; }
-      .setup-fields { gap: 18px; }
       #log { max-height: 60vh; }
       .inputbar { padding-inline: 12px; }
+      .progress-heading { position: static; }
     }
     @media (max-width: 640px) {
-      .priority-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .interview-nav:has(.nav-title:not([hidden])) + .page.in-interview { min-height: 0; }
+      .setup { margin-top: 16px; }
+      .priority-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+      button.priority-option { gap: 6px; padding-inline: 8px; }
+      .priority-order { width: 18px; height: 18px; }
       .setup-actions #start { width: 100%; }
       .user-message { max-width: 92%; }
     }
@@ -278,21 +316,29 @@
   </style>
 </head>
 <body>
-<div class="page">
+<nav class="product-nav interview-nav" aria-label="Workspace">
+  <div class="product-nav-inner">
+    <button id="open-history" class="nav-drawer-toggle" type="button" aria-haspopup="dialog"
+            aria-controls="interview-history" aria-label="Interview history" title="Interview history">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+        <rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/>
+        <path d="M9.5 4.5v15"/>
+      </svg>
+    </button>
+    <div id="nav-title" class="nav-title" hidden></div>
+    <div class="product-links">
+      <a href="/interview" aria-current="page">Interview</a>
+      <a href="/preparer">Preparer review</a>
+    </div>
+  </div>
+</nav>
+<main class="page">
   <div class="intro">
     <header class="interview-header">
       <div id="interview-heading">
-        <h1 tabindex="-1">Tax Intake</h1>
-        <p class="subtitle">Collect client information for preparer review. <a href="/preparer">Preparer review</a></p>
+        <h1 id="interview-title" tabindex="-1">Tax Intake</h1>
+        <p class="subtitle">Answer guided questions and gather documents for your preparer.</p>
       </div>
-      <button id="open-history" class="secondary history-toggle" type="button" aria-haspopup="dialog"
-              aria-controls="interview-history" aria-label="Interview history" title="Interview history">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-          <rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/>
-          <path d="M9.5 4.5v15"/>
-        </svg>
-      </button>
-      <button id="new-interview" class="secondary new-interview" type="button" hidden>New interview</button>
     </header>
     <form id="interview-setup" class="panel setup">
       <fieldset id="setup-fields" class="setup-fields">
@@ -309,14 +355,20 @@
       </fieldset>
       <div class="setup-actions">
         <button id="back-to-interview" class="secondary" type="button" hidden>Back to interview</button>
-        <button id="start" type="submit" disabled>Start interview</button>
+        <button id="start" type="submit" disabled>
+          Start interview<span class="start-spinner" aria-hidden="true"></span>
+        </button>
       </div>
       <p id="setup-status" role="status">Loading topics…</p>
     </form>
   </div>
 
   <div id="interview-workspace" class="layout" hidden>
-    <section class="panel chat">
+    <section class="panel chat" aria-labelledby="conversation-heading">
+      <div class="chat-heading">
+        <h2 id="conversation-heading">Conversation</h2>
+        <button id="new-interview" class="secondary" type="button">New interview</button>
+      </div>
       <div id="log" role="log" aria-live="polite"></div>
       <div class="inputbar">
         <form id="answer-form" class="composer">
@@ -339,24 +391,44 @@
       </div>
     </section>
 
-    <aside class="panel" aria-label="Interview progress">
-      <h2>Status</h2>
-      <p id="side-status" class="muted">Not started</p>
-      <h2>Escalations</h2>
-      <ul id="side-flags"><li class="muted">None</li></ul>
-      <h2>Documents to collect</h2>
-      <ul id="side-docs"><li class="muted">None yet</li></ul>
-      <h2>Facts collected</h2>
-      <ul id="side-facts"><li class="muted">None yet</li></ul>
+    <aside class="panel intake-overview" aria-labelledby="progress-heading">
+      <div class="progress-heading">
+        <h2 id="progress-heading">Intake overview</h2>
+        <div class="progress-summary">
+          <span id="side-status" class="progress-status">Not started</span>
+          <span class="progress-total"><strong id="side-answered">0</strong> answered</span>
+        </div>
+        <ul id="side-context" class="progress-context"></ul>
+      </div>
+      <div class="progress-sections">
+        <section class="progress-card">
+          <header class="progress-card-header">
+            <h3>Documents to collect</h3><span class="progress-count" hidden></span>
+          </header>
+          <ul id="side-docs"><li class="muted">No documents requested yet.</li></ul>
+        </section>
+        <section class="progress-card progress-review">
+          <header class="progress-card-header">
+            <h3>Needs review</h3><span class="progress-count" hidden></span>
+          </header>
+          <ul id="side-flags"><li class="muted">No issues flagged.</li></ul>
+        </section>
+        <section class="progress-card">
+          <header class="progress-card-header">
+            <h3>Facts collected</h3><span class="progress-count" hidden></span>
+          </header>
+          <ul id="side-facts"><li class="muted">No facts collected yet.</li></ul>
+        </section>
+      </div>
     </aside>
   </div>
-</div>
+</main>
 
-<dialog id="interview-history" class="history-drawer" aria-labelledby="history-title">
-  <header class="history-header">
+<dialog id="interview-history" class="side-drawer" aria-labelledby="history-title">
+  <header class="drawer-heading">
     <h2 id="history-title">Interview history</h2>
     <form method="dialog">
-      <button class="secondary history-close-button" type="submit" aria-label="Close interview history"
+      <button class="secondary drawer-close" type="submit" aria-label="Close interview history"
               title="Close interview history" autofocus>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
              stroke-linecap="round" aria-hidden="true">
@@ -391,13 +463,14 @@
   const statusLine = $('#status'), setupStatus = $('#setup-status'), startBtn = $('#start');
   const setupForm = $('#interview-setup'), setupFields = $('#setup-fields');
   const page = $('.page'), workspace = $('#interview-workspace'), heading = $('#interview-heading');
-  const interviewTitle = heading.querySelector('h1'), subtitle = heading.querySelector('.subtitle');
+  const interviewTitle = $('#interview-title'), navTitle = $('#nav-title'), subtitle = heading.querySelector('.subtitle');
   const historyToggle = $('#open-history');
   const newInterviewBtn = $('#new-interview'), backToInterviewBtn = $('#back-to-interview');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const historyDialog = $('#interview-history'), historyList = $('#history-list'), historyStatus = $('#history-status');
-  const interviewDate = new Intl.DateTimeFormat('en', { dateStyle: 'medium', timeStyle: 'short' });
+  const interviewDate = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeStyle: 'short' });
   const statusLabels = {
+    not_started: 'Not started',
     in_progress: 'In progress',
     waiting_for_preparer: 'Ready for review',
     approved: 'Approved',
@@ -811,6 +884,10 @@
   }
 
   function render(out, focusAnswer = true) {
+    if (out.type === 'tax_qa') {
+      renderTaxAnswer(out.tax_qa);
+      out = out.guide;
+    }
     currentQuestionId = out.question_id || out.guide?.question_id || null;
     if (out.type !== 'error') {
       quickAnswers?.remove();
@@ -818,9 +895,6 @@
     }
     if (out.type === 'question') {
       renderQuestion(out);
-    } else if (out.type === 'tax_qa') {
-      renderTaxAnswer(out.tax_qa);
-      renderQuestion(out.guide);
     } else if (out.type === 'error') {
       addBubble(el('article', 'bubble err', out.message));
     } else if (out.type === 'summary') {
@@ -830,43 +904,64 @@
     if (focusAnswer && currentQuestionId) answer.focus();
   }
 
-  function list(target, items, empty, cls) {
-    target.replaceChildren();
-    if (!items.length) { target.append(el('li', 'muted', empty)); return; }
-    items.forEach(text => target.append(el('li', cls, text)));
+  function renderProgressList(target, entries, empty) {
+    const count = target.parentElement.querySelector('.progress-count');
+    count.textContent = entries.length;
+    count.hidden = !entries.length;
+    target.replaceChildren(...(entries.length ? entries : [el('li', 'muted', empty)]));
   }
+
   function renderSidebar(st) {
     interviewStatus = st.status;
     attach.disabled = filePicker.disabled = !canEditDocuments();
-    const parsed = st.last_parsed_by === 'model' ? ' · last answer read by the model' : '';
-    const prio = st.priority && st.priority.length ? ` · priority: ${st.priority.map(label).join(', ')}` : '';
-    const trig = st.triggers && st.triggers.length ? ` · heard: ${st.triggers.join(', ')}` : '';
-    $('#side-status').textContent = `${st.status.replaceAll('_', ' ')} · ${st.answered} answered${parsed}${prio}${trig}`;
-    list($('#side-flags'), st.flags.map(f => f.reason), 'None', 'flag');
-    list($('#side-docs'), st.missing_docs, 'None yet');
-    list($('#side-facts'), Object.entries(st.facts).map(([k, v]) => `${k.replaceAll('_', ' ')}: ${fmt(v)}`), 'None yet');
+    const status = $('#side-status');
+    status.textContent = statusLabels[st.status] || st.status.replaceAll('_', ' ');
+    status.dataset.status = st.status;
+    $('#side-answered').textContent = st.answered;
+
+    const context = $('#side-context');
+    context.replaceChildren();
+    if (st.priority?.length) context.append(el('li', null, 'Priority: ' + st.priority.map(label).join(', ')));
+    if (st.triggers?.length) context.append(el('li', null, 'Detected topics: ' + st.triggers.join(', ')));
+    if (st.last_parsed_by === 'model') context.append(el('li', null, 'Last answer interpreted by the model.'));
+
+    renderProgressList($('#side-docs'), st.missing_docs.map(doc => el('li', null, doc)), 'No documents requested yet.');
+    renderProgressList($('#side-flags'), st.flags.map(flag => el('li', 'flag', flag.reason)), 'No issues flagged.');
+    const facts = Object.entries(st.facts).map(([name, value]) => {
+      const row = el('li', 'fact-row');
+      row.append(el('span', 'fact-label', name.replaceAll('_', ' ')), el('span', 'fact-value', fmt(value)));
+      return row;
+    });
+    renderProgressList($('#side-facts'), facts, 'No facts collected yet.');
   }
 
-  function moveInterviewTitle(previousTop, previousSize, motion) {
-    const offset = previousTop - heading.getBoundingClientRect().top;
-    return [
-      heading.animate([{ transform: 'translateY(' + offset + 'px)' }, { transform: 'translateY(0)' }], motion),
-      interviewTitle.animate([{ fontSize: previousSize }, { fontSize: getComputedStyle(interviewTitle).fontSize }], motion)
-    ];
+  function measureInterviewTitle() {
+    const { x, y, width, height } = interviewTitle.getBoundingClientRect();
+    return { x: x + width / 2, y: y + height / 2, height, color: getComputedStyle(interviewTitle).color };
+  }
+
+  function moveInterviewTitle(previous, motion) {
+    interviewTitle.getAnimations().forEach(animation => animation.cancel());
+    const next = measureInterviewTitle();
+    const y = navTitle.hidden ? previous.y : Math.max(previous.y, next.y + next.height);
+    const transform = 'translate(' + (previous.x - next.x) + 'px, ' + (y - next.y) + 'px) scale(' + (previous.height / next.height) + ')';
+    return interviewTitle.animate([
+      { transform, color: previous.color },
+      { transform: 'none', color: next.color }
+    ], motion);
   }
 
   function showSetup(animateTitle = !reducedMotion.matches) {
     backToInterviewBtn.hidden = !interviewId;
     if (!setupForm.hidden) return;
-    const previousTop = heading.getBoundingClientRect().top;
-    const previousSize = getComputedStyle(interviewTitle).fontSize;
+    const previous = animateTitle ? measureInterviewTitle() : null;
+    heading.prepend(interviewTitle);
+    navTitle.hidden = true;
     page.classList.remove('in-interview');
     setupForm.hidden = false;
-    workspace.hidden = newInterviewBtn.hidden = true;
+    workspace.hidden = true;
     window.scrollTo(0, 0);
-    if (animateTitle) {
-      moveInterviewTitle(previousTop, previousSize, { duration: 230, easing: 'ease-out' });
-    }
+    if (previous) moveInterviewTitle(previous, { duration: 230, easing: 'ease-out' });
   }
 
   async function returnToSetup() {
@@ -880,25 +975,21 @@
     try {
       const fadeOut = [{ opacity: 1 }, { opacity: 0 }];
       const exitTiming = { duration: 90, easing: 'ease-in', fill: 'forwards' };
-      for (const element of [workspace, historyToggle, newInterviewBtn]) {
-        exit.push(element.animate(fadeOut, exitTiming));
-      }
+      exit.push(workspace.animate(fadeOut, exitTiming));
       await Promise.all(exit.map(animation => animation.finished));
 
-      const previousTop = heading.getBoundingClientRect().top;
-      const previousSize = getComputedStyle(interviewTitle).fontSize;
+      const previous = measureInterviewTitle();
       showSetup(false);
       exit.forEach(animation => animation.cancel());
-      const titleMotion = moveInterviewTitle(previousTop, previousSize, { duration: 250, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+      const titleMotion = moveInterviewTitle(previous, { duration: 270, easing: 'cubic-bezier(.22, 1, .36, 1)' });
       const timing = { duration: 155, delay: 145, easing: 'ease-out', fill: 'backwards' };
       const fadeIn = [{ opacity: 0 }, { opacity: 1 }];
       const entrance = [
         setupForm.animate([{ opacity: 0, transform: 'translateY(8px)' },
                            { opacity: 1, transform: 'translateY(0)' }], timing),
-        subtitle.animate(fadeIn, timing),
-        historyToggle.animate(fadeIn, timing)
+        subtitle.animate(fadeIn, timing)
       ];
-      await Promise.all([...titleMotion, ...entrance].map(animation => animation.finished));
+      await Promise.all([titleMotion, ...entrance].map(animation => animation.finished));
     } finally {
       exit.forEach(animation => animation.cancel());
       page.inert = false;
@@ -915,26 +1006,22 @@
         exit.push(
           setupForm.animate([{ opacity: 1, transform: 'translateY(0)' },
                              { opacity: 0, transform: 'translateY(-8px)' }], timing),
-          subtitle.animate([{ opacity: 1 }, { opacity: 0 }], timing),
-          historyToggle.animate([{ opacity: 1 }, { opacity: 0 }], timing)
+          subtitle.animate([{ opacity: 1 }, { opacity: 0 }], timing)
         );
         await Promise.all(exit.map(animation => animation.finished));
       }
 
-      const previousTop = heading.getBoundingClientRect().top;
-      const previousSize = getComputedStyle(interviewTitle).fontSize;
-      heading.getAnimations().forEach(animation => animation.cancel());
-      interviewTitle.getAnimations().forEach(animation => animation.cancel());
+      const previous = animate ? measureInterviewTitle() : null;
+      navTitle.append(interviewTitle);
+      navTitle.hidden = false;
       setupForm.hidden = true;
       page.classList.add('in-interview');
       window.scrollTo(0, 0);
-      if (animate) {
-        const from = Math.max(previousTop, heading.getBoundingClientRect().top);
-        const titleMotion = moveInterviewTitle(from, previousSize, { duration: 230, easing: 'cubic-bezier(.22, 1, .36, 1)' });
-        await Promise.all(titleMotion.map(animation => animation.finished));
+      if (previous) {
+        await moveInterviewTitle(previous, { duration: 290, easing: 'cubic-bezier(.22, 1, .36, 1)' }).finished;
       }
 
-      workspace.hidden = newInterviewBtn.hidden = false;
+      workspace.hidden = false;
       log.scrollTop = log.scrollHeight;
       exit.forEach(animation => animation.cancel());
       if (animate) {
@@ -942,9 +1029,7 @@
         const timing = { duration: 115, easing: 'ease-out', fill: 'backwards' };
         const entrance = [
           workspace.querySelector('.chat').animate(rise, timing),
-          workspace.querySelector('aside').animate(rise, { ...timing, delay: 30 }),
-          historyToggle.animate([{ opacity: 0 }, { opacity: 1 }], timing),
-          newInterviewBtn.animate([{ opacity: 0 }, { opacity: 1 }], timing)
+          workspace.querySelector('aside').animate(rise, { ...timing, delay: 30 })
         ];
         await Promise.all(entrance.map(animation => animation.finished));
       }
@@ -959,6 +1044,7 @@
     if (busy || !intake) return;
     busy = true;
     startBtn.disabled = setupFields.disabled = true;
+    startBtn.setAttribute('aria-busy', 'true');
     setStatus('Starting interview…', false, setupStatus);
     try {
       const data = await api('/api/interviews', {
@@ -969,8 +1055,10 @@
     } catch (e) { setStatus(e.message, true, setupStatus); }
     finally {
       busy = false;
+      startBtn.removeAttribute('aria-busy');
       startBtn.disabled = setupFields.disabled = false;
       refreshComposer();
+      if (!workspace.hidden && currentQuestionId && !historyDialog.open) answer.focus({ preventScroll: true });
     }
   }
 
@@ -1035,10 +1123,10 @@
       item.classList.add('is-current');
       open.setAttribute('aria-current', 'true');
     }
-    const title = el('span', null, entry.title || 'Interview · ' + interviewDate.format(new Date(entry.created_at)));
-    const updated = el('time', null, 'Updated ' + interviewDate.format(new Date(entry.updated_at)));
+    const title = el('span', 'drawer-record-title', entry.title || 'Interview · ' + interviewDate.format(new Date(entry.created_at)));
+    const updated = el('time', 'drawer-record-meta', 'Updated ' + interviewDate.format(new Date(entry.updated_at)));
     updated.dateTime = entry.updated_at;
-    open.append(title, el('small', null, statusLabels[entry.status]), updated);
+    open.append(title, el('small', 'drawer-record-meta', statusLabels[entry.status]), updated);
     open.addEventListener('click', () => openSavedInterview(entry.interview_id));
 
     const edit = el('button', 'history-edit-button');
@@ -1172,7 +1260,7 @@
         if (request === historyRequest && historyDialog.open) {
           setStatus(historyList.children.length ? '' : 'No interviews yet.', false, historyStatus);
           if (restoreFocus) {
-            const next = historyList.querySelector('.history-item:not([hidden])') || $('.history-close-button');
+            const next = historyList.querySelector('.history-item:not([hidden])') || $('.drawer-close');
             next.focus();
           }
         }
@@ -1191,6 +1279,7 @@
   }
 
   async function openHistory() {
+    if (page.inert || historyDialog.open) return;
     const request = ++historyRequest;
     closeHistoryAction = null;
     historyList.replaceChildren();
@@ -1244,14 +1333,6 @@
         question_id: questionId,
         document_ids: files.map(file => file.id)
       });
-      if (data.output.type === 'tax_qa') {
-        answer.value = '';
-        addUserMessage(text, []);
-        renderSidebar(data.state);
-        render(data.output, false);
-        setStatus(files.length ? 'Attachments are ready for your interview reply.' : '');
-        return;
-      }
       attachments = [];
       answer.value = '';
       documentStatus.textContent = '';
@@ -1337,7 +1418,8 @@
   function renderPriority() {
     const wrap = $('#priority-chips');
     wrap.replaceChildren();
-    intake.sections.forEach((sec, index) => {
+    const prioritySections = intake.sections.filter(section => section.id !== 'about_you');
+    prioritySections.forEach((sec, index) => {
       const i = chosen.indexOf(sec.id);
       const selected = i >= 0;
       const btn = el('button', 'secondary priority-option');

@@ -89,7 +89,8 @@ def sync(client, path, *document_ids):
     return response.json()
 
 
-def test_tax_question_uses_its_own_sources_and_leaves_the_draft_attachment_ready(client):
+@pytest.mark.parametrize("document_answers_current_question", [False, True])
+def test_tax_question_uses_its_own_sources_and_sends_the_attachment(client, document_answers_current_question):
     service = app.state.interviews
     query = "2025 IRS definition of self-employment income"
     passage = {"citation": "IRS test source", "text": "Example evidence about self-employment."}
@@ -109,30 +110,40 @@ def test_tax_question_uses_its_own_sources_and_leaves_the_draft_attachment_ready
     service.search = lambda text: {"matches": [passage] if text == query else []}
     path, question_id = start(client)
     started = client.get(path).json()
-    attachment, = stage(client, text_file("intake.txt", "Self-employment income: No"))
+    lines = ["Self-employment income: No"]
+    if document_answers_current_question:
+        lines.append("Filing status: Single")
+    attachment, = stage(client, text_file("intake.txt", *lines))
     payload = {"question_id": question_id, "document_ids": [attachment["id"]]}
 
     result = client.post(path + "/answer", json=payload | {"answer": message})
     assert result.status_code == 200
     data = result.json()
+    saved = client.get(path).json()
+    expected_facts = {"has_side_income": False}
+    if document_answers_current_question:
+        expected_facts["filing_status"] = "single"
+        assert data["output"]["guide"]["type"] == "summary"
+    else:
+        assert data["output"]["guide"]["question_id"] == question_id
     assert data["output"] == {
         "type": "tax_qa",
         "tax_qa": {"answer": response_text, "citations": [passage]},
-        "guide": started["output"],
+        "guide": saved["output"],
     }
-    assert data["state"] == started["state"]
-    saved = client.get(path).json()
-    assert saved["documents"] == []
-    assert saved["output"] == started["output"]
+    assert data["state"]["facts"] == expected_facts
+    assert data["conflicts"] == []
+    assert [document["id"] for document in saved["documents"]] == [attachment["id"]]
     assert saved["turns"] == [{
         "question": started["output"]["question"], "answer": message, "tax_qa": data["output"]["tax_qa"],
+        "attachments": [{"id": attachment["id"], "name": "intake.txt"}],
     }]
 
-    accepted = client.post(path + "/answer", json=payload | {"answer": "single"}).json()
-    assert accepted["output"]["type"] == "summary"
-    assert accepted["state"]["facts"] == {"filing_status": "single", "has_side_income": False}
-    assert accepted["output"]["turns"] == 2
-    assert client.get(path).json()["documents"][0]["id"] == attachment["id"]
+    if not document_answers_current_question:
+        accepted = client.post(path + "/answer", json={"question_id": question_id, "answer": "single"}).json()
+        assert accepted["output"]["type"] == "summary"
+        assert accepted["state"]["facts"] == {"filing_status": "single", "has_side_income": False}
+        assert accepted["output"]["turns"] == 2
 
 
 def test_files_stage_before_start_and_skip_current_and_follow_up_questions(client):
