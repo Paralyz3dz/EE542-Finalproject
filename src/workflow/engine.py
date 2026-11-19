@@ -551,6 +551,24 @@ def _show(state: State, question: dict, search, question_search) -> dict:
     return build_guide(state, question, search=search, question_search=question_search)
 
 
+def record_answer(state: State, answer_text: str, normalizer=None) -> str | None:
+    current = _question_by_id(state, state.asked[-1])
+    definition, _ = load_scenario(state.scenario)
+    try:
+        extracted = extract_facts(state, current, answer_text, normalizer=normalizer)
+    except ValueError as exc:
+        apply_triggers(state, definition, answer_text)
+        return str(exc)
+
+    fired = apply_triggers(state, definition, answer_text) if extracted["parsed_by"] != "rules" else []
+    new_facts = extracted["facts"]
+    state.facts.update(new_facts)
+    state.history.append({"question_id": current["id"], "answer_text": answer_text,
+                          "facts": new_facts, "parsed_by": extracted["parsed_by"], "triggers": fired})
+    review(state)
+    return None
+
+
 def step(state: State, answer_text: str | None = None, search=None,
          normalizer=None, *, question_search=None) -> tuple[State, dict]:
     """Run one turn of the interview. Returns (state, output).
@@ -572,25 +590,12 @@ def step(state: State, answer_text: str | None = None, search=None,
     if state.status != "in_progress":
         raise RuntimeError(f"Interview is {state.status}; nothing to step.")
 
-    if answer_text is None or not state.asked:
-        question = next_question(state)
-        return (state, summarize(state)) if question is None else (state, _show(state, question, search, question_search))
-
-    current = _question_by_id(state, state.asked[-1])
-    definition, _ = load_scenario(state.scenario)
-    try:
-        extracted = extract_facts(state, current, answer_text, normalizer=normalizer)
-    except ValueError as exc:
-        apply_triggers(state, definition, answer_text)
-        guide = build_guide(state, current, search=search, question_search=question_search)
-        return state, {"type": "error", "message": str(exc), "guide": guide}
-
-    fired = apply_triggers(state, definition, answer_text) if extracted["parsed_by"] != "rules" else []
-    new_facts = extracted["facts"]
-    state.facts.update(new_facts)
-    state.history.append({"question_id": current["id"], "answer_text": answer_text,
-                          "facts": new_facts, "parsed_by": extracted["parsed_by"], "triggers": fired})
-    review(state)
+    if answer_text is not None and state.asked:
+        error = record_answer(state, answer_text, normalizer)
+        if error is not None:
+            current = _question_by_id(state, state.asked[-1])
+            guide = build_guide(state, current, search=search, question_search=question_search)
+            return state, {"type": "error", "message": error, "guide": guide}
 
     question = next_question(state)
     if question is None:
