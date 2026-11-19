@@ -10,7 +10,7 @@
   "temperature_dialogue": 0.5,
   "retrieve_candidate_k": 10,
   "exclude_reference_chunks": false,
-  "corpus_version": "rag_materials_v2",
+  "corpus_version": "rag_materials_v3",
   "retrieve_fusion_k": 10,
   "rerank_enabled": true,
   "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",

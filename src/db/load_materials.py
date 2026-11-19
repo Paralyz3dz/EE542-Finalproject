@@ -38,7 +38,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--env-file", type=Path, required=True)
     parser.add_argument("--input", type=Path, default=ROOT / "data/processed/materials-v2")
-    parser.add_argument("--corpus", default="rag_materials_v2")
+    parser.add_argument("--corpus", default=json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))["corpus_version"])
     args = parser.parse_args()
     load_dotenv(args.env_file)
     target = corpus_table(args.corpus)
@@ -76,7 +76,8 @@ def main():
         after = conn.execute("SELECT count(*), md5(string_agg(id || content_hash || md5(embedding::text), ',' ORDER BY id)) FROM public.chunks").fetchone()
         counts = conn.execute(f"SELECT count(*), count(embedding), count(DISTINCT source) FROM {target}").fetchone()
         table_count = conn.execute(f"SELECT count(*) FROM {table_target}").fetchone()[0]
-        if before != after or tuple(counts) != (len(chunks), len(chunks), 21) or table_count != len(tables):
+        source_count = len({chunk["source"] for chunk in chunks})
+        if before != after or tuple(counts) != (len(chunks), len(chunks), source_count) or table_count != len(tables):
             raise ValueError("Remote corpus verification failed")
     result = {"corpus": args.corpus, "chunks": counts[0], "vectors": counts[1], "sources": counts[2], "tables": table_count,
               "public_before": before, "public_after": after,

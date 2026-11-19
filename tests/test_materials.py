@@ -41,6 +41,20 @@ def test_reference_list_removed_but_body_on_same_page_preserved():
     assert audit["reference_list_boxes"] == 3
 
 
+def test_appendix_citation_uses_its_own_section():
+    chunks, _, _ = document([
+        element("12.", "chapter_number"),
+        element("How To Get Tax Help", "heading"),
+        element("Help is available."),
+        element("Appendix A—Tax Treaty Procedures", "heading", page=2, level=2),
+        element("Keep the treaty document.", page=2),
+    ])
+    chapter, appendix = chunks
+    assert chapter["chapter_no"] == 12
+    assert appendix["chapter_no"] is None
+    assert appendix["citation"] == "IRS Pub 527 (2025), 'Appendix A—Tax Treaty Procedures', PDF p. 2"
+
+
 def test_numeric_tables_keep_all_rows_without_embedding_large_amount_lists():
     rows = [[str(i), str(i * 10), str(i * 20)] for i in range(300)]
     chunks, tables, _ = document([element("Tax table", "heading"), element("", "table", rows=rows)])

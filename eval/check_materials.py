@@ -16,6 +16,9 @@ PROTECTED = (
     ("IRS Pub 544 (2025)", 61, "Taxpayer Bill of Rights"),
     ("IRS Pub 334 (2025)", 32, "personal part is generally not deductible"),
     ("IRS Pub 505 (2025)", 19, "Who must pay estimated tax"),
+    ("IRS Form 8843 (2025)", 3, "you must file Form 8843 to explain the basis"),
+    ("IRS Pub 519 (2025)", 5, "you meet the substantial presence test for calendar year 2025"),
+    ("IRS Pub 519 (2025)", 91, "I was a resident of the United Kingdom"),
 )
 
 
@@ -36,9 +39,15 @@ def check(chunks, tables, quality):
     for table in tables:
         if table["chunk_id"] not in by_id or by_id[table["chunk_id"]]["type"] != "table" or not table["rows"]:
             raise ValueError("Invalid exact table link")
-    for source, forbidden in (("FTB 3514 Instructions (2025)", set(range(13, 21))), ("FTB 540 Booklet (2025)", set(range(39, 45)) | set(range(47, 53)))):
+    excluded_pages = {
+        "FTB 3514 Instructions (2025)": set(range(13, 21)),
+        "FTB 540 Booklet (2025)": set(range(39, 45)) | set(range(47, 53)),
+        "IRS Form 8843 (2025)": {1, 2},
+        "IRS Pub 519 (2025)": set(range(92, 96)),
+    }
+    for source, forbidden in excluded_pages.items():
         if any(set(p["pdf_pages"]) & forbidden for c in chunks for p in c["provenance"] if p["source"] == source):
-            raise ValueError("A blank form page was included")
+            raise ValueError("An excluded page was included: " + source)
     protected = []
     for source, page, phrase in PROTECTED:
         records = [c for c in chunks if any(p["source"] == source and page in p["pdf_pages"] for p in c["provenance"])]
