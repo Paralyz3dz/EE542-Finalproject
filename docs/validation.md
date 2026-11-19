@@ -1,6 +1,6 @@
 # Validating the interview playbook without a preparer's sign-off
 
-As of 2026-11-16. Playbook: `playbooks/modules/` (5 modules, 104 questions, 42 escalation rules).
+As of 2026-11-18. Playbook: `playbooks/modules/` (6 modules, 122 questions, 56 escalation rules).
 
 No licensed preparer has reviewed the playbook question by question, and the project does not wait
 for one. Instead, the playbook is checked against four sets of IRS material that already state what a
@@ -35,6 +35,18 @@ recorded in each question's `origin` field.
 | Was any of the care given by a family member (your child, spouse or dependent)? | family | yes | Form 6744 Advanced scenario 2; Pub 503 |
 | Did you pay for your own health insurance, not through an employer's plan? | side_gig | never (information for Form 7206) | ATS scenario 12 |
 
+## 2b. Student module (added 2026-11-18)
+
+The `student` module follows the official process only: Pub 4012 Tab J (education benefits: who claims a
+dependent's expenses, the four American opportunity credit questions, scholarship Worksheet 1-1, Form 1098-T
+boxes 4 and 6 out of scope) and Tab L Decision Chart 1 for students (full-time student, visa compliance,
+exempt for more than 5 calendar years). Nonresident questions follow Form 8843 (2025) Part I line 1a and
+Part III lines 12 and 13. Each question cites the IRS publication or instructions it follows
+(Pub 970, Pub 519, Form 8843 instructions); no statute or regulation is cited, since the intake only
+gathers facts and legal analysis stays with the preparer.
+A likely nonresident student is escalated (Form 1040-NR needs Foreign Student and Scholar certification)
+and reminded to file Form 8843.
+
 ## 3. Design rule: when unsure, send it to the preparer
 
 An unnecessary escalation costs the preparer a minute; a missed one can mean a wrong return. So several
@@ -67,7 +79,7 @@ rules escalate situations that Pub 4012 allows certified volunteers to handle. T
 
 ## 5. Optional outside review
 
-`docs/escalation-review.md` lists the 42 escalation rules on one page (about 10 minutes) for anyone with
+`docs/escalation-review.md` lists the escalation rules on one page (about 10 minutes) for anyone with
 VITA training or tax practice experience: the interviewed advisor, a USC VITA volunteer, or the course staff.
 It improves confidence but is not a dependency.
 

@@ -143,3 +143,30 @@ class InterviewStore:
             """, (interview.state.status, now, interview.payload(), owner, interview.state.interview_id,
                   interview.version))
             return cursor.rowcount == 1
+
+    def list_all(self, status: str | None = None, limit: int = 100) -> "list[dict]":
+        """Interviews of every owner, newest first, for the preparer review page."""
+        query = "SELECT interview_id, owner, status, created_at, updated_at, title, payload FROM guided_interviews"
+        params: tuple = ()
+        if status:
+            query += " WHERE status = ?"
+            params = (status,)
+        query += " ORDER BY updated_at DESC, interview_id LIMIT ?"
+        with self._connection() as conn:
+            rows = self._execute(conn, query, params + (limit,)).fetchall()
+        return [
+            {"interview_id": interview_id, "owner": owner, "status": status, "created_at": created_at,
+             "updated_at": updated_at, "title": title, "state": json.loads(payload)["state"]}
+            for interview_id, owner, status, created_at, updated_at, title, payload in rows
+        ]
+
+    def find(self, interview_id: str) -> dict | None:
+        """Owner and timestamps of one interview, whoever owns it (preparer review)."""
+        with self._connection() as conn:
+            row = self._execute(conn, """
+                SELECT owner, created_at, updated_at, title FROM guided_interviews WHERE interview_id = ?
+            """, (interview_id,)).fetchone()
+        if row is None:
+            return None
+        owner, created_at, updated_at, title = row
+        return {"owner": owner, "created_at": created_at, "updated_at": updated_at, "title": title}

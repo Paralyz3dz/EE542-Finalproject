@@ -1,0 +1,216 @@
+[
+  {
+    "id": "q_student_under_24",
+    "fact": "student_under_24",
+    "question": "Were you under age 24 at the end of 2025?",
+    "why_ask": "A full-time student under 24 can be a parent's qualifying child, and age affects whether the American opportunity credit is refundable and whether the kiddie tax applies.",
+    "required_docs": [],
+    "retrieval_query": "qualifying child age test full-time student under 24",
+    "source": "IRS Pub 17",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab C, Dependents and Tab J refundable AOTC chart (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_over_half_own_support",
+    "fact": "paid_over_half_own_support",
+    "question": "Did you pay more than half of your own living costs for 2025 (housing, food, tuition) from your own earnings?",
+    "why_ask": "A child who provides over half of their own support is not a qualifying child; it also matters for the refundable American opportunity credit and the kiddie tax.",
+    "required_docs": [],
+    "retrieval_query": "qualifying child support test provided over half of own support",
+    "source": "IRS Pub 17",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab C, Dependents (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_enrolled_at_least_half_time",
+    "fact": "enrolled_at_least_half_time",
+    "question": "Were you enrolled at least half-time in a program leading to a degree or credential for at least one term that began in 2025?",
+    "why_ask": "At least half-time enrollment in a degree program is required for the American opportunity credit.",
+    "required_docs": [],
+    "retrieval_query": "American opportunity credit at least half-time student degree program",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_received_1098t",
+    "fact": "received_1098t",
+    "question": "Did you receive a Form 1098-T (Tuition Statement) from your school for 2025?",
+    "why_ask": "Education credits generally require Form 1098-T; it is usually in the student's online school account.",
+    "required_docs": [
+      "1098-T",
+      "student account statement"
+    ],
+    "retrieval_query": "Form 1098-T required to claim education credit",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_form_1098t_box_4_or_6",
+    "fact": "form_1098t_box_4_or_6",
+    "question": "Does your Form 1098-T show an amount in box 4 or box 6?",
+    "why_ask": "Boxes 4 and 6 are adjustments for a prior year; Pub 4012 marks these Forms 1098-T as out of scope.",
+    "required_docs": [],
+    "retrieval_query": "Form 1098-T box 4 box 6 adjustments prior year",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_scholarship_or_grant",
+    "fact": "has_scholarship_or_grant",
+    "question": "Did you receive any scholarship, fellowship or grant for 2025 (for example a Pell Grant or Cal Grant)?",
+    "why_ask": "Scholarships are tax free only up to qualified education expenses and reduce the expenses that count for credits.",
+    "required_docs": [
+      "award letters"
+    ],
+    "retrieval_query": "tax-free scholarship qualified scholarship",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_scholarship_exceeds_expenses",
+    "fact": "scholarship_exceeds_expenses",
+    "question": "Was the total of your scholarships and grants more than your tuition, required fees, and required books and supplies?",
+    "why_ask": "The part above qualified education expenses, or used for room and board, is taxable to the student.",
+    "required_docs": [],
+    "retrieval_query": "scholarship exceeds qualified education expenses taxable room and board",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_scholarship_requires_work",
+    "fact": "scholarship_requires_work",
+    "question": "Did any scholarship or fellowship require you to teach, do research or perform other work (for example as a TA or RA)?",
+    "why_ask": "The part of a scholarship that pays for required services is taxable income, usually reported on a W-2.",
+    "required_docs": [],
+    "retrieval_query": "scholarship payment for teaching research services taxable",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_aotc_years_claimed",
+    "fact": "aotc_years_claimed",
+    "question": "In how many earlier tax years was the American opportunity credit (or Hope credit) claimed for you, by you or your parents?",
+    "why_ask": "The American opportunity credit can be claimed for a student for at most 4 tax years.",
+    "required_docs": [],
+    "retrieval_query": "American opportunity credit claimed for only four tax years",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_completed_four_years_before_2025",
+    "fact": "completed_four_years_before_2025",
+    "question": "Had you completed the first four years of college before 2025 began?",
+    "why_ask": "The American opportunity credit is only for the first four years of postsecondary education.",
+    "required_docs": [],
+    "retrieval_query": "completed first four years of postsecondary education American opportunity credit",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_felony_drug_conviction",
+    "fact": "felony_drug_conviction",
+    "question": "At the end of 2025, did you have a federal or state felony conviction for possessing or distributing a controlled substance?",
+    "why_ask": "This is one of the four eligibility questions for the American opportunity credit; the answer stays in the file for the preparer.",
+    "required_docs": [],
+    "retrieval_query": "felony drug conviction American opportunity credit",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_paid_required_course_materials",
+    "fact": "paid_required_course_materials",
+    "question": "Did you pay for books, supplies or equipment that your courses required?",
+    "why_ask": "Required course materials count as qualified expenses for the American opportunity credit even when bought outside the school.",
+    "required_docs": [
+      "receipts for required course materials"
+    ],
+    "retrieval_query": "course materials books supplies equipment American opportunity credit qualified expenses",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_received_1099q",
+    "fact": "received_1099q",
+    "question": "Did you receive money from a 529 plan or Coverdell education savings account in 2025 (Form 1099-Q)?",
+    "why_ask": "Distributions must be matched against qualified expenses and credits; taxable distributions are outside the volunteer scope.",
+    "required_docs": [
+      "1099-Q"
+    ],
+    "retrieval_query": "Form 1099-Q qualified tuition program distribution coordination with education credits",
+    "source": "IRS Pub 970",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab J, Education Benefits (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_has_green_card",
+    "fact": "has_green_card",
+    "question": "Did you have a green card (lawful permanent resident status) at any time in 2025?",
+    "why_ask": "A green card holder is a resident alien for tax purposes and is taxed like a U.S. citizen; Form 8843 is for nonimmigrant visa holders.",
+    "required_docs": [
+      "green card"
+    ],
+    "retrieval_query": "lawful permanent resident green card test resident alien",
+    "source": "IRS Pub 519",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab L, Substantial Presence Test Decision Chart 1 (Student) (structure only); Resident or Nonresident Alien Decision Tree step 1",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_student_visa_type",
+    "fact": "student_visa_type",
+    "question": "What visa were you in the U.S. on as a student in 2025: F, J, M, Q, or another visa?",
+    "why_ask": "Students on F, J, M or Q visas can be exempt individuals whose days do not count for the substantial presence test (Form 8843, Part I line 1a and Part III).",
+    "required_docs": [
+      "passport",
+      "visa",
+      "I-20 or DS-2019",
+      "I-94 travel history"
+    ],
+    "retrieval_query": "exempt individual student F J M Q visa days not counted substantial presence test",
+    "source": "IRS Form 8843 Instructions",
+    "origin": "IRS Form 8843 (2025) Part I line 1a, Part III; Pub 4012 (Rev. 10-2026) Tab L, Substantial Presence Test Decision Chart 1 (Student) (structure only)",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_visa_in_substantial_compliance",
+    "fact": "visa_in_substantial_compliance",
+    "question": "Did you follow the requirements of your student visa during 2025 (for example full-time enrollment and authorized work only)?",
+    "why_ask": "Days can be excluded as an exempt student only if the student substantially complied with the visa requirements (Pub 4012 Tab L, step 2).",
+    "required_docs": [],
+    "retrieval_query": "student exempt individual substantially complied with visa requirements",
+    "source": "IRS Form 8843 Instructions",
+    "origin": "Pub 4012 (Rev. 10-2026) Tab L, Substantial Presence Test Decision Chart 1 (Student) (structure only), step 2",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_exempt_student_more_than_5_years",
+    "fact": "exempt_student_more_than_5_years",
+    "question": "Counting 2025, were you in the U.S. as a student, teacher or trainee (F, J, M or Q visa) during any part of more than 5 calendar years?",
+    "why_ask": "A student stops being an exempt individual after 5 calendar years unless an exception applies (Form 8843, Part III line 12).",
+    "required_docs": [],
+    "retrieval_query": "student exempt for more than 5 calendar years Form 8843 line 12",
+    "source": "IRS Form 8843 Instructions",
+    "origin": "IRS Form 8843 (2025) Part III line 12; Pub 4012 (Rev. 10-2026) Tab L, Substantial Presence Test Decision Chart 1 (Student) (structure only), step 3",
+    "status": "derived_official"
+  },
+  {
+    "id": "q_applied_for_green_card",
+    "fact": "applied_for_green_card",
+    "question": "During 2025, did you apply for, or take other steps toward, a green card (lawful permanent resident status)?",
+    "why_ask": "Steps toward permanent residence are asked on Form 8843 (Part III line 13) and can stop days from being excluded.",
+    "required_docs": [],
+    "retrieval_query": "applied for lawful permanent resident status Form 8843 student",
+    "source": "IRS Form 8843 Instructions",
+    "origin": "IRS Form 8843 (2025) Part III line 13",
+    "status": "derived_official"
+  }
+]

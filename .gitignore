@@ -9,3 +9,6 @@ logs/*
 data/processed/*
 !data/processed/.gitkeep
 .pytest_cache/
+
+# MCP server interview summaries
+interview_summaries/
