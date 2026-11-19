@@ -30,7 +30,8 @@ def is_configured() -> bool:
 
 
 def chat_json(system: str, user: str, model: str | None = None, timeout: float = 30, *,
-              images: Sequence[tuple[str, bytes]] = ()) -> dict:
+              images: Sequence[tuple[str, bytes]] = (), response_format: dict | None = None,
+              max_completion_tokens: int | None = None) -> dict:
     """Send one system + one user message and return the model's reply as a dict.
 
     The request uses temperature 0 and JSON mode, so the reply must be a JSON object.
@@ -46,7 +47,6 @@ def chat_json(system: str, user: str, model: str | None = None, timeout: float =
     except ImportError as exc:
         raise LLMUnavailable("pip install openai") from exc
 
-    client = OpenAI(api_key=api_key, timeout=timeout)
     content = user
     if images:
         content = [{"type": "text", "text": user}]
@@ -57,12 +57,14 @@ def chat_json(system: str, user: str, model: str | None = None, timeout: float =
                 "detail": "high",
             }})
     try:
+        client = OpenAI(api_key=api_key, timeout=timeout)
         response = client.chat.completions.create(
             model=model or os.getenv("OPENAI_EXTRACT_MODEL", os.getenv("OPENAI_MODEL", "gpt-4o-mini")),
             temperature=0,
-            response_format={"type": "json_object"},
+            response_format=response_format or {"type": "json_object"},
             messages=[{"role": "system", "content": system},
                       {"role": "user", "content": content}],
+            **({"max_completion_tokens": max_completion_tokens} if max_completion_tokens is not None else {}),
         )
         return json.loads(response.choices[0].message.content or "{}")
     except Exception as exc:

@@ -12,11 +12,13 @@ The 23-source corpus adds Form 8843 instructions and Publication 519 to the prev
 
 The previous `rag_materials_v2` corpus holds 8,752 vectors, 8,390 searchable chunks and 554 exact tables. A single 104-question round improved primary-source hit@3 from 72/104 (69.2%) to 76/104 (73.1%), still below the 80% target. The interview uses all five returned passages, with hit@5 = 82/104 (78.8%) in that saved round. See [the processing and retrieval report](../eval/results/materials-v2-2026-11-17/report.md). The [import report](knowledge-base-import.md) records the original 6,004-chunk corpus.
 
-The current retrieval worktree adds a pinned local BGE cross-encoder: vector top 10 + BM25 top 10 -> RRF top 10 -> reranked top 5. One paired 104-question round improved primary-source hit@5 from 82/104 (78.85%) to 85/104 (81.73%), with mean retrieval time increasing from 2.896 to 7.012 seconds on local CPU, excluding query embedding and model startup. Reranking is enabled in this worktree. See the [reranking report](../eval/results/rerank-2026-11-17/report.md) for the hit@3 regression, setup and limitations. The corpus and stored vectors are unchanged.
+The default retrieval path uses vector top 10 and BM25 top 10, fuses them into RRF top 10, and uses Listwise ranking to return the top five. The configured OpenAI model ranks the whole list in one request. If Listwise ranking is unavailable, retrieval uses RRF order. In the fixed-pool 122-question evaluation, Listwise achieved 83.10% pooled Recall@5 and 94.51% Context Precision@5.
+
+The earlier pinned BGE cross-encoder improved primary-source hit@5 from 82/104 (78.85%) to 85/104 (81.73%) on the 104-question set. See the [BGE reranking report](../eval/results/rerank-2026-11-17/report.md) for its setup and limitations.
 
 A follow-up single-round test enlarged the RRF pool from 10 to 15, keeping both retrieval routes at 10 and the final output at 5. Hit@5 stayed at 85/104 while mean retrieval latency increased to 8.489 seconds, so the default pool was restored to 10. See the [pool-size experiment](../eval/results/rerank-pool15-2026-11-17/report.md).
 
-A further single-round test combined independently min-max-normalized RRF and reranker scores with equal weights. Hit@5 declined from 85/104 to 81/104, so the RRF score weight was restored to zero and pure reranking remains the default. See the [score-blending experiment](../eval/results/rerank-blend50-2026-11-17/report.md).
+A further single-round test combined independently min-max-normalized RRF and BGE scores with equal weights. Hit@5 declined from 85/104 to 81/104, so the BGE configuration reverted to pure cross-encoder scores. See the [score-blending experiment](../eval/results/rerank-blend50-2026-11-17/report.md).
 
 ## 1. What the knowledge base does, and does not do
 

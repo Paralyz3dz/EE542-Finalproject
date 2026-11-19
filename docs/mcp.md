@@ -1,8 +1,11 @@
 # Using your own AI assistant to run the interview (MCP server)
 
-The web page needs our OpenAI key only to read free-text answers. With the MCP server, the interview runs
+The web page uses the server's OpenAI key to read free-text answers. With the MCP server, the interview runs
 inside the user's own AI assistant instead (ChatGPT, Claude Desktop, Gemini CLI, Cherry Studio with
-DeepSeek or Qwen, or any other MCP host), on the user's own subscription. No API key of ours is used.
+DeepSeek or Qwen, or any other MCP host), on the user's own subscription. Both paths use the server's
+OpenAI configuration for Listwise retrieval ranking when available. For guided questions the reranker
+receives the playbook query, question and purpose, along with the official passages. For direct lookup,
+it receives the supplied query and official passages. Use general tax topics for direct lookup.
 
 | Who | Does |
 |---|---|

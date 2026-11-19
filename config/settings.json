@@ -13,6 +13,8 @@
   "corpus_version": "rag_materials_v3",
   "retrieve_fusion_k": 10,
   "rerank_enabled": true,
+  "rerank_method": "listwise",
+  "listwise_model": "gpt-4.1-mini-2025-04-14",
   "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
   "rerank_batch_size": 4,
   "rerank_max_length": 8192,

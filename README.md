@@ -117,6 +117,14 @@ be generated from the existing `embed_text` field without a query instruction.
 See the [Qwen model card](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B)
 and [Ollama embedding API](https://docs.ollama.com/api/embed).
 
+Retrieval fuses the vector and BM25 rankings, then uses the configured OpenAI
+model to rank the ten fused candidates together and return the top five.
+The model receives the retrieval query and official passages. Guided interviews
+also send the question and purpose from the playbook. Set `OPENAI_API_KEY` to
+enable Listwise ranking. If the model is unavailable or returns an invalid
+ranking, retrieval returns the first five RRF candidates. Set
+`rerank_enabled: false` in `config/settings.json` to always use RRF order.
+
 Generate document vectors locally from a JSON snapshot containing `id` and
 `embed_text` for each chunk:
 
@@ -228,9 +236,9 @@ Gemini CLI, Cherry Studio).
 Settings in `.env` (see `.env.example` and `docs/architecture.md`):
 
 ```dotenv
-OPENAI_API_KEY=            # optional: model note reader on the web page and the chat agent
+OPENAI_API_KEY=            # Listwise ranking, model note reader and chat agent
 TAX_AGENT_RETRIEVAL=on     # off = no DB / Ollama needed; questions show no official text
-TAX_AGENT_LLM=on           # off = exact answers only, never call the model
+TAX_AGENT_LLM=on           # off = exact answers only
 TAX_AGENT_INTERVIEW_DB_PATH=        # optional: SQLite file (default logs/interviews.sqlite3)
 TAX_AGENT_INTERVIEW_DATABASE_URL=   # optional: PostgreSQL for interviews
 ```
