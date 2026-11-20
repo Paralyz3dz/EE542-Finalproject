@@ -521,7 +521,7 @@
     const draft = answer.value.trim();
     send.disabled = blocked || !((attachments.length && canEditDocuments()) || (canAnswer && draft));
     attach.disabled = filePicker.disabled = !canEditDocuments();
-    undoBtn.disabled = !canEditDocuments() || answeredCount === 0 || attachments.length > 0;
+    undoBtn.disabled = busy || interviewStatus !== 'in_progress' || answeredCount === 0 || attachments.length > 0;
     for (const button of quickAnswers?.children || []) {
       button.disabled = !canAnswer;
       button.setAttribute('aria-pressed', String(button.value.toLowerCase() === draft.toLowerCase()));

@@ -574,20 +574,23 @@ def test_undo_an_unsure_answer_asks_the_question_again():
     assert summarize(state)["needs_preparer_follow_up"] == []
 
 
-def test_undo_reopens_a_finished_interview_but_not_a_decided_one():
-    """After the summary the client can still take back the last answer; after approval they cannot."""
-    from src.workflow.engine import undo
+def test_undo_after_the_summary_but_not_after_submission():
+    """Before submitting, the last answer can be taken back; once submitted or decided it cannot."""
+    from src.workflow.engine import start_interview, step, undo
     stub = lambda q: {"matches": []}
-    state, summary = _run_all_yes("ca_w2_side_gig")
-    assert state.status == "waiting_for_preparer"
+    state = start_interview("ca_w2_side_gig")
+    state, out = step(state, search=stub)
+    for text in ["single", "yes", "1000"]:
+        state, out = step(state, text, search=stub, auto_submit=False)
+    assert out["type"] == "summary" and state.status == "in_progress"
     state, out = undo(state, search=stub)
-    assert out["type"] == "question"
-    assert state.status == "in_progress"
+    assert out["type"] == "question" and out["fact"] == "side_income"
 
-    state, _ = _run_all_yes("ca_w2_side_gig")
-    state.status = "approved"
-    with pytest.raises(RuntimeError):
-        undo(state, search=stub)
+    for status in ["waiting_for_preparer", "approved", "returned"]:
+        state, _ = _run_all_yes("ca_w2_side_gig")
+        state.status = status
+        with pytest.raises(RuntimeError):
+            undo(state, search=stub)
 
 
 def test_undo_with_nothing_to_undo_raises():
