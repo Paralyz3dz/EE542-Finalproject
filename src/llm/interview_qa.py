@@ -2,7 +2,7 @@ import json
 import logging
 
 from src.llm.client import LLMUnavailable
-from src.workflow.engine import UNSURE, parse_value
+from src.workflow.engine import parse_value
 
 
 logger = logging.getLogger(__name__)
@@ -23,8 +23,6 @@ NO_EVIDENCE = "I couldn't find enough information in the tax knowledge base to a
 
 
 def respond_to_question(chat, search, guide: dict, message: str, tax_year: int) -> dict | None:
-    if message.strip().lower() in UNSURE:
-        return None  # "not sure" is an answer (a preparer follow-up), never sent to the model
     try:
         value = parse_value({"name": guide["fact"], "type": guide["input_type"],
                              "options": guide["options"]}, message)

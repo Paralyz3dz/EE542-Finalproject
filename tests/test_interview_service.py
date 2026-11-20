@@ -266,28 +266,3 @@ def test_deleted_interview_stays_deleted_after_restart_and_stale_write(tmp_path)
     assert restarted.list(owner) == []
     with pytest.raises(InterviewNotFound):
         restarted.get(iid, owner=owner)
-
-
-def test_unsure_answer_is_recorded_without_asking_the_model():
-    """Web flow: '不确定' is never classified by the tax-question model; it becomes a follow-up."""
-    def tax_chat(system, user):
-        raise AssertionError("the model must not see an unsure answer")
-
-    svc = InterviewService(search=no_search, tax_chat=tax_chat)
-    r = svc.start("ca_w2_side_gig")
-    iid = r["state"]["interview_id"]
-    r = svc.answer(iid, "不确定", tax_questions=True)
-    assert r["output"]["fact"] == "has_side_income"
-    assert r["state"]["unsure"] == ["filing_status"]
-
-
-def test_service_undo_shows_the_question_again():
-    """undo(): the last answer is taken back and saved; nothing left to undo -> InterviewClosed."""
-    svc = InterviewService(search=no_search)
-    iid = svc.start("ca_w2_side_gig")["state"]["interview_id"]
-    svc.answer(iid, "single")
-    r = svc.undo(iid)
-    assert r["output"]["fact"] == "filing_status"
-    assert "filing_status" not in svc.get(iid)["state"]["facts"]
-    with pytest.raises(InterviewClosed):
-        svc.undo(iid)

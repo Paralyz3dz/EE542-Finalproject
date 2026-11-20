@@ -397,7 +397,6 @@
       const priority = el('div', 'review-priority');
       section(priority, 'Needs review', st.flags.map(f => f.reason), 'flags');
       section(priority, 'Documents to collect', st.missing_docs);
-      if (st.unsure && st.unsure.length) section(priority, 'Client was not sure — follow up', st.unsure.map(k => (d.labels || {})[k] || human(k)), 'flags');
       box.append(priority);
       const collected = reviewSection(box, 'Information collected');
       const facts = Object.entries(st.facts || {});

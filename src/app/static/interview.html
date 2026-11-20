@@ -164,11 +164,6 @@
     .quick-answers button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .quick-answer-check { visibility: hidden; }
     .quick-answers button[aria-pressed="true"] .quick-answer-check { visibility: visible; }
-    .quick-answers button.unsure { border-style: dashed; }
-    .composer-tools { display: inline-flex; align-items: center; gap: 8px; }
-    .composer .undo-button { height: 40px; padding: 0 12px; border-radius: 999px; font-size: 0.9rem; }
-    .composer .undo-button:disabled { color: var(--muted); }
-    .follow-ups { margin: 6px 0 0; padding-left: 18px; }
     .row { display: flex; gap: 8px; }
     .composer {
       display: grid;
@@ -380,12 +375,9 @@
           <textarea id="answer" rows="2" aria-label="Interview answer or tax question" placeholder="Reply or ask a tax question…" disabled></textarea>
           <div class="composer-actions">
             <input id="document-files" type="file" accept=".pdf,.png,.jpg,.jpeg,.txt" multiple hidden disabled>
-            <span class="composer-tools">
             <span class="attach-control" title="PDF, PNG, JPG, or TXT &middot; 10 files max, 10 MB each.">
               <button id="attach" class="secondary attach-button" type="button" aria-label="Attach tax documents" aria-describedby="document-help" disabled>+</button>
               <span id="document-help" hidden>PDF, PNG, JPG, or TXT. Up to 10 files, 10 MB each.</span>
-            </span>
-            <button id="undo" class="secondary undo-button" type="button" title="Take back the last answer and ask that question again" disabled>↶ Undo last answer</button>
             </span>
             <button id="send" class="send-button" type="submit" aria-label="Send" title="Send" disabled>
               <span aria-hidden="true">↑</span>
@@ -464,7 +456,7 @@
 
 <script>
   const $ = (sel) => document.querySelector(sel);
-  const log = $('#log'), answer = $('#answer'), send = $('#send'), undoBtn = $('#undo');
+  const log = $('#log'), answer = $('#answer'), send = $('#send');
   const statusLine = $('#status'), setupStatus = $('#setup-status'), startBtn = $('#start');
   const setupForm = $('#interview-setup'), setupFields = $('#setup-fields');
   const page = $('.page'), workspace = $('#interview-workspace'), heading = $('#interview-heading');
@@ -494,7 +486,6 @@
   let quickAnswers = null;
   let summaryBubble = null;
   let interviewStatus = null;
-  let answeredCount = 0;
   let interviewScenario = null;
   let attachments = [];
   let activeUploads = 0;
@@ -521,7 +512,6 @@
     const draft = answer.value.trim();
     send.disabled = blocked || !((attachments.length && canEditDocuments()) || (canAnswer && draft));
     attach.disabled = filePicker.disabled = !canEditDocuments();
-    undoBtn.disabled = busy || interviewStatus !== 'in_progress' || answeredCount === 0 || attachments.length > 0;
     for (const button of quickAnswers?.children || []) {
       button.disabled = !canAnswer;
       button.setAttribute('aria-pressed', String(button.value.toLowerCase() === draft.toLowerCase()));
@@ -681,8 +671,8 @@
       enum: 'Choose an answer or type a note'
     }[q.input_type] || 'Type the client\'s answer';
     answer.placeholder += ' · or ask a tax question';
-    const quick = q.input_type === 'bool' ? ['Yes', 'No'] : q.input_type === 'enum' ? q.options.slice() : [];
-    if (!quick.some(opt => opt.replaceAll('_', ' ').toLowerCase() === 'not sure')) quick.push('Not sure');
+    const quick = q.input_type === 'bool' ? ['Yes', 'No'] : q.input_type === 'enum' ? q.options : [];
+    if (!quick.length) return null;
     const group = el('div', 'quick-answers');
     group.setAttribute('role', 'group');
     group.setAttribute('aria-label', 'Quick answers');
@@ -690,10 +680,6 @@
       const btn = el('button', 'secondary');
       btn.type = 'button';
       btn.value = opt.replaceAll('_', ' ');
-      if (btn.value.toLowerCase() === 'not sure') {
-        btn.classList.add('unsure');
-        btn.title = 'The client does not know: the preparer will follow up';
-      }
       const check = el('span', 'quick-answer-check', '✓');
       check.setAttribute('aria-hidden', 'true');
       btn.append(el('span', null, btn.value), check);
@@ -719,13 +705,6 @@
     });
     b.append(t);
     if (s.flags.length) b.append(el('div', 'meta flag', 'Needs the preparer: ' + s.flags.map(f => f.reason).join(' · ')));
-    if (s.needs_preparer_follow_up?.length) {
-      const box = el('div', 'meta flag', 'Client was not sure — preparer to follow up:');
-      const ul = el('ul', 'follow-ups');
-      s.needs_preparer_follow_up.forEach(item => ul.append(el('li', null, item.question)));
-      box.append(ul);
-      b.append(box);
-    }
     if (s.missing_docs.length) b.append(el('div', 'meta', 'Documents to collect: ' + s.missing_docs.join(', ')));
     if (s.reminders && s.reminders.length) b.append(el('div', 'meta', 'Remind the client: ' + s.reminders.join(' · ')));
     if (s.not_yet_covered.length) b.append(el('div', 'note', 'Not covered by this playbook yet: ' + s.not_yet_covered.join(', ')));
@@ -838,14 +817,12 @@
     status.textContent = statusLabels[st.status] || st.status.replaceAll('_', ' ');
     status.dataset.status = st.status;
     $('#side-answered').textContent = st.answered;
-    answeredCount = st.answered || 0;
 
     const context = $('#side-context');
     context.replaceChildren();
     if (st.priority?.length) context.append(el('li', null, 'Priority: ' + st.priority.map(label).join(', ')));
     if (st.triggers?.length) context.append(el('li', null, 'Detected topics: ' + st.triggers.join(', ')));
     if (st.last_parsed_by === 'model') context.append(el('li', null, 'Last answer interpreted by the model.'));
-    if (st.unsure?.length) context.append(el('li', 'flag', 'Not sure (preparer follows up): ' + st.unsure.map(name => name.replaceAll('_', ' ')).join(', ')));
 
     renderProgressList($('#side-docs'), st.missing_docs.map(doc => el('li', null, doc)), 'No documents requested yet.');
     renderProgressList($('#side-flags'), st.flags.map(flag => el('li', 'flag', flag.reason)), 'No issues flagged.');
@@ -1277,25 +1254,6 @@
       if (currentQuestionId) answer.focus();
     }
   }
-
-  async function undoLastAnswer() {
-    if (busy || !interviewId || undoBtn.disabled) return;
-    busy = true;
-    refreshComposer();
-    setStatus('Taking back the last answer…');
-    try {
-      await api(`/api/interviews/${interviewId}/undo`, {});
-      busy = false;
-      await activateInterview(await api(`/api/interviews/${interviewId}`));
-      setStatus('Last answer taken back. Answer the question again.');
-    } catch (e) {
-      setStatus(e.message, true);
-    } finally {
-      busy = false;
-      refreshComposer();
-    }
-  }
-  undoBtn.addEventListener('click', undoLastAnswer);
 
   answer.addEventListener('input', refreshComposer);
   $('#answer-form').addEventListener('submit', (e) => { e.preventDefault(); submit(answer.value); });
