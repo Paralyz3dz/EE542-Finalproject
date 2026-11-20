@@ -255,6 +255,7 @@ More: `docs/architecture.md` (structure and roadmap), `docs/validation.md` (how 
 | Pub 17 parsing + chunking (`src/rag/chunk_pub17.py`) | done: 820 chunks, 14 chapters, TIP/CAUTION, citations |
 | Table extraction (`src/rag/tables.py`) | done: 20 tables, IF/AND/THEN rows as sentences, raw rows saved for code |
 | HNSW + BM25 hybrid retrieval | implemented: RRF fusion, final top-k 5; 200-case baseline completed, RRF Recall@5 87.00% (annotated chunk IDs) |
+| Retrieval reranking | Listwise is the default; the supplied 122-question comparison reports pooled Recall@5 of 83.10% and Context Precision@5 of 94.51%. See the [evaluation comparison](docs/knowledge-base.md#retrieval-evaluation-comparison) for baselines and limitations. |
 | Web chat UI + FastAPI | implemented: local, in-memory conversations |
 | Workflow engine (`src/workflow/`) | implemented: modular intake, priority topics, trigger words, escalations, reminders, summary |
 | Interview store (`src/db/interview_store.py`) | implemented: per-browser history; MCP interviews under owner `mcp-assistant`; the preparer page reads every owner |

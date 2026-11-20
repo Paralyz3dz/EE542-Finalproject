@@ -20,6 +20,31 @@ A follow-up single-round test enlarged the RRF pool from 10 to 15, keeping both 
 
 A further single-round test combined independently min-max-normalized RRF and BGE scores with equal weights. Hit@5 declined from 85/104 to 81/104, so the BGE configuration reverted to pure cross-encoder scores. See the [score-blending experiment](../eval/results/rerank-blend50-2026-11-17/report.md).
 
+### Retrieval evaluation comparison
+
+The following 104-question results summarize successive retrieval changes and experiments. Source hit measures whether a result includes the expected source; it does not establish passage relevance or answer correctness. The linked reports describe the individual runs and their limitations.
+
+| Stage | Change and method | Source hit@3 | Source hit@5 | MRR@5 |
+|---|---|---:|---:|---:|
+| Original baseline | Retrieve five candidates each from vector search and BM25, then return five after RRF fusion. | 68/104 (65.4%) | 81/104 (77.9%) | 0.5655 |
+| Larger candidate pool | Increase each retrieval route from five to ten candidates; RRF still returns five. | 71/104 (68.3%) | 81/104 (77.9%) | 0.5760 |
+| Initial noise filtering | Exclude 440 manually reviewed contents, index and reference chunks by ID and content fingerprint before both retrieval routes. | 72/104 (69.2%) | 80/104 (76.9%) | 0.5696 |
+| Document processing and chunking | Restore multi-column PDF reading order using coordinates and fonts; extract HTML body text, remove headers, footers and indexes, and split at heading, paragraph and sentence boundaries with a 400-word body limit. Split tables on row boundaries with repeated headers, merge exact duplicate passages while retaining provenance, and exclude numeric-table locator chunks. | 76/104 (73.1%) | 82/104 (78.8%) | 0.5873 |
+| BGE reranking | Retrieve ten candidates per route, retain RRF top ten, and score each query and full passage with BGE reranker-v2-m3 to select five. | 75/104 (72.1%) | 85/104 (81.7%) | 0.6178 |
+| Larger reranking pool (experiment) | Expand the RRF pool from ten to at most fifteen; BGE selects five. | 75/104 (72.1%) | 85/104 (81.7%) | 0.6204 |
+| Equal RRF and BGE weighting (experiment) | Normalize RRF and BGE scores separately and combine them at 50:50 to select five. | 77/104 (74.0%) | 81/104 (77.9%) | 0.5904 |
+
+The next table contains the supplied 122-question comparison. RRF, BGE and Listwise use the same RRF top-ten candidate pool; the multi-query experiment uses an expanded query and a different pool. Recall is pooled Recall@5. The full evaluation artifacts and the qualification originally attached to the multi-query recall value are not available in this repository, so its comparability has not been verified.
+
+| Method | Change and method | Source hit@3 | Source hit@5 | MRR@5 | Pooled Recall@5 | Context Precision@5 |
+|---|---|---:|---:|---:|---:|---:|
+| RRF baseline | Retrieve ten candidates each from vector search and BM25; return the RRF top five. | 87/122 (71.3%) | 94/122 (77.0%) | 0.5851 | 65.10% | 80.09% |
+| BGE reranking | Score each of the same RRF top ten candidates and select five. | 87/122 (71.3%) | 98/122 (80.3%) | 0.6038 | 73.93% | 87.97% |
+| Listwise reranking (current) | `gpt-4.1-mini` ranks the ten candidate headings and passages together using the interview question, retrieval query and `why_ask`; return five. | 90/122 (73.8%) | 99/122 (81.1%) | 0.6343 | 83.10% | 94.51% |
+| Tax terminology expansion and multi-query fusion (experiment) | Retain the original query, add a tax terminology expansion, fuse the separate retrieval results with equal RRF weights, and use BGE to select five. | 86/122 (70.5%) | 94/122 (77.0%) | 0.6016 | 54.74% (qualification unavailable) | 88.04% |
+
+The 104-question and 122-question results use different question sets and should not be treated as a single directly comparable series.
+
 ## 1. What the knowledge base does, and does not do
 
 | Does | Does not |
