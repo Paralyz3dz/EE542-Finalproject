@@ -437,3 +437,167 @@ def test_guide_uses_all_five_passages_and_recognizes_sources_after_rank_three():
     assert guide["citations"] == matches[:5]
     assert guide["references"] == [{"reference": "IRS Pub 17, Chapter 2", "retrieved": True}]
     assert state.evidence[question["id"]]["citations"] == [m["citation"] for m in matches[:5]]
+
+
+# ---------- "不确定" answers and undo (feat/unsure-and-undo) ----------
+
+def test_unsure_answer_moves_on_to_the_next_question():
+    """'不确定' is accepted (no error): the interview moves on instead of repeating the question."""
+    from src.workflow.engine import start_interview, step
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, out = step(state, search=stub)
+    assert out["fact"] == "filing_status"
+
+    state, out = step(state, "不确定", search=stub)
+    assert out["type"] == "question"
+    assert out["fact"] == "has_side_income"
+    assert state.facts["filing_status"] is None
+
+
+def test_unsure_parent_skips_follow_ups_and_is_not_asked_again():
+    """'不知道' to a parent question: its follow-ups never come, and it is not asked again."""
+    from src.workflow.engine import load_scenario, start_interview, step
+    definition, _ = load_scenario("ca_w2_side_gig")
+    kinds = {f["name"]: f for f in definition["facts"]}
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, out = step(state, search=stub)
+    shown = []
+    for _ in range(100):
+        if out["type"] == "summary":
+            break
+        shown.append(out["fact"])
+        f = kinds[out["fact"]]
+        if out["fact"] == "has_side_income":
+            answer = "不知道"
+        else:
+            answer = f["options"][0] if f["type"] == "enum" else SAMPLE_ANSWER[f["type"]]
+        state, out = step(state, answer, search=stub)
+    assert out["type"] == "summary"
+    assert shown.count("has_side_income") == 1
+    assert "side_income" not in shown
+
+
+def test_unsure_answer_becomes_a_follow_up_for_the_preparer():
+    """The summary lists '不确定' facts for the preparer, not as 'not yet covered'."""
+    from src.workflow.engine import load_scenario, start_interview, step, summarize
+    _, questions = load_scenario("ca_w2_side_gig")
+    q = next(q for q in questions if q["fact"] == "filing_status")
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, _ = step(state, search=stub)
+    state, _ = step(state, "不确定", search=stub)
+
+    summary = summarize(state)
+    assert summary["needs_preparer_follow_up"] == [
+        {"fact": "filing_status", "question": q["question"], "why_ask": q["why_ask"]}
+    ]
+    assert summary["needs_preparer_attention"] is True
+    assert "filing_status" not in summary["not_yet_covered"]
+
+
+def test_unsure_answer_is_never_sent_to_the_model():
+    """Privacy: a '不确定' answer is handled by rules and never reaches the normalizer (LLM)."""
+    from src.workflow.engine import start_interview, step
+    sent = []
+
+    def normalizer(fact, question, note):
+        sent.append(note)
+        raise AssertionError("the model must not be called for an unsure answer")
+
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, _ = step(state, search=stub)
+    state, out = step(state, "  Not Sure ", search=stub, normalizer=normalizer)
+    assert out["type"] == "question"
+    assert sent == []
+
+
+def test_interview_saved_before_unsure_existed_still_loads():
+    """A State saved without the 'unsure' field (older database rows) loads with unsure = []."""
+    from src.workflow.state import State
+    old = State("ca_w2_side_gig").to_dict()
+    del old["unsure"]
+    assert State.from_dict(old).unsure == []
+
+
+def test_undo_brings_back_the_previous_question():
+    """undo(): the last answer is removed, its fact is unknown again, and its question is shown again."""
+    from src.workflow.engine import start_interview, step, undo
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, out = step(state, search=stub)
+    state, out = step(state, "single", search=stub)
+    assert out["fact"] == "has_side_income"
+
+    state, out = undo(state, search=stub)
+    assert out["type"] == "question" and out["fact"] == "filing_status"
+    assert state.facts["filing_status"] is None
+
+    state, out = step(state, "head of household", search=stub)
+    assert state.facts["filing_status"] == "head_of_household"
+    assert out["fact"] == "has_side_income"
+
+
+def test_undo_recomputes_flags_and_documents():
+    """Flags caused only by the undone answer disappear; documents from earlier answers stay."""
+    from src.workflow.engine import start_interview, step, undo
+    stub = lambda q: {"matches": []}
+    answers = {"filing_status": "single", "age_65_or_older": "no", "ca_resident_full_year": "yes",
+               "receives_social_security": "no", "has_retirement_distribution": "yes",
+               "retirement_distributions": "20000"}
+    state = start_interview("ca_retiree")
+    state, out = step(state, search=stub)
+    while out["fact"] != "under_59_half_at_distribution":
+        state, out = step(state, answers[out["fact"]], search=stub)
+    docs_before = list(state.missing_docs)
+    state, out = step(state, "yes", search=stub)
+    assert [f["rule"] for f in state.flags] == ["early_distribution"]
+
+    state, out = undo(state, search=stub)
+    assert out["fact"] == "under_59_half_at_distribution"
+    assert state.flags == []
+    assert state.missing_docs == docs_before
+    assert "1099-R" in state.missing_docs
+
+
+def test_undo_an_unsure_answer_asks_the_question_again():
+    """Undoing '不确定' removes it from the preparer's follow-ups and asks the question again."""
+    from src.workflow.engine import start_interview, step, summarize, undo
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, out = step(state, search=stub)
+    state, out = step(state, "不确定", search=stub)
+    state, out = undo(state, search=stub)
+    assert out["fact"] == "filing_status"
+    assert summarize(state)["needs_preparer_follow_up"] == []
+
+
+def test_undo_after_the_summary_but_not_after_submission():
+    """Before submitting, the last answer can be taken back; once submitted or decided it cannot."""
+    from src.workflow.engine import start_interview, step, undo
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, out = step(state, search=stub)
+    for text in ["single", "yes", "1000"]:
+        state, out = step(state, text, search=stub, auto_submit=False)
+    assert out["type"] == "summary" and state.status == "in_progress"
+    state, out = undo(state, search=stub)
+    assert out["type"] == "question" and out["fact"] == "side_income"
+
+    for status in ["waiting_for_preparer", "approved", "returned"]:
+        state, _ = _run_all_yes("ca_w2_side_gig")
+        state.status = status
+        with pytest.raises(RuntimeError):
+            undo(state, search=stub)
+
+
+def test_undo_with_nothing_to_undo_raises():
+    """Before any answer there is nothing to take back."""
+    from src.workflow.engine import start_interview, step, undo
+    stub = lambda q: {"matches": []}
+    state = start_interview("ca_w2_side_gig")
+    state, _ = step(state, search=stub)
+    with pytest.raises(ValueError):
+        undo(state, search=stub)

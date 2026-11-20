@@ -68,6 +68,17 @@ class InterviewApiTests(unittest.TestCase):
         self.assertEqual(decision.json()["state"]["status"], "approved")
         self.assertEqual(self.client.post(path + "/submit").status_code, 409)
 
+    def test_undo_endpoint(self):
+        """HTTP: undo takes back the last answer; 409 when there is nothing left to undo."""
+        r = self.client.post("/api/interviews", json={"scenario": "ca_w2_side_gig"}).json()
+        iid = r["state"]["interview_id"]
+        self.client.post(f"/api/interviews/{iid}/answer", json={"answer": "single"})
+        r = self.client.post(f"/api/interviews/{iid}/undo")
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()["output"]["fact"], "filing_status")
+        self.assertEqual(self.client.post(f"/api/interviews/{iid}/undo").status_code, 409)
+        self.assertEqual(self.client.post("/api/interviews/nope/undo").status_code, 404)
+
     def test_history_list_and_detail_are_browser_scoped(self):
         response = self.client.post("/api/interviews", json={"scenario": "ca_w2_side_gig"})
         self.assertIn("HttpOnly", response.headers["Set-Cookie"])
