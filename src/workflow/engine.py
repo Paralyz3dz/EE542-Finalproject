@@ -43,6 +43,7 @@ logger = logging.getLogger(__name__)
 YES = {"yes", "y", "true", "1", "是", "有", "对"}
 NO = {"no", "n", "false", "0", "否", "没有", "无", "不是"}
 NONE_WORDS = {"none", "no", "n/a", "无", "没有"}
+UNSURE = {"not sure", "i don't know", "unsure", "don't know", "不确定", "不知道", "不清楚"}
 
 
 def load_scenario(scenario: str) -> tuple[dict, list[dict]]:
@@ -235,6 +236,8 @@ def next_question(state: State) -> dict | None:
         if not f.get("required"):
             continue
         if state.facts.get(name) is not None:
+            continue
+        if name in state.unsure:
             continue
         if not check(f.get("ask_when"), state.facts):
             continue
@@ -495,7 +498,10 @@ def summarize(state: State) -> dict:
     answered = {k: v for k, v in state.facts.items() if v is not None}
     unanswered = [f["name"] for f in definition["facts"]
                   if f.get("required") and state.facts.get(f["name"]) is None
-                  and check(f.get("ask_when"), state.facts)]
+                  and check(f.get("ask_when"), state.facts)
+                  and f["name"] not in state.unsure]
+    follow_up = [{"fact": name, "question": by_fact[name]["question"], "why_ask": by_fact[name]["why_ask"]}
+                 for name in state.unsure]
 
     answered_ids = [by_fact[k]["id"] for k in answered if k in by_fact]
     retrieved, verify, missing, unchecked = set(), set(), set(), set()
@@ -520,8 +526,9 @@ def summarize(state: State) -> dict:
         "scenario": definition["title"],
         "facts": answered,
         "not_yet_covered": unanswered,
+        "needs_preparer_follow_up": follow_up,
         "flags": list(state.flags),
-        "needs_preparer_attention": bool(state.flags),
+        "needs_preparer_attention": bool(state.flags) or bool(follow_up),
         "missing_docs": list(state.missing_docs),
         "citations_retrieved": sorted(retrieved),
         "references_to_verify": sorted(verify),
@@ -553,6 +560,11 @@ def _show(state: State, question: dict, search, question_search) -> dict:
 def record_answer(state: State, answer_text: str, normalizer=None) -> str | None:
     current = _question_by_id(state, state.asked[-1])
     definition, _ = load_scenario(state.scenario)
+    if answer_text.strip().lower() in UNSURE:
+        state.unsure.append(current["fact"])
+        state.history.append({"question_id": current["id"], "answer_text": answer_text,
+                              "facts": {}, "parsed_by": "unsure"})
+        return None
     try:
         extracted = extract_facts(state, current, answer_text, normalizer=normalizer)
     except ValueError as exc:
@@ -601,4 +613,41 @@ def step(state: State, answer_text: str | None = None, search=None,
         if auto_submit:
             state.status = "waiting_for_preparer"
         return state, summarize(state)
+    return state, _show(state, question, search, question_search)
+
+
+def undo(state: State, search=None, *, question_search=None) -> tuple[State, dict]:
+    """Take back the client's last answer and show that question again. Returns (state, output).
+
+    Only manual answers are undone (history entries with "answer_text"); facts filled from
+    uploaded documents and tax questions ("tax_qa") are left alone.
+    Flags and missing_docs are derived from facts, so they are cleared and rebuilt by review().
+    A finished interview (waiting_for_preparer) is reopened; an approved or returned one
+    raises RuntimeError. Raises ValueError when there is no answer to undo.
+    """
+    if state.status not in ("in_progress", "waiting_for_preparer"):
+        raise RuntimeError(f"Interview is {state.status}; answers can no longer be changed.")
+
+    index = None
+    for i in reversed(range(len(state.history))):
+        if "answer_text" in state.history[i]:
+            index = i
+            break
+    if index is None:
+        raise ValueError("There is no answer to undo.")
+
+    entry = state.history.pop(index)
+    question = _question_by_id(state, entry["question_id"])
+    for name in entry["facts"]:
+        state.facts[name] = None
+    if question["fact"] in state.unsure:
+        state.unsure.remove(question["fact"])
+
+    state.flags.clear()
+    state.missing_docs.clear()
+    review(state)
+    state.status = "in_progress"
+
+    while state.asked and state.asked[-1] != question["id"]:
+        state.asked.pop()
     return state, _show(state, question, search, question_search)
