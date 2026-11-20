@@ -32,7 +32,9 @@ class State:
                       appeared in the background note (e.g. ["side_gig"])
         boosted       facts moved to the front because a trigger word was heard:
                       {"fact", "trigger", "keyword"}, in the order they were triggered
-        status        "in_progress" -> "waiting_for_preparer" -> "approved" | "returned"
+        unsure        fact names the client answered "not sure" / "不确定"; the fact stays None,
+                      it is not asked again, and the summary lists it for the preparer
+        status       "in_progress" -> "waiting_for_preparer" -> "approved" | "returned"
     """
     scenario: str
     interview_id: str = field(default_factory=lambda: str(uuid4()))
@@ -44,6 +46,7 @@ class State:
     evidence: dict = field(default_factory=dict)
     priority: list = field(default_factory=list)
     boosted: list = field(default_factory=list)
+    unsure: list = field(default_factory=list)
     status: str = "in_progress"
 
     def to_dict(self) -> dict:
