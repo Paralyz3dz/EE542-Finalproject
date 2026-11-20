@@ -272,18 +272,6 @@ def answer(interview_id: str, payload: AnswerRequest, request: Request):
         raise HTTPException(422, str(exc)) from None
 
 
-@app.post("/api/interviews/{interview_id}/undo")
-def undo_answer(interview_id: str, request: Request):
-    """Take back the last answer; returns that question again (404 unknown, 409 nothing to undo / decided)."""
-    try:
-        result = request.app.state.interviews.undo(interview_id, owner=interview_owner(request))
-        return JSONResponse(result, headers={"Cache-Control": "no-store"})
-    except InterviewNotFound:
-        raise HTTPException(404, "Interview not found. Start a new one.") from None
-    except InterviewClosed as exc:
-        raise HTTPException(409, str(exc)) from None
-
-
 @app.post("/api/interview-documents")
 async def stage_documents(request: Request, response: Response, scenario: str = INTAKE):
     content_type = request.headers.get("content-type", "").split(";", 1)[0].strip().lower()
