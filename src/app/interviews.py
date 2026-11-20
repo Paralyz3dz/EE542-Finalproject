@@ -26,7 +26,7 @@ from dotenv import load_dotenv
 from src.app.documents import TAX_YEAR, extract_document_facts
 from src.db.interview_store import Interview, InterviewStore
 from src.llm.interview_qa import respond_to_question
-from src.workflow.engine import (INTAKE, MODULES, PLAYBOOKS, apply_triggers, load_scenario, record_answer, review, sections,
+from src.workflow.engine import (INTAKE, MODULES, PLAYBOOKS, apply_triggers, load_scenario, record_answer, review, undo, sections,
                                  start_interview, step, summarize)
 from src.workflow.state import State
 
@@ -98,6 +98,7 @@ def snapshot(state: State) -> dict:
         "facts": {k: v for k, v in state.facts.items() if v is not None},
         "flags": state.flags,
         "missing_docs": state.missing_docs,
+        "unsure": list(state.unsure),
         "answered": sum("attachments" not in entry or "answer_text" in entry for entry in history),
         "priority": list(state.priority),
         "triggers": sorted({b["keyword"] for b in state.boosted}),
@@ -266,6 +267,22 @@ class InterviewService:
                 return self._answer_with_documents(interview, answer_text, document_ids, owner)
             interview.state, out = self._step(state, owner, answer_text)
             interview.output = out.get("guide", out)
+            self._save(owner, interview)
+            return {"output": out, "state": snapshot(interview.state)}
+
+    def undo(self, interview_id: str, *, owner: str = "") -> dict:
+        """Take back the last answer and show its question again (engine.undo).
+
+        Raises InterviewNotFound, InterviewClosed after the preparer's decision or when there is
+        nothing to undo. Returns {"output": question guide, "state": snapshot}.
+        """
+        with self._lock:
+            interview = self._get(interview_id, owner)
+            try:
+                interview.state, out = undo(interview.state, question_search=self._search_question)
+            except (RuntimeError, ValueError) as exc:
+                raise InterviewClosed(str(exc)) from None
+            interview.output = out
             self._save(owner, interview)
             return {"output": out, "state": snapshot(interview.state)}
 
