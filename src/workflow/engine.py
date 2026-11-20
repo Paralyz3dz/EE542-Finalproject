@@ -622,10 +622,11 @@ def undo(state: State, search=None, *, question_search=None) -> tuple[State, dic
     Only manual answers are undone (history entries with "answer_text"); facts filled from
     uploaded documents and tax questions ("tax_qa") are left alone.
     Flags and missing_docs are derived from facts, so they are cleared and rebuilt by review().
-    A finished interview (waiting_for_preparer) is reopened; an approved or returned one
-    raises RuntimeError. Raises ValueError when there is no answer to undo.
+    Allowed only while the interview is in progress (including a summary not yet submitted);
+    once it is submitted to the preparer or decided, RuntimeError: the preparer must return it.
+    Raises ValueError when there is no answer to undo.
     """
-    if state.status not in ("in_progress", "waiting_for_preparer"):
+    if state.status != "in_progress":
         raise RuntimeError(f"Interview is {state.status}; answers can no longer be changed.")
 
     index = None
@@ -646,7 +647,6 @@ def undo(state: State, search=None, *, question_search=None) -> tuple[State, dic
     state.flags.clear()
     state.missing_docs.clear()
     review(state)
-    state.status = "in_progress"
 
     while state.asked and state.asked[-1] != question["id"]:
         state.asked.pop()
