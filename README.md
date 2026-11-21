@@ -267,8 +267,6 @@ More: `docs/architecture.md` (structure and roadmap), `docs/validation.md` (how 
 | Practitioner input | written feedback + interview with a Big Four tax advisor (business tax) done; USC VITA interview planned |
 
 ## Next
-- 11/20: knowledge base batch 1 (7 documents); document extraction contract (stage 1 → interview facts)
-- 11/23: knowledge base batch 2
 - 11/30 – 12/1: final demo (`docs/demo.md`)
 - Before any real use: login and roles, encryption and retention, MCP authentication, deployment, CI (`docs/architecture.md`)
 
